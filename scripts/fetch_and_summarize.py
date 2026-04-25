@@ -82,24 +82,42 @@ def summarize_paper(paper: Dict) -> Dict:
     Paper Title: {paper['title']}
     Abstract: {paper['abstract']}
     """
-    try:
-        # Use new SDK generate_content call
-        response = client.models.generate_content(
-            model=MODEL_ID,
-            contents=prompt,
-            config={
-                "response_mime_type": "application/json"
-            }
-        )
-        summary = json.loads(response.text)
-        paper.update(summary)
-    except Exception as e:
-        print(f"Error summarizing {paper['title']}: {e}")
-        paper["tags"] = ["Unknown"]
-        paper["tldr"] = "Summary generation failed."
     
-    # Avoid hitting AI API rate limits if many papers
-    time.sleep(1)
+    max_retries = 5
+    base_delay = 10 # Initial wait time for 429 errors
+    
+    for attempt in range(max_retries):
+        try:
+            # Use new SDK generate_content call
+            response = client.models.generate_content(
+                model=MODEL_ID,
+                contents=prompt,
+                config={
+                    "response_mime_type": "application/json"
+                }
+            )
+            summary = json.loads(response.text)
+            paper.update(summary)
+            # Success, break retry loop
+            break
+        except Exception as e:
+            if "429" in str(e) or "RESOURCE_EXHAUSTED" in str(e):
+                wait_time = base_delay * (2 ** attempt)
+                print(f"Gemini Rate limit (429) hit for '{paper['title']}'. Waiting {wait_time}s (Attempt {attempt + 1}/{max_retries})...")
+                time.sleep(wait_time)
+            else:
+                print(f"Error summarizing {paper['title']}: {e}")
+                paper["tags"] = ["Unknown"]
+                paper["tldr"] = "Summary generation failed."
+                break
+    else:
+        # Executed if the loop finished without 'break'
+        print(f"Failed to summarize '{paper['title']}' after {max_retries} retries.")
+        paper["tags"] = ["Quota Limit"]
+        paper["tldr"] = "Summary unavailable due to Gemini API quota exhaustion."
+    
+    # General sleep between papers to stay within free tier limits (usually 10-15 RPM)
+    time.sleep(2)
     return paper
 
 def update_data(new_papers: List[Dict]):
@@ -117,7 +135,9 @@ def update_data(new_papers: List[Dict]):
     papers_to_summarize = [p for p in new_papers if p["id"] not in existing_ids]
 
     # Summarize new papers
-    for p in papers_to_summarize:
+    print(f"Starting summarization for {len(papers_to_summarize)} new papers...")
+    for i, p in enumerate(papers_to_summarize):
+        print(f"[{i+1}/{len(papers_to_summarize)}] Summarizing: {p['title']}")
         summarized_p = summarize_paper(p)
         data.append(summarized_p)
 
@@ -136,8 +156,8 @@ if __name__ == "__main__":
     if not GEMINI_API_KEY:
         print("GEMINI_API_KEY not found in environment variables.")
     else:
-        print("Fetching papers...")
+        print("Fetching papers from Arxiv...")
         papers = get_papers()
-        print(f"Found {len(papers)} new papers. Summarizing...")
+        print(f"Found {len(papers)} papers within the time window.")
         update_data(papers)
         print("Data updated successfully.")
