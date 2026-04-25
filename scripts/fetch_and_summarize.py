@@ -13,7 +13,11 @@ KEYWORDS = [
     "VIO", 
     "Visual Inertial Odometry", 
     "Camera Localization", 
-    "Visual Localization"
+    "Visual Localization",
+    "Computer Vision",
+    "Deep Learning",
+    "Foundation Model",
+    "Scene Understanding"
 ]
 CATEGORIES = ["cs.CV", "cs.AI"]
 MAX_DAYS = 7
@@ -33,8 +37,8 @@ def get_papers() -> List[Dict]:
     )
     
     results = []
-    # We want papers from the last 24 hours roughly
-    threshold = datetime.datetime.now(tz.tzutc()) - datetime.timedelta(days=2)
+    # Broaden threshold to last 3 days to ensure we don't miss papers due to timezone/weekend lags
+    threshold = datetime.datetime.now(tz.tzutc()) - datetime.timedelta(days=3)
     
     for result in search.results():
         if result.published > threshold:
