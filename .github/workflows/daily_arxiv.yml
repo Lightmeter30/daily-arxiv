@@ -22,13 +22,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r arxiv-daily/scripts/requirements.txt
+          pip install -r scripts/requirements.txt
 
       - name: Fetch and Summarize
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          cd arxiv-daily
           python scripts/fetch_and_summarize.py
 
       - name: Commit and Push changes
