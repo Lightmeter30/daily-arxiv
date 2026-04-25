@@ -1,0 +1,40 @@
+name: Daily Arxiv Update
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # 08:00 AM UTC+8
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update-papers:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r arxiv-daily/scripts/requirements.txt
+
+      - name: Fetch and Summarize
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          cd arxiv-daily
+          python scripts/fetch_and_summarize.py
+
+      - name: Commit and Push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add arxiv-daily/docs/data.json
+          git commit -m "chore: daily arxiv update [$(date +'%Y-%m-%d')]" || echo "No changes to commit"
+          git push
