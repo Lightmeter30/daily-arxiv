@@ -1,8 +1,9 @@
 import arxiv
-import google.generativeai as genai
+from google import genai
 import json
 import os
 import datetime
+import time
 from dateutil import tz
 from typing import List, Dict
 
@@ -23,33 +24,47 @@ CATEGORIES = ["cs.CV", "cs.AI"]
 MAX_DAYS = 7
 DATA_FILE = "docs/data.json"
 
-# Gemini setup
+# Gemini setup using the NEW google-genai SDK
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-2.0-flash')
+client = genai.Client(api_key=GEMINI_API_KEY)
+MODEL_ID = "gemini-2.0-flash"
 
 def get_papers() -> List[Dict]:
     query = " OR ".join([f'"{k}"' for k in KEYWORDS])
+    search_query = f"({query}) AND (" + " OR ".join([f"cat:{c}" for c in CATEGORIES]) + ")"
+    
+    # Use the newer client-based approach for arxiv
+    arxiv_client = arxiv.Client(
+        page_size=50,
+        delay_seconds=3,
+        num_retries=3
+    )
+    
     search = arxiv.Search(
-        query=f"({query}) AND (" + " OR ".join([f"cat:{c}" for c in CATEGORIES]) + ")",
+        query=search_query,
         max_results=50,
         sort_by=arxiv.SortCriterion.SubmittedDate
     )
     
     results = []
-    # Broaden threshold to last 3 days to ensure we don't miss papers due to timezone/weekend lags
+    # Broaden threshold to last 3 days
     threshold = datetime.datetime.now(tz.tzutc()) - datetime.timedelta(days=3)
     
-    for result in search.results():
-        if result.published > threshold:
-            results.append({
-                "id": result.entry_id,
-                "title": result.title,
-                "authors": [a.name for a in result.authors],
-                "abstract": result.summary,
-                "link": result.entry_id,
-                "published": result.published.strftime("%Y-%m-%d")
-            })
+    # arxiv 2.0.0+ uses client.results(search)
+    try:
+        for result in arxiv_client.results(search):
+            if result.published > threshold:
+                results.append({
+                    "id": result.entry_id,
+                    "title": result.title,
+                    "authors": [a.name for a in result.authors],
+                    "abstract": result.summary,
+                    "link": result.entry_id,
+                    "published": result.published.strftime("%Y-%m-%d")
+                })
+    except Exception as e:
+        print(f"Error fetching from Arxiv: {e}")
+        
     return results
 
 def summarize_paper(paper: Dict) -> Dict:
@@ -68,13 +83,23 @@ def summarize_paper(paper: Dict) -> Dict:
     Abstract: {paper['abstract']}
     """
     try:
-        response = model.generate_content(prompt, generation_config={"response_mime_type": "application/json"})
+        # Use new SDK generate_content call
+        response = client.models.generate_content(
+            model=MODEL_ID,
+            contents=prompt,
+            config={
+                "response_mime_type": "application/json"
+            }
+        )
         summary = json.loads(response.text)
         paper.update(summary)
     except Exception as e:
         print(f"Error summarizing {paper['title']}: {e}")
         paper["tags"] = ["Unknown"]
         paper["tldr"] = "Summary generation failed."
+    
+    # Avoid hitting AI API rate limits if many papers
+    time.sleep(1)
     return paper
 
 def update_data(new_papers: List[Dict]):
@@ -87,12 +112,14 @@ def update_data(new_papers: List[Dict]):
     else:
         data = []
 
-    # Filter out duplicates and append new papers
+    # Filter out duplicates
     existing_ids = {p["id"] for p in data}
-    for p in new_papers:
-        if p["id"] not in existing_ids:
-            summarized_p = summarize_paper(p)
-            data.append(summarized_p)
+    papers_to_summarize = [p for p in new_papers if p["id"] not in existing_ids]
+
+    # Summarize new papers
+    for p in papers_to_summarize:
+        summarized_p = summarize_paper(p)
+        data.append(summarized_p)
 
     # Sort by date descending
     data.sort(key=lambda x: x["published"], reverse=True)
