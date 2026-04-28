@@ -137,25 +137,6 @@ function renderPaper(paper) {
     </div>`;
 }
 
-function renderDateSection(date, papers) {
-    const priorityPapers = papers.filter(isPriority);
-    const regularPapers = papers.filter(p => !isPriority(p));
-    const sorted = [...priorityPapers, ...regularPapers];
-
-    const priorityCount = priorityPapers.length;
-    const dateLabel = priorityCount > 0
-        ? `${date} <span class="text-accent text-sm font-normal ml-2">${priorityCount} priority</span>`
-        : date;
-
-    return `
-    <section>
-        <h2 class="text-lg font-semibold text-gray-900 mb-5 pb-2 border-b border-gray-100">${dateLabel}</h2>
-        <div class="grid gap-4">
-            ${sorted.map(renderPaper).join('')}
-        </div>
-    </section>`;
-}
-
 async function loadPapers() {
     try {
         const resp = await fetch('data.json');
@@ -184,6 +165,83 @@ function setupTabs() {
     });
 }
 
+const PAGE_SIZE = 7;
+
+function buildSortedList(papers) {
+    const grouped = papers.reduce((acc, p) => {
+        const d = p.published;
+        if (!acc[d]) acc[d] = [];
+        acc[d].push(p);
+        return acc;
+    }, {});
+    const dates = Object.keys(grouped).sort().reverse();
+    const flat = [];
+    for (const d of dates) {
+        const priority = grouped[d].filter(isPriority);
+        const regular = grouped[d].filter(p => !isPriority(p));
+        flat.push(...priority, ...regular);
+    }
+    return flat;
+}
+
+function renderPage(flat, page) {
+    const totalPages = Math.ceil(flat.length / PAGE_SIZE);
+    const start = (page - 1) * PAGE_SIZE;
+    const slice = flat.slice(start, start + PAGE_SIZE);
+
+    let html = '';
+    let lastDate = '';
+    for (const paper of slice) {
+        if (paper.published !== lastDate) {
+            lastDate = paper.published;
+            const inPage = flat.filter(p => p.published === lastDate);
+            const priorityInDate = inPage.filter(isPriority).length;
+            const dateLabel = priorityInDate > 0
+                ? `${lastDate} <span class="text-accent text-sm font-normal ml-2">${priorityInDate} priority</span>`
+                : lastDate;
+            html += `<h2 class="text-lg font-semibold text-gray-900 mb-5 pb-2 border-b border-gray-100">${dateLabel}</h2>`;
+        }
+        html += renderPaper(paper);
+    }
+
+    return { html, totalPages };
+}
+
+function renderPagination(flat, page, totalPages) {
+    if (totalPages <= 1) return '';
+    let btns = '';
+    for (let i = 1; i <= totalPages; i++) {
+        const active = i === page
+            ? 'bg-accent text-white'
+            : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200';
+        btns += `<button class="page-btn w-9 h-9 rounded-lg text-sm font-medium ${active} transition-colors" data-page="${i}">${i}</button>`;
+    }
+    const prevDisabled = page <= 1 ? 'opacity-40 pointer-events-none' : 'hover:bg-gray-100';
+    const nextDisabled = page >= totalPages ? 'opacity-40 pointer-events-none' : 'hover:bg-gray-100';
+    return `
+    <div class="flex items-center justify-center gap-1.5 mt-10 pt-6 border-t border-gray-100">
+        <button class="page-btn w-9 h-9 rounded-lg text-sm font-medium bg-white border border-gray-200 text-gray-600 ${prevDisabled} transition-colors" data-page="${page - 1}">&larr;</button>
+        ${btns}
+        <button class="page-btn w-9 h-9 rounded-lg text-sm font-medium bg-white border border-gray-200 text-gray-600 ${nextDisabled} transition-colors" data-page="${page + 1}">&rarr;</button>
+    </div>`;
+}
+
+function bindPagination(flat) {
+    document.querySelectorAll('.page-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const p = parseInt(btn.dataset.page);
+            if (p < 1 || p > Math.ceil(flat.length / PAGE_SIZE)) return;
+            window.__page = p;
+            const { html, totalPages } = renderPage(flat, p);
+            document.getElementById('content').innerHTML =
+                '<div class="grid gap-4">' + html + '</div>' +
+                renderPagination(flat, p, totalPages);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            bindPagination(flat);
+        });
+    });
+}
+
 function render(papers, tab) {
     const container = document.getElementById('content');
     const countEl = document.getElementById('paper-count');
@@ -208,15 +266,13 @@ function render(papers, tab) {
         return;
     }
 
-    const grouped = filtered.reduce((acc, p) => {
-        const d = p.published;
-        if (!acc[d]) acc[d] = [];
-        acc[d].push(p);
-        return acc;
-    }, {});
-
-    const dates = Object.keys(grouped).sort().reverse();
-    container.innerHTML = dates.map(d => renderDateSection(d, grouped[d])).join('');
+    const flat = buildSortedList(filtered);
+    window.__page = 1;
+    const { html, totalPages } = renderPage(flat, 1);
+    container.innerHTML =
+        '<div class="grid gap-4">' + html + '</div>' +
+        renderPagination(flat, 1, totalPages);
+    bindPagination(flat);
 }
 
 loadPapers();
