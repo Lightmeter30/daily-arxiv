@@ -53,13 +53,16 @@ def get_papers() -> List[Dict]:
     try:
         for result in arxiv_client.results(search):
             if result.published > threshold:
+                paper_cats = [c for c in result.categories if c in CATEGORIES]
+                category = paper_cats[0] if paper_cats else "Unknown"
                 results.append({
                     "id": result.entry_id,
                     "title": result.title,
                     "authors": [a.name for a in result.authors],
                     "abstract": result.summary,
                     "link": result.entry_id,
-                    "published": result.published.strftime("%Y-%m-%d")
+                    "published": result.published.strftime("%Y-%m-%d"),
+                    "category": category
                 })
     except Exception as e:
         print(f"Error fetching from Arxiv: {e}")

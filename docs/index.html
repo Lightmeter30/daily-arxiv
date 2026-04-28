@@ -4,94 +4,222 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Arxiv CV/AI Briefing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
+                    colors: {
+                        accent: { DEFAULT: '#d97706', light: '#fef3c7', lighter: '#fffbeb', dark: '#92400e' }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        .paper-card:hover { transform: translateY(-2px); transition: all 0.2s; }
+        body { font-feature-settings: 'cv02','cv03','cv04','cv11'; }
+        .paper-card { transition: box-shadow 0.2s ease, transform 0.2s ease; }
+        .paper-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.08); transform: translateY(-1px); }
+        .priority-card { border-left: 3px solid #d97706; }
+        .tab-btn { transition: color 0.15s, border-color 0.15s; }
+        .tag-pill { transition: background 0.15s; }
+        .tag-pill:hover { background: #fde68a; }
     </style>
 </head>
-<body class="bg-gray-50 min-h-screen">
-    <header class="bg-white shadow-sm sticky top-0 z-10">
-        <div class="max-w-5xl mx-auto px-4 py-6 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-gray-900">Daily Arxiv CV/AI Briefing</h1>
-            <div class="text-sm text-gray-500" id="update-time"></div>
-        </div>
-    </header>
+<body class="bg-white text-gray-900 antialiased min-h-screen">
 
-    <main class="max-w-5xl mx-auto px-4 py-8">
-        <div id="content" class="space-y-12">
-            <!-- Papers will be injected here -->
-            <div class="flex justify-center items-center py-20">
-                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+<header class="sticky top-0 z-10 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+    <div class="max-w-4xl mx-auto px-6 pt-5 pb-0">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
+            <div>
+                <p class="text-xs font-medium tracking-widest text-accent uppercase mb-1">Arxiv Daily Briefing</p>
+                <h1 class="text-2xl font-bold tracking-tight text-gray-900">Computer Vision &amp; AI</h1>
+            </div>
+            <p class="text-sm text-gray-400" id="update-time"></p>
+        </div>
+        <nav>
+            <div class="flex gap-0 mt-4" id="tab-bar">
+                <button class="tab-btn px-5 py-3 text-sm font-medium border-b-2 border-accent text-accent" data-tab="all">All</button>
+                <button class="tab-btn px-5 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700" data-tab="cs.CV">Computer Vision</button>
+                <button class="tab-btn px-5 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700" data-tab="cs.AI">Artificial Intelligence</button>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main class="max-w-4xl mx-auto px-6 py-10">
+    <div class="flex items-center gap-3 mb-8 text-sm text-gray-500">
+        <span class="inline-flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-accent inline-block"></span>
+            Priority topic
+        </span>
+        <span class="text-gray-300">|</span>
+        <span id="paper-count"></span>
+    </div>
+
+    <div id="content" class="space-y-12">
+        <div class="flex justify-center items-center py-32">
+            <div class="w-8 h-8 border-2 border-accent/30 border-t-accent rounded-full animate-spin"></div>
+        </div>
+    </div>
+</main>
+
+<footer class="border-t border-gray-100 mt-16">
+    <div class="max-w-4xl mx-auto px-6 py-10 text-center text-sm text-gray-400">
+        <p>Powered by DeepSeek &amp; GitHub Actions &middot; Papers from <a href="https://arxiv.org" class="text-gray-500 hover:text-accent underline underline-offset-2">Arxiv</a></p>
+    </div>
+</footer>
+
+<script>
+const PRIORITY_KEYWORDS = [
+    "SLAM", "3D Reconstruction", "3D重建", "Visual Odometry",
+    "VIO", "Visual Inertial Odometry", "VO",
+    "Camera Localization", "Visual Localization",
+    "Structure from Motion", "SfM", "Visual SLAM",
+    "视觉定位", "相机定位", "视觉惯性", "三维重建",
+    "视觉里程计", "视觉惯性里程计"
+];
+
+function isPriority(paper) {
+    const text = ((paper.title || '') + ' ' + (paper.tags || []).join(' ')).toLowerCase();
+    return PRIORITY_KEYWORDS.some(kw => text.includes(kw.toLowerCase()));
+}
+
+function categoryLabel(cat) {
+    if (cat === 'cs.CV') return 'Computer Vision';
+    if (cat === 'cs.AI') return 'Artificial Intelligence';
+    return 'Unknown';
+}
+
+function categoryShort(cat) {
+    if (cat === 'cs.CV') return 'CV';
+    if (cat === 'cs.AI') return 'AI';
+    return '?';
+}
+
+function renderTags(tags) {
+    return tags.map(t => `<span class="tag-pill inline-block px-2.5 py-0.5 bg-accent-lighter text-accent-dark text-xs font-medium rounded-full">${t}</span>`).join('');
+}
+
+function renderPaper(paper) {
+    const priority = isPriority(paper);
+    const cat = paper.category || 'Unknown';
+    const catShort = categoryShort(cat);
+    const catFull = categoryLabel(cat);
+
+    return `
+    <div class="paper-card bg-white rounded-xl border border-gray-100 p-6 ${priority ? 'priority-card' : ''}">
+        <div class="flex items-start gap-3 mb-3">
+            ${priority ? '<span class="shrink-0 mt-1 w-2 h-2 rounded-full bg-accent" title="Priority topic: SLAM / 3D / VO / VIO / Localization"></span>' : ''}
+            <div class="min-w-0">
+                <div class="flex items-center gap-2 mb-1">
+                    <span class="text-xs font-medium text-gray-400 uppercase tracking-wider">${catShort}</span>
+                    ${priority ? '<span class="text-xs font-medium text-accent">Priority</span>' : ''}
+                </div>
+                <a href="${paper.link}" target="_blank" rel="noopener" class="text-lg font-semibold text-gray-900 hover:text-accent leading-snug">
+                    ${paper.title}
+                </a>
+                <p class="text-sm text-gray-500 mt-1.5">${paper.authors.join(', ')}</p>
             </div>
         </div>
-    </main>
-
-    <footer class="bg-white border-t mt-20">
-        <div class="max-w-5xl mx-auto px-4 py-8 text-center text-gray-500 text-sm">
-            Powered by DeepSeek & GitHub Actions | Papers from Arxiv
+        <div class="flex flex-wrap gap-1.5 mb-4">
+            ${renderTags(paper.tags)}
         </div>
-    </footer>
+        <div class="bg-gray-50/70 rounded-lg px-4 py-3 border-l-2 ${priority ? 'border-accent/40' : 'border-gray-200'}">
+            <p class="text-sm text-gray-700 leading-relaxed">
+                <span class="font-semibold text-gray-900">TL;DR</span> ${paper.tldr}
+            </p>
+        </div>
+    </div>`;
+}
 
-    <script>
-        async function loadPapers() {
-            try {
-                const response = await fetch('data.json');
-                const data = await response.json();
-                renderPapers(data);
-            } catch (error) {
-                document.getElementById('content').innerHTML = `
-                    <div class="bg-red-50 text-red-700 p-4 rounded-lg">
-                        加载数据失败，请稍后再试。
-                    </div>
-                `;
-            }
-        }
+function renderDateSection(date, papers) {
+    const priorityPapers = papers.filter(isPriority);
+    const regularPapers = papers.filter(p => !isPriority(p));
+    const sorted = [...priorityPapers, ...regularPapers];
 
-        function renderPapers(papers) {
-            const container = document.getElementById('content');
-            if (papers.length === 0) {
-                container.innerHTML = '<div class="text-center py-20 text-gray-500 text-lg">暂无近七天的相关论文。</div>';
-                return;
-            }
+    const priorityCount = priorityPapers.length;
+    const dateLabel = priorityCount > 0
+        ? `${date} <span class="text-accent text-sm font-normal ml-2">${priorityCount} priority</span>`
+        : date;
 
-            // Group by date
-            const grouped = papers.reduce((acc, paper) => {
-                const date = paper.published;
-                if (!acc[date]) acc[date] = [];
-                acc[date].push(paper);
-                return acc;
-            }, {});
+    return `
+    <section>
+        <h2 class="text-lg font-semibold text-gray-900 mb-5 pb-2 border-b border-gray-100">${dateLabel}</h2>
+        <div class="grid gap-4">
+            ${sorted.map(renderPaper).join('')}
+        </div>
+    </section>`;
+}
 
-            const dates = Object.keys(grouped).sort().reverse();
-            
-            container.innerHTML = dates.map(date => `
-                <section>
-                    <h2 class="text-xl font-bold text-gray-800 border-l-4 border-blue-500 pl-4 mb-6">${date}</h2>
-                    <div class="grid gap-6">
-                        ${grouped[date].map(paper => `
-                            <div class="paper-card bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                                <a href="${paper.link}" target="_blank" class="text-lg font-semibold text-blue-600 hover:text-blue-800 leading-tight block mb-2">
-                                    ${paper.title}
-                                </a>
-                                <p class="text-sm text-gray-600 mb-3">${paper.authors.join(', ')}</p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    ${paper.tags.map(tag => `
-                                        <span class="px-2 py-1 bg-blue-50 text-blue-600 text-xs font-medium rounded-md">${tag}</span>
-                                    `).join('')}
-                                </div>
-                                <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-200">
-                                    <p class="text-gray-700 text-sm leading-relaxed">
-                                        <span class="font-bold text-gray-900">TL;DR:</span> ${paper.tldr}
-                                    </p>
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                </section>
-            `).join('');
-        }
+async function loadPapers() {
+    try {
+        const resp = await fetch('data.json');
+        const papers = await resp.json();
+        window.__papers = papers;
+        window.__activeTab = 'all';
+        setupTabs();
+        render(papers, 'all');
+    } catch (e) {
+        document.getElementById('content').innerHTML =
+            '<div class="bg-red-50 text-red-700 p-4 rounded-lg text-sm">Failed to load data. Please try again later.</div>';
+    }
+}
 
-        loadPapers();
-    </script>
+function setupTabs() {
+    const buttons = document.querySelectorAll('#tab-bar .tab-btn');
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            buttons.forEach(b => { b.classList.remove('border-accent','text-accent'); b.classList.add('border-transparent','text-gray-500'); });
+            btn.classList.add('border-accent','text-accent');
+            btn.classList.remove('border-transparent','text-gray-500');
+            const tab = btn.dataset.tab;
+            window.__activeTab = tab;
+            render(window.__papers, tab);
+        });
+    });
+}
+
+function render(papers, tab) {
+    const container = document.getElementById('content');
+    const countEl = document.getElementById('paper-count');
+    const timeEl = document.getElementById('update-time');
+
+    let filtered = papers;
+    if (tab === 'cs.CV') {
+        filtered = papers.filter(p => !p.category || p.category === 'cs.CV');
+    } else if (tab === 'cs.AI') {
+        filtered = papers.filter(p => !p.category || p.category === 'cs.AI');
+    }
+
+    countEl.textContent = `${filtered.length} papers in last 7 days`;
+
+    if (filtered.length > 0) {
+        const latest = filtered.reduce((max, p) => p.published > max ? p.published : max, '');
+        timeEl.textContent = `Updated ${latest}`;
+    }
+
+    if (filtered.length === 0) {
+        container.innerHTML = '<div class="text-center py-20 text-gray-400 text-sm">No papers found in this category for the past 7 days.</div>';
+        return;
+    }
+
+    const grouped = filtered.reduce((acc, p) => {
+        const d = p.published;
+        if (!acc[d]) acc[d] = [];
+        acc[d].push(p);
+        return acc;
+    }, {});
+
+    const dates = Object.keys(grouped).sort().reverse();
+    container.innerHTML = dates.map(d => renderDateSection(d, grouped[d])).join('');
+}
+
+loadPapers();
+</script>
 </body>
 </html>
