@@ -30,7 +30,7 @@
         .tag-pill:hover { background: #fde68a; }
     </style>
 </head>
-<body class="bg-white text-gray-900 antialiased min-h-screen">
+<body class="text-gray-900 antialiased min-h-screen" style="background-color: #FAF9F5;">
 
 <header class="sticky top-0 z-10 bg-white/95 backdrop-blur-sm border-b border-gray-100">
     <div class="max-w-4xl mx-auto px-6 pt-5 pb-0">
@@ -191,9 +191,9 @@ function render(papers, tab) {
 
     let filtered = papers;
     if (tab === 'cs.CV') {
-        filtered = papers.filter(p => !p.category || p.category === 'cs.CV');
+        filtered = papers.filter(p => p.category === 'cs.CV');
     } else if (tab === 'cs.AI') {
-        filtered = papers.filter(p => !p.category || p.category === 'cs.AI');
+        filtered = papers.filter(p => p.category === 'cs.AI');
     }
 
     countEl.textContent = `${filtered.length} papers in last 7 days`;

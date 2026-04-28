@@ -69,6 +69,34 @@ def get_papers() -> List[Dict]:
 
     return results
 
+def backfill_categories(data: List[Dict]) -> List[Dict]:
+    """Batch-fetch category metadata for papers that lack it."""
+    stale = [p for p in data if p.get("category", "Unknown") == "Unknown"]
+    if not stale:
+        return data
+
+    print(f"Backfilling categories for {len(stale)} existing papers...")
+    ids = [p["id"].split("/abs/")[-1] for p in stale]
+
+    ac = arxiv.Client(page_size=len(ids), delay_seconds=3, num_retries=3)
+    id_to_cat = {}
+    try:
+        for result in ac.results(arxiv.Search(id_list=ids)):
+            paper_cats = [c for c in result.categories if c in CATEGORIES]
+            id_to_cat[result.entry_id] = paper_cats[0] if paper_cats else "Unknown"
+    except Exception as e:
+        print(f"Error backfilling categories: {e}")
+        return data
+
+    for p in data:
+        if p.get("category", "Unknown") == "Unknown":
+            p["category"] = id_to_cat.get(p["id"], "Unknown")
+
+    cv = sum(1 for p in data if p.get("category") == "cs.CV")
+    ai = sum(1 for p in data if p.get("category") == "cs.AI")
+    print(f"Backfill complete: {cv} CV, {ai} AI, {len(data) - cv - ai} other")
+    return data
+
 def summarize_paper(paper: Dict) -> Dict:
     system_prompt = """
 You are a professional AI researcher. Analyze the following paper abstract and provide:
@@ -130,6 +158,8 @@ def update_data(new_papers: List[Dict]):
             data = json.load(f)
     else:
         data = []
+
+    data = backfill_categories(data)
 
     existing_ids = {p["id"] for p in data}
     papers_to_summarize = [p for p in new_papers if p["id"] not in existing_ids]
