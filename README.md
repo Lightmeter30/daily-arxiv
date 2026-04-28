@@ -4,7 +4,7 @@
 
 ## 功能特点
 - **自动化**: 每天早上 8 点（北京时间）自动运行。
-- **AI 总结**: 使用 Gemini 1.5 Flash 阅读摘要，生成标签和中文 TL;DR。
+- **AI 总结**: 使用 DeepSeek 阅读摘要，生成标签和中文 TL;DR。
 - **动态保留**: 仅保留最近 7 天的论文记录。
 - **零成本**: 基于 GitHub Actions 和 GitHub Pages 构建。
 
@@ -14,8 +14,8 @@
 3.  **设置 Secret**:
     - 前往仓库的 `Settings` -> `Secrets and variables` -> `Actions`。
     - 点击 `New repository secret`。
-    - Name: `GEMINI_API_KEY`
-    - Value: 填入你的 Gemini API Key（可在 [Google AI Studio](https://aistudio.google.com/) 获取）。
+    - Name: `DEEPSEEK_API_KEY`
+    - Value: 填入你的 DeepSeek API Key（可在 [DeepSeek Platform](https://platform.deepseek.com/) 获取）。
 4.  **开启 Pages**:
     - 前往仓库的 `Settings` -> `Pages`。
     - Build and deployment -> Source: `Deploy from a branch`。
@@ -31,7 +31,10 @@
 pip install -r scripts/requirements.txt
 
 # 设置环境变量
-export GEMINI_API_KEY="your_api_key"
+export DEEPSEEK_API_KEY="your_api_key"
+
+# 或者使用 .env 文件（推荐）
+echo "DEEPSEEK_API_KEY=your_api_key" > .env
 
 # 运行脚本
 python scripts/fetch_and_summarize.py
