@@ -31,4 +31,4 @@ No linter or test suite exists in this repo.
 - `docs/index.html` — static frontend using Tailwind CSS CDN. Loads `data.json` at runtime, groups papers by `published` date, renders cards with tags and TL;DR.
 - `.github/workflows/daily_arxiv.yml` — triggers at UTC 00:00 (8am Beijing time) or manually via `workflow_dispatch`. Installs deps, runs the script, commits the updated `data.json`.
 
-**Important path nuance**: The workflow references `arxiv-daily/docs/data.json` (with repo-name prefix), while the Python script writes to `docs/data.json` (relative). This works because GitHub Actions checks out into a directory matching the repo name. When running locally, just run from the repo root — the script's `docs/` path resolves correctly.
+**Path note**: Both the workflow and the Python script use `docs/data.json` relative to the repo root. `actions/checkout` checks out into the repo root by default, so no prefix is needed.
