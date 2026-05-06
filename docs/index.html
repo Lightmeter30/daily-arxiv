@@ -49,6 +49,7 @@
             </div>
         </nav>
     </div>
+    <div class="max-w-4xl mx-auto px-6 py-2.5 flex items-center gap-2 overflow-x-auto" id="date-bar"></div>
 </header>
 
 <main class="max-w-4xl mx-auto px-6 py-10">
@@ -143,8 +144,10 @@ async function loadPapers() {
         const papers = await resp.json();
         window.__papers = papers;
         window.__activeTab = 'all';
+        window.__activeDate = 'all';
         setupTabs();
-        render(papers, 'all');
+        renderDateBar(papers, 'all');
+        render(papers, 'all', 'all');
     } catch (e) {
         document.getElementById('content').innerHTML =
             '<div class="bg-red-50 text-red-700 p-4 rounded-lg text-sm">Failed to load data. Please try again later.</div>';
@@ -160,7 +163,41 @@ function setupTabs() {
             btn.classList.remove('border-transparent','text-gray-500');
             const tab = btn.dataset.tab;
             window.__activeTab = tab;
-            render(window.__papers, tab);
+            window.__activeDate = 'all';
+            renderDateBar(window.__papers, tab);
+            render(window.__papers, tab, 'all');
+        });
+    });
+}
+
+function renderDateBar(papers, tab) {
+    const bar = document.getElementById('date-bar');
+    let filtered = papers;
+    if (tab === 'cs.CV') filtered = papers.filter(p => p.category === 'cs.CV');
+    else if (tab === 'cs.AI') filtered = papers.filter(p => p.category === 'cs.AI');
+
+    const dates = [...new Set(filtered.map(p => p.published))].sort().reverse();
+    if (dates.length <= 1) { bar.innerHTML = ''; return; }
+
+    const allActive = window.__activeDate === 'all'
+        ? 'bg-accent text-white'
+        : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200';
+    let html = `<button class="date-btn shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium ${allActive} transition-colors" data-date="all">All dates</button>`;
+
+    for (const d of dates) {
+        const count = filtered.filter(p => p.published === d).length;
+        const active = d === window.__activeDate
+            ? 'bg-accent text-white'
+            : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200';
+        html += `<button class="date-btn shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium ${active} transition-colors" data-date="${d}">${d} <span class="opacity-60">${count}</span></button>`;
+    }
+    bar.innerHTML = html;
+
+    bar.querySelectorAll('.date-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            window.__activeDate = btn.dataset.date;
+            renderDateBar(window.__papers, window.__activeTab);
+            render(window.__papers, window.__activeTab, window.__activeDate);
         });
     });
 }
@@ -242,19 +279,22 @@ function bindPagination(flat) {
     });
 }
 
-function render(papers, tab) {
+function render(papers, tab, date) {
     const container = document.getElementById('content');
     const countEl = document.getElementById('paper-count');
     const timeEl = document.getElementById('update-time');
 
     let filtered = papers;
     if (tab === 'cs.CV') {
-        filtered = papers.filter(p => p.category === 'cs.CV');
+        filtered = filtered.filter(p => p.category === 'cs.CV');
     } else if (tab === 'cs.AI') {
-        filtered = papers.filter(p => p.category === 'cs.AI');
+        filtered = filtered.filter(p => p.category === 'cs.AI');
+    }
+    if (date && date !== 'all') {
+        filtered = filtered.filter(p => p.published === date);
     }
 
-    countEl.textContent = `${filtered.length} papers in last 7 days`;
+    countEl.textContent = `${filtered.length} papers`;
 
     if (filtered.length > 0) {
         const latest = filtered.reduce((max, p) => p.published > max ? p.published : max, '');
@@ -262,7 +302,7 @@ function render(papers, tab) {
     }
 
     if (filtered.length === 0) {
-        container.innerHTML = '<div class="text-center py-20 text-gray-400 text-sm">No papers found in this category for the past 7 days.</div>';
+        container.innerHTML = '<div class="text-center py-20 text-gray-400 text-sm">No papers match the selected filters.</div>';
         return;
     }
 
