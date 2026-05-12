@@ -10,29 +10,30 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Configuration
-KEYWORDS = [
-    "3D Reconstruction",
-    "SLAM",
-    "Visual SLAM",
-    "VIO",
-    "Visual Inertial Odometry",
-    "Visual Odometry",
-    "Camera Localization",
-    "Visual Localization",
-    "Structure from Motion",
-    "Pose Estimation",
-    "NeRF",
-    "Gaussian Splatting"
-]
-CATEGORIES = ["cs.CV", "cs.AI"]
-MAX_DAYS = 7
-MAX_PAPERS_PER_RUN = int(os.getenv("MAX_PAPERS_PER_RUN", "40"))
+# ── Configuration (all overridable via environment variables) ────────────
+
+def _parse_list(env_value: str, default: str) -> list[str]:
+    """Parse a comma-separated env string into a trimmed, non-empty list."""
+    raw = os.getenv(env_value, default)
+    return [s.strip() for s in raw.split(",") if s.strip()]
+
+
+KEYWORDS = _parse_list(
+    "ARXIV_KEYWORDS",
+    "3D Reconstruction,SLAM,Visual SLAM,VIO,Visual Inertial Odometry,"
+    "Visual Odometry,Camera Localization,Visual Localization,"
+    "Structure from Motion,Pose Estimation,NeRF,Gaussian Splatting",
+)
+CATEGORIES = _parse_list("ARXIV_CATEGORIES", "cs.CV,cs.AI")
+MAX_DAYS = int(os.getenv("ARXIV_MAX_DAYS", "7"))
+MAX_PAPERS_PER_RUN = int(os.getenv("ARXIV_MAX_PAPERS_PER_RUN", "40"))
+BACKFILL_LIMIT = int(os.getenv("ARXIV_BACKFILL_LIMIT", "20"))
+MODEL_ID = os.getenv("DEEPSEEK_MODEL", "deepseek-v4-flash")
+
 DATA_FILE = "docs/data.json"
 
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url="https://api.deepseek.com")
-MODEL_ID = "deepseek-v4-flash"
 
 def get_papers() -> List[Dict]:
     """Fetch arxiv papers published on the previous UTC day.
@@ -217,9 +218,8 @@ def update_data(new_papers: List[Dict]):
     extended_fields = ("motivation", "method", "result", "conclusion")
     stale = [p for p in data if any(f not in p or not p.get(f) for f in extended_fields)]
     if stale:
-        backfill_limit = int(os.getenv("BACKFILL_LIMIT", "20"))
-        batch = stale[:backfill_limit]
-        print(f"Backfilling extended summary fields for {len(batch)}/{len(stale)} existing papers (limit={backfill_limit})...")
+        batch = stale[:BACKFILL_LIMIT]
+        print(f"Backfilling extended summary fields for {len(batch)}/{len(stale)} existing papers (limit={BACKFILL_LIMIT})...")
         for i, p in enumerate(batch):
             print(f"[{i+1}/{len(batch)}] Backfill: {p['title']}")
             summarize_paper(p)

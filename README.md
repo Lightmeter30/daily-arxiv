@@ -9,9 +9,19 @@
 - **动态保留**: 仅保留最近 7 天的论文记录。
 - **零成本**: 基于 GitHub Actions 和 GitHub Pages 构建。
 
-## 可调参数
-- `MAX_PAPERS_PER_RUN`（环境变量，默认 `40`）：单次工作流最多处理的新论文数量。
-- `BACKFILL_LIMIT`（环境变量，默认 `20`）：每次为缺少扩展字段（motivation/method/result/conclusion）的历史论文补全的上限。
+## 可配参数
+
+以下参数全部支持通过环境变量覆盖，无需修改代码即可调整。在 GitHub 仓库中，可通过 `Settings → Secrets and variables → Actions → Variables` 设置。
+
+| 环境变量 | 默认值 | 说明 |
+|---------|--------|------|
+| `ARXIV_KEYWORDS` | `3D Reconstruction,SLAM,...` | 检索关键词，英文逗号分隔（不含空格） |
+| `ARXIV_CATEGORIES` | `cs.CV,cs.AI` | arXiv 分类，逗号分隔 |
+| `ARXIV_MAX_DAYS` | `7` | 保留最近 N 天的论文 |
+| `ARXIV_MAX_PAPERS_PER_RUN` | `40` | 单次最多处理的新论文数 |
+| `ARXIV_BACKFILL_LIMIT` | `20` | 每次补全历史论文扩展字段的上限 |
+| `DEEPSEEK_API_KEY` | — | **必填**，DeepSeek API 密钥（通过 `Secrets` 设置） |
+| `DEEPSEEK_MODEL` | `deepseek-v4-flash` | 使用的 DeepSeek 模型 ID |
 
 ## 如何部署到自己的仓库
 1.  **新建仓库**: 在 GitHub 上创建一个新的仓库。

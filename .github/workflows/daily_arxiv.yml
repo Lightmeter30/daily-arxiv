@@ -27,6 +27,12 @@ jobs:
       - name: Fetch and Summarize
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          ARXIV_KEYWORDS: ${{ vars.ARXIV_KEYWORDS || '' }}
+          ARXIV_CATEGORIES: ${{ vars.ARXIV_CATEGORIES || '' }}
+          ARXIV_MAX_DAYS: ${{ vars.ARXIV_MAX_DAYS || '7' }}
+          ARXIV_MAX_PAPERS_PER_RUN: ${{ vars.ARXIV_MAX_PAPERS_PER_RUN || '40' }}
+          ARXIV_BACKFILL_LIMIT: ${{ vars.ARXIV_BACKFILL_LIMIT || '20' }}
+          DEEPSEEK_MODEL: ${{ vars.DEEPSEEK_MODEL || 'deepseek-v4-flash' }}
         run: |
           python scripts/fetch_and_summarize.py
 
