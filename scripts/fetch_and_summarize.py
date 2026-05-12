@@ -14,56 +14,79 @@ load_dotenv()
 KEYWORDS = [
     "3D Reconstruction",
     "SLAM",
+    "Visual SLAM",
     "VIO",
     "Visual Inertial Odometry",
+    "Visual Odometry",
     "Camera Localization",
     "Visual Localization",
-    "Computer Vision",
-    "Deep Learning",
-    "Foundation Model",
-    "Scene Understanding"
+    "Structure from Motion",
+    "Pose Estimation",
+    "NeRF",
+    "Gaussian Splatting"
 ]
 CATEGORIES = ["cs.CV", "cs.AI"]
 MAX_DAYS = 7
+MAX_PAPERS_PER_RUN = int(os.getenv("MAX_PAPERS_PER_RUN", "40"))
 DATA_FILE = "docs/data.json"
 
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url="https://api.deepseek.com")
-MODEL_ID = "deepseek-chat"
+MODEL_ID = "deepseek-v4-flash"
 
 def get_papers() -> List[Dict]:
+    """Fetch arxiv papers published on the previous UTC day.
+
+    Pages through results (sorted by submitted date, newest first) and
+    stops once we cross the lower bound, so we do not miss any papers
+    that match the KEYWORDS within the target day.
+    """
     query = " OR ".join([f'"{k}"' for k in KEYWORDS])
     search_query = f"({query}) AND (" + " OR ".join([f"cat:{c}" for c in CATEGORIES]) + ")"
 
     arxiv_client = arxiv.Client(
-        page_size=50,
+        page_size=100,
         delay_seconds=3,
-        num_retries=3
+        num_retries=5
     )
 
     search = arxiv.Search(
         query=search_query,
-        max_results=50,
+        max_results=MAX_PAPERS_PER_RUN,
         sort_by=arxiv.SortCriterion.SubmittedDate
     )
 
+    now_utc = datetime.datetime.now(tz.tzutc())
+    today_start = now_utc.replace(hour=0, minute=0, second=0, microsecond=0)
+    upper_bound = today_start
+    lower_bound = today_start - datetime.timedelta(days=1)
+    print(f"Searching arxiv for papers published in [{lower_bound.isoformat()} , {upper_bound.isoformat()})")
+
     results = []
-    threshold = datetime.datetime.now(tz.tzutc()) - datetime.timedelta(days=3)
+    seen_ids = set()
 
     try:
         for result in arxiv_client.results(search):
-            if result.published > threshold:
-                paper_cats = [c for c in result.categories if c in CATEGORIES]
-                category = paper_cats[0] if paper_cats else "Unknown"
-                results.append({
-                    "id": result.entry_id,
-                    "title": result.title,
-                    "authors": [a.name for a in result.authors],
-                    "abstract": result.summary,
-                    "link": result.entry_id,
-                    "published": result.published.strftime("%Y-%m-%d"),
-                    "category": category
-                })
+            published = result.published
+            if published >= upper_bound:
+                continue
+            if published < lower_bound:
+                break
+            if result.entry_id in seen_ids:
+                continue
+            seen_ids.add(result.entry_id)
+
+            paper_cats = [c for c in result.categories if c in CATEGORIES]
+            category = paper_cats[0] if paper_cats else "Unknown"
+            results.append({
+                "id": result.entry_id,
+                "title": result.title,
+                "authors": [a.name for a in result.authors],
+                "abstract": result.summary,
+                "link": result.entry_id,
+                "published": published.strftime("%Y-%m-%d"),
+                "category": category
+            })
     except Exception as e:
         print(f"Error fetching from Arxiv: {e}")
 
@@ -99,15 +122,23 @@ def backfill_categories(data: List[Dict]) -> List[Dict]:
 
 def summarize_paper(paper: Dict) -> Dict:
     system_prompt = """
-You are a professional AI researcher. Analyze the following paper abstract and provide:
-1. A list of 3-5 concise tags (e.g., SLAM, NeRF, Localization).
-2. A one-sentence TL;DR summary in Chinese.
+You are a professional AI researcher. Analyze the following paper abstract and produce a structured JSON summary in Simplified Chinese.
 
-Output ONLY valid JSON:
+Return ONLY valid JSON with exactly these fields (all string values must be in Simplified Chinese, except that proper nouns and method names may remain in English):
 {
-    "tags": ["tag1", "tag2"],
-    "tldr": "TL;DR content"
+    "tags": ["tag1", "tag2", "tag3"],
+    "tldr": "一句话中文总结",
+    "motivation": "研究动机与要解决的问题",
+    "method": "核心方法与技术路线",
+    "result": "主要实验结果与量化指标",
+    "conclusion": "结论、贡献与潜在影响"
 }
+
+Rules:
+- "tags" should contain 3 to 5 concise English tags (e.g., SLAM, NeRF, Localization).
+- "tldr" must be a single Chinese sentence within 80 characters.
+- motivation / method / result / conclusion should each be 1-3 Chinese sentences; be specific and information-dense, avoid generic wording.
+- If the abstract does not contain enough information for a field, write "摘要未提供相关信息" for that field.
 """
     user_prompt = f"""
 Paper Title: {paper['title']}
@@ -117,6 +148,7 @@ Abstract: {paper['abstract']}
     max_retries = 5
     base_delay = 10
 
+    summary = None
     for attempt in range(max_retries):
         try:
             response = client.chat.completions.create(
@@ -129,7 +161,6 @@ Abstract: {paper['abstract']}
                 temperature=0.3,
             )
             summary = json.loads(response.choices[0].message.content)
-            paper.update(summary)
             break
         except Exception as e:
             if "429" in str(e) or "rate" in str(e).lower():
@@ -138,13 +169,23 @@ Abstract: {paper['abstract']}
                 time.sleep(wait_time)
             else:
                 print(f"Error summarizing {paper['title']}: {e}")
-                paper["tags"] = ["Unknown"]
-                paper["tldr"] = "Summary generation failed."
                 break
     else:
         print(f"Failed to summarize '{paper['title']}' after {max_retries} retries.")
-        paper["tags"] = ["Quota Limit"]
-        paper["tldr"] = "Summary unavailable due to API quota exhaustion."
+
+    defaults = {
+        "tags": ["Unknown"],
+        "tldr": "摘要生成失败。",
+        "motivation": "摘要未提供相关信息",
+        "method": "摘要未提供相关信息",
+        "result": "摘要未提供相关信息",
+        "conclusion": "摘要未提供相关信息",
+    }
+    if summary is None:
+        paper.update(defaults)
+    else:
+        for k, v in defaults.items():
+            paper[k] = summary.get(k, v) or v
 
     time.sleep(1)
     return paper
@@ -163,12 +204,25 @@ def update_data(new_papers: List[Dict]):
 
     existing_ids = {p["id"] for p in data}
     papers_to_summarize = [p for p in new_papers if p["id"] not in existing_ids]
+    if len(papers_to_summarize) > MAX_PAPERS_PER_RUN:
+        print(f"Truncating new papers from {len(papers_to_summarize)} to MAX_PAPERS_PER_RUN={MAX_PAPERS_PER_RUN}")
+        papers_to_summarize = papers_to_summarize[:MAX_PAPERS_PER_RUN]
 
     print(f"Starting summarization for {len(papers_to_summarize)} new papers...")
     for i, p in enumerate(papers_to_summarize):
         print(f"[{i+1}/{len(papers_to_summarize)}] Summarizing: {p['title']}")
         summarized_p = summarize_paper(p)
         data.append(summarized_p)
+
+    extended_fields = ("motivation", "method", "result", "conclusion")
+    stale = [p for p in data if any(f not in p or not p.get(f) for f in extended_fields)]
+    if stale:
+        backfill_limit = int(os.getenv("BACKFILL_LIMIT", "20"))
+        batch = stale[:backfill_limit]
+        print(f"Backfilling extended summary fields for {len(batch)}/{len(stale)} existing papers (limit={backfill_limit})...")
+        for i, p in enumerate(batch):
+            print(f"[{i+1}/{len(batch)}] Backfill: {p['title']}")
+            summarize_paper(p)
 
     data.sort(key=lambda x: x["published"], reverse=True)
 

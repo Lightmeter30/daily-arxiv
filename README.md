@@ -1,12 +1,17 @@
 # Daily Arxiv CV/AI Briefing
 
-这是一个自动化的 arXiv 论文简报系统，专注于 3D 重建、SLAM、VIO 和相机定位等领域。
+这是一个自动化的 arXiv 论文简报系统，专注于 3D 重建、SLAM、VIO、相机定位、NeRF / Gaussian Splatting 等领域。
 
 ## 功能特点
-- **自动化**: 每天早上 8 点（北京时间）自动运行。
-- **AI 总结**: 使用 DeepSeek 阅读摘要，生成标签和中文 TL;DR。
+- **自动化**: 每天早上 8 点（北京时间）自动运行，检索 arXiv 上**前一天**发表的相关论文。
+- **精准检索**: 仅匹配关键词命中的论文，避免对宽泛主题进行全量抓取，节省 API 调用。
+- **AI 总结**: 使用 DeepSeek 阅读摘要，生成标签、中文 TL;DR，以及 Motivation / Method / Result / Conclusion 四段结构化摘要。
 - **动态保留**: 仅保留最近 7 天的论文记录。
 - **零成本**: 基于 GitHub Actions 和 GitHub Pages 构建。
+
+## 可调参数
+- `MAX_PAPERS_PER_RUN`（环境变量，默认 `40`）：单次工作流最多处理的新论文数量。
+- `BACKFILL_LIMIT`（环境变量，默认 `20`）：每次为缺少扩展字段（motivation/method/result/conclusion）的历史论文补全的上限。
 
 ## 如何部署到自己的仓库
 1.  **新建仓库**: 在 GitHub 上创建一个新的仓库。
