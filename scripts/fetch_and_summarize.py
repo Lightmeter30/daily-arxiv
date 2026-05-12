@@ -13,9 +13,19 @@ load_dotenv()
 # ── Configuration (all overridable via environment variables) ────────────
 
 def _parse_list(env_value: str, default: str) -> list[str]:
-    """Parse a comma-separated env string into a trimmed, non-empty list."""
-    raw = os.getenv(env_value, default)
+    """Parse a comma-separated env string; falls back to *default* when unset or empty."""
+    raw = os.getenv(env_value)
+    if not raw or not raw.strip():
+        raw = default
     return [s.strip() for s in raw.split(",") if s.strip()]
+
+
+def _parse_int(env_value: str, default: int) -> int:
+    """Parse an integer env var; falls back to *default* when unset or empty."""
+    raw = os.getenv(env_value)
+    if not raw or not raw.strip():
+        return default
+    return int(raw)
 
 
 KEYWORDS = _parse_list(
@@ -25,10 +35,10 @@ KEYWORDS = _parse_list(
     "Structure from Motion,Pose Estimation,NeRF,Gaussian Splatting",
 )
 CATEGORIES = _parse_list("ARXIV_CATEGORIES", "cs.CV,cs.AI")
-MAX_DAYS = int(os.getenv("ARXIV_MAX_DAYS", "7"))
-MAX_PAPERS_PER_RUN = int(os.getenv("ARXIV_MAX_PAPERS_PER_RUN", "40"))
-BACKFILL_LIMIT = int(os.getenv("ARXIV_BACKFILL_LIMIT", "20"))
-MODEL_ID = os.getenv("DEEPSEEK_MODEL", "deepseek-v4-flash")
+MAX_DAYS = _parse_int("ARXIV_MAX_DAYS", 7)
+MAX_PAPERS_PER_RUN = _parse_int("ARXIV_MAX_PAPERS_PER_RUN", 40)
+BACKFILL_LIMIT = _parse_int("ARXIV_BACKFILL_LIMIT", 20)
+MODEL_ID = os.getenv("DEEPSEEK_MODEL") or "deepseek-v4-flash"
 
 DATA_FILE = "docs/data.json"
 
