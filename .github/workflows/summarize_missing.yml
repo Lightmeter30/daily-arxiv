@@ -1,0 +1,49 @@
+name: Summarize Missing Papers
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: '最大处理论文数量（留空则处理全部）'
+        required: false
+        default: ''
+  schedule:
+    - cron: '57 3 * * *'  # 11:57 AM UTC+8，避开整点高峰
+
+jobs:
+  summarize-missing:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r scripts/requirements.txt
+
+      - name: Summarize Missing Papers
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          DEEPSEEK_MODEL: ${{ vars.DEEPSEEK_MODEL || 'deepseek-v4-flash' }}
+        run: |
+          if [ -n "${{ github.event.inputs.limit }}" ]; then
+            python scripts/summarize_missing.py --limit ${{ github.event.inputs.limit }}
+          else
+            python scripts/summarize_missing.py
+          fi
+
+      - name: Commit and Push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add docs/data.json
+          git commit -m "chore: summarize missing papers [$(date +'%Y-%m-%d')]" || echo "No changes to commit"
+          git push
