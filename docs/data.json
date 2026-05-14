@@ -18,13 +18,17 @@
     "published": "2026-05-13",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "3DGS",
+      "Distributed Rendering",
+      "City-Scale",
+      "Gaussian Splatting",
+      "Large-Scale Reconstruction"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "BlitzGS通过分布式框架和三级负载管理，实现快速城市级3D高斯溅射重建。",
+    "motivation": "现有大规模3DGS重建方法训练缓慢，需要减少活跃高斯体数量以加速城市级场景重建。",
+    "method": "在系统层面按索引奇偶性分片高斯体，避免空间分片的可见性冗余；模型层通过重要性评分收缩全局高斯数量；视图层结合距离LOD和重要性遮罩裁剪每个相机的活跃高斯集。",
+    "result": "在大型基准上达到与近期基线相当的渲染质量，同时实现一个数量级的加速，城市级场景训练仅需几十分钟。",
+    "conclusion": "提出BlitzGS框架，通过三级优化显著加速城市级3DGS重建，代码已开源，对大规模场景实时渲染有潜在影响。"
   },
   {
     "id": "http://arxiv.org/abs/2605.13741v1",
@@ -41,13 +45,17 @@
     "published": "2026-05-13",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "Monocular Scene Graph",
+      "Open-Vocabulary",
+      "Dense Reconstruction",
+      "Factor Graph",
+      "SLAM"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "LEXI-SG是首个仅使用RGB输入的密集单目视觉建图系统，生成开放词汇3D场景图。",
+    "motivation": "现有场景图建图方法依赖深度相机或LiDAR传感器，而单目RGB相机更易获取和部署，因此需要开发仅用RGB的密集单目建图系统。",
+    "method": "利用开放词汇基础模型的语义先验将场景划分为房间，延迟前馈重建直到每个房间被完全观测，采用基于房间的因子图全局对齐房间重建，同时保持局部地图一致性并自然实现场景图层次结构。在房间内支持开放词汇对象分割和跟踪。",
+    "result": "在Habitat-Matterport 3D室内场景和自采集的第一人称办公室序列上，轨迹估计和稠密重建优于现有前馈SLAM方法，开放词汇分割性能达到竞争水平。",
+    "conclusion": "LEXI-SG证明仅从单目RGB即可实现准确、可扩展的开放词汇3D场景图，为机器人导航提供新方案。"
   },
   {
     "id": "http://arxiv.org/abs/2605.13604v1",
@@ -64,13 +72,17 @@
     "published": "2026-05-13",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "3D Hand Pose Estimation",
+      "Graph Convolution",
+      "Self-Attention",
+      "2D-to-3D Lifting",
+      "Positional Encoding"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "本文质疑固定图卷积的有效性，证明自适应注意力在2D到3D手部姿态提升中更优，并建议使用软结构先验。",
+    "motivation": "质疑固定邻接图的图卷积是否是最有效的利用手部拓扑的方式，探究更优的归纳偏置。",
+    "method": "在FPHA基准上进行参数匹配的消融实验，比较标准多头自注意力、骨架约束图注意力网络和带有图距离位置编码的方法。",
+    "result": "标准多头自注意力将MPJPE从12.36mm降至10.09mm，优于增强的图卷积基线。",
+    "conclusion": "自适应空间注意力比固定图卷积更有效，手部拓扑作为软结构先验（图距离位置编码）引入比硬约束更好。"
   },
   {
     "id": "http://arxiv.org/abs/2605.13600v1",
@@ -87,13 +99,17 @@
     "published": "2026-05-13",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "3D Gaussian Splatting",
+      "Language Embedding",
+      "Sparse Coding",
+      "Scene Understanding",
+      "Open-vocabulary Query"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出SCOUP方法，通过稀疏编码从2D图像特征提升到3D高斯，实现高效存储和快速渲染。",
+    "motivation": "现有3D语言高斯泼溅方法在存储、渲染速度和重建速度上无法同时满足高效性，需要一种方法兼顾三者。",
+    "method": "学习基于稀疏码本的表征从2D图像区域，使用加权稀疏聚合将系数提升到3D高斯，并通过Top-K过滤提取主要系数。",
+    "result": "训练速度提升高达400倍，训练内存效率提升3倍，在多个基准上达到或超越现有方法的开放词汇查询准确率。",
+    "conclusion": "SCOUP通过解耦语言表征学习与3D优化，实现了快速三维语义重建、高效存储和快速渲染，为开放词汇场景理解提供了新方案。"
   },
   {
     "id": "http://arxiv.org/abs/2605.13591v1",
@@ -109,13 +125,17 @@
     "published": "2026-05-13",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "4D Gaussian Splatting",
+      "Material Point Method",
+      "Autonomous Driving",
+      "Physics Simulation",
+      "Scenario Generation"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出 Real2Sim 框架，融合 4DGS 与 MPM 实现物理感知的自动驾驶场景重建与编辑。",
+    "motivation": "自动驾驶依赖大规模高质量数据，但实际采集成本高，传统仿真存在现实差距，现有方法时空一致性不足且缺乏物理感知行为。",
+    "method": "将 4D 高斯溅射（4DGS）与可微物质点法（MPM）求解器统一，重建动态驾驶场景为时间连续的高斯基元，支持实例级编辑并模拟物体间及物体-环境交互。",
+    "result": "在 Waymo Open Dataset 上验证了渲染、重建、编辑和物理模拟能力。",
+    "conclusion": "可作为下游任务（感知、跟踪、轨迹预测、端到端策略学习）的可扩展数据生成工具，包括碰撞和碰撞后轨迹等边缘案例。"
   },
   {
     "id": "http://arxiv.org/abs/2605.13465v1",
@@ -131,13 +151,17 @@
     "published": "2026-05-13",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "3D Gaussian Splatting",
+      "Novel View Synthesis",
+      "Feed-Forward",
+      "Transformer",
+      "Z-order"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出基于Z-order策略的Transformer架构实现快速高质量的前馈高斯泼溅新视图合成。",
+    "motivation": "传统3DGS迭代优化缓慢，现有前馈方法存在高斯原语冗余和渲染质量问题，需要更高效的方法。",
+    "method": "通过Z-order策略将无序高斯集组织成空间相干序列，采用稀疏注意力机制的Transformer模型，在单次前向传递中预测高斯属性并自适应抑制冗余。",
+    "result": "摘要未提供具体量化指标，但实验表明方法用更少的高斯原语实现了快速高质量的新视图合成。",
+    "conclusion": "提出基于Z-order Transformer的前馈高斯泼溅架构，实现了高效、高质量的新视图合成，有潜力用于实时应用。"
   },
   {
     "id": "http://arxiv.org/abs/2605.13151v1",
@@ -152,13 +176,17 @@
     "published": "2026-05-13",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "CAPE",
+      "Generative Model",
+      "Variational Autoencoder",
+      "Graph Transformer",
+      "Pose Estimation"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出基于生成式框架的GenCape，通过结构归纳推理关键点关系，无需预定义骨架，提升类别无关姿态估计性能。",
+    "motivation": "现有方法将关键点视为孤立实体或依赖手动定义骨架，代价高且不灵活，限制了模型捕获实例级结构线索的能力。",
+    "method": "提出GenCape框架，包含迭代结构感知变分自编码器（i-SVAE）和组合图迁移（CGT）模块。i-SVAE从支撑特征中推断软邻接矩阵，嵌入图Transformer解码器逐步细化结构先验；CGT通过贝叶斯融合和注意力重加权将多个潜图聚合成查询感知结构。",
+    "result": "在MP-100数据集上，1-shot和5-shot设置下相比基于图支撑的基线获得显著提升，并与基于文本支撑的方法性能相当。",
+    "conclusion": "结构感知设计促进了关键点间的有效消息传播和跨类别语义对齐，为类别无关姿态估计提供了灵活且高性能的解决方案。"
   },
   {
     "id": "http://arxiv.org/abs/2605.13093v1",
@@ -174,13 +202,17 @@
     "published": "2026-05-13",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "3D Gaussian Splatting",
+      "Feed-Forward",
+      "Novel-View Synthesis",
+      "Robustness",
+      "High-Resolution"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出RoSplat，通过alpha归一化和3D采样正则化，解决变视图过亮和高分辨率空洞问题。",
+    "motivation": "现有像素级前馈方法在推理时输入视图数量变化导致过亮渲染，且高斯尺度估计监督不足引起高分辨率渲染空洞。",
+    "method": "提出alpha归一化策略保持亮度一致性，并引入辅助3D采样正则化器改进尺度估计。",
+    "result": "在基准数据集上，方法在变输入视图和高分辨率渲染设定下显著提升基线模型性能。",
+    "conclusion": "RoSplat有效增强了前馈高斯溅射的鲁棒性，改善了高分辨率渲染质量，具有实际应用潜力。"
   },
   {
     "id": "http://arxiv.org/abs/2605.13073v1",
@@ -197,13 +229,16 @@
     "published": "2026-05-13",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "3D Gaussian Splatting",
+      "In-the-wild",
+      "Gradient Harmonization",
+      "Conflict-Aware"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出冲突感知梯度协调方法，解决野外3D高斯泼溅中瞬态干扰和光照不一致导致的梯度冲突问题。",
+    "motivation": "现有方法依赖图像级掩码抑制不可靠监督，但无法完全消除残差遮挡和光照不一致，导致跨视图梯度冲突，使高斯优化不稳定并产生重建伪影。",
+    "method": "提出语义一致性引导掩码学习像素级一致性分数以自适应细化掩码，并设计双视图冲突感知梯度协调策略，将视图特定梯度相互旋转到正交配置，减少方向干扰；同时引入冲突感知密集化和剪枝以稳定高斯增长和移除冲突图元。",
+    "result": "在标准野外基准数据集上实现了最先进的渲染质量，有效处理复杂瞬态干扰和跨视图不一致。",
+    "conclusion": "该方法通过梯度级优化和图像空间监督协同，显著提升了野外3D高斯泼溅的鲁棒性和重建质量，具有广泛适用性。"
   },
   {
     "id": "http://arxiv.org/abs/2605.13018v1",
@@ -219,13 +254,17 @@
     "published": "2026-05-13",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "3D Reconstruction",
+      "Object-Centric",
+      "Transformer",
+      "6D Pose Estimation",
+      "Gaussian Splatting"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "OCH3R通过单张RGB图像一次前向传播同时预测所有物体实例的6D姿态和3D高斯重构，实现高效整体3D重建。",
+    "motivation": "现有方法依赖多阶段管线，先分割再逐物体重建，计算昂贵、对分割错误脆弱且随场景复杂度扩展性差。",
+    "method": "使用transformer架构预测每像素属性（CLIP嵌入、深度、NOCS、3D高斯），通过将高斯变换到规范空间与预渲染规范真值对齐进行监督。",
+    "result": "在标准室内基准上，单目深度估计、开放词汇语义分割和RGB-only类别级6D姿态估计均达到SOTA，并生成高保真可编辑的逐物体重构，推理速度比传统多阶段管线快数个数量级。",
+    "conclusion": "贡献了一个统一的端到端框架，推理全前馈且与物体数量无关，实现了高效、可编辑的物体级整体3D重建，具有显著的速度优势。"
   },
   {
     "id": "http://arxiv.org/abs/2605.12919v1",
@@ -244,13 +283,17 @@
     "published": "2026-05-13",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "3D Gaussian Splatting",
+      "Ownership Tracing",
+      "Edit Deterrence",
+      "Watermarking",
+      "Adversarial"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "首个统一保护框架结合水印与对抗目标，同时实现所有权追踪和编辑阻止。",
+    "motivation": "3DGS的广泛应用带来双重版权风险：资产可被未经许可使用和恶意编辑；现有方法只解决单一方面，缺乏统一防护。",
+    "method": "融合场景级水印目标和对抗目标，对抗分支采用潜在锚点分离、去噪轨迹转移和交叉注意力转移来干扰编辑，并利用更新显著性的高斯选择策略增强对抗更新，平衡水印恢复、编辑阻止和渲染质量。",
+    "result": "在Mip-NeRF 360和Instruct-NeRF2NeRF数据集上，框架实现了位精度、编辑阻止效果和渲染质量之间的有利平衡。",
+    "conclusion": "通过将所有权追踪和编辑阻止整合到单一优化框架中，可以更有效地保护3DGS资产的实用版权。"
   },
   {
     "id": "http://arxiv.org/abs/2605.12845v1",
@@ -269,13 +312,17 @@
     "published": "2026-05-13",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "AssemblyBench",
+      "Industrial Assembly",
+      "Transformer",
+      "6-DoF Pose Estimation",
+      "Physics Simulation"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出AssemblyBench数据集和AssemblyDyno Transformer模型，联合预测装配顺序和轨迹，优于先前方法。",
+    "motivation": "现有数据集忽略工业装配的复杂形状和轨迹，需要物理合理的装配方法。",
+    "method": "提出AssemblyDyno，基于transformer架构，利用说明手册和3D部件形状联合预测装配顺序和部件装配轨迹。",
+    "result": "在装配姿态估计和轨迹可行性上优于先前方法，后者通过物理仿真评估。",
+    "conclusion": "贡献了工业物体装配数据集AssemblyBench和模型AssemblyDyno，推动了物理感知装配的研究。"
   },
   {
     "id": "http://arxiv.org/abs/2605.12494v1",
@@ -294,13 +341,17 @@
     "published": "2026-05-12",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "Surface Reconstruction",
+      "Gaussian Splatting",
+      "Photometric Ambiguity",
+      "3D Reconstruction",
+      "Differentiable Rendering"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出AmbiSuR框架，利用高斯溅射的自我歧义指示能力进行光度消歧，实现高精度表面重建。",
+    "motivation": "光度歧义严格限制了现有基于可微渲染的表面重建方法的性能，亟需解决这一瓶颈问题。",
+    "method": "重新审视高斯溅射表示，发现逐原语的双重光度歧义及其自我歧义指示潜力；引入光度消歧约束以确定几何解；提出歧义指示模块识别并矫正欠约束重建区域。",
+    "result": "在多种挑战性场景中，AmbiSuR的表面重建效果优于现有方法，且具有广泛的兼容性，但摘要未提供具体量化指标。",
+    "conclusion": "AmbiSuR框架有效解决了光度歧义问题，获得了高精度表面重建，并为可微渲染中的歧义处理提供了新思路。"
   },
   {
     "id": "http://arxiv.org/abs/2605.12437v1",
@@ -314,13 +365,17 @@
     "published": "2026-05-12",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "3D Gaussian Splatting",
+      "Dynamic Scene",
+      "Novel View Synthesis",
+      "Multi-view",
+      "Benchmark"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出一种适用于同步多视图动态场景的高效回顾式新视角合成方法，无需时间耦合约束，并构建标准化基准。",
+    "motivation": "在同步多视图设置下，动态场景各时间步已有充分几何约束，因此无需显式时间耦合或复杂多体约束即可实现回顾式新视角合成。",
+    "method": "通过从SfM点云初始化并随时间传播优化高斯体，避免使用时间变形约束；同时提出基于Blender的动态多视图数据集框架，生成高质量同步相机训练数据。",
+    "result": "利用构建的基准套件，在受控条件下评估了代表性NeRF和3DGS方法，验证了所提方法的有效性。",
+    "conclusion": "证明了同步多视图设置下可高效实现动态场景回顾式新视角合成，数据集框架促进了动态NVS方法的可重复与原则性基准测试。"
   },
   {
     "id": "http://arxiv.org/abs/2605.12399v1",
@@ -339,13 +394,17 @@
     "published": "2026-05-12",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "3D Gaussian Splatting",
+      "Sparse-View Reconstruction",
+      "Diffusion Models",
+      "Geometry-Guided Attention",
+      "Novel View Synthesis"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "GeoQuery利用几何引导的交叉注意力机制，结合扩散先验实现稀疏视角下的鲁棒3D重建。",
+    "motivation": "现有方法在稀疏视角下，3DGS渲染视图严重损坏时，多视图自注意力机制因查询特征损坏导致跨视图检索错误，从而产生不一致的渲染优化。",
+    "method": "提出GeoQuery框架，包含几何引导交叉注意力（GCA）：利用预测深度和相机位姿构建几何对应场，采样参考特征形成几何对齐的代理查询；然后在代理查询的局部窗口内限制交叉视图注意力，有效检索有用特征并抑制错误匹配。",
+    "result": "在稀疏视角新视图合成和渲染伪影去除任务上，实验验证了方法的有效性，但摘要未提供具体量化指标。",
+    "conclusion": "GeoQuery可无缝集成到现有扩散管道，实现极端稀疏视角下的鲁棒重建，为稀疏视图重建提供了新思路。"
   },
   {
     "id": "http://arxiv.org/abs/2605.12297v1",
@@ -362,13 +421,17 @@
     "published": "2026-05-12",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "Event camera",
+      "Hand pose estimation",
+      "Gesture recognition",
+      "Stereo vision",
+      "Egocentric perception"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出基于立体事件相机的EgoEV-HandPose框架，实现双手三维姿态估计与手势识别，并建立首个大规模真实世界立体事件数据集。",
+    "motivation": "传统帧相机存在运动模糊和动态范围限制，现有事件相机方法受自运动干扰、单目深度模糊及缺乏大规模真实立体数据集制约。",
+    "method": "提出端到端框架EgoEV-HandPose，核心模块KeypointBEV通过鸟瞰图空间特征融合和迭代重投影引导精化，逐步消除深度不确定性并保持运动学一致性。",
+    "result": "在EgoEVHands数据集上达到MPJPE 30.54mm和手势识别Top-1准确率86.87%，在低光和双手遮挡场景下显著优于RGB立体和已有事件相机方法。",
+    "conclusion": "为事件相机在三维手部姿态估计与手势识别领域树立了新标杆，数据集和代码将开源以推动研究。"
   },
   {
     "id": "http://arxiv.org/abs/2605.12220v1",
@@ -382,13 +445,17 @@
     "published": "2026-05-12",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "LiDAR",
+      "3D Object Detection",
+      "BEV",
+      "Real-Time",
+      "Pedestrian Detection"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "TriBand-BEV通过三维高度带编码和轻量2D BEV实现实时激光雷达行人检测，在KITTI上达到49 FPS。",
+    "motivation": "安全自动驾驶和移动机器人需要快速实时3D感知，特别是对行人等脆弱道路使用者。现有方法速度与精度难以兼顾。",
+    "method": "提出TriBand-BEV，将3D点云映射为三高度带轻量2D BEV张量，将3D检测重构为2D检测问题。骨干网络使用深层区域注意力、层次化双向颈部融合上下文与细节，头部预测定向框并采用分布聚焦学习和旋转IoU损失。训练时使用垂直重分箱和反射率抖动，推理时用IQR滤波去除噪声点。",
+    "result": "在KITTI数据集上，行人BEV AP为58.7/52.6/47.2（容易/中等/困难），帧率49 FPS，优于Complex-YOLO，分别提升+12.6%、+7.5%、+3.1%。在遮挡情况下检测稳定。",
+    "conclusion": "提出了一种紧凑的实时LiDAR-only 3D行人检测方法，适用于机器人的实时部署。代码已开源。"
   },
   {
     "id": "http://arxiv.org/abs/2605.12198v1",
@@ -404,13 +471,17 @@
     "published": "2026-05-12",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "3D Human Pose Estimation",
+      "Domain Generalization",
+      "Generative Augmentation",
+      "Data Fusion",
+      "Video Generation"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "通过可控生成增强合成多样视频数据，提高3D人体姿态估计的领域泛化能力。",
+    "motivation": "由于训练和测试数据分布差异导致的领域间隙，现有方法在处理行人运动时泛化能力有限。",
+    "method": "提出可控人体姿态生成框架，系统变化姿态、背景和视角，并融合室内/真实世界与室外/虚拟数据集进行跨域数据融合和可控视频生成。",
+    "result": "增强后的数据集在未见过的场景和数据集上显著提升了模型性能，验证了方法的有效性。",
+    "conclusion": "该可控生成增强方法有效提升了模型泛化能力，缓解了现有方法在领域差异处理上的局限。"
   },
   {
     "id": "http://arxiv.org/abs/2605.12144v1",
@@ -428,13 +499,17 @@
     "published": "2026-05-12",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "Visual Localization",
+      "Absolute Pose Regression",
+      "3D Gaussian Splatting",
+      "Pose Selection",
+      "Data Augmentation"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出PoseCompass，通过智能选择合成姿态提升基于3DGS的绝对姿态回归性能。",
+    "motivation": "APR依赖数据质量与覆盖，随机采样生成冗余和噪声视图，限制了性能。",
+    "method": "提出基于定位难度、覆盖新颖性和渲染可观测性的三维排序机制，选取top-K轨迹约束候选，用3DGS和扩散对齐合成视图，混合真实与合成数据微调。",
+    "result": "在7-Scenes上，适应时间从15.2分钟降至5.1分钟（3倍加速），中位姿态误差降低53.8%，显著优于随机基线。",
+    "conclusion": "PoseCompass有效选择有信息量的合成视图，加速训练并提高定位精度，可推广至其他基于渲染的定位方法。"
   },
   {
     "id": "http://arxiv.org/abs/2605.12072v1",
@@ -452,13 +527,17 @@
     "published": "2026-05-12",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "3DGS",
+      "Sparse-View",
+      "Dropout",
+      "Consistency Regularization",
+      "Gaussian Splatting"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "PairDropGS通过配对丢弃诱导的一致性正则化，显著提升稀疏视图高斯泼溅的重建质量与训练稳定性。",
+    "motivation": "现有丢弃法稀疏视图3DGS方法仅关注设计复杂丢弃策略，忽略了不同丢弃子集间的不一致性，导致重建不稳定和表示学习欠佳。",
+    "method": "从共享高斯场构建一对丢弃子集，设计低频一致性正则化约束其低频渲染结构，并采用渐进一致性调度策略逐步加强正则化。",
+    "result": "在广泛使用的稀疏视图基准上，PairDropGS实现了优越的训练稳定性，重建质量显著优于现有丢弃法3DGS方法。",
+    "conclusion": "提出PairDropGS框架，通过一致性正则化视角解决稀疏视图过拟合问题，具有简单且即插即用的特性，可有效改善基于丢弃的优化。"
   },
   {
     "id": "http://arxiv.org/abs/2605.12027v1",
@@ -482,13 +561,17 @@
     "published": "2026-05-12",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "4D Reconstruction",
+      "Dynamic Scene",
+      "Depth Estimation",
+      "Transformer",
+      "Disentanglement"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出一种无训练渐进解耦框架，通过动态掩码引导位姿解耦和拓扑子空间手术实现鲁棒的动态4D场景重建。",
+    "motivation": "现有3D基础模型在动态环境中性能显著下降，因为全局注意力机制耦合了相机自运动与物体运动，需要解耦二者以提升动态场景重建质量。",
+    "method": "采用三个协同组件：动态掩码引导位姿解耦模块隔离动态干扰；拓扑子空间手术正交分解深度流形，保留动态对象并注入精炼的掩码感知几何；信息论置信度感知融合策略通过逆方差加权自适应混合多通道预测。",
+    "result": "在标准4D重建基准上，点云指标取得一致且显著的改进，无需微调即展现竞争性能。",
+    "conclusion": "该无训练渐进框架通过数学驱动的动静解耦实现鲁棒4D场景重建，展示了无需微调的潜力，对动态场景理解具有重要影响。"
   },
   {
     "id": "http://arxiv.org/abs/2605.11594v1",
@@ -512,13 +595,17 @@
     "published": "2026-05-12",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "3D Gaussian Splatting",
+      "Driving Reconstruction",
+      "Point-Aligned Representations",
+      "Scene Graph",
+      "Feedforward"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "PointForward通过点对齐表示实现前馈驾驶场景重建，解决多视图不一致和动态实例建模问题。",
+    "motivation": "现有前馈3DGS方法存在多视图不一致和分层伪影，且对动态实例缺乏显式跨视图对应和实例级一致性。",
+    "method": "提出PointForward框架，在世界空间初始化稀疏3D查询，通过时空融合聚合多视图信息，引入场景图显式组织动态实例，利用3D边界框实现实例级运动传播。",
+    "result": "在大型驾驶基准上达到最先进性能。",
+    "conclusion": "提出点对齐表示和场景图驱动的前馈重建方法，有效提升驾驶场景重建的跨视图一致性和动态实例建模能力。"
   },
   {
     "id": "http://arxiv.org/abs/2605.11520v1",
@@ -534,13 +621,17 @@
     "published": "2026-05-12",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "Unsupervised Point Cloud Segmentation",
+      "3D Gaussian Splatting",
+      "Semantic Consistency",
+      "Contrastive Learning",
+      "SAM"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出PointGS，利用3D高斯溅射作为统一中间表示，实现无监督3D点云语义分割，在ScanNet-V2和S3DIS上分别提升0.9%和2.8%的mIoU。",
+    "motivation": "无监督点云分割对降低标注成本至关重要，但现有方法因离散点云与连续图像间的投影重叠和模态对齐问题导致语义不一致。",
+    "method": "通过多视图观测将稀疏点云重建为密集3D高斯空间，渲染多视图图像并用SAM提取2D语义掩码，再经对比学习将语义蒸馏到高斯原语；最后通过两步配准和近邻搜索将语义赋予原始点云。",
+    "result": "在ScanNet-V2数据集上mIoU提升0.9%，在S3DIS数据集上mIoU提升2.8%，均优于现有无监督方法。",
+    "conclusion": "提出的PointGS pipeline简单有效，通过3D高斯溅射桥接离散-连续域差距，实现了语义一致的无监督点云分割，具有实际应用潜力。"
   },
   {
     "id": "http://arxiv.org/abs/2605.11497v1",
@@ -555,13 +646,17 @@
     "published": "2026-05-12",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "Zero-Shot Learning",
+      "Skeleton-Based Action Recognition",
+      "Human Pose Estimation",
+      "Skeleton-Text Alignment",
+      "Cross-Modal Learning"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出PoseBridge框架，通过利用人体姿态估计的中间表示，弥补零样本骨架动作识别中的语义损失。",
+    "motivation": "零样本骨架动作识别通常将骨架视为完整动作观测，但骨架是人体姿态估计的压缩输出，缺少交互和视觉线索，导致上游语义损失。",
+    "method": "PoseBridge从人体姿态估计过程中提取姿态锚定的语义线索，通过骨架条件桥接和语义原型适配将其传递到骨架-文本对齐中。",
+    "result": "在NTU-RGB+D 60/120、PKU-MMD和Kinetics-200/400上均提升了零样本识别性能，尤其在Kinetics-200/400 PURLS基准上，所有八个划分的平均改进为13.3-17.4个百分点。",
+    "conclusion": "PoseBridge有效弥合了骨架化差距，提高了零样本骨架动作识别的表现，代码将公开。"
   },
   {
     "id": "http://arxiv.org/abs/2605.11489v1",
@@ -577,13 +672,16 @@
     "published": "2026-05-12",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "3DGS",
+      "Super Sampling",
+      "Frame Interpolation",
+      "Real-Time Rendering"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出3DGS$^3$统一后渲染框架，联合超采样与帧插值实现高分辨率高帧率3DGS渲染。",
+    "motivation": "3D高斯泼溅在超密集场景和高分辨率下存在计算瓶颈，限制了其在延迟敏感应用中的使用。",
+    "method": "提出3DGS$^3$框架，包含梯度感知超采样（GASS）模块利用3DGS连续可微性提取图像梯度引导GRU网络进行高保真超采样，以及轻量级时序帧插值（LTFI）模块基于紧凑U-Net融合时序和空间线索合成中间帧。",
+    "result": "在公共数据集上，3DGS$^3$在渲染效率和视觉质量上优于现有方法，并与现有3DGS加速技术兼容。",
+    "conclusion": "提出3DGS$^3$统一后渲染框架，有效提升3DGS在高分辨率高帧率下的渲染性能，代码将公开。"
   },
   {
     "id": "http://arxiv.org/abs/2605.11427v1",
@@ -603,13 +701,17 @@
     "published": "2026-05-12",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "4D Gaussian Splatting",
+      "Dynamic Scene Streaming",
+      "Progressive Compression",
+      "Rate-Distortion",
+      "Novel View Synthesis"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出PD-4DGS，首个面向4D高斯溅射的渐进式压缩与按需传输框架，大幅降低首帧延迟并支持自适应码率。",
+    "motivation": "现有4DGS模型为单一比特流，客户端需完整下载后才能渲染，导致移动带宽下黑屏等待数十至数百秒，缺乏自适应比特率传输兼容性。",
+    "method": "提出层次化变形分解（HDD）将4DGS中的粗到细运动层次外化为三个独立传输层（静态骨架、全局变形、局部细化），并引入高斯熵属性率-失真损失与时间掩码一致性正则化，以及基于学习激活率rho的容量加权 rollout 调度。",
+    "result": "在Dycheck iPhone基准上，匹配渲染保真度下流式比特流减少超过60%，在2 Mbps链路上首帧延迟从73-930秒降至约1.7秒。",
+    "conclusion": "首次实现4DGS的真正按需渐进式流式传输，使单一训练生成兼容DASH/HLS的比特流，对动态场景渲染和传输有重要贡献。"
   },
   {
     "id": "http://arxiv.org/abs/2605.11424v1",
@@ -629,13 +731,16 @@
     "published": "2026-05-12",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "Gaussian Splatting",
+      "Video Diffusion",
+      "Sparse-view Reconstruction",
+      "Novel View Synthesis"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "一种无需训练、利用视频扩散先验迭代合成新视角以从稀疏输入重建完整3D场景的框架。",
+    "motivation": "高斯泼溅在多视角重建中表现优异，但稀疏视图下性能退化，难以推断未观测区域。旨在解决从稀疏输入恢复完整3D场景的问题。",
+    "method": "采用无需训练的分阶段去噪策略，利用渲染RGB和掩码图像引导去噪方向以保持3D一致性；通过迭代机制采样相机轨迹、探索未观测区域、合成新视角，并使用置信度加权细化补充训练。",
+    "result": "在稀疏输入甚至单张图像下表现鲁棒，在多个基准数据集上的稀疏视图场景重建中取得优越性能。",
+    "conclusion": "提出了VidSplat，有效融合生成与重建，为稀疏视图高斯泼溅重建提供了新方案，具有潜在应用价值。"
   },
   {
     "id": "http://arxiv.org/abs/2605.11354v1",
@@ -652,13 +757,17 @@
     "published": "2026-05-12",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "3D Reconstruction",
+      "Transformer",
+      "Teacher-Student",
+      "Quantization",
+      "Sparse Attention"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出Lite3R框架，通过稀疏线性注意力和FP8量化训练，高效实现3D重建。",
+    "motivation": "基于Transformer的3D重建模型在扩展时面临密集多视角注意力导致的高计算开销，以及低精度执行破坏几何表示稳定性的问题。",
+    "method": "提出模型无关的教师-学生框架Lite3R，用稀疏线性注意力替代密集注意力；引入FP8感知量化训练，仅训练轻量线性投影层，冻结大部分预训练参数，并采用部分注意力蒸馏。",
+    "result": "在BlendedMVS和DTU64上，基于VGGT和DA3-Large，延迟降低1.7-2.0倍，内存使用减少1.9-2.4倍，同时保持竞争性重建质量。",
+    "conclusion": "Lite3R提供了一种有效的算法-系统协同设计方法，可应用于实际基于Transformer的3D重建，具有高效部署潜力。"
   },
   {
     "id": "http://arxiv.org/abs/2605.10922v1",
@@ -2161,13 +2270,17 @@
     "published": "2026-05-07",
     "category": "cs.AI",
     "tags": [
-      "Unknown"
+      "Tabular Data",
+      "Foundation Model",
+      "Data Language Model",
+      "Schema-1",
+      "Preprocessing-Free"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "数据语言模型DLM是首个原生理解表格数据的基础模型，无需预处理，在多项任务上超越现有方法。",
+    "motivation": "表格数据缺乏原生基础模型，现有方法都需要预处理流水线，不能直接理解表格模态。",
+    "method": "提出数据语言模型（DLM），直接处理原始单元格值，无需序列化或预处理；训练了140M参数的Schema-1模型，使用超过230万个合成和真实表格数据集。",
+    "result": "在行级预测基准上超越梯度提升集成、AutoML栈和现有表格基础模型；缺失值重建误差低于所有经典统计方法和前沿大语言模型；能仅从原始单元格值可靠识别数据集的行业领域。",
+    "conclusion": "DLM填补了AI栈中缺失的原生表格理解层，消除了预处理流水线，对表格数据AI系统有重要影响。"
   },
   {
     "id": "http://arxiv.org/abs/2605.06280v1",
@@ -2185,13 +2298,16 @@
     "published": "2026-05-07",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "Image Animation",
+      "Diffusion Model",
+      "Optical Flow",
+      "Eulerian Motion"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出基于Eulerian运动引导的图像动画方法，通过双向几何一致性减少漂移伪影。",
+    "motivation": "现有方法依赖Lagrangian运动引导，存在误差累积和训练效率低的问题。本文提出使用相邻帧Eulerian运动场进行局部监督，实现并行化训练和有限误差监督。",
+    "method": "采用相邻帧Eulerian运动场引导生成，并引入Bidirectional Geometric Consistency机制，通过前向-后向循环检查识别并掩蔽遮挡区域，防止学习错误的目标。",
+    "result": "实验表明，该方法加速训练，增强时间一致性，减少动态伪影。摘要未提供具体量化指标。",
+    "conclusion": "提出基于Eulerian运动引导和双向几何一致性的图像动画方法，显著提升训练效率和生成质量，有望应用于视频生成等领域。"
   },
   {
     "id": "http://arxiv.org/abs/2605.06274v1",
@@ -2206,13 +2322,17 @@
     "published": "2026-05-07",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "Image Classification",
+      "Hierarchical Classification",
+      "Cross-Entropy",
+      "Loss Function",
+      "Hierarchy-Aware"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出Hierarchy-Aware Cross-Entropy (HACE)，将类别层次结构融入损失函数，提升图像分类准确率。",
+    "motivation": "标准交叉熵平等对待所有错误分类，忽略了类别层次结构中的语义距离。",
+    "method": "HACE包含两个组件：prediction aggregation（将模型概率向上传播至父节点）和ancestral label smoothing（沿真实类别到根节点的路径平滑标签）。",
+    "result": "在CIFAR-100、FGVC Aircraft和NABirds上，端到端训练在18个架构-数据集对中15个提升，平均增益4.66%；线性探测上平均优于次优基线2.18%。",
+    "conclusion": "HACE作为标准交叉熵的即插即用替代，有效利用层次结构提升分类性能，适用于多种架构和训练范式。"
   },
   {
     "id": "http://arxiv.org/abs/2605.06273v1",
@@ -2233,13 +2353,17 @@
     "published": "2026-05-07",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "Wildfire Detection",
+      "On-Orbit",
+      "Thermal Infrared",
+      "Self-Supervised Learning",
+      "Deep Learning"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出一种在轨卫星实时野火检测系统，利用轻量级自监督学习模型在严格约束下实现高精度检测。",
+    "motivation": "现有MODIS/VIIRS等上下文热阈值方法无法有效处理子像素热异常和极端类别不平衡，且需满足星上小模型、低延迟和快速端到端处理的约束。",
+    "method": "采用密集掩码自编码（DenseMAE）及其与指数移动平均蒸馏的混合变体进行轻量级密集表示学习，并在私有九卫星MWIR数据集上评估。",
+    "result": "最快模型达到0.640 AP和0.69 Fire-F1，延迟65.34ms，引擎大小0.52MB；最佳配置达到0.699 AP和0.744 Fire-F1，体积低于1MB，均优于监督基线（0.650 AP）。",
+    "conclusion": "展示了在轨实时野火检测的可行性，自监督预训练使紧凑模型在延迟-精度帕累托前沿上表现优异，为星上AI应用提供重要参考。"
   },
   {
     "id": "http://arxiv.org/abs/2605.06270v1",
@@ -2259,13 +2383,17 @@
     "published": "2026-05-07",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "3D Reconstruction",
+      "Token Reduction",
+      "Feed-Forward",
+      "Acceleration",
+      "Transformer"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "Spark3R通过非对称令牌减少实现前馈3D重建的即插即用加速，最高可达28倍提速。",
+    "motivation": "现有前馈3D重建模型因全局注意力层的二次成本难以扩展到视频输入（数百至数千帧），且统一压缩查询和键值令牌忽视了它们的不同作用。",
+    "method": "提出训练免费的加速框架Spark3R，解耦查询和键值令牌的压缩：对查询令牌进行组内合并，对键值令牌进行轻量级剪枝，并自适应调整层间键值缩减因子。",
+    "result": "在1,000帧输入上实现高达28倍加速，同时保持具有竞争力的重建质量；集成到VGGT、π³和Depth-Anything-3等预训练模型中无需重新训练。",
+    "conclusion": "Spark3R是一种有效的即插即用加速方法，显著提升了前馈3D重建模型在大规模视频输入上的效率，具有广泛的应用潜力。"
   },
   {
     "id": "http://arxiv.org/abs/2605.06266v1",
@@ -2281,13 +2409,16 @@
     "published": "2026-05-07",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "Weakly Supervised Segmentation",
+      "Scribble Annotation",
+      "Medical Image Segmentation",
+      "EM Algorithm"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "通过最大化scribble监督和空间形状先验，提出ZScribbleSeg框架，在六个医学分割任务中取得竞争性能。",
+    "motivation": "现有基于scribble的弱监督方法因监督不足和形状信息不完整导致分割不准确，需研究高效标注形式和最大化监督的方法。",
+    "method": "首先研究好scribble标注的原则，通过监督最大化和随机性模拟获得高效scribble；引入正则化项编码空间关系和形状约束，利用EM算法估计标签类别的混合比例以识别未标注像素并纠正错误预测。",
+    "result": "仅使用scribble标注，在ACDC、MSCMRseg、BTCV、MyoPS、Decathlon-BrainTumor和Decathlon-Prostate六个分割任务上取得竞争性能。",
+    "conclusion": "提出的ZScribbleSeg框架通过高效scribble监督与先验集成，实现了弱监督分割的精确性和实用性，代码已开源。"
   },
   {
     "id": "http://arxiv.org/abs/2605.06229v1",
@@ -2308,13 +2439,16 @@
     "published": "2026-05-07",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "Video Semantic Search",
+      "Inverse Attention",
+      "Dual Encoding",
+      "Crowded Scenes"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出逆注意力嵌入机制，结合传统视觉嵌入提升拥挤场景视频语义搜索的召回率。",
+    "motivation": "视频语义搜索中，视觉编码器倾向于关注显著前景而忽略上下文重要的背景区域，导致检索性能受限。",
+    "method": "提出逆注意力嵌入机制，显式捕获被忽略的区域，并将其与传统视觉嵌入融合，无需额外训练。",
+    "result": "在拥挤环境下的视频语义搜索任务中，召回率相比现有方法有显著提升（具体数值摘要未提供）。",
+    "conclusion": "该方法无需额外训练即可提升语义检索性能，对密集场景的视频搜索具有潜在应用价值。"
   },
   {
     "id": "http://arxiv.org/abs/2605.06214v1",
@@ -2330,13 +2464,17 @@
     "published": "2026-05-07",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "Structured Illumination",
+      "Shape and Reflectance",
+      "Differentiable Framework",
+      "Adaptive Illumination",
+      "Depth Estimation"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出可微分自适应4D结构光框架，联合高效高质捕获物体形状与反射率。",
+    "motivation": "现有方法难以同时高效高质量地获取物体的形状和反射率，需要统一的空间-角度结构光框架来实现联合捕获。",
+    "method": "采用基于直方图的像素级概率模型，可微分地链接照明条件与深度不确定性损失；根据新照明下的测量更新不确定性，最后通过微调最小化物理测量与模拟的差异来重建深度和反射率。",
+    "result": "深度结果优于现有技术，反射率结果与照片验证具有可比性。",
+    "conclusion": "提出了一种高效的联合捕获框架，实现了形状和反射率的高质量重建，对3D扫描和计算机图形学有潜在影响。"
   },
   {
     "id": "http://arxiv.org/abs/2605.06212v1",
@@ -2353,13 +2491,17 @@
     "published": "2026-05-07",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "Attribution",
+      "Game Theory",
+      "Interpretability",
+      "Backward Propagation",
+      "Transformer"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出扩展网络图上的两人博弈框架，统一反向归因方法，在ViT-B/16上取得更优定位性能。",
+    "motivation": "现有反向归因方法缺乏统一框架进行比较和理解。",
+    "method": "将反向归因重新定义为扩展网络图上的两人博弈，梯度与alpha-beta-LRP方法作为特定均衡下轨迹的积分获得。",
+    "result": "在ViT-B/16上，一种alpha-beta-LRP的适应性方法在所有考虑的定位指标上优于先前的Transformer特定反向方法。",
+    "conclusion": "提出博弈论框架统一反向归因，支持通过博弈概念指定解释属性并推导新方法。"
   },
   {
     "id": "http://arxiv.org/abs/2605.06207v1",
@@ -2376,12 +2518,16 @@
     "published": "2026-05-07",
     "category": "cs.CV",
     "tags": [
-      "Unknown"
+      "Autoregressive Visual Generation",
+      "Quantization",
+      "Variable Codebook Size",
+      "Entropy Cliff",
+      "Image Generation"
     ],
-    "tldr": "摘要生成失败。",
-    "motivation": "摘要未提供相关信息",
-    "method": "摘要未提供相关信息",
-    "result": "摘要未提供相关信息",
-    "conclusion": "摘要未提供相关信息"
+    "tldr": "提出可变码本大小量化（VCQ），通过单调递增码本大小解决视觉生成中的熵悬崖问题，显著提升图像生成质量。",
+    "motivation": "恒码本设计存在信息瓶颈，序列中条件熵快速下降导致大部分位置变成记忆问题，称为熵悬崖。",
+    "method": "提出可变码本大小量化（VCQ），码本大小沿序列从K_min=2单调递增到K_max，不改变损失函数和自回归训练过程。",
+    "result": "基础版VCQ将gFID w/o CFG从27.98降至14.80；扩展版以684M参数达到gFID 1.71；前10个token的线性探针在ImageNet上达到43.8% Top-1准确率（基线27.1%）。",
+    "conclusion": "码本容量的分布和组织比总容量更重要；VCQ自然诱导粗到细语义层次，具有广泛适用性。"
   }
 ]
