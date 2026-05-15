@@ -56,8 +56,8 @@ def get_papers() -> List[Dict]:
     search_query = f"({query}) AND (" + " OR ".join([f"cat:{c}" for c in CATEGORIES]) + ")"
 
     arxiv_client = arxiv.Client(
-        page_size=100,
-        delay_seconds=3,
+        page_size=50,
+        delay_seconds=5,
         num_retries=5
     )
 
@@ -76,30 +76,43 @@ def get_papers() -> List[Dict]:
     results = []
     seen_ids = set()
 
-    try:
-        for result in arxiv_client.results(search):
-            published = result.published
-            if published >= upper_bound:
-                continue
-            if published < lower_bound:
-                break
-            if result.entry_id in seen_ids:
-                continue
-            seen_ids.add(result.entry_id)
+    max_retries = 5
+    base_delay = 10
 
-            paper_cats = [c for c in result.categories if c in CATEGORIES]
-            category = paper_cats[0] if paper_cats else "Unknown"
-            results.append({
-                "id": result.entry_id,
-                "title": result.title,
-                "authors": [a.name for a in result.authors],
-                "abstract": result.summary,
-                "link": result.entry_id,
-                "published": published.strftime("%Y-%m-%d"),
-                "category": category
-            })
-    except Exception as e:
-        print(f"Error fetching from Arxiv: {e}")
+    for attempt in range(max_retries):
+        try:
+            for result in arxiv_client.results(search):
+                published = result.published
+                if published >= upper_bound:
+                    continue
+                if published < lower_bound:
+                    break
+                if result.entry_id in seen_ids:
+                    continue
+                seen_ids.add(result.entry_id)
+
+                paper_cats = [c for c in result.categories if c in CATEGORIES]
+                category = paper_cats[0] if paper_cats else "Unknown"
+                results.append({
+                    "id": result.entry_id,
+                    "title": result.title,
+                    "authors": [a.name for a in result.authors],
+                    "abstract": result.summary,
+                    "link": result.entry_id,
+                    "published": published.strftime("%Y-%m-%d"),
+                    "category": category
+                })
+            break
+        except Exception as e:
+            if "429" in str(e) or "rate" in str(e).lower():
+                wait_time = base_delay * (2 ** attempt)
+                print(f"Arxiv 限流，等待 {wait_time}s（第 {attempt + 1}/{max_retries} 次重试）...")
+                time.sleep(wait_time)
+            else:
+                print(f"Error fetching from Arxiv: {e}")
+                break
+    else:
+        print(f"Arxiv 请求失败，已重试 {max_retries} 次。")
 
     return results
 
