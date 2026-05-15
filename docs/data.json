@@ -1,5 +1,235 @@
 [
   {
+    "id": "http://arxiv.org/abs/2605.15195v1",
+    "title": "VGGT-$Ω$",
+    "authors": [
+      "Jianyuan Wang",
+      "Minghao Chen",
+      "Shangzhan Zhang",
+      "Nikita Karaev",
+      "Johannes Schönberger",
+      "Patrick Labatut",
+      "Piotr Bojanowski",
+      "David Novotny",
+      "Andrea Vedaldi",
+      "Christian Rupprecht"
+    ],
+    "abstract": "Recent feed-forward reconstruction models, such as VGGT, have proven competitive with traditional optimization-based reconstructors while also providing geometry-aware features useful for other tasks. Here, we show that the quality of these models scales predictably with model and data size. We do so by introducing VGGT-$Ω$, which substantially improves reconstruction accuracy, efficiency, and capabilities for both static and dynamic scenes. To enable training this model at an unprecedented scale, we introduce architectural changes that improve training efficiency, a high-quality data annotation pipeline that supports dynamic scenes, and a self-supervised learning protocol. We simplify VGGT's architecture by using a single dense prediction head with multi-task supervision and removing the expensive high-resolution convolutional layers. We also use registers to aggregate scene information into a compact representation and introduce register attention, which restricts inter-frame information exchange to these registers, in part replacing global attention. In this way, during training, VGGT-$Ω$ uses only about 30% of the GPU memory of its predecessor, allowing us to train with 15x more supervised data than prior work and to leverage vast amounts of unlabeled video data. VGGT-$Ω$ achieves strong results for reconstruction of static and dynamic scenes across multiple benchmarks, for example, improving over the previous best camera estimation accuracy on Sintel by 77%. We also show that the learned registers can improve vision-language-action models and support alignment with language, suggesting that reconstruction can be a powerful and scalable proxy task for spatial understanding. Project Page: http://vggt-omega.github.io/",
+    "link": "http://arxiv.org/abs/2605.15195v1",
+    "published": "2026-05-14",
+    "category": "cs.CV",
+    "tags": [
+      "VGGT",
+      "Feed-Forward 3D Reconstruction",
+      "Dynamic Scenes",
+      "Self-Supervised Learning",
+      "Video Understanding"
+    ],
+    "tldr": "VGGT-Ω通过架构改进、大规模数据训练和自监督学习，显著提升静态与动态场景的重建精度与效率。",
+    "motivation": "现有前馈重建模型（如VGGT）性能随模型和数据规模可预测扩展，但受限于训练效率和数据量，需进一步提升重建精度和泛化能力。",
+    "method": "简化VGGT架构为单一密集预测头和多任务监督，移除高分辨率卷积层；引入寄存器机制和寄存器注意力，限制帧间信息交换以降低内存；采用自监督学习协议和高质量动态场景数据标注管道。",
+    "result": "训练GPU内存降低约70%（仅为原模型的30%），监督数据量增加15倍；在Sintel数据集上相机估计精度提升77%，在多个静态和动态场景重建基准上取得最优结果。",
+    "conclusion": "VGGT-Ω证明了大规模训练下前馈重建模型的可扩展性，其学习到的寄存器可提升视觉-语言-动作模型的能力，表明重建可作为视觉理解的可扩展代理任务，潜在影响包括更好的空间理解。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.15186v1",
+    "title": "VGGT-Edit: Feed-forward Native 3D Scene Editing with Residual Field Prediction",
+    "authors": [
+      "Kaixin Zhu",
+      "Yiwen Tang",
+      "Yifan Yang",
+      "Renrui Zhang",
+      "Bohan Zeng",
+      "Ziyu Guo",
+      "Ruichuan An",
+      "Zhou Liu",
+      "Qizhi Chen",
+      "Delin Qu",
+      "Jaehong Yoon",
+      "Wentao Zhang"
+    ],
+    "abstract": "High-quality 3D scene reconstruction has recently advanced toward generalizable feed-forward architectures, enabling the generation of complex environments in a single forward pass. However, despite their strong performance in static scene perception, these models remain limited in responding to dynamic human instructions, which restricts their use in interactive applications. Existing editing methods typically rely on a 2D-lifting strategy, where individual views are edited independently and then lifted back into 3D space. This indirect pipeline often leads to blurry textures and inconsistent geometry, as 2D editors lack the spatial awareness required to preserve structure across viewpoints. To address these limitations, we propose VGGT-Edit, a feed-forward framework for text-conditioned native 3D scene editing. VGGT-Edit introduces depth-synchronized text injection to align semantic guidance with the backbone's spatial poses, ensuring stable instruction grounding. This semantic signal is then processed by a residual transformation head, which directly predicts 3D geometric displacements to deform the scene while preserving background stability. To ensure high-fidelity results, we supervise the framework with a multi-term objective function that enforces geometric accuracy and cross-view consistency. We also construct the DeltaScene Dataset, a large-scale dataset generated through an automated pipeline with 3D agreement filtering to ensure ground-truth quality. Experiments show that VGGT-Edit substantially outperforms 2D-lifting baselines, producing sharper object details, stronger multi-view consistency, and near-instant inference speed.",
+    "link": "http://arxiv.org/abs/2605.15186v1",
+    "published": "2026-05-14",
+    "category": "cs.CV",
+    "tags": [
+      "3D Scene Editing",
+      "Feed-forward",
+      "Text-conditioned",
+      "Residual Field",
+      "Depth Synchronization"
+    ],
+    "tldr": "基于残差场预测的前馈式原生三维场景编辑框架，实现文本驱动的快速编辑。",
+    "motivation": "现有前馈式3D重建模型难以响应动态文本指令，而基于2D提拉的方法导致纹理模糊和几何不一致。",
+    "method": "提出深度同步文本注入以对齐语义与空间姿态，并通过残差变换头直接预测3D几何位移实现场景变形，同时构建多目标损失函数保证几何精度与跨视图一致性。",
+    "result": "实验表明，VGGT-Edit在细节锐度、多视图一致性上显著优于2D提拉基线，且推理速度极快（近瞬时）。",
+    "conclusion": "提出了VGGT-Edit框架，实现了前馈式原生3D编辑，无需2D提拉，具有高保真和实时推理能力，有望推动交互式3D应用发展。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.15010v1",
+    "title": "3D Skew-Normal Splatting",
+    "authors": [
+      "Xiangru Wu",
+      "Ke Fan",
+      "Yanwei Fu"
+    ],
+    "abstract": "3D Gaussian Splatting (3DGS) has emerged as a leading representation for real-time novel view synthesis and been widely adopted in various downstream applications. The core strength of 3DGS lies in its efficient kernel-based scene representation, where Gaussian primitives provide favorable mathematical and computational properties. However, under a finite primitive budget, the symmetric shape of each primitive directly affects representation compactness, especially near asymmetric structures such as object boundaries and one-sided surfaces. Recent works have explored more complex kernel distributions, yet they either remain within the elliptical family or rely on hard truncation, which limits continuous shape control and introduces distributional discontinuities. In this paper, we propose Skew-Normal Splatting (SNS), which adopts the Azzalini Skew-Normal distribution as the fundamental primitive. By introducing a learnable and bounded skewness parameter, SNS can continuously interpolate between symmetric Gaussians and Half-Gaussian-like shapes, enabling flexible modeling of both sharp boundaries and interior regions. Moremover, SNS preserves analytical tractability under affine transformations and marginalization. This property allows seamless integration into existing Gaussian Splatting rasterization pipelines.Furthermore, to address the strong coupling between scale, rotation, and skewness parameters, we introduce a decoupled parameterization and a block-wise optimization strategy to enhance training stability and accuracy. Extensive experiments on standard novel-view synthesis benchmarks show that SNS consistently improves reconstruction quality over Gaussian and recent non-Gaussian kernels, with clearer benefits on sharp boundaries and thin or one-sided structures.",
+    "link": "http://arxiv.org/abs/2605.15010v1",
+    "published": "2026-05-14",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Skew-Normal Distribution",
+      "Novel View Synthesis",
+      "Neural Rendering",
+      "Compact Representation"
+    ],
+    "tldr": "提出3D偏态正态泼溅，采用偏态正态分布作为原语，通过可学习偏度参数实现对称与非对称形状的连续插值，提升新视图合成质量。",
+    "motivation": "3D高斯泼溅在有限原语预算下，对称高斯核难以紧凑表示不对称结构（如边界、单侧表面），现有扩展局限于椭圆分布或硬截断，缺乏连续形状控制。",
+    "method": "采用Azzalini偏态正态分布作为基本原语，引入可学习有界偏度参数，实现高斯到半高斯的连续插值；保持仿射变换和边缘化的解析性，无缝集成现有管线；提出解耦参数化和块优化策略解决参数耦合问题。",
+    "result": "在标准新视图合成基准上，SNS一致优于高斯核及最近的非高斯核方法，在尖锐边界、薄或单侧结构上质量提升显著。",
+    "conclusion": "SNS通过更灵活的核函数提升了表示紧凑性和重建质量，可无缝集成到现有高斯泼溅框架，具有广泛的应用潜力。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.14880v1",
+    "title": "Denoising-GS: Gaussian Splatting with Spatial-aware Denoising",
+    "authors": [
+      "Qingyuan Zhou",
+      "Xinyi Liu",
+      "Weidong Yang",
+      "Ning Wang",
+      "Shuquan Ye",
+      "Ben Fei",
+      "Ying He",
+      "Wanli Ouyang"
+    ],
+    "abstract": "Recent advances in 3D Gaussian Splatting (3DGS) have achieved remarkable success in high-fidelity Novel View Synthesis (NVS), yet the optimization process inevitably introduces noisy Gaussian primitives due to the sparse and incomplete initialization from Structure-from-Motion (SfM) point clouds. Most existing methods focus solely on adjusting the positions of primitives during optimization, while neglecting the underlying spatial structure. To this end, we introduce a new perspective by formulating the optimization of 3DGS as a primitive denoising process and propose Denoising-GS, a spatial-aware denoising framework for Gaussian primitives by taking both the positions and spatial structure into consideration. Specifically, we design an optimizer that preserves the spatial optimization flow of primitives, facilitating coherent and directed denoising rather than random perturbations. Building upon this, the Spatial Gradient-based Denoising strategy jointly considers the spatial supports of primitives to ensure gradient-consistent updates. Furthermore, the Uncertainty-based Denoising module estimates primitive-wise uncertainty to prune redundant or noisy primitives, while the Spatial Coherence Refinement strategy selectively splits primitives in sparse regions to maintain structural completeness. Experiments conducted on three benchmark datasets demonstrate that Denoising-GS consistently enhances NVS fidelity while maintaining representation compactness, achieving state-of-the-art performance across all benchmarks. Source code and models will be made publicly available.",
+    "link": "http://arxiv.org/abs/2605.14880v1",
+    "published": "2026-05-14",
+    "category": "cs.CV",
+    "tags": [
+      "3DGS",
+      "Denoising",
+      "Novel View Synthesis",
+      "Spatial-aware",
+      "Primitive Optimization"
+    ],
+    "tldr": "提出一种空间感知的去噪框架Denoising-GS，通过优化高斯原语的位置和空间结构提升新视角合成质量与紧凑性。",
+    "motivation": "3DGS优化中因稀疏初始化引入噪声原语，现有方法只调整位置而忽略空间结构，因此将优化视为去噪过程。",
+    "method": "设计保留空间优化流的优化器，结合空间梯度去噪策略保证梯度一致更新，不确定性去噪模块剪枝冗余原语，空间一致性细化策略在稀疏区域分裂原语以保持结构完整性。",
+    "result": "在三个基准数据集上一致提升新视角合成保真度和紧凑性，达到最先进性能。",
+    "conclusion": "提出去噪视角优化3DGS的新框架，有效减少噪声原语并保持结构，代码将开源，对高保真新视角合成有重要影响。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.14629v1",
+    "title": "Efficient Dense Matching for Enhanced Gaussian Splatting Using AV1 Motion Vectors",
+    "authors": [
+      "Julien Zouein",
+      "Vibhoothi Vibhoothi",
+      "François Pitié",
+      "Anil Kokaram"
+    ],
+    "abstract": "3D Gaussian Splatting (3DGS) has emerged as a prominent framework for real-time, photorealistic scene reconstruction, offering significant speed-ups over Neural Radiance Fields (NeRF). However, the fidelity of 3DGS representations remains heavily dependent on the quality of the initial point cloud. While standard Structure-from-Motion (SfM) pipelines using COLMAP provide adequate initialisation, they often suffer from high computational costs and sparsity in textureless regions, which degrades subsequent reconstruction accuracy and convergence speed. In this work, we introduce an AV1-based feature detection and matching pipeline that significantly reduces SfM processing overhead. By leveraging motion vectors inherent to the AV1 video codec, we bypass computationally expensive exhaustive matching while maintaining geometric robustness. Our pipeline produces substantially denser point clouds, with up to eight times as many points as classical SfM. We demonstrate that this enhanced initialisation directly improves 3DGS performance, yielding an 9-point increase in VMAF and a 63% average reduction in training time required to reach baseline quality. The project page: https://sigmedia.tv/AV1-3DGS.github.io/",
+    "link": "http://arxiv.org/abs/2605.14629v1",
+    "published": "2026-05-14",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "AV1",
+      "Motion Vectors",
+      "Dense Matching",
+      "SfM"
+    ],
+    "tldr": "利用AV1视频编码的运动向量实现高效密集匹配，提升3D高斯泼溅初始点云质量与训练速度。",
+    "motivation": "标准SfM方法计算成本高且在纹理稀疏区域产生稀疏点云，影响3DGS重建精度和收敛速度。",
+    "method": "提出基于AV1运动向量的特征检测与匹配流水线，替代传统穷举匹配，生成密集点云（点数量达传统SfM的8倍）。",
+    "result": "改进的初始化使3DGS的VMAF提升9点，训练时间平均减少63%以达到基线质量。",
+    "conclusion": "该方法显著降低SfM开销并提高点云密度，有效提升3DGS性能，具有实用价值。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.14615v1",
+    "title": "CalibAnyView: Beyond Single-View Camera Calibration in the Wild",
+    "authors": [
+      "Boying Li",
+      "Cheng Zhang",
+      "Weirong Chen",
+      "Daniel Cremers",
+      "Ian Reid",
+      "Hamid Rezatofighi"
+    ],
+    "abstract": "Camera calibration is a fundamental prerequisite for reliable geometric perception, yet classical approaches rely on controlled acquisition setups that are impractical for in-the-wild imagery. Recent learning-based methods have shown promising results for single-view calibration, but inherently neglect geometric consistency across multiple views. We introduce CalibAnyView, a unified formulation that supports an arbitrary number of input views ($N \\geq 1$) by explicitly modeling cross-view geometric consistency. To facilitate this, we construct a large-scale multi-view video dataset covering diverse real-world scenarios, including multiple camera models, dynamic scenes, realistic motion trajectories, and heterogeneous lens distortions. Building on this dataset, we develop a multi-view transformer that predicts dense perspective fields, which are further integrated into a geometric optimization framework to jointly estimate camera intrinsics and gravity direction. Extensive experiments demonstrate that CalibAnyView consistently outperforms state-of-the-art methods, achieves strong robustness under single-view settings, and further improves with multi-view inference, providing a reliable foundation for downstream tasks such as 3D reconstruction and robotic perception in the wild.",
+    "link": "http://arxiv.org/abs/2605.14615v1",
+    "published": "2026-05-14",
+    "category": "cs.CV",
+    "tags": [
+      "Camera Calibration",
+      "Multi-view",
+      "Transformer",
+      "Geometric Consistency",
+      "Wild Images"
+    ],
+    "tldr": "CalibAnyView提出统一公式支持任意数量输入视图的相机标定，通过多视图变压器和几何优化实现鲁棒标定。",
+    "motivation": "传统相机标定依赖受控采集，不适用于野外图像；现有单视图标定方法忽略多视图几何一致性，导致标定结果不稳定。",
+    "method": "构建大规模多视图视频数据集，覆盖多样场景；开发多视图变压器预测密集视角场，结合几何优化框架联合估计相机内参和重力方向。",
+    "result": "在单视图和多视图设定下均优于最先进方法，单视图鲁棒性强，多视图推理进一步提升精度，为下游任务提供可靠基础。",
+    "conclusion": "CalibAnyView通过显式建模跨视图几何一致性，实现了灵活且鲁棒的标定，对3D重建和机器人感知有重要应用价值。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.14525v1",
+    "title": "From Sparse to Dense: Spatio-Temporal Fusion for Multi-View 3D Human Pose Estimation with DenseWarper",
+    "authors": [
+      "Ling Li",
+      "Changjie Chen",
+      "Yuyan Wang",
+      "Jiaqing Lyu",
+      "Kenglun Chang",
+      "Yiyun Chen",
+      "Zhidong Deng"
+    ],
+    "abstract": "In multi-view 3D human pose estimation, models typically rely on images captured simultaneously from different camera views to predict a pose at a specific moment. While providing accurate spatial information, this traditional approach often overlooks the rich temporal dependencies between adjacent frames. We propose a novel 3D human pose estimation input method: the sparse interleaved input to address this. This method leverages images captured from different camera views at various time points (e.g., View 1 at time $t$ and View 2 at time $t+δ$), allowing our model to capture rich spatio-temporal information and effectively boost performance. More importantly, this approach offers two key advantages: First, it can theoretically increase the output pose frame rate by N times with N cameras, thereby breaking through single-view frame rate limitations and enhancing the temporal resolution of the production. Second, using a sparse subset of available frames, our method can reduce data redundancy and simultaneously achieve better performance. We introduce the DenseWarper model, which leverages epipolar geometry for efficient spatio-temporal heatmap exchange. We conducted extensive experiments on the Human3.6M and MPI-INF-3DHP datasets. Results demonstrate that our method, utilizing only sparse interleaved images as input, outperforms traditional dense multi-view input approaches and achieves state-of-the-art performance. The source code for this work is available at: https://github.com/lingli1724/DenseWarper-ICLR2026",
+    "link": "http://arxiv.org/abs/2605.14525v1",
+    "published": "2026-05-14",
+    "category": "cs.CV",
+    "tags": [
+      "3D Human Pose Estimation",
+      "Multi-View",
+      "Spatio-Temporal Fusion",
+      "DenseWarper"
+    ],
+    "tldr": "提出稀疏交错输入和DenseWarper模型，利用极线几何进行时空热力图融合，提升多视角3D人体姿态估计性能。",
+    "motivation": "传统多视角3D人体姿态估计仅利用同一时刻的多视角图像，忽略了相邻帧的时间依赖关系，且受限于单摄像头帧率。本文提出稀疏交错输入方法，以同时捕捉时空信息并提高时间分辨率。",
+    "method": "提出稀疏交错输入方法，使用不同视角在不同时刻的图像；设计DenseWarper模型，通过极线几何实现高效的时空热力图交换。",
+    "result": "在Human3.6M和MPI-INF-3DHP数据集上，仅使用稀疏交错输入即优于传统密集多视角方法，达到当前最优性能。",
+    "conclusion": "该方法理论上可将输出帧率提升N倍（N为相机数），减少数据冗余，并实现性能提升。代码已开源。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.14315v1",
+    "title": "TurboVGGT: Fast Visual Geometry Reconstruction with Adaptive Alternating Attention",
+    "authors": [
+      "David Huang",
+      "Guile Wu",
+      "Chengjie Huang",
+      "Bingbing Liu",
+      "Dongfeng Bai"
+    ],
+    "abstract": "Recent feed-forward 3D reconstruction methods, such as visual geometry transformers, have substantially advanced the traditional per-scene optimization paradigm by enabling effective multi-view reconstruction in a single forward pass. However, most existing methods struggle to achieve a balance between reconstruction quality and computational efficiency, which limits their scalability and efficiency. Although some efficient visual geometry transformers have recently emerged, they typically use the same sparsity ratio across layers and frames and lack mechanisms to adaptively learn representative tokens to capture global relationships, leading to suboptimal performance. In this work, we propose TurboVGGT, a novel approach that employs an efficient visual geometry transformer with adaptive alternating attention for fast multi-view 3D reconstruction. Specifically, TurboVGGT employs an end-to-end trainable framework with adaptive sparse global attention guided by adaptive sparsity selection to capture global relationships across frames and frame attention to aggregate local details within each frame. In the adaptive sparse global attention, TurboVGGT adaptively learns representative tokens with varying sparsity levels for global geometry modeling, considering that token importance varies across frames, attention layers operate tokens at different levels of abstraction, and global dependencies rely on structurally informative regions. Extensive experiments on multiple 3D reconstruction benchmarks demonstrate that TurboVGGT achieves fast multi-view reconstruction while maintaining competitive reconstruction quality compared with state-of-the-art methods. Project page: https://turbovggt.github.io/.",
+    "link": "http://arxiv.org/abs/2605.14315v1",
+    "published": "2026-05-14",
+    "category": "cs.CV",
+    "tags": [
+      "Visual Geometry Reconstruction",
+      "Transformer",
+      "Adaptive Attention",
+      "Multi-view 3D",
+      "Efficiency"
+    ],
+    "tldr": "提出 TurboVGGT，采用自适应交替注意力机制实现快速且高质量的多视图三维重建。",
+    "motivation": "现有前馈3D重建方法在重建质量与计算效率之间难以平衡，且缺乏自适应学习代表性令牌的能力，导致性能次优。",
+    "method": "使用端到端可训练框架，包含自适应稀疏全局注意力（通过自适应稀疏选择学习不同稀疏度的代表性令牌以捕捉全局关系）和帧注意力（聚合帧内局部细节）。",
+    "result": "在多个3D重建基准上实现快速多视图重建，重建质量与最先进方法相当，具体量化指标未提供。",
+    "conclusion": "提出一种高效视觉几何变换器，平衡了重建质量与效率，具有可扩展性和实际应用潜力。"
+  },
+  {
     "id": "http://arxiv.org/abs/2605.13794v1",
     "title": "BlitzGS: City-Scale Gaussian Splatting at Lightning Speed",
     "authors": [
