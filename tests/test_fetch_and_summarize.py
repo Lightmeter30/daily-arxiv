@@ -48,6 +48,18 @@ class FetchAndSummarizeTests(unittest.TestCase):
 
         self.assertIn("submittedDate:[202605150000 TO 202605160000]", query)
 
+    def test_arxiv_search_query_uses_explicit_all_field_for_keywords(self):
+        os.environ.setdefault("DEEPSEEK_API_KEY", "test-key")
+        module = load_module()
+
+        lower = datetime.datetime(2026, 5, 15, tzinfo=datetime.timezone.utc)
+        upper = datetime.datetime(2026, 5, 16, tzinfo=datetime.timezone.utc)
+
+        query = module.build_arxiv_search_query(lower, upper)
+
+        self.assertIn('all:"Gaussian Splatting"', query)
+        self.assertNotIn(' OR "Gaussian Splatting"', query)
+
     def test_target_windows_cover_previous_three_utc_days(self):
         os.environ.setdefault("DEEPSEEK_API_KEY", "test-key")
         module = load_module()
@@ -72,6 +84,15 @@ class FetchAndSummarizeTests(unittest.TestCase):
             ],
             windows,
         )
+
+    def test_arxiv_http_errors_are_retryable(self):
+        os.environ.setdefault("DEEPSEEK_API_KEY", "test-key")
+        module = load_module()
+
+        self.assertTrue(module.is_retryable_arxiv_error(Exception("HTTP 429")))
+        self.assertTrue(module.is_retryable_arxiv_error(Exception("HTTP 500")))
+        self.assertTrue(module.is_retryable_arxiv_error(Exception("HTTP 503")))
+        self.assertFalse(module.is_retryable_arxiv_error(Exception("HTTP 406")))
 
 
 if __name__ == "__main__":

@@ -53,13 +53,17 @@ def format_arxiv_datetime(dt: datetime.datetime) -> str:
     return dt.astimezone(tz.tzutc()).strftime("%Y%m%d%H%M")
 
 def build_arxiv_search_query(lower_bound: datetime.datetime, upper_bound: datetime.datetime) -> str:
-    keyword_query = " OR ".join([f'"{k}"' for k in KEYWORDS])
+    keyword_query = " OR ".join([f'all:"{k}"' for k in KEYWORDS])
     category_query = " OR ".join([f"cat:{c}" for c in CATEGORIES])
     date_query = (
         f"submittedDate:[{format_arxiv_datetime(lower_bound)} "
         f"TO {format_arxiv_datetime(upper_bound)}]"
     )
     return f"({keyword_query}) AND ({category_query}) AND {date_query}"
+
+def is_retryable_arxiv_error(error: Exception) -> bool:
+    err_str = str(error)
+    return any(code in err_str for code in ("429", "500", "503")) or "rate" in err_str.lower()
 
 def get_target_windows(now_utc: datetime.datetime | None = None) -> List[tuple[datetime.datetime, datetime.datetime]]:
     """Return daily UTC windows ending at today's midnight."""
@@ -132,8 +136,7 @@ def get_papers() -> List[Dict]:
                     })
                 break
             except Exception as e:
-                err_str = str(e)
-                if "429" in err_str or "503" in err_str or "rate" in err_str.lower():
+                if is_retryable_arxiv_error(e):
                     jitter = random.uniform(0.5, 1.5)
                     wait_time = base_delay * (2 ** attempt) * jitter
                     print(f"Arxiv 限流/不可用，等待 {wait_time:.0f}s（第 {attempt + 1}/{max_retries} 次重试）...")
