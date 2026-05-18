@@ -37,6 +37,7 @@ KEYWORDS = _parse_list(
 CATEGORIES = _parse_list("ARXIV_CATEGORIES", "cs.CV,cs.AI")
 MAX_DAYS = _parse_int("ARXIV_MAX_DAYS", 7)
 MAX_PAPERS_PER_RUN = _parse_int("ARXIV_MAX_PAPERS_PER_RUN", 40)
+FETCH_DAYS = _parse_int("ARXIV_FETCH_DAYS", 3)
 BACKFILL_LIMIT = _parse_int("ARXIV_BACKFILL_LIMIT", 20)
 MODEL_ID = os.getenv("DEEPSEEK_MODEL") or "deepseek-v4-flash"
 
@@ -45,74 +46,103 @@ DATA_FILE = "docs/data.json"
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url="https://api.deepseek.com")
 
+def format_arxiv_datetime(dt: datetime.datetime) -> str:
+    """Format a UTC datetime for arxiv submittedDate range queries."""
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=tz.tzutc())
+    return dt.astimezone(tz.tzutc()).strftime("%Y%m%d%H%M")
+
+def build_arxiv_search_query(lower_bound: datetime.datetime, upper_bound: datetime.datetime) -> str:
+    keyword_query = " OR ".join([f'"{k}"' for k in KEYWORDS])
+    category_query = " OR ".join([f"cat:{c}" for c in CATEGORIES])
+    date_query = (
+        f"submittedDate:[{format_arxiv_datetime(lower_bound)} "
+        f"TO {format_arxiv_datetime(upper_bound)}]"
+    )
+    return f"({keyword_query}) AND ({category_query}) AND {date_query}"
+
+def get_target_windows(now_utc: datetime.datetime | None = None) -> List[tuple[datetime.datetime, datetime.datetime]]:
+    """Return daily UTC windows ending at today's midnight."""
+    if now_utc is None:
+        now_utc = datetime.datetime.now(tz.tzutc())
+    if now_utc.tzinfo is None:
+        now_utc = now_utc.replace(tzinfo=tz.tzutc())
+    today_start = now_utc.astimezone(tz.tzutc()).replace(hour=0, minute=0, second=0, microsecond=0)
+    fetch_days = max(1, FETCH_DAYS)
+    return [
+        (today_start - datetime.timedelta(days=i), today_start - datetime.timedelta(days=i - 1))
+        for i in range(fetch_days, 0, -1)
+    ]
+
 def get_papers() -> List[Dict]:
-    """Fetch arxiv papers published on the previous UTC day.
+    """Fetch arxiv papers published in recent UTC day windows.
 
-    Pages through results (sorted by submitted date, newest first) and
-    stops once we cross the lower bound, so we do not miss any papers
-    that match the KEYWORDS within the target day.
+    The submittedDate range is pushed into the arxiv query. Fetching the
+    newest MAX_PAPERS_PER_RUN first and filtering locally can miss the
+    intended day when many newer papers already exist. Multiple day windows
+    make the daily job resilient to missed runs and weekend/no-release days.
     """
-    query = " OR ".join([f'"{k}"' for k in KEYWORDS])
-    search_query = f"({query}) AND (" + " OR ".join([f"cat:{c}" for c in CATEGORIES]) + ")"
-
-    arxiv_client = arxiv.Client(
-        page_size=50,
-        delay_seconds=5,
-        num_retries=5
-    )
-
-    search = arxiv.Search(
-        query=search_query,
-        max_results=MAX_PAPERS_PER_RUN,
-        sort_by=arxiv.SortCriterion.SubmittedDate
-    )
-
-    now_utc = datetime.datetime.now(tz.tzutc())
-    today_start = now_utc.replace(hour=0, minute=0, second=0, microsecond=0)
-    upper_bound = today_start
-    lower_bound = today_start - datetime.timedelta(days=1)
-    print(f"Searching arxiv for papers published in [{lower_bound.isoformat()} , {upper_bound.isoformat()})")
+    import random
 
     results = []
     seen_ids = set()
 
-    max_retries = 5
-    base_delay = 10
+    max_retries = 8
+    base_delay = 15
 
-    for attempt in range(max_retries):
-        try:
-            for result in arxiv_client.results(search):
-                published = result.published
-                if published >= upper_bound:
-                    continue
-                if published < lower_bound:
-                    break
-                if result.entry_id in seen_ids:
-                    continue
-                seen_ids.add(result.entry_id)
+    for lower_bound, upper_bound in get_target_windows():
+        print(f"Searching arxiv for papers published in [{lower_bound.isoformat()} , {upper_bound.isoformat()})")
+        search_query = build_arxiv_search_query(lower_bound, upper_bound)
+        print(f"Arxiv search query: {search_query}")
 
-                paper_cats = [c for c in result.categories if c in CATEGORIES]
-                category = paper_cats[0] if paper_cats else "Unknown"
-                results.append({
-                    "id": result.entry_id,
-                    "title": result.title,
-                    "authors": [a.name for a in result.authors],
-                    "abstract": result.summary,
-                    "link": result.entry_id,
-                    "published": published.strftime("%Y-%m-%d"),
-                    "category": category
-                })
-            break
-        except Exception as e:
-            if "429" in str(e) or "rate" in str(e).lower():
-                wait_time = base_delay * (2 ** attempt)
-                print(f"Arxiv 限流，等待 {wait_time}s（第 {attempt + 1}/{max_retries} 次重试）...")
-                time.sleep(wait_time)
-            else:
-                print(f"Error fetching from Arxiv: {e}")
+        for attempt in range(max_retries):
+            arxiv_client = arxiv.Client(
+                page_size=50,
+                delay_seconds=5,
+                num_retries=0
+            )
+
+            search = arxiv.Search(
+                query=search_query,
+                max_results=MAX_PAPERS_PER_RUN,
+                sort_by=arxiv.SortCriterion.SubmittedDate
+            )
+
+            try:
+                for result in arxiv_client.results(search):
+                    published = result.published
+                    if published >= upper_bound:
+                        continue
+                    if published < lower_bound:
+                        continue
+                    if result.entry_id in seen_ids:
+                        continue
+                    seen_ids.add(result.entry_id)
+
+                    paper_cats = [c for c in result.categories if c in CATEGORIES]
+                    category = paper_cats[0] if paper_cats else "Unknown"
+                    results.append({
+                        "id": result.entry_id,
+                        "title": result.title,
+                        "authors": [a.name for a in result.authors],
+                        "abstract": result.summary,
+                        "link": result.entry_id,
+                        "published": published.strftime("%Y-%m-%d"),
+                        "category": category
+                    })
                 break
-    else:
-        print(f"Arxiv 请求失败，已重试 {max_retries} 次。")
+            except Exception as e:
+                err_str = str(e)
+                if "429" in err_str or "503" in err_str or "rate" in err_str.lower():
+                    jitter = random.uniform(0.5, 1.5)
+                    wait_time = base_delay * (2 ** attempt) * jitter
+                    print(f"Arxiv 限流/不可用，等待 {wait_time:.0f}s（第 {attempt + 1}/{max_retries} 次重试）...")
+                    time.sleep(wait_time)
+                else:
+                    print(f"Error fetching from Arxiv: {e}")
+                    break
+        else:
+            print(f"Arxiv 请求失败，已重试 {max_retries} 次。")
 
     return results
 
@@ -125,15 +155,27 @@ def backfill_categories(data: List[Dict]) -> List[Dict]:
     print(f"Backfilling categories for {len(stale)} existing papers...")
     ids = [p["id"].split("/abs/")[-1] for p in stale]
 
-    ac = arxiv.Client(page_size=len(ids), delay_seconds=3, num_retries=3)
+    import random
+
     id_to_cat = {}
-    try:
-        for result in ac.results(arxiv.Search(id_list=ids)):
-            paper_cats = [c for c in result.categories if c in CATEGORIES]
-            id_to_cat[result.entry_id] = paper_cats[0] if paper_cats else "Unknown"
-    except Exception as e:
-        print(f"Error backfilling categories: {e}")
-        return data
+    for attempt in range(3):
+        ac = arxiv.Client(page_size=len(ids), delay_seconds=5, num_retries=0)
+        try:
+            for result in ac.results(arxiv.Search(id_list=ids)):
+                paper_cats = [c for c in result.categories if c in CATEGORIES]
+                id_to_cat[result.entry_id] = paper_cats[0] if paper_cats else "Unknown"
+            break
+        except Exception as e:
+            err_str = str(e)
+            if "429" in err_str or "503" in err_str:
+                wait = 10 * (2 ** attempt) * random.uniform(0.5, 1.5)
+                print(f"Category backfill rate limited, waiting {wait:.0f}s...")
+                time.sleep(wait)
+            else:
+                print(f"Error backfilling categories: {e}")
+                return data
+    else:
+        print(f"Category backfill failed after {3} attempts.")
 
     for p in data:
         if p.get("category", "Unknown") == "Unknown":

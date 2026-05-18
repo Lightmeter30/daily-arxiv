@@ -2,7 +2,7 @@ name: Daily Arxiv Update
 
 on:
   schedule:
-    - cron: '0 0 * * *' # 08:00 AM UTC+8
+    - cron: '37 0 * * *'  # 08:37 AM UTC+8，避开整点高峰
   workflow_dispatch: # Allow manual trigger
 
 jobs:
@@ -31,6 +31,7 @@ jobs:
           ARXIV_CATEGORIES: ${{ vars.ARXIV_CATEGORIES || '' }}
           ARXIV_MAX_DAYS: ${{ vars.ARXIV_MAX_DAYS || '7' }}
           ARXIV_MAX_PAPERS_PER_RUN: ${{ vars.ARXIV_MAX_PAPERS_PER_RUN || '40' }}
+          ARXIV_FETCH_DAYS: ${{ vars.ARXIV_FETCH_DAYS || '3' }}
           ARXIV_BACKFILL_LIMIT: ${{ vars.ARXIV_BACKFILL_LIMIT || '20' }}
           DEEPSEEK_MODEL: ${{ vars.DEEPSEEK_MODEL || 'deepseek-v4-flash' }}
         run: |
