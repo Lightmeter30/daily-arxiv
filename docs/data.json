@@ -240,6 +240,135 @@
     "conclusion": "成功弥合了单图像到物理合理视频的差距，提出了一种高效且无需训练的框架，具有潜在影响。"
   },
   {
+    "id": "https://arxiv.org/abs/2605.16065",
+    "title": "Robust Prior-Guided Segmentation for Editable 3D Gaussian Splatting",
+    "authors": [
+      "Joshi, Raushan",
+      "Guillemaut, Jean-Yves"
+    ],
+    "abstract": "3D Gaussian Splatting (3D-GS) enables real-time 3D scene reconstruction but lacks robust segmentation for editing tasks such as object removal, extraction, and recoloring. Existing approaches that lift 2D segmentations to the 3D domain suffer from view inconsistencies and coarse masks. In this paper, we propose a novel framework that leverages the Segment Anything Model High Quality (SAM-HQ) to generate accurate 2D masks, addressing the limitations of the standard SAM in boundary fidelity and fine-structure preservation. To achieve robust 3D segmentation of any target object in a given scene, we introduce a prior-guided label reassignment method that assigns labels to 3D Gaussians by enforcing multiview consistency with learned priors. Our approach achieves state-of-the-art segmentation accuracy and enables interactive, real-time object editing while maintaining high visual fidelity. Qualitative results demonstrate superior boundary preservation and practical utility in Virtual Reality (VR) and robotics, advancing 3D scene editing.",
+    "link": "https://arxiv.org/abs/2605.16065",
+    "published": "2026-05-15",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Segmentation",
+      "SAM-HQ",
+      "Prior-Guided",
+      "Editing"
+    ],
+    "tldr": "提出基于SAM-HQ和先验引导标签重分配的3D高斯分割框架，实现实时可编辑的3D场景编辑。",
+    "motivation": "现有3D高斯泼溅缺乏鲁棒分割，2D分割提升到3D时存在视图不一致和粗糙掩码问题。",
+    "method": "利用SAM-HQ生成精确2D掩码，并提出先验引导标签重分配方法，通过学习先验强制多视图一致性来为3D高斯分配标签。",
+    "result": "达到了最先进的分割精度，实现了交互式实时对象编辑，保持高视觉保真度。",
+    "conclusion": "定性和定量结果展示了优越的边界保持，在VR和机器人领域有实际应用价值，推进了3D场景编辑。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2605.16022",
+    "title": "EndoGSim: Physics-Aware 4D Dynamic Endoscopic Scene Simulations via MLLM-Guided Gaussian Splatting",
+    "authors": [
+      "Liu, Changjing",
+      "Huang, Yiming",
+      "Bai, Long",
+      "Cui, Beilei",
+      "Ren, Hongliang"
+    ],
+    "abstract": "In robot-assisted minimally invasive surgery, high-fidelity dynamic endoscopic scene reconstruction and simulation are crucial to enhancing downstream tasks and advancing surgical outcomes. However, existing methods primarily focus on visual reconstruction, lacking physics-based descriptions of the scene required for realistic simulation. We propose a unified framework that achieves physics-aware reconstruction and physical simulation of endoscopic scenes through Multi-modal Large Language Models (MLLMs)-guided Gaussian Splatting. Our approach utilizes 4D Gaussian Splatting (4DGS) integrated with pre-trained segmentation and depth estimation to represent deformable tissues and tools. To achieve automatic inference of physical properties, we introduce an object-wise material field that initializes material parameters via MLLM and refines them through a differentiable Material Point Method (MPM) under joint supervision from rendered images and optical flow. Validated on both open-source and in-house datasets, our framework achieves superior simulation fidelity and physical accuracy compared to state-of-the-art methods, underscoring its potential to advance robot-assisted surgical applications.",
+    "link": "https://arxiv.org/abs/2605.16022",
+    "published": "2026-05-15",
+    "category": "cs.CV",
+    "tags": [
+      "Surgical Simulation",
+      "4D Gaussian Splatting",
+      "MLLM",
+      "Material Point Method",
+      "Endoscopic Scene"
+    ],
+    "tldr": "提出物理感知的4D动态内窥镜场景仿真框架，通过MLLM引导的高斯泼溅实现。",
+    "motivation": "现有方法主要关注视觉重建，缺乏基于物理的场景描述，无法满足逼真仿真的需求。",
+    "method": "结合4D高斯泼溅与预训练分割和深度估计表示变形组织与工具；通过MLLM初始化材料参数，并利用可微物质点法在渲染图像和光流联合监督下优化。",
+    "result": "在公开和内部数据集上，所提框架在仿真逼真度和物理准确性上均优于现有最先进方法。",
+    "conclusion": "该框架有望推进机器人辅助手术应用，提升下游任务性能。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2605.15852",
+    "title": "GHOST: Geometry-Hierarchical Online Streaming Token Eviction for Efficient 3D Reconstruction",
+    "authors": [
+      "Chen, Leyang",
+      "Wu, Junyi",
+      "Li, Zhiteng",
+      "Zhang, Yulun"
+    ],
+    "abstract": "Streaming 3D reconstruction from long monocular video sequences requires maintaining a key-value (KV) cache that grows linearly with sequence length, creating a severe memory bottleneck. Existing approaches either truncate the cache to a fixed set of anchor frames, leading to reconstruction quality degradation, or rely on attention-score heuristics that are agnostic to 3D scene structure, failing to preserve geometrically valuable tokens. To address these problems, we present GHOST (Geometry-Hierarchical Online Streaming Token Eviction), a training-free KV cache management framework that exploits the model's own 3D geometry outputs to evict redundant tokens online. GHOST introduces three mutually reinforcing innovations: a hierarchical dual-level importance scoring scheme, a privilege mechanism that protects special tokens from eviction, and a cosine-similarity-guided layer-wise budget allocation. Experiments on various benchmarks show that GHOST preserves excellent reconstruction quality while cutting the KV cache by nearly half and delivering 1.75x faster inference compared to state-of-the-art methods. Our code is available at this https URL .",
+    "link": "https://arxiv.org/abs/2605.15852",
+    "published": "2026-05-15",
+    "category": "cs.CV",
+    "tags": [
+      "3D Reconstruction",
+      "KV Cache",
+      "Token Eviction",
+      "Streaming",
+      "Online"
+    ],
+    "tldr": "GHOST利用几何层次在线流式令牌驱逐，无需训练即可将KV缓存减半并实现1.75倍加速。",
+    "motivation": "从长单目视频序列进行流式3D重建时，KV缓存线性增长导致内存瓶颈；现有方法截断缓存或使用忽略3D结构的注意力启发式，导致质量下降。",
+    "method": "提出训练无关的KV缓存管理框架GHOST，利用模型自身的3D几何输出在线驱逐冗余令牌，包含层级双重要性评分、特权机制保护特殊令牌和余弦相似度引导的层预算分配。",
+    "result": "在多个基准测试上，GHOST保持优异重建质量，同时将KV缓存减少近一半，推理速度比最先进方法快1.75倍。",
+    "conclusion": "GHOST提供了一种高效且高质量的流式3D重建方案，解决了内存瓶颈，代码已开源。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2605.15728",
+    "title": "DecomPose: Disentangling Cross-Category Optimization Contention for Category-Level 6D Object Pose Estimation",
+    "authors": [
+      "Gao, Yifan",
+      "Zou, Lu",
+      "Huang, Zhangjin",
+      "Wang, Guoping"
+    ],
+    "abstract": "Category-level 6D object pose estimation is typically formulated as a multi-category joint learning problem with fully shared model parameters. However, pronounced geometric heterogeneity across categories entangles incompatible optimization signals in shared modules, resulting in gradient conflicts and negative transfer during training. To address this challenge, we first introduce gradient-based diagnostics to quantify module-level cross-category contention. Building on results of diagnostics, we propose DecomPose, a difficulty-aware decomposition framework that mitigates optimization contention via: (1) difficulty-aware gradient decoupling, which groups categories using a data-driven difficulty proxy and routes each instance to a group-specific correspondence branch to isolate incompatible updates; and (2) stability-driven asymmetric branching, which assigns higher-capacity branches to structurally simple categories as stable optimization anchors while constraining complex categories with lightweight branches to suppress noisy updates and alleviate negative transfer. Extensive experiments on REAL275, CAMERA25, and HouseCat6D demonstrate that DecomPose effectively reduces cross-category optimization contention and delivers superior pose estimation performance across multiple benchmarks.",
+    "link": "https://arxiv.org/abs/2605.15728",
+    "published": "2026-05-15",
+    "category": "cs.CV",
+    "tags": [
+      "6D pose estimation",
+      "category-level",
+      "gradient decoupling",
+      "negative transfer",
+      "optimization contention"
+    ],
+    "tldr": "提出DecomPose框架，通过难度感知梯度解耦和非对称分支缓解跨类别优化冲突，提升多类别6D姿态估计性能。",
+    "motivation": "类别级6D物体姿态估计中，不同类别的几何异质性导致共享模块的优化信号冲突，引发梯度冲突和负迁移，影响训练效果。",
+    "method": "引入基于梯度的诊断量化模块级冲突，提出DecomPose框架：1) 难度感知梯度解耦，按数据驱动难度分组并路由到组特定对应分支；2) 稳定性驱动非对称分支，简单类别用高容量分支作为稳定锚点，复杂类别用轻量分支抑制噪声。",
+    "result": "在REAL275、CAMERA25和HouseCat6D数据集上，DecomPose有效减少跨类别优化冲突，在多个基准上取得优越的位姿估计性能。",
+    "conclusion": "提出了一种解决多类别优化冲突的分解框架，显著缓解了负迁移，提升了类别级6D物体姿态估计的准确性和鲁棒性。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2605.15583",
+    "title": "Unsupervised 3D Human Pose Estimation via Conditional Multi-view Ancestral Sampling",
+    "authors": [
+      "Goto, Ryohei",
+      "Fujihashi, Takuya",
+      "Saruwatari, Shunsuke",
+      "Okura, Fumio"
+    ],
+    "abstract": "We propose a method of estimating a 3D human pose from a single view without 3D supervision. The key to our method is to leverage the 2D diffusion priors of motion diffusion models (MDMs) pre-trained on large 2D human pose datasets. Specifically, we extend multi-view ancestral sampling of diffusion models to the task of 2D-3D lifting of human pose. To this end, we newly propose a conditional multi-view ancestral sampling (cMAS) that optimizes the 3D pose such that its multi-view projections follow the manifold in 2D MDM noise space, while conditioning the 3D pose to match the given 2D poses and anatomical constraints of humans. Experiments on the Yoga dataset demonstrate that our method achieves better cross-domain performance compared to state-of-the-art supervised and unsupervised 3D pose estimation methods, including extreme human poses where 3D supervision is unavailable. Code is available at: this https URL .",
+    "link": "https://arxiv.org/abs/2605.15583",
+    "published": "2026-05-15",
+    "category": "cs.CV",
+    "tags": [
+      "Unsupervised Learning",
+      "3D Human Pose Estimation",
+      "Diffusion Model",
+      "Multi-view",
+      "Ancestral Sampling"
+    ],
+    "tldr": "提出一种利用2D扩散先验的无需3D监督的单视图3D人体姿态估计方法，通过条件多视图祖先采样实现。",
+    "motivation": "解决缺乏3D监督数据的3D人体姿态估计问题，尤其是跨域和极端姿态场景。",
+    "method": "利用预训练的运动扩散模型（MDMs）的2D扩散先验，提出条件多视图祖先采样（cMAS），优化3D姿态使其多视图投影符合2D MDM噪声流形，同时满足2D姿态匹配和解剖约束。",
+    "result": "在Yoga数据集上，与现有监督和无监督方法相比，实现了更好的跨域性能，尤其在3D监督不可用的极端姿态上。",
+    "conclusion": "提出一种无监督3D姿态估计新范式，利用2D扩散先验避免3D标注，具有跨域泛化能力。"
+  },
+  {
     "id": "http://arxiv.org/abs/2605.15195v1",
     "title": "VGGT-$Ω$",
     "authors": [
