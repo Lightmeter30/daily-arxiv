@@ -4,6 +4,9 @@ import json
 import os
 import datetime
 import time
+import html
+import re
+import urllib.request
 from dateutil import tz
 from typing import List, Dict
 from dotenv import load_dotenv
@@ -42,6 +45,7 @@ BACKFILL_LIMIT = _parse_int("ARXIV_BACKFILL_LIMIT", 20)
 MODEL_ID = os.getenv("DEEPSEEK_MODEL") or "deepseek-v4-flash"
 
 DATA_FILE = "docs/data.json"
+ARXIV_USER_AGENT = os.getenv("ARXIV_USER_AGENT") or "daily-arxiv/1.0"
 
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url="https://api.deepseek.com")
@@ -64,6 +68,110 @@ def build_arxiv_search_query(lower_bound: datetime.datetime, upper_bound: dateti
 def is_retryable_arxiv_error(error: Exception) -> bool:
     err_str = str(error)
     return any(code in err_str for code in ("429", "500", "503")) or "rate" in err_str.lower()
+
+def clean_html_text(value: str) -> str:
+    text = re.sub(r"<[^>]+>", " ", value)
+    return " ".join(html.unescape(text).split())
+
+def matches_keywords(title: str, abstract: str) -> bool:
+    haystack = f"{title} {abstract}".lower()
+    return any(keyword.lower() in haystack for keyword in KEYWORDS)
+
+def parse_abs_page(arxiv_id: str, page_html: str) -> Dict:
+    title_match = re.search(r'<h1 class="title[^"]*">\s*<span class="descriptor">Title:</span>(.*?)</h1>', page_html, re.S)
+    abstract_match = re.search(r'<blockquote class="abstract[^"]*">\s*<span class="descriptor">Abstract:</span>(.*?)</blockquote>', page_html, re.S)
+    date_match = re.search(r"\[Submitted on (\d{1,2} \w+ \d{4})", page_html)
+    subject_match = re.search(r"\((cs\.[A-Z]+)\)", page_html)
+    authors = re.findall(r'<meta name="citation_author" content="([^"]+)"', page_html)
+
+    if not title_match or not abstract_match or not date_match:
+        raise ValueError(f"Could not parse arxiv abs page for {arxiv_id}")
+
+    submitted = datetime.datetime.strptime(date_match.group(1), "%d %b %Y").date()
+    category = subject_match.group(1) if subject_match and subject_match.group(1) in CATEGORIES else "Unknown"
+
+    return {
+        "id": f"https://arxiv.org/abs/{arxiv_id}",
+        "title": clean_html_text(title_match.group(1)),
+        "authors": [html.unescape(author) for author in authors],
+        "abstract": clean_html_text(abstract_match.group(1)),
+        "link": f"https://arxiv.org/abs/{arxiv_id}",
+        "published": submitted.strftime("%Y-%m-%d"),
+        "category": category,
+    }
+
+def parse_list_page_candidates(page_html: str) -> List[Dict]:
+    candidates = []
+    current_date = None
+    parts = re.split(r"(<h3>.*?</h3>)", page_html, flags=re.S)
+    for part in parts:
+        date_match = re.search(r"<h3>\w+,\s+(\d{1,2} \w+ \d{4})", part)
+        if date_match:
+            current_date = datetime.datetime.strptime(date_match.group(1), "%d %b %Y").date().strftime("%Y-%m-%d")
+            continue
+        if not current_date:
+            continue
+
+        for item_match in re.finditer(r'<dt>.*?id="([^"]+)".*?</dt>\s*<dd>.*?<div class=\'list-title mathjax\'><span class=\'descriptor\'>Title:</span>(.*?)</div>', part, re.S):
+            candidates.append({
+                "id": item_match.group(1).split("v")[0],
+                "title": clean_html_text(item_match.group(2)),
+                "published": current_date,
+            })
+    return candidates
+
+def fetch_url(url: str) -> str:
+    request = urllib.request.Request(url, headers={"User-Agent": ARXIV_USER_AGENT})
+    with urllib.request.urlopen(request, timeout=30) as response:
+        return response.read().decode("utf-8", errors="replace")
+
+def get_papers_from_html_fallback() -> List[Dict]:
+    print("Falling back to arxiv.org HTML pages because export.arxiv.org is unavailable.")
+    windows = get_target_windows()
+    lower_bound = min(window[0] for window in windows).date()
+    upper_bound = max(window[1] for window in windows).date()
+    candidates = []
+    seen_ids = set()
+
+    for category in CATEGORIES:
+        url = f"https://arxiv.org/list/{category}/pastweek?skip=0&show=500"
+        try:
+            page_html = fetch_url(url)
+        except Exception as e:
+            print(f"Error fetching HTML list page {url}: {e}")
+            continue
+
+        for candidate in parse_list_page_candidates(page_html):
+            arxiv_id = candidate["id"]
+            if arxiv_id in seen_ids:
+                continue
+            published = datetime.datetime.strptime(candidate["published"], "%Y-%m-%d").date()
+            if not (lower_bound <= published < upper_bound):
+                continue
+            if not matches_keywords(candidate["title"], ""):
+                continue
+            seen_ids.add(arxiv_id)
+            candidates.append(candidate)
+
+    print(f"HTML fallback found {len(candidates)} title-matched candidate ids.")
+    papers = []
+    for candidate in candidates:
+        if len(papers) >= MAX_PAPERS_PER_RUN:
+            break
+        arxiv_id = candidate["id"]
+        try:
+            paper = parse_abs_page(arxiv_id, fetch_url(f"https://arxiv.org/abs/{arxiv_id}"))
+        except Exception as e:
+            print(f"Error parsing HTML abs page for {arxiv_id}: {e}")
+            continue
+
+        if paper["category"] not in CATEGORIES:
+            continue
+        papers.append(paper)
+        time.sleep(1)
+
+    print(f"HTML fallback matched {len(papers)} papers.")
+    return papers
 
 def get_target_windows(now_utc: datetime.datetime | None = None) -> List[tuple[datetime.datetime, datetime.datetime]]:
     """Return daily UTC windows ending at today's midnight."""
@@ -91,8 +199,8 @@ def get_papers() -> List[Dict]:
     results = []
     seen_ids = set()
 
-    max_retries = 8
-    base_delay = 15
+    max_retries = 1
+    base_delay = 10
 
     for lower_bound, upper_bound in get_target_windows():
         print(f"Searching arxiv for papers published in [{lower_bound.isoformat()} , {upper_bound.isoformat()})")
@@ -137,15 +245,21 @@ def get_papers() -> List[Dict]:
                 break
             except Exception as e:
                 if is_retryable_arxiv_error(e):
-                    jitter = random.uniform(0.5, 1.5)
-                    wait_time = base_delay * (2 ** attempt) * jitter
-                    print(f"Arxiv 限流/不可用，等待 {wait_time:.0f}s（第 {attempt + 1}/{max_retries} 次重试）...")
-                    time.sleep(wait_time)
+                    if attempt + 1 < max_retries:
+                        jitter = random.uniform(0.5, 1.5)
+                        wait_time = base_delay * (2 ** attempt) * jitter
+                        print(f"Arxiv 限流/不可用，等待 {wait_time:.0f}s（第 {attempt + 1}/{max_retries} 次重试）...")
+                        time.sleep(wait_time)
+                    else:
+                        print("export.arxiv.org is rate limited or unavailable; switching to HTML fallback.")
                 else:
                     print(f"Error fetching from Arxiv: {e}")
                     break
         else:
             print(f"Arxiv 请求失败，已重试 {max_retries} 次。")
+
+    if not results:
+        results = get_papers_from_html_fallback()
 
     return results
 

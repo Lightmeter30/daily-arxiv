@@ -94,6 +94,68 @@ class FetchAndSummarizeTests(unittest.TestCase):
         self.assertTrue(module.is_retryable_arxiv_error(Exception("HTTP 503")))
         self.assertFalse(module.is_retryable_arxiv_error(Exception("HTTP 406")))
 
+    def test_parse_abs_page_extracts_paper_metadata(self):
+        os.environ.setdefault("DEEPSEEK_API_KEY", "test-key")
+        module = load_module()
+        html = """
+        <meta name="citation_author" content="Ada Lovelace" />
+        <meta name="citation_author" content="Grace Hopper" />
+        <div class="dateline">[Submitted on 15 May 2026]</div>
+        <h1 class="title mathjax"><span class="descriptor">Title:</span>Robust Gaussian Splatting for SLAM</h1>
+        <blockquote class="abstract mathjax">
+          <span class="descriptor">Abstract:</span>This paper studies Gaussian Splatting for robust SLAM.
+        </blockquote>
+        <td class="tablecell subjects">
+          <span class="primary-subject">Computer Vision and Pattern Recognition (cs.CV)</span>; Robotics (cs.RO)
+        </td>
+        """
+
+        paper = module.parse_abs_page("2605.12345", html)
+
+        self.assertEqual(paper["id"], "https://arxiv.org/abs/2605.12345")
+        self.assertEqual(paper["title"], "Robust Gaussian Splatting for SLAM")
+        self.assertEqual(paper["authors"], ["Ada Lovelace", "Grace Hopper"])
+        self.assertEqual(paper["published"], "2026-05-15")
+        self.assertEqual(paper["category"], "cs.CV")
+        self.assertIn("Gaussian Splatting", paper["abstract"])
+
+    def test_html_keyword_filter_matches_title_and_abstract(self):
+        os.environ.setdefault("DEEPSEEK_API_KEY", "test-key")
+        module = load_module()
+
+        self.assertTrue(module.matches_keywords("A SLAM System", "No abstract keyword"))
+        self.assertTrue(module.matches_keywords("Other Title", "Uses Gaussian Splatting"))
+        self.assertFalse(module.matches_keywords("Other Title", "No relevant phrase"))
+
+    def test_parse_list_page_extracts_dated_title_candidates(self):
+        os.environ.setdefault("DEEPSEEK_API_KEY", "test-key")
+        module = load_module()
+        page_html = """
+        <h3>Mon, 18 May 2026 (showing first 2 entries )</h3>
+        <dt><a href ="/abs/2605.16258" title="Abstract" id="2605.16258">arXiv:2605.16258</a></dt>
+        <dd><div class='meta'>
+        <div class='list-title mathjax'><span class='descriptor'>Title:</span>
+          IVGT: Implicit Visual Geometry Transformer for Neural Scene Representation
+        </div>
+        </div></dd>
+        <dt><a href ="/abs/2605.16241" title="Abstract" id="2605.16241">arXiv:2605.16241</a></dt>
+        <dd><div class='meta'>
+        <div class='list-title mathjax'><span class='descriptor'>Title:</span>
+          Offline Semantic Guidance
+        </div>
+        </div></dd>
+        """
+
+        candidates = module.parse_list_page_candidates(page_html)
+
+        self.assertEqual(
+            candidates,
+            [
+                {"id": "2605.16258", "title": "IVGT: Implicit Visual Geometry Transformer for Neural Scene Representation", "published": "2026-05-18"},
+                {"id": "2605.16241", "title": "Offline Semantic Guidance", "published": "2026-05-18"},
+            ],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
