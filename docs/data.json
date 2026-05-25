@@ -1,5 +1,225 @@
 [
   {
+    "id": "http://arxiv.org/abs/2605.23892v1",
+    "title": "Good Token Hunting: A Hitchhiker's Guide to Token Selection for Visual Geometry Transformers",
+    "authors": [
+      "Shuhong Zheng",
+      "Michael Oechsle",
+      "Erik Sandström",
+      "Marie-Julie Rakotosaona",
+      "Federico Tombari",
+      "Igor Gilitschenski"
+    ],
+    "abstract": "Visual geometry transformers have become powerful architectures for multi-view 3D reconstruction, enabling joint prediction of multiple 3D attributes in a feed-forward manner. However, their computational cost grows quadratically with the input sequence length due to the global attention layers inside these models. This limits both their scalability and efficiency. In this work, we address this challenge with a simple yet general strategy: restricting the number of key/value tokens that each query interacts with during global attention. To achieve effective token selection, we introduce a two-stage framework. First, an inter-frame selection step operates at the frame level to identify frames that should be preserved. Second, an intra-frame selection step further discards more redundant tokens within the selected frames. Our analysis highlights the advantage of a diversity-based strategy for inter-frame selection, which ensures broad coverage of the scene. For intra-frame selection, we show that layer-aware sparsification is necessary, with the selection process guided by the entropy of the global attention pattern. Our approach offers a superior speed-accuracy trade-off compared to existing solutions. Extensive experiments show that it accelerates visual geometry transformers by over 85% for scenes with 500 images while maintaining, or even improving, baseline performance, which hints that how our token selection strategy can play a crucial role in future applications of visual geometry transformers. Our project website is available at https://zsh2000.github.io/good-token-hunting.github.io.",
+    "link": "http://arxiv.org/abs/2605.23892v1",
+    "published": "2026-05-22",
+    "category": "cs.CV",
+    "tags": [
+      "Visual Geometry Transformers",
+      "Token Selection",
+      "3D Reconstruction",
+      "Efficiency",
+      "Attention"
+    ],
+    "tldr": "提出一种两阶段令牌选择策略，显著降低视觉几何变换器的计算成本，同时保持甚至提升性能。",
+    "motivation": "视觉几何变换器的计算成本随输入序列长度二次增长，限制了其扩展性和效率。需要一种策略来减少注意力计算中查询交互的键/值令牌数量。",
+    "method": "引入两阶段框架：帧间选择阶段基于多样性策略选择保留的帧；帧内选择阶段采用层感知的稀疏化，由全局注意力模式的熵引导，进一步丢弃冗余令牌。",
+    "result": "在500张图像的场景中加速超过85%，同时保持甚至提升基线性能。",
+    "conclusion": "提供优越的速度-精度权衡，表明令牌选择策略在视觉几何变换器未来应用中具有关键作用。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.23889v1",
+    "title": "HorizonStream: Long-Horizon Attention for Streaming 3D Reconstruction",
+    "authors": [
+      "Chong Cheng",
+      "Peilin Tao",
+      "Nanjie Yao",
+      "Guanzhi Ding",
+      "Xianda Chen",
+      "Yuansen Du",
+      "Xiaoyang Guo",
+      "Wei Yin",
+      "Weiqiang Ren",
+      "Qian Zhang",
+      "Zhengqing Chen",
+      "Hao Wang"
+    ],
+    "abstract": "Online 3D reconstruction requires estimating camera pose and scene geometry under strict causal and bounded-memory constraints. Existing methods often suffer from drift, jitter, or collapse on long sequences. We trace these failures to a fundamental mismatch. Streaming geometry is inherently temporally heterogeneous, with evidence ranging from short-lived correspondences to persistent global scale. However, current architectures impose uniform and pathological influence patterns. For example, sliding windows enforce hard cutoffs, while ungated recurrence and causal attention cause cache saturation and spike-like attention sinks. To resolve this, we formalize geometric propagation as an \\emph{evidence influence kernel} and propose HorizonStream, a long-horizon Transformer that explicitly factorizes this kernel. For the long-range temporal factor, Geometric Linear Attention learns channel-wise decay rates to enable bounded, multi-timescale propagation of geometric evidence. For the short-range spatial factor, Geometric Local Attention with Spatiotemporal RoPE performs reliable 3D matching while suppressing attention sinks. Finally, Metric Readout Tokens recover stable scale and rigid pose directly from the persistent geometric state. Extensive experiments show that HorizonStream, trained on only 48-frame clips, generalizes stably to sequences exceeding 10,000\\ frames with constant memory and linear time, achieving state-of-the-art streaming 3D reconstruction performance. Project Page: https://3dagentworld.github.io/horizonstream/",
+    "link": "http://arxiv.org/abs/2605.23889v1",
+    "published": "2026-05-22",
+    "category": "cs.CV",
+    "tags": [
+      "3D Reconstruction",
+      "Streaming",
+      "Transformer",
+      "Long-Horizon Attention",
+      "Geometric Propagation"
+    ],
+    "tldr": "HorizonStream通过显式分解证据影响核，实现长序列稳定流式3D重建。",
+    "motivation": "现有在线3D重建方法在长序列上存在漂移、抖动或崩溃，根源在于流式几何的时序异构性与当前架构的均匀影响模式不匹配。",
+    "method": "提出HorizonStream，一种长时域Transformer，通过几何线性注意力学习通道级衰减率实现多时标传播，几何局部注意力结合时空RoPE进行可靠3D匹配并抑制注意力汇聚，度量读取标记从持久几何状态恢复稳定尺度和刚性位姿。",
+    "result": "仅用48帧片段训练，即可稳定泛化到超过10,000帧序列，保持恒定内存和线性时间，达到最先进的流式3D重建性能。",
+    "conclusion": "HorizonStream解决了长序列流式重建的稳定性问题，具有持续内存和线性时间优势，并公开了项目页面。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.23845v1",
+    "title": "Learning a Particle Dynamics Model with Real-world Videos",
+    "authors": [
+      "Chanho Kim",
+      "Suhas V. Sumukh",
+      "Li Fuxin"
+    ],
+    "abstract": "Data-driven learning approaches for physics simulation, sometimes referred to as world models, have emerged as promising alternatives to traditional physics simulators due to their differentiable nature. Prior work has demonstrated impressive results in predicting the motions of rigid and non-rigid objects in complex scenes involving multiple interacting bodies. However, these models are typically trained in simulated environments because obtaining perfect state information such as complete scene point clouds and point correspondences over time is challenging in real-world settings. This reliance on synthetic data can limit their applicability when the sim-to-real gap is large. In this work, we aim to overcome these limitations by introducing a novel framework for training neural object dynamics models directly from unlabeled real-world videos. Specifically, we propose to learn a particle-based dynamics model compatible with a Gaussian splatting framework, which operates on dense particles derived from Gaussians (i.e., particles with scales and rotations) and predicts their position and rotation changes over time. The model is trained via rendering supervision, enabling learning from real-world videos without requiring particle-level labeled states. Our model operates directly on dense Gaussians without relying on heuristic subsampling anchor points. To enable this study, we also present a real-world dataset consisting of about 500 videos capturing diverse object interactions.",
+    "link": "http://arxiv.org/abs/2605.23845v1",
+    "published": "2026-05-22",
+    "category": "cs.CV",
+    "tags": [
+      "Physics Simulation",
+      "World Models",
+      "Particle Dynamics",
+      "Gaussian Splatting",
+      "Real-world Videos"
+    ],
+    "tldr": "提出一种从真实世界视频中直接学习粒子动力学模型的方法，结合高斯溅射框架进行渲染监督训练。",
+    "motivation": "现有数据驱动的物理模拟方法通常依赖合成数据，存在模拟到现实差距大的问题；本文旨在克服这一局限，直接从无标注真实视频学习动力学模型。",
+    "method": "提出与高斯溅射框架兼容的粒子动力学模型，以高斯导出的密集粒子（含尺度和旋转）为输入，预测其位置和旋转变化；通过渲染监督进行训练，无需粒子级标注状态。",
+    "result": "提出了包含约500个视频的真实世界数据集，涵盖多种物体交互；模型直接在密集高斯上操作，无需启发式子采样锚点；实验表明模型能从真实视频中学习有效的动力学。",
+    "conclusion": "本文贡献在于提出了一种从真实视频学习物体动力学的新框架，减少了模拟到现实的差距，具有潜在影响于机器人、计算机视觉等领域。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.23672v1",
+    "title": "RiGS: Rigid-aware 4D Gaussian Splatting from a Single Monocular Video",
+    "authors": [
+      "Chenyu Wu",
+      "Wanhua Li",
+      "Zhu-Tian Chen",
+      "Hanspeter Pfister"
+    ],
+    "abstract": "Reconstructing dynamic 3D scenes from monocular videos is a fundamental yet highly challenging task, as real-world motions often involve both long-term smooth transformations and short-term complex deformations. Existing methods either struggle to maintain temporal consistency or fail to capture high-frequency dynamics due to limited motion modeling capacity. In this work, we present Rigid-aware 4D Gaussian Splatting (RiGS), which simultaneously captures motions across multiple temporal scales. Specifically, RiGS introduces three types of Gaussian primitives: static, rigid, and transient, which represent static backgrounds, long-term low-frequency motions, and short-term high-frequency dynamics, respectively. An object-wise dynamic mask is proposed to aggregate long-range spatiotemporal motion information and guide the decomposition of static and dynamic regions. To jointly model motion across scales, rigid Gaussians are allowed to transition into transient Gaussians based on their temporal duration, and both are optimized under scene flow guidance, providing dense 3D motion supervision. Extensive experiments demonstrate that RiGS achieves state-of-the-art performance on novel view synthesis benchmarks. Code is available at \\hyperlink{https://github.com/ladvu/RiGS}{https://github.com/ladvu/RiGS}.",
+    "link": "http://arxiv.org/abs/2605.23672v1",
+    "published": "2026-05-22",
+    "category": "cs.CV",
+    "tags": [
+      "4D Gaussian Splatting",
+      "Dynamic Scene Reconstruction",
+      "Monocular Video",
+      "Novel View Synthesis",
+      "Scene Flow"
+    ],
+    "tldr": "RiGS通过静态、刚性和瞬态高斯原语联合建模多尺度运动，实现从单目视频重建动态3D场景。",
+    "motivation": "现有方法在重建动态3D场景时难以同时保持时间一致性和捕捉高频运动，因为真实世界运动涉及长期平滑变换和短期复杂变形。",
+    "method": "提出RiGS，引入静态、刚性和瞬态三种高斯原语分别表示静态背景、长期低频运动和短期高频动态。通过物体级动态掩码聚合长程时空运动信息，并允许刚性高斯基于时间持续期转变为瞬态高斯，在场景流引导下联合优化，提供密集3D运动监督。",
+    "result": "广泛实验表明，RiGS在新视图合成基准上达到了最先进性能。",
+    "conclusion": "RiGS有效捕获多尺度运动，实现了动态场景的高保真重建，代码已开源。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.23602v1",
+    "title": "GlowGS: Generative Semantic Feature Learning for 3D Gaussian Splatting in Nighttime Glow Scenes",
+    "authors": [
+      "Beibei Lin",
+      "Xiao Cao",
+      "Jingyuan Guo",
+      "Robby T. Tan"
+    ],
+    "abstract": "Existing 3DGS methods effectively render high-quality novel views in clear-day scenes. However, they struggle with night scenes, particularly in glow regions, due to the lack of structural features such as textures and edges, which are key cues for splatting-based reconstruction. To address this problem, we leverage a diffusion model and a Vision Foundation Model (VFM) to compensate for missing structural cues. Our method consists of two key novel ideas: semantic feature generation and novel-view semantic learning. First, semantic feature generation produces high-quality semantic features as implicit structural cues for novel views. Specifically, a diffusion model synthesizes novel views with unknown camera poses from training views, while a VFM evaluates their quality. Once high-quality novel views are identified, the VFM extracts robust features to construct the semantic feature bank. Second, novel-view semantic learning enables 3DGS to optimize rendered novel views without requiring ground truth. It achieves this by extracting semantic features from a rendered novel view, searching the feature bank for the most similar features, and minimizing their distance. This process enforces implicit structural constraints, ensuring semantically coherent, artifact-free rendered views. Extensive experiments demonstrate the effectiveness of our GlowGS in generating semantically accurate 3D views, showing significant improvements over existing methods.",
+    "link": "http://arxiv.org/abs/2605.23602v1",
+    "published": "2026-05-22",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Nighttime Rendering",
+      "Semantic Feature Learning",
+      "Diffusion Model",
+      "Vision Foundation Model"
+    ],
+    "tldr": "针对夜间发光场景，GlowGS利用扩散模型和视觉基础模型生成语义特征，实现高质量新视图渲染。",
+    "motivation": "现有3DGS方法在白天场景表现良好，但在夜间发光区域因缺乏纹理和边缘等结构特征而表现不佳。",
+    "method": "提出语义特征生成和新视图语义学习两个核心思想：先利用扩散模型合成未知位姿的新视图，用视觉基础模型评估质量并提取特征构建特征库；然后在优化时从渲染视图中提取特征，与特征库中最相似特征的距离最小化，施加隐式结构约束。",
+    "result": "大量实验表明，GlowGS在生成语义准确的3D视图方面显著优于现有方法。",
+    "conclusion": "GlowGS通过生成语义特征并学习新视图语义，实现了语义一致且无伪影的渲染，对夜间场景的3D重建有重要贡献。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.23523v1",
+    "title": "ComPose: When to Trust Hands for Object Pose Tracking",
+    "authors": [
+      "Jisu Shin",
+      "Junoh Lee",
+      "JunGyu Lee",
+      "Inhwan Bae",
+      "Dohyeon Lee",
+      "Hokyun Im",
+      "Youngwoon Lee",
+      "Hae-Gon Jeon"
+    ],
+    "abstract": "Reconstructing the motion of objects from videos is a key component for embodied AI and robot manipulation. While diverse approaches to object pose tracking have been studied, they rely heavily on strong external priors, such as depth data or 3D templates, and remain highly vulnerable to severe occlusions by hand grasps despite the use of explicit masks. In this work, we present ComPose, a 6DoF object tracking framework designed for hand-aware object pose estimation from RGB video. Rather than treating the hand purely as an occluder, our method harmonizes hand motions as a \\textit{complementary cue} for object tracking. In detail, we recover a variety of object motions over time by combining object and hand cues from foundation models within a unified tracking pipeline. Here, ComPose adaptively selects informative hand joints, combines object- and hand-derived cues for motion estimation, and refines the resulting object motion using visible geometric evidence and a learned correction. We further enforce the temporal consistency over both rotation and translation, yielding stable 3D object trajectories over time without any external smoothing. Extensive experiments show that our method is accurate, efficient, and robust under severe hand occlusion and geometric ambiguity. In addition, the resulting trajectories can also effectively transfer to downstream robot manipulation by enabling robots to reconstruct human actions from online videos.",
+    "link": "http://arxiv.org/abs/2605.23523v1",
+    "published": "2026-05-22",
+    "category": "cs.CV",
+    "tags": [
+      "Object Pose Tracking",
+      "6DoF",
+      "Hand-Aware",
+      "RGB Video",
+      "Foundation Models"
+    ],
+    "tldr": "提出ComPose框架，利用手部运动作为补充线索，从RGB视频中鲁棒跟踪物体6DoF姿态。",
+    "motivation": "现有方法依赖深度或3D模板，在手部严重遮挡时脆弱。本文旨在利用手部运动作为互补线索来改进跟踪。",
+    "method": "结合物体和手部线索，自适应选择信息性手部关节，融合基础模型线索估计运动，并用可见几何证据和学习修正细化，同时强制时间一致性。",
+    "result": "在手部严重遮挡和几何歧义下准确、高效、鲁棒；轨迹可有效迁移至下游机器人操作。",
+    "conclusion": "提出了手部感知的物体跟踪框架，有效利用手部作为补充线索提升鲁棒性，并展示了在机器人操作中的潜力。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.23397v1",
+    "title": "Joint Target-Less Intrinsic and Extrinsic Camera-LiDAR Calibration using Deep Point Correspondences",
+    "authors": [
+      "Simon Bultmann",
+      "Daniele Cattaneo",
+      "Abhinav Valada"
+    ],
+    "abstract": "Accurate camera-LiDAR calibration is a prerequisite for robust multi-modal perception in robotics. Recent target-less approaches based on deep point correspondences achieve remarkable performance for extrinsic calibration but assume rectified images with known intrinsics. In this work, we overcome this limitation and present the first fully target-less pipeline that jointly estimates camera intrinsics (pinhole model with radial-tangential distortion) and camera-LiDAR extrinsics with deep pixel-point correspondences. Our approach extends deep correspondence-based calibration by (i) automatic intrinsic initialization via structure-from-motion, (ii) generalizing camera-LiDAR matching to raw images with unknown intrinsics including distortion, and (iii) tightly coupling correspondence estimation with joint nonlinear optimization over both intrinsics and extrinsics. We evaluate our method on the KITTI dataset with unseen camera-LiDAR pairs and demonstrate that joint calibration achieves improved extrinsic accuracy while additionally recovering accurate intrinsics.",
+    "link": "http://arxiv.org/abs/2605.23397v1",
+    "published": "2026-05-22",
+    "category": "cs.CV",
+    "tags": [
+      "Camera-LiDAR Calibration",
+      "Deep Point Correspondences",
+      "Joint Intrinsic-Extrinsic Calibration",
+      "Target-less Calibration",
+      "Sensor Fusion"
+    ],
+    "tldr": "首次提出完全无目标的流水线，通过深度像素-点对应联合估计相机内参和相机-激光雷达外参。",
+    "motivation": "现有基于深度点对应的外参标定方法假设图像已校正且内参已知，本文旨在克服这一限制，实现无需目标的联合内参和外参标定。",
+    "method": "扩展深度对应标定，包括(i)通过运动恢复结构自动初始化内参，(ii)将相机-激光雷达匹配泛化到含畸变的原始图像，(iii)紧密耦合对应估计与内外参联合非线性优化。",
+    "result": "在KITTI数据集上对未见过的相机-激光雷达对进行评估，联合标定提高了外参精度，并同时恢复出准确的内参。",
+    "conclusion": "首次实现了完全无目标的联合内外参标定，克服了内参已知的限制，并通过实验证明该方法在提升外参精度的同时能准确恢复内参，对多模态感知具有重要贡献。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.23287v1",
+    "title": "LangFlash: Feed-forward 3D Language Gaussian Splatting from Sparse Unposed Images",
+    "authors": [
+      "Yilong Liu",
+      "Wanhua Li",
+      "Chen Zhu-Tian",
+      "Hanspeter Pfister"
+    ],
+    "abstract": "We present LangFlash, a feed-forward framework for 3D Language Gaussian Splatting that reconstructs 3D scenes parameterized by Gaussian primitives enriched with language-aligned semantic features from sparse unposed multi-view images. Unlike optimization-based 3D methods, LangFlash directly predicts the geometry and semantics in a single forward pass, enabling low-latency 3D reconstruction and language-consistent scene understanding. To support large-scale training, we enriched the RealEstate10k dataset with coherent and dense semantic information for 3D semantic supervision. Furthermore, we propose a sparse semantic encoding scheme that combines a global semantic dictionary with locally varying per-primitive weights, preserving high-level linguistic information, while reducing representation complexity. Experimental results show that LangFlash achieves superior novel view synthesis and semantic consistency compared with previous methods. This study establishes a new paradigm for pose-free, language-grounded 3D scene reconstruction, advancing generalizable 3D vision and multimodal scene understanding. Demo is available at https://liylo.github.io/langflash.github.io/.",
+    "link": "http://arxiv.org/abs/2605.23287v1",
+    "published": "2026-05-22",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Language Features",
+      "Feed-forward",
+      "Sparse Views",
+      "Semantic Reconstruction"
+    ],
+    "tldr": "提出LangFlash，一种从稀疏无位姿图像中直接重建3D语言高斯溅射的前馈框架。",
+    "motivation": "现有优化类3D方法需要大量计算和时间，无法快速重建，且缺乏语义一致性。LangFlash旨在实现低延迟的3D重建和语言一致的场景理解。",
+    "method": "采用前馈网络直接预测几何和语义，结合全局语义字典和局部逐原语权重实现稀疏语义编码，减少表示复杂度。使用RealEstate10k数据集进行大规模训练，并增强其语义信息。",
+    "result": "在新视图合成和语义一致性方面优于先前方法。",
+    "conclusion": "建立了无位姿、语言引导的3D场景重建新范式，推进了可泛化3D视觉和多模态场景理解。"
+  },
+  {
     "id": "http://arxiv.org/abs/2605.22819v1",
     "title": "Cambrian-P: Pose-Grounded Video Understanding",
     "authors": [
@@ -1703,178 +1923,5 @@
     "method": "使用平面图导出的3D外壳作为全局几何代理，动态3D高斯泼溅缓存作为空间记忆；前馈全景LRM将生成全景图提升为局部3DGS更新，房间感知组注意力抑制跨房间干扰，拓扑感知渐进式缓存融合局部更新。",
     "result": "在保持高频2D生成质量的同时，提高了跨节点的布局和材质一致性。",
     "conclusion": "提出了PanoWorld空间世界模型，通过解耦外壳几何指导与缓存视觉记忆，实现了高效一致的全屋全景合成，适用于VR游览产品。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.17661v1",
-    "title": "Mono-Hydra++: Real-Time Monocular Scene Graph Construction with Multi-Task Learning for 3D Indoor Mapping",
-    "authors": [
-      "U. V. B. L. Udugama",
-      "George Vosselman",
-      "Francesco Nex"
-    ],
-    "abstract": "Autonomous agile robots need more than metric geometry: they must understand objects, rooms, places, and spatial relations for search, inspection, exploration, and human robot interaction. Conventional metric maps support localization and collision avoidance, but do not provide this semantic and relational structure. 3D scene graphs address this gap by connecting geometry with object level and room level understanding. Building such representations on agile platforms remains difficult because aerial and lightweight robots operate under strict payload, power, and compute limits, making RGB-D cameras and LiDAR sensors impractical for many onboard settings. We present Mono-Hydra++, a real time monocular RGB plus IMU pipeline for indoor metric semantic mapping and hierarchical 3D scene graph construction. The system combines M2H-MX, a DINOv3 based multi-task model for depth and semantics, with a deep feature visual inertial odometry front end, sparse predicted depth constraints in the VIO derived pose graph, semantic masking for dynamic regions, and pose aware temporal alignment before volumetric fusion in the Mono-Hydra backend. On the Go-SLAM ScanNet evaluation subset, Mono-Hydra++ achieves 1.6% lower average trajectory error than the strongest RGB-D baseline in our comparison, while using only monocular RGB plus IMU input. On calibrated 7-Scenes, it improves average ATE by 29.8% over the strongest competing calibrated baseline. We further validate Mono-Hydra++ in a real ITC building deployment using RealSense RGB plus IMU and demonstrate embedded feasibility by deploying the ONNX/TensorRT FP16 M2H-MX-L perception model at 25.53 FPS on a Jetson Orin NX 16GB. These results show that Mono-Hydra++ can provide real time metric semantic mapping and scene graph construction for resource constrained robotic platforms without relying on active depth sensors.",
-    "link": "http://arxiv.org/abs/2605.17661v1",
-    "published": "2026-05-17",
-    "category": "cs.CV",
-    "tags": [
-      "Monocular SLAM",
-      "Scene Graph",
-      "Multi-Task Learning",
-      "Semantic Mapping",
-      "Visual Inertial Odometry"
-    ],
-    "tldr": "Mono-Hydra++通过单目RGB+IMU实时构建3D场景图，在多任务学习框架下实现优于RGB-D方法的精度。",
-    "motivation": "自主机器人需要理解对象、房间和空间关系，但传统度量地图缺乏语义；现有场景图构建依赖RGB-D或LiDAR，不适用于计算和功耗受限的轻量级平台。",
-    "method": "Mono-Hydra++采用基于DINOv3的M2H-MX多任务模型预测深度和语义，结合深度特征视觉惯性里程计前端、稀疏预测深度约束、语义掩蔽动态区域以及位姿感知时间对齐，最后在Mono-Hydra后端进行体积融合。",
-    "result": "在Go-SLAM ScanNet上平均轨迹误差比最强RGB-D基线低1.6%；在7-Scenes上平均ATE改进29.8%；在Jetson Orin NX上以25.53 FPS运行M2H-MX-L感知模型。",
-    "conclusion": "Mono-Hydra++实现了无需主动深度传感器的实时度量语义地图和层次化3D场景图构建，适用于资源受限的机器人平台。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.17478v1",
-    "title": "Mamba-VGGT: Persistent Long-Sequence Video Geometry Grounded Transformer via External Sliding Window Mamba Memory",
-    "authors": [
-      "Tianchen Deng",
-      "Zhenxiang Xiong",
-      "Nailin Wang",
-      "Fangjinhua Wang",
-      "Jiuming Liu",
-      "Jianfei Yang",
-      "Hesheng Wang"
-    ],
-    "abstract": "Visual Geometry Grounded Transformers (VGGT) have set new benchmarks in high-fidelity 3D scene reconstruction. However, as the sequence length increases, these models suffer from catastrophic geometric forgetting and accumulation drift, primarily due to the quadratic complexity of global attention which necessitates truncated temporal windows. To overcome the resulting geometric drift, we present Mamba-VGGT, an enhanced VGGT framework capable of persistent long-range reasoning. Our key contribution is a Sliding Window Mamba (SWM) memory module that maintains an explicit external memory token across temporal windows. This module leverages selective state-space modeling to distill and propagate global geometric priors, effectively bypassing the memory constraints of traditional transformers. To integrate these long-term temporal cues without disrupting the highly optimized spatial features of the pre-trained VGGT, we propose a Zero-Init Spatial Memory Injector. Utilizing zero-convolutional layers, this injector adaptively fuses persistent memory into the patch token stream, ensuring structural stability and seamless feature alignment. Extensive experiments demonstrate that our approach significantly outperforms existing VGGT-based methods in maintaining spatial consistency and reducing trajectory accumulation errors. Our work provides a scalable, linear-complexity solution for geometry-grounded world modeling in extensive 3D environments.",
-    "link": "http://arxiv.org/abs/2605.17478v1",
-    "published": "2026-05-17",
-    "category": "cs.CV",
-    "tags": [
-      "3D Reconstruction",
-      "Video Geometry",
-      "Mamba",
-      "Memory Module",
-      "Long-Sequence"
-    ],
-    "tldr": "Mamba-VGGT通过滑动窗口Mamba记忆模块和零初始化空间记忆注入器，解决了长序列视频几何重建中的几何漂移问题。",
-    "motivation": "VGGT在长序列中因全局注意力二次复杂度导致几何遗忘和累积漂移，需要截断时间窗。",
-    "method": "提出Sliding Window Mamba (SWM)记忆模块维护外部记忆令牌，利用选择性状态空间模型传播全局几何先验；并使用Zero-Init Spatial Memory Injector通过零卷积层自适应融合持久记忆。",
-    "result": "实验表明，该方法在保持空间一致性和减少轨迹累积误差方面显著优于现有VGGT方法。",
-    "conclusion": "提供了可扩展、线性复杂度的几何接地世界建模方案，适用于大规模3D环境。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.17327v1",
-    "title": "Efficient Feature-Free Initialization for Monocular Visual-Inertial Systems Using a Feed-Forward 3D Model",
-    "authors": [
-      "Yuantai Zhang",
-      "Jiaqi Yang",
-      "Huajian Zeng",
-      "Changhao Chen",
-      "Haoang Li",
-      "Liang Li",
-      "Dezhen Song",
-      "Xingxing Zuo"
-    ],
-    "abstract": "Fast and reliable initialization is critical for monocular visual-inertial navigation systems (VINS), as it establishes the starting conditions for subsequent state estimation. Despite steady progress, most existing methods heavily rely on visual feature correspondences and require 3-4 seconds of sensory data for successful initialization, which limits their applicability and efficiency. With the advent of feed-forward 3D models that can directly predict point clouds from images, we revisit the visual-inertial initialization problem from a concise perspective. In this work, we propose a feature-free initialization framework that leverages up-to-scale point clouds predicted by a feed-forward 3D model, thereby obviating the need for visual feature tracking and estimation. This design substantially reduces system complexity and improves the reliability of initialization. Experiments on public datasets demonstrate that the proposed feature-free initialization method achieves the highest success rate, exceeding 90%, and significantly reduces the data duration required for successful initialization, typically to under 1.2 s. We further validate our method on a self-collected dataset covering various indoor and outdoor scenarios, demonstrating robust performance, particularly in visually degraded environments where existing methods often fail. The code and dataset are available at https://github.com/Yuantai-Z/FF-VIO-Init.",
-    "link": "http://arxiv.org/abs/2605.17327v1",
-    "published": "2026-05-17",
-    "category": "cs.AI",
-    "tags": [
-      "VINS",
-      "Initialization",
-      "Feature-Free",
-      "3D Model",
-      "Monocular"
-    ],
-    "tldr": "提出一种基于前馈3D模型的无特征单目视觉惯性初始化方法，成功率超90%，数据时长降至1.2秒以内。",
-    "motivation": "现有单目VINS初始化方法严重依赖视觉特征匹配，需要3-4秒数据，限制了效率和适用性。",
-    "method": "利用前馈3D模型直接从图像预测粗略点云，无需特征跟踪和估计，进行视觉惯性初始化。",
-    "result": "在公开数据集上初始化成功率超90%，所需数据时长降至1.2秒以内；在自采数据集上表现鲁棒，尤其适用于视觉退化环境。",
-    "conclusion": "提出了一种简洁高效的无特征初始化框架，降低了系统复杂度，提高了初始化可靠性和速度，代码和数据集已开源。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.17303v1",
-    "title": "LongDPM: Overlap-Aware 4D Reconstruction from Long Monocular Videos",
-    "authors": [
-      "Chenyi Xu",
-      "Yihao Wu",
-      "Liqi Yan",
-      "Chao Yang",
-      "Jianhui Zhang",
-      "Fangli Guan",
-      "Pan Li"
-    ],
-    "abstract": "Recovering a dynamic 3D scene from a long monocular video is crucial for dense geometry, camera motion, and temporal correspondence to remain consistent in a shared coordinate system. Existing methods face two key challenges: (1) feed-forward reconstruction models provide accurate local predictions but are limited to short clips, and (2) long-range trackers preserve correspondences without producing dense sequence-level reconstruction. This paper presents LongDPM, a novel overlap-aware framework for scalable long-range monocular dynamic reconstruction. First, LongDPM processes long videos in overlapping chunks, keeping inference memory bounded by the chunk length. Second, it connects chunk-local coordinate systems through confidence-weighted registration with static-aware overlap abstraction. Third, it associates dynamic identities across chunk boundaries and fuses matched trajectories to recover coherent long-range 3D motion. Experimental results demonstrate that LongDPM achieves superior long-range reconstruction and tracking performance, reducing dense tracking EPE over V-DPM on PointOdyssey, Kubric-F, and Kubric-G, while obtaining the best TUM-dynamics ATE for camera pose estimation.",
-    "link": "http://arxiv.org/abs/2605.17303v1",
-    "published": "2026-05-17",
-    "category": "cs.CV",
-    "tags": [
-      "4D Reconstruction",
-      "Monocular Video",
-      "Dynamic Scene",
-      "Overlap-Aware",
-      "Long-Range Tracking"
-    ],
-    "tldr": "提出重叠感知框架LongDPM，从长单目视频中恢复一致的动态3D场景。",
-    "motivation": "现有前馈重建模型限于短片段且准确，长程追踪器缺乏密集序列级重建，无法处理长视频。",
-    "method": "将长视频划分为重叠块，通过置信加权注册与静态感知重叠抽象连接块坐标系，并关联动态身份融合轨迹。",
-    "result": "在PointOdyssey、Kubric-F和Kubric-G上降低密集追踪EPE，在TUM-dynamics上取得最佳ATE。",
-    "conclusion": "LongDPM实现了卓越的长程重建与追踪性能，具有可扩展性。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2605.17478",
-    "title": "Mamba-VGGT: Persistent Long-Sequence Video Geometry Grounded Transformer via External Sliding Window Mamba Memory",
-    "authors": [
-      "Deng, Tianchen",
-      "Xiong, Zhenxiang",
-      "Wang, Nailin",
-      "Wang, Fangjinhua",
-      "Liu, Jiuming",
-      "Yang, Jianfei",
-      "Wang, Hesheng"
-    ],
-    "abstract": "Visual Geometry Grounded Transformers (VGGT) have set new benchmarks in high-fidelity 3D scene reconstruction. However, as the sequence length increases, these models suffer from catastrophic geometric forgetting and accumulation drift, primarily due to the quadratic complexity of global attention which necessitates truncated temporal windows. To overcome the resulting geometric drift, we present Mamba-VGGT, an enhanced VGGT framework capable of persistent long-range reasoning. Our key contribution is a Sliding Window Mamba (SWM) memory module that maintains an explicit external memory token across temporal windows. This module leverages selective state-space modeling to distill and propagate global geometric priors, effectively bypassing the memory constraints of traditional transformers. To integrate these long-term temporal cues without disrupting the highly optimized spatial features of the pre-trained VGGT, we propose a Zero-Init Spatial Memory Injector. Utilizing zero-convolutional layers, this injector adaptively fuses persistent memory into the patch token stream, ensuring structural stability and seamless feature alignment. Extensive experiments demonstrate that our approach significantly outperforms existing VGGT-based methods in maintaining spatial consistency and reducing trajectory accumulation errors. Our work provides a scalable, linear-complexity solution for geometry-grounded world modeling in extensive 3D environments.",
-    "link": "https://arxiv.org/abs/2605.17478",
-    "published": "2026-05-17",
-    "category": "cs.CV",
-    "tags": [
-      "3D Scene Reconstruction",
-      "VGGT",
-      "State Space Model",
-      "Long-Sequence Video",
-      "Geometric Drift"
-    ],
-    "tldr": "提出Mamba-VGGT框架，通过滑动窗口Mamba外部记忆模块实现长序列视频的持久3D几何推理。",
-    "motivation": "VGGT模型在处理长序列时因全局注意力二次复杂度导致几何遗忘和累积漂移。",
-    "method": "引入滑动窗口Mamba记忆模块维护外部记忆令牌，使用选择性状态空间模型传播全局几何先验；结合零初始化空间记忆注入器，通过零卷积层融合持久记忆到补丁令牌流。",
-    "result": "在保持空间一致性和减少轨迹累积误差方面显著优于现有VGGT方法。",
-    "conclusion": "提供了可扩展、线性复杂度的几何基础世界建模方案，适用于大规模3D环境。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2605.17618",
-    "title": "Prediction of Challenging Behaviors Associated with Profound Autism in a Classroom Setting Using Wearable Sensors",
-    "authors": [
-      "Kartha, Yadhu",
-      "Anderson, Conor",
-      "Foster, Jenny",
-      "Hamlin, Theresa",
-      "Lantz, Johanna",
-      "Lay, Ryan",
-      "Hahn, Juergen",
-      "Clifford, Gari D.",
-      "Kwon, Hyeokhyen"
-    ],
-    "abstract": "Autism Spectrum Disorder (ASD) is characterized by challenges with social interaction and communication and by restricted or repetitive patterns of thought and behavior, with significant variability in presentation. Approximately a quarter of children with ASD are classified as having profound autism, who often exhibit challenging behaviors, such as self-injurious behavior, aggression, elopement, or pica, that pose serious safety risks and disrupt learning in educational settings. Prior work has applied wearable sensors and machine learning to detect challenging behaviors, but has been largely confined to controlled laboratory environments. This work demonstrates that predicting challenging behavior episodes is feasible in a real-world special education classroom. We collected approximately 110.7 hours of labeled multimodal wearable data comprising accelerometry, electrodermal activity (EDA), and skin temperature from 9 children and young adults aged 10 to 21 years across standard classroom sessions. We fine-tuned state-of-the-art foundation models for multimodal wearable time-series analysis and show that challenging behavior episodes can be predicted up to 10 minutes in advance with an AUC-ROC of 0.78. These results establish a concrete foundation for developing proactive in-class intervention systems that enable teachers to minimize the safety risks of challenging behaviors in special education classrooms",
-    "link": "https://arxiv.org/abs/2605.17618",
-    "published": "2026-05-17",
-    "category": "cs.AI",
-    "tags": [
-      "Wearable Sensors",
-      "Autism Spectrum Disorder",
-      "Behavior Prediction",
-      "Machine Learning",
-      "Foundation Models"
-    ],
-    "tldr": "本研究在真实特殊教育课堂中，利用可穿戴传感器数据提前10分钟预测严重自闭症儿童挑战性行为，AUC-ROC达到0.78。",
-    "motivation": "自闭症谱系障碍儿童中约四分之一患有严重自闭症，经常表现出自伤、攻击等挑战性行为，对安全和学习造成风险。现有研究多在实验室环境，缺乏真实课堂条件下的预测方法。",
-    "method": "在特殊教育课堂中收集了9名10-21岁受试者约110.7小时的多模态可穿戴数据（加速度、皮肤电导、皮肤温度），并对最先进的时序基础模型进行微调，实现提前10分钟预测挑战性行为。",
-    "result": "挑战性行为预测的AUC-ROC达到0.78，表明可在真实场景中提前预测。",
-    "conclusion": "为开发主动式课堂干预系统奠定了基础，有望帮助教师降低挑战性行为的安全风险。"
   }
 ]
