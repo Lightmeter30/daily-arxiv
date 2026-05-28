@@ -1,5 +1,175 @@
 [
   {
+    "id": "http://arxiv.org/abs/2605.28587v1",
+    "title": "Deformable Gaussian Occupancy: Decoupling Rigid and Nonrigid Motion with Factorized Distillation",
+    "authors": [
+      "Yang Gao",
+      "Wuyang Li",
+      "Po-Chien Luan",
+      "Alexandre Alahi"
+    ],
+    "abstract": "Understanding dynamic 3D environments is essential for safe autonomous driving, particularly when reasoning about human-centric, nonrigid agents. However, existing weakly supervised occupancy prediction frameworks predominantly assume rigid-body motion and rely on simple frame-to-frame offsets, limiting their ability to capture fine-grained deformations and maintain temporal coherence. To address this issue, we propose DeGO, a deformable Gaussian occupancy framework that unifies decoupled Gaussian deformation with factorized 4D foundation-model distillation. DeGO disentangles rigid and nonrigid motion, enabling each Gaussian primitive to evolve through both deformation and offset-based updates. In parallel, a factorized 4D distillation strategy transfers cross-camera and cross-frame knowledge from the VGGT foundation model, producing foundation-aligned features that enhance temporal consistency. Experiments on the Occ3D-NuScenes benchmark demonstrate that our method achieves state-of-the-art performance under weak supervision, delivering 13.5% gains on human-centric instances and 10.9% overall improvements. These results highlight the effectiveness of deformation-aware and foundation-guided occupancy modeling for dynamic scene understanding. The code is publicly available: https://github.com/vita-epfl/DeGO",
+    "link": "http://arxiv.org/abs/2605.28587v1",
+    "published": "2026-05-27",
+    "category": "cs.CV",
+    "tags": [
+      "Dynamic Scene Understanding",
+      "Occupancy Prediction",
+      "Gaussian Splatting",
+      "Motion Decoupling",
+      "Foundation Model Distillation"
+    ],
+    "tldr": "提出DeGO框架，通过解耦刚性与非刚性运动并利用因子化蒸馏，实现弱监督下动态3D场景的精确建模。",
+    "motivation": "现有弱监督占据预测方法假设刚体运动，无法捕捉细微形变和时间一致性。",
+    "method": "DeGO使用可变形高斯占据，解耦刚性与非刚性运动，并通过因子化4D基础模型蒸馏（来自VGGT）产生对齐特征。",
+    "result": "在Occ3D-NuScenes基准上，以弱监督方式取得最先进性能，人类中心实例提升13.5%，总体提升10.9%。",
+    "conclusion": "该方法展示了形变感知和基础模型指导的动态场景占据建模的有效性，代码已开源。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.28477v1",
+    "title": "SA4Depth: Consistent Pose-Depth Scale Alignment for Self-Supervised Monocular Depth Estimation",
+    "authors": [
+      "Changxuan Li",
+      "Nadine Berner",
+      "Nassir Navab",
+      "Federico Tombari",
+      "Stefano Gasperini"
+    ],
+    "abstract": "Self-supervised depth estimation from monocular sequences relies on the joint learning of a depth and a pose network. Despite abundant research done to improve the depth network, efforts on the pose remain limited. In this context, even when depth is estimated up to scale, we highlight the importance of the alignment between the scene scales estimated by the pose and depth nets. Then, we introduce SA4Depth, an approach to improve this alignment and boost the depth predictions while keeping the inference time unchanged. Our proposed method uses the depth estimated during training to reproject learnable visual features across consecutive frames and refine the pose estimates by reducing feature alignment residuals. With our method, the estimated scene scales by the separate depth and pose networks are aligned, and the prediction scale consistency is improved across different sequences. Our differentiable refinement integrates seamlessly into existing self-supervised pipelines and substantially improves their depth estimates. We demonstrate this with extensive experiments both outdoors and indoors on KITTI, Cityscapes, and NYUv2. Additionally, results on KITTI Odometry confirm the effectiveness of our pose refinement. Our code is available at https://github.com/Runningchauncey/SA4Depth .",
+    "link": "http://arxiv.org/abs/2605.28477v1",
+    "published": "2026-05-27",
+    "category": "cs.CV",
+    "tags": [
+      "Self-supervised Depth Estimation",
+      "Pose-Depth Scale Alignment",
+      "Monocular Depth",
+      "Feature Reprojection"
+    ],
+    "tldr": "提出SA4Depth方法，通过特征重投影对齐深度和位姿网络尺度，提升自监督单目深度估计性能。",
+    "motivation": "现有自监督深度估计中位姿网络常被忽视，深度和位姿网络估计的场景尺度不一致，影响深度预测质量。",
+    "method": "利用训练中估计的深度将可学习视觉特征重投影到连续帧，通过最小化特征对齐残差来细化位姿估计，实现深度和位姿网络尺度对齐，且可微细化模块可无缝集成现有管道。",
+    "result": "在KITTI、Cityscapes和NYUv2上深度估计显著提升，KITTI Odometry验证位姿细化有效性，且推理时间不变。",
+    "conclusion": "SA4Depth改进了跨序列的尺度一致性，提升了自监督深度估计的准确性，代码已开源。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.28257v1",
+    "title": "Category-Level 3D Correspondence in Camera Space via Morphable Object Priors",
+    "authors": [
+      "Leonhard Sommer",
+      "Artur Jesslen",
+      "Basavaraj Sunagad",
+      "Adam Kortylewski"
+    ],
+    "abstract": "Understanding 3D objects from images is fundamental to robotics and AR/VR applications. While recent work has made progress in category-level pose estimation, current representations fail to capture the fine-grained semantics needed for reasoning about object parts, functions, and interactions. In this work, we study category-level 3D correspondence in camera space -- predicting, from a single image, 3D locations that remain consistent across instances within a category -- and show that it can emerge without explicit correspondence supervision by learning a shared morphable object prior. To enable research in this direction, we introduce HouseCorr3D, the first large-scale benchmark for monocular category-level 3D correspondence with 178k images across 50 household object categories, 280 unique instances, and 3D keypoint annotations directly on CAD models. Crucially, HouseCorr3D provides amodal correspondence labels for occluded regions and explicit symmetry annotations, addressing key limitations of existing datasets. We further propose Morpheus, a method that learns morphable category-level shape priors by disentangling canonical shape, deformation, and object pose. Through this shared canonical grounding, semantically meaningful 3D correspondences in camera space emerge implicitly. These emerging 3D correspondences set a new state of the art on HouseCorr3D, demonstrating that semantic 3D object understanding can arise without direct correspondence supervision. Data and code are publicly available at https://github.com/GenIntel/HouseCorr3D.",
+    "link": "http://arxiv.org/abs/2605.28257v1",
+    "published": "2026-05-27",
+    "category": "cs.CV",
+    "tags": [
+      "3D Correspondence",
+      "Category-Level",
+      "Morphable Priors",
+      "HouseCorr3D"
+    ],
+    "tldr": "提出一种通过可变形类别先验隐式学习相机空间中类别级3D对应关系的方法，并构建大规模基准数据集。",
+    "motivation": "当前类别级姿态估计方法无法捕捉物体部件和功能的细粒度语义，研究类别级3D对应关系有助于理解物体语义，但缺乏大规模基准和有效方法。",
+    "method": "提出Morpheus方法，通过解耦标准形状、变形和物体姿态学习可变形类别形状先验，在共享标准空间中隐式地产生语义一致的3D对应关系，无需显式对应监督。",
+    "result": "在HouseCorr3D数据集上达到最新最优性能，该数据集包含50个类别、178k图像、280个实例及3D关键点标注，提供遮挡区域的无模态对应标签和对称性标注。",
+    "conclusion": "证明了语义3D物体理解可以在无直接对应监督下涌现，数据和代码已公开，为相关研究提供基准。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.28237v1",
+    "title": "POINav: Benchmarking and Enhancing Final-Meters Arrival in Real-World Vision-Language Navigation",
+    "authors": [
+      "Ruiyan Gong",
+      "Meisheng Zhang",
+      "Yuxiang Zhao",
+      "Mingchao Sun",
+      "Yanfen Shen",
+      "Zedong Chu",
+      "Zhining Gu",
+      "Wei Guo",
+      "Xiaolong Cheng",
+      "Qiming Li",
+      "Kangning Niu",
+      "Yanqing Zhu",
+      "Xiaolong Wu",
+      "Tianlun Li",
+      "Mu Xu"
+    ],
+    "abstract": "Real-world navigation is fundamentally driven by Points of Interest (POIs), yet reaching a precise POI remains a critical \"final-meters\" challenge. Existing Vision-Language Navigation (VLN) benchmarks of POI-goal navigation often suffer from coarse granularity or significant sim-to-real gaps due to generated scene. To bridge this gap, we present POINav-Bench, the first benchmark designed for closed-loop evaluation of real-world POI-goal navigation. It comprises 11 commercial areas reconstructed from real-world captures using 3D Gaussian Splatting (3DGS), covering 126,398 $m^{2}$ in total and spanning 163 distinct POIs. With traversability-aware annotations and reference trajectories, POINav-Bench enables high-fidelity evaluation of navigation agents in realistic, POI-rich real-world environments. Building on this, we propose the POINav Brain-Action Framework where a Brain module performs POI-grounded reasoning to guide an Action module in predicting continuous waypoints for real-world execution. We further curate the POINav-Dataset, containing 70K real-world signage-entrance pairs. Experiments show that our framework provides a viable path toward refining real-world POI-goal navigation.",
+    "link": "http://arxiv.org/abs/2605.28237v1",
+    "published": "2026-05-27",
+    "category": "cs.CV",
+    "tags": [
+      "Vision-Language Navigation",
+      "3D Gaussian Splatting",
+      "Point of Interest",
+      "Benchmark",
+      "Real-world Navigation"
+    ],
+    "tldr": "提出了POINav基准测试和脑-行动框架，用于改进现实世界中的POI目标导航的最终米级到达。",
+    "motivation": "现有POI目标导航的视觉语言导航基准存在粒度粗或模拟到现实差距大的问题，因此提出了POINav-Bench基准和POINav脑-行动框架来解决这一挑战。",
+    "method": "使用3DGS重建了11个商业区域构建POINav-Bench基准，提出了POINav脑-行动框架，其中脑模块进行基于POI的推理，引导行动模块预测连续航点，并整理了包含7万对标识-入口的POINav-Dataset。",
+    "result": "实验表明该框架为改进现实世界POI目标导航提供了可行的路径。摘要未提供量化指标。",
+    "conclusion": "首次提出了用于现实世界POI目标导航闭环评估的基准，并提出了改进最终米级到达的框架，具有潜在应用价值。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.28125v1",
+    "title": "CLEAR-NeRF: Collinearity and Local-region Enhanced Accurate 3D Reconstruction in Unbounded Scenes",
+    "authors": [
+      "Vladislav Polianskii",
+      "Elijs Dima",
+      "Isabel Salmerón Marazuela",
+      "Gergő László Nagy",
+      "Sigurdur Sverrisson",
+      "Volodya Grancharov"
+    ],
+    "abstract": "Many real-world 3D reconstruction applications demand photorealism and metric accuracy across unbounded, complex scenes with challenging lighting and imperfect captures that current Neural Radiance Field (NeRF) pipelines only partly satisfy. This study adapts NeRF-based 3D reconstruction to multi-region of interest unbounded scenes to improve robustness to lighting and pose variation while enforcing metric accuracy suitable for digital-twin applications. Our approach introduces (i) automated local region localization/detection and reconstruction to seamlessly prioritize areas of interest without proliferating submodules, (ii) collinearity-enforcing ray sampling to learn smooth planar and curved surfaces, (iii) depth-localized neighborhood point extraction to suppress surface artifacts, and (iv) geometry-relevant color aggregation to mitigate lighting- and pose-caused variations. Results indicate superior performance of the proposed pipeline over the baseline NeRF models and established Structure from Motion (SfM) - Multi-View Stereo (MVS) solutions.",
+    "link": "http://arxiv.org/abs/2605.28125v1",
+    "published": "2026-05-27",
+    "category": "cs.CV",
+    "tags": [
+      "NeRF",
+      "3D Reconstruction",
+      "Unbounded Scenes",
+      "Digital Twin",
+      "Collinearity"
+    ],
+    "tldr": "提出CLEAR-NeRF，通过共线采样、局部区域增强等方法提升无界场景的3D重建精度与鲁棒性。",
+    "motivation": "现有NeRF在无界复杂场景中难以同时实现高保真度和度量精度，且对光照和姿态变化鲁棒性不足。",
+    "method": "采用自动局部区域定位与重建、共线约束射线采样、深度局部邻域点提取及几何相关颜色聚合等技术。",
+    "result": "在无界场景中，CLEAR-NeRF在重建精度和鲁棒性上优于基线NeRF模型及传统SfM-MVS方法。",
+    "conclusion": "该方法为数字孪生等应用提供了高度量精度的3D重建方案，有效抑制了表面伪影和光照变化影响。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.27952v1",
+    "title": "Con-DSO: Learning Short-Horizon Consistency Priors for RGB-D Direct Sparse Odometry",
+    "authors": [
+      "Haolan Zhang",
+      "Thanh Nguyen Canh",
+      "Chenghao Li",
+      "Ziyan Gao",
+      "Xiongwen Jiang",
+      "Nak Young Chong"
+    ],
+    "abstract": "Visual odometry (VO) is a fundamental component in robotics and augmented reality. RGB-D direct VO benefits from metric depth measurements, but it can degrade in challenging environments, where dynamic objects, occlusions, illumination changes, and unreliable depth violate the short-horizon photometric and depth-geometric consistency assumptions used by direct alignment. Existing approaches mitigate these issues through semantic filtering, explicit occlusion reasoning, illumination adaptation, or hand-crafted geometric criteria, but often rely on external modules or fixed assumptions tailored to individual failure modes, limiting their flexibility and ability to handle diverse challenges in a unified manner. In this work, we propose Con-DSO, a consistency-aware RGB-D direct sparse odometry framework that predicts dense photometric and depth-geometric consistency uncertainty from temporally adjacent RGB-D frame pairs. The consistency network is trained using flow-guided photometric errors and projective depth-consistency errors, allowing consistency violations to be represented as pixel-level uncertainty. These pairwise uncertainty predictions are converted into a host-side quality prior for keyframe-based tracking. The prior is then applied to VO through quality-aware support-pixel selection and decoupled photometric-geometric weighting during pose estimation, enabling continuous attenuation of unreliable observations rather than hard rejection or threshold-based gating. Experiments on five public RGB-D benchmarks show substantial gains over direct RGB-D VO baselines, with over 20\\% absolute trajectory error reduction on ICL-NUIM and 50\\%--80\\% reductions on RGB-D Scenes V2, TUM/Bonn Dynamic, and OpenLORIS sequences.",
+    "link": "http://arxiv.org/abs/2605.27952v1",
+    "published": "2026-05-27",
+    "category": "cs.CV",
+    "tags": [
+      "Visual Odometry",
+      "RGB-D",
+      "Direct Sparse Odometry",
+      "Uncertainty Prediction",
+      "Consistency Prior"
+    ],
+    "tldr": "提出Con-DSO，通过学习短时一致性先验，预测像素级不确定性，改进了RGB-D直接稀疏里程计在挑战环境下的鲁棒性和精度。",
+    "motivation": "RGB-D直接视觉里程计在动态物体、遮挡、光照变化等挑战环境下，短时光度和深度几何一致性假设被破坏，现有方法依赖外部模块或固定假设，缺乏统一处理能力。",
+    "method": "提出一致性感知的RGB-D直接稀疏里程计框架，通过流引导的光度误差和投影深度一致性误差训练一致性网络，预测像素级不确定性；将不确定性转换为关键帧跟踪的先验，用于质量感知的支持像素选择和去耦的光度-几何权重，实现连续衰减不可靠观测。",
+    "result": "在五个公开RGB-D数据集上取得显著提升，ICL-NUIM的绝对轨迹误差降低20%以上，RGB-D Scenes V2、TUM/Bonn Dynamic和OpenLORIS序列上降低50%至80%。",
+    "conclusion": "Con-DSO通过统一的不确定性建模和连续加权策略，有效应对多种挑战，提升了直接RGB-D VO的鲁棒性和准确性。"
+  },
+  {
     "id": "http://arxiv.org/abs/2605.27372v1",
     "title": "G3T Up! Gravity Aligned Coordinate Frames Simplify Pointmap Processing",
     "authors": [
@@ -187,6 +357,36 @@
     "method": "提出全向高斯泼溅模块，直接在球面相机空间射线投射减少畸变；设计基于物理的外观-介质建模架构，使用姿态条件外观嵌入解耦场景辐射与背向散射和衰减。",
     "result": "在合成和真实数据集上，新视角合成和外观恢复性能优于现有方法，渲染质量和跨视图一致性提升。",
     "conclusion": "贡献了水下全景重建框架、基准数据集，代码开源，潜在影响于水下探索和虚拟现实。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.27644v1",
+    "title": "Trinity: Unifying Class-Agnostic Terrain and Semantic Segmentation for Unstructured Outdoor Environments by Leveraging Synthetic Data",
+    "authors": [
+      "Marcus G Müller",
+      "Wout Boerdijk",
+      "Maximilian Durner",
+      "Riccardo Giubilato",
+      "Abel Gawel",
+      "Wolfgang Stürzl",
+      "Roland Siegwart",
+      "Rudolph Triebel"
+    ],
+    "abstract": "Terrain understanding is fundamental for mobile robots operating in unstructured outdoor environments. Existing vision-based traversability estimation methods rely on robot-specific annotations or semantic class mappings, limiting transferability across platforms and requiring costly re-annotation when robot capabilities change, while standard semantic segmentation methods only focus on specific predefined classes, which do not capture the variety of terrains. In this work, we propose a transformer-based architecture that jointly performs class-specific semantic segmentation and class-agnostic terrain segmentation within a unified network, called Trinity. Terrain regions are segmented based solely on visual appearance, without predefined semantic labels or robot-dependent traversability scores. This formulation enables the learning of robot-agnostic visual terrain priors that can be combined with robot-specific experience for downstream tasks such as traversability estimation, visual odometry, and mission planning. To enable large-scale training with diverse terrain appearances, we extend the OAISYS simulator and introduce RUGDSynth, a synthetic dataset inspired by RUGD with class-agnostic terrain samples. Furthermore, we present the EXTerra Dataset, providing real-world images annotated with both class-specific and class-agnostic terrain labels. Experiments demonstrate the feasibility of the proposed task and the effectiveness of our joint segmentation approach in complex outdoor environments. Code and datasets will be released with this publication (after review).",
+    "link": "http://arxiv.org/abs/2605.27644v1",
+    "published": "2026-05-26",
+    "category": "cs.AI",
+    "tags": [
+      "Terrain Segmentation",
+      "Semantic Segmentation",
+      "Synthetic Data",
+      "Transformer",
+      "Outdoor Navigation"
+    ],
+    "tldr": "提出Trinity，一个统一类无关地形分割与语义分割的Transformer架构，利用合成数据实现户外环境理解。",
+    "motivation": "现有方法依赖机器人特定标注或语义类别映射，限制了跨平台可迁移性，且标准语义分割无法覆盖多样地形。需要一种机器人无关的视觉地形先验。",
+    "method": "基于Transformer的联合分割架构，同时进行类特定语义分割和类无关地形分割；扩展OAISYS模拟器并构建合成数据集RUGDSynth，同时提出真实世界数据集EXTerra。",
+    "result": "实验证明了所提任务的可行性和联合分割方法在复杂户外环境中的有效性。",
+    "conclusion": "贡献包括统一网络架构、机器人无关的地形先验、合成与真实数据集，有望应用于可通行性估计、视觉里程计和任务规划。"
   },
   {
     "id": "http://arxiv.org/abs/2605.26115v1",
@@ -577,6 +777,35 @@
     "method": "系统分析两者局限，设计结合经典SfM与前馈重建优势的管道。",
     "result": "在多个数据集上实现最先进结果，开源实现见GitHub。",
     "conclusion": "提出融合方法提升SfM性能，开源框架可能推动后续研究。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.26368v2",
+    "title": "Unified Panoramic Geometry Estimation via Multi-View Foundation Models",
+    "authors": [
+      "Vukasin Bozic",
+      "Isidora Slavkovic",
+      "Dominik Narnhofer",
+      "Nando Metzger",
+      "Denis Rozumny",
+      "Konrad Schindler",
+      "Nikolai Kalischek"
+    ],
+    "abstract": "Geometry estimation from perspective images has greatly advanced, maturing to the point where off-the-shelf foundation models are able to reconstruct 3D scene structure not only from multi-view imagery, but even from a single view. A natural extension is 3D reconstruction from panoramas, with the exciting prospect of recovering a full 360-degree scene from a single panoramic image. In this work, we introduce PaGeR (Panoramic Geometry Reconstruction), a framework to lift powerful 3D foundation models designed for perspective imagery to the panorama domain. Our strategy is to start from a pre-trained transformer for 3D reconstruction and turn it into a unified high-performance model that predicts scale-invariant depth, metric depth, surface normals, and sky masks from both perspective and omnidirectional images, in a single forward pass. By keeping architectural changes to a minimum and mixing perspective and panoramic images during training, PaGeR retains the rich 3D prior of the underlying foundation model while learning to also estimate geometrically consistent 360-degree scenes from single panoramas. We extensively test our method in both indoor and outdoor environments and find that it delivers state-of-the-art performance and excellent zero-shot performance across a wide range of scenes. Code, data and models are available $\\href{https://github.com/prs-eth/PaGeR}{\\text{here}}$.",
+    "link": "http://arxiv.org/abs/2605.26368v2",
+    "published": "2026-05-25",
+    "category": "cs.CV",
+    "tags": [
+      "Panoramic Geometry",
+      "3D Reconstruction",
+      "Depth Estimation",
+      "Surface Normals",
+      "Foundation Model"
+    ],
+    "tldr": "PaGeR通过最小架构改动将透视基础模型扩展到全景域，实现单张全景图的统一几何估计。",
+    "motivation": "从单张全景图像恢复完整360度场景的3D结构，扩展3D基础模型到全景域。",
+    "method": "基于预训练的3D重建Transformer，混合透视和全景图像训练，保持架构最小改动，同时预测尺度不变深度、度量深度、表面法线和天空掩码。",
+    "result": "在室内外场景中达到最先进性能，并展现优异的零样本泛化能力。",
+    "conclusion": "提出统一的全景几何重建框架PaGeR，代码、数据和模型已开源，具有广泛的应用潜力。"
   },
   {
     "id": "http://arxiv.org/abs/2605.24964v1",
@@ -1382,245 +1611,5 @@
     "method": "提出TrajVAD框架，使用归一化流对多类边界框轨迹建模，学习正常运动模式。轨迹仅变量TrajVAD-T无需姿态估计，扩展版TrajVAD-P融合姿态信息。",
     "result": "TrajVAD-T在ShanghaiTech数据集上AP达87.7%，超过所有对比的基于姿态的方法；TrajVAD-P在ShanghaiTech上AUROC为88.6%，AP为90.9%。在MSAD上取得最佳结果。",
     "conclusion": "边界框轨迹是视频异常检测中有效但未被充分探索的模态，论文的方法证明了其潜力。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.21421v1",
-    "title": "AIGaitor: Privacy-preserving and cloud-free motion analysis for everyone, using edge computing",
-    "authors": [
-      "Lauhitya Reddy",
-      "Trisha M. Kesar",
-      "Hyeokhyen Kwon"
-    ],
-    "abstract": "Motion capture is the gold standard for measuring human movement, but clinical use remains limited by cost, technical complexity, and privacy concerns. AIGaitor is a privacy-preserving, cloud-free motion analysis system that runs markerless monocular motion-capture pipelines and downstream deep-learning analysis entirely on a consumer smartphone using on-device neural accelerators. To motivate its design, we surveyed 74 rehabilitation clinicians: 92 percent said they would adopt an accurate, cost-effective, easy-to-use AI gait analysis tool, while 79.7 percent cited operating cost, 68.9 percent insufficient training, and 64.9 percent privacy concerns as leading barriers. We then optimized and benchmarked mobile iOS implementations of current monocular pipeline components, including 2D and 3D pose estimation, pose optimization, skeleton-based deep-learning analysis, and a vision-language model. A Time-Priority end-to-end on-device pipeline processes a 10 s 4K 60 fps video clip in 77 s on an iPhone 14, matching or beating the same pipeline on a high-end NVIDIA H200 cloud server when network transfer is included: 94 s at global mobile-average uplink and 66 s at developed-world Wi-Fi. Lightweight models such as ViTPose-s achieve real-time keypoint extraction, and skeleton-based action-recognition models provide sub-millisecond gait classification on the same clip. To our knowledge, AIGaitor is the first monocular system to demonstrate end-to-end on-device motion capture and downstream deep-learning analysis, supporting clinically applicable movement analysis that is low-cost, private, and accessible to smartphone users.",
-    "link": "http://arxiv.org/abs/2605.21421v1",
-    "published": "2026-05-20",
-    "category": "cs.CV",
-    "tags": [
-      "Motion Analysis",
-      "Edge Computing",
-      "Privacy",
-      "Gait Analysis",
-      "On-device AI"
-    ],
-    "tldr": "AIGaitor是一款完全在智能手机上运行的隐私保护无云端运动分析系统，通过设备端神经加速器实现临床级步态分析。",
-    "motivation": "临床运动捕捉因成本、技术复杂性和隐私问题而受限；对74名康复临床医生的调查显示，92%愿意采用准确、经济、易用的AI步态分析工具，但运营成本、培训不足和隐私问题是主要障碍。",
-    "method": "优化并基准测试了iOS上的单目流水线组件，包括2D/3D姿态估计、姿态优化、基于骨骼的深度学习分析和视觉语言模型；采用Time-Priority端到端设备内流水线处理视频。",
-    "result": "在iPhone 14上处理10秒4K 60fps视频片段需77秒，与含网络传输的高端NVIDIA H200云服务器相比（全球平均移动上行94秒，发达地区WiFi 66秒），性能相当或更优；ViTPose-s实现实时关键点提取，骨骼动作识别模型在相同片段上实现亚毫秒级步态分类。",
-    "conclusion": "AIGaitor是首个展示端到端设备内运动捕捉和下游深度学习分析的单目系统，支持低成本、隐私保护且智能手机用户可及的临床运动分析。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.21112v1",
-    "title": "RCGDet3D: Rethinking 4D Radar-Camera Fusion-based 3D Object Detection with Enhanced Radar Feature Encoding",
-    "authors": [
-      "Weiyi Xiong",
-      "Bing Zhu"
-    ],
-    "abstract": "4D automotive radar is indispensable for autonomous driving due to its low cost and robustness, yet its point cloud sparsity challenges 3D object detection. Existing 4D radar-camera fusion methods focus on complex fusion strategies, trading inference speed for marginal gains. This trade-off hinders real-time deployment due to heavy computation on dense feature maps. In contrast, feature extraction from sparse radar points is less time-consuming but remains under-explored. This work uncovers that simply enhancing radar feature extraction can achieve comparable or even higher performance than elaborate fusion modules, while maintaining real-time performance. Based on this finding, we propose RCGDet3D, which centers on radar feature encoding and simplifies multi-modal fusion. Its encoder inherits from the efficient Gaussian Splatting-based Point Gaussian Encoder (PGE) in RadarGaussianDet3D with two key improvements. First, the Ray-centric PGE (R-PGE) predicts Gaussian attributes in ray-aligned coordinate systems before unifying them to Bird's-Eye View (BEV) space, significantly improving geometric consistency and reducing learning difficulty by decoupling the coordinate transformation from representation learning. Second, a Semantic Injection (SI) module incorporates visual cues from images, producing more geometrically accurate and semantically enriched radar features. Experiments on View-of-Delft (VoD) and TJ4DRadSet show that RCGDet3D outperforms state-of-the-art methods in both accuracy and speed, setting a new benchmark for real-time deployment.",
-    "link": "http://arxiv.org/abs/2605.21112v1",
-    "published": "2026-05-20",
-    "category": "cs.CV",
-    "tags": [
-      "3D Object Detection",
-      "4D Radar",
-      "Radar-Camera Fusion",
-      "Point Gaussian Encoder",
-      "Real-time"
-    ],
-    "tldr": "提出RCGDet3D，通过增强雷达特征编码和简化多模态融合，实现高精度实时3D物体检测。",
-    "motivation": "现有4D雷达-相机融合方法依赖复杂融合策略，牺牲推理速度换取微小精度提升，不利于实时部署；而增强雷达特征提取的潜力尚未充分挖掘。",
-    "method": "基于Gaussian Splatting的Point Gaussian Encoder（PGE）改进，提出Ray-centric PGE（R-PGE）在射线对齐坐标系预测高斯属性，提升几何一致性；并引入语义注入模块融合视觉信息，生成更准确丰富的雷达特征。",
-    "result": "在View-of-Delft和TJ4DRadSet数据集上，RCGDet3D在精度和速度上超越现有方法，设定了实时部署的新基准。",
-    "conclusion": "揭示简单增强雷达特征可媲美甚至超越复杂融合模块的性能，同时保持实时性；RCGDet3D为实时3D检测提供了高效方案。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.20940v1",
-    "title": "3D Reconstruction and Knowledge Distillation to Improve Multi-View Image Models to Explore Spike Volume Estimation in Wheat",
-    "authors": [
-      "Olivia Zumsteg",
-      "Jannis Widmer",
-      "Yann Bourdé",
-      "Norbert Kirchgessner",
-      "Andreas Hund",
-      "Lukas Roth",
-      "Paraskevi Nousi"
-    ],
-    "abstract": "Accurate estimation of wheat spike volume is important for yield component analysis and stress resilience assessment, yet field-based measurement remains challenging. Active 3D sensing methods such as Light Detection and Ranging (LiDAR) or time-of-flight (ToF) are sensitive to plant motion or poorly suited to outdoor conditions, while 3D reconstructions are computationally expensive. Direct 2D image processing would offer computational advantages, but image-based models lack explicit geometric information. We therefore propose a hybrid 2D-3D approach with knowledge distillation during training while enabling efficient image-only inference. First, we train a rigid-invariant point cloud network using distance-based histogram features to obtain pose-robust geometric representations. We then combine the 3D model with a proposed multi-view image-based regulated Transformer (RT) in an ensemble architecture. Finally, we distill the ensemble knowledge into a purely image-based student model using either feature-based or label-based distillation. The two distilled RTs reduce the mean absolute error (MAE) from 654.31 mm$^3$ of the non-distilled RT to 639.93 mm$^3$ and 644.62 mm$^3$, and increase correlation from 0.76 to 0.77 and 0.82, respectively. At the same time, inference time is reduced from 160 ms to 1.4 ms per spike. Distillation further mitigates volume-dependent bias and reshapes the latent representation of the image model toward a geometry-aware shape. Our results demonstrate that 3D-informed training of a 2D Transformer allows for scalable and efficient spike volume estimation for high-throughput field phenotyping.",
-    "link": "http://arxiv.org/abs/2605.20940v1",
-    "published": "2026-05-20",
-    "category": "cs.CV",
-    "tags": [
-      "Wheat Spike Volume Estimation",
-      "Knowledge Distillation",
-      "Multi-View Image",
-      "Transformer",
-      "3D Reconstruction"
-    ],
-    "tldr": "本文提出混合2D-3D方法，通过知识蒸馏训练图像Transformer，实现高效的小麦穗体积估计。",
-    "motivation": "精确估计小麦穗体积对产量分析至关重要，但现有3D方法计算昂贵或环境敏感，2D图像缺乏几何信息。",
-    "method": "先训练不变点云网络获取几何表示，再与多视图图像变换器集成，最后通过特征或标签蒸馏将知识迁移到纯图像学生模型。",
-    "result": "蒸馏后MAE从654.31降至639.93和644.62 mm³，相关性从0.76升至0.77和0.82，推理时间从160ms降至1.4ms。",
-    "conclusion": "3D信息引导的2D变换器训练可实现可扩展高效的小麦穗体积估计，适用于高通量田间表型。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.20889v1",
-    "title": "Map-Mono-Ego: Map-Grounded Global Human Pose Estimation from Monocular Egocentric Video",
-    "authors": [
-      "Hiroyuki Deguchi",
-      "Ryosuke Hori",
-      "Kotaro Amaya",
-      "Tsubasa Maruyama",
-      "Mitsunori Tada",
-      "Hideo Saito"
-    ],
-    "abstract": "Monocular egocentric human pose estimation is essential for ubiquitous activity monitoring. However, understanding the user's absolute location within the environment remains a challenge. Existing methods primarily focus on relative motion from an initial position, and tend not to account for the wearer's absolute location within an environment. Furthermore, inherent scale ambiguity in monocular vision leads to severe translational drift, limiting long-term tracking without specialized multi-sensor hardware. To address this, we propose MapMonoEgo, a novel framework achieving globally consistent human pose estimation solely from a monocular camera by leveraging a pre-scanned 3D point cloud. We also introduce AIST-Living dataset, a new dataset pairing egocentric video with ground-truth motion in a scanned environment. Experiments demonstrate that our approach significantly outperforms the state-of-the-art baseline, proving its utility for practical monitoring tasks without specialized hardware.",
-    "link": "http://arxiv.org/abs/2605.20889v1",
-    "published": "2026-05-20",
-    "category": "cs.CV",
-    "tags": [
-      "Egocentric Vision",
-      "Human Pose Estimation",
-      "3D Point Cloud",
-      "Global Localization",
-      "Monocular Video"
-    ],
-    "tldr": "利用预扫描3D点云，从单目第一人称视频实现全局一致的人体姿态估计。",
-    "motivation": "现有单目第一人称姿态估计无法获取用户绝对位置，存在尺度模糊和漂移，限制长期跟踪。",
-    "method": "提出MapMonoEgo框架，通过融合预扫描3D点云与单目视频，实现全局一致的姿态估计。",
-    "result": "在AIST-Living数据集上显著优于现有基线，证明无需专用硬件的实用性。",
-    "conclusion": "提出一种全局一致的单目第一人称姿态估计方法，避免对多传感器硬件的依赖，适用于实际监测任务。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.20872v1",
-    "title": "CAdam: Context-Adaptive Moment Estimation for 3D Gaussian Densification in Generative Distillation",
-    "authors": [
-      "SeungJeh Chung",
-      "Geonho Park",
-      "Misong Kim",
-      "HyeongYeop Kang"
-    ],
-    "abstract": "Adaptive densification is the engine of 3D Gaussian Splatting (3DGS). However, when transposed to the optimization-based Generative Distillation paradigm, this reconstruction-native mechanism reveals fundamental limitations, resulting in inefficient representations cluttered with redundant primitives. We diagnose this failure as a Densification Dilemma stemming from the stochastic nature of generative guidance: the standard magnitude-based accumulation indiscriminately aggregates transient noise alongside geometric signals, making it difficult to strike a balance between over-densification and under-fitting. To resolve this, we introduce Context-Adaptive Moment Estimation (CAdam), a novel framework that reinterprets densification as a statistically grounded signal verification problem. CAdam leverages the first moment of gradients to exploit the interference principle, where stochastic fluctuations cancel out via destructive interference while consistent geometric drifts accumulate via constructive interference, effectively disentangling the underlying signal from the generative noise floor. This is further augmented by a quantile-based context awareness and an intrinsic Signal-to-Noise Ratio (SNR) gating mechanism, which ensure robust adaptation across optimization stages and enable the soft termination of densification. Extensive experiments across diverse objectives (SDS, ISM, VFDS) and strong generative 3DGS backbones show that CAdam reduces Gaussian count by 85%-97% relative to standard densification while preserving overall comparable perceptual quality. These results highlight signal-aware density control as a practical way to improve memory efficiency in optimization-based generative distillation.",
-    "link": "http://arxiv.org/abs/2605.20872v1",
-    "published": "2026-05-20",
-    "category": "cs.AI",
-    "tags": [
-      "3DGS",
-      "Generative Distillation",
-      "Adaptive Densification",
-      "SNR Gating"
-    ],
-    "tldr": "CAdam通过上下文自适应矩估计解决生成蒸馏中3D高斯的稠密化困境，大幅减少高斯数量并保持质量。",
-    "motivation": "自适应稠密化在生成蒸馏中存在局限，导致冗余基元和低效表示。诊断出稠密化困境：随机生成指导使标准累加混杂噪声和几何信号，难以平衡过稠密和欠拟合。",
-    "method": "提出CAdam框架，将稠密化为统计信号验证问题，利用一阶矩的干涉原理区分信号与噪声，结合分位数上下文感知和信噪比门控机制实现稳健自适应和稠密化软终止。",
-    "result": "在不同生成目标（SDS, ISM, VFDS）和强生成3DGS骨干网络上，CAdam减少高斯数量85%-97%，同时保持可比的可感知质量。",
-    "conclusion": "信号感知的密度控制是优化生成蒸馏中提高内存效率的实用方法，具有广泛适用性。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.20827v1",
-    "title": "HyDAR-Pano3D: A Hybrid Disentangled Anatomical Recovery Framework for Panoramic-to-3D Reconstruction",
-    "authors": [
-      "Yaoyao Yue",
-      "Jérôme Schmid",
-      "Xiaoshuang Li",
-      "Eduardo Delamare",
-      "Jinman Kim"
-    ],
-    "abstract": "Panoramic radiograph (PR) is fundamentally used in routine dental care, but it inherently provides only a two-dimensional (2D) projection of complex three-dimensional (3D) craniofacial anatomy. Most existing learning-based methods attempt to computationally recover this 3D information by directly regressing native cone-beam computed tomography (CBCT) volumes from PR. However, this direct mapping requires the model to simultaneously learn common anatomical structures and patient-specific morphological variations. This entangled formulation makes the ill-posed 2D-to-3D inverse problem highly ambiguous, often producing over-smoothed reconstructions with blurred anatomical boundaries. To address this, we propose HyDAR-Pano3D, a two-stage framework that reformulates PR-to-CBCT reconstruction as a disentangled anatomical recovery problem. In Stage 1, a dual-encoder network integrates radiographic features with SAM-derived semantic priors to reconstruct an arch-normalized canonical volume. In Stage 2, an Anatomical Restoration Network predicts a prior-constrained structured deformation field to map this canonical volume back to the native space, restoring individual morphological variations. Experiments on three large-scale datasets show that HyDAR-Pano3D significantly outperforms baseline methods ($p < 0.05$), achieving a 25.76 dB PSNR, 85.70\\% SSIM, and an 83.83\\% overall anatomical Dice score. The synthesized volumes successfully support downstream segmentation of whole teeth (82.4\\% Dice) and the inferior alveolar canal (72.2\\% Dice), demonstrating that our disentangled approach preserves clinically relevant structures to enable robust anatomy-aware assessment when CBCT data is unavailable.",
-    "link": "http://arxiv.org/abs/2605.20827v1",
-    "published": "2026-05-20",
-    "category": "cs.CV",
-    "tags": [
-      "3D Reconstruction",
-      "Panoramic Radiograph",
-      "CBCT",
-      "Disentangled Representation",
-      "Medical Image Analysis"
-    ],
-    "tldr": "提出了一种混合解耦解剖恢复框架HyDAR-Pano3D，用于从全景X光片重建三维CBCT体积，显著提升重建质量。",
-    "motivation": "现有直接映射方法需要同时学习共同解剖结构和个体变异，导致重建模糊且边界不清。为此，提出解耦解剖恢复问题，以降低不确定性。",
-    "method": "两阶段框架：第一阶段双编码器网络整合放射特征与SAM语义先验，重建牙弓归一化规范体积；第二阶段解剖恢复网络预测受先验约束的结构化变形场，将规范体积映射回个体空间，恢复个体形态变异。",
-    "result": "在三个大规模数据集上，HyDAR-Pano3D显著优于基线方法（p<0.05），PSNR达25.76 dB，SSIM为85.70%，整体解剖Dice为83.83%；下游分割中全牙Dice为82.4%，下颌神经管Dice为72.2%。",
-    "conclusion": "该解耦方法有效保留了临床相关结构，实现了在无CBCT数据情况下的稳健解剖感知评估，具有重要临床应用潜力。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.20820v1",
-    "title": "AIR: Amortized Image Reconstruction Framework for Self-Supervised Feed-Forward 2D Gaussian Splatting",
-    "authors": [
-      "Zhaojie Zeng",
-      "Yuesong Wang",
-      "Yawei Luo",
-      "Tao Guan"
-    ],
-    "abstract": "2D Gaussian splatting provides an efficient explicit representation for image reconstruction, but existing methods still require costly per-image iterative optimization or rely on handcrafted priors for primitive allocation. We present AIR, a self-supervised feed-forward framework that amortizes iterative Gaussian fitting into a single network pass, eliminating per-image test-time optimization. AIR adopts a stage-wise residual architecture that progressively predicts additional Gaussian primitives from reconstruction residuals, together with an explicit Stage Control mechanism that activates new primitives only in under-reconstructed regions. A Predict--Optimize--Distill training strategy stabilizes multi-stage prediction by distilling short-horizon optimized Gaussian increments back into the predictor. The stabilized predictor is then jointly finetuned across stages and equipped with an image-adaptive quantizer for compact Gaussian storage. Experiments on Kodak and DIV2K show that AIR achieves better reconstruction quality than representative Gaussian-based baselines while reducing encoding time to 160--300\\,ms. Code: https://github.com/whoiszzj/AIR.git",
-    "link": "http://arxiv.org/abs/2605.20820v1",
-    "published": "2026-05-20",
-    "category": "cs.CV",
-    "tags": [
-      "2D Gaussian Splatting",
-      "Self-Supervised",
-      "Feed-Forward",
-      "Image Reconstruction",
-      "Amortized Optimization"
-    ],
-    "tldr": "AIR是一个自监督前馈框架，通过逐阶段残差架构和蒸馏训练策略，实现无需迭代优化的高效2D高斯溅射图像重建。",
-    "motivation": "现有2D高斯溅射方法需要逐图像迭代优化或依赖手工先验，导致训练和推理效率低下。",
-    "method": "采用逐阶段残差架构逐步预测高斯基元，配合显式阶段控制仅在重建不足区域激活新基元；使用Predict-Optimize-Distill训练策略稳定多阶段预测，并联合微调与图像自适应量化器。",
-    "result": "在Kodak和DIV2K数据集上，AIR重建质量优于代表性高斯基线方法，编码时间仅160-300ms。",
-    "conclusion": "提出了一种高效自监督前馈框架，显著降低推理时间，并提供了开源代码，有助于推动2D高斯溅射在图像重建中的实际应用。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.20733v1",
-    "title": "Sketch2MinSurf: Vision-Language Guided Generation of Editable Minimal Surfaces from Hand-Drawn Sketches",
-    "authors": [
-      "Wenda Wang",
-      "Anqi Liu",
-      "Junqi Yang",
-      "Lei He",
-      "Luying Wang",
-      "Jiachen Lu",
-      "Weixin Huang"
-    ],
-    "abstract": "Converting hand-drawn sketches into structured 3D geometries remains challenging due to the difficulty of representing non-Euclidean surfaces and maintaining topological consistency. Existing generative models such as GANs, NeRFs, and diffusion architectures often fail to produce editable manifolds directly usable in downstream design workflows. We present Sketch2MinSurf, a hybrid vision-language and geometric optimization framework that integrates vision-language guidance with minimal-surface theory to generate smooth and editable 3D surfaces from hand-drawn sketches. The core of our approach is a spatial-topological encoding that represents geometry as tuples of node coordinates and real/virtual edge skeletons, enabling stable topological control during generation. We further introduce the Sketch2MinSurf Structural Loss (S2MS-Loss), a reward-modulated objective that jointly constrains geometric reconstruction and topological coherence. On a test set of 100 sketches, Sketch2MinSurf achieves a topological similarity score of 0.844, outperforming existing sketch-to-shape baselines. The generated manifolds are directly editable and free from non-manifold artifacts. A public art installation at a university showcases the method's potential for human-intent-driven 3D form generation. The dataset and code are available at https://anonymous.4open.science/r/Sketch2MinSurf/.",
-    "link": "http://arxiv.org/abs/2605.20733v1",
-    "published": "2026-05-20",
-    "category": "cs.CV",
-    "tags": [
-      "Sketch-to-3D",
-      "Minimal Surfaces",
-      "Vision-Language",
-      "Topological Consistency",
-      "Geometric Optimization"
-    ],
-    "tldr": "提出Sketch2MinSurf框架，利用视觉-语言引导和最小曲面理论，从手绘草图生成可编辑的3D曲面。",
-    "motivation": "现有方法难以从手绘草图生成可直接用于设计工作流的可编辑3D几何体，且无法保证拓扑一致性。",
-    "method": "集成视觉-语言引导与最小曲面理论，采用空间-拓扑编码表示几何，并引入S2MS-Loss损失函数联合约束几何重建与拓扑连贯性。",
-    "result": "在100张草图测试集上，拓扑相似性得分为0.844，优于现有基线，生成流形可直接编辑且无伪影。",
-    "conclusion": "方法实现了从手绘草图到结构化可编辑3D曲面的生成，并已在公共艺术装置中展示潜力。数据集和代码已开源。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.21796v1",
-    "title": "MM-Conv: A Multimodal Dataset and Benchmark for Context-Aware Grounding in 3D Dialogue",
-    "authors": [
-      "Anna Deichler",
-      "Jim O'Regan",
-      "Fethiye Irmak Dogan",
-      "Lubos Marcinek",
-      "Anna Klezovich",
-      "Iolanda Leite",
-      "Jonas Beskow"
-    ],
-    "abstract": "Grounding language in the physical world requires AI systems to interpret references that emerge dynamically during conversation. While current vision-language models (VLMs) excel at static image tasks, they struggle to resolve ambiguous expressions in spontaneous, multi-turn dialogue. We address this gap by introducing (1) a benchmark for referential communication in dynamic 3D environments, built from 6.7 hours of egocentric VR interaction with synchronized speech, motion, gaze, and 3D scene geometry, and (2) a two-stage grounding pipeline that explicitly resolves conversational ambiguity before visual localization. The benchmark includes over 4,200 manually verified referring expressions spanning full, partitive, and pronominal types. Our contextual rewriting approach improves grounding performance by 11-22 percentage points on average, with a pure detector (GroundingDINO) reaching 56.7% on pronominals after rewriting, nearly double the best end-to-end baseline. Results demonstrate that decoupling linguistic reasoning from visual perception is more effective than end-to-end approaches for conversational grounding.",
-    "link": "http://arxiv.org/abs/2605.21796v1",
-    "published": "2026-05-20",
-    "category": "cs.CV",
-    "tags": [
-      "Multimodal",
-      "Grounding",
-      "Dialogue"
-    ],
-    "tldr": "提出MM-Conv多模态数据集与基准，通过上下文重写将对话接地性能提升11-22个百分点。",
-    "motivation": "现有视觉语言模型在动态多轮对话中难以解决模糊指代，需要能解释对话中动态涌现指代的AI系统。",
-    "method": "构建了基于6.7小时VR交互的基准，包含同步语音、动作、注视和3D场景；提出两阶段接地流水线，先显式解决对话歧义再进行视觉定位。",
-    "result": "上下文重写方法平均提升接地性能11-22个百分点；GroundingDINO在代词指代上达到56.7%，近乎最佳端到端基线的两倍。",
-    "conclusion": "将语言推理与视觉感知解耦比端到端方法更有效，推动了会话式3D接地研究。"
   }
 ]
