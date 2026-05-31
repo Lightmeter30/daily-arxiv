@@ -356,6 +356,286 @@
     "conclusion": "提出了一种高效、通用的网格无关降阶变形仿真方法，适用于多种表示和机器人仿真下游任务。"
   },
   {
+    "id": "https://arxiv.org/abs/2605.30342",
+    "title": "Uncertainty-driven 3D Gaussian Splatting Active Mapping via Anisotropic Visibility Field",
+    "authors": [
+      "Xue, Shangjie",
+      "Dill, Jesse",
+      "Ahuja, Dhruv",
+      "Dellaert, Frank",
+      "Tsiotras, Panagiotis",
+      "Xu, Danfei"
+    ],
+    "abstract": "We present Gaussian Splatting Anisotropic Visibility Field (GAVIS), a novel framework for uncertainty quantification and active mapping in 3DGS. Our key insight is that regions unseen from the training views yield unreliable predictions from the 3DGS. To address this, we introduce a principled and efficient method for quantifying the visibility field in 3DGS, defined as the anisotropic visibility of each particle with respect to the training views, and represented using spherical harmonics. The resulting visibility field is integrated into a Bayesian Network-based uncertainty-aware 3DGS rasterizer, enabling real-time (200 FPS) uncertainty quantification for synthesized views. Active mapping is further performed within a maximum information gain framework building on this formulation. Extensive experiments across diverse environments demonstrate that GAVIS consistently and significantly outperforms prior approaches in both accuracy and efficiency. Moreover, beyond standalone use, our method can be applied post-hoc to improve the performance of existing approaches.",
+    "link": "https://arxiv.org/abs/2605.30342",
+    "published": "2026-05-28",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Active Mapping",
+      "Uncertainty Quantification",
+      "Visibility Field",
+      "Spherical Harmonics"
+    ],
+    "tldr": "提出基于各向异性可见性场的3D高斯溅射主动映射框架，实现实时不确定性量化与高效建图。",
+    "motivation": "训练视图中未观测到的区域会导致3DGS预测不可靠，需要量化不确定性并指导主动映射。",
+    "method": "引入各向异性可见性场（用球谐函数表示），并集成到贝叶斯网络的不确定性感知3DGS光栅化器中，实现实时（200 FPS）不确定性量化；基于最大信息增益框架进行主动映射。",
+    "result": "在多种环境中，该方法在精度和效率上显著优于之前的方法，并且可以后处理方式提升现有方法的性能。",
+    "conclusion": "提出GAVIS框架，通过各向异性可见性场实现高效的不确定性量化和主动映射，具有广泛的应用潜力。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2605.30328",
+    "title": "Supercharging Thermal Gaussian Splatting with Depth Estimation",
+    "authors": [
+      "Biswanath, Manoj",
+      "Cai, Chenxin",
+      "Schieber, Hannah",
+      "Roth, Daniel",
+      "Busam, Benjamin"
+    ],
+    "abstract": "Efficient and robust 3D scene representation is crucial in autonomous driving, robotics, and related fields. While RGB images provide valuable content for 3D reconstruction, other modalities like thermal or depth can enable additional information on the environment. Lately, novel view synthesis methods like 3D Gaussian Splatting have started using multiple modalities to further boost their performance. But fusing or combining multimodal data can make the process slower and can bring in additional challenges. Therefore, our project aims to use single modality based on thermal infrared domain, by removing the reliance on visible light as much as possible. This single modality can be expected to be faster as it does not rely on multimodal data. We propose a method, Thermal-to-Depth Gaussian Splatting (TDg), that uses only thermal images and depth estimation in its architecture to derive the radiance fields. Our TDg method outperforms the MSMG (Multiple Single-Modal Gaussians) baseline in most cases on our test datasets, RGBT-Scenes and ThermalMix. On average, the rendering quality metrics such as learned perceptual image patch similarity (LPIPS), structural similarity index measure (SSIM), and peak signal-to-noise ratio (PSNR) of TDg are 1.12%, 0.034%, and 0.01% better than the baseline MSMG values. It also reduces the training time significantly, by 12 mins 47 secs (55% improvement). Overall, our method is successful in deriving these thermal radiance fields, which can ultimately have several applications, such as identifying heat sources critical in surveillance, search or rescue operations, and industrial inspections where temperature is widely used to monitor machines.",
+    "link": "https://arxiv.org/abs/2605.30328",
+    "published": "2026-05-28",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Thermal Imaging",
+      "Depth Estimation",
+      "Novel View Synthesis"
+    ],
+    "tldr": "提出TDg方法，仅用热图像和深度估计实现高效3D场景表示，渲染质量提升且训练时间减少55%。",
+    "motivation": "旨在消除对可见光的依赖，利用单一热红外模态进行3D重建，避免多模态融合的复杂性和速度问题。",
+    "method": "提出Thermal-to-Depth Gaussian Splatting (TDg)方法，仅使用热图像和深度估计来导出辐射场。",
+    "result": "在RGBT-Scenes和ThermalMix数据集上，渲染质量指标LPIPS、SSIM、PSNR分别比基线提升1.12%、0.034%、0.01%，训练时间减少12分47秒（55%改进）。",
+    "conclusion": "成功导出热辐射场，可应用于监控、搜索救援、工业检测等场景识别热源，且单模态方法效率更高。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2605.30215",
+    "title": "Déjà View: Looping Transformers for Multi-View 3D Reconstruction",
+    "authors": [
+      "Burzio, Alessandro",
+      "Fischer, Tobias",
+      "Elflein, Sven",
+      "Zhou, Qunjie",
+      "de Lutio, Riccardo",
+      "Ren, Jiawei",
+      "Huang, Jiahui",
+      "Huang, Shengyu",
+      "Pollefeys, Marc",
+      "Leal-Taixé, Laura",
+      "Gojcic, Zan",
+      "Turki, Haithem"
+    ],
+    "abstract": "Recent feed-forward 3D reconstruction transformers have scaled to over a billion parameters, following the broader trend of increasing model capacity in computer vision. Yet emerging evidence suggests that contiguous transformer layers often behave like repeated applications of similar operations, and multi-view reconstruction transformers refine their predictions progressively across decoder depth. We posit that model depth partially buys iteration, paid for inefficiently in unique parameters, and instead make that iteration explicit in architecture. Our model, DéjàView, applies a single looped transformer block recurrently to per-view features for K refinement steps. Trained once, it exposes K as an inference-time compute knob, matching or outperforming substantially larger feed-forward baselines across five reconstruction benchmarks spanning indoor, outdoor, object-centric, and driving scenes, while using a fraction of their parameters and comparable or lower compute. Importantly, the same looped block formulation outperforms an otherwise identical variant with independent per-step parameters under matched training data and compute, suggesting that explicit iteration is not merely a compute-efficient substitute for capacity but a stronger inductive bias for multi-view 3D reconstruction.",
+    "link": "https://arxiv.org/abs/2605.30215",
+    "published": "2026-05-28",
+    "category": "cs.CV",
+    "tags": [
+      "3D Reconstruction",
+      "Multi-View",
+      "Transformer",
+      "Iterative Refinement",
+      "Feed-Forward"
+    ],
+    "tldr": "DéjàView通过循环单个变压器块进行迭代，以更少参数在多视图3D重建中超越大模型。",
+    "motivation": "现有前馈3D重建变压器参数巨大，但连续层行为类似重复操作，模型深度部分买的是迭代，参数效率低。",
+    "method": "提出DéjàView，使用单个循环变压器块对每视图特征重复应用K次迭代，训练一次后K作为推理时计算调节旋钮。",
+    "result": "在五个基准（室内、室外、物体中心、驾驶场景）上匹配或超越更大前馈模型，参数少得多，计算量相当或更少；循环块优于独立参数变体。",
+    "conclusion": "显式迭代不仅是计算高效的容量替代，更是多视图3D重建的强归纳偏置。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2605.29953",
+    "title": "Mesh-Aware Epipolar Matching for Multi-View Multi-Person 3D Pose Estimation in Basketball",
+    "authors": [
+      "Yin, Li",
+      "Haobin, Qin",
+      "Suzuki, Tomohiro",
+      "Yeung, Calvin",
+      "Isogawa, Mariko",
+      "Fujii, Keisuke"
+    ],
+    "abstract": "Multi-view multi-person 3D pose estimation in team sports scenarios remains challenging due to player occlusions, appearance similarity caused by team uniforms, and the scarcity of annotated multi-view data, all of which limit the effectiveness and generalization capability of learning-based methods. In contrast, the performance of training-free approaches is inherently constrained by the accuracy of 2D keypoint detection and the robustness of cross-view association. To address these challenges, we propose Mesh-Aware Epipolar Matching (MAEM), a training-free framework for multi-view multi-person 3D pose estimation. Our method employs a monocular 3D human mesh recovery model as the frontend and introduces a two-stage epipolar matching strategy based on the recovered mesh outputs. Specifically, the proposed framework combines disjoint-set-union-based clustering with per-joint triangulation to achieve robust cross-view association and accurate 3D pose reconstruction. Experiments on two public multi-view basketball datasets demonstrate that MAEM consistently outperforms existing training-free association baselines while achieving competitive RGB-only performance in both indoor and outdoor basketball scenarios. MAEM achieves MPJPE/PA-MPJPE scores of 59.8/40.7 mm on SportCenter EPFL and 74.0/51.8 mm on Human-M3 Basketball, highlighting the effectiveness of dense mesh geometry for cross-view association without requiring target-domain training or fine-tuning.",
+    "link": "https://arxiv.org/abs/2605.29953",
+    "published": "2026-05-28",
+    "category": "cs.CV",
+    "tags": [
+      "3D Pose Estimation",
+      "Multi-View",
+      "Epipolar Matching",
+      "Basketball",
+      "Mesh"
+    ],
+    "tldr": "提出无训练框架MAEM，利用网格感知极线匹配实现多视角多人3D姿态估计，在篮球数据集上表现优异。",
+    "motivation": "团队运动中球员遮挡、队服外观相似和标注数据稀缺限制了学习方法的效果，无训练方法受限于2D检测精度和跨视角关联鲁棒性。",
+    "method": "采用单目3D人体网格恢复模型作为前端，提出两阶段极线匹配策略，结合并查集聚类与逐关节三角化实现鲁棒跨视角关联和精确3D姿态重建。",
+    "result": "在SportCenter EPFL上MPJPE/PA-MPJPE达59.8/40.7 mm，在Human-M3 Basketball上达74.0/51.8 mm，优于现有无训练基线方法。",
+    "conclusion": "MAEM利用密集网格几何有效提升跨视角关联，无需目标域训练即可达到竞争性能，具有良好泛化能力。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2605.29583",
+    "title": "BitC-3DGS: High-Capacity 3D Gaussian Splatting Watermarking via Bit Compression",
+    "authors": [
+      "Bi, Yuquan",
+      "Yu, Baosheng",
+      "Lei, Yingke",
+      "Yang, Jianwei",
+      "Wang, Hongsong",
+      "Gui, Jie",
+      "Tang, Yuan Yan",
+      "Kwok, James Tin-Yau"
+    ],
+    "abstract": "High-capacity watermarking is necessary for 3D Gaussian Splatting (3DGS) assets to embed rich information (e.g., ownership, provenance, and authentication codes), enabling reliable identification and integrity verification in large-scale 3D asset pipelines. Existing bit-to-token watermarking methods based on a pre-trained text encoder are limited to 77-bit messages due to CLIP's fixed 77-token context length, as tokens beyond this limit are unsupported by learned positional embeddings. To address this limitation, we introduce BitC-3DGS, a bit-compression framework that encodes multiple message bits per token. It employs a bit-compressed tokenization scheme that encodes multiple bits within the same chunk into a single semantic token. To enable recovery of the compressed information, it further introduces a dual-branch architecture for joint chunk decompression and bit decoding, along with a hard-message sampling strategy to improve combinatorial coverage during decoder training. Extensive experiments on the Blender and LLFF datasets demonstrate the effectiveness of BitC-3DGS for high-capacity watermarking, achieving high message recovery accuracy and rendering fidelity. For example, it supports 128-bit message capacity with recovery accuracy comparable to that of 64-bit messages in recent state-of-the-art methods.",
+    "link": "https://arxiv.org/abs/2605.29583",
+    "published": "2026-05-28",
+    "category": "cs.CV",
+    "tags": [
+      "3DGS",
+      "Watermarking",
+      "Bit Compression",
+      "Neural Rendering"
+    ],
+    "tldr": "提出一种基于比特压缩的高容量3DGS水印方法，突破CLIP上下文长度限制，实现超过128位消息容量。",
+    "motivation": "现有比特到令牌的水印方法受CLIP固定77令牌上下文长度限制，无法嵌入超过77位的高容量消息。",
+    "method": "采用比特压缩令牌化方案，将多个消息比特编码为单个语义令牌；引入双分支架构进行联合块解压缩和比特解码，并采用硬消息采样策略增强解码器训练。",
+    "result": "在Blender和LLFF数据集上，实现128位消息容量，恢复精度与现有64位方法相当，同时保持渲染保真度。",
+    "conclusion": "BitC-3DGS有效提高了3DGS水印的消息容量，为大规模3D资产管道的可靠标识和完整性验证提供支持。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2605.29452",
+    "title": "Comparative evaluation of photogrammetric reconstruction methods and 3D Gaussian Splatting for road surface roughness analysis",
+    "authors": [
+      "Elmegdar, Marouane",
+      "Xiao, Teng"
+    ],
+    "abstract": "Image-based 3D reconstruction offers a low-cost alternative to traditional sensor-based techniques for road surface assessment. This study compares four reconstruction pipelines--COLMAP, Meshroom, Metashape, and 3D Gaussian Splatting (3DGS)--to evaluate their ability to estimate road surface roughness from smartphone imagery. All point clouds were processed in CloudCompare using a consistent workflow involving orientation alignment, segmentation, normal estimation, and roughness computation at neighborhood radiuses of 0.2, 0.4, and 0.6 model units. The results show that COLMAP provides the highest sensitivity to micro-texture, while Meshroom yields balanced reconstructions with moderate roughness variation. Metashape produces the smoothest geometry due to its internal filtering, and 3DGS captures visible irregularities but exhibits higher noise and lower density. The comparison demonstrates that open-source pipelines are viable for relative roughness evaluation, offering a practical approach for low-cost pavement monitoring.",
+    "link": "https://arxiv.org/abs/2605.29452",
+    "published": "2026-05-28",
+    "category": "cs.CV",
+    "tags": [
+      "3D Reconstruction",
+      "Photogrammetry",
+      "Road Roughness",
+      "Gaussian Splatting",
+      "Smartphone Imagery"
+    ],
+    "tldr": "比较四种图像重建方法评估路面粗糙度，发现开源方法可行。",
+    "motivation": "探索低成本图像重建替代传统传感器评估路面粗糙度。",
+    "method": "使用COLMAP、Meshroom、Metashape和3DGS四种管线处理手机图像，在CloudCompare中统一流程计算粗糙度。",
+    "result": "COLMAP对微观纹理最敏感，Meshroom重建平衡，Metashape最平滑，3DGS噪声高密度低。",
+    "conclusion": "开源管线可用于相对粗糙度评估，适合低成本路面监测。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2605.30117",
+    "title": "VLA-Trace: Diagnosing Vision-Language-Action Models through Representation and Behavior Tracing",
+    "authors": [
+      "Shi, Haoyuan",
+      "Ren, Xiancong",
+      "Zhang, Yingji",
+      "Zhang, Qinfan",
+      "Hu, Jiayu",
+      "Shan, Haozhe",
+      "Dong, Han",
+      "Lu, Jinpeng",
+      "Chen, Yinda",
+      "Zhang, Yi",
+      "Dai, Yong",
+      "Ju, Xiaozhu"
+    ],
+    "abstract": "Understanding how Vision-Language-Action (VLA) models transform multimodal knowledge into embodied control remains an open challenge. We present VLA-Trace, a progressive diagnostic framework that analyzes VLA models through a unified evidence chain from representation dynamics to causal control attribution and behavioral manifestation. It specifically combines cross-modal and checkpoint-drift centered kernel alignment (CKA) to trace representation evolution, attention knockout interventions to identify modality-specific control pathways, and rollout-level behavioral probes to examine grounding, shortcut dependence, and semantic following. Experiments on $\\pi_{0.5}$ and OpenVLA reveal three key findings. First, the two models exhibit distinct modality-specific adaptation dynamics during VLA finetuning. Second, they rely on different multimodal routing strategies and layer-wise dependencies during action decoding. Third, although VLA policies excel at visually grounded trajectory generation, they remain limited in fine-grained semantic following. These findings highlight future directions for representation-preserving adaptation, causal VLA circuits, and compositional semantic control.",
+    "link": "https://arxiv.org/abs/2605.30117",
+    "published": "2026-05-28",
+    "category": "cs.AI",
+    "tags": [
+      "VLA",
+      "Diagnostic Framework",
+      "Representation Dynamics",
+      "Causal Attribution",
+      "Behavioral Probing"
+    ],
+    "tldr": "VLA-Trace通过表征和因果追踪诊断VLA模型，揭示模态特异性适应、路由策略及语义跟随局限。",
+    "motivation": "理解视觉-语言-动作模型如何将多模态知识转化为具身控制仍是一个未解难题。",
+    "method": "提出VLA-Trace渐进诊断框架，结合跨模态与检查点漂移中心核对齐追踪表征演化，利用注意力消融干预识别模态特异性控制通路，并通过行为探测评估基础、捷径依赖与语义遵循。",
+    "result": "在π0.5和OpenVLA模型上实验发现：两者在微调中表现出不同的模态特异性适应动态，依赖不同的多模态路由策略和层依赖，且虽擅长视觉引导轨迹生成，但在细粒度语义遵循上存在局限。",
+    "conclusion": "指出了保持表征的自适应、因果VLA回路及组合语义控制等未来研究方向。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2605.30036",
+    "title": "Teaching Values to Machines: Simulating Human-Like Behavior in LLMs",
+    "authors": [
+      "Yehudai, Asaf",
+      "Rozen, Naama",
+      "Gera, Ariel"
+    ],
+    "abstract": "Large Language Models (LLMs) demonstrate a remarkable capacity to adopt different personas and roles; however, it remains unclear whether they can manifest behavior that adheres to a coherent, human-like value structure. In this work, we draw on established psychological value theory to induce human-like values in LLMs and assess their alignment with patterns observed in human studies. Using validated psychological questionnaires, we conduct large-scale experiments -- over 5 million questions -- to evaluate value structures and value-behavior relationships in leading LLMs and compare them to humans. Our findings reveal strong agreement between value-prompted LLMs and humans across both dimensions. Moreover, incorporating human value distributions enhances population-level simulations with value-induced LLMs. These findings highlight the potential of value-induced LLMs as effective, psychologically grounded tools for simulating human behavior.",
+    "link": "https://arxiv.org/abs/2605.30036",
+    "published": "2026-05-28",
+    "category": "cs.AI",
+    "tags": [
+      "Large Language Models",
+      "Value Alignment",
+      "Human Behavior Simulation",
+      "Value Induction"
+    ],
+    "tldr": "利用心理价值理论诱导大型语言模型表现出与人类一致的价值结构，用于模拟人类行为。",
+    "motivation": "探索大型语言模型能否展现连贯且类人的价值结构，并评估其与人类价值模式的一致性。",
+    "method": "基于心理价值理论诱导LLM中的类人价值观，通过验证的心理问卷进行超过500万问题的大规模实验，评估价值结构与价值-行为关系。",
+    "result": "通过超过500万问题的大规模实验，发现价值诱导的LLM与人类在价值结构及行为关系上高度一致，且引入人类价值分布提升了群体模拟效果。",
+    "conclusion": "价值诱导的LLM可作为有效的、基于心理学的工具模拟人类行为，具有重要应用潜力。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2605.29815",
+    "title": "PRAIB: Peer Review AI Benchmark of Behaviour of LLM-Assisted Reviewing",
+    "authors": [
+      "Żurawicki, Krzysztof",
+      "Farganus, Julia",
+      "Gaweł, Arkadiusz",
+      "Bystroński, Mateusz",
+      "Kajdanowicz, Tomasz Jan"
+    ],
+    "abstract": "The growing number of submitted papers has motivated the exploration of Large Language Models (LLMs) as a means to support and augment the peer review process, particularly in terms of improving its speed and scalability. Yet, it remains unknown whether LLMs engage with scientific manuscripts in the same manner as human reviewers, or whether they merely produce review-looking text. To address this, we introduce the Peer Review AI Benchmark (PRAIB), a novel framework comprising thoroughly defined metrics that measure review specificity, style, and behavior of engagement. To complement the PRAIB framework, we conduct a large-scale empirical study leveraging a dataset of 11,000 reviews generated by five proprietary and open-source models for 1,000 ICLR and NeurIPS papers. Spanning the 2021--2025 period, these machine-generated reviews are compared against original human feedback across diverse prompting strategies to identify systematic behavioral divergences. Our analysis reveals that the generated reviews diverge significantly from feedback provided by human reviewers: LLM ratings are less variable, positively biased, and overconfident, and their cross-reference patterns are model-dependent and distinct from human norms. Furthermore, when evaluated through PRAIB, we observe that LLMs tend to generate longer, more complex reviews, yet frequently overlook the atomic weaknesses noted by human reviewers. By characterizing where and how LLMs reviewing behavior departs from human norms, PRAIB provides the community with a diagnostic tool for identifying which aspects of the review process LLMs can reliably support today and which require further development before deployment.",
+    "link": "https://arxiv.org/abs/2605.29815",
+    "published": "2026-05-28",
+    "category": "cs.AI",
+    "tags": [
+      "LLM",
+      "Peer Review",
+      "Benchmark",
+      "Behavior Analysis"
+    ],
+    "tldr": "PRAIB是一个评估LLM辅助同行评审行为的基准框架，发现LLM评审与人类在评分、引用和细节关注上存在显著差异。",
+    "motivation": "大量论文提交使得LLM被用于支持同行评审，但不确定LLM是否真正像人类一样参与评审，还是仅生成类似评审的文本，因此需要量化评估LLM的评审行为。",
+    "method": "引入PRAIB框架，定义衡量评审特异性、风格和行为参与度的指标，并基于11000条由5种模型生成的评审（针对1000篇ICLR和NeurIPS论文），与人类反馈进行对比，采用多种提示策略。",
+    "result": "LLM评分变异性更小、正向偏差且过度自信；交叉引用模式依赖模型且与人类不同；生成更长更复杂的评审，但常遗漏人类指出的原子弱点。",
+    "conclusion": "PRAIB提供了诊断工具，用于识别LLM当前可可靠支持的评审环节以及仍需改进的方面，有助于指导LLM在同行评审中的合理部署。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2605.29534",
+    "title": "UI-KOBE: Knowledge-Oriented Behavior Exploration for Lightweight Graph-Guided GUI Agents",
+    "authors": [
+      "Chai, Yuxiang",
+      "Xiao, Han",
+      "Fu, Xinyu",
+      "Chen, Jinpeng",
+      "Liu, Rui",
+      "Li, Hongsheng"
+    ],
+    "abstract": "Recent advances in mobile GUI agents have shown strong potential for automating mobile tasks, but most effective systems still depend on large vision-language models for screenshot understanding and long-horizon planning. Small GUI agents that can be deployed directly on mobile devices are more attractive for practical use, offering lower inference cost and better protection of sensitive on-device information. However, due to limited model capacity, such lightweight agents remain unreliable when planning and executing GUI tasks end-to-end from screenshots alone. We propose Knowledge-Oriented Behavior Exploration (\\textbf{UI-KOBE}), a framework that improves lightweight mobile GUI agents with reusable app-specific graph knowledge. UI-KOBE first autonomously explores a mobile application and constructs an app knowledge graph, where nodes represent distinct UI states and edges represent executable transitions. At runtime, a lightweight GUI agent uses the graph as external guidance: given a user task and the current screenshot, it identifies the current graph node and selects among self-loop actions, neighboring transitions, task completion, or fallback free actions associated with that node. By supporting runtime decisions with app-specific graph guidance, UI-KOBE reduces the burden of end-to-end GUI planning and helps lightweight models perform mobile GUI tasks more effectively, offering a practical step toward efficient, interpretable, and privacy-conscious on-device GUI agents.",
+    "link": "https://arxiv.org/abs/2605.29534",
+    "published": "2026-05-28",
+    "category": "cs.AI",
+    "tags": [
+      "GUI Agent",
+      "Knowledge Graph",
+      "Mobile Automation",
+      "Lightweight Model"
+    ],
+    "tldr": "UI-KOBE通过自动构建应用知识图指导轻量级GUI代理，提升其移动任务执行效率。",
+    "motivation": "现有轻量级GUI代理因模型容量有限，难以仅从截图端到端可靠规划任务；需要外部知识引导以降低规划负担。",
+    "method": "提出UI-KOBE框架，先自主探索应用构建知识图（节点为UI状态，边为可执行转换），运行时轻量级代理根据当前截图识别节点，并从关联动作中选择执行。",
+    "result": "摘要未提供相关信息",
+    "conclusion": "UI-KOBE通过应用专用图指导运行时决策，减少端到端规划负担，使轻量级模型更有效完成GUI任务，迈向高效、可解释、隐私保护的原生设备代理。"
+  },
+  {
     "id": "http://arxiv.org/abs/2605.28587v1",
     "title": "Deformable Gaussian Occupancy: Decoupling Rigid and Nonrigid Motion with Factorized Distillation",
     "authors": [
@@ -683,6 +963,83 @@
     "method": "提出统一视距与非视距的神经几何重建框架 GeRaF 2.0，通过引入视距几何先验约束射频传播建模，实现可见与隐藏几何的一致重建。",
     "result": "在射频几何重建任务上达到了新的最优性能，具体量化指标摘要未提供。",
     "conclusion": "GeRaF 2.0 实现了稳定训练和物理一致的重建，推动了基于射频的非视距三维重建发展。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2605.29136",
+    "title": "Eulerian Gaussian Splatting using Hashed Probability Pyramids",
+    "authors": [
+      "Polansky, Mia Gaia",
+      "Kopanas, George",
+      "Garbin, Stephan",
+      "Zickler, Todd",
+      "Verbin, Dor"
+    ],
+    "abstract": "We introduce a probabilistic splat-based radiance field framework that retains the fast rasterization and test-time efficiency of 3D Gaussian Splatting (3DGS) while replacing heuristic primitive manipulation with gradient-based optimization of a volumetric probability density. Rather than relocating, splitting, or culling Gaussians via hand-tuned densification (e.g., ADC), we treat primitive locations as samples drawn from a persistent, learnable density. We instantiate this density using a novel, memory-efficient multi-scale hierarchical grid that enables end-to-end gradient-based optimization. To stabilize the optimization, we derive an unbiased gradient estimator with control variates that markedly reduces variance. By allowing probability mass to flow to where the loss demands, our framework eliminates brittle priors and naturally explores the volume, achieving state-of-the-art reconstruction quality on mip-NeRF 360 while preserving 3DGS-level rendering speed.",
+    "link": "https://arxiv.org/abs/2605.29136",
+    "published": "2026-05-27",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Probabilistic Radiance Field",
+      "Multi-scale Grid",
+      "Gradient-based Optimization",
+      "View Synthesis"
+    ],
+    "tldr": "提出基于概率密度的Eulerian高斯溅射框架，用可学习密度和分层网格替代启发式操作，在mip-NeRF 360上实现SOTA质量并保持快速渲染。",
+    "motivation": "现有3DGS依赖手工调参的启发式操作（如ADC），优化不稳定且需要脆弱的先验。研究动机是消除这些启发式规则，通过梯度优化概率密度实现更自然的体积探索。",
+    "method": "核心方法包括：将原始位置视为从可学习概率密度中采样的样本，使用哈希概率金字塔（多尺度分层网格）实例化密度，并推导带控制变量的无偏梯度估计器以减少方差，实现端到端梯度优化。",
+    "result": "在mip-NeRF 360数据集上达到最先进的重建质量，同时保持与3DGS相当的渲染速度。",
+    "conclusion": "该框架消除了启发式操作，实现了更稳定和灵活的优化，将3DGS扩展为基于梯度的概率辐射场方法，具有重要应用潜力。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2605.29098",
+    "title": "Seeing through boxes: Non-Line-of-Sight 3D Reconstruction from Radar Signals",
+    "authors": [
+      "Lu, Jiachen",
+      "Shanbhag, Hailan",
+      "Hassanieh, Haitham Al"
+    ],
+    "abstract": "Reconstructing object geometry from radio frequency (RF) signals is fundamentally challenging due to the lensless imaging nature of RF sensing, which leads to low spatial resolution and high noise. Unlike light signals, RF signals can penetrate occlusions and thus capture information about hidden scenes. Existing Non-Line-of-Sight (NLoS) 3D neural reconstruction methods can recover coarse surfaces inside enclosed environments but often suffer from unstable optimization, noisy surface geometry, and surface ambiguity, failing to produce accurate zero-level sets from the signed distance field (SDF). These limitations largely stem from neglecting the role of Line-of-Sight (LoS) geometry outside the enclosed region, which provides valuable physical constraints for modeling signal propagation. In this paper, we introduce a Unified LoS and NLoS neural geometry reconstruction framework GeRaF 2.0 that leverages the outside LoS geometry to model and guide RF propagation from the LoS region into the NLoS region. By integrating visual LoS priors into the neural field formulation, GeRaF 2.0 achieves stable training and physically consistent reconstruction of both visible and hidden geometry, setting a new state-of-the-art in RF-based geometry reconstruction.",
+    "link": "https://arxiv.org/abs/2605.29098",
+    "published": "2026-05-27",
+    "category": "cs.CV",
+    "tags": [
+      "3D Reconstruction",
+      "Radar",
+      "Non-Line-of-Sight",
+      "Neural Fields",
+      "RF Sensing"
+    ],
+    "tldr": "GeRaF 2.0利用视线几何指导雷达信号传播，实现一致的可见与隐藏几何重建。",
+    "motivation": "现有NLoS神经重建方法忽略视线几何，导致优化不稳定和几何模糊。",
+    "method": "提出统一视线和非视线神经几何重建框架GeRaF 2.0，利用外部视线几何建模和引导雷达信号从视线区域传播到非视线区域，并整合视觉视线先验到神经场中。",
+    "result": "摘要未提供具体量化指标，但声称在RF几何重建中达到新最优性能。",
+    "conclusion": "通过视线几何约束实现物理一致的重建，提升了神经场训练的稳定性，为RF几何重建设定了新基准。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2605.29041",
+    "title": "Practitioner Beliefs and Behaviors in AI-Enhanced Education: DOT Framework Survey Evidence",
+    "authors": [
+      "Gibson, David",
+      "Azukas, M. Elizabeth",
+      "Knezek, Gerald"
+    ],
+    "abstract": "This study reports findings from a cross-sectional survey (n = 72) of higher education practitioners examining beliefs, behaviors, and institutional conditions related to artificial intelligence (AI) integration in teaching and learning. Grounded in the DOT Framework, which integrates design thinking and open systems theory, the study investigates AI familiarity, usage patterns, design-oriented practices, and pedagogical beliefs. Exploratory factor analysis of 19 belief items identified a three-factor structure: AI Functional Capabilities, Oversight and Governance, and Instructor Collaboration and Planning ({\\alpha} = .90). Results indicate that practitioners hold favorable views of AI as a pedagogical support while maintaining strong commitments to human oversight and critical evaluation. Reported practices emphasize iterative prompting and content generation, with less consistent use of needs assessment and feedback loops. Institutional barriers including limited policy, training, and infrastructure were widely reported. These findings provide preliminary empirical support for the DOT Framework as a descriptive model of practitioner beliefs and practices, while also highlighting gaps between design-oriented theory and current implementation. The study contributes an initial measurement structure and identifies directions for confirmatory validation and outcome-based research linking AI-supported design practices to instructional quality.",
+    "link": "https://arxiv.org/abs/2605.29041",
+    "published": "2026-05-27",
+    "category": "cs.AI",
+    "tags": [
+      "AI in Education",
+      "DOT Framework",
+      "Survey",
+      "Higher Education",
+      "Practitioner Beliefs"
+    ],
+    "tldr": "一项基于DOT框架的调研揭示了高等教育从业者在AI整合中的信念、行为与制度障碍。",
+    "motivation": "研究高等教育从业者在AI教学整合中的信念、行为和制度条件。",
+    "method": "基于DOT框架，对72名从业者进行横截面调查，使用探索性因子分析识别出三个信念因子：AI功能能力、监督治理和教师协作规划。",
+    "result": "从业者对AI作为教学支持持积极态度，但强调人类监督；实践集中在迭代提示和内容生成，较少使用需求评估和反馈循环；普遍报告存在政策、培训和基础设施障碍。",
+    "conclusion": "初步支持DOT框架作为描述性模型，指出了设计导向理论与实际实施之间的差距，并提出了确认性验证和结果导向研究的方向。"
   },
   {
     "id": "http://arxiv.org/abs/2605.27372v1",
@@ -1749,137 +2106,5 @@
     "method": "采用双轨结构：竞赛赛道基于大规模野生数据集设置多个挑战任务；论文轨道征集姿态、运动与行为估计、情感建模、多模态学习、基准测试及公平性鲁棒性等方面的工作。",
     "result": "摘要未提供相关信息",
     "conclusion": "第十届ABAW研讨会与竞赛作为关键平台，促进基准测试、合作与创新，推动下一代多模态人本人工智能系统的发展。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.24776v1",
-    "title": "How Noisy Poses Break Inverse Dynamics: Analysis and Mitigation for Video-Based Joint Torque Estimation",
-    "authors": [
-      "Donghyun Kim",
-      "Chanyoung Kim",
-      "Eunseo Jeong",
-      "Youngjoong Kwon",
-      "Seong Jae Hwang"
-    ],
-    "abstract": "Recent advances in monocular 3D human pose estimation enable accurate body tracking from video. However, translating these kinematic estimates into physical quantities, such as joint torques, remains challenging due to noise amplification through inverse dynamics. In this work, we provide a systematic analysis of how pose estimation noise propagates through the inverse dynamics pipeline. We present three key findings: (1) pose noise is amplified by approximately 1,000x when computing joint torques via numerical differentiation, (2) proximal joints (spine, hips) are up to 10x more sensitive to noise than distal joints (wrists, hands), and (3) low-pass filtering before differentiation substantially reduces this amplification. To enable this analysis, we develop SMPL-Dynamics, a fully differentiable inverse dynamics module for the SMPL body model that requires no external physics simulators. Our module supports end-to-end gradient computation, and we demonstrate this through differentiable pose refinement, which reduces torque error by 93% with negligible change in pose.",
-    "link": "http://arxiv.org/abs/2605.24776v1",
-    "published": "2026-05-23",
-    "category": "cs.CV",
-    "tags": [
-      "Inverse Dynamics",
-      "Joint Torque Estimation",
-      "Pose Estimation",
-      "Noise Amplification",
-      "SMPL"
-    ],
-    "tldr": "分析了姿态估计噪声在逆动力学中的放大效应，提出SMPL-Dynamics模块并通过可微优化将扭矩误差降低93%。",
-    "motivation": "尽管单目3D人体姿态估计可以实现精确的身体跟踪，但将运动学估计转换为关节扭矩等物理量时，由于逆动力学中的噪声放大而面临挑战。",
-    "method": "提出了SMPL-Dynamics，一个完全可微的逆动力学模块，基于SMPL身体模型，无需外部物理模拟器。该模块支持端到端梯度计算，并通过可微姿态优化来缓解噪声。",
-    "result": "发现姿态噪声在通过数值微分计算关节扭矩时被放大约1000倍，近端关节（脊柱、髋部）比远端关节（手腕、手）敏感高达10倍，低通滤波可显著降低放大。可微姿态优化使扭矩误差降低93%，姿态变化可忽略不计。",
-    "conclusion": "系统分析了姿态估计噪声在逆动力学中的传播机制，提出了SMPL-Dynamics模块，并展示了可微姿态优化在提升扭矩估计精度方面的有效性，为基于视频的关节扭矩估计提供了重要见解。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.24642v1",
-    "title": "Understanding the Impact of Geometric Foundation Models on Vision-Language-Action Models",
-    "authors": [
-      "Yurou Yang",
-      "Muyuan Lin",
-      "Roberto Martin-Martin",
-      "Martin Labrie",
-      "Shreekant Gayaka",
-      "Cheng-Hao Kuo",
-      "Luca Carlone"
-    ],
-    "abstract": "Recent work explores new opportunities at the intersection of vision-language-action models (VLAs) and geometric foundation models (GFMs) for 3D reconstruction, such as VGGT. While the resulting geometric VLAs often show improved performance, it remains unclear (i) if modern VLAs already have sufficient geometric understanding to start with, (ii) what is the best architecture to inject geometric understanding into a VLA, and (iii) what is the effect of other design choices that affect geometric VLAs. In this paper we provide a rigorous experimental analysis to shed light on these questions, for a specific choice of VLA (GR00T-N1.5) and GFM (VGGT). Our first contribution is to formalize prior work's intuition that current VLAs lack geometric understanding, by providing a rigorous analysis based on linear probing. The analysis quantifies, for the first time, the \"geometric gap\" between VLAs and GFMs. Our second contribution is to identify and compare different strategies to bridge GFMs with VLAs. We implement three different architectures, which differ in the way they inject geometry in the VLA, while keeping low-level implementation details as similar as possible, to ensure a fair comparison. Finally, we analyze the impact of non-architectural choices (e.g., training data, number of cameras, reconstruction quality) on the performance of the geometric VLAs.",
-    "link": "http://arxiv.org/abs/2605.24642v1",
-    "published": "2026-05-23",
-    "category": "cs.CV",
-    "tags": [
-      "VLA",
-      "GFM",
-      "3D Reconstruction",
-      "Robotics",
-      "Geometric Understanding"
-    ],
-    "tldr": "本文系统分析了将几何基础模型（如VGGT）注入视觉-语言-动作模型（如GR00T-N1.5）的影响，包括几何理解缺口、最佳架构及设计选择。",
-    "motivation": "当前视觉-语言-动作模型（VLA）是否已具备足够的几何理解？如何最佳地将几何基础模型（GFM）注入VLA？其他设计选择（如训练数据、相机数量、重建质量）有何影响？本文旨在通过严格实验分析回答这些问题。",
-    "method": "首先通过线性探针分析量化VLA与GFM之间的'几何差距'，然后实现三种不同的注入几何信息的架构（保持底层实现细节尽可能相似以公平比较），最后分析非架构选择（如训练数据、相机数量、重建质量）对几何VLA性能的影响。",
-    "result": "摘要未提供具体量化指标，但首次量化了VLA与GFM之间的几何差距，并比较了三种注入几何信息的架构，揭示了非架构选择对性能的影响。",
-    "conclusion": "本文形式化了先前关于VLA缺乏几何理解的直觉并提供了严格分析，识别并比较了连接GFM与VLA的不同策略，分析了非架构选择的影响，为构建几何增强的VLA提供了指导。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.24630v1",
-    "title": "DexSIM: Real-time Dexterous Simulation with Unified Causal Video Diffusion",
-    "authors": [
-      "Adam Lee"
-    ],
-    "abstract": "Recent progress of video diffusion models have enabled extensive simulation of the physical world. While simulation with hand object interaction has been less explored. We propose DexSIM, a dexterous simulation framework for simulating dexterous manipulation in real-time. While previous works utilizing video diffusion and 3D reconstruction focus on navigation, dexterous manipulation has been limited while it has extensive applications for creating interactive experiences with the simulated world and for generating synthetic data for robotics. Existing methods lack real-time interactivity and long-term spatial consistency and memory. We propose a 2-stage training framework for DexSIM. First we train a bi-directional video diffusion model by jointly embedding the hand action trajectory and video in a unified feature space. We utilize gaussian heatmap hand encoding for more accurate hand representation. Then we conduct a roll-out based autoregressive training with updated spatial cache as attention sink for spatial memory, which improves long-term consistency and 3D aware dexterous manipulation simulation. DexSIM outperforms the baseline on pixel and semantic similarity, motion fidelity, and hand projection accuracy. It also allows new applications such as hand motion transfer and runs at 15.24 FPS real-time interactivity.",
-    "link": "http://arxiv.org/abs/2605.24630v1",
-    "published": "2026-05-23",
-    "category": "cs.CV",
-    "tags": [
-      "video diffusion",
-      "dexterous manipulation",
-      "real-time simulation",
-      "hand-object interaction"
-    ],
-    "tldr": "提出DexSIM，一个基于视频扩散的实时灵巧操作仿真框架，实现真实感交互与长期空间一致性。",
-    "motivation": "现有视频扩散与3D重建方法在导航任务中表现良好，但在灵巧操作仿真中缺乏实时交互性和长期空间一致性，难以用于生成交互式体验和机器人合成数据。",
-    "method": "采用两阶段训练框架：首先训练双向视频扩散模型，通过高斯热图手部编码将手部动作轨迹和视频嵌入统一特征空间；然后使用滚动自回归训练，以更新的空间缓存作为注意力汇点，实现长期一致性和3D感知的灵巧操作仿真。",
-    "result": "在像素相似度、语义相似度、运动保真度和手部投影精度上超越基线方法，实现15.24 FPS的实时交互速度。",
-    "conclusion": "DexSIM实现了实时、高一致性的灵巧操作仿真，支持手部运动转移等新应用，为交互式虚拟世界和机器人数据生成提供了有效工具。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.24604v1",
-    "title": "LC-Flow: Learning Local Continuous Optical Flow and Confidence from events",
-    "authors": [
-      "Gunwoo Jeon",
-      "Chaesong Park",
-      "Jongwoo Lim"
-    ],
-    "abstract": "Event cameras capture brightness changes asynchronously with microsecond resolution, yet existing optical flow methods fail to fully exploit this temporal continuity. Frame-based approaches impose artificial accumulation latency and suffer from domain overfitting, while model-based local methods operate statelessly, discarding temporal history between predictions and yielding inaccurate flows.\n  We propose \\textbf{LC-Flow}, the first temporally continuous, learning-based optical flow estimator that operates purely from local events. At its core, a Continuous Local Recurrent Network maintains persistent hidden states per spatial grid, incrementally accumulating temporal context as events arrive. Unlike frame-based methods constrained to fixed accumulation windows, and unlike stateless model-based methods that recompute motion from scratch at each step, LC-Flow produces sparse local flow estimates at arbitrary timestamps with full motion history.\n  To address the inherent ambiguity of local observations, we jointly learn a confidence score that quantifies the reliability of each prediction, explicitly handling event sparsity and the aperture problem. This confidence serves a dual role: filtering unreliable estimates for downstream tasks such as visual odometry, and providing principled weights for a multi-scale confidence-guided aggregation that reconstructs globally consistent flow from the sparse local outputs. LC-Flow achieves state-of-the-art performance among local methods on both MVSEC and DSEC, while the confidence-guided aggregation establishes a new overall state-of-the-art on the MVSEC benchmark, surpassing heavy frame-based networks that rely on global spatial priors.",
-    "link": "http://arxiv.org/abs/2605.24604v1",
-    "published": "2026-05-23",
-    "category": "cs.CV",
-    "tags": [
-      "Event Camera",
-      "Optical Flow",
-      "Continuous Learning",
-      "Confidence Estimation",
-      "Recurrent Network"
-    ],
-    "tldr": "LC-Flow首次实现基于局部事件的时间连续光流估计，并联合学习置信度以处理模糊性，在MVSEC和DSEC上达到先进性能。",
-    "motivation": "现有光流方法无法充分利用事件相机微秒级时间连续性，基于帧的方法存在延迟和域过拟合，无状态局部方法丢弃时间历史导致流不准确。",
-    "method": "提出LC-Flow，首个基于局部事件的连续学习光流估计器，核心是连续局部循环网络在每个空间网格维护隐藏状态逐步累积时间上下文；联合学习置信度分数量化预测可靠性，并通过多尺度置信度引导聚合重建全局一致光流。",
-    "result": "在MVSEC和DSEC数据集上，LC-Flow在局部方法中达到最先进性能；在MVSEC上，置信度引导聚合超越了依赖全局空间先验的帧基网络，创下新的总体最佳结果。",
-    "conclusion": "首次实现了时间连续的学习型局部光流估计，置信度联合学习有效处理了事件稀疏性和孔径问题，为下游任务如视觉里程计提供可靠估计，具有重要实用价值。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.24304v1",
-    "title": "ArtSplat: Feed-Forward Articulated 3D Gaussian Splatting from Sparse Multi-State Uncalibrated Views",
-    "authors": [
-      "Inseo Lee",
-      "Yoonji Kim",
-      "Eugene Sohn",
-      "Jiwoong Lee",
-      "Jungmin You",
-      "Joonseok Lee",
-      "Jin-Hwa Kim"
-    ],
-    "abstract": "Articulated object reconstruction from sparse-view images is an ill-posed problem that requires simultaneous inference of geometry and underlying articulation structure. Existing methods for articulated object reconstruction based on NeRF and 3D Gaussian Splatting (3DGS) typically rely on dense views or strong priors (e.g., depth maps, joint types, predefined number of joints) and require costly per-object optimization. In this paper, we propose ArtSplat, the first feed-forward framework for articulated 3D Gaussian Splatting. It reconstructs both geometry and joint parameters from sparse multi-view images across multiple articulation states in a single forward pass. To address the challenges of single-pass articulated reconstruction, we introduce a per-pixel joint map representation that enables the integration of joint parameter estimation into the feed-forward pipeline. We further propose a Cross-State Attention (CSA) mechanism with state tokens, which effectively captures discrete motion across input states. Experiments on 68 articulated objects from PartNet-Mobility, including both single- and multi-joint configurations, demonstrate that ArtSplat achieves competitive performance in both geometry and joint estimation, while being over 400 times faster than baselines.",
-    "link": "http://arxiv.org/abs/2605.24304v1",
-    "published": "2026-05-23",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Articulated Object Reconstruction",
-      "Feed-Forward",
-      "Sparse Views",
-      "Joint Parameter Estimation"
-    ],
-    "tldr": "ArtSplat首次实现从稀疏多状态无标定视图的前向传播式关节物体重建，速度快400倍以上。",
-    "motivation": "现有方法依赖密集视图或强先验，需要逐对象优化，难以从稀疏无标定视图重建关节物体。本文旨在实现单次前向推理同时恢复几何与关节参数。",
-    "method": "提出ArtSplat，基于3DGS的端到端前馈框架，引入逐像素关节图表示和跨状态注意力机制（CSA），从多个关节状态的稀疏多视图图像中联合重建几何和关节参数。",
-    "result": "在PartNet-Mobility的68个物体上，几何与关节估计性能有竞争力，且比基线方法快400倍以上。",
-    "conclusion": "ArtSplat是首个前向式关节3DGS框架，显著加速关节物体重建，为稀疏视图下的高效重建提供了新思路。"
   }
 ]
