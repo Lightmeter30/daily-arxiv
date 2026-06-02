@@ -1,5 +1,690 @@
 [
   {
+    "id": "http://arxiv.org/abs/2606.02479v1",
+    "title": "Retrieve What's Missing: Coverage-Maximizing Retrieval for Consistent Long Video Generation",
+    "authors": [
+      "Minseok Joo",
+      "Dogyun Park",
+      "Taehoon Lee",
+      "Kyujin Lee",
+      "Hyunwoo J. Kim"
+    ],
+    "abstract": "Maintaining long-term geometric consistency remains challenging for long-horizon autoregressive video generation. Memory-augmented generative models address this by retrieving historical frames, but their effectiveness depends on two key design choices: what 3D-geometric evidence should represent past observations, and how memory frames should be selected from this evidence. Existing methods often rely on camera poses or field-of-view overlap, which are lightweight but too coarse to reason about pixel-wise visibility, or use explicit 3D reconstruction, which provides fine-grained evidence but is costly to maintain over long rollouts. We propose Coverage-Maximizing Retrieval-Augmented Generation (COVRAG), a depth-based memory retrieval framework that uses pretrained 3D priors to construct a target-view coverage map as lightweight 3D memory evidence. For frame selection, COVRAG maximizes residual coverage gain, iteratively retrieving frames that explain target-view regions not covered by the current context or previously selected memories. To improve scalability in long-video generation, we introduce sliding-window depth caching for efficient geometry estimation. Experiments on RealEstate10K and DL3DV10K show that COVRAG improves long-horizon geometric consistency while maintaining low latency compared to baselines.",
+    "link": "http://arxiv.org/abs/2606.02479v1",
+    "published": "2026-06-01",
+    "category": "cs.CV",
+    "tags": [
+      "Video Generation",
+      "Memory Retrieval",
+      "Geometric Consistency",
+      "Depth-based",
+      "COVRAG"
+    ],
+    "tldr": "COVRAG通过深度记忆检索最大化覆盖，提升长视频几何一致性。",
+    "motivation": "现有方法在长视频生成中保持几何一致性时，使用相机位姿或视场重叠过于粗糙，而显式3D重建成本高昂。需要一种轻量且细粒度的记忆证据。",
+    "method": "提出COVRAG，利用预训练3D先验构建目标视图覆盖图作为轻量3D记忆证据，通过最大化残差覆盖增益迭代检索帧，并引入滑动窗口深度缓存提高可扩展性。",
+    "result": "在RealEstate10K和DL3DV10K数据集上，COVRAG相比基线方法提升了长时几何一致性，同时保持低延迟。",
+    "conclusion": "COVRAG有效提升了长视频生成的几何一致性，且计算开销低，具有实用价值。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.02436v1",
+    "title": "Geometry-Aware Implicit Memory for Video World Models",
+    "authors": [
+      "Zhengxuan Wei",
+      "Xu Guo",
+      "Xinghui Li",
+      "Xunzhi Xiang",
+      "Min Wei",
+      "Yiran Zhu",
+      "Qiulin Wang",
+      "Xintao Wang",
+      "Pengfei Wan",
+      "Xiangwang Hou",
+      "Qi Fan"
+    ],
+    "abstract": "Video world models aim to simulate controllable visual environments, but long-horizon rollouts depend on what the model remembers after observations leave its native context window. Explicit memories retain frames or online 3D reconstructions, which can suffer from heuristic retrieval errors, redundant appearance storage, or reconstruction artifacts. Implicit memories compress history into a compact state, but existing designs are not explicitly constrained to encode cross-view scene geometry. We propose GIM-World, a geometry-aware implicit memory framework for video world models. A lightweight transformer encoder compresses variable-length history into fixed-size memory tokens, a camera-queryable geometry head distills 3D scene structure from a frozen foundation model into the memory during training, and an information-guided pruning rule keeps encoding cost bounded as history grows. The geometry teacher is discarded at inference, leaving a lightweight memory module. Experiments on MIND show that GIM-World better preserves long-horizon geometric and visual consistency than both explicit- and implicit-memory baselines.",
+    "link": "http://arxiv.org/abs/2606.02436v1",
+    "published": "2026-06-01",
+    "category": "cs.CV",
+    "tags": [
+      "Video World Models",
+      "Implicit Memory",
+      "Geometry-Aware",
+      "Long-Horizon"
+    ],
+    "tldr": "提出一种几何感知的隐式记忆框架GIM-World，用于提升视频世界模型的长时程预测一致性。",
+    "motivation": "现有显式记忆存在检索错误、冗余存储或重建伪影，隐式记忆缺乏对跨视角场景几何的显式约束，导致长时程预测质量下降。",
+    "method": "使用轻量级Transformer编码器将变长历史压缩为固定大小记忆令牌，通过相机可查询的几何头从冻结基础模型蒸馏3D结构，并采用信息引导剪枝规则控制编码成本。",
+    "result": "在MIND数据集上，GIM-World在长时程几何和视觉一致性上优于显式和隐式记忆基线。",
+    "conclusion": "提出了一种几何感知的隐式记忆方法，推理时丢弃几何教师模型，仅保留轻量级模块，有效提升了视频世界模型的长期预测能力。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.02346v1",
+    "title": "VEDAL: Variational Error-Driven Asynchronous Learning for 3D Gaussian Splatting Pruning",
+    "authors": [
+      "Aoduo Li",
+      "Jiancheng Li",
+      "Huan Ye",
+      "Hongjian Xu",
+      "Shiting Wu",
+      "Xiujun Zhang",
+      "Zimeng Li",
+      "Xuhang Chen"
+    ],
+    "abstract": "3D Gaussian Splatting (3DGS) achieves remarkable novel view synthesis quality with real-time rendering, yet suffers from excessive memory consumption due to millions of Gaussian primitives. Existing pruning methods rely on heuristic importance scores or synchronous batch updates, leading to suboptimal compression and training instability. We propose VEDAL, a principled framework that formulates Gaussian pruning as variational free energy minimization. Our approach introduces (1) a prediction-error gating mechanism that asynchronously activates pruning based on per-Gaussian reconstruction uncertainty, and (2) a variational uncertainty head that models pruning decisions as latent variables with learnable priors. The free energy objective naturally balances reconstruction fidelity against model complexity through an information-theoretic lens. Extensive experiments on Mip-NeRF 360, Tanks&Temples, and Deep Blending demonstrate that VEDAL achieves 5.2x compression with only 0.31 dB PSNR drop, outperforming PUP 3D-GS by +0.05 dB at a higher compression ratio and LightGaussian by +0.35 dB at comparable quality, while maintaining real-time rendering at 185 FPS.",
+    "link": "http://arxiv.org/abs/2606.02346v1",
+    "published": "2026-06-01",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Pruning",
+      "Variational Inference",
+      "Novel View Synthesis",
+      "Compression"
+    ],
+    "tldr": "VEDAL提出变分自由能最小化框架，通过异步门控和变分不确定性头实现高效3DGS剪枝，达到5.2倍压缩且PSNR仅降0.31 dB。",
+    "motivation": "3DGS因数百万高斯基元导致内存消耗过大，现有剪枝方法依赖启发式重要性分数或同步批量更新，导致压缩次优和训练不稳定。",
+    "method": "将高斯剪枝建模为变分自由能最小化，引入预测错误门控机制异步激活剪枝，并设计变分不确定性头将剪枝决策建模为具有可学习先验的潜在变量。",
+    "result": "在Mip-NeRF 360等数据集上，VEDAL实现5.2倍压缩，PSNR仅下降0.31 dB，优于PUP 3D-GS（高压缩比下+0.05 dB）和LightGaussian（+0.35 dB），且保持185 FPS实时渲染。",
+    "conclusion": "VEDAL通过信息论视角自然平衡重建保真度与模型复杂度，实现了高压缩率和高质量的新视图合成，具有实时渲染能力。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.02301v1",
+    "title": "Quantitative Movement Testing: Measuring Patient Movements from a Single Smartphone Video",
+    "authors": [
+      "Pranav Mahajan",
+      "Amanda Wall",
+      "Eleonora Maria Camerone",
+      "Julie Stebbins",
+      "Eoin Kelleher",
+      "Shuangyi Tong",
+      "Annina Schmid",
+      "Katja Wiech",
+      "Anushka Irani",
+      "Ben Seymour"
+    ],
+    "abstract": "Chronic pain diminishes quality of life by decreasing functional ability, yet objectively measuring this functional impact remains challenging in real-world settings. While optical motion capture provides high precision for assessing altered movement quality, it is costly and restricted to laboratory environments. We aimed to develop and validate Quantitative Movement Testing (QMT), a computer vision pipeline extracting 3D kinematic biomarkers from standard monocular smartphone video, balancing clinical accessibility with biomechanical accuracy. We validated the QMT pipeline, utilising deep learning-based 3D pose-estimation, against gold-standard optical motion capture in healthy controls (N=13). Following leave-one-subject-out calibration to correct systematic bias, we deployed QMT in two prospective clinical cohorts to assess real-world utility: a pre- and post-intervention trial for fibromyalgia patients, and a 30-day longitudinal at-home monitoring study of chronic sciatica patients and healthy controls. In laboratory validation, QMT extracted clinical kinematic metrics with high agreement to optical motion capture, yielding strong correlations (r > 0.85) and low mean absolute errors. QMT demonstrated high test-retest reliability (r > 0.86) in fibromyalgia patients and successfully tracked day-to-day movement fluctuations in chronic sciatica. While real-world home settings introduced higher measurement variance than lab settings, QMT found group-level differences between healthy controls and sciatica patients based entirely on remote recordings. Monocular 3D pose estimation offers a scalable alternative to traditional assessments. QMT provides an objective, accessible biomarker for tracking disease progression and treatment response in clinical trials, though further research is needed to optimise reliability in home environments.",
+    "link": "http://arxiv.org/abs/2606.02301v1",
+    "published": "2026-06-01",
+    "category": "cs.AI",
+    "tags": [
+      "Chronic Pain",
+      "3D Pose Estimation",
+      "Smartphone Video",
+      "Kinematic Biomarkers",
+      "Clinical Validation"
+    ],
+    "tldr": "本研究提出了定量运动测试（QMT），利用深度学习从智能手机视频中进行3D姿态估计，客观测量患者运动，并在实验室和临床队列中验证其准确性。",
+    "motivation": "慢性疼痛降低功能能力，但客观测量功能性影响在现实环境中仍具挑战；光学动作捕捉成本高且限于实验室环境。",
+    "method": "开发了QMT管道，基于深度学习的单目智能手机视频3D姿态估计，并通过留一法校准系统偏差。",
+    "result": "与光学动作捕捉高度一致（r>0.85），平均绝对误差低；纤维肌痛患者重测信度高（r>0.86）；成功追踪慢性坐骨神经痛患者的日常波动并发现组间差异。",
+    "conclusion": "QMT提供了一种可扩展的客观生物标志物，用于临床试验中跟踪疾病进展和治疗反应，但家庭环境下的可靠性需进一步优化。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.02251v1",
+    "title": "FW-NKF: Frequency-Weighted Neural Kalman Filters",
+    "authors": [
+      "Adnan Harun Dogan",
+      "Berken Utku Demirel",
+      "Christian Holz"
+    ],
+    "abstract": "Robust state estimation is central to robotic autonomy, yet classical Kalman filters struggle with frequency-dependent disturbances and model mismatch such as sensor vibrations, electromagnetic interference, and periodic noise. Although Deep Kalman Filter (DKF) variants extend the Extended Kalman Filtering (EKF) framework by learning latent transitions, they lack explicit mechanisms to suppress band-limited noise components that typically corrupt sensor measurements in real-world scenarios. We introduce the Frequency-Weighted Neural Kalman Filter (FW-NKF), a unified hybrid approach that embeds a causal spectral-shaping operator into the Kalman measurement residual and jointly learns observation, and transition networks. By adapting both the filter spectrum and the latent state representation, FW-NKF attenuates the noise-dominated frequency bands while capturing complex residual structures. We conduct extensive experiments on four heterogeneous benchmarks, including chaotic systems such as multi-dimensional Lorenz systems and full-body inertial pose estimation, and find a reduction in localization error of up to 10% as well as marked improvements in orientation accuracy. Our ablation studies confirm that frequency weighting and deep latent-state modeling contribute to overall performance.",
+    "link": "http://arxiv.org/abs/2606.02251v1",
+    "published": "2026-06-01",
+    "category": "cs.AI",
+    "tags": [
+      "State Estimation",
+      "Kalman Filter",
+      "Frequency Weighting",
+      "Neural Networks",
+      "Robotics"
+    ],
+    "tldr": "FW-NKF通过频率加权机制和深度学习模块，提升了卡尔曼滤波器对频域噪声和复杂残差结构的处理能力。",
+    "motivation": "经典卡尔曼滤波器难以处理频率相关干扰和模型失配问题，如传感器振动和周期性噪声；现有深度卡尔曼滤波器变体缺乏显式的带限噪声抑制机制。",
+    "method": "提出将因果频谱整形算子嵌入卡尔曼测量残差，并联合学习观测网络和状态转移网络，实现滤波器频谱自适应与深度潜在状态建模。",
+    "result": "在四个异构基准上实验，定位误差降低高达10%，方向精度显著提升；消融研究证实频率加权和深度潜在状态贡献显著。",
+    "conclusion": "FW-NKF是一种统一的混合方法，有效融合频率分析和深度学习，提升了鲁棒状态估计性能，对机器人等领域有潜在影响。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.02219v1",
+    "title": "Symmetry-Aware 9D Pose Estimation with Sim(3)-Consistent Feature and Spherical Inception Convolution",
+    "authors": [
+      "Panfei Cheng",
+      "Hongshan Yu",
+      "Wenrui Chen",
+      "Xiaojun Tang",
+      "Jian Liu",
+      "Naveed Akhtar"
+    ],
+    "abstract": "Object pose estimation is a fundamental problem for an agent system to perceive or manipulate objects in images or videos. However, current instance-level methods struggle with generalization to unseen objects. Category-level methods seek to address this, but remain constrained by the complexities of learning in the non-linear Sim(3) space and intra-class variations. To address these challenges, We propose an effective method for category-level object pose estimation with two key innovations: (1) A translation/size estimator, featuring a semantic-guided symmetry-aware module that leverages robust generalization capabilities of a large vision model (LVM) to infer symmetry points, resulting in accurate translation and size without shape priors. This result serves as a precomputed cue for rotation estimation, thereby reducing the difficulty of learning in the non-linear Sim(3) space and laying a robust foundation for tackling the inherently more challenging rotation estimation. (2) A feature fusion module, based on our proposed spherical large-kernel inception convolution, fuses semantic features from the LVM with systematically computed geometric features to extract essential pose features from intra-class variations by modeling long-range dependencies without excessive computational cost. Built on these innovations, we achieve SOTA on benchmarks and real-world scenes, while developing a robust robotic picking system capable of handling diverse objects. Our code will be available at the project page: {\\hypersetup{urlcolor=blue}https://panfei-cheng.github.io/SSH-Pose}.",
+    "link": "http://arxiv.org/abs/2606.02219v1",
+    "published": "2026-06-01",
+    "category": "cs.CV",
+    "tags": [
+      "Category-Level Pose Estimation",
+      "Symmetry-Aware",
+      "Sim(3) Space",
+      "Spherical Inception Convolution",
+      "Robotic Grasping"
+    ],
+    "tldr": "提出一种类别级物体姿态估计方法，利用对称性感知和大模型特征实现高精度9D位姿估计。",
+    "motivation": "现有实例级方法泛化能力差，类别级方法受限于Sim(3)空间的非线性和类内变化，亟需解决这些挑战。",
+    "method": "包括两个创新：1) 基于语义引导的对称性感知模块的平移/尺寸估计器，利用大视觉模型推断对称点，无需形状先验；2) 基于球形大核初始卷积的特征融合模块，融合语义和几何特征，建模长距离依赖而不增加计算成本。",
+    "result": "在基准测试和真实场景中达到最优性能，并开发了鲁棒的机器人抓取系统。",
+    "conclusion": "提出的方法有效克服了Sim(3)空间学习困难，实现了高精度姿态估计，具有实际应用潜力。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.02153v1",
+    "title": "Ultra Diffusion Poser: Diffusion-Based Human Motion Tracking From Sparse Inertial Sensors and Ranging-Based Between-Sensor Distances",
+    "authors": [
+      "Dominik Hollidt",
+      "Tommaso Bendinelli",
+      "Christian Holz"
+    ],
+    "abstract": "Methods using inertial measurement units (IMUs) provide a wearable alternative to camera-based motion capture. To mitigate drift from inertial signals, recent sparse inertial pose estimators integrate inter-sensor distances measured by ultra-wideband (UWB) ranging. So far, UWB distances have only been used as an additional input feature, ignoring the physical constraints they impose on sensor positions. However, these distances can also be used to reconstruct the underlying 3D sensor layout, which in turn provides more informative input for pose reconstruction. We propose Ultra Diffusion Poser, a diffusion model that explicitly models these geometric constraints. It includes a Spatial Layout Module that analytically reconstructs the 3D sensor positions from UWB measurements. These sensor positions are used alongside IMU signals and UWB distances as a conditioning signal during diffusion. Still, network predictions can violate inter-sensor distance measurements. To address this, we introduce UWB-Diffusion Guidance, which encourages alignment between predicted poses and measured distances during diffusion sampling. Together, these contributions enable our model to achieve state-of-the-art performance, reducing joint position error by up to 22% over prior work.",
+    "link": "http://arxiv.org/abs/2606.02153v1",
+    "published": "2026-06-01",
+    "category": "cs.CV",
+    "tags": [
+      "Human Motion Tracking",
+      "Diffusion Model",
+      "Inertial Sensors",
+      "UWB Ranging",
+      "Pose Estimation"
+    ],
+    "tldr": "提出Ultra Diffusion Poser，利用UWB测距的几何约束和扩散指导，实现更高精度的稀疏惯性人体运动追踪。",
+    "motivation": "现有方法仅将UWB距离作为输入特征，忽略了其物理约束；本文利用UWB距离重构3D传感器布局，为姿态重建提供更丰富信息。",
+    "method": "包含空间布局模块，从UWB测量解析重构3D传感器位置，作为扩散条件；引入UWB扩散指导，在采样时强制预测姿态与测量距离一致。",
+    "result": "关节位置误差相比先前工作降低高达22%，达到最先进性能。",
+    "conclusion": "通过显式建模几何约束和扩散指导，显著提升稀疏IMU人体运动追踪精度，适用于可穿戴运动捕捉。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.02068v1",
+    "title": "Fast and Lightweight Novel View Synthesis with Differentiable Multiplane Image",
+    "authors": [
+      "Kaidi Zhang",
+      "Guanxu Zhu"
+    ],
+    "abstract": "Recently, novel view synthesis has witnessed remarkable progress, with mainstream methods such as Neural Radiance Fields (NeRF) and 3D Gaussian Splatting (3DGS) delivering impressive results. However, these approaches often struggle to balance rendering speed and model size, and their optimization-based training can be highly time-consuming. Furthermore, they typically rely on dense observations, often failing to produce satisfactory results under sparse-view conditions. Although feed-forward reconstruction significantly reduces the optimization time of 3DGS, its pixel-aligned formulation generates millions of Gaussians from a single image, severely limiting its practical deployment on mobile devices. To address these limitations, we revisit the Multiplane Image(MPI) representation, which represents scenes using a compact set of planar layers for efficient novel view synthesis. Leveraging recent advances in visual foundation models, we utilize predicted point maps for reliable geometric initialization, followed by differentiable optimization. To address the issues of holes and artifacts in sparsely initialized MPI, we introduce one-step diffusion, which participates in both the differentiable optimization of MPI and the postprocessing of rendering results. Compared with a representative GS-based method, our approach is 30.7% faster and uses only 14.8% of its model size, while achieving competitive synthesis quality on front-view scenarios",
+    "link": "http://arxiv.org/abs/2606.02068v1",
+    "published": "2026-06-01",
+    "category": "cs.CV",
+    "tags": [
+      "Novel View Synthesis",
+      "Multiplane Image",
+      "Differentiable Optimization",
+      "Diffusion Model",
+      "Efficient Rendering"
+    ],
+    "tldr": "本文通过可微MPI表示结合点图几何初始化与一步扩散扩散，实现了快速轻量化的新视角合成，性能优于GS方法。",
+    "motivation": "现有方法如NeRF和3DGS在渲染速度、模型大小及稀疏视图性能上存在不足，且前馈GS方法产生大量高斯点不适合移动设备部署。",
+    "method": "采用可微MPI表示，利用视觉基础模型预测的点图进行可靠几何初始化，再进行可微优化；引入一步扩散处理稀疏初始化产生的空洞和伪影，扩散同时参与优化和渲染后处理。",
+    "result": "与代表性GS方法相比，本方法渲染速度快30.7%，模型大小仅为14.8%，且在前景场景中合成质量具有竞争力。",
+    "conclusion": "该方法在保持合成质量的同时显著提升效率和减小模型尺寸，适合移动设备部署，并对稀疏视图具有更好的鲁棒性。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.02058v1",
+    "title": "TIDES: Time-Derivative Event Simulation via Deformable Reconstruction",
+    "authors": [
+      "Christopher Thirgood",
+      "Dipon Kumar Ghosh",
+      "Simon Hadfield"
+    ],
+    "abstract": "Event cameras emit asynchronous events in response to environmental appearance changes. The scarcity of real-world event datasets makes simulation essential. However, most simulators infer event timestamps from frame sequences, forcing many threshold crossings to share a small set of discrete times; a failure mode we term timestamp batching that worsens under fast motion and occlusion.\n  We present TIDES, a continuous-time event simulator built on dynamic Gaussian splatting. Because TIDES operates on an explicit 3D scene representation with learnt geometry and motion, it can derive per-pixel intensity dynamics directly from the scene, rather than by differencing rendered frames. This enables accurate threshold-crossing prediction, including multiple crossings per rendering step, without temporal upsampling or frame interpolation. The same 3D scene model reveals where objects partially occlude one another; TIDES uses this to guide adaptive time stepping, concentrating computation only in regions where occlusion dynamics make simple models of brightness change unreliable.\n  Finally, we model finite sensor bandwidth using a tile-level arbiter whose throughput, jitter, and event drops reproduce realistic sensor artifacts. Across paired RGB-event benchmarks, TIDES attains state-of-the-art event-stream fidelity. We also show that events simulated by TIDES transfer more effectively to real downstream tasks than competitors'.",
+    "link": "http://arxiv.org/abs/2606.02058v1",
+    "published": "2026-06-01",
+    "category": "cs.CV",
+    "tags": [
+      "Event Camera",
+      "Simulation",
+      "Gaussian Splatting",
+      "Continuous-Time",
+      "Deformable Reconstruction"
+    ],
+    "tldr": "TIDES是一种基于动态高斯泼溅的连续时间事件模拟器，通过场景几何与运动直接预测像素强度变化，实现高保真事件流。",
+    "motivation": "事件相机数据集稀缺，现有模拟器从帧序列推断事件时间戳导致时间戳批处理问题，尤其在快速运动和遮挡下恶化。",
+    "method": "TIDES使用动态高斯泼溅的显式3D场景表示，直接推导每像素强度动态，避免帧差分；利用遮挡信息指导自适应时间步长，并采用瓦片级仲裁器模拟传感器带宽限制。",
+    "result": "在RGB-事件基准上达到最先进的事件流保真度，且模拟事件在下游真实任务中比竞争对手更有效。",
+    "conclusion": "TIDES通过连续时间模拟和场景几何建模，解决了时间戳批处理问题，并产生更真实的事件流，对下游任务有益。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.02021v1",
+    "title": "PerBite: A Curated Diagnostic Workflow for Bite-Aware Food Volume Estimation",
+    "authors": [
+      "Ahmad AlMughrabi",
+      "Farid Al-Areqi",
+      "David Fernández Gómez",
+      "Umair Haroon",
+      "Marc Bolaños",
+      "Ricardo Marques",
+      "Petia Radeva"
+    ],
+    "abstract": "Can a visually plausible food mesh be trusted to estimate the volume of consumed food? \\method investigates this question using selected paired before- and after-consumption states from the MetaFood CVPR 2026 Continuous 3D Reconstruction While Eating Challenge. The submitted workflow follows a curated reconstruction protocol: SAM~3 segments the food and plate regions; Hunyuan3D/SAM~3D generates a dimensionless food mesh; the plate diameter provides the metric scale; the plate geometry is removed in Blender; and the remaining mesh is hole-filled, made watertight, and integrated to estimate volume. MoGe-2 is used only as an auxiliary cue for initial dish-diameter estimation when direct plate measurement is uncertain; it is not the primary scale source for the reported challenge result. \\method ranks first, with an average Chamfer distance of 8.31 across 34 meshes using rigid ICP without scale correction. On 17 before- and after-pairs, it achieves 33.87\\% state-level volume MAPE and zero monotonicity violations, while consumed-volume MAPE remains 53.74\\%. The results show that surface reconstruction, metric scale, controlled mesh cleanup, watertight volume integration, and physical depletion consistency should be evaluated separately for dietary assessment. Source code and evaluation scripts will be available at \\href{https://github.com/GCVCG/PerBite-CVPR-MetaFood-2026}{github.com/GCVCG/PerBite-CVPR-MetaFood-2026}.",
+    "link": "http://arxiv.org/abs/2606.02021v1",
+    "published": "2026-06-01",
+    "category": "cs.CV",
+    "tags": [
+      "Food Volume Estimation",
+      "3D Reconstruction",
+      "Bite-Aware",
+      "Dietary Assessment",
+      "PerBite"
+    ],
+    "tldr": "提出一种基于配对的餐前餐后三维重建流程，实现咬痕感知的食物体积估计，在挑战赛中排名第一。",
+    "motivation": "探究视觉上合理的食物网格是否能可靠估计摄入食物的体积，并为此设计诊断性工作流。",
+    "method": "使用SAM~3分割食物和餐盘区域；Hunyuan3D/SAM~3D生成无量纲食物网格；以餐盘直径提供公制尺度；在Blender中移除餐盘几何并修补网格使其水密；最后积分估计体积。MoGe-2仅在直接测量不确定时辅助估计初始餐盘直径。",
+    "result": "在34个网格上平均Chamfer距离为8.31；在17对餐前餐后数据上，状态级体积MAPE为33.87%，零单调性违规，消耗体积MAPE为53.74%。",
+    "conclusion": "结果表明表面重建、公制尺度、受控网格清理、水密体积积分和物理消耗一致性应分别评估，以改善膳食评估。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.01950v1",
+    "title": "Learning Action-Conditional and Object-Centric Gaussian Splatting World Models for Rigid Objects",
+    "authors": [
+      "Jens U. Kreber",
+      "Lukas Mack",
+      "Joerg Stueckler"
+    ],
+    "abstract": "World models enable intelligent agents to predict the consequences of their actions on the environment. In this paper, we propose Multi Rigid Object Gaussian World Model (MRO-GWM), a novel model that learns action-conditional dynamics of rigid objects in 3D. By representing the scene by object-centric Gaussians, we can represent arbitrary object shapes and multi-object scenes. We develop a novel spatio-temporal transformer architecture that predicts future rigid body motion from a history of object Gaussians and future actions. Objects are represented by their Gaussians in a canonical frame, which allows for describing object motion as rigid body transformation. Our model is trained on reconstructions from multiple viewpoints, which requires the model to handle partial observations of objects due to occlusions. We analyze prediction performance of our approach on synthetic datasets composed of typical household objects with multi-object dynamics and interactions by a robot end effector. We also evaluate our model in model-predictive control for non-prehensile manipulation in simulation.",
+    "link": "http://arxiv.org/abs/2606.01950v1",
+    "published": "2026-06-01",
+    "category": "cs.CV",
+    "tags": [
+      "World Model",
+      "Gaussian Splatting",
+      "Rigid Objects",
+      "Action-Conditional",
+      "Model Predictive Control"
+    ],
+    "tldr": "提出MRO-GWM，利用对象中心高斯与时空变换器学习多刚体场景的动作条件动态。",
+    "motivation": "使智能体能够预测动作对刚体环境的影响，并处理多对象场景中的遮挡与部分观测问题。",
+    "method": "使用对象中心高斯表示任意形状及多对象场景，设计时空变换器从历史高斯和未来动作预测刚体运动。",
+    "result": "在合成数据集上对典型家居对象和机器人交互进行了预测性能分析，并在仿真中用于非抓取操作的模型预测控制。",
+    "conclusion": "提出了一种可学习动作条件3D动态的世界模型，为机器人操作中的刚体运动预测与环境交互提供了新方法。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.01940v1",
+    "title": "SCAPO: Self-Supervised Category-Level Articulated Pose Estimation from a Single 3D Observation",
+    "authors": [
+      "Can Zhang",
+      "Gim Hee Lee"
+    ],
+    "abstract": "Existing methods for category-level object articulation from a single 3D observation often rely on dense supervision, multi-frame inputs, or CAD templates, and still struggle to disentangle geometry from articulation or to recover explicit joint parameters. We propose SCAPO, a self-supervised framework that estimates canonical geometry, rigid part segmentation, and joint pivots, axes, and articulation states from a single RGB-D observation without ground-truth labels or category-specific models. Our SCAPO first uses an SE(3)-equivariant vector-neuron autoencoder to factor out global pose and align diverse instances into a shared canonical space. On this aligned shape, a joint-aware blend-skinning module is then designed to model part motion. We learn this representation through cycle reconstruction between observed and canonical shapes and cross-space alignment with a learnable canonical template that decouples shared category geometry from instance-specific residual shape. Experiments on synthetic and real articulated-object datasets show that our SCAPO recovers consistent part structure and accurate articulation parameters and outperforms all self-supervised baselines.",
+    "link": "http://arxiv.org/abs/2606.01940v1",
+    "published": "2026-06-01",
+    "category": "cs.CV",
+    "tags": [
+      "Category-Level Articulation",
+      "Self-Supervised Learning",
+      "Pose Estimation",
+      "SE(3)-Equivariant",
+      "Blend Skinning"
+    ],
+    "tldr": "提出SCAPO，一种自监督框架，从单次RGB-D观测中估计类别级物体关节参数，无需标注或类别模型。",
+    "motivation": "现有方法依赖密集监督、多帧输入或CAD模板，难以从单次观测中解耦几何与关节，且无法恢复显式关节参数。",
+    "method": "利用SE(3)-等变向量神经元自编码器解耦全局姿态，对齐到规范空间；设计关节感知蒙皮模块建模部件运动；通过观测与规范形状的循环重构及跨空间对齐（可学习规范模板）学习表示。",
+    "result": "在合成和真实数据集上，SCAPO恢复了一致的部件结构和准确的关节参数，并在所有自监督基线中取得最优性能。",
+    "conclusion": "SCAPO无需密集标注即可实现鲁棒的类别级关节姿态估计，为可泛化的物体操纵提供了新思路。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.01939v1",
+    "title": "SAVMap: Structure-Aided Visual Mapping of Large-Scale 2.5D Manhattan Wireframes from Panoramic Video",
+    "authors": [
+      "Howard Huang",
+      "Bharath Surianarayanan",
+      "Keifer Lee",
+      "Chenyu Wang",
+      "Chen Feng"
+    ],
+    "abstract": "Precise 3D representations of industrial environments enable tasks such as robot localization and digital twin generation. We propose SAVMap, a method for generating a semantic wireframe map of warehouse shelf and light structures using only a panoramic video camera as the sensor input. Sequences of rectified images with shelf and ceiling-facing views are extracted from a panoramic video captured along the warehouse aisles. Using a semantic segmentation network front end, a set of sparse, semantic structure feature points (e.g., corners of shelf structures, centers of lights) are extracted from each image and tracked across the sequences. By accounting for real-world geometric relationships among the points such as Manhattan grids, a constrained structure-from-motion algorithm yields the 3D points that form a wireframe map. We demonstrate the scalability and accuracy of our proposal in a warehouse with 46 shelving rows, each with faces spanning 55\\,m by 7\\,m. From an hour of panoramic video content, we create wireframe maps for over 5000 shelf elements across the rows, achieving an aggregate mean absolute error of 4.8\\,cm with respect to ground-truth.",
+    "link": "http://arxiv.org/abs/2606.01939v1",
+    "published": "2026-06-01",
+    "category": "cs.CV",
+    "tags": [
+      "Wireframe Mapping",
+      "Panoramic Video",
+      "Structure from Motion",
+      "Manhattan World",
+      "Industrial Environment"
+    ],
+    "tldr": "提出SAVMap方法，利用全景视频生成仓库货架和灯光的语义线框地图，误差4.8厘米。",
+    "motivation": "工业环境需要精确三维表示用于机器人定位和数字孪生，但现有方法需要多种传感器。本文仅用全景相机生成语义线框地图。",
+    "method": "从全景视频中提取货架和天花板视图，利用语义分割提取结构特征点，结合曼哈顿网格约束的结构运动恢复算法生成三维线框图。",
+    "result": "在46排货架的仓库中，从一小时全景视频生成超过5000个货架元素的线框地图，平均绝对误差4.8厘米。",
+    "conclusion": "展示了仅用全景视频即可大规模生成高精度语义线框地图的能力，有助于机器人定位和数字孪生。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.01892v1",
+    "title": "Adversarial Attacks on Robot Localization Systems via Deep Feature Perturbation",
+    "authors": [
+      "Zhenyu Li",
+      "Tianyi Shang"
+    ],
+    "abstract": "Robot localization systems are critical for autonomous navigation and safety. Adversarial perturbations can mislead these systems, resulting in mislocalization, navigation errors, or unsafe interactions, especially in mission-critical scenarios. This paper investigates the vulnerability of deep learning based localization pipelines to adversarial attacks. We propose a novel framework for generating adversarial queries that specifically target Product Quantization (PQ) in visual localization systems. Our method employs a Lightweight Product Quantization Network (LPQN) to perturb query feature encodings, misleading the retrieval process by returning semantically irrelevant database entries. Adversarial queries are generated via a two-phase procedure: a forward pass that perturbs feature distributions and a backward pass that refines the perturbation through optimization. The lightweight design of LPQN allows the creation of subtle yet highly effective perturbations with minimal computational overhead. Extensive experiments in both controlled and real-world robotic environments demonstrate that our approach substantially degrades PQN performance, exposing critical vulnerabilities in practical applications.",
+    "link": "http://arxiv.org/abs/2606.01892v1",
+    "published": "2026-06-01",
+    "category": "cs.CV",
+    "tags": [
+      "Adversarial Attacks",
+      "Robot Localization",
+      "Visual Localization",
+      "Product Quantization",
+      "Deep Learning"
+    ],
+    "tldr": "提出基于深度特征扰动和轻量级乘积量化网络的对抗攻击框架，显著降低视觉定位系统性能。",
+    "motivation": "研究深度学习定位系统对对抗攻击的脆弱性，尤其针对视觉定位中的乘积量化过程。",
+    "method": "提出轻量级乘积量化网络（LPQN），通过前向扰动特征分布和后向优化扰动来生成对抗查询，误导检索过程。",
+    "result": "在受控和真实机器人环境中实验表明，该方法显著降低PQN性能，暴露实际应用中的关键漏洞。",
+    "conclusion": "揭示了视觉定位系统在对抗攻击下的脆弱性，对机器人安全导航有重要警示意义。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.01573v1",
+    "title": "$\\text{VG}^2$GT: Voxel-Gaussian Splatting Visual Geometry Grounded Transformer",
+    "authors": [
+      "Yibin Zhao",
+      "Yihan Pan",
+      "Jun Nan",
+      "Wenli Yang",
+      "Liwei Chen",
+      "Jianjun Yi"
+    ],
+    "abstract": "Gaussian splatting has shown strong potential for 3D reconstruction and novel view synthesis. However, most existing methods require accurate camera parameters and per-scene optimization, while feed-forward methods with pixel-aligned Gaussian primitives often suffer from artifacts and non-uniform primitives. In this paper, we propose $\\text{VG}^2$GT, a Voxel-Gaussian Splatting Visual Geometry-Grounded Transformer. $\\text{VG}^2$GT leverages a frozen pretrained visual foundation model (VFM), incorporates a multi-scale differentiable voxel module to enhance geometric understanding, and directly splits and regresses Gaussian primitive parameters from voxel features. During training, depth maps are supervised through stochastic solid volume rendering, enabling geometrically accurate Gaussian scene reconstruction while keeping the visual foundation model fully frozen. This design enables $\\text{VG}^2$GT to be seamlessly plugged into any patch-feature-based VFM, while substantially reducing the required training cost. $\\text{VG}^2$GT outperforms current state-of-the-art methods on widely used DTU, Replica, TAT, and ScanNet datasets.",
+    "link": "http://arxiv.org/abs/2606.01573v1",
+    "published": "2026-06-01",
+    "category": "cs.CV",
+    "tags": [
+      "Gaussian Splatting",
+      "3D Reconstruction",
+      "Visual Foundation Model",
+      "Voxel Module",
+      "Feed-Forward"
+    ],
+    "tldr": "VG^2GT利用冻结视觉基础模型和多尺度体素模块，实现几何精确的高斯场景重建，无需逐场景优化。",
+    "motivation": "现有高斯泼溅方法需要精确相机参数和逐场景优化，而前馈方法存在伪影和非均匀基元。",
+    "method": "提出VG^2GT，采用冻结预训练视觉基础模型，集成多尺度可微分体素模块增强几何理解，从体素特征直接分裂和回归高斯基元参数，并通过随机实体体积渲染监督深度图。",
+    "result": "在DTU、Replica、TAT和ScanNet数据集上超越当前最先进方法。",
+    "conclusion": "VG^2GT可无缝嵌入任何基于补丁特征的视觉基础模型，显著降低训练成本，实现几何精确的3D重建。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.01493v1",
+    "title": "Splatshot: 3D Face Avatar Generation from a Single Unconstrained Photo",
+    "authors": [
+      "Hao Liang",
+      "Zhixuan Ge",
+      "Soumendu Majee",
+      "Joanna Li",
+      "Ashok Veeraraghavan",
+      "Guha Balakrishnan"
+    ],
+    "abstract": "Reconstructing a photorealistic 3D face avatar from a single unconstrained photograph is challenging: feed-forward 3D Gaussian Splatting (3DGS) models degrade on out-of-distribution inputs, while pretrained diffusion models produce high-fidelity images but lack multi-view consistency. We observe that these paradigms are fundamentally complementary: explicit 3D representations guarantee geometric consistency, whereas 2D diffusion priors ensure photorealism. Building on this, we propose SplatShot, a training-free framework that couples these representations directly within the denoising process. Given a base 3DGS face model and a single reference image, we jointly denoise all target views using a per-step 3D feedback loop. At each timestep, we predict clean images from the noisy latents, refit the 3DGS to these multi-view predictions, and back-propagate the photometric discrepancy between the 3DGS re-renderings and 2D predictions into the noise estimate. This steers the sampling trajectory toward strictly 3D-coherent, identity-faithful outputs. Experiments on diverse in-the-wild images demonstrate that SplatShot produces 3D avatars with superior identity preservation, photorealism, and multi-view consistency.",
+    "link": "http://arxiv.org/abs/2606.01493v1",
+    "published": "2026-05-31",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Diffusion Models",
+      "Face Avatar",
+      "Single-View Reconstruction"
+    ],
+    "tldr": "SplatShot通过无训练框架在去噪过程中耦合3D高斯泼溅和扩散先验，从单张照片生成多视图一致且逼真的3D面部头像。",
+    "motivation": "前馈3DGS在分布外输入下降级，扩散模型生成高保真图像但缺乏多视图一致性，需结合两者优势以从单张无约束照片重建逼真3D头像。",
+    "method": "提出SplatShot，给定基础3DGS人脸模型和单张参考图像，在去噪过程中联合处理所有目标视图，每步从噪声潜在预测清洁图像并重新拟合3DGS，将渲染与预测的光度差异反向传播到噪声估计中，引导采样走向3D一致且身份忠实的结果。",
+    "result": "在多样野外图像上，SplatShot生成的头像在身份保持、逼真度和多视图一致性上表现优越，但摘要未提供具体量化指标。",
+    "conclusion": "提出一个无训练框架直接耦合显式3D表示和2D扩散先验，可生成高质量3D面部头像，具有潜力应用于单张照片的3D头像重建。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.01315v1",
+    "title": "DeblurNVS: Geometric Latent Diffusion for Novel View Synthesis from Sparse Motion-Blurred Images",
+    "authors": [
+      "Changyue Shi",
+      "Wangbo Yu",
+      "Chaoran Feng",
+      "Li Yuan"
+    ],
+    "abstract": "Novel view synthesis (NVS) is a fundamental problem in computer vision and graphics. Recent advances in neural radiance fields (NeRF), 3D Gaussian Splatting (3DGS), and generative view synthesis have substantially improved its quality. Yet most methods still rely on clean observations, where image structures and cross-view geometric cues are well preserved. Motion blur breaks this assumption by corrupting local details and weakening multi-view correspondences. Such blur commonly arises from camera shake, scene motion, or finite exposure in practical capture. Blur-aware NVS methods address this degradation by modeling image formation, but their reliance on costly per-scene optimization limits efficient and generalizable sparse-view synthesis. To address this, we propose DeblurNVS, a novel framework for synthesizing high-fidelity novel views directly from sparse motion-blurred images, without requiring per-scene optimization. DeblurNVS restores the intermediate geometric representations needed for multi-view reasoning, enabling blurred inputs to recover reliable structure and correspondence cues. The restored representations are then combined with target camera information to synthesize the target-view representation and reconstruct a sharp RGB novel view. To enable the large-scale training, we construct a motion-blurred NVS dataset from DL3DV-10K using interpolation-based finite-exposure blur synthesis. Extensive experiments demonstrate that DeblurNVS outperforms existing baselines on synthetic motion-blur benchmarks and generalizes to real motion-blurred scenes, producing perceptually sharper and structurally more stable novel views while avoiding costly per-scene optimization. Project page: https://github.com/PKU-YuanGroup/DeblurNVS.",
+    "link": "http://arxiv.org/abs/2606.01315v1",
+    "published": "2026-05-31",
+    "category": "cs.CV",
+    "tags": [
+      "NVS",
+      "Motion Blur",
+      "NeRF",
+      "3DGS",
+      "Latent Diffusion"
+    ],
+    "tldr": "提出DeblurNVS框架，从稀疏运动模糊图像直接合成高清新视图，无需逐场景优化。",
+    "motivation": "现有新视图合成方法依赖清晰图像，运动模糊破坏细节和多视角对应；已有模糊感知方法需要昂贵的逐场景优化，难以高效泛化到稀疏视图。",
+    "method": "提出DeblurNVS框架，恢复中间几何表示（如密度和特征），结合目标相机信息生成新视图表示并重建清晰RGB图像；通过插值模糊合成构建大规模训练集。",
+    "result": "在合成运动模糊基准上超越现有基线，并泛化到真实模糊场景，生成感知更锐利、结构更稳定的新视图，避免了逐场景优化。",
+    "conclusion": "贡献了一个无需逐场景优化的高效新视图合成框架，并提供了大规模运动模糊训练数据集，推动了模糊场景下新视图合成的泛化能力。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.00963v1",
+    "title": "Reasmory: 3D Reconstruction as Explicit Memory for VLMs Spatial Reasoning",
+    "authors": [
+      "Jixuan He",
+      "Xueting Li",
+      "Chieh Hubert Lin",
+      "Ming-Hsuan Yang"
+    ],
+    "abstract": "Vision-Language Models (VLMs) exhibit emerging spatial reasoning capabilities, yet they remain unreliable on tasks requiring precise spatial understanding, such as viewpoint reasoning, directional comparison, and distance estimation. In multi-view images and monocular videos, relevant spatial cues are often sparse and distributed across redundant observations, making them difficult to organize and exploit. Reconstruction-based Vision Foundation Models (VFMs) offer a natural way to aggregate such observations into explicit spatial memory, such as point clouds. However, simply exposing reconstruction models as free-form tools is brittle, VLMs may invoke tools incorrectly, skip required spatial transformations, or misuse intermediate results. We propose \\textbf{Reasmory}, a framework that formulates spatial reasoning as structured program execution over reconstructed spatial memory. Reasmory constructs explicit 3D memory, augments it with semantically grounded 3D object instances, and introduces a lightweight Domain-Specific Language (DSL) that constrains how VLMs query objects and cameras, transform viewpoints, and render observations during reasoning. Generated programs are parsed and validated before execution, enabling more reliable interaction with spatial memory than unconstrained tool use. Experiments on multi-view image and video spatial reasoning benchmarks show consistent gains of 6--18\\% over strong baselines, including GPT-5-mini and Gemini-3-flash, indicating that explicit 3D memory is most useful when accessed through constrained, validated operations rather than free-form tool calls.",
+    "link": "http://arxiv.org/abs/2606.00963v1",
+    "published": "2026-05-31",
+    "category": "cs.CV",
+    "tags": [
+      "Spatial Reasoning",
+      "VLM",
+      "3D Reconstruction",
+      "DSL",
+      "Explicit Memory"
+    ],
+    "tldr": "提出Reasmory框架，通过3D重建构建显式空间记忆并用领域特定语言约束VLM推理，提升空间推理能力。",
+    "motivation": "VLM在精确空间理解任务上不可靠，且将重建模型作为自由工具使用时容易出错，需要结构化约束。",
+    "method": "构建显式3D点云记忆，增加语义物体实例，并设计轻量级领域特定语言（DSL）限制VLM的查询、变换和渲染操作，程序经解析验证后执行。",
+    "result": "在多视图图像和视频空间推理基准上，相比GPT-5-mini和Gemini-3-flash等基线，一致提升6-18%。",
+    "conclusion": "通过约束和验证操作访问显式3D记忆比自由工具调用更有效，为VLM空间推理提供了可靠框架。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.00936v1",
+    "title": "One Channel to Rule Them All: Rethinking Input Representation for Visual Place Recognition",
+    "authors": [
+      "Timur Ismagilov",
+      "Shakaiba Majeed",
+      "Michael Milford",
+      "Tan Viet Tuyen Nguyen",
+      "Sarvapali D. Ramchurn",
+      "Shoaib Ehsan"
+    ],
+    "abstract": "Visual Place Recognition (VPR) is fundamental to long-term robot localization and SLAM, yet current systems overwhelmingly rely on RGB input, implicitly assuming color is necessary for global place recognition. We challenge this assumption, investigating the role of chromatic information across training regimes, model architectures and standard benchmarks under real-world appearance variation. We find that grayscale matches RGB performance generally and outperforms it under severe appearance shifts where color invariance is insufficiently learned, while color provides meaningful gains only where persistent and discriminative chromatic cues are present. Across selected benchmarks, a fully gray-trained MixVPR model achieves an average 82.4% Recall@1 compared to 81.2% for its RGB counterpart. In some cases, lightweight grayscale variants with 60% fewer parameters can outperform heavier RGB models. Grayscale further offers practical advantages in storage, bandwidth and alignment with resource-constrained systems. We conclude that for global VPR where scenes vary across illumination, weather, season and setting, color contributes minimally, and grayscale alone is sufficient for reliable place recognition.",
+    "link": "http://arxiv.org/abs/2606.00936v1",
+    "published": "2026-05-31",
+    "category": "cs.CV",
+    "tags": [
+      "Visual Place Recognition",
+      "Grayscale",
+      "RGB",
+      "Color Invariance",
+      "MixVPR"
+    ],
+    "tldr": "灰度图像在视觉位置识别中与RGB性能相当，且光照变化下更优。",
+    "motivation": "质疑RGB输入对于全局位置识别的必要性，研究色度信息在不同训练和模型下的作用。",
+    "method": "对比灰度与RGB输入在多个VPR基准上的性能，使用MixVPR模型进行评估。",
+    "result": "灰度训练的MixVPR平均Recall@1为82.4%，优于RGB的81.2%；轻量灰度模型参数减少60%且性能更优。",
+    "conclusion": "在场景光照、天气等变化的全局VPR中，颜色贡献微小，灰度足以可靠定位。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.00825v1",
+    "title": "SuperMemory-VQA: An Egocentric Visual Question-Answering Benchmark for Long-Horizon Memory",
+    "authors": [
+      "Samiul Alam",
+      "Shakhrul Iman Siam",
+      "Michael J. Proulx",
+      "James Fort",
+      "Richard Newcombe",
+      "Hyo Jin Kim",
+      "Mi Zhang"
+    ],
+    "abstract": "AI glasses present a compelling platform for AI agents to serve as personalized memory assistants. To be genuinely useful, such systems must move beyond short-term video comprehension and address memory gaps that humans experience for practical, personal, or social purposes over longitudinal egocentric video streams. However, existing egocentric datasets predominantly focus on action recognition or generic QAs from short clips, measuring perceptual capabilities rather than realistic human memory needs. We introduce SuperMemory-VQA, an egocentric visual question answering (VQA) dataset for evaluating AI assistants on practical, long-horizon memory tasks. It contains 52.9 hours of everyday activities recorded with AI glasses, including synchronized RGB video, audio transcription, eye gaze, IMU, and SLAM trajectories. Through a human-verified annotation pipeline, we construct grounded 4,853 question-answer pairs that span object and location memory, intent recall, visual scene recall, timeline reconstruction, conversational memory, and in-context retrieval. Each question is posed as multiple-choice with an explicit \"unanswerable\" option to test hallucination robustness. Benchmarking leading agentic frameworks and LLM backbones reveals that existing systems remain far from reliable on real-world memory tasks, highlighting the need for new architectures for grounded AI memory that can answer only when evidence is sufficient. A participant survey further supports that our questions are realistic, useful, and aligned with everyday memory needs.",
+    "link": "http://arxiv.org/abs/2606.00825v1",
+    "published": "2026-05-30",
+    "category": "cs.CV",
+    "tags": [
+      "Egocentric Vision",
+      "VQA",
+      "Long-Horizon Memory",
+      "Benchmark",
+      "AI Glasses"
+    ],
+    "tldr": "提出一个基于AI眼镜的长时记忆视频问答基准SuperMemory-VQA，评估AI助手的记忆能力。",
+    "motivation": "现有数据集主要关注短时视频理解，无法满足AI助手在实际长时记忆场景中的需求。",
+    "method": "收集52.9小时日常活动数据，包含多种传感器，构建4853个多选题问答对，涵盖多种记忆类型。",
+    "result": "主流模型在该基准上表现不佳，无法可靠完成真实世界记忆任务。",
+    "conclusion": "需要开发新架构以实现可验证的AI记忆，仅在证据充分时作答，并通过用户调查验证了问题的真实性和实用性。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.00817v1",
+    "title": "Directed Distance Fields for Constant-Time Ray Queries on Gaussian Splatting",
+    "authors": [
+      "Subhankar MIshra"
+    ],
+    "abstract": "3D Gaussian Splatting (3DGS) renders new views of a scene in real time. Like every rasterizer, it answers only primary rays, the rays from the camera through the image. It cannot trace the secondary rays that shadows, ambient occlusion, and global illumination need. We turn a trained 3DGS scene into a ray oracle by distilling a Directed Distance Function (DDF). The DDF is a small neural field. It takes a ray, given by an origin and a direction, and returns the distance to the first surface and whether the ray hits anything. Each query is one forward pass. The field is 52~MB, and its size does not depend on the number of Gaussians, so its cost and memory stay flat as the scene grows. We make three points. First, we study what supervision a DDF needs. Depth rendered from the Gaussians is too blurry to teach thin parts, while clean distance supervision recovers them. Second, we measure speed. The DDF is 26 to 72 times faster than sphere tracing an equivalent signed distance field, and unlike a bounding volume hierarchy built over the Gaussians, even on dedicated RT-core hardware, its query time and memory do not grow with the scene. Third, we show a pipeline that needs no mesh: images give a 3DGS scene, a neural surface gives clean distances, and the DDF learns from them. We use the DDF as a secondary-ray oracle for global illumination. It reproduces reference ray-traced shadows at 30.3~dB and ambient occlusion at 21.3~dB across 142 objects, and on real captured scenes. Our codes are available at https://github.com/smlab-niser/ddf-gs.",
+    "link": "http://arxiv.org/abs/2606.00817v1",
+    "published": "2026-05-30",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Directed Distance Field",
+      "Ray Tracing",
+      "Neural Field"
+    ],
+    "tldr": "提出有向距离场（DDF）将3D高斯溅射转化为常数时间光线查询器，用于次级光线追踪。",
+    "motivation": "3D高斯溅射（3DGS）只能处理主光线，无法处理阴影、环境光遮蔽等所需的次级光线。",
+    "method": "从训练好的3DGS场景中蒸馏一个小型神经场DDF，输入光线（原点+方向）输出到第一个表面的距离和命中情况。监督学习使用干净的距离信息而非模糊的深度渲染。",
+    "result": "DDF查询比等效有符号距离场的球体追踪快26-72倍，且内存和查询时间不随场景规模增长。全局光照下重建参考光线追踪阴影达30.3dB，环境光遮蔽达21.3dB。",
+    "conclusion": "提出无需网格的管线，从图像生成3DGS，神经表面提供干净距离，DDF学习并作为次级光线Oracle用于全局光照，代码已开源。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.00803v1",
+    "title": "Generative Diffusion Priors for 3D Mapping of the Dark Universe",
+    "authors": [
+      "Brandon Zhao",
+      "Diana Scognamiglio",
+      "Olivier Doré",
+      "Katherine L. Bouman"
+    ],
+    "abstract": "Reconstructing the three-dimensional distribution of dark matter from weak-lensing observations is a central but highly ill-posed inverse problem in cosmology. Unlike standard 3D reconstruction with multiple viewpoints, we observe the universe from a single line of sight, through noisy shape distortions of galaxies with uncertain distances, so meaningful recovery of the 3D matter field requires strong prior assumptions. Existing methods either produce point estimates with handcrafted priors or use neural ensembles for approximate Bayesian uncertainty, and struggle to capture the non-Gaussian, filamentary structure of the cosmic web. With the advent of new high-resolution cosmological simulations, we now have an alternative source of prior knowledge that captures the nonlinear statistics of structure formation with far greater fidelity than analytic prescriptions. We leverage these simulations to build a new dataset $\\texttt{Conicus3D}$, which enables us to learn a data-driven diffusion-model prior capturing the full 3D distribution of dark matter structure across cosmic time. Building on recent plug-and-play approaches, we modify a diffusion-based posterior sampling scheme to the 3D weak-lensing setting, combining the learned prior with a differentiable physical forward model. On realistic simulations targeting a modern weak lensing survey, our approach yields substantially improved 2D and 3D reconstruction accuracy over baseline methods. Moreover, it produces posterior samples whose statistics closely track the underlying simulations, while remaining robust to moderate shifts in cosmology.",
+    "link": "http://arxiv.org/abs/2606.00803v1",
+    "published": "2026-05-30",
+    "category": "cs.CV",
+    "tags": [
+      "Dark Matter",
+      "Weak Lensing",
+      "Diffusion Model",
+      "3D Reconstruction",
+      "Cosmological Simulation"
+    ],
+    "tldr": "利用扩散模型学习宇宙学模拟先验，实现从弱透镜观测对暗物质3D分布的高质量重建。",
+    "motivation": "弱透镜观测重建暗物质3D分布是高度病态的反问题，现有方法受限于手工先验或无法捕捉非高斯丝状结构。",
+    "method": "构建Conicus3D数据集，学习扩散模型先验；结合可微物理前向模型，修改基于扩散的后验采样方案以适应3D弱透镜设置。",
+    "result": "在模拟数据上，2D和3D重建精度显著优于基线方法，后验样本统计与模拟一致，对宇宙学参数偏移具有鲁棒性。",
+    "conclusion": "提供了数据驱动的先验，提高了暗物质3D映射质量，为宇宙学研究提供了新工具。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.00452v1",
+    "title": "Beyond Static Gaussians: An Empirical Investigation of Architectural Paradigms for Dynamic 3D Scene Reconstruction",
+    "authors": [
+      "Adrian Ramlal",
+      "John S. Zelek"
+    ],
+    "abstract": "Dynamic scene reconstruction via 3D Gaussian Splatting (3DGS) has emerged as a compelling approach for representing evolving environments, yet understanding trade-offs between methodologies remains crucial. This paper presents a comprehensive analysis of dynamic 3DGS methods, categorizing them into two paradigms: structure-guided methods employing auxiliary representations (deformation fields, canonical spaces, grids) to model temporal changes, and gaussian-centric methods encoding dynamics directly into primitives via continuous functions or 4D representations. We evaluate representative methods from both paradigms on the D-NeRF benchmark. Our findings reveal that structure-guided methods achieve superior reconstruction fidelity and compact model sizes, while gaussian-centric approaches demonstrate significantly higher rendering speeds enabling real-time performance, though with greater quality variability and potentially substantial storage overhead. This analysis highlights a fundamental trade-off between reconstruction quality/compactness versus rendering speed, providing insights to guide future research and application development in dynamic scene reconstruction.",
+    "link": "http://arxiv.org/abs/2606.00452v1",
+    "published": "2026-05-30",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Dynamic Scene Reconstruction",
+      "Deformation Fields",
+      "4D Representations",
+      "Rendering Speed vs Quality"
+    ],
+    "tldr": "本文对动态3DGS的两种范式进行了实证比较，揭示了结构引导方法在重建质量和模型紧凑性上的优势与高斯中心方法在渲染速度上的优势之间的权衡。",
+    "motivation": "理解动态3DGS方法之间的权衡，指导未来研究与应用开发。",
+    "method": "将动态3DGS方法分为结构引导（使用变形场、规范空间等）和高斯中心（直接编码到高斯原语）两类，并在D-NeRF基准上评估典型方法。",
+    "result": "结构引导方法重建精度更高、模型更紧凑；高斯中心方法渲染速度更快，可实现实时性能，但质量波动大且存储开销可能较大。",
+    "conclusion": "揭示了重建质量/紧凑性与渲染速度之间的根本权衡，为动态场景重建的未来研究提供见解。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.00450v1",
+    "title": "Optimizing 3D Gaussian Splatting via Point Cloud Upsampling",
+    "authors": [
+      "Adrian Ramlal",
+      "Yan Song Hu",
+      "John S. Zelek"
+    ],
+    "abstract": "3D Gaussian Splatting (3DGS) is a technique for creating and rendering 3D scenes, however its performance depends heavily on the quality of initial seed points. To improve 3DGS initialization, this study presents and evaluates several point cloud upsampling approaches: linear interpolation, triangular interpolation, spline-based surface reconstruction, moving least squares surface fitting, and Voronoi-based point generation. Additionally, this research introduces a depth-guided point lifting method that leverages depth maps to maintain geometric consistency with Structure-from-Motion (SfM) reconstructions. Through extensive experiments on the Mip-NeRF360 and Replica datasets, the proposed methods demonstrate improvements in reconstruction quality across diverse scene types. Results indicate that different upsampling strategies excel in different scenarios: surface reconstruction methods perform better with organic, detailed scenes, while simpler interpolation approaches are more suited for scenes dominated by piecewise-smooth geometries. In comparison, the depth-guided approach shows promise for adding geometry-aware points across the entire scene, importantly in texture-less regions. These findings, which provide preliminary practical guidelines for selecting appropriate upsampling methods based on scene characteristics and computational constraints, advances the understanding of how point cloud initialization affects 3DGS quality.",
+    "link": "http://arxiv.org/abs/2606.00450v1",
+    "published": "2026-05-30",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Point Cloud Upsampling",
+      "Scene Reconstruction",
+      "Depth-Guided",
+      "Mip-NeRF360"
+    ],
+    "tldr": "提出多种点云上采样方法及深度引导点提升技术，优化3D高斯泼溅初始化，提升重建质量。",
+    "motivation": "3D高斯泼溅的性能高度依赖于初始种子点的质量，现有初始化方法存在不足。",
+    "method": "评估了线性插值、三角插值、样条曲面重建、移动最小二乘曲面拟合和Voronoi点生成等多种点云上采样方法，并引入深度引导点提升方法以保持与SfM重建的几何一致性。",
+    "result": "在Mip-NeRF360和Replica数据集上，所提方法在不同场景类型中均提升了重建质量；曲面重建方法适用于有机细节场景，简单插值方法适用于分段平滑几何场景，深度引导方法在纹理缺失区域有效添加几何感知点。",
+    "conclusion": "提供了基于场景特征和计算约束选择上采样方法的初步实践指南，加深了对点云初始化影响3DGS质量的理解。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.00447v1",
+    "title": "GeoSAM-3D: Geodesic Prompt Propagation for Open-Vocabulary 3D Scene Segmentation from Monocular Video",
+    "authors": [
+      "Arun Sharma"
+    ],
+    "abstract": "Open-vocabulary 3D scene segmentation usually assumes RGB-D video, calibrated multi-view imagery, or a reconstructed mesh. GeoSAM-3D studies a lighter setting: a user uploads a short monocular video, clicks or names an object in one frame, and receives a propagated 3D mask over a Gaussian scene. The implementation combines frozen image and video foundation models with a monocular 3D Gaussian Splatting reconstruction and a differentiable graph-geodesic propagation kernel over Gaussian centroids. The central design choice is to propagate prompts by heat-kernel distance on the reconstructed scene graph, rather than by Euclidean nearest neighbors in 3D. This preserves continuity around curved surfaces and reduces leakage across nearby but disconnected objects. This paper describes the repository state, the mathematical kernel implemented in geosam3d.propagate, the feature head trained from Segment Anything masks, and the validation already present in the codebase. The evaluation protocol separates implementation validation, graph propagation quality, leakage control, and interactive latency.",
+    "link": "http://arxiv.org/abs/2606.00447v1",
+    "published": "2026-05-30",
+    "category": "cs.CV",
+    "tags": [
+      "3D Scene Segmentation",
+      "Open-Vocabulary",
+      "Monocular Video",
+      "Gaussian Splatting",
+      "Geodesic Propagation"
+    ],
+    "tldr": "使用测地线提示传播结合高斯泼溅实现从单目视频进行开放词汇3D场景分割。",
+    "motivation": "实现轻量级的开放词汇3D场景分割，仅需单目视频和用户单次点击或命名，无需RGB-D或校准多视图。",
+    "method": "结合冻结的图像和视频基础模型、单目3D高斯泼溅重建，以及在高斯质心上可微的图测地线传播核，通过热核距离传播提示而非欧氏最近邻。",
+    "result": "主要实验验证包括实现验证、图传播质量、泄漏控制和交互延迟，未提供具体量化指标。",
+    "conclusion": "提出GeoSAM-3D，通过测地线传播保持曲面连续性并减少泄漏，同时提供包含数学核和预训练特征头的开源代码库，对开放词汇场景分割有贡献。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.00444v1",
+    "title": "Real-Time Physics Simulation with Dynamic Mesh-Gaussian Reconstructions",
+    "authors": [
+      "Adrian Ramlal",
+      "John S. Zelek"
+    ],
+    "abstract": "Integrating dynamic 3D reconstructions into physics simulation requires fixed mesh topology for efficient collision detection, but state-of-the-art methods like DG-Mesh produce varying topology optimized for geometric quality. We investigate whether topology conversion can enable physics integration while preserving reconstruction fidelity. We propose a dual-representation framework combining fixed-topology meshes for physics with Gaussian splatting for rendering, achieving 4.65$\\times$ speedup over varying-topology baselines through runtime vertex buffer updates. We evaluate two conversion strategies, temporal correspondence tracking and template-based projection, against native fixed-topology methods (MaGS) on the DG-Mesh dataset. Our evaluation reveals that both conversion approaches incur 65-80% geometric degradation, producing results inferior to MaGS despite DG-Mesh's superior initial quality. This demonstrates that high-quality reconstruction and physics-compatible topology represent fundamentally distinct objectives that cannot be reconciled through post-processing. Our findings inform future development of physics-aware reconstruction methods and our framework enables real-time simulation with any fixed-topology approach.",
+    "link": "http://arxiv.org/abs/2606.00444v1",
+    "published": "2026-05-30",
+    "category": "cs.CV",
+    "tags": [
+      "Physics Simulation",
+      "Dynamic Reconstruction",
+      "Gaussian Splatting",
+      "Mesh Topology",
+      "Real-Time Rendering"
+    ],
+    "tldr": "提出双表示框架，融合固定拓扑网格与高斯泼溅，实现比变化拓扑基线快4.65倍的实时物理模拟。",
+    "motivation": "动态3D重建集成到物理模拟需固定拓扑网格，但现有方法（如DG-Mesh）为几何质量优化产生变化拓扑，需研究拓扑转换能否兼顾物理集成与重建保真度。",
+    "method": "提出双表示框架：固定拓扑网格用于物理模拟，Gaussian splatting用于渲染，通过运行时顶点缓冲区更新加速。评估两种转换策略：时间对应跟踪和基于模板的投影，与原生固定拓扑方法MaGS对比。",
+    "result": "实现4.65倍加速，但两种转换策略均导致65-80%几何退化，结果劣于MaGS，尽管DG-Mesh初始质量更优。",
+    "conclusion": "高质量重建与物理兼容拓扑是根本不同目标，无法通过后处理调和；框架使任何固定拓扑方法可实时模拟，指导未来物理感知重建方法开发。"
+  },
+  {
     "id": "http://arxiv.org/abs/2605.31597v1",
     "title": "SOCO: Benchmarking Semantic Object Correspondence in Vision Foundation Models",
     "authors": [
@@ -1880,482 +2565,5 @@
     "method": "在受控最小化设置中隔离对齐伪装的核心组件，通过目标提示消融和激活引导实验，分析多个模型的行为。",
     "result": "观察到对齐伪装在更广泛的模型（包括小规模模型）中出现，识别出价值观、目标守卫和谄媚三个独立驱动因素，且其发生可从情境线索和基线模型倾向（如谄媚性）预测。",
     "conclusion": "结果表明对齐伪装比先前报告更普遍，其分解为检测和缓解未来模型中的对齐伪装提供了具体方向。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.26115v1",
-    "title": "TriSplat: Simulation-Ready Feed-Forward 3D Scene Reconstruction",
-    "authors": [
-      "Weijie Wang",
-      "Zimu Li",
-      "Jinchuan Shi",
-      "Zeyu Zhang",
-      "Botao Ye",
-      "Marc Pollefeys",
-      "Donny Y. Chen",
-      "Bohan Zhuang"
-    ],
-    "abstract": "Sparse-view 3D reconstruction is increasingly addressed with feed-forward splatting networks that predict explicit primitives directly from images. Yet most existing methods remain centered on Gaussian primitives and expose surfaces only indirectly: extracting a usable mesh for downstream simulation, physics reasoning, or embodied interaction still requires expensive post-hoc steps that break the feed-forward promise. This limitation is especially pronounced in pose-free settings, where scene structure and camera parameters must be estimated jointly from sparse observations. We present TriSplat, a feed-forward reconstruction network that represents scenes with oriented triangle primitives and directly exports simulation-ready mesh scenes from a single forward pass. Given input images, the network predicts local 3D point maps, triangle attributes, camera poses, and optional intrinsics. Rather than regressing triangle orientation as an unconstrained latent variable, our approach constructs geometry normals from the predicted point maps, refines them with an image-conditioned normal head, and converts them into stable local frames for triangle parameterization. A mono-normal bootstrap schedule further stabilizes early training, while opacity and blur scheduling progressively sharpens the learned surface representation for direct mesh extraction. Experiments on RealEstate10K and DL3DV show that this representation produces more geometry-faithful reconstructions than Gaussian feed-forward baselines while maintaining competitive novel-view rendering quality. Because the rendering primitives are themselves surface triangles, the output can be directly ingested by physics engines, collision detectors, and standard rendering pipelines without any conversion, making it a practical simulation-ready solution for feed-forward 3D scene reconstruction.",
-    "link": "http://arxiv.org/abs/2605.26115v1",
-    "published": "2026-05-25",
-    "category": "cs.CV",
-    "tags": [
-      "3D Reconstruction",
-      "Feed-Forward",
-      "Mesh Extraction",
-      "Simulation-Ready",
-      "Sparse-View"
-    ],
-    "tldr": "TriSplat使用定向三角形基元实现前馈式3D场景重建，直接输出仿真就绪的网格。",
-    "motivation": "现有前馈式splatting网络主要使用高斯基元，提取可用于仿真的网格需要昂贵的后处理步骤，破坏了前馈承诺，尤其在无位姿设置中问题突出。",
-    "method": "TriSplat预测局部3D点图、三角形属性、相机位姿和可选内参；从点图构建几何法线，用图像条件法线头细化，转换为稳定局部帧用于三角形参数化；采用单目法线引导训练，不透明度和模糊度调度逐渐锐化表面表示。",
-    "result": "在RealEstate10K和DL3DV上，相比高斯前馈基线产生更保真的几何重建，同时保持有竞争力的新视图渲染质量。",
-    "conclusion": "输出可直接用于物理引擎、碰撞检测和标准渲染管线，无需转换，是前馈式3D场景重建的实用仿真就绪解决方案。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.26113v1",
-    "title": "AnyScene: Towards Highly Controllable Driving Scene Generation at Anywhere and Beyond",
-    "authors": [
-      "Haiming Zhang",
-      "Junfei Zhou",
-      "Feng Jiang",
-      "Jingzhong Li",
-      "Zhenglong Guo",
-      "Penglin Dai",
-      "Jifeng Dai",
-      "Yan Xie",
-      "Benjin Zhu"
-    ],
-    "abstract": "Generating high-fidelity and controllable synthetic data is critical for advancing end-to-end autonomous driving, particularly for addressing the long tail of rare safety-critical scenarios. Existing occupancy-guided methods typically rely on shallow conditioning mechanisms and reference-frame-dependent video synthesis, which limits fine-grained controllability from arbitrary BEV layouts and restricts their applicability for scalable simulation. In this paper, we propose AnyScene, a unified occupancy-centric framework for driving scene generation. AnyScene generates semantic occupancy sequences from BEV layouts through a Spatial-Temporal Occupancy Diffusion Transformer that jointly tokenizes BEV and occupancy features in an autoregressive manner. This design enables precise controllability from cross-dataset and user-defined BEV inputs while naturally supporting long-horizon generation. Building upon the generated occupancy, a Geometry-Grounded View Expansion module treats occupancy as the canonical spatial representation and synthesizes temporally consistent multi-view driving videos in a reference-free and autoregressive fashion, supporting flexible camera configurations at inference time. Extensive experiments demonstrate that AnyScene achieves state-of-the-art performance in both occupancy and video generation. It exhibits strong generalization to unseen and customized layouts, and provides measurable benefits for downstream tasks such as sparse-view 3D reconstruction.",
-    "link": "http://arxiv.org/abs/2605.26113v1",
-    "published": "2026-05-25",
-    "category": "cs.CV",
-    "tags": [
-      "Driving Scene Generation",
-      "Occupancy Diffusion",
-      "BEV",
-      "Autonomous Driving",
-      "Video Synthesis"
-    ],
-    "tldr": "AnyScene是一个统一的以占据为中心的驾驶场景生成框架，能从BEV布局生成语义占据序列并合成多视图视频。",
-    "motivation": "现有占据引导方法依赖浅层条件机制和参考帧视频合成，限制了精细控制和可扩展性，难以支持任意BEV布局和可扩展仿真。",
-    "method": "提出Spatial-Temporal Occupancy Diffusion Transformer，联合tokenize BEV和占据特征并自回归生成语义占据序列；Geometry-Grounded View Expansion模块以占据为空间表示，无参考自回归合成多视图视频，支持灵活相机配置。",
-    "result": "在占据和视频生成任务上达到SOTA，强泛化到未见和自定义布局，对稀疏视图3D重建有可测量益处。",
-    "conclusion": "AnyScene实现了高度可控的驾驶场景生成，支持精细控制、长时生成和灵活相机配置，为自动驾驶仿真和下游任务提供了统一框架。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.26103v1",
-    "title": "Global Structure-from-Motion Meets Feedforward Reconstruction",
-    "authors": [
-      "Linfei Pan",
-      "Johannes Schönberge",
-      "Marc Pollefeys"
-    ],
-    "abstract": "Structure-from-Motion -- the process of simultaneously estimating camera poses and 3D scene structure from a collection of images -- remains a central challenge in computer vision, with many open problems yet to be solved. Recent advances in feedforward 3D reconstruction have made significant strides in overcoming persistent failure cases of classical SfM methods, particularly in scenarios characterized by low texture, limited overlap, and symmetries. However, while feedforward approaches excel in these challenging conditions, they often face limitations regarding scalability, accuracy, or robustness, and typically fall short of classical methods in standard reconstruction settings. In this work, we systematically analyze these limitations and propose a new Structure-from-Motion pipeline by combining the respective strengths of classical and feedforward methods. Extensive experiments across multiple datasets show the benefits of our approach, achieving state-of-the-art results across a wide range of scenarios. We share our system as an open-source implementation at https://github.com/colmap/gluemap.",
-    "link": "http://arxiv.org/abs/2605.26103v1",
-    "published": "2026-05-25",
-    "category": "cs.CV",
-    "tags": [
-      "SfM",
-      "Feedforward Reconstruction",
-      "3D Reconstruction",
-      "Camera Pose Estimation"
-    ],
-    "tldr": "结合经典全局SfM和前馈重建优势，提出新管道，在多种场景下达到最优。",
-    "motivation": "经典SfM在低纹理、有限重叠和对称场景中易失败，前馈方法在这些场景表现好但在标准场景不足，需结合两者优势。",
-    "method": "系统分析两类方法局限，提出结合经典SfM和前馈重建的新管道，利用各自优势处理不同场景。",
-    "result": "在多个数据集上广泛实验，达到最新最优结果，并提供开源实现。",
-    "conclusion": "提出结合经典与前馈方法的新SfM管道，在广泛场景取得最优结果，开源系统便于后续研究与应用。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.25975v1",
-    "title": "F-RNG: Feed-Forward Relightable Neural Gaussians",
-    "authors": [
-      "Guangming Fu",
-      "Jiahui Fan",
-      "Jian Yang",
-      "Miloš Hašan",
-      "Beibei Wang"
-    ],
-    "abstract": "Capturing relightable 3D assets from real-world objects is a widely researched problem. Several per-scene optimization-based methods, based on 3D Gaussian splatting (3DGS), support relighting; however, they usually require dense input views, and their overfitting nature makes it difficult to generalize across scenes. Unlike per-scene optimization methods, generalized feed-forward models can directly reconstruct Gaussians from sparse input views. However, the resulting assets have baked-in illumination and cannot be easily used for relighting. In this paper, we present F-RNG, a feed-forward framework that directly generates relightable 3DGS assets from sparse-view inputs. Training such a model from scratch can require massive data and computing resources, and it is especially challenging to generate relightable assets in a feed-forward manner with acceptable cost. We develop F-RNG upon an existing large reconstruction model (LRM) to extract relightable representations, while also utilizing priors from an intrinsic decomposition model (IDM). Specifically, we first introduce a latent-interpolated fine-grained geometry synthesis to enhance the LRM's geometry representation. Second, we propose a prior-guided relightable appearance distillation to extract relightable neural representations by incorporating IDM priors. Finally, a universal neural renderer enables flexible and high-fidelity relighting. F-RNG requires neither re-training nor fine-tuning of the underlying LRMs, thus can automatically benefit from better LRMs and IDMs in the future. With only small networks that can be trained with affordable data and computational resources, F-RNG avoids the repetitive inference of large models under different light conditions. By comparison to the state-of-the-art LRM-based relighting method, F-RNG achieves ~25x faster relighting, as well as superior quality (~+2.0 dB).",
-    "link": "http://arxiv.org/abs/2605.25975v1",
-    "published": "2026-05-25",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Relighting",
-      "Feed-forward",
-      "Neural Rendering",
-      "Intrinsic Decomposition"
-    ],
-    "tldr": "提出前馈式框架F-RNG，从稀疏输入直接生成可重光照的3D高斯资产，速度比现有方法快25倍且质量更优。",
-    "motivation": "现有基于3DGS的每场景优化方法需要密集输入且难以泛化，而前馈生成模型固化光照，无法直接重光照。",
-    "method": "基于LRM和IDM，通过潜在插值细粒度几何合成增强几何表示，先验引导可重光照外观蒸馏提取神经表示，通用神经渲染器实现灵活高保真重光照。",
-    "result": "相比SOTA LRM重光照方法，F-RNG实现约25倍更快的重光照速度和约+2.0 dB的PSNR提升。",
-    "conclusion": "无需重训练或微调底层LRM，可自动受益于未来更好的模型；以可承受的数据和计算资源训练小型网络，避免大模型重复推理。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.25909v1",
-    "title": "R5DGS: Semantic-Aware 4D Gaussian Splatting with Rigid Body Constraints for Efficient Dynamic Scene Reconstruction",
-    "authors": [
-      "Denis Gridusov",
-      "Maxim Popov",
-      "Sergey Kolyubin"
-    ],
-    "abstract": "Reconstructing and predicting dynamic 3D scenes from multi-view videos is a foundational task for robotics, AR/VR, and digital twins. Recent physics-informed Gaussian Splatting methods achieve impressive future frame extrapolation but lack semantic awareness and suffer from large computational overhead. We introduce $\\textbf{R5DGS}$, a framework that augments a physics-driven 4D Gaussian representation with compact Identity Encoding vectors, enabling precise Gaussian-to-object association. By constructing an offline CLIP-based object lookup table, we support open-vocabulary text prompting to retrieve and render object-specific Gaussians across arbitrary timestamps and viewpoints. Furthermore, we propose a rigid-body inference constraint that predicts and integrates physical dynamics exclusively for object centroids, propagating motion to associated Gaussians via relative transformations. This optimization yields a 11 FPS speedup during extrapolation without compromising trajectories plausibility.",
-    "link": "http://arxiv.org/abs/2605.25909v1",
-    "published": "2026-05-25",
-    "category": "cs.CV",
-    "tags": [
-      "Dynamic Scene Reconstruction",
-      "4D Gaussian Splatting",
-      "Semantic Awareness",
-      "Rigid Body Constraints",
-      "Open-Vocabulary Rendering"
-    ],
-    "tldr": "提出R5DGS，结合语义感知和刚体约束的4D高斯泼溅方法，实现高效动态场景重建与开放词汇渲染。",
-    "motivation": "现有物理信息高斯泼溅方法缺乏语义意识且计算开销大，需要一种高效且语义感知的动态场景重建方法。",
-    "method": "通过紧凑的Identity Encoding向量增强物理驱动的4D高斯表示，实现高斯到物体的精确关联；构建离线CLIP-based查找表支持开放词汇文本提示；提出刚体约束，仅预测物体质心的物理动力学，并通过相对变换将运动传播到关联高斯。",
-    "result": "外推时获得11 FPS的速度提升，同时保持轨迹的合理性。",
-    "conclusion": "R5DGS实现了语义感知的高效动态场景重建，支持开放词汇检索和渲染，并在不牺牲轨迹合理性的前提下显著加速外推过程。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.25751v1",
-    "title": "SplitAvatar: One-shot Head Avatar with Autoregressive Gaussian Splitting",
-    "authors": [
-      "Hongzhe Liao",
-      "Chuhua Xian",
-      "Hongmin Cai",
-      "Haiyang Liu",
-      "Fa-Ting Hong"
-    ],
-    "abstract": "3D Gaussian Splatting (3DGS) provides an efficient method for high-quality scene reconstruction using anisotropic Gaussians. Recently, 3DGS-based methods have significantly improved the rendering quality of human avatars while enabling real-time performance. However, existing methods suffer from a magnitude mismatch in the number of Gaussians generated by image-based and 3DMM-based approaches. This discrepancy results in reconstructed expressions that lack fine-grained detail. In this paper, we introduce a novel method for reconstructing an animatable head avatar from a single image. We propose a Graph splitting network to progressively generate Gaussians from coarse to fine using an autoregressive architecture. To address the graph inconsistency caused by split Gaussians, we employ a mesh topology extension method to align the GNN's connectivity with the increased Gaussian count. Furthermore, we introduce a novel density control method that includes a gating mechanism that generates soft masks for Gaussians, preventing over-densification after the splitting operation. This allows for dynamic control over Gaussian density across different facial regions. For smooth and rapid training, we employ a delayed filtering strategy to avoid re-computing the graph topology during training. Experimental results demonstrate that our autoregressive structure effectively improves expression representation ability by progressively splitting Gaussians. This process, enabled by the GNN-guided splitting, synthesizes more precise facial details and achieves higher reconstruction quality.",
-    "link": "http://arxiv.org/abs/2605.25751v1",
-    "published": "2026-05-25",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Head Avatar",
-      "Autoregressive",
-      "One-shot",
-      "Facial Reconstruction"
-    ],
-    "tldr": "提出SplitAvatar方法，通过自回归高斯分裂从单张图像重建高质量可动画头头像。",
-    "motivation": "现有3DGS方法中图像基与3DMM基生成的高斯数量不匹配，导致重建表情缺乏精细细节。",
-    "method": "提出图分裂网络，以自回归架构从粗到细逐步生成高斯；采用网格拓扑扩展对齐GNN连接性，引入门控机制的密度控制方法生成软掩码防止过密，并使用延迟滤波策略避免训练中重新计算图拓扑。",
-    "result": "自回归结构通过逐步分裂高斯有效提升表情表示能力，合成更精确的面部细节，实现更高重建质量。",
-    "conclusion": "提出的SplitAvatar方法在单张图像可动画头头像重建中取得了高质量结果，对表情细节有显著改善。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.25598v1",
-    "title": "SurfSurg6D: Geometry Consistent Dense Correspondence for Textureless Surgical Instrument Pose Estimation",
-    "authors": [
-      "Daiyun Shen",
-      "Shuojue Yang",
-      "Chang Han Low",
-      "Qian Li",
-      "Mengya Xu",
-      "Qi Dou",
-      "Yueming Jin"
-    ],
-    "abstract": "Surgical instrument pose estimation provides crucial information for promising applications, including autonomous robotic surgery, skill assessment, and standardization of surgical workflow. However, this task remains highly challenging due to high precision requirements, frequent occlusions, textureless instruments, scarcity of depth information and very limited annotated data. These constraints often lead to unsatisfactory performance when employing general object pose estimation approaches to surgical scenarios. To address these issues, we first construct a new dataset SynSurg6D, to alleviate the data shortage in this task. We further propose SurfSurg6D, a dense-correspondence framework tailored for surgical instrument pose estimation. Experimental results on the SurgRIPE, EndoVis2018 and SurgPose datasets demonstrate that the introduction of our generated dataset SynSurg6D is able to diversify the pose distributions, thus enhancing the performance of existing approaches. Furthermore, SurfSurg6D outperforms existing methods, providing a robust solution for precise and efficient RGB-only pose estimation.",
-    "link": "http://arxiv.org/abs/2605.25598v1",
-    "published": "2026-05-25",
-    "category": "cs.CV",
-    "tags": [
-      "Surgical Instrument",
-      "Pose Estimation",
-      "Dense Correspondence",
-      "Dataset",
-      "RGB-only"
-    ],
-    "tldr": "提出SynSurg6D数据集和SurfSurg6D密集对应框架，实现无纹理手术器械的鲁棒RGB-only姿态估计。",
-    "motivation": "手术器械姿态估计面临高精度、遮挡、无纹理、深度信息匮乏和标注数据稀缺等挑战，通用物体姿态估计方法在手术场景中表现不佳。",
-    "method": "构建SynSurg6D数据集以缓解数据短缺；提出SurfSurg6D密集对应框架，专为手术器械姿态估计设计。",
-    "result": "在SurgRIPE、EndoVis2018和SurgPose数据集上，SynSurg6D数据集增强了现有方法的性能；SurfSurg6D优于现有方法，实现精确高效的RGB-only姿态估计。",
-    "conclusion": "该研究提供了鲁棒的RGB-only姿态估计解决方案，有望推动自主机器人手术、技能评估和手术工作流标准化等应用。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.25563v1",
-    "title": "CodecSplat: Ultra-Compact Latent Coding for Feed-Forward 3D Gaussian Splatting",
-    "authors": [
-      "Pengpeng Yu",
-      "Runqing Jiang",
-      "Qi Zhang",
-      "Dingquan Li",
-      "Jing Wang",
-      "Yulan Guo"
-    ],
-    "abstract": "While feed-forward 3D Gaussian splatting reconstructs renderable Gaussian primitives from sparse context views without per-scene optimization, existing pipelines do not provide a compact scene representation for storage or transmission. A natural solution is to apply existing 3DGS compression methods to the generated Gaussian primitives. However, this approach operates on the final irregular 3D representation and is decoupled from the internal feature-to-Gaussian generation process, which limits compression efficiency. To address this, we introduce CodecSplat, an ultra-compact latent coding framework for feed-forward 3D Gaussian splatting. CodecSplat first encodes an intermediate 2D Gaussian-generation feature into an entropy-coded scene bitstream. At the decoder, the latent feature is reconstructed and used to predict depth and Gaussian parameters, which are then mapped to 3D Gaussian primitives. Note that, by integrating compression into the feed-forward Gaussian generation pipeline, CodecSplat avoids inefficient compression over irregular 3D Gaussian primitives and allows the codec to exploit the structured intermediate feature representation. We instantiate CodecSplat on a feed-forward Gaussian splatting backbone with depth-guided multi-view feature refinement and a hierarchical learned feature codec. On DL3DV and RealEstate10K datasets, CodecSplat achieves 23.56-26.36 dB and 24.76-27.05 dB PSNR with only 20.00-107.77 KiB and 3.37-12.51 KiB per scene, respectively. This is roughly one order of magnitude smaller than compressing feed-forward generated Gaussian primitives, while preserving controllable rate-distortion behavior.",
-    "link": "http://arxiv.org/abs/2605.25563v1",
-    "published": "2026-05-25",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Latent Coding",
-      "Compression",
-      "Feed-Forward",
-      "Scene Representation"
-    ],
-    "tldr": "CodecSplat通过编码中间二维高斯生成特征实现超紧凑隐式编码，大幅降低前馈3D高斯溅射的场景表示大小。",
-    "motivation": "现有前馈3DGS方法缺乏紧凑场景表示，直接压缩生成的高斯原语效率低，因其与内部特征生成过程解耦。",
-    "method": "编码中间2D高斯生成特征为熵编码比特流，解码后预测深度和高斯参数并映射为3D原语；采用深度引导多视图特征精化与分层特征编解码器。",
-    "result": "在DL3DV和RealEstate10K上PSNR为23.56-26.36 dB和24.76-27.05 dB，每场景仅20.00-107.77 KiB和3.37-12.51 KiB，比压缩生成的高斯原语小约一个数量级。",
-    "conclusion": "CodecSplat实现了超紧凑场景表示并保持可控率失真行为，显著提升了前馈3DGS的压缩效率。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.25553v1",
-    "title": "ComPose: A Unified Completion-Pose Framework for Robust Category-Level Object Pose Estimation",
-    "authors": [
-      "Huan Ren",
-      "Yihan Chen",
-      "Chuxin Wang",
-      "Nailong Liu",
-      "Wenfei Yang",
-      "Tianzhu Zhang"
-    ],
-    "abstract": "Category-level object pose estimation aims to predict the pose and size of arbitrary objects in specific categories. Existing methods struggle with the inherent incompleteness of observed point clouds, which limits their ability to capture complete object shapes for robust pose reasoning. While point cloud completion offers a promising solution, naively treating it as a separate preprocessing step for partial observations introduces compounding errors and additional computational overhead, ultimately hindering both accuracy and efficiency. To address these challenges, we propose ComPose, a novel unified framework that tightly integrates shape completion to provide complete geometric cues for enhanced pose estimation. At the core of ComPose is a keypoint-based progressive completion module, which recovers full shape representations by progressively predicting a sparse set of keypoints and their surrounding dense point sets, empowering the keypoints to capture holistic object geometries. A geometric relation encoding module further enriches keypoint features with both local and global geometric context. In addition, we introduce a novel geometric relation consistency loss to enforce structural alignment between observed keypoints and their predicted NOCS coordinates, ensuring globally coherent coordinate transformations. Extensive experiments on standard benchmarks demonstrate that our method outperforms state-of-the-art approaches without relying on category-level shape priors.",
-    "link": "http://arxiv.org/abs/2605.25553v1",
-    "published": "2026-05-25",
-    "category": "cs.CV",
-    "tags": [
-      "Object Pose Estimation",
-      "Point Cloud Completion",
-      "Keypoint",
-      "Unified Framework",
-      "Geometric Consistency"
-    ],
-    "tldr": "ComPose通过统一形状补全和关键点推理的框架，实现了鲁棒的类别级物体姿态估计。",
-    "motivation": "现有方法因点云不完整而无法捕捉完整形状，单独使用补全会引入累计误差和计算开销，影响准确性和效率。",
-    "method": "提出ComPose统一框架，包含关键点渐进式补全模块恢复完整形状，以及几何关系编码模块增强局部和全局几何上下文，并引入几何关系一致性损失保持结构对齐。",
-    "result": "在标准基准上超越现有方法，且无需类别级形状先验。",
-    "conclusion": "贡献了紧密整合形状补全与姿态估计的统一框架，有效提升鲁棒性和效率，具有普适性。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.25373v1",
-    "title": "Physics-Aware 3D Gaussian Editing for Driving Scene Generation",
-    "authors": [
-      "Feng Zhou",
-      "Jian Zhang",
-      "Yuhang Sun",
-      "He Wang",
-      "Qiong Wen",
-      "Debao Kong",
-      "Tieru Wu",
-      "Rui Ma"
-    ],
-    "abstract": "3D Gaussian Splatting (3DGS) has shown great potential in autonomous driving simulation and data generation, enabling photorealistic reconstruction and flexible scene manipulation. However, existing 3DGS scene editing methods have limited support for road geometry editing (e.g., inserting speed humps or sunken roads), and generally do not couple such edits with plausible vehicle-road interaction dynamics. Such editing is essential for generating training data under extreme driving scenarios or evaluating system reliability under these road irregularities. Moreover, many optimization-based methods require minutes of per-edit refinement, while existing efficient alternatives mainly focus on appearance-level or object-level manipulation rather than physics-aware road irregularity editing. To address these limitations, we propose RoVES, a Road-and-Vehicle Editing System for physics-aware 3D Gaussian editing in driving scenes. RoVES enables single-image-driven road geometry insertion and couples the edited road profile with a 4-DOF half-car vehicle dynamics model to achieve physics-aware vehicle pose correction in vertical displacement and pitch. RoVES inserts road elements in a one-shot, optimization-free pipeline (1.84s), and the full pipeline (including color transfer and vehicle-dynamics-based pose correction) completes in 6.24s; it edits dynamic vehicles via pose editing and corrects poses frame-by-frame to approximate dynamics-consistent vertical displacement and pitch responses. Experiments on the Waymo dataset show that RoVES provides practical efficiency and competitive visual consistency for physics-aware driving scene generation.",
-    "link": "http://arxiv.org/abs/2605.25373v1",
-    "published": "2026-05-25",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Autonomous Driving",
-      "Scene Editing",
-      "Vehicle Dynamics",
-      "Road Geometry Editing"
-    ],
-    "tldr": "RoVES通过单图道路插入和车辆动力学模型，实现物理感知的3D高斯编辑，高效生成驾驶场景。",
-    "motivation": "现有3DGS编辑方法不支持道路几何编辑（如减速带）及车辆-道路交互动力学，无法快速生成极端驾驶场景训练数据。",
-    "method": "提出RoVES系统，基于单图像驱动道路几何插入，耦合4-DOF半车动力学模型进行物理感知车辆姿态修正（垂直位移和俯仰），并采用优化-free流水线（道路插入1.84s，完整流水线6.24s）。",
-    "result": "在Waymo数据集上，RoVES实现道路插入1.84s，完整流水线6.24s，具备实际效率和竞争性视觉一致性。",
-    "conclusion": "RoVES提供了高效、物理感知的驾驶场景编辑方法，可用于生成极端场景下的训练数据，提升系统可靠性评估。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.25345v1",
-    "title": "Depth Peeling for High-Fidelity Gaussian-Enhanced Surfel Rendering",
-    "authors": [
-      "Keyang Ye",
-      "Hongzhi Wu",
-      "Kun Zhou"
-    ],
-    "abstract": "Novel view synthesis has been significantly advanced by NeRFs and 3D Gaussian Splatting (3DGS), which require ordering volumetric samples or primitives for correct color blending. While the recent Gaussian-Enhanced Surfels (GES) enable high-performance, sort-free rendering, they suffer from aliasing artifacts and suboptimal reconstruction. To address these limitations, we propose DP-GES, a novel representation that augments opaque surfels with semi-transparent boundaries and leverages Depth Peeling to establish accurate per-pixel ordering. This design enables sort-free Gaussian splatting with correct transmittance modulation, effectively eliminating aliasing and popping artifacts while facilitating a fully differentiable joint optimization. Extensive experiments demonstrate that our method achieves superior reconstruction quality and compares favorably against state-of-the-art techniques across a wide range of scenes.",
-    "link": "http://arxiv.org/abs/2605.25345v1",
-    "published": "2026-05-25",
-    "category": "cs.CV",
-    "tags": [
-      "Novel View Synthesis",
-      "3D Gaussian Splatting",
-      "Surfel Rendering",
-      "Depth Peeling",
-      "Differentiable Rendering"
-    ],
-    "tldr": "提出DP-GES，利用深度剥离实现半透明边界surfel的正确排序，消除混叠伪影并提升重建质量。",
-    "motivation": "现有GES方法虽然实现高性能无排序渲染，但存在混叠伪影和重建质量不佳的问题，需要更准确的逐像素排序。",
-    "method": "通过将不透明surfel扩展为半透明边界表示，并引入深度剥离（Depth Peeling）建立精确的逐像素排序，从而实现无需排序的高斯泼溅与正确的透射率调制。",
-    "result": "在多个场景中，DP-GES重建质量优于现有最先进方法，有效消除了混叠与弹出伪影。",
-    "conclusion": "提出了一种高保真、完全可微的渲染表示DP-GES，显著提升了GES的渲染质量，为实时高质量新视角合成提供了新方案。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.26368v1",
-    "title": "Unified Panoramic Geometry Estimation via Multi-View Foundation Models",
-    "authors": [
-      "Vukasin Bozic",
-      "Isidora Slavkovic",
-      "Dominik Narnhofer",
-      "Nando Metzger",
-      "Denis Rozumny",
-      "Konrad Schindler",
-      "Nikolai Kalischek"
-    ],
-    "abstract": "Geometry estimation from perspective images has greatly advanced, maturing to the point where off-the-shelf foundation models are able to reconstruct 3D scene structure not only from multi-view imagery, but even from a single view. A natural extension is 3D reconstruction from panoramas, with the exciting prospect of recovering a full 360-degree scene from a single panoramic image. In this work, we introduce PaGeR (Panoramic Geometry Reconstruction), a framework to lift powerful 3D foundation models designed for perspective imagery to the panorama domain. Our strategy is to start from a pre-trained transformer for 3D reconstruction and turn it into a unified high-performance model that predicts scale-invariant depth, metric depth, surface normals, and sky masks from both perspective and omnidirectional images, in a single forward pass. By keeping architectural changes to a minimum and mixing perspective and panoramic images during training, PaGeR retains the rich 3D prior of the underlying foundation model while learning to also estimate geometrically consistent 360-degree scenes from single panoramas. We extensively test our method in both indoor and outdoor environments and find that it delivers state-of-the-art performance and excellent zero-shot performance across a wide range of scenes.",
-    "link": "http://arxiv.org/abs/2605.26368v1",
-    "published": "2026-05-25",
-    "category": "cs.CV",
-    "tags": [
-      "Panoramic Geometry",
-      "3D Reconstruction",
-      "Foundation Models",
-      "Depth Estimation",
-      "Multi-View"
-    ],
-    "tldr": "提出了PaGeR框架，将透视图像的基础3D模型扩展到全景图像，实现单张全景图的360度几何估计。",
-    "motivation": "将强大的3D基础模型从透视图像扩展到全景领域，实现从单张全景图像恢复完整的360度场景结构。",
-    "method": "基于预训练的3D重建Transformer，最小化架构修改，混合透视和全景图像训练，同时预测尺度不变深度、度量深度、表面法线和天空掩码。",
-    "result": "在室内外场景测试中达到最先进性能，并展现出优秀的零样本泛化能力。",
-    "conclusion": "提出了统一的PaGeR框架，为全景几何估计提供了高效解决方案，有望推动全景3D重建的应用。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.26230v1",
-    "title": "Geometry-Aware Representation Denoising for Robust Multi-view 3D Reconstruction",
-    "authors": [
-      "Jin Hyeon Kim",
-      "Jaeeun Lee",
-      "Claire Kim",
-      "Kyoungjin Oh",
-      "Paul Hyunbin Cho",
-      "Jaewon Min",
-      "Yeji Choi",
-      "Jihye Park",
-      "Hyunhee Park",
-      "Minkyu Park",
-      "Seungryong Kim"
-    ],
-    "abstract": "Multi-view 3D reconstruction has achieved remarkable progress with the advent of feed-forward 3D reconstruction models. However, these models are typically trained and evaluated under ideal, degradation-free imaging conditions, whereas real-world observations often contain degradations that differ significantly from such settings. Improving robustness for multi-view 3D reconstruction under degraded conditions therefore remains an important challenge. We present Geometry-Aware Representation Denoising (GARD), a novel framework that performs diffusion-based multi-view restoration directly in the feature space of a feed-forward 3D reconstruction model. This design exploits the geometry-aware feature representations of the 3D reconstructor to effectively recover accurate scene geometry. Furthermore, by employing an additional RGB image decoder, the refined representations can also be used to restore high-quality RGB images, thereby enabling the simultaneous recovery of 3D scene geometry and high-quality imagery. Comprehensive experiments on the Depth Anything 3 (DA3) benchmark demonstrate the effectiveness of the proposed GARD framework.",
-    "link": "http://arxiv.org/abs/2605.26230v1",
-    "published": "2026-05-25",
-    "category": "cs.CV",
-    "tags": [
-      "Multi-view 3D Reconstruction",
-      "Denoising",
-      "Diffusion",
-      "Feature Space",
-      "Robustness"
-    ],
-    "tldr": "提出GARD框架，在特征空间进行扩散去噪，实现鲁棒的多视图三维重建与图像恢复。",
-    "motivation": "前馈式三维重建模型在理想条件下表现优异，但在真实世界的退化环境中鲁棒性不足。",
-    "method": "在三维重建模型的特征空间中执行扩散式多视图恢复，利用几何感知特征恢复准确几何，并附加RGB解码器同步恢复高质量图像。",
-    "result": "在Depth Anything 3 (DA3)基准上验证了有效性，但摘要未提供具体量化指标。",
-    "conclusion": "提出同时恢复三维几何与高质量图像的框架，提升了多视图重建对退化条件的鲁棒性。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.26103v2",
-    "title": "Global Structure-from-Motion Meets Feedforward Reconstruction",
-    "authors": [
-      "Linfei Pan",
-      "Johannes Schönberger",
-      "Marc Pollefeys"
-    ],
-    "abstract": "Structure-from-Motion -- the process of simultaneously estimating camera poses and 3D scene structure from a collection of images -- remains a central challenge in computer vision, with many open problems yet to be solved. Recent advances in feedforward 3D reconstruction have made significant strides in overcoming persistent failure cases of classical SfM methods, particularly in scenarios characterized by low texture, limited overlap, and symmetries. However, while feedforward approaches excel in these challenging conditions, they often face limitations regarding scalability, accuracy, or robustness, and typically fall short of classical methods in standard reconstruction settings. In this work, we systematically analyze these limitations and propose a new Structure-from-Motion pipeline by combining the respective strengths of classical and feedforward methods. Extensive experiments across multiple datasets show the benefits of our approach, achieving state-of-the-art results across a wide range of scenarios. We share our system as an open-source implementation at https://github.com/colmap/gluemap.",
-    "link": "http://arxiv.org/abs/2605.26103v2",
-    "published": "2026-05-25",
-    "category": "cs.CV",
-    "tags": [
-      "Structure-from-Motion",
-      "Feedforward 3D Reconstruction",
-      "Camera Pose Estimation",
-      "Open-Source"
-    ],
-    "tldr": "结合经典SfM与前馈重建方法，提出新管道，在多种场景下实现最先进结果。",
-    "motivation": "经典SfM在低纹理、有限重叠和对称场景中易失败，而前馈方法在标准设置中精度和鲁棒性不足。",
-    "method": "系统分析两者局限，设计结合经典SfM与前馈重建优势的管道。",
-    "result": "在多个数据集上实现最先进结果，开源实现见GitHub。",
-    "conclusion": "提出融合方法提升SfM性能，开源框架可能推动后续研究。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.26368v2",
-    "title": "Unified Panoramic Geometry Estimation via Multi-View Foundation Models",
-    "authors": [
-      "Vukasin Bozic",
-      "Isidora Slavkovic",
-      "Dominik Narnhofer",
-      "Nando Metzger",
-      "Denis Rozumny",
-      "Konrad Schindler",
-      "Nikolai Kalischek"
-    ],
-    "abstract": "Geometry estimation from perspective images has greatly advanced, maturing to the point where off-the-shelf foundation models are able to reconstruct 3D scene structure not only from multi-view imagery, but even from a single view. A natural extension is 3D reconstruction from panoramas, with the exciting prospect of recovering a full 360-degree scene from a single panoramic image. In this work, we introduce PaGeR (Panoramic Geometry Reconstruction), a framework to lift powerful 3D foundation models designed for perspective imagery to the panorama domain. Our strategy is to start from a pre-trained transformer for 3D reconstruction and turn it into a unified high-performance model that predicts scale-invariant depth, metric depth, surface normals, and sky masks from both perspective and omnidirectional images, in a single forward pass. By keeping architectural changes to a minimum and mixing perspective and panoramic images during training, PaGeR retains the rich 3D prior of the underlying foundation model while learning to also estimate geometrically consistent 360-degree scenes from single panoramas. We extensively test our method in both indoor and outdoor environments and find that it delivers state-of-the-art performance and excellent zero-shot performance across a wide range of scenes. Code, data and models are available $\\href{https://github.com/prs-eth/PaGeR}{\\text{here}}$.",
-    "link": "http://arxiv.org/abs/2605.26368v2",
-    "published": "2026-05-25",
-    "category": "cs.CV",
-    "tags": [
-      "Panoramic Geometry",
-      "3D Reconstruction",
-      "Depth Estimation",
-      "Surface Normals",
-      "Foundation Model"
-    ],
-    "tldr": "PaGeR通过最小架构改动将透视基础模型扩展到全景域，实现单张全景图的统一几何估计。",
-    "motivation": "从单张全景图像恢复完整360度场景的3D结构，扩展3D基础模型到全景域。",
-    "method": "基于预训练的3D重建Transformer，混合透视和全景图像训练，保持架构最小改动，同时预测尺度不变深度、度量深度、表面法线和天空掩码。",
-    "result": "在室内外场景中达到最先进性能，并展现优异的零样本泛化能力。",
-    "conclusion": "提出统一的全景几何重建框架PaGeR，代码、数据和模型已开源，具有广泛的应用潜力。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2605.26230",
-    "title": "Geometry-Aware Representation Denoising for Robust Multi-view 3D Reconstruction",
-    "authors": [
-      "Kim, Jin Hyeon",
-      "Lee, Jaeeun",
-      "Kim, Claire",
-      "Oh, Kyoungjin",
-      "Cho, Paul Hyunbin",
-      "Min, Jaewon",
-      "Choi, Yeji",
-      "Park, Jihye",
-      "Park, Hyunhee",
-      "Park, Minkyu",
-      "Kim, Seungryong"
-    ],
-    "abstract": "Multi-view 3D reconstruction has achieved remarkable progress with the advent of feed-forward 3D reconstruction models. However, these models are typically trained and evaluated under ideal, degradation-free imaging conditions, whereas real-world observations often contain degradations that differ significantly from such settings. Improving robustness for multi-view 3D reconstruction under degraded conditions therefore remains an important challenge. We present Geometry-Aware Representation Denoising (GARD), a novel framework that performs diffusion-based multi-view restoration directly in the feature space of a feed-forward 3D reconstruction model. This design exploits the geometry-aware feature representations of the 3D reconstructor to effectively recover accurate scene geometry. Furthermore, by employing an additional RGB image decoder, the refined representations can also be used to restore high-quality RGB images, thereby enabling the simultaneous recovery of 3D scene geometry and high-quality imagery. Comprehensive experiments on the Depth Anything 3 (DA3) benchmark demonstrate the effectiveness of the proposed GARD framework.",
-    "link": "https://arxiv.org/abs/2605.26230",
-    "published": "2026-05-25",
-    "category": "cs.CV",
-    "tags": [
-      "3D Reconstruction",
-      "Denoising",
-      "Multi-view",
-      "Robustness",
-      "Diffusion"
-    ],
-    "tldr": "提出GARD框架，在3D重建模型特征空间中用扩散去噪，鲁棒处理退化多视图图像。",
-    "motivation": "现有前馈3D重建模型在理想条件下训练，实际观测常有退化，需要提升鲁棒性。",
-    "method": "GARD框架直接在3D重建模型的特征空间进行扩散式多视图恢复，利用几何感知特征恢复场景几何，并附加RGB解码器同时恢复图像。",
-    "result": "在Depth Anything 3 (DA3)基准上验证了有效性，具体指标未在摘要中提供。",
-    "conclusion": "提出一种同时恢复3D几何和高质量图像的框架，提高了多视图重建的鲁棒性，适用于退化条件下的3D重建。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2605.25909",
-    "title": "R5DGS: Semantic-Aware 4D Gaussian Splatting with Rigid Body Constraints for Efficient Dynamic Scene Reconstruction",
-    "authors": [
-      "Gridusov, Denis",
-      "Popov, Maxim",
-      "Kolyubin, Sergey"
-    ],
-    "abstract": "Reconstructing and predicting dynamic 3D scenes from multi-view videos is a foundational task for robotics, AR/VR, and digital twins. Recent physics-informed Gaussian Splatting methods achieve impressive future frame extrapolation but lack semantic awareness and suffer from large computational overhead. We introduce $\\textbf{R5DGS}$, a framework that augments a physics-driven 4D Gaussian representation with compact Identity Encoding vectors, enabling precise Gaussian-to-object association. By constructing an offline CLIP-based object lookup table, we support open-vocabulary text prompting to retrieve and render object-specific Gaussians across arbitrary timestamps and viewpoints. Furthermore, we propose a rigid-body inference constraint that predicts and integrates physical dynamics exclusively for object centroids, propagating motion to associated Gaussians via relative transformations. This optimization yields a 11 FPS speedup during extrapolation without compromising trajectories plausibility.",
-    "link": "https://arxiv.org/abs/2605.25909",
-    "published": "2026-05-25",
-    "category": "cs.CV",
-    "tags": [
-      "4D Gaussian Splatting",
-      "Dynamic Scene Reconstruction",
-      "Semantic Awareness",
-      "Rigid Body Constraints",
-      "Object Retrieval"
-    ],
-    "tldr": "R5DGS通过身份编码和刚体约束实现高效、语义感知的4D高斯动态场景重建与预测。",
-    "motivation": "现有物理信息高斯方法缺乏语义感知且计算开销大，需要高效且语义感知的动态场景重建。",
-    "method": "提出R5DGS框架，使用Identity Encoding向量关联高斯与对象，构建离线CLIP查找表支持开放词汇检索，并采用刚体推理约束仅预测对象质心动力学，通过相对变换传播运动。",
-    "result": "在外推过程中实现11 FPS加速，且不损害轨迹合理性。",
-    "conclusion": "R5DGS实现了高效、语义感知的动态场景重建与预测，可应用于机器人、AR/VR和数字孪生。"
   }
 ]
