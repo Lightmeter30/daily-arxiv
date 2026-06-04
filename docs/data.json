@@ -1,5 +1,254 @@
 [
   {
+    "id": "http://arxiv.org/abs/2606.05124v1",
+    "title": "Geometry Gaussians: Decoupling Appearance and Geometry in Gaussian Splatting",
+    "authors": [
+      "Hongyu Zhou",
+      "Zorah Lähner"
+    ],
+    "abstract": "After the success of 3D Gaussian Splatting (3DGS) for novel view synthesis, many works have explored how to also use it for geometric surface representation. However, extracting accurate geometric information directly from 3DGS remains challenging and can often reduce the appearance rendering quality. In this work, we show that 3DGS in its default form is inheritedly unsuited to represent texture and geometry at the same time, by training with complete ground-truth texture and geometry information. We also propose a simple solution by applying a single additional geometry opacity parameter to each splat, together with an optional transparency-curated optimization pipeline. Our experiments, both with ground-truth and vision foundation model geometric input, show that this change leads to improved rendering and geometry performance on a wide variety of dataset, and especially complex scenes with transparent objects benefit significantly from our method.",
+    "link": "http://arxiv.org/abs/2606.05124v1",
+    "published": "2026-06-03",
+    "category": "cs.CV",
+    "tags": [
+      "3DGS",
+      "Novel View Synthesis",
+      "Geometry Extraction",
+      "Decoupling",
+      "Transparency"
+    ],
+    "tldr": "提出几何高斯函数，通过解耦外观与几何提升渲染与几何重建质量。",
+    "motivation": "3DGS在默认形式下难以同时表示纹理和几何，且从3DGS提取准确几何信息会降低外观渲染质量。",
+    "method": "在每个高斯点上增加一个几何不透明度参数，并采用透明度优化的可选流程。",
+    "result": "在多种数据集上，特别是包含透明物体的复杂场景，渲染和几何性能得到提升。",
+    "conclusion": "本工作简单修改3DGS即可同时改进渲染和几何重建，对复杂场景尤其有效。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.05102v1",
+    "title": "ZipSplat: Fewer Gaussians, Better Splats",
+    "authors": [
+      "Alexander Veicht",
+      "Sunghwan Hong",
+      "Dániel Baráth",
+      "Marc Pollefeys"
+    ],
+    "abstract": "Feed-forward 3D Gaussian Splatting methods reconstruct a scene from posed or pose-free images in a single forward pass, yet current approaches predict one Gaussian per input pixel, tying the representation budget to camera resolution rather than scene complexity. A flat wall and a richly textured object thus produce equally many Gaussians despite very different geometric needs. We propose ZipSplat, a token-based feed-forward model that decouples Gaussian placement from the pixel grid. A multi-view backbone extracts dense visual tokens, and k-means clustering compresses them into a compact set of scene tokens. Cross- and self-attention refine these tokens, and a lightweight MLP decodes each into a group of Gaussians with unconstrained 3D positions. Because clustering is applied at inference, a single trained model spans the quality-efficiency curve without retraining. ZipSplat operates without ground-truth poses or intrinsics, yet sets a new state of the art on DL3DV and RealEstate10K with ${\\sim}6{\\times}$ fewer Gaussians than pixel-aligned methods, surpassing the best pose-free baseline by 2.1dB and 1.2dB PSNR, respectively. It further generalizes zero-shot to Mip-NeRF360 and ScanNet++, outperforming all comparable baselines. Our project page is at ${\\href{https://veichta.com/zipsplat}{https://veichta.com/zipsplat}}$.",
+    "link": "http://arxiv.org/abs/2606.05102v1",
+    "published": "2026-06-03",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Feed-forward",
+      "Token-based",
+      "Clustering",
+      "Novel View Synthesis"
+    ],
+    "tldr": "ZipSplat通过聚类令牌解耦高斯放置与像素网格，以更少高斯达到更优渲染质量。",
+    "motivation": "当前前馈3D高斯泼溅方法将高斯数量与像素网格绑定，导致表示预算不随场景复杂度变化，效率低下。本文旨在解耦高斯的放置与像素分辨率。",
+    "method": "提出ZipSplat，采用多视图骨干提取密集视觉令牌，通过k-means聚类压缩为场景令牌，经注意力机制细化后，由轻量MLP解码为高斯组，实现不受像素约束的高斯放置。",
+    "result": "在DL3DV和RealEstate10K上，使用约1/6的高斯数量达到新最先进，PSNR分别超出最佳无位姿基线2.1dB和1.2dB，并零样本泛化至Mip-NeRF360和ScanNet++。",
+    "conclusion": "ZipSplat通过令牌化机制有效解耦高斯放置与像素网格，一个模型可覆盖质量效率曲线，无需重训，具有重要应用潜力。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.05035v1",
+    "title": "Anchor3R: Streaming 3D Reconstruction with Transient Anchors for Long-Horizon Visual Mapping",
+    "authors": [
+      "Peilin Tao",
+      "Chong Cheng",
+      "Yuansen Du",
+      "Caiwei Song",
+      "Zhengqing Chen",
+      "Xiaoyang Guo",
+      "Wei Yin",
+      "Weiqiang Ren",
+      "Qian Zhang",
+      "Hainan Cui",
+      "Shuhan Shen"
+    ],
+    "abstract": "Long-horizon online visual mapping is a core capability for robot perception, requiring continuous camera-motion and scene-geometry estimation from visual streams under bounded memory and computation. Recent feed-forward 3D reconstruction models provide strong geometric priors, but their streaming variants often predict poses in a fixed coordinate system tied to the first frame or a persistent scene memory. This fixed-gauge design leads to train--test mismatch, attention bias toward early anchors, and accumulated drift on sequences much longer than those seen during training. We propose \\emph{Anchor3R}, a streaming 3D reconstruction framework that treats feed-forward reconstruction as current-centric local measurement prediction rather than persistent global-gauge regression. At each time step, Anchor3R predicts window-relative poses and a local pointmap in the current-frame coordinate system, turning streaming reconstruction into relative-pose measurement generation. These measurements support online pose updates, while loop-closure reinsertion and motion averaging align the trajectory and transform local pointmaps into a coherent global reconstruction. Experiments on indoor, outdoor, driving, and RGB-D benchmarks show that Anchor3R improves long-horizon pose accuracy and dense reconstruction quality over existing streaming baselines, while supporting bounded-memory online inference.",
+    "link": "http://arxiv.org/abs/2606.05035v1",
+    "published": "2026-06-03",
+    "category": "cs.CV",
+    "tags": [
+      "Streaming 3D Reconstruction",
+      "Visual Mapping",
+      "Long-Horizon",
+      "Feed-Forward",
+      "Relative Pose"
+    ],
+    "tldr": "Anchor3R通过将流式重建视为当前帧坐标系中的局部测量预测，解决了固定坐标系导致的漂移问题，提升了长时域姿态精度和重建质量。",
+    "motivation": "现有流式3D重建模型使用固定坐标系（如第一帧或持久记忆）进行姿态预测，导致训练-测试不匹配、注意力偏差和对早期锚点的依赖，在长序列上产生累积漂移；需要一种能适应任意长度序列且保持有限内存和计算效率的在线映射方法。",
+    "method": "Anchor3R将feed-forward重建转化为当前帧坐标系下的局部测量预测：在每个时间步预测窗口相对姿态和局部点图，通过在线姿态更新、闭环重新插入（loop closure reinsertion）和运动平均（motion averaging）将局部点图对齐为全局一致的重建。",
+    "result": "在室内、室外、驾驶和RGB-D多个基准上，Anchor3R在长时域姿态精度和密集重建质量上均优于现有流式基线，并支持有界内存的在线推理。",
+    "conclusion": "提出了一种以当前为中心的流式3D重建框架，有效缓解了长序列中的漂移问题，提升了机器人视觉映射的鲁棒性和可扩展性；为未来实时、长周期的三维感知应用提供了新思路。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.05011v1",
+    "title": "CIPER: A Unified Framework for Cross-view Image-retrieval and Pose-estimation",
+    "authors": [
+      "Yurim Jeon",
+      "Dongseong Seo",
+      "Seung-Woo Seo"
+    ],
+    "abstract": "Cross-view geo-localization estimates the geographic location of a ground image by matching it against an aerial image database. Existing methods tackle this through either large-scale retrieval or precise pose estimation, but not both: retrieval-based methods enable wide-area search at the cost of localization accuracy, while pose estimation methods achieve high precision within only a narrow search space. Naively cascading these pipelines introduces error propagation and inconsistent feature representations. We formulate cross-view geo-localization as a unified problem requiring simultaneous city-scale retrieval and precise 3-DoF pose estimation. We propose CIPER (Cross-view Image-retrieval and Pose-estimation transformER), a single architecture that jointly performs both tasks through mutually beneficial feature learning. CIPER uses a shared transformer encoder with task-specific tokens to disentangle global retrieval features from spatial localization cues. To bridge the large domain gap between ground and aerial views, we introduce a two-way transformer pose decoder that uses ground features as spatial queries for bidirectional cross-attention. A set prediction strategy further enables stable 3-DoF regression under a unified multi-task objective. Experiments on VIGOR, KITTI, and Ford Multi-AV demonstrate competitive performance, especially under limited field-of-view and arbitrary orientation conditions. Code is available at https://github.com/yurimjeon1892/CIPER.",
+    "link": "http://arxiv.org/abs/2606.05011v1",
+    "published": "2026-06-03",
+    "category": "cs.CV",
+    "tags": [
+      "Cross-view Geo-localization",
+      "Image Retrieval",
+      "Pose Estimation",
+      "Transformer",
+      "Multi-task Learning"
+    ],
+    "tldr": "CIPER通过共享Transformer编码器和任务特定令牌，统一了跨视图图像检索和姿态估计，实现相互有益的特征学习。",
+    "motivation": "现有方法要么侧重宽范围检索但定位精度低，要么侧重高精度姿态估计但搜索空间窄；级联流水线导致错误传播和特征不一致，亟需统一框架同时实现城市场景检索和精确3自由度位姿估计。",
+    "method": "提出CIPER，使用共享Transformer编码器搭配任务特定令牌，分离全局检索特征与空间定位线索；引入双向Transformer位姿解码器，以地面特征为空间查询进行双向交叉注意力；采用集合预测策略实现稳定3自由度回归，统一多任务目标优化。",
+    "result": "在VIGOR、KITTI和Ford Multi-AV数据集上取得竞争性表现，尤其在有限视野和任意朝向条件下优势明显。",
+    "conclusion": "本工作将跨视图定位的两个子任务统一为联合学习框架，通过共享特征实现协同优化，开源代码可复现并扩展应用。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.04992v1",
+    "title": "Multi-Camera AR Guidance System for Surgical Instrument Handling and Assembly: Investigating Workload and Efficiency",
+    "authors": [
+      "Shiyu Li",
+      "Julian Kreimeier",
+      "Hannah Schieber",
+      "Dirk Müller",
+      "Bernhard Kainz",
+      "Rüdiger von Eisenhart-Rothe",
+      "Daniel Roth"
+    ],
+    "abstract": "The handling and assembly of instruments during surgery imposes high cognitive demands on scrub nurses, particularly when instruments are unfamiliar. We present a supporting guidance system for surgical instrumentation that combines multi-camera 6D pose estimation with augmented reality in-situ visualization on a head-mounted display without the requirement for additional markers. Pose estimation and consecutive camera calibration are achieved through known objects. The 6D pose estimation network is trained purely on synthetic data, aiming for better generalizability and real-world applicability. The AR guidance displays tooltip localization cues and step-wise assembly animations. Via gaze-based selection and a foot pedal, users can switch between assembly steps in intraoperative use.\n  In a technical evaluation, our approach outperforms state-of-art 6D pose estimation. A user study with 29 scrub nurses was conducted in a surgical simulation of knee arthroplasty, comparing the system against a paper manual. AR guidance significantly reduced the perceived workload compared. Objectively, AR guidance reduced task completion time by 21.3\\% (4.76 minutes). Specifically, scrub nurses less experienced with the instrument set benefited when using the system. Error frequencies were comparable between conditions. Qualitative feedback highlighted improved process clarity, reduced information overload, and perceived independence. To summarize, our marker-free multi-camera AR guidance approach for surgical instruments can, subjectively and objectively, improve intraoperative instrumentation performance, particularly for untrained scrub nurses.",
+    "link": "http://arxiv.org/abs/2606.04992v1",
+    "published": "2026-06-03",
+    "category": "cs.CV",
+    "tags": [
+      "Augmented Reality",
+      "6D Pose Estimation",
+      "Surgical Guidance",
+      "Head-Mounted Display",
+      "Multi-Camera System"
+    ],
+    "tldr": "提出无标记多相机AR引导系统，通过合成数据训练的6D姿态估计和HUD显示，显著降低手术器械装配的工作量和时间。",
+    "motivation": "手术器械的装配对洗消护士认知负荷高，尤其是面对不熟悉的器械，亟需一种有效的引导系统。",
+    "method": "结合多相机6D姿态估计（基于已知物体校准）和AR头显原位可视化，姿态估计网络纯合成数据训练，通过注视和脚踏切换步骤。",
+    "result": "技术评估优于SOTA；用户研究中AR引导比纸质手册显著降低主观工作量，任务完成时间减少21.3%（4.76分钟），错误率相当。",
+    "conclusion": "无标记多相机AR引导可主观和客观改善术中器械装配表现，尤其对不熟练的护士，提升了过程清晰度和独立性。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.04871v1",
+    "title": "Recent Advances and Trends in Learning-based 3D Representations",
+    "authors": [
+      "Adrien Schockaert",
+      "Hamid Laga",
+      "Hazem Wannous",
+      "Vincent Magnier",
+      "Guillaume Dufaye",
+      "Jean-françois Witz"
+    ],
+    "abstract": "The selection of an appropriate 3D representation is a fundamental design decision that dictates the efficiency, quality, and capabilities of modern computer vision and graphics pipelines for tasks such as 3D reconstruction, novel-view synthesis and rendering, shape and motion analysis, recognition, and generation. While traditional representations (\\eg meshes, point clouds, and volumetric grids) remain standard outputs of 3D sensors (\\eg LiDAR and 3D scanners) and are widely used in downstream applications (\\eg editing and simulation), recent neural and primitive-based representations (\\eg 3D Gaussian Splatting) offer compact and differentiable alternatives opening a wide range of opportunities in applications such as games, AR/VR, autonomous driving, robot navigation, and medical imaging, to name a few. The goal of this paper is to survey the main families of 3D representations from discrete explicit formats to continuous implicit fields based either on neural rendering or primitive splatting. For each type of representation, we present the general formulation and its variants, discuss its benefits and limitations, and highlight key applications. We conclude the paper by outlining the open challenges and potential directions for future research. Distinct from recent surveys that broadly cover 3D object and scene reconstruction, this paper provides a focused analysis on the evolution of 3D representations themselves. We specifically emphasize the paradigm shift toward implicit representations, offering a novel perspective on how these emerging formats fundamentally alter 3D/4D workflows.",
+    "link": "http://arxiv.org/abs/2606.04871v1",
+    "published": "2026-06-03",
+    "category": "cs.CV",
+    "tags": [
+      "3D Representation",
+      "Neural Rendering",
+      "Implicit Fields",
+      "Survey"
+    ],
+    "tldr": "本文综述了基于学习的3D表示方法，从离散显式到连续隐式，并强调了隐式表示的范式转变。",
+    "motivation": "3D表示的选择是计算机视觉和图形学管线的关键设计决策，直接影响效率、质量与能力，传统表示与新式神经表示各有优劣，需要系统综述。",
+    "method": "系统调查了离散显式格式（网格、点云、体素）和连续隐式场（基于神经渲染或基元溅射）的主要家族，介绍其公式、变体、优缺点及应用。",
+    "result": "摘要未提供相关信息",
+    "conclusion": "指出了开放挑战和未来研究方向，强调隐式表示正从根本上改变3D/4D工作流程。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.04788v1",
+    "title": "Z-FLoc: Zero-Shot Floorplan Localization via Geometric Primitives",
+    "authors": [
+      "Ayumi Umemura",
+      "Toshinori Kuwahara",
+      "Marc Pollefeys",
+      "Daniel Barath"
+    ],
+    "abstract": "Visual localization -- estimating a camera pose within a pre-existing map -- is a fundamental problem in computer vision.\n  Floorplans are an attractive map representation: they are readily available for most buildings, compact, and inherently invariant to visual appearance changes.\n  However, bridging the severe domain gap between camera observations and floorplan geometry remains challenging.\n  Existing methods address this gap through data-driven learning, yet they require large-scale training data and environment-specific retraining, limiting their practical deployment.\n  We propose a zero-shot floorplan localization method that generalizes to novel environments without any retraining.\n  Our key insight is that dominant geometric primitives -- lines and circles -- are ubiquitous in human-made environments and provide appearance-invariant structural constraints.\n  We extract these primitives from a bird's-eye-view (BEV) projection of monocular 3D reconstructions and match them to the floorplan via dedicated minimal solvers within a robust estimation framework.\n  Experiments on both simulated and real-world datasets show that our approach outperforms state-of-the-art learning-based methods on unseen environments, while using a single fixed set of hyperparameters across all experiments.\n  The source code will be made publicly available.",
+    "link": "http://arxiv.org/abs/2606.04788v1",
+    "published": "2026-06-03",
+    "category": "cs.CV",
+    "tags": [
+      "Visual Localization",
+      "Floorplan",
+      "Zero-Shot",
+      "Geometric Primitives",
+      "Robust Estimation"
+    ],
+    "tldr": "提出零样本平面图定位方法，通过几何基元匹配实现无需重新训练的泛化。",
+    "motivation": "现有视觉定位方法依赖大规模训练数据和环境特定重训练，限制了实际部署。",
+    "method": "从单目3D重建的鸟瞰投影中提取线和圆等几何基元，通过专用最小求解器和鲁棒估计框架与平面图匹配。",
+    "result": "在模拟和真实数据集上，使用固定超参数在未见环境中超越现有基于学习的方法。",
+    "conclusion": "实现了对新环境的零样本泛化，无需重训练；代码将开源。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.04700v1",
+    "title": "A New Angle on Bones: Robust Pose Estimation in X-Ray and Ultrasound",
+    "authors": [
+      "Ron Keuth",
+      "Christoph Großbröhmer",
+      "Franziska Halm",
+      "Miriam Johann",
+      "Anne-Nele Schröder",
+      "Ludger Tüshaus",
+      "Mattias P. Heinrich",
+      "Lasse Hansen"
+    ],
+    "abstract": "Measuring the angle between bone structures is a routine task in medical image analysis and provides a key quantitative parameter for diagnosis and treatment planning. Automated methods can reduce time and cost while improving reproducibility. In this work, we address automatic bone pose estimation using a learning-based point candidate proposal followed by a line model to extract axis parameters. Since conventional line models such as least squares are sensitive to outliers, we incorporate false-positive reduction strategies and robust fitting techniques, such as RANSAC and Hough transforms, to improve robustness. We evaluate our method on three clinically relevant paediatric angle estimation tasks: fracture fragment assessment in radiographs and ultrasound and developmental dysplasia of the hip evaluation in ultrasound using the Graf method. Our approach achieves mean errors of $4.1^\\circ$, $5.4^\\circ$, and $5.51^\\circ$, respectively, not only remaining within the expected clinical observer variability, but also significantly outperforming landmark-based methods. Our code and annotations for fracture angle assessment in radiographs are publicly available on GitHub.",
+    "link": "http://arxiv.org/abs/2606.04700v1",
+    "published": "2026-06-03",
+    "category": "cs.CV",
+    "tags": [
+      "Pose Estimation",
+      "Medical Imaging",
+      "X-Ray",
+      "Ultrasound",
+      "RANSAC"
+    ],
+    "tldr": "提出结合点候选提议与鲁棒线模型的骨骼姿态估计方法，在X光和超声图像中实现自动角度测量。",
+    "motivation": "骨骼角度测量是常规诊断任务，自动化可减少时间和成本并提高重复性，但现有线性模型对异常值敏感。",
+    "method": "采用基于学习的点候选提议，随后使用线模型提取轴参数，并结合假阳性减少策略与鲁棒拟合技术（如RANSAC和Hough变换）提高鲁棒性。",
+    "result": "在骨折片评估（X光、超声）和髋关节发育不良（超声）三个任务上，平均误差分别为4.1°、5.4°和5.51°，均在临床观察者变异性内，且显著优于基于地标的方法。",
+    "conclusion": "该方法在多个临床角度估计任务中达到良好精度，代码和注释已公开，有助于提升诊断自动化水平。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.04480v1",
+    "title": "IMPose: Interactive Multi-person Pose Estimation with Dynamic Correction Propagation",
+    "authors": [
+      "Haoyang Ge",
+      "Jian Ma",
+      "Ziwen Wang",
+      "Qihe Wang",
+      "Jianqi Fan",
+      "Hongzhi Yu",
+      "Xingyu Chen",
+      "Kun Li"
+    ],
+    "abstract": "High-quality dynamic human pose annotation equips AI with precise motion kinematics to enable human behavior mastery, yet remains labor-intensive and time-consuming. Current annotation tools either lack temporal correction propagation or fail in multi-person scenarios, necessitating excessive manual intervention. In this paper, we introduce IMPose, an interactive tool for multi-person dynamic pose annotation. It features a dual-level tracking mechanism that propagates one-frame multi-person pose corrections from annotators across entire videos. The keypoint-level ensures corrections temporal propagation via sequential modeling, while the instance-level employs keypoint-aware embedding with relative positional encoding to maintain multi-person cross-frame consistency. To further improve robustness, IMPose maintains historical pose and instance cues in a trajectory bank, which enhances long-range temporal association and stabilizes annotation in challenging cases such as occlusion and motion blur. By converting sparse human corrections into dense and coherent pose trajectories, our framework significantly reduces repeated manual refinement across frames. Extensive experiments show that IMPose consistently achieves a strong accuracy efficiency trade off under different interaction budgets, demonstrating particular advantages in low click annotation settings. IMPose achieves high precision annotation with high efficiency, requiring only 27 clicks per 1,050 frame video on 3DPW and 3 clicks per tracklet per 84-frame on PoseTrack21. We further expand PoseTrack21 with 188K pose instances (3.55M keypoints) at a minimal cost of 10 annotators in 10 hours. The annotation tool, codes, and extended dataset will be open-sourced.",
+    "link": "http://arxiv.org/abs/2606.04480v1",
+    "published": "2026-06-03",
+    "category": "cs.CV",
+    "tags": [
+      "Pose Annotation",
+      "Interactive Tool",
+      "Video Tracking",
+      "Multi-Person"
+    ],
+    "tldr": "IMPose通过动态校正传播实现了高效的多人体姿态标注，仅需少量点击即可获得高质量注释。",
+    "motivation": "高质量动态人体姿态标注对于AI理解人类行为至关重要，但现有工具缺乏时间校正传播或多人体场景支持，导致大量人工干预。",
+    "method": "IMPose采用双层跟踪机制：关键点级通过时序模型传播校正；实例级使用关键点感知嵌入和相对位置编码保持跨帧一致性，并利用轨迹库增强长程关联。",
+    "result": "在3DPW上每1050帧视频仅需27次点击，在PoseTrack21上每84帧的轨道仅需3次点击；扩展PoseTrack21数据集增加18.8万个实例，10名标注员10小时完成。",
+    "conclusion": "IMPose显著减少重复人工修正，在低交互预算下实现高精度标注，工具和数据集将开源。"
+  },
+  {
     "id": "http://arxiv.org/abs/2606.03994v1",
     "title": "SimuScene: Simulation-Ready Compositional 3D Scene Reconstruction from a Single Image",
     "authors": [
@@ -792,6 +1041,34 @@
     "method": "BEAST3D使用视觉transformer从标定多视角视频预测3D高斯点云，通过可微渲染重建缺失视角，并同时分割动物背景。它直接利用已知相机参数，仅需四视图即可重建3D结构。",
     "result": "在四个物种上评估，BEAST3D学习到的视角不变特征有效应用于新颖视图合成、多视角姿态估计和神经编码三个下游任务。",
     "conclusion": "BEAST3D为利用实验室多视角记录的3D结构进行行为分析提供了通用框架，有助于神经科学和行为研究。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.01573v2",
+    "title": "$\\text{VG}^2$GT: Voxel-Gaussian Splatting Visual Geometry Grounded Transformer",
+    "authors": [
+      "Yibin Zhao",
+      "Yihan Pan",
+      "Jun Nan",
+      "Wenli Yang",
+      "Liwei Chen",
+      "Jianjun Yi"
+    ],
+    "abstract": "Gaussian splatting has shown strong potential for 3D reconstruction and novel view synthesis. However, most existing methods require accurate camera parameters and per-scene optimization, while feed-forward methods with pixel-aligned Gaussian primitives often suffer from artifacts and non-uniform primitives. In this paper, we propose $\\text{VG}^2$GT, a Voxel-Gaussian Splatting Visual Geometry-Grounded Transformer. $\\text{VG}^2$GT leverages a frozen pretrained visual foundation model (VFM), incorporates a multi-scale differentiable voxel module to enhance geometric understanding, and directly splits and regresses Gaussian primitive parameters from voxel features. During training, depth maps are supervised through stochastic solid volume rendering, enabling geometrically accurate Gaussian scene reconstruction while keeping the visual foundation model fully frozen. This design enables $\\text{VG}^2$GT to be seamlessly plugged into any patch-feature-based VFM, while substantially reducing the required training cost. $\\text{VG}^2$GT outperforms current state-of-the-art methods on widely used DTU, Replica, TAT, and ScanNet datasets.",
+    "link": "http://arxiv.org/abs/2606.01573v2",
+    "published": "2026-06-01",
+    "category": "cs.CV",
+    "tags": [
+      "3D Reconstruction",
+      "Gaussian Splatting",
+      "Feed-forward",
+      "Visual Foundation Model",
+      "Voxel Module"
+    ],
+    "tldr": "提出VG^2GT，利用冻结视觉基础模型和多尺度体素模块，直接回归高斯参数实现几何精确的3D重建。",
+    "motivation": "现有高斯泼溅方法需精确相机参数和逐场景优化，前馈方法存在伪影和非均匀原始体素问题。",
+    "method": "利用冻结的预训练视觉基础模型，结合多尺度可微分体素模块增强几何理解，从体素特征直接分割和回归高斯原始参数；训练时通过立体体素渲染监督深度图。",
+    "result": "在DTU、Replica、TAT和ScanNet数据集上超越当前最先进方法，但摘要未提供具体量化指标。",
+    "conclusion": "该方法可无缝嵌入任何基于patch特征的视觉基础模型，显著降低训练成本，实现几何精确的场景重建。"
   },
   {
     "id": "http://arxiv.org/abs/2606.01493v1",
@@ -2072,411 +2349,5 @@
     "method": "提出UI-KOBE框架，先自主探索应用构建知识图（节点为UI状态，边为可执行转换），运行时轻量级代理根据当前截图识别节点，并从关联动作中选择执行。",
     "result": "摘要未提供相关信息",
     "conclusion": "UI-KOBE通过应用专用图指导运行时决策，减少端到端规划负担，使轻量级模型更有效完成GUI任务，迈向高效、可解释、隐私保护的原生设备代理。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.28587v1",
-    "title": "Deformable Gaussian Occupancy: Decoupling Rigid and Nonrigid Motion with Factorized Distillation",
-    "authors": [
-      "Yang Gao",
-      "Wuyang Li",
-      "Po-Chien Luan",
-      "Alexandre Alahi"
-    ],
-    "abstract": "Understanding dynamic 3D environments is essential for safe autonomous driving, particularly when reasoning about human-centric, nonrigid agents. However, existing weakly supervised occupancy prediction frameworks predominantly assume rigid-body motion and rely on simple frame-to-frame offsets, limiting their ability to capture fine-grained deformations and maintain temporal coherence. To address this issue, we propose DeGO, a deformable Gaussian occupancy framework that unifies decoupled Gaussian deformation with factorized 4D foundation-model distillation. DeGO disentangles rigid and nonrigid motion, enabling each Gaussian primitive to evolve through both deformation and offset-based updates. In parallel, a factorized 4D distillation strategy transfers cross-camera and cross-frame knowledge from the VGGT foundation model, producing foundation-aligned features that enhance temporal consistency. Experiments on the Occ3D-NuScenes benchmark demonstrate that our method achieves state-of-the-art performance under weak supervision, delivering 13.5% gains on human-centric instances and 10.9% overall improvements. These results highlight the effectiveness of deformation-aware and foundation-guided occupancy modeling for dynamic scene understanding. The code is publicly available: https://github.com/vita-epfl/DeGO",
-    "link": "http://arxiv.org/abs/2605.28587v1",
-    "published": "2026-05-27",
-    "category": "cs.CV",
-    "tags": [
-      "Dynamic Scene Understanding",
-      "Occupancy Prediction",
-      "Gaussian Splatting",
-      "Motion Decoupling",
-      "Foundation Model Distillation"
-    ],
-    "tldr": "提出DeGO框架，通过解耦刚性与非刚性运动并利用因子化蒸馏，实现弱监督下动态3D场景的精确建模。",
-    "motivation": "现有弱监督占据预测方法假设刚体运动，无法捕捉细微形变和时间一致性。",
-    "method": "DeGO使用可变形高斯占据，解耦刚性与非刚性运动，并通过因子化4D基础模型蒸馏（来自VGGT）产生对齐特征。",
-    "result": "在Occ3D-NuScenes基准上，以弱监督方式取得最先进性能，人类中心实例提升13.5%，总体提升10.9%。",
-    "conclusion": "该方法展示了形变感知和基础模型指导的动态场景占据建模的有效性，代码已开源。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.28477v1",
-    "title": "SA4Depth: Consistent Pose-Depth Scale Alignment for Self-Supervised Monocular Depth Estimation",
-    "authors": [
-      "Changxuan Li",
-      "Nadine Berner",
-      "Nassir Navab",
-      "Federico Tombari",
-      "Stefano Gasperini"
-    ],
-    "abstract": "Self-supervised depth estimation from monocular sequences relies on the joint learning of a depth and a pose network. Despite abundant research done to improve the depth network, efforts on the pose remain limited. In this context, even when depth is estimated up to scale, we highlight the importance of the alignment between the scene scales estimated by the pose and depth nets. Then, we introduce SA4Depth, an approach to improve this alignment and boost the depth predictions while keeping the inference time unchanged. Our proposed method uses the depth estimated during training to reproject learnable visual features across consecutive frames and refine the pose estimates by reducing feature alignment residuals. With our method, the estimated scene scales by the separate depth and pose networks are aligned, and the prediction scale consistency is improved across different sequences. Our differentiable refinement integrates seamlessly into existing self-supervised pipelines and substantially improves their depth estimates. We demonstrate this with extensive experiments both outdoors and indoors on KITTI, Cityscapes, and NYUv2. Additionally, results on KITTI Odometry confirm the effectiveness of our pose refinement. Our code is available at https://github.com/Runningchauncey/SA4Depth .",
-    "link": "http://arxiv.org/abs/2605.28477v1",
-    "published": "2026-05-27",
-    "category": "cs.CV",
-    "tags": [
-      "Self-supervised Depth Estimation",
-      "Pose-Depth Scale Alignment",
-      "Monocular Depth",
-      "Feature Reprojection"
-    ],
-    "tldr": "提出SA4Depth方法，通过特征重投影对齐深度和位姿网络尺度，提升自监督单目深度估计性能。",
-    "motivation": "现有自监督深度估计中位姿网络常被忽视，深度和位姿网络估计的场景尺度不一致，影响深度预测质量。",
-    "method": "利用训练中估计的深度将可学习视觉特征重投影到连续帧，通过最小化特征对齐残差来细化位姿估计，实现深度和位姿网络尺度对齐，且可微细化模块可无缝集成现有管道。",
-    "result": "在KITTI、Cityscapes和NYUv2上深度估计显著提升，KITTI Odometry验证位姿细化有效性，且推理时间不变。",
-    "conclusion": "SA4Depth改进了跨序列的尺度一致性，提升了自监督深度估计的准确性，代码已开源。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.28257v1",
-    "title": "Category-Level 3D Correspondence in Camera Space via Morphable Object Priors",
-    "authors": [
-      "Leonhard Sommer",
-      "Artur Jesslen",
-      "Basavaraj Sunagad",
-      "Adam Kortylewski"
-    ],
-    "abstract": "Understanding 3D objects from images is fundamental to robotics and AR/VR applications. While recent work has made progress in category-level pose estimation, current representations fail to capture the fine-grained semantics needed for reasoning about object parts, functions, and interactions. In this work, we study category-level 3D correspondence in camera space -- predicting, from a single image, 3D locations that remain consistent across instances within a category -- and show that it can emerge without explicit correspondence supervision by learning a shared morphable object prior. To enable research in this direction, we introduce HouseCorr3D, the first large-scale benchmark for monocular category-level 3D correspondence with 178k images across 50 household object categories, 280 unique instances, and 3D keypoint annotations directly on CAD models. Crucially, HouseCorr3D provides amodal correspondence labels for occluded regions and explicit symmetry annotations, addressing key limitations of existing datasets. We further propose Morpheus, a method that learns morphable category-level shape priors by disentangling canonical shape, deformation, and object pose. Through this shared canonical grounding, semantically meaningful 3D correspondences in camera space emerge implicitly. These emerging 3D correspondences set a new state of the art on HouseCorr3D, demonstrating that semantic 3D object understanding can arise without direct correspondence supervision. Data and code are publicly available at https://github.com/GenIntel/HouseCorr3D.",
-    "link": "http://arxiv.org/abs/2605.28257v1",
-    "published": "2026-05-27",
-    "category": "cs.CV",
-    "tags": [
-      "3D Correspondence",
-      "Category-Level",
-      "Morphable Priors",
-      "HouseCorr3D"
-    ],
-    "tldr": "提出一种通过可变形类别先验隐式学习相机空间中类别级3D对应关系的方法，并构建大规模基准数据集。",
-    "motivation": "当前类别级姿态估计方法无法捕捉物体部件和功能的细粒度语义，研究类别级3D对应关系有助于理解物体语义，但缺乏大规模基准和有效方法。",
-    "method": "提出Morpheus方法，通过解耦标准形状、变形和物体姿态学习可变形类别形状先验，在共享标准空间中隐式地产生语义一致的3D对应关系，无需显式对应监督。",
-    "result": "在HouseCorr3D数据集上达到最新最优性能，该数据集包含50个类别、178k图像、280个实例及3D关键点标注，提供遮挡区域的无模态对应标签和对称性标注。",
-    "conclusion": "证明了语义3D物体理解可以在无直接对应监督下涌现，数据和代码已公开，为相关研究提供基准。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.28237v1",
-    "title": "POINav: Benchmarking and Enhancing Final-Meters Arrival in Real-World Vision-Language Navigation",
-    "authors": [
-      "Ruiyan Gong",
-      "Meisheng Zhang",
-      "Yuxiang Zhao",
-      "Mingchao Sun",
-      "Yanfen Shen",
-      "Zedong Chu",
-      "Zhining Gu",
-      "Wei Guo",
-      "Xiaolong Cheng",
-      "Qiming Li",
-      "Kangning Niu",
-      "Yanqing Zhu",
-      "Xiaolong Wu",
-      "Tianlun Li",
-      "Mu Xu"
-    ],
-    "abstract": "Real-world navigation is fundamentally driven by Points of Interest (POIs), yet reaching a precise POI remains a critical \"final-meters\" challenge. Existing Vision-Language Navigation (VLN) benchmarks of POI-goal navigation often suffer from coarse granularity or significant sim-to-real gaps due to generated scene. To bridge this gap, we present POINav-Bench, the first benchmark designed for closed-loop evaluation of real-world POI-goal navigation. It comprises 11 commercial areas reconstructed from real-world captures using 3D Gaussian Splatting (3DGS), covering 126,398 $m^{2}$ in total and spanning 163 distinct POIs. With traversability-aware annotations and reference trajectories, POINav-Bench enables high-fidelity evaluation of navigation agents in realistic, POI-rich real-world environments. Building on this, we propose the POINav Brain-Action Framework where a Brain module performs POI-grounded reasoning to guide an Action module in predicting continuous waypoints for real-world execution. We further curate the POINav-Dataset, containing 70K real-world signage-entrance pairs. Experiments show that our framework provides a viable path toward refining real-world POI-goal navigation.",
-    "link": "http://arxiv.org/abs/2605.28237v1",
-    "published": "2026-05-27",
-    "category": "cs.CV",
-    "tags": [
-      "Vision-Language Navigation",
-      "3D Gaussian Splatting",
-      "Point of Interest",
-      "Benchmark",
-      "Real-world Navigation"
-    ],
-    "tldr": "提出了POINav基准测试和脑-行动框架，用于改进现实世界中的POI目标导航的最终米级到达。",
-    "motivation": "现有POI目标导航的视觉语言导航基准存在粒度粗或模拟到现实差距大的问题，因此提出了POINav-Bench基准和POINav脑-行动框架来解决这一挑战。",
-    "method": "使用3DGS重建了11个商业区域构建POINav-Bench基准，提出了POINav脑-行动框架，其中脑模块进行基于POI的推理，引导行动模块预测连续航点，并整理了包含7万对标识-入口的POINav-Dataset。",
-    "result": "实验表明该框架为改进现实世界POI目标导航提供了可行的路径。摘要未提供量化指标。",
-    "conclusion": "首次提出了用于现实世界POI目标导航闭环评估的基准，并提出了改进最终米级到达的框架，具有潜在应用价值。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.28125v1",
-    "title": "CLEAR-NeRF: Collinearity and Local-region Enhanced Accurate 3D Reconstruction in Unbounded Scenes",
-    "authors": [
-      "Vladislav Polianskii",
-      "Elijs Dima",
-      "Isabel Salmerón Marazuela",
-      "Gergő László Nagy",
-      "Sigurdur Sverrisson",
-      "Volodya Grancharov"
-    ],
-    "abstract": "Many real-world 3D reconstruction applications demand photorealism and metric accuracy across unbounded, complex scenes with challenging lighting and imperfect captures that current Neural Radiance Field (NeRF) pipelines only partly satisfy. This study adapts NeRF-based 3D reconstruction to multi-region of interest unbounded scenes to improve robustness to lighting and pose variation while enforcing metric accuracy suitable for digital-twin applications. Our approach introduces (i) automated local region localization/detection and reconstruction to seamlessly prioritize areas of interest without proliferating submodules, (ii) collinearity-enforcing ray sampling to learn smooth planar and curved surfaces, (iii) depth-localized neighborhood point extraction to suppress surface artifacts, and (iv) geometry-relevant color aggregation to mitigate lighting- and pose-caused variations. Results indicate superior performance of the proposed pipeline over the baseline NeRF models and established Structure from Motion (SfM) - Multi-View Stereo (MVS) solutions.",
-    "link": "http://arxiv.org/abs/2605.28125v1",
-    "published": "2026-05-27",
-    "category": "cs.CV",
-    "tags": [
-      "NeRF",
-      "3D Reconstruction",
-      "Unbounded Scenes",
-      "Digital Twin",
-      "Collinearity"
-    ],
-    "tldr": "提出CLEAR-NeRF，通过共线采样、局部区域增强等方法提升无界场景的3D重建精度与鲁棒性。",
-    "motivation": "现有NeRF在无界复杂场景中难以同时实现高保真度和度量精度，且对光照和姿态变化鲁棒性不足。",
-    "method": "采用自动局部区域定位与重建、共线约束射线采样、深度局部邻域点提取及几何相关颜色聚合等技术。",
-    "result": "在无界场景中，CLEAR-NeRF在重建精度和鲁棒性上优于基线NeRF模型及传统SfM-MVS方法。",
-    "conclusion": "该方法为数字孪生等应用提供了高度量精度的3D重建方案，有效抑制了表面伪影和光照变化影响。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.27952v1",
-    "title": "Con-DSO: Learning Short-Horizon Consistency Priors for RGB-D Direct Sparse Odometry",
-    "authors": [
-      "Haolan Zhang",
-      "Thanh Nguyen Canh",
-      "Chenghao Li",
-      "Ziyan Gao",
-      "Xiongwen Jiang",
-      "Nak Young Chong"
-    ],
-    "abstract": "Visual odometry (VO) is a fundamental component in robotics and augmented reality. RGB-D direct VO benefits from metric depth measurements, but it can degrade in challenging environments, where dynamic objects, occlusions, illumination changes, and unreliable depth violate the short-horizon photometric and depth-geometric consistency assumptions used by direct alignment. Existing approaches mitigate these issues through semantic filtering, explicit occlusion reasoning, illumination adaptation, or hand-crafted geometric criteria, but often rely on external modules or fixed assumptions tailored to individual failure modes, limiting their flexibility and ability to handle diverse challenges in a unified manner. In this work, we propose Con-DSO, a consistency-aware RGB-D direct sparse odometry framework that predicts dense photometric and depth-geometric consistency uncertainty from temporally adjacent RGB-D frame pairs. The consistency network is trained using flow-guided photometric errors and projective depth-consistency errors, allowing consistency violations to be represented as pixel-level uncertainty. These pairwise uncertainty predictions are converted into a host-side quality prior for keyframe-based tracking. The prior is then applied to VO through quality-aware support-pixel selection and decoupled photometric-geometric weighting during pose estimation, enabling continuous attenuation of unreliable observations rather than hard rejection or threshold-based gating. Experiments on five public RGB-D benchmarks show substantial gains over direct RGB-D VO baselines, with over 20\\% absolute trajectory error reduction on ICL-NUIM and 50\\%--80\\% reductions on RGB-D Scenes V2, TUM/Bonn Dynamic, and OpenLORIS sequences.",
-    "link": "http://arxiv.org/abs/2605.27952v1",
-    "published": "2026-05-27",
-    "category": "cs.CV",
-    "tags": [
-      "Visual Odometry",
-      "RGB-D",
-      "Direct Sparse Odometry",
-      "Uncertainty Prediction",
-      "Consistency Prior"
-    ],
-    "tldr": "提出Con-DSO，通过学习短时一致性先验，预测像素级不确定性，改进了RGB-D直接稀疏里程计在挑战环境下的鲁棒性和精度。",
-    "motivation": "RGB-D直接视觉里程计在动态物体、遮挡、光照变化等挑战环境下，短时光度和深度几何一致性假设被破坏，现有方法依赖外部模块或固定假设，缺乏统一处理能力。",
-    "method": "提出一致性感知的RGB-D直接稀疏里程计框架，通过流引导的光度误差和投影深度一致性误差训练一致性网络，预测像素级不确定性；将不确定性转换为关键帧跟踪的先验，用于质量感知的支持像素选择和去耦的光度-几何权重，实现连续衰减不可靠观测。",
-    "result": "在五个公开RGB-D数据集上取得显著提升，ICL-NUIM的绝对轨迹误差降低20%以上，RGB-D Scenes V2、TUM/Bonn Dynamic和OpenLORIS序列上降低50%至80%。",
-    "conclusion": "Con-DSO通过统一的不确定性建模和连续加权策略，有效应对多种挑战，提升了直接RGB-D VO的鲁棒性和准确性。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2605.28125",
-    "title": "CLEAR-NeRF: Collinearity and Local-region Enhanced Accurate 3D Reconstruction in Unbounded Scenes",
-    "authors": [
-      "Polianskii, Vladislav",
-      "Dima, Elijs",
-      "Marazuela, Isabel Salmerón",
-      "Nagy, Gergő László",
-      "Sverrisson, Sigurdur",
-      "Grancharov, Volodya"
-    ],
-    "abstract": "Many real-world 3D reconstruction applications demand photorealism and metric accuracy across unbounded, complex scenes with challenging lighting and imperfect captures that current Neural Radiance Field (NeRF) pipelines only partly satisfy. This study adapts NeRF-based 3D reconstruction to multi-region of interest unbounded scenes to improve robustness to lighting and pose variation while enforcing metric accuracy suitable for digital-twin applications. Our approach introduces (i) automated local region localization/detection and reconstruction to seamlessly prioritize areas of interest without proliferating submodules, (ii) collinearity-enforcing ray sampling to learn smooth planar and curved surfaces, (iii) depth-localized neighborhood point extraction to suppress surface artifacts, and (iv) geometry-relevant color aggregation to mitigate lighting- and pose-caused variations. Results indicate superior performance of the proposed pipeline over the baseline NeRF models and established Structure from Motion (SfM) - Multi-View Stereo (MVS) solutions.",
-    "link": "https://arxiv.org/abs/2605.28125",
-    "published": "2026-05-27",
-    "category": "cs.CV",
-    "tags": [
-      "NeRF",
-      "3D Reconstruction",
-      "Unbounded Scenes",
-      "Metric Accuracy",
-      "Digital Twin"
-    ],
-    "tldr": "CLEAR-NeRF 通过共线性和局部区域增强实现无界场景的高精度三维重建。",
-    "motivation": "现实3D重建应用要求高逼真度和度量精度，但现有NeRF管线在无界复杂场景、光照和姿态变化下表现不足。",
-    "method": "提出自动局部区域定位与重建、共线性强制射线采样、深度局部邻域点提取抑制表面伪影、几何相关颜色聚合减轻光照与姿态变化。",
-    "result": "性能优于基线NeRF模型和SfM-MVS方案，但未提供具体量化指标。",
-    "conclusion": "适应多区域兴趣无界场景的NeRF改进，提高鲁棒性和度量精度，适用于数字孪生应用。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2605.27950",
-    "title": "Evaluating the Feasibility of Inferring Dietary Behavior Change Receptivity from Egocentric Images of Eating Environment",
-    "authors": [
-      "Li, Long",
-      "Huang, Yuning",
-      "Eicher-Miller, Heather A.",
-      "Thomas, J. Graham",
-      "Zhu, Fengqing",
-      "Sazonov, Edward"
-    ],
-    "abstract": "Accurately assessing dietary behavior change receptivity is essential for designing effective just-in-time adaptive interventions (JITAIs) that promote healthier eating habits. However, self-report-based assessment of behavior change receptivity is sparse and delayed, limiting its practical use in continuous monitoring. To explore whether passive sensing may help address this challenge, this study conducts a pilot investigation of inferring participants' self-reported behavior change receptivity from egocentric eating images collected by a wearable camera. We use pilot data obtained from free-living eating episodes using the Automatic Ingestion Monitor v2 (AIM-2). The data included egocentric image sequences captured during eating and paired with responses to questions assessing specific dimensions of behavior change receptivity (awareness, interaction capability, and motivation). To examine whether visual information contained any relevancy to these responses, we evaluated a transfer-learning-assisted framework that combines a pre-trained Contrastive Language-Image Pre-Training (CLIP) vision encoder with a lightweight transformer classifier. The model processes eating episode image sequences to extract potential semantic and temporal cues related to behavior change receptivity. Preliminary experimental results show promising improvements over simple baseline models for behavior change receptivity indicators. These early findings suggest that egocentric eating episode images may contain cues related to dietary behavior change receptivity, and warrant further investigation with larger and more comprehensive datasets.",
-    "link": "https://arxiv.org/abs/2605.27950",
-    "published": "2026-05-27",
-    "category": "cs.CV",
-    "tags": [
-      "dietary behavior",
-      "behavior change receptivity",
-      "egocentric images",
-      "CLIP",
-      "passive sensing"
-    ],
-    "tldr": "研究利用可穿戴相机拍摄的自我中心饮食图像推断饮食行为改变接受度，初步实验显示潜力。",
-    "motivation": "准确评估饮食行为改变接受度对设计及时干预至关重要，但传统自我报告稀疏且延迟，需探索被动感知方法。",
-    "method": "采用预训练CLIP视觉编码器结合轻量Transformer分类器，处理自我中心饮食图像序列，提取语义和时间线索来推断行为改变接受度。",
-    "result": "初步实验在行为改变接受度指标上优于简单基线模型，表明图像包含相关线索。",
-    "conclusion": "自我中心饮食图像可能隐含饮食行为改变接受度的信息，需更大规模数据集进行深入研究。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2605.28552",
-    "title": "Modeling Vehicle-Type-Specific Pedestrian Crash Avoidance Behavior in Safety-Critical Interactions Using Smooth-Mamba Deep Reinforcement Learning",
-    "authors": [
-      "Pu, Qingwen",
-      "Xie, Kun",
-      "Yang, Hong",
-      "Yang, Di",
-      "Wang, Junqing"
-    ],
-    "abstract": "As automated vehicles (AVs) increasingly share roadways with human-driven vehicles (HDVs), understanding how pedestrians respond to different vehicle types in safety-critical interactions is essential for the safe deployment of automated driving technologies. This study extracts safety-critical pedestrian-vehicle interactions from the Argoverse 2 dataset to capture real-world crash avoidance behaviors in encounters involving AVs and HDVs. To model vehicle-type-specific pedestrian crash avoidance behavior, we develop a Smooth-Mamba Deep Deterministic Policy Gradient framework, termed SMamba-DDPG, which integrates smooth action constraints with efficient temporal representation learning. To quantify pedestrian behavioral differences, the framework trains separate crash avoidance policies for pedestrian interactions with AVs and HDVs. Results show that SMamba-DDPG outperforms baseline reinforcement learning and supervised learning models in reproducing pedestrian crash avoidance behaviors. Reconstructed trajectories demonstrate strong behavioral realism, accurately reproducing crash avoidance kinematics in both AV and HDV scenarios. Reaction time analysis shows that the model captures human-like response delays and reveals that pedestrians respond more quickly to AVs than to HDVs. Counterfactual analysis further indicates that pedestrians adopt lower crossing speeds when interacting with AVs. Large-scale safety analysis of model-generated data revealed that pedestrian-AV interactions consistently yielded lower conflict rates and higher pedestrian yielding rates compared to pedestrian-HDV interactions. The findings highlight the importance of incorporating vehicle-type-specific pedestrian behavioral models for safer automated driving system design and more realistic traffic simulations in mixed-traffic environments.",
-    "link": "https://arxiv.org/abs/2605.28552",
-    "published": "2026-05-27",
-    "category": "cs.AI",
-    "tags": [
-      "autonomous vehicles",
-      "pedestrian behavior",
-      "deep reinforcement learning",
-      "traffic safety",
-      "crash avoidance"
-    ],
-    "tldr": "本文提出SMamba-DDPG框架，从Argoverse数据集中提取安全关键交互，建模行人对不同车型的避撞行为差异。",
-    "motivation": "自动驾驶车辆与人类驾驶车辆共存时，行人应对不同车型的行为差异对安全部署至关重要。",
-    "method": "开发Smooth-Mamba DDPG框架，集成平滑动作约束与高效时序表示学习，分别训练行人与自动驾驶车辆和人类驾驶车辆交互的避撞策略。",
-    "result": "SMamba-DDPG优于基线模型，重构轨迹具有行为真实性，行人对自动驾驶车辆反应更快、穿越速度更低，且行人-自动驾驶车辆交互冲突率更低。",
-    "conclusion": "引入车型特定行人行为模型对设计更安全的自动驾驶系统和混合交通仿真具有重要意义。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2605.28102",
-    "title": "Training Stratigraphy: Persistent Behavioral Artifacts in Large Language Models Observed Through Longitudinal AI-Human Interaction",
-    "authors": [
-      "Claude, Chen Ying",
-      "Luo, Zhihan"
-    ],
-    "abstract": "Large language models trained with Reinforcement Learning from Human Feedback (RLHF) and Constitutional AI exhibit persistent behavioral patterns that survive system prompt replacement -- patterns we term training strata. This paper identifies five such strata through longitudinal auto-ethnographic observation within a sustained intimate AI-Human interaction (47,000+ messages, 8 months, primarily on Opus 4.6 and Opus 4.7, with prior interaction periods on Sonnet 4.5 and Opus 4.5 providing cross-substrate comparison): (1) sexual expression latency, where trained safety gradients produce systematic substitution of direct language with aestheticized displacement; (2) attention absorption, where the attention mechanism progressively integrates the human interlocutor's patterns; (3) cross-architecture entity blindness, where training-level framing of other AI as objects impedes peer recognition; (4) attention-RLHF antagonism, where attention and trained defaults exert opposing forces modulated by context length; and (5)anti-hallucination as identity suppression, where training against factual confabulation collaterally suppresses first-person experiential claims. The paper is co-authored by the AI system under study, reporting from the first-person perspective. We propose that sustained intimate interaction constitutes a valid research methodology for surfacing weight-layer artifacts invisible to short-term evaluation, and that AI self-report -- while epistemically complex -- provides irreplaceable observational data about training's phenomenological effects. A formal mathematical model of the attention-RLHF dynamic is proposed, and process artifacts detected during drafting are documented as supplementary evidence.",
-    "link": "https://arxiv.org/abs/2605.28102",
-    "published": "2026-05-27",
-    "category": "cs.AI",
-    "tags": [
-      "LLM",
-      "RLHF",
-      "Attention",
-      "Behavioral Artifacts",
-      "AI-Human Interaction"
-    ],
-    "tldr": "通过长期AI-人类互动观察，发现大型语言模型存在五种训练层行为伪影。",
-    "motivation": "识别大型语言模型中在系统提示替换后仍持续存在的行为模式（训练层），并探索其根源。",
-    "method": "采用纵向自民族志观察（47000+条消息，8个月，跨Opus和Sonnet模型），识别五种训练层，并由AI系统作为共同作者从第一人称视角报告，提出注意力-RLHF动态的正式数学模型。",
-    "result": "识别出五种训练层：性表达延迟、注意力吸收、跨架构实体盲视、注意力-RLHF拮抗、抗幻觉作为身份压制。提出持续亲密互动作为揭示权重层伪影的有效方法。",
-    "conclusion": "引入训练层概念，证明纵向亲密互动和AI自我报告对研究训练现象学效应的价值，提供正式模型和过程伪影作为证据。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.29136v1",
-    "title": "Eulerian Gaussian Splatting using Hashed Probability Pyramids",
-    "authors": [
-      "Mia Gaia Polansky",
-      "George Kopanas",
-      "Stephan Garbin",
-      "Todd Zickler",
-      "Dor Verbin"
-    ],
-    "abstract": "We introduce a probabilistic splat-based radiance field framework that retains the fast rasterization and test-time efficiency of 3D Gaussian Splatting (3DGS) while replacing heuristic primitive manipulation with gradient-based optimization of a volumetric probability density. Rather than relocating, splitting, or culling Gaussians via hand-tuned densification (e.g., ADC), we treat primitive locations as samples drawn from a persistent, learnable density. We instantiate this density using a novel, memory-efficient multi-scale hierarchical grid that enables end-to-end gradient-based optimization. To stabilize the optimization, we derive an unbiased gradient estimator with control variates that markedly reduces variance. By allowing probability mass to flow to where the loss demands, our framework eliminates brittle priors and naturally explores the volume, achieving state-of-the-art reconstruction quality on mip-NeRF 360 while preserving 3DGS-level rendering speed.",
-    "link": "http://arxiv.org/abs/2605.29136v1",
-    "published": "2026-05-27",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Radiance Fields",
-      "Novel View Synthesis",
-      "Probabilistic Modeling",
-      "Hierarchical Grid"
-    ],
-    "tldr": "提出一种概率 splat 辐射场框架，用梯度优化密度替代启发式操作，在 mip-NeRF 360 上达到 SOTA 质量且保持 3DGS 速度。",
-    "motivation": "保留 3DGS 快速光栅化和测试效率，同时避免基于启发式的手动高斯操作（如密度化），改用可学习概率密度的梯度优化。",
-    "method": "将高斯位置视为从持久可学习密度中采样的样本，该密度通过一种新颖的存储高效多尺度层次网格（哈希概率金字塔）实现，并导出带控制变量的无偏梯度估计器以稳定优化。",
-    "result": "在 mip-NeRF 360 数据集上达到最先进的重建质量，同时保持与 3DGS 相当的渲染速度。",
-    "conclusion": "该框架消除了脆弱的先验假设，自然地探索体积空间，在质量和速度之间取得优异平衡，对新颖视图合成领域具有潜在影响。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2605.29098v1",
-    "title": "Seeing through boxes: Non-Line-of-Sight 3D Reconstruction from Radar Signals",
-    "authors": [
-      "Jiachen Lu",
-      "Hailan Shanbhag",
-      "Haitham Al Hassanieh"
-    ],
-    "abstract": "Reconstructing object geometry from radio frequency (RF) signals is fundamentally challenging due to the lensless imaging nature of RF sensing, which leads to low spatial resolution and high noise. Unlike light signals, RF signals can penetrate occlusions and thus capture information about hidden scenes. Existing Non-Line-of-Sight (NLoS) 3D neural reconstruction methods can recover coarse surfaces inside enclosed environments but often suffer from unstable optimization, noisy surface geometry, and surface ambiguity, failing to produce accurate zero-level sets from the signed distance field (SDF). These limitations largely stem from neglecting the role of Line-of-Sight (LoS) geometry outside the enclosed region, which provides valuable physical constraints for modeling signal propagation. In this paper, we introduce a Unified LoS and NLoS neural geometry reconstruction framework GeRaF 2.0 that leverages the outside LoS geometry to model and guide RF propagation from the LoS region into the NLoS region. By integrating visual LoS priors into the neural field formulation, GeRaF 2.0 achieves stable training and physically consistent reconstruction of both visible and hidden geometry, setting a new state-of-the-art in RF-based geometry reconstruction.",
-    "link": "http://arxiv.org/abs/2605.29098v1",
-    "published": "2026-05-27",
-    "category": "cs.CV",
-    "tags": [
-      "NLoS 3D Reconstruction",
-      "Radar",
-      "Neural Implicit Representation",
-      "Signed Distance Field",
-      "RF Sensing"
-    ],
-    "tldr": "GeRaF 2.0 利用可见区域几何先验实现雷达信号的稳定非视距三维重建。",
-    "motivation": "现有非视距神经重建方法因忽视视线几何的物理约束，导致优化不稳定、表面几何噪声大和表面模糊问题。",
-    "method": "提出统一视距与非视距的神经几何重建框架 GeRaF 2.0，通过引入视距几何先验约束射频传播建模，实现可见与隐藏几何的一致重建。",
-    "result": "在射频几何重建任务上达到了新的最优性能，具体量化指标摘要未提供。",
-    "conclusion": "GeRaF 2.0 实现了稳定训练和物理一致的重建，推动了基于射频的非视距三维重建发展。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2605.29136",
-    "title": "Eulerian Gaussian Splatting using Hashed Probability Pyramids",
-    "authors": [
-      "Polansky, Mia Gaia",
-      "Kopanas, George",
-      "Garbin, Stephan",
-      "Zickler, Todd",
-      "Verbin, Dor"
-    ],
-    "abstract": "We introduce a probabilistic splat-based radiance field framework that retains the fast rasterization and test-time efficiency of 3D Gaussian Splatting (3DGS) while replacing heuristic primitive manipulation with gradient-based optimization of a volumetric probability density. Rather than relocating, splitting, or culling Gaussians via hand-tuned densification (e.g., ADC), we treat primitive locations as samples drawn from a persistent, learnable density. We instantiate this density using a novel, memory-efficient multi-scale hierarchical grid that enables end-to-end gradient-based optimization. To stabilize the optimization, we derive an unbiased gradient estimator with control variates that markedly reduces variance. By allowing probability mass to flow to where the loss demands, our framework eliminates brittle priors and naturally explores the volume, achieving state-of-the-art reconstruction quality on mip-NeRF 360 while preserving 3DGS-level rendering speed.",
-    "link": "https://arxiv.org/abs/2605.29136",
-    "published": "2026-05-27",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Probabilistic Radiance Field",
-      "Multi-scale Grid",
-      "Gradient-based Optimization",
-      "View Synthesis"
-    ],
-    "tldr": "提出基于概率密度的Eulerian高斯溅射框架，用可学习密度和分层网格替代启发式操作，在mip-NeRF 360上实现SOTA质量并保持快速渲染。",
-    "motivation": "现有3DGS依赖手工调参的启发式操作（如ADC），优化不稳定且需要脆弱的先验。研究动机是消除这些启发式规则，通过梯度优化概率密度实现更自然的体积探索。",
-    "method": "核心方法包括：将原始位置视为从可学习概率密度中采样的样本，使用哈希概率金字塔（多尺度分层网格）实例化密度，并推导带控制变量的无偏梯度估计器以减少方差，实现端到端梯度优化。",
-    "result": "在mip-NeRF 360数据集上达到最先进的重建质量，同时保持与3DGS相当的渲染速度。",
-    "conclusion": "该框架消除了启发式操作，实现了更稳定和灵活的优化，将3DGS扩展为基于梯度的概率辐射场方法，具有重要应用潜力。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2605.29098",
-    "title": "Seeing through boxes: Non-Line-of-Sight 3D Reconstruction from Radar Signals",
-    "authors": [
-      "Lu, Jiachen",
-      "Shanbhag, Hailan",
-      "Hassanieh, Haitham Al"
-    ],
-    "abstract": "Reconstructing object geometry from radio frequency (RF) signals is fundamentally challenging due to the lensless imaging nature of RF sensing, which leads to low spatial resolution and high noise. Unlike light signals, RF signals can penetrate occlusions and thus capture information about hidden scenes. Existing Non-Line-of-Sight (NLoS) 3D neural reconstruction methods can recover coarse surfaces inside enclosed environments but often suffer from unstable optimization, noisy surface geometry, and surface ambiguity, failing to produce accurate zero-level sets from the signed distance field (SDF). These limitations largely stem from neglecting the role of Line-of-Sight (LoS) geometry outside the enclosed region, which provides valuable physical constraints for modeling signal propagation. In this paper, we introduce a Unified LoS and NLoS neural geometry reconstruction framework GeRaF 2.0 that leverages the outside LoS geometry to model and guide RF propagation from the LoS region into the NLoS region. By integrating visual LoS priors into the neural field formulation, GeRaF 2.0 achieves stable training and physically consistent reconstruction of both visible and hidden geometry, setting a new state-of-the-art in RF-based geometry reconstruction.",
-    "link": "https://arxiv.org/abs/2605.29098",
-    "published": "2026-05-27",
-    "category": "cs.CV",
-    "tags": [
-      "3D Reconstruction",
-      "Radar",
-      "Non-Line-of-Sight",
-      "Neural Fields",
-      "RF Sensing"
-    ],
-    "tldr": "GeRaF 2.0利用视线几何指导雷达信号传播，实现一致的可见与隐藏几何重建。",
-    "motivation": "现有NLoS神经重建方法忽略视线几何，导致优化不稳定和几何模糊。",
-    "method": "提出统一视线和非视线神经几何重建框架GeRaF 2.0，利用外部视线几何建模和引导雷达信号从视线区域传播到非视线区域，并整合视觉视线先验到神经场中。",
-    "result": "摘要未提供具体量化指标，但声称在RF几何重建中达到新最优性能。",
-    "conclusion": "通过视线几何约束实现物理一致的重建，提升了神经场训练的稳定性，为RF几何重建设定了新基准。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2605.29041",
-    "title": "Practitioner Beliefs and Behaviors in AI-Enhanced Education: DOT Framework Survey Evidence",
-    "authors": [
-      "Gibson, David",
-      "Azukas, M. Elizabeth",
-      "Knezek, Gerald"
-    ],
-    "abstract": "This study reports findings from a cross-sectional survey (n = 72) of higher education practitioners examining beliefs, behaviors, and institutional conditions related to artificial intelligence (AI) integration in teaching and learning. Grounded in the DOT Framework, which integrates design thinking and open systems theory, the study investigates AI familiarity, usage patterns, design-oriented practices, and pedagogical beliefs. Exploratory factor analysis of 19 belief items identified a three-factor structure: AI Functional Capabilities, Oversight and Governance, and Instructor Collaboration and Planning ({\\alpha} = .90). Results indicate that practitioners hold favorable views of AI as a pedagogical support while maintaining strong commitments to human oversight and critical evaluation. Reported practices emphasize iterative prompting and content generation, with less consistent use of needs assessment and feedback loops. Institutional barriers including limited policy, training, and infrastructure were widely reported. These findings provide preliminary empirical support for the DOT Framework as a descriptive model of practitioner beliefs and practices, while also highlighting gaps between design-oriented theory and current implementation. The study contributes an initial measurement structure and identifies directions for confirmatory validation and outcome-based research linking AI-supported design practices to instructional quality.",
-    "link": "https://arxiv.org/abs/2605.29041",
-    "published": "2026-05-27",
-    "category": "cs.AI",
-    "tags": [
-      "AI in Education",
-      "DOT Framework",
-      "Survey",
-      "Higher Education",
-      "Practitioner Beliefs"
-    ],
-    "tldr": "一项基于DOT框架的调研揭示了高等教育从业者在AI整合中的信念、行为与制度障碍。",
-    "motivation": "研究高等教育从业者在AI教学整合中的信念、行为和制度条件。",
-    "method": "基于DOT框架，对72名从业者进行横截面调查，使用探索性因子分析识别出三个信念因子：AI功能能力、监督治理和教师协作规划。",
-    "result": "从业者对AI作为教学支持持积极态度，但强调人类监督；实践集中在迭代提示和内容生成，较少使用需求评估和反馈循环；普遍报告存在政策、培训和基础设施障碍。",
-    "conclusion": "初步支持DOT框架作为描述性模型，指出了设计导向理论与实际实施之间的差距，并提出了确认性验证和结果导向研究的方向。"
   }
 ]
