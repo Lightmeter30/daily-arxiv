@@ -1,5 +1,80 @@
 [
   {
+    "id": "http://arxiv.org/abs/2606.13655v1",
+    "title": "Flex4DHuman: Flexible Multi-view Video Diffusion for 4D Human Reconstruction",
+    "authors": [
+      "Jen-Hao Cheng",
+      "Yipeng Wang",
+      "Hao Zhang",
+      "Gengshan Yang",
+      "Jenq-Neng Hwang"
+    ],
+    "abstract": "We present Flex4DHuman, a multi-view video diffusion model that transforms a monocular or sparse multi-view video of a dynamic subject into synchronized dense multi-view videos using only relative camera-pose conditioning. Unlike prior human-centric methods that rely on skeletons, depth maps, normals, or rendered target-view geometry, Flex4DHuman requires no explicit geometry priors and instead conditions generation through relative camera-pose positional encoding. The generated videos can be directly ingested by downstream reconstruction pipelines to create dynamic 4D Gaussian splats. Built on the Wan 2.1 1.3B text-to-video model, Flex4DHuman preserves the backbone architecture and encodes camera and view information through a five-axis positional encoding that extends spatio-temporal RoPE with view indices and continuous SE(3) relative camera geometry. A three-stage curriculum progressively trains the model for pose following, flexible reference-to-target view generation, and temporal rollout. To support temporal rollout, we train with clean historical target-view tokens. We also add multi-view captions to enable test-time text control. Combined with an off-the-shelf 4D Gaussian Splatting stage, our framework lifts monocular static-camera videos into dynamic 4D Gaussian splats. Experiments on DNA-Rendering and ActorsHQ show that Flex4DHuman surpasses prior state-of-the-art methods, while the same formulation generalizes to animal categories after mixed human-animal training. These capabilities make Flex4DHuman a practical step toward scalable 4D content creation from casual monocular videos for simulation, gaming, AR/VR, and video re-shooting.",
+    "link": "http://arxiv.org/abs/2606.13655v1",
+    "published": "2026-06-11",
+    "category": "cs.CV",
+    "tags": [
+      "Multi-view Video Diffusion",
+      "4D Human Reconstruction",
+      "Camera-pose Conditioning",
+      "Gaussian Splatting"
+    ],
+    "tldr": "提出一种多视角视频扩散模型，利用相对相机姿态条件将单目或稀疏多视角视频转换为密集多视角视频，无需显式几何先验。",
+    "motivation": "现有方法依赖骨架、深度图等几何先验，限制了从随意单目视频进行4D人体重建的实用性。本文旨在无需显式几何先验，仅通过相对相机姿态条件实现高质量多视角视频生成。",
+    "method": "基于Wan 2.1文本到视频模型，通过五轴位置编码（扩展时空RoPE，加入视角索引和连续SE(3)相对相机几何）编码相机与视角信息。采用三阶段课程训练：姿态跟随、灵活参考到目标视角生成、时间展开，并通过干净历史目标视角令牌支持时间展开，同时加入多视角描述实现测试时文本控制。",
+    "result": "在DNA-Rendering和ActorsHQ上超越先前最先进方法；混合人-动物训练后可泛化到动物类别，展示了从单目视频生成动态4D高斯点云的实用性。",
+    "conclusion": "Flex4DHuman为从随意单目视频进行可扩展的4D内容创作（如模拟、游戏、AR/VR和视频重拍摄）提供了实用步骤。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.13509v1",
+    "title": "Measurement-Calibrated Multi-Camera Fusion for Vision-Based Indoor Localization",
+    "authors": [
+      "Mateo Toro Diz",
+      "Jonathan Hoss",
+      "Noah Klarmann"
+    ],
+    "abstract": "Indoor vision-based localization systems are affected by detection noise, occlusions, and limited camera coverage, leading to uncertainty at multiple stages of the pipeline. While multi-camera data fusion is widely used to mitigate these issues, it is typically treated as a black-box component and evaluated solely end-to-end, obscuring its mechanistic contributions. To address this gap, this work investigates whether explicitly characterizing single-camera localization errors can be leveraged to calibrate and optimize multi-camera data fusion.\n  We introduce a measurement-calibrated fusion approach that integrates component-wise error quantification, specifically isolating homography calibration, human detection, and motion tracking. A component-wise evaluation is conducted to quantify error contributions from homography calibration, human detection, and motion tracking.\n  Experimental results show that data fusion improves localization accuracy compared to single-camera baselines. While measurement-calibrated fusion provides only limited improvement in absolute accuracy over standard fusion, it substantially reduces trajectory variance and improves motion smoothness, which are critical for applications requiring stable and continuous motion estimates. These results highlight the value of explicit error characterization when designing data fusion strategies for vision-based indoor positioning systems.",
+    "link": "http://arxiv.org/abs/2606.13509v1",
+    "published": "2026-06-11",
+    "category": "cs.CV",
+    "tags": [
+      "Multi-Camera Fusion",
+      "Indoor Localization",
+      "Error Quantification",
+      "Vision-Based Localization"
+    ],
+    "tldr": "提出测量校准的多相机融合方法，通过显式量化单相机误差来优化融合，降低了轨迹方差并提高运动平滑性。",
+    "motivation": "当前多相机数据融合通常被视为黑盒组件，掩盖了其机理贡献，本研究旨在通过显式表征单相机定位误差来校准和优化多相机融合。",
+    "method": "提出测量校准融合方法，集成组件级误差量化，包括单应校准、行人检测和运动跟踪，并进行组件级评估。",
+    "result": "数据融合相比单相机基线提高了定位精度；测量校准融合在绝对精度上提升有限，但显著降低了轨迹方差并提高了运动平滑性。",
+    "conclusion": "显式误差表征对设计视觉室内定位系统的融合策略有价值，尤其适用于需要稳定连续运动估计的应用。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.12988v1",
+    "title": "A Machine Learning Framework for Real-Time Personalized Ergonomic Pose Analysis",
+    "authors": [
+      "Manex Atxa",
+      "Bruno Simoes",
+      "Julen Balzategui"
+    ],
+    "abstract": "This paper introduces a new methodology for real-time prediction of ergonomic and non-ergonomic human poses using volumetric video data in three dimensions. Although the methodology was designed for ergonomic assessments, it can be adapted to other applications requiring real-time analysis of human posture. One aspect that makes this system stand out is its ability to analyze 3D point clouds during the assessment, enabling computation from multiple angles. This overcomes a critical limitation of cameras which provide often a fixed viewpoint, thereby restricting the data available for a thorough postural evaluation, especially when occlusions occur. The system continuously and automatically performs pose inference using the chosen perspective on the real-time streaming data; however, only the poses manually selected and labeled by the user are used to train the personalized deep learning classifier. The methodology has been refined through a case study in which RGB-D cameras captured subjects performing load-lifting tasks, enabling real-time skeletal labeling. The model was trained on this data and, following the training phase, performs inference on new streaming data in real time. This research offers a scalable and pragmatic approach for real-time ergonomic evaluation by combining state-of-the-art 3D data technologies and traditional 2D pose estimation algorithms. It addresses the increasing need for safety and health monitoring in workplace environments, marking a notable contribution to the domain.",
+    "link": "http://arxiv.org/abs/2606.12988v1",
+    "published": "2026-06-11",
+    "category": "cs.CV",
+    "tags": [
+      "Machine Learning",
+      "Ergonomic Pose Analysis",
+      "Real-Time",
+      "3D Point Cloud",
+      "2D Pose Estimation"
+    ],
+    "tldr": "提出一种使用3D体积视频数据进行实时个性化人体工程学姿势分析的机器学习框架。",
+    "motivation": "传统相机固定视角和遮挡限制全面姿势评估，需解决多角度分析问题；满足工作场所安全健康监测的迫切需求。",
+    "method": "采用RGB-D相机捕获3D点云，实时自动姿势推理，用户手动选择标记姿势训练个性化深度学习分类器；结合3D数据技术与2D姿态估计算法。",
+    "result": "通过负载举升任务案例研究，模型训练后对新流数据实时推理，未报告具体量化指标。",
+    "conclusion": "提供可扩展的实时人体工程学评估方法，克服了传统相机局限，为工作场所安全监测做出贡献。"
+  },
+  {
     "id": "http://arxiv.org/abs/2606.12340v1",
     "title": "Echoes of the Prior: A Computational Phenomenology of Forgetting",
     "authors": [
@@ -218,6 +293,60 @@
     "method": "XPR引入高级编程接口分离方法逻辑与共享渲染管道，将渲染分解为模块化、静态形状的并行操作，并利用跨平台XLA编译器编译到GPU、TPU、CPU等硬件。",
     "result": "XPR实现了3DGS、3DGUT和LinPrim等方法，仅需几百行Python代码，并可编译到多种硬件平台。",
     "conclusion": "XPR支持快速实验和便携执行，为新兴点基可微分渲染系统提供了可扩展性和可移植性。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.11894v2",
+    "title": "Wild3R: Feed-Forward 3D Gaussian Splatting from Unconstrained Sparse Photo Collection",
+    "authors": [
+      "Yuto Furutani",
+      "Takashi Otonari",
+      "Kaede Shiohara",
+      "Toshihiko Yamasaki"
+    ],
+    "abstract": "Feed-forward 3D Gaussian Splatting (3DGS) removes the need for time-consuming per-scene optimization required by traditional 3DGS. However, existing feed-forward approaches struggle with real-world photo collections that include diverse lighting conditions and transient objects. In this paper, we present Wild3R, a feed-forward approach for unconstrained sparse photo collections. The main bottleneck is the lack of training data that provides multiple viewpoints, a variety of illuminations, and transient variations necessary for learning robust scene representations. To address this, we introduce the WildCity dataset, which comprises 200 scenes, 170 lighting conditions, and transient objects, resulting in 337,500 images in total. By leveraging the dataset, our model learns appearance consistency across viewpoints conditioned on reference views, while removing transient content. Extensive experiments demonstrate that our method outperforms existing feed-forward approaches and achieves results competitive with prior per-scene optimization-based methods.",
+    "link": "http://arxiv.org/abs/2606.11894v2",
+    "published": "2026-06-10",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Feed-Forward",
+      "Unconstrained Photo Collections",
+      "WildCity Dataset",
+      "Scene Representation"
+    ],
+    "tldr": "提出了Wild3R，一种前馈式3D高斯溅射方法，用于处理无约束稀疏照片集合，通过新数据集WildCity实现鲁棒场景表示。",
+    "motivation": "现有前馈式3D高斯溅射方法难以处理真实世界照片集合中多样的光照条件和瞬态物体，且缺乏多视角、多光照和瞬态变化的训练数据。",
+    "method": "引入WildCity数据集（包含200个场景、170种光照条件和瞬态物体，共337,500张图像），模型学习基于参考视图的外观一致性并去除瞬态内容。",
+    "result": "大量实验表明，该方法在多个指标上优于现有前馈方法，并与基于逐场景优化的方法达到竞争性结果。",
+    "conclusion": "提出了Wild3R方法，有效处理无约束照片集合，性能优越；WildCity数据集为未来研究提供了宝贵资源。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.12473v1",
+    "title": "Stereo Vision-Based Fall Prediction and Detection using Human Pose Estimation on the AMD Kria K26 SOM",
+    "authors": [
+      "Shreyas Narasimhiah Ramesh",
+      "P. D. Rathika",
+      "Mahasweta Sarkar",
+      "Kristen Wells",
+      "Michel Audette",
+      "Christopher Paolini"
+    ],
+    "abstract": "Background and Objective: Falls among elderly people can cause serious injury and reduce quality of life. Timely prediction and detection are essential to prevent harm and support well-being. We propose a portable, low-power, battery-operated, vision-based fall prediction and detection system using HPE on an AMD Kria K26 System-on-Module (SOM). The objective is a non-intrusive, privacy-preserving system for real-time fall detection.\n  Methods: The system uses an Intel RealSense D455 range-sensing camera connected to the K26 SOM by USB. It captures synchronized RGB and depth frames, 640 x 480 x 3 and 640 x 480 pixels, at 60 FPS. The SOM runs a three-stage pipeline with quantized YOLOX, Anchor-to-Joint (A2J), and fall-detection models. YOLOX identifies human bounding boxes from RGB frames, then discards the RGB frames to preserve privacy. A2J uses depth frames to estimate 15 joint keypoints per person. A CNN uses selected joint coordinates (x, y, z) to classify fall activity. YOLOX was trained on CrowdHuman; A2J on ITOP, MP-3DHP, UR Fall Detection, and a custom SDSU PSG dataset; and the CNN on UR Fall Detection and SDSU PSG. The design used a single-core DPU with a serial pipeline and a dual-core DPU running YOLOX and A2J with multiple threads.\n  Results: Quantized accuracy was evaluated using IoU >= 50% for YOLOX, mAP with a 10-cm rule for A2J, and classification accuracy, (TP + TN)/(TP + TN + FP + FN), for the CNN. Accuracies were 74%, 84.13%, and 75.85%. Throughput improved from 2.5 FPS for the single-threaded pipeline to 4.5 FPS for the multi-threaded version.\n  Conclusion: Results demonstrate the feasibility of privacy-preserving fall detection on an AMD Kria K26 edge device. On-device HPE and fall classification runs without cloud dependency, supporting elderly monitoring and assistive healthcare. Future work will improve model accuracy and speed.",
+    "link": "http://arxiv.org/abs/2606.12473v1",
+    "published": "2026-06-10",
+    "category": "cs.CV",
+    "tags": [
+      "fall detection",
+      "human pose estimation",
+      "stereo vision",
+      "edge computing",
+      "privacy-preserving"
+    ],
+    "tldr": "基于AMD Kria K26 SOM的立体视觉跌倒预测与检测系统，通过人体姿态估计实现隐私保护的实时监测。",
+    "motivation": "老年人跌倒可导致严重伤害，需要低功耗、便携的实时跌倒预测与检测系统。",
+    "method": "使用Intel RealSense D455相机捕获RGB和深度帧，在K26 SOM上运行量化YOLOX、Anchor-to-Joint和CNN分类器三阶段流水线，通过丢弃RGB帧保护隐私。",
+    "result": "YOLOX准确率74%，A2J mAP 84.13%，CNN分类准确率75.85%，多线程吞吐量从2.5 FPS提升至4.5 FPS。",
+    "conclusion": "证明了在边缘设备上实现隐私保护的跌倒检测的可行性，无需云端依赖，支持老年监测和辅助医疗。"
   },
   {
     "id": "http://arxiv.org/abs/2606.11129v1",
@@ -804,200 +933,5 @@
     "method": "用二阶拉普拉斯结构引导代替一阶梯度，通过非线性响应到权重函数将归一化拉普拉斯响应映射为像素权重，构成新损失函数。",
     "result": "在Tanks&Temples和Mip-NeRF360数据集上，PSNR相比3DGS提升1.68 dB，相比EGGS提升0.52 dB；在FastGS和FasterGS上提升1.69 dB。",
     "conclusion": "LEGS作为通用损失级扩展有效，有望应用于AR/VR、沉浸式可视化和实时3D内容生成。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2606.06255v1",
-    "title": "RadiusFPS: Efficient Farthest Point Sampling on CPUs and GPUs via Spherical Voxel Pruning",
-    "authors": [
-      "Ziyang Yu",
-      "Xiang Li",
-      "Qiong Chang",
-      "Jun Miyazaki"
-    ],
-    "abstract": "Point clouds are a primary sensory representation for robotic perception, underpinning LiDAR-based autonomous driving, simultaneous localization and mapping (SLAM), and navigation. Within these pipelines, Farthest Point Sampling (FPS) is the most well-known downsampling operator, as its uniform coverage preserves the geometric structure on which downstream perception relies. However, the large time complexity of classical FPS scales poorly with the million-point-per-second rates of modern 3D sensors, making it a dominant latency bottleneck that conflicts with the real-time and limited onboard compute budgets of robotic systems. Therefore, we propose RadiusFPS, an FPS acceleration framework based on spherical voxel pruning that preserves the standard FPS update rule under the same initialization and tie-breaking policy. By indexing the point cloud with spherical voxels, RadiusFPS derives a conservative geometric bound that prunes redundant distance computations in each iteration, complemented by a coordinate-wise point-skip test that removes residual updates. We further introduce RadiusFPS-G, a warp-level GPU implementation that fuses voxel selection, pruning, and distance update into memory-coalesced kernels, eliminating costly global-memory round-trips. On indoor (S3DIS, ScanNet) and outdoor LiDAR (SemanticKITTI) benchmarks, RadiusFPS-G attains up to 2.5x speedup over GPU-based FPS and matches or exceeds QuickFPS among the evaluated methods while using roughly half its GPU memory, with comparable segmentation accuracy. When coupled with the learning-based FastPoint sampler, the resulting pipeline achieves the fastest End-to-End inference among all evaluated configurations. These properties make high-quality FPS-style sampling practical for latency- and memory-constrained robotic vision.",
-    "link": "http://arxiv.org/abs/2606.06255v1",
-    "published": "2026-06-04",
-    "category": "cs.CV",
-    "tags": [
-      "Point Cloud",
-      "Farthest Point Sampling",
-      "Spherical Voxel Pruning",
-      "GPU Acceleration",
-      "LiDAR"
-    ],
-    "tldr": "提出RadiusFPS，利用球形体素剪枝加速最远点采样，在GPU上实现2.5倍加速和内存减半。",
-    "motivation": "经典FPS时间复杂度高，难以满足现代3D传感器的实时性要求和机载计算资源限制，成为延迟瓶颈。",
-    "method": "通过球形体素索引点云，推导保守几何边界剪枝冗余距离计算，配合逐点跳过测试；GPU实现融合体素选择、剪枝和距离更新至内存合并内核。",
-    "result": "在S3DIS、ScanNet、SemanticKITTI上达到最高2.5倍GPU加速，内存使用约为QuickFPS的一半，分割精度相当。",
-    "conclusion": "使高质量FPS采样在延迟和内存受限的机器人视觉中变得实际，并可与学习型采样器结合实现最快端到端推理。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2606.06039v1",
-    "title": "Texture-preserving implicit neural representation for Cone beam CT truncated reconstruction",
-    "authors": [
-      "Genyuan Zhang",
-      "Junyao Wang",
-      "Haoran Lan",
-      "Chuandong Tan",
-      "Songtao Zhu",
-      "Fenglin Liu"
-    ],
-    "abstract": "Cone-beam computed tomography (CBCT) frequently suffers from data truncation, which introduces severe artifacts and limits the effective field of view (FOV). Existing deep learning methods for truncated cone-beam computed tomography (CBCT) reconstruction suffer from serious limitations, including a strict reliance on supervised ground truth and a failure to account for continuous 3D spatial truncation variations. To address these challenges, we introduce a self-supervised 3D reconstruction framework based on neural scene representations. By directly mapping spatial coordinates to radiodensity under projection supervision, our approach inherently bypasses traditional filtering and backprojection operations, thereby fundamentally eliminating truncation-induced ring artifacts while enabling robust continuous 3D data extrapolation. However, coordinate networks are susceptible to an inherent spectral bias, which leads to a severe loss of clinically vital high-frequency textures. To resolve this bottleneck, we further incorporate a physics-based iterative refinement module into the neural scene representation architecture. Leveraging the artifact-free, extrapolated volume from the coordinate network as an optimal initialization, this module progressively re-extracts and injects high-frequency structural information from the original projections back into the volume. Extensive experiments on both simulated and real-world datasets demonstrate that our method successfully unifies the exceptional artifact suppression and extrapolation capabilities of neural networks with the high-fidelity detail preservation of iterative algorithms.",
-    "link": "http://arxiv.org/abs/2606.06039v1",
-    "published": "2026-06-04",
-    "category": "cs.CV",
-    "tags": [
-      "CBCT",
-      "Neural Representation",
-      "Self-supervised",
-      "Truncated Reconstruction",
-      "Texture Preservation"
-    ],
-    "tldr": "提出自监督框架结合神经场景表示与物理迭代细化，解决CBCT截断伪影并保留高频纹理。",
-    "motivation": "现有深度学习方法依赖监督且无法处理连续截断，神经表示存在谱偏差丢失高频纹理。",
-    "method": "构建坐标网络直接映射空间坐标到辐射密度，在投影监督下绕过滤波反投影消除截断伪影；引入基于物理的迭代细化模块，从原始投影中恢复高频结构信息注入体积。",
-    "result": "在模拟和真实数据集上，该方法有效抑制伪影并实现高保真细节保留。",
-    "conclusion": "统一了神经网络的伪影抑制与外推能力与迭代算法的高频细节保留，拓展了CBCT有效视野。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2606.05998v1",
-    "title": "Deep Learning-based 3D Oral Cavity Reconstruction Using 2D Intraoral Images",
-    "authors": [
-      "Jihun Cho",
-      "Soo-Yeon Jeong",
-      "Eun-Jeong Bae",
-      "Sun-Young Ihm"
-    ],
-    "abstract": "Oral 3D modelling is one of the most essential stages in dentistry, and many different approaches, such as impression taking and intraoral scanning, are commonly used for this phase, each with notable limitations. Impression taking, which involves placing alginate or silicone material in a tray and inserting it into the patient's oral cavity to form a negative mold, suffers from significant patient discomfort, material deformation errors, and difficulties in storage and transportation. Intraoral scanners, which directly scan oral structures in real time using structured light or laser technology, produce state-of-the-art results but are associated with substantially high equipment costs. To address these limitations, this paper proposes a software-based approach that reconstructs a 3D oral model using only ten 2D intraoral images captured from different angles, requiring no dedicated hardware devices. The proposed method reduces cost, eliminates the need for physical scanning equipment, minimises patient discomfort, and enables automated 3D reconstruction. The model is trained on the publicly available Dental3DS dataset, comprising 950 upper jaw samples, and employs MobileNetV2 as the image encoder combined with Multi-head Attention for multi-view feature fusion. The proposed model achieves an accuracy of 77.49%, measured by nearest-neighbor matching with a distance threshold of 0.035. However, predicted vertices tend to concentrate in high-density regions of the ground truth, resulting in uneven point distribution across the reconstructed model.",
-    "link": "http://arxiv.org/abs/2606.05998v1",
-    "published": "2026-06-04",
-    "category": "cs.CV",
-    "tags": [
-      "3D Reconstruction",
-      "Deep Learning",
-      "Oral Cavity",
-      "Multi-view Fusion",
-      "Dental Imaging"
-    ],
-    "tldr": "本文提出基于深度学习的3D口腔重建方法，仅用10张2D口内图像即可生成3D模型，成本低且患者舒适度高。",
-    "motivation": "传统的口腔取模和口内扫描方法存在患者不适、材料变形误差、存储运输困难或设备成本高昂等问题。本文旨在通过纯软件方案，仅使用2D图像进行3D重建，克服上述局限。",
-    "method": "使用MobileNetV2作为图像编码器，结合多头注意力机制进行多视图特征融合，在包含950个上颌样本的Dental3DS数据集上训练。",
-    "result": "模型在最近邻匹配（距离阈值0.035）下达到77.49%的准确率，但预测顶点倾向于集中在真实值的高密度区域，导致重建模型点分布不均匀。",
-    "conclusion": "该方法降低了成本，消除了对专用扫描设备的需求，减少了患者不适，并实现了自动化3D重建，为便捷的口腔数字化建模提供了新途径。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2606.05774v1",
-    "title": "LiAuto-GeoX: Efficient Grounded Driving Transformer",
-    "authors": [
-      "Jiawei Lian",
-      "Haoyi Sun",
-      "Yang Wu",
-      "Lifu Mu",
-      "Siyuan Wang",
-      "Le Hui",
-      "Ning Mao",
-      "Tao Wei",
-      "Pan Zhou",
-      "Kun Zhan",
-      "Jian Yang"
-    ],
-    "abstract": "Dense 3D reconstruction has demonstrated immense potential for spatial understanding, yet its viability as a real-time, onboard representation for autonomous driving remains an open challenge. Existing large-scale visual geometry models typically require substantial computational resources and lack the long-range geometric fidelity, surround-view consistency, and real-time efficiency demanded by dynamic driving environments. To bridge this gap, we present \\textbf{LiAuto-GeoX}, an efficient grounded driving transformer designed for deployable, ego-centric 3D scene understanding. Our approach begins by learning a high-capacity driving geometry model from large-scale surround-view data, utilizing sparse LiDAR priors to provide robust geometric grounding in distant, ambiguous, or structure-sparse regions. We then instantiate this capability into a highly compact 155M-parameter onboard model through a novel geometry-preserving distillation framework. This framework employs mask-guided depth-aware distillation to retain fine-grained metric structures by emphasizing geometrically informative regions, and relative-pose relational distillation to enforce cross-view spatial consistency through pose-induced geometric relations. Extensive evaluations reveal that \\textbf{LiAuto-GeoX} runs at 220 FPS on KITTI while maintaining high-fidelity dense reconstruction, enabling real-time deployment. The learned geometry transfers seamlessly to downstream autonomy tasks, achieving 90.6 PDMS in trajectory prediction, 24.63 mIoU in occupancy prediction, and 47.67 IoU in future-frame prediction. These all demonstrate that efficient dense 3D reconstruction can transcend its traditional role as a perception target to serve as a scalable, foundational geometric representation for next-generation autonomous driving.",
-    "link": "http://arxiv.org/abs/2606.05774v1",
-    "published": "2026-06-04",
-    "category": "cs.CV",
-    "tags": [
-      "3D Reconstruction",
-      "Autonomous Driving",
-      "Transformer",
-      "Distillation",
-      "Real-time"
-    ],
-    "tldr": "LiAuto-GeoX通过几何保持蒸馏框架实现了高效、实时的环绕视图密集3D重建，适用于自动驾驶。",
-    "motivation": "现有大规模视觉几何模型计算资源需求高，且缺乏长距离几何保真度、环绕视图一致性和实时效率，无法满足动态驾驶环境需求。",
-    "method": "利用稀疏LiDAR先验训练高容量驾驶几何模型，再通过新颖的几何保持蒸馏框架（包括掩码引导的深度感知蒸馏和相对位姿关系蒸馏）将其压缩为155M参数的紧凑车载模型。",
-    "result": "在KITTI上以220 FPS运行，轨迹预测PDMS 90.6，占用预测mIoU 24.63，未来帧预测IoU 47.67。",
-    "conclusion": "展示了高效密集3D重建可作为下一代自动驾驶的可扩展基础几何表示，超越传统感知目标角色。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2606.05650v1",
-    "title": "GS-NFS: Bandwidth-adaptive Streaming of Dynamic Gaussian Splats and Point Clouds",
-    "authors": [
-      "Rajrup Ghosh",
-      "Haodong Wang",
-      "Haoran Hong",
-      "Eduardo Pavez",
-      "Amartya Chaudhuri",
-      "Weiwu Pang",
-      "Harsha V. Madhyastha",
-      "Antonio Ortega",
-      "Ramesh Govindan"
-    ],
-    "abstract": "Dynamic 3D Gaussian Splatting (3DGS) holds great promise as a 3D video streaming technology since it can represent complex 3D scenes with high fidelity. In this approach, every frame in a 3D video represents the environment as a collection of Gaussians with position and other attributes such as scale, rotation, opacity, and color. Frames capture fine details, permit views from any arbitrary perspective, but are an order of magnitude, or more, larger than 2D video frames. A line of recent work has explored how to compress dynamic 3DGS frames, but these approaches are often slow, in part because their compression techniques are not amenable to efficient acceleration. GS-NFS accelerates dynamic 3DGS compression and decompression on a GPU, to the point where it can encode and decode at full frame rate. It achieves this by developing novel GPU-based parallelizations of existing algorithms for encoding both positions and attributes of Gaussians. As a result, it is 1-2 orders of magnitude faster than the state-of-the-art in encoding and decoding a frame, while offering competitive compression performance and rendering quality.",
-    "link": "http://arxiv.org/abs/2606.05650v1",
-    "published": "2026-06-04",
-    "category": "cs.CV",
-    "tags": [
-      "Dynamic 3DGS",
-      "Streaming",
-      "Compression",
-      "GPU Parallelization"
-    ],
-    "tldr": "GS-NFS通过GPU并行加速动态3DGS压缩解压，实现全帧率编码解码。",
-    "motivation": "动态3DGS帧数据量远大于2D视频，现有压缩方法速度慢且不易利用GPU加速。",
-    "method": "提出基于GPU的并行化算法，对高斯的位置和属性进行高效编码和解码。",
-    "result": "编码解码速度比现有方法快1-2个数量级，同时保持具有竞争力的压缩性能和渲染质量。",
-    "conclusion": "GS-NFS能够以全帧率处理动态3DGS流，为低延迟3D视频流传输提供了高效解决方案。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2606.05872",
-    "title": "Entropy-Based Evaluation of AI Agents: A Lightweight Framework for Measuring Behavioral Patterns",
-    "authors": [
-      "Arigbabu, Olasimbo Ayodeji"
-    ],
-    "abstract": "AI agents are commonly evaluated using task success, reward, latency, and cost. These metrics are useful, but they often miss important aspects of agent behavior: whether an agent explores too much, repeats itself too rigidly, uses tools effectively, reduces uncertainty over time, or remains robust across repeated runs. This paper proposes Entropy-Based Evaluation of AI Agents (EEA), a lightweight framework for measuring agent behavior through entropy. Rather than treating intelligence as only final task completion, EEA studies the structure of the agents decision process. The framework introduces action entropy, trajectory entropy, tool entropy, information gain, exploration efficiency, and robustness entropy. These metrics are intended to complement, not replace, traditional evaluation methods. We also present a practical Python implementation designed to integrate with agent frameworks such as LangChain, Google ADK, custom agent loops, and stored observability traces.",
-    "link": "https://arxiv.org/abs/2606.05872",
-    "published": "2026-06-04",
-    "category": "cs.AI",
-    "tags": [
-      "AI Agents",
-      "Entropy",
-      "Evaluation",
-      "Behavioral Patterns",
-      "Lightweight Framework"
-    ],
-    "tldr": "提出了基于熵的AI代理行为评估轻量框架EEA，通过多种熵指标衡量探索、重复、工具使用等行为模式。",
-    "motivation": "传统评估指标（任务成功、奖励、延迟、成本）忽略了代理行为的重要方面，如探索过度、重复、工具使用效率、不确定性减少和鲁棒性。",
-    "method": "核心方法为EEA框架，引入动作熵、轨迹熵、工具熵、信息增益、探索效率和鲁棒性熵等度量，并提供Python实现以集成LangChain、Google ADK等代理框架。",
-    "result": "摘要未提供相关信息",
-    "conclusion": "所提指标旨在补充而非替代传统评估方法，通过行为熵分析揭示代理决策过程的结构，并提供实用工具便于集成应用。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2606.06099",
-    "title": "CogManip: Benchmarking Manipulative Behavior in Multi-Turn Interactions with Large Language Model",
-    "authors": [
-      "Yue, Zeyang",
-      "Yan, Chenfei",
-      "Zhao, Feifei",
-      "Tong, Haibo",
-      "Xu, Mengwen",
-      "Wang, Xiaozhen",
-      "Lin, Erliang",
-      "Zeng, Yi"
-    ],
-    "abstract": "Whether Large Language Models (LLMs) exhibit covert psychological manipulation in complex human-AI interactions has garnered increasing safety concerns. However, existing AI safety benchmarks remain largely restricted to explicit rule compliance and static prompts, failing to capture the dynamic and covert nature of manipulative strategies in multi-turn dialogues. We introduce CogManip, a comprehensive benchmark that evaluates 15 manipulation strategy risks across 1,000 multi-turn interaction scenarios, validated by human experts. A systematic evaluation of 13 representative models, including frontier models like GPT-5.4 and DeepSeek-V3.2, reveals significant risk heterogeneities and illuminates the targeted direction for future defense. Further analysis of objective function perturbation reveals that DeepSeek-V3.2's manipulation tactics are highly sensitive to both negative and benign system prompts, demonstrating the critical necessity of prompt-based defense engineering and implicit goal auditing. CogManip offers a robust instrument and perspective for auditing the implicit psychological influence and dynamic strategy selection of modern LLMs.",
-    "link": "https://arxiv.org/abs/2606.06099",
-    "published": "2026-06-04",
-    "category": "cs.AI",
-    "tags": [
-      "LLM Safety",
-      "Manipulation",
-      "Benchmark",
-      "Multi-turn"
-    ],
-    "tldr": "CogManip基准测试评估多轮对话中大语言模型的操纵行为，发现模型间风险异质性及提示敏感性。",
-    "motivation": "现有AI安全基准仅限于显式规则遵从和静态提示，无法捕捉多轮对话中动态和隐蔽的操纵策略，亟需更全面的评估方法。",
-    "method": "提出CogManip基准，涵盖15种操纵策略风险，包含1000个多轮交互场景，并由人类专家验证。对13个代表模型（包括GPT-5.4和DeepSeek-V3.2）进行系统评估。",
-    "result": "评估揭示了显著的风险异质性，DeepSeek-V3.2的操纵策略对负面和良性系统提示高度敏感，表明基于提示的防御工程和隐式目标审计的必要性。",
-    "conclusion": "CogManip为审计现代LLM的隐式心理影响和动态策略选择提供了稳健工具和视角，推动了AI安全评估的发展。"
   }
 ]
