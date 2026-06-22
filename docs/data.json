@@ -220,6 +220,90 @@
     "conclusion": "提出了一种高质量合成复杂姿态和遮挡部位的方法，代码已开源，对单样本人体图像合成领域有重要贡献。"
   },
   {
+    "id": "https://arxiv.org/abs/2606.20542",
+    "title": "CalTennis: Large Multi-View Tennis Video Dataset and Benchmark of Monocular-to-3D Pose Estimation",
+    "authors": [
+      "Demler, Ilona",
+      "Xie, Xinran",
+      "Werner, Blake",
+      "Szczuka, Anna",
+      "Perona, Pietro"
+    ],
+    "abstract": "The Caltech Tennis Dataset (CalTennis) is a large-scale video benchmark for evaluating monocular-to-3D pose estimation in the wild. CalTennis comprises over 11 million frames (51 hours) of tennis practice and match play from 40 players, captured with 2-6 synchronized cameras at 60 Hz. It is 10 times larger than existing in-the-wild human motion video datasets and 3 times larger than existing MOCAP-ground-truthed datasets, and it is the first large-scale benchmark to provide synchronized multi-view recordings of expert athletic motion. The multi-view setup enables inexpensive, label-free evaluation of monocular-to-3D pose estimation algorithms. We describe a simple, standardized protocol that enables data collection without specialized equipment or expertise, along with fully automated video calibration and synchronization. Benchmarking state-of-the-art monocular-to-3D pose methods on CalTennis, we find that while 3D joint angle recovery is now quite accurate, all models struggle to estimate depth and foot contact consistently. We further propose two novel performance metrics, footwork and stability, as well as qualitatively study body shape inconsistency. These metrics expose previously underexplored failure modes and point to concrete opportunities for improvement in pose estimation and action analysis.",
+    "link": "https://arxiv.org/abs/2606.20542",
+    "published": "2026-06-18",
+    "category": "cs.CV",
+    "tags": [
+      "Pose Estimation",
+      "Tennis Video Dataset",
+      "Multi-View",
+      "Benchmark",
+      "Monocular-to-3D"
+    ],
+    "tldr": "提出CalTennis大规模多视角网球数据集，用于评估单目到3D姿态估计算法。",
+    "motivation": "现有野外人体运动数据集规模小，缺乏大规模多视角真实运动基准。需要大规模、低成本、标签免费的评估数据集。",
+    "method": "使用2-6台同步相机以60Hz采集40名运动员的网球练习和比赛视频，共51小时，超1100万帧。提出自动化校准和同步流程。",
+    "result": "数据集规模是现有野外数据集10倍、MOCAP数据集3倍。基准测试显示3D关节角度恢复准确，但深度和脚接触估计困难。",
+    "conclusion": "提出footwork和stability两个新指标以及身体形状不一致性分析，暴露新模式失败，为姿态估计和行为分析提供改进方向。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2606.20103",
+    "title": "Geometry-Preserving in 3D Gaussian Splatting for LiDAR-Camera Extrinsic Calibration",
+    "authors": [
+      "Kwak, Kyoleen",
+      "Kim, Daeho",
+      "Lee, Jeong Woon",
+      "Hwang, Hyoseok"
+    ],
+    "abstract": "Accurate LiDAR-camera calibration is essential for robust multi-modal perception. Targetless approaches avoid manual setup but remain limited by the scarcity of discriminative cross-modal features. Recent methods address this by reconstructing the scene within a differentiable model, enabling extrinsic optimization through dense photometric supervision. Among these, 3D Gaussian Splatting (3DGS) has been widely adopted as a geometric proxy that bridges LiDAR and camera within a single differentiable framework. However, since 3DGS was originally designed for novel view synthesis, existing methods tend to prioritize rendering quality, causing the proxy geometry to drift from the true LiDAR structure. We propose a framework that preserves the metric geometry of the Gaussian proxy by aggregating multi-view LiDAR observations for dense depth supervision and blocking photometric gradients from updating the Gaussian spatial parameters. We validate our method on public driving datasets, where it consistently outperforms existing targetless methods in calibration accuracy.",
+    "link": "https://arxiv.org/abs/2606.20103",
+    "published": "2026-06-18",
+    "category": "cs.CV",
+    "tags": [
+      "LiDAR-Camera Calibration",
+      "3D Gaussian Splatting",
+      "Extrinsic Calibration",
+      "Targetless Calibration",
+      "Multi-Modal Perception"
+    ],
+    "tldr": "提出在3D高斯溅射中保持度量几何的方法，通过多视图LiDAR密集深度监督和禁止光度梯度更新空间参数，提高LiDAR-相机外参标定精度。",
+    "motivation": "现有方法使用3DGS作为几何代理，但优先渲染质量导致代理几何偏离真实LiDAR结构，需保持度量几何以提升标定精度。",
+    "method": "聚合多视图LiDAR观测进行密集深度监督，并阻止光度梯度更新高斯空间参数，以保持高斯代理的度量几何。",
+    "result": "在公共驾驶数据集上持续优于现有无目标方法，但未提供具体量化指标。",
+    "conclusion": "提出了一种几何保持的3DGS框架，通过多视图LiDAR密集深度监督和阻止光度梯度更新空间参数，有效提高标定精度，在多模态感知中具有潜力。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2606.20333",
+    "title": "SoftSkill: Behavioral Compression for Contextual Adaptation",
+    "authors": [
+      "Tao, Xijia",
+      "Teng, Yihua",
+      "Fu, Xinyu",
+      "Liu, Ziru",
+      "Chen, Kecheng",
+      "Zhao, Yuzhi",
+      "Zhang, Suiyun",
+      "Liu, Rui",
+      "Kong, Lingpeng"
+    ],
+    "abstract": "Agent skills are commonly deployed as natural-language Markdown files that encode answer policies, evidence-use habits, and task procedures. These files are readable and portable, but they are consumed indirectly: for each task instance, a frozen language model must translate a long textual artifact into generation-time behavior. This paper asks whether a natural-language skill can instead initialize a compact continuous context object, refined by a trainable soft delta while the base model remains frozen. We propose SoftSkill, a frozen-backbone method that tunes such soft skills with next-token prediction and deploys them as latent behavioral priors at inference time. In our main single-round setting, a length-32 SoftSkill prefix on Qwen3.5-4B improves over no-skill prompting by 8.3 points on SearchQA, 42.1 points on LiveMath, and 1.3 points on DocVQA. Relative to SkillOpt, SoftSkill improves accuracy by 5.2 points on SearchQA and 12.5 points on LiveMath, while replacing hundreds to thousands of Markdown skill tokens with a few virtual tokens. We further study agentic execution as a harder boundary case, where sparse trajectory imitation provides useful signal but does not yet robustly compress long-horizon procedural behavior. More broadly, the results suggest that some task skills are better treated not as additional Markdown to be reinterpreted at inference time, but as compact latent controls over how a frozen model enters the task.",
+    "link": "https://arxiv.org/abs/2606.20333",
+    "published": "2026-06-18",
+    "category": "cs.AI",
+    "tags": [
+      "Skill Compression",
+      "Behavioral Adaptation",
+      "Frozen Backbone",
+      "Contextual Learning",
+      "Soft Prompt"
+    ],
+    "tldr": "SoftSkill将自然语言技能压缩为紧凑连续上下文对象，通过可训练软增量微调，在多个基准上显著提升性能。",
+    "motivation": "自然语言技能文件（Markdown）需要冻结语言模型在推理时重新解释长文本，效率低。能否将技能初始化为紧凑连续上下文对象，通过可训练软增量进行优化，而不改变基础模型？",
+    "method": "提出SoftSkill，使用冻结骨干方法，通过下一词预测训练软技能，作为推理时的潜在行为先验。用长度可变的软前缀（如32个token）替代Markdown技能。",
+    "result": "在Qwen3.5-4B上，长度32的SoftSkill前缀在SearchQA提升8.3点，LiveMath提升42.1点，DocVQA提升1.3点。相比SkillOpt，SearchQA提升5.2点，LiveMath提升12.5点。用少量虚拟token替代数百到数千Markdown token。",
+    "conclusion": "一些任务技能更适合作为紧凑潜在控制，而非额外的Markdown文本。软技能在单轮任务中有效，但在长程智能体执行中仍需进一步研究。"
+  },
+  {
     "id": "http://arxiv.org/abs/2606.19176v1",
     "title": "Hardware- and Vision-in-the-Loop Validation of Deep Monocular Pose Estimation for Autonomous Maritime UAV Flight",
     "authors": [
@@ -1126,142 +1210,5 @@
     "method": "结合合成数据管道提供精确几何监督，并采用层级感知的几何-语义适配（替代标准LoRA），在Transformer层级中选择性插入低秩适配器，配合逐层训练目标以鼓励中间特征的几何对应和深层特征的语义一致性。",
     "result": "在公开和专有数据集上，表示质量提升，下游导航任务（位姿估计、单目深度估计）性能更优；在临床支气管镜中显示良好的合成到真实迁移，并在有限监督下有效适应鼻窦镜和结肠镜；模型大小和训练数据量可扩展。",
     "conclusion": "层级感知的几何引导适配是内镜表示学习的实用方法，具有几何一致性和域鲁棒性，对图像引导导航有重要贡献。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2606.16042v1",
-    "title": "Leveraging Deep Learning for Object and Position Recognition of Load Carriers for Autonomous Logistics Vehicles",
-    "authors": [
-      "Christoph Legat",
-      "Tobias Miller",
-      "Marco Riess"
-    ],
-    "abstract": "This work explores the use of artificial intelligence in mobile robotics to achieve autonomous detection and pose estimation of load carriers for automated pickup. A deep neural network is designed to recognize predefined landmarks on the carrier from RGBD data; these landmarks are then used to compute the carrier's pose. The network operates directly on RGBD images to estimate landmark positions, which form the basis for determining the carrier's location. The approach is validated in extensive experiments and comprises both software and hardware implementations.\n  A deep learning-based framework is presented to detect load carriers and estimate their pose for use with autonomous logistics vehicles. Our method uses a convolutional neural network to identify characteristic reference points on the carrier from RGBD input and computes its pose by combining these inferred landmarks with prior geometric knowledge. Experiments show that the resulting accuracy is sufficient for reliable load carrier detection in industrial environments, confirming the suitability of the method for autonomous intralogistics applications.",
-    "link": "http://arxiv.org/abs/2606.16042v1",
-    "published": "2026-06-14",
-    "category": "cs.AI",
-    "tags": [
-      "deep learning",
-      "position estimation",
-      "object detection",
-      "autonomous vehicles",
-      "logistics"
-    ],
-    "tldr": "提出基于深度学习的框架，通过RGBD图像识别负载载体地标并估计位姿，实现自主物流车辆的自主检测与抓取。",
-    "motivation": "实现自主物流车辆对负载载体的自主检测和位姿估计，提升自动化搬运效率与可靠性。",
-    "method": "设计卷积神经网络从RGBD输入中识别载体上的特征参考点，并结合先验几何知识计算载体的六自由度位姿。",
-    "result": "实验表明该方法在工业环境中达到足够精度，能够可靠检测负载载体，验证了软硬件实现的可行性。",
-    "conclusion": "该方法适用于自主内部物流应用，为移动机器人自动化拾取负载载体提供了有效方案，具有实际工业价值。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2606.15924v1",
-    "title": "TurboGS: Accelerating 3D Gaussian Splatting via Error-Guided Sparse Pixel Sampling and Optimization",
-    "authors": [
-      "Zheng Dong",
-      "Daifei Qiu",
-      "Pinxuan Dai",
-      "Ke Xu",
-      "Jiamin Xu",
-      "Lili He",
-      "Rynson W. H. Lau",
-      "Weiwei Xu"
-    ],
-    "abstract": "Consumer-level applications require fast optimization of 3D Gaussian Splatting (3DGS) with high-fidelity novel view rendering. However, existing 3DGS acceleration approaches still incur substantial computation on redundant pixels while sacrificing fine details. In this paper, we present TurboGS, an error-guided training framework that accelerates 3DGS by concentrating optimization on perceptually informative pixels. TurboGS is built upon four core components: (1) a tile-wise sparse pixel sampling, which, driven by multi-view reconstruction errors during training, prioritizes challenging regions and skips well-reconstructed ones to avoid redundant gradient computation; (2) a tile-wise structure-aware loss with sparse Normalized Cross-Correlation, which provides sparse yet effective supervision to preserve fine details and stabilize training; (3) an error-driven Gaussian density control strategy, which dynamically allocates model capacity and removes redundant primitives; and (4) a tailored hybrid optimizer that couples Hessian-informed updates with Adam moment damping to stabilize and improve convergence under sparse supervision. Experiments on standard benchmarks demonstrate that TurboGS can deliver on par or superior rendering quality within 100 seconds on a single RTX 5090 GPU card (up to 10x training speedup over vanilla 3DGS).",
-    "link": "http://arxiv.org/abs/2606.15924v1",
-    "published": "2026-06-14",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Acceleration",
-      "Error-Guided Sampling",
-      "Sparse Optimization",
-      "Novel View Synthesis"
-    ],
-    "tldr": "TurboGS通过误差引导的稀疏像素采样和优化，显著加速3D高斯泼溅训练，百秒内达到高保真渲染。",
-    "motivation": "消费者级应用需要快速优化3D高斯泼溅以实现高保真新视角渲染，但现有加速方法在冗余像素上计算量大且牺牲细节。",
-    "method": "TurboGS由四个核心组件构成：基于多视图重建误差的瓦片级稀疏像素采样、带有稀疏归一化互相关的瓦片级结构感知损失、误差驱动的高斯密度控制策略，以及结合Hessian信息与Adam动量的混合优化器。",
-    "result": "在标准基准测试上，TurboGS在单块RTX 5090 GPU上100秒内达到与原始3DGS相当或更优的渲染质量，训练速度提升可达10倍。",
-    "conclusion": "该工作提出了一种有效的误差引导训练框架，通过集中优化信息丰富像素实现加速，同时保持细节，对实时3D重建应用有重要价值。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2606.15848v1",
-    "title": "EmoZone-Talker: Regional Semantic Control of Audio-Driven 3DGS Talking Heads via Facial Action Units",
-    "authors": [
-      "Tingting Chen",
-      "Shaojun Wang",
-      "Huaye Zhang",
-      "Diqiong Jiang",
-      "Chenglizhao Chen"
-    ],
-    "abstract": "3D Gaussian Splatting (3DGS) has shown strong potential for high-fidelity talking head synthesis. However, enabling fine-grained, interpretable, and editable facial expression control remains fundamentally challenging due to intrinsic conflicts between speech-driven facial dynamics and explicit expression signals. Existing methods rely on implicit multimodal fusion, leading to spatial entanglement and temporal instability. We present EmoZone-Talker, a novel framework that reformulates audio-driven facial animation as a structured spatial-temporal coordination problem under cross-modal conflicts. Our approach introduces an explicit spatial disentanglement and temporal dynamics modeling of facial motion. Specifically, we propose Synergy Zones with Prioritized Attention Bias (SZ-PAB) to explicitly decouple modality contributions via region-wise constraints guided by anatomical priors, and a Channel-Independent Temporal AU Encoder (CIT-AE) to model temporally coherent AU dynamics. By integrating these representations into 3D Gaussian deformation, EmoZone-Talker enables precise and interpretable control over facial expressions. Extensive experiments demonstrate that our method improves expression controllability and realism, with notable gains in upper-face accuracy and temporal coherence, while preserving high rendering quality and accurate lip synchronization. Code will be publicly released to facilitate reproducibility and further research.",
-    "link": "http://arxiv.org/abs/2606.15848v1",
-    "published": "2026-06-14",
-    "category": "cs.CV",
-    "tags": [
-      "Audio-Driven",
-      "3D Gaussian Splatting",
-      "Facial Animation",
-      "Facial Action Units",
-      "Talking Head"
-    ],
-    "tldr": "提出EmoZone-Talker，通过空间解耦和时间动态建模实现音频驱动的3DGS说话人脸的精细、可解释表情控制。",
-    "motivation": "现有方法在音频驱动的说话人脸上难以实现细粒度、可编辑的面部表情控制，存在空间纠缠和时间不稳定性。",
-    "method": "提出Synergy Zones with Prioritized Attention Bias (SZ-PAB) 基于解剖先验显式解耦模态贡献，以及Channel-Independent Temporal AU Encoder (CIT-AE) 建模时间上连贯的AU动态，并集成到3D高斯变形中。",
-    "result": "在表情可控性、真实感、上脸精度和时间一致性上取得显著提升，同时保持高渲染质量和准确唇同步。",
-    "conclusion": "EmoZone-Talker实现了精确可解释的面部表情控制，代码将公开以促进可重复性和后续研究。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2606.15681v1",
-    "title": "3D Consistency Optimization for Self-Supervised Monocular Video Depth Estimation",
-    "authors": [
-      "Yuanye Liu",
-      "Ke Zhang",
-      "Junzhe Jiang",
-      "Li Zhang",
-      "Vishal Patel",
-      "Xiahai Zhuang"
-    ],
-    "abstract": "Reliable monocular video depth estimation is crucial for downstream 3D reasoning and embodied AI in endoscopic navigation. However, existing self-supervised approaches typically treat video frames independently or rely on weak temporal regularization. These methods, lacking a holistic perception of the underlying 3D scene, inevitably suffer from geometrically inconsistent predictions and severe cross-frame drift. To address these limitations, we introduce a new paradigm that recasts sequential video depth estimation as an unconstrained multi-view 3D reconstruction problem, enabling full exploitation of the powerful geometric priors embedded in recent 3D foundation models. The core of our approach is a 3D consistency optimization framework driven by three constraints: image-level photometric rendering, explicit world-coordinate geometric alignment, and multi-scale temporal gradient consistency. Such unified optimization elegantly anchors isolated frames to a globally coherent 3D structure. Our method has been validated in both the self-supervised training scenarios and challenging zero-shot clinical environments. Results show that the proposed approach achieves state-of-the-art spatial accuracy, outperforming the frame-based, video-based depth estimators and the multi-view 3D reconstruction baselines.",
-    "link": "http://arxiv.org/abs/2606.15681v1",
-    "published": "2026-06-14",
-    "category": "cs.CV",
-    "tags": [
-      "Monocular Depth Estimation",
-      "Self-Supervised",
-      "Video Depth",
-      "3D Consistency",
-      "Endoscopic Navigation"
-    ],
-    "tldr": "提出基于3D一致性优化的自监督单目视频深度估计方法，实现高精度空间预测。",
-    "motivation": "现有自监督方法缺乏对3D场景的整体感知，导致几何不一致预测和严重跨帧漂移。",
-    "method": "将连续视频深度估计重构为无约束多视图3D重建问题，利用3D基础模型中的几何先验，并构建由图像级光度渲染、显式世界坐标几何对齐和多尺度时间梯度一致性约束组成的统一优化框架。",
-    "result": "在自监督训练和零样本临床环境中达到最先进的空间精度，优于基于帧、基于视频的深度估计器以及多视图3D重建基线。",
-    "conclusion": "该方法通过全局一致的3D结构锚定孤立帧，显著提升深度估计的几何一致性，对下游3D推理和内窥镜导航等应用具有重要价值。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2606.15659v1",
-    "title": "SpatialAvatar-0: High-Quality 4D Head Avatar with Multi-Stage Reconstruction",
-    "authors": [
-      "Yiran Wang",
-      "Zeyu Zhang",
-      "Yuanming Li",
-      "Ziming Wang",
-      "Yang Zhao"
-    ],
-    "abstract": "High-quality 4D head avatars from one or a few source portraits are central to telepresence, AR/VR, and digital-human interaction. 3D Gaussian Splatting (3DGS) has emerged as the dominant representation, with two complementary regimes (generalizable feed-forward predictors and per-subject refiners) maturing in parallel. However, existing feed-forward predictors are trained on a single dataset family with a hard-coded source count, inheriting the corresponding domain bias. Per-subject refiners require 300K--600K iterations and rely on adaptive densification that destroys upstream Gaussian layouts, preventing the two regimes from sharing a representation end-to-end. To bridge both regimes we propose SpatialAvatar-0 on a shared FLAME-mesh-bound Gaussian representation: a feed-forward generator with a parameter-free K-source mean-pool and a monocular-temporal to multi-view-spatial two-phase schedule that anchors against identity-prior collapse onto the smaller multi-view set. We further introduce a 10K-iter layout-preserving per-subject refinement loop that freezes the FLAME-binding and Gaussian count and replaces densification with a three-component anti-spike regularization. On VFHQ/HDTF cross-domain zero-shot we surpass the in-domain leader GAGAvatar by +1.5 dB PSNR despite never training on either test domain, and on the SplattingAvatar monocular benchmark we lead every reported metric, surpassing the 300K-iter GeoAvatar by +1.3 dB PSNR at up to 60x shorter per-subject schedule than common SOTA baselines. Website: https://spatialwalk.github.io/SpatialAvatar-0.",
-    "link": "http://arxiv.org/abs/2606.15659v1",
-    "published": "2026-06-14",
-    "category": "cs.CV",
-    "tags": [
-      "3DGS",
-      "Head Avatar",
-      "FLAME",
-      "4D Reconstruction",
-      "Monocular"
-    ],
-    "tldr": "基于FLAME绑定高斯表示的4D头部化身多阶段重建，跨域零样本和单目重建性能领先。",
-    "motivation": "现有前馈预测器存在域偏见且只支持固定源数量，逐主体精练器迭代次数多且破坏高斯布局，无法端到端共享表示。",
-    "method": "采用共享FLAME网格绑定高斯表示，提出带无参数K源均值池化的前馈生成器和单目-时间到多视图-空间两阶段调度，以及10K迭代布局保持精练器，用三组件反尖峰正则化替代自适应致密化。",
-    "result": "在VFHQ/HDTF跨域零样本上PSNR比GAGAvatar高1.5 dB；在SplattingAvatar单目基准上全面领先，PSNR比GeoAvatar高1.3 dB且迭代次数减少60倍。",
-    "conclusion": "提出SpatialAvatar-0桥接了前馈预测和逐主体精练两大范式，实现了跨域零样本和单目重建的最优性能，对远程呈现、AR/VR和数字人交互有重要影响。"
   }
 ]
