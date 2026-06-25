@@ -1,5 +1,195 @@
 [
   {
+    "id": "http://arxiv.org/abs/2606.26046v1",
+    "title": "RoboAtlas: Contextual Active SLAM",
+    "authors": [
+      "Alexander Schperberg",
+      "Shivam K. Panda",
+      "Abraham P. Vinod",
+      "M. K. Jawed",
+      "Stefano Di Cairano"
+    ],
+    "abstract": "We present RoboAtlas, a contextual Active SLAM framework that adaptively balances geometric exploration and semantic reasoning using a scalable 3D semantic mapping system, OpenRoboVox. RoboAtlas integrates frontier exploration, global semantic-map reasoning, and egocentric VLM-based reasoning through a contextual multi-armed bandit that transitions from exploration to semantically guided navigation as scene understanding improves. We evaluate the system in simulation and on a Unitree Go2 robot in large-scale real-world environments exceeding 1800 m2 with approx. 30k mapped semantic instances, achieving a 100% task success rate. On the GOAT-Bench \"Val Unseen\" benchmark, RoboAtlas achieves state-of-the-art performance with highest reported success rate (SR) of 90.6%, using GPT-4o, improving over the strongest prior baseline by 17.8 percentage points in SR. Using the much smaller Qwen2.5-VL-7B model, it still achieves 88.8% SR, outperforming all baselines using GPT-4o in SR, and revealing the importance of the information gained by our semantic mapping framework over simply replacing the underlying foundation model. The results demonstrate that grounding foundation models with large-scale 3D semantic maps enables robust and efficient contextual Active SLAM.",
+    "link": "http://arxiv.org/abs/2606.26046v1",
+    "published": "2026-06-24",
+    "category": "cs.CV",
+    "tags": [
+      "Active SLAM",
+      "Semantic Mapping",
+      "VLM",
+      "Exploration",
+      "Robotics"
+    ],
+    "tldr": "RoboAtlas提出上下文主动SLAM框架，通过3D语义映射和VLM推理平衡几何探索与语义导航，在1800m²真实环境中成功率100%。",
+    "motivation": "现有主动SLAM方法难以有效结合几何探索与语义理解，且大模型依赖难以泛化。RoboAtlas旨在自适应平衡探索与语义引导，提升任务成功率。",
+    "method": "提出RoboAtlas框架，集成前端探索、全局语义地图推理和基于自我中心VLM的推理，通过上下文多臂赌博机实现从探索到语义导航的平滑过渡，并利用可扩展3D语义映射系统OpenRoboVox。",
+    "result": "在超过1800m²真实环境中成功率100%；在GOAT-Bench 'Val Unseen'基准上，使用GPT-4o达90.6%SR，超越最强基线17.8个百分点；使用Qwen2.5-VL-7B仍达88.8%SR，优于所有GPT-4o基线。",
+    "conclusion": "RoboAtlas通过将基础模型与大尺度3D语义图结合，实现了高效鲁棒的上下文主动SLAM，揭示了语义映射框架比单纯替换基础模型更具价值。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.25953v1",
+    "title": "DSP-SLAM++: A Unified Framework for Multi-Class, High-Fidelity Object SLAM in the Wild",
+    "authors": [
+      "Ahmad Kourani",
+      "Ghina Daoud",
+      "Daniel Asmar",
+      "Imad Elhajj"
+    ],
+    "abstract": "Existing object-aware SLAM systems force a trade-off between real-time performance, multi-class support, and the generation of high-fidelity, semantically coherent object models. To address this trade-off, we present DSP-SLAM++, which extends the DSP-SLAM framework with an asynchronous mapping pipeline for real-time performance and dedicated sensor fusion adaptations for a monocular fisheye-LiDAR suite. Experiments demonstrate that our system generates fine-grained, geometrically-complete shapes for multiple object classes while eliminating severe mapping thread bottlenecks by reducing maximum object processing latency by up to 70\\% compared to the state-of-the-art baseline, enabling robust, real-time performance on a challenging 25 Hz multi-class datasets. This work makes high-fidelity, multi-class object SLAM more practical for real-world applications like autonomous driving and robotic manipulation by enabling its use on platforms with common fisheye-LiDAR sensor setups. The open-source code is available at: [github.com/AUBVRL/DSP-SLAMpp].",
+    "link": "http://arxiv.org/abs/2606.25953v1",
+    "published": "2026-06-24",
+    "category": "cs.CV",
+    "tags": [
+      "Object SLAM",
+      "Asynchronous Mapping",
+      "Sensor Fusion",
+      "Multi-class",
+      "Real-time"
+    ],
+    "tldr": "DSP-SLAM++通过异步建图流水线和传感器融合，实现了多类高保真物体SLAM的实时性能。",
+    "motivation": "解决现有物体SLAM系统在实时性、多类支持和高保真物体模型之间的权衡问题。",
+    "method": "扩展DSP-SLAM框架，提出异步建图流水线，并针对单目鱼眼-LiDAR传感器套件进行专用传感器融合适应。",
+    "result": "生成细粒度、几何完整的多类物体形状，最大物体处理延迟降低70%，在25Hz多类数据集上实现鲁棒实时性能。",
+    "conclusion": "使高保真多类物体SLAM更实用，适用于自动驾驶和机器人操作等实际应用，并开源代码。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.25619v1",
+    "title": "ScaleHP: Estimating Hand Pose in Metric Space",
+    "authors": [
+      "Ruitao Jing",
+      "Xingyu Chen",
+      "Hongyang Li",
+      "Qing Jiang",
+      "Yukai Shi",
+      "Lei Zhang"
+    ],
+    "abstract": "Accurate metric-space hand pose estimation (HPE) is essential for immersive human-computer interaction and robotics. However, most existing methods predict poses in a root-relative coordinate system and cannot estimate the hand in absolute metric scale. In this work, we observe that the intrinsic proportional relationships among human hand bones encode stable anthropometric priors that implicitly correlate with the overall metric size of the hand. Leveraging this insight, we present ScaleHP, an end-to-end one-stage hand pose estimation framework that bypasses fragile extrinsic depth modules to recover the hand in metric space. ScaleHP employs a transformer-based decoder with a novel scale token to fuse multi-scale morphological and appearance features. By solving for metric coordinates through a perspective-constrained least-squares approach, we achieve high-precision pose estimation in the camera coordinate system. ScaleHP delivers state-of-the-art performance, including 35.8 CS-MPJPE on FreiHand and 4.6/5.9 PA-MPJPE on DexYCB and HO3Dv3. These results demonstrate that internal biological constraints significantly reduce relative geometry and absolute metric errors, offering a robust solution for generalized, real-world hand tracking.",
+    "link": "http://arxiv.org/abs/2606.25619v1",
+    "published": "2026-06-24",
+    "category": "cs.CV",
+    "tags": [
+      "Hand Pose Estimation",
+      "Metric Space",
+      "Scale Token",
+      "Transformer",
+      "Anthropometric Priors"
+    ],
+    "tldr": "ScaleHP通过尺度令牌和透视约束在公制空间中实现高精度手部姿态估计。",
+    "motivation": "现有手部姿态估计方法大多在根相对坐标系中预测，无法估计绝对公制尺度，限制了人机交互和机器人应用。",
+    "method": "提出ScaleHP端到端单阶段框架，使用基于Transformer的解码器和新颖的尺度令牌融合多尺度形态和外观特征，通过透视约束最小二乘法求解公制坐标。",
+    "result": "在FreiHand上CS-MPJPE为35.8，在DexYCB和HO3Dv3上PA-MPJPE分别为4.6和5.9，达到最先进性能。",
+    "conclusion": "内部生物约束有效减少了相对几何和绝对公制误差，为通用真实世界手部追踪提供了鲁棒解决方案。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.25430v1",
+    "title": "PRISM: Feed-Forward Single-Image 3D Reconstruction via Geometric Warp-Residual Modeling",
+    "authors": [
+      "Zhijie Zheng",
+      "Xinhao Xiang",
+      "Jiawei Zhang"
+    ],
+    "abstract": "Reconstructing 3D scenes from a single image is a fundamental challenge in computer vision, with broad applications in virtual reality, robotics, and content creation. Recent methods achieve outstanding performance by leveraging camera-controlled video diffusion models, but rely on iterative diffusion sampling, which greatly limits their practical deployment. We observe that geometric forward warping alone can cover the majority of a target view directly from the input image, with only a compact residual left for the encoder to correct. Motivated by this observation, we propose PRISM, a feed-forward framework that decomposes multi-view latent prediction into a parameter-free geometric prior and a learned residual correction, with no diffusion sampling required at inference. To enable generalization from purely synthetic training data, we devise a two-stage training strategy combining latents supervised distillation for geometric generalization and perceptual fine-tuning for appearance quality optimization. Extensive experiments on three benchmarks demonstrate that PRISM achieves competitive reconstruction quality compared with diffusion-based methods, while reducing inference time dramatically to only 36 seconds per scene.",
+    "link": "http://arxiv.org/abs/2606.25430v1",
+    "published": "2026-06-24",
+    "category": "cs.CV",
+    "tags": [
+      "3D Reconstruction",
+      "Feed-Forward",
+      "Single-Image",
+      "Geometric Warp",
+      "Residual Modeling"
+    ],
+    "tldr": "提出PRISM前馈框架，将多视角潜在预测分解为几何先验和残差校正，无需扩散采样，实现快速高质量3D重建。",
+    "motivation": "现有基于扩散采样的单图像3D重建方法推理缓慢，限制了实际部署。",
+    "method": "提出前馈框架PRISM，将多视角潜在预测分解为无参数几何前向扭曲先验和学习残差校正；设计两阶段训练策略，结合潜在监督蒸馏和感知微调。",
+    "result": "在三个基准上重建质量与扩散方法相当，推理时间仅36秒/场景。",
+    "conclusion": "PRISM实现了快速且高质量的3D重建，具有实际应用潜力，且仅使用合成数据即可泛化。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.25427v1",
+    "title": "Gastroendoscopy View Synthesis: A New Real Dataset and Evaluation",
+    "authors": [
+      "Masaki Minai",
+      "Yusuke Monno",
+      "Masatoshi Okutomi",
+      "Sho Suzuki"
+    ],
+    "abstract": "Novel view synthesis (NVS) is an active research topic in computer vision, owing to the success of neural radiance field (NeRF) and 3D Gaussian splatting (3DGS) methods. While NVS opens the door to potential applications in gastroendoscopy, such as extending the field of view of endoscopic images and enabling digital twins for 3D archiving and endoscopist manipulation training, the dataset is insufficient to evaluate NVS for gastroendoscopy. In this paper, we present the first real gastroscopy dataset for NVS, namely the GastroNVS dataset, which contains a set of gastroscopic images, camera poses, and a point cloud for real gastroendoscopy inspection. To assess the suitability of the GastroNVS dataset, we evaluate several 3DGS methods and discuss the challenges for future development. The dataset is available on request from our project page.",
+    "link": "http://arxiv.org/abs/2606.25427v1",
+    "published": "2026-06-24",
+    "category": "cs.CV",
+    "tags": [
+      "medical imaging",
+      "novel view synthesis",
+      "NeRF",
+      "3D Gaussian Splatting",
+      "dataset"
+    ],
+    "tldr": "提出了首个用于胃肠道内镜新视角合成的真实数据集GastroNVS，并评估了多种3DGS方法。",
+    "motivation": "新视角合成在胃肠道内镜中有潜在应用，但缺乏真实数据集来评估这些方法。本文旨在提供首个真实胃镜数据集。",
+    "method": "收集了胃镜图像、相机位姿和点云，构建了GastroNVS数据集，并评估了多种3DGS方法。",
+    "result": "评估了多种3DGS方法，并讨论了未来发展的挑战。数据集可从项目页面获取。",
+    "conclusion": "贡献了首个真实胃镜新视角合成数据集，为未来研究提供了基准。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.25284v1",
+    "title": "Evaluation Protocols and Validation for Cameras in Indoor Healthcare Monitoring",
+    "authors": [
+      "Amirhossein Dadashzadeh",
+      "Jingjing Liu",
+      "Qianhui Men",
+      "Qiushuo Cheng",
+      "Kirsty Scott",
+      "Lisa Alcock",
+      "Ian Craddock",
+      "Majid Mirmehdi"
+    ],
+    "abstract": "Camera-based monitoring systems are increasingly adopted in healthcare settings for the continuous assessment of patient movement and activities. However, their technical performance under real-world indoor conditions remains insufficiently characterised, preventing appropriate camera selection for clinical or home adoption and reproducibility. Existing validation studies typically assess either device metrological performance or algorithm accuracy in isolation, and often do not systematically account for practical deployment factors, such as lighting variability, occlusions, and camera positioning. We present two technical validation protocols: the first evaluates the metrological performance of RGB and RGB-D cameras, and the second assesses their use in supporting human pose estimation, validated using state-of-the-art pose estimators. The proposed protocols systematically assess five cameras, four RGB-D and one RGB, under controlled variations in lighting, camera height, viewing angle, and occlusion level within representative indoor scenarios. The experimental results show that metrological performance varies substantially across cameras, with depth bias at 5 m ranging from 50 mm to over 1400 mm depending on the device. For 2D pose estimation, all cameras achieve broadly comparable accuracy, with mean mAP between approximately 78% and 90% across cameras and estimators, whereas 3D reconstruction error differs markedly across devices, with MPJPE ranging from 104 mm to 365 mm, closely reflecting underlying depth-sensing quality. Environmental factors have a camera- and estimator-dependent effect on 3D performance, while camera mounting height has minimal influence within the evaluated range. This work provides evidence-based guidance for the selection and deployment of cameras in healthcare monitoring applications, addressing an important gap in current technical validation practice.",
+    "link": "http://arxiv.org/abs/2606.25284v1",
+    "published": "2026-06-24",
+    "category": "cs.CV",
+    "tags": [
+      "healthcare monitoring",
+      "camera validation",
+      "RGB-D",
+      "pose estimation",
+      "metrological performance"
+    ],
+    "tldr": "提出了针对室内医疗监护相机的两套技术验证协议，系统评估了五款相机在不同环境条件下的性能。",
+    "motivation": "相机监控系统在医疗领域应用广泛，但实际室内条件下的技术性能缺乏系统性表征，现有验证研究往往孤立评估设备或算法，未考虑实际部署因素如光照、遮挡等。",
+    "method": "提出两套验证协议：第一套评估RGB和RGB-D相机的计量性能，第二套评估其在人体姿态估计中的应用，使用先进姿态估计器。系统评估五款相机在不同光照、高度、视角和遮挡条件下的表现。",
+    "result": "计量性能差异显著，5米处深度偏差从50毫米到1400毫米以上；2D姿态估计精度相似（mAP 78%-90%），但3D重建误差差异大（MPJPE 104-365毫米）。环境因素对3D性能有依赖相机和估计器的影响，安装高度影响小。",
+    "conclusion": "提供了基于证据的相机选择和部署指导，填补了当前技术验证实践的空白。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.25245v1",
+    "title": "OrthoTrack: Continuous 6-DoF UAV Trajectory Estimation Anchored in Public Orthophotos",
+    "authors": [
+      "Oussema Dhaouadi",
+      "Zuria Bauer",
+      "Johannes Michael Meier",
+      "Olaf Wysocki",
+      "Marc Pollefeys",
+      "Daniel Cremers"
+    ],
+    "abstract": "Continuous 6-DoF pose estimation is essential for autonomous UAV operations. Yet, existing visual odometry and SLAM methods accumulate drift and yield only relative, up-to-scale trajectories. Single-frame geo-localization, in turn, discards temporal continuity and remains too slow for real-time use. We present OrthoTrack, a training-free system that estimates continuous 6-DoF UAV trajectories using only publicly available orthophotos and surface models as a map prior. OrthoTrack matches keyframes against the orthophoto and lifts correspondences to metric 3D via the surface model. It then propagates these map-anchored correspondences to intermediate frames with optical flow, producing absolute, metrically scaled poses at every frame without GPS or post-hoc alignment. We also introduce the MovingDrone Dataset, a large-scale benchmark pairing photorealistic UAV sequences with dense 6-DoF ground truth and co-registered multi-modal geodata including multi-temporal orthophotos. On MovingDrone and real-world benchmarks, OrthoTrack runs in real time on a single GPU. It outperforms all baselines by a large margin, even those receiving oracle scale and alignment. By relying on publicly available geodata, OrthoTrack enables deployment to new regions without site-specific adaptation.",
+    "link": "http://arxiv.org/abs/2606.25245v1",
+    "published": "2026-06-24",
+    "category": "cs.CV",
+    "tags": [
+      "UAV",
+      "6-DoF",
+      "Trajectory Estimation",
+      "Orthophoto",
+      "Optical Flow"
+    ],
+    "tldr": "一种无需训练的无人机六自由度轨迹估计方法，利用公开正射影像和表面模型实现绝对度量轨迹。",
+    "motivation": "现有视觉里程计和SLAM存在漂移且仅能得到相对轨迹，而单帧地理定位速度慢且缺乏时间连续性。",
+    "method": "将关键帧与正射影像匹配，通过表面模型将对应点提升至三维度量空间，再利用光流向中间帧传播地图锚定的对应点。",
+    "result": "在单GPU上实时运行，在MovingDrone数据集和真实世界基准上以大优势超越所有基线，包括获得真值尺度和对齐的方法。",
+    "conclusion": "依赖公开地理数据，无需场地特定适配即可部署到新区域。"
+  },
+  {
     "id": "http://arxiv.org/abs/2606.24874v1",
     "title": "FLUX3D: High-Fidelity 3D Gaussian Generation with Diffusion-Aligned Sparse Representation",
     "authors": [
@@ -1224,203 +1414,5 @@
     "method": "提出SoftSkill，使用冻结骨干方法，通过下一词预测训练软技能，作为推理时的潜在行为先验。用长度可变的软前缀（如32个token）替代Markdown技能。",
     "result": "在Qwen3.5-4B上，长度32的SoftSkill前缀在SearchQA提升8.3点，LiveMath提升42.1点，DocVQA提升1.3点。相比SkillOpt，SearchQA提升5.2点，LiveMath提升12.5点。用少量虚拟token替代数百到数千Markdown token。",
     "conclusion": "一些任务技能更适合作为紧凑潜在控制，而非额外的Markdown文本。软技能在单轮任务中有效，但在长程智能体执行中仍需进一步研究。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2606.19176v1",
-    "title": "Hardware- and Vision-in-the-Loop Validation of Deep Monocular Pose Estimation for Autonomous Maritime UAV Flight",
-    "authors": [
-      "Maneesha Wickramasuriya",
-      "Beomyeol Yu",
-      "Jaden Shin",
-      "Mason Huslig",
-      "Taeyoung Lee",
-      "Murray Snyder"
-    ],
-    "abstract": "Autonomous UAV operations on ships require reliable vision-based relative pose estimation, yet at-sea validation is costly, weather-dependent, and risky. This paper presents a hardware-validated vision-in-the-loop framework that enables fully autonomous indoor flight while emulating photorealistic maritime environments. Rendered maritime views are processed onboard by a deep transformer-based monocular pose estimator. Delayed vision measurements are fused with high-rate IMU data using a delayed Kalman filter to provide consistent state estimates for geometric control. The system captures critical embedded effects, including perception latency, asynchronous updates, and computational constraints, that are absent in pure simulation. Autonomous takeoff, trajectory tracking, and landing experiments demonstrate stable closed-loop flight. The results establish a safe and hardware-realistic intermediate stage for developing maritime UAV autonomy prior to shipboard deployment.",
-    "link": "http://arxiv.org/abs/2606.19176v1",
-    "published": "2026-06-17",
-    "category": "cs.AI",
-    "tags": [
-      "UAV",
-      "Pose Estimation",
-      "Vision-in-the-Loop",
-      "Kalman Filter",
-      "Maritime"
-    ],
-    "tldr": "提出硬件与视觉在环的验证框架，实现自主无人机在仿真海事环境中的闭环飞行。",
-    "motivation": "海上验证成本高、依赖天气且风险大，需要安全的中间验证阶段。",
-    "method": "使用深度学习transformer单目位姿估计器处理渲染海事图像，通过延迟卡尔曼滤波融合视觉与IMU数据，实现几何控制。",
-    "result": "自主起飞、轨迹跟踪和着陆实验证明了稳定的闭环飞行。",
-    "conclusion": "为海上无人机自主性开发提供了安全且硬件真实的中间验证阶段，可降低海上部署风险。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2606.19156v1",
-    "title": "Hand-4DGS: Feed-Forward 3D Gaussian Splatting for 4D Hand Reconstruction from Egocentric Videos",
-    "authors": [
-      "Jeongmin Bae",
-      "Seoha Kim",
-      "Marc Pollefeys",
-      "Mahdi Rad",
-      "Youngjung Uh",
-      "Taein Kwon"
-    ],
-    "abstract": "Dynamic 3D hand reconstruction from egocentric videos is essential for next-generation computing platforms such as AR/VR and AI glasses. Despite its importance, most prior works focus either on multi-view 3D hand reconstruction or on 4D human body reconstruction. Egocentric 4D hand reconstruction remains challenging due to fast head motion, rapid hand dynamics, severe occlusions, and inherent ambiguity from single-view observations. To address these challenges, we introduce Hand-4DGS, the first feed-forward framework for reconstructing dynamic 4D hands directly from egocentric videos, enabling both fast (~60 FPS) inference and strong generalization. Our approach incorporates a mesh-guided representation for structural priors and temporal convolutions to model dynamic motion. We evaluate our framework on two challenging egocentric datasets, H2O and ARCTIC, and demonstrate significant improvements over baselines. Our method benefits from the generalization capability of feed-forward networks and effective 2D image supervision through Gaussian splatting, without requiring expensive 3D hand pose ground-truth annotations.",
-    "link": "http://arxiv.org/abs/2606.19156v1",
-    "published": "2026-06-17",
-    "category": "cs.CV",
-    "tags": [
-      "4D Hand Reconstruction",
-      "Egocentric Video",
-      "Gaussian Splatting",
-      "Feed-Forward",
-      "Temporal Convolution"
-    ],
-    "tldr": "提出首个前馈式4D手部重建框架Hand-4DGS，从第一视角视频中高效重建动态手部网格。",
-    "motivation": "从第一视角视频进行动态3D手部重建对AR/VR至关重要，但现有方法多聚焦多视图或人体重建，第一视角4D手部重建因头部运动、快速动态、遮挡和视角歧义而极其困难。",
-    "method": "采用网格引导表示提供结构先验，并使用时序卷积建模动态运动，通过前馈网络和3D高斯泼溅实现高效重建。",
-    "result": "在H2O和ARCTIC数据集上显著优于基线方法，达到约60 FPS的推理速度，且无需昂贵的3D手部姿态真值标注。",
-    "conclusion": "首次实现从第一视角视频的前馈式4D动态手部重建，具备强泛化能力和高效推理，为AR/VR应用提供新方案。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2606.19067v1",
-    "title": "Sensor Configuration Matters: A Systematic Evaluation of Multimodal SLAM on Quadruped Robots",
-    "authors": [
-      "Roberto Corlito",
-      "Fabian Schmidt",
-      "Nils Seibert",
-      "Markus Enzweiler",
-      "Abhinav Valada",
-      "Arne Roennau"
-    ],
-    "abstract": "Autonomous navigation of quadrupedal robots in diverse environments fundamentally relies on resilient Simultaneous Localization and Mapping (SLAM). While visual-inertial SLAM has matured across wheeled, handheld, and aerial platforms, a critical evaluation gap remains regarding how hardware-level sensor configurations affect performance under the aggressive dynamics of legged locomotion. Quadrupeds introduce distinct embodiment-induced sensory challenges, including foot-impact shocks, high-frequency mechanical vibrations, and rapid angular rotations, which degrade standard perception pipelines. To address this gap, we present a systematic evaluation of state-of-the-art visual, visual-inertial, and LiDAR-visual-inertial SLAM methods using the GrandTour dataset recorded on an ANYmal D quadruped. We isolate and quantify the impacts of camera modalities, shutter techniques, and inertial sensor tiers, analyzing their trade-offs across localization accuracy, algorithmic robustness, and computational resource utilization. Our empirical findings demonstrate that hardware selection has substantial influence on system resilience: stereo configurations consistently outperform monocular and RGB-D modalities, global shutter cameras significantly mitigate motion-induced tracking failures compared to rolling shutter cameras, and, crucially, standard inertial integration can degrade the performance of primarily vision-based frameworks under harsh legged locomotion. These insights additionally offer concrete design guidelines for tailoring custom sensor payloads to achieve dependable perception on agile legged systems.",
-    "link": "http://arxiv.org/abs/2606.19067v1",
-    "published": "2026-06-17",
-    "category": "cs.CV",
-    "tags": [
-      "SLAM",
-      "Quadruped Robots",
-      "Multimodal",
-      "Sensor Configuration",
-      "Evaluation"
-    ],
-    "tldr": "系统评估了四足机器人上多模态SLAM受传感器配置的影响，发现硬件选择显著影响鲁棒性。",
-    "motivation": "四足机器人动态环境中的SLAM性能受硬件传感器配置影响，但现有评估不足，特别是针对腿部运动的冲击和振动。",
-    "method": "使用ANYmal D四足机器人的GrandTour数据集，系统评估视觉、视觉-惯性、LiDAR-视觉-惯性SLAM方法，分析相机模态、快门技术和惯性传感器等级的影响。",
-    "result": "立体配置优于单目和RGB-D，全局快门显著减少运动跟踪失败，标准惯性集成可能降低基于视觉框架的性能。",
-    "conclusion": "硬件选择对系统鲁棒性有显著影响，提供了设计可靠四足机器人传感器配置的具体指南。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2606.19019v1",
-    "title": "FlowObject: Flow Steering for Bridging Generative Priors and Reconstruction Fidelity",
-    "authors": [
-      "Yuchen Rao",
-      "Xuqian Ren",
-      "Yinyu Nie",
-      "Sayan Deb Sarkar",
-      "Biao Zhang",
-      "Vincent Lepetit",
-      "Friedrich Fraundorfer"
-    ],
-    "abstract": "Recovering complete 3D representations of objects from few casual image captures remains a significant challenge. Recent 3D generative models, particularly those based on Flow-Matching (FM), can synthesize high-quality textured assets; however, they often suffer from ''synthetic bias'' where learned priors override observational evidence, alongside a lack of alignment with the observed instance. Conversely, optimization-based methods like 3D Gaussian Splatting (3DGS) provide high fidelity on visible surfaces but fail to reason about unobserved geometry. In this paper, we present FlowObject, a framework that reformulates sparse-view 3D reconstruction as a training-free, guided inverse problem. Our approach applies a dual-space guidance strategy to steer the Ordinary Differential Equation (ODE) trajectory of a flow-matching model, enabling the completion of unseen regions through learned generative priors while enforcing strict consistency with real-world observations. By integrating a 3DGS refinement stage, FlowObject further bridges the gap between ''synthetic-looking'' generative outputs and photorealistic reconstructions. Comprehensive benchmarks on synthetic and real-world datasets demonstrate that current state-of-the-art methods often struggle to achieve geometric completeness and observational consistency simultaneously, especially under severe occlusions. In contrast, our method significantly outperforms state-of-the-art generative models and optimization-based frameworks in both geometric completeness and view-dependent appearance fidelity.",
-    "link": "http://arxiv.org/abs/2606.19019v1",
-    "published": "2026-06-17",
-    "category": "cs.CV",
-    "tags": [
-      "3D Reconstruction",
-      "Flow-Matching",
-      "3D Gaussian Splatting",
-      "Generative Priors",
-      "Sparse Views"
-    ],
-    "tldr": "本文提出FlowObject框架，通过双空间引导策略将流匹配模型与3DGS结合，实现从稀疏视图生成完整且逼真的3D物体。",
-    "motivation": "现有方法要么依赖生成先验导致合成偏差，要么基于优化方法无法推理未观测区域。本文旨在同时实现几何完整性和观测一致性。",
-    "method": "采用双空间引导策略引导流匹配模型的ODE轨迹，结合3DGS精化阶段，在生成先验和观测一致性之间取得平衡。",
-    "result": "在合成和真实数据集上，FlowObject在几何完整性和视角相关外观保真度上显著优于现有方法。",
-    "conclusion": "提出了一种无训练的反问题求解框架，有效桥接了生成先验与重建保真度之间的差距。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2606.18826v1",
-    "title": "EDoF-NeRF: extended depth-of-field neural radiance fields using a coded aperture camera",
-    "authors": [
-      "Yoshiyuki Shirasaki",
-      "Ryoichi Horisaki"
-    ],
-    "abstract": "We propose a method for extending the depth-of-field (DoF) to construct high-fidelity neural radiance fields (NeRF) -- an emerging technique for rendering photorealistic novel views from a dataset of images captured at different viewpoints, based on implicit neural representations. The trade-off between DoF and light quantity is inherent not only in conventional cameras but also in NeRF, since the datasets used by NeRF are captured by these cameras. To address this issue, we introduce a coded aperture placed at the camera pupil, preserving spatial frequency components under defocused conditions. We develop a camera model incorporating coded apertures into NeRF, allowing direct input of coded images and enabling the generation of novel views with an extended DoF. We validate the proposed method, termed extended DoF-NeRF (EDoF-NeRF), through simulations and experiments, demonstrating its superior performance compared to conventional aperture cameras.",
-    "link": "http://arxiv.org/abs/2606.18826v1",
-    "published": "2026-06-17",
-    "category": "cs.CV",
-    "tags": [
-      "NeRF",
-      "Depth-of-Field",
-      "Coded Aperture",
-      "Novel View Synthesis"
-    ],
-    "tldr": "使用编码光圈相机扩展景深，构建高保真神经辐射场。",
-    "motivation": "解决传统相机和NeRF在景深与进光量之间的权衡问题，改善欠焦区域模糊。",
-    "method": "在相机光阑处放置编码光圈，并将编码相机模型集成到NeRF中，直接输入编码图像以生成扩展景深的新视图。",
-    "result": "通过仿真和实验验证，所提方法相比传统光圈相机具有更优性能。",
-    "conclusion": "提出EDoF-NeRF方法，有效扩展景深，提升NeRF的重建质量，适用于大景深场景。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2606.18623v1",
-    "title": "Intrinsic 4D Gaussian Segmentation from Scene Cues",
-    "authors": [
-      "Hasan Yazar",
-      "Mohamed Rayan Barhdadi",
-      "Erchin Serpedin",
-      "Mehmet Tuncel",
-      "Hasan Kurban"
-    ],
-    "abstract": "Dynamic 4D Gaussian Splatting reconstructs deforming scenes with high fidelity and is increasingly adopted as a representation for dynamic 3D scenes. Putting such a scene to use, for editing, manipulation or motion analysis, first requires segmenting it: grouping the Gaussian primitives into coherent objects. Current pipelines obtain this grouping by importing 2D masks from foundation models such as SAM and lifting or distilling them into the Gaussian representation. In dynamic scenes these masks must be generated across many frames and views, which is costly, and the resulting segmentation can depend strongly on the quality and consistency of those external masks. We ask how much object-level structure can instead be recovered from the Gaussians themselves, and propose Intrinsic-GS, a training-free, mask-free method that builds a sparse affinity graph over Gaussian primitives from appearance, orientation, scale, deformation-trajectory and non-learned rendered-boundary cues. The graph is partitioned with Leiden community detection, requiring no foundation model and no learned feature field. On the standard 4D Gaussian segmentation benchmarks, Neu3D and HyperNeRF, Intrinsic-GS recovers substantial object structure without mask supervision, reaching 0.746 mIoU on Neu3D and 0.575 on HyperNeRF; on Neu3D, a geometry-only variant reaches 0.902 mIoU, matching SAM-supervised TRASE. On HyperNeRF, Intrinsic-GS runs 12.5x faster than the mask-generation and feature-rendering stages used by mask-supervised pipelines. These results suggest that much of the segmentation signal is already encoded in the Gaussians themselves, offering a fast, mask-free direction for 3D and 4D Gaussian segmentation that may also point toward more generalizable, robust segmentation in settings where external masks are unreliable or expensive.",
-    "link": "http://arxiv.org/abs/2606.18623v1",
-    "published": "2026-06-17",
-    "category": "cs.CV",
-    "tags": [
-      "4D Gaussian Segmentation",
-      "Unsupervised Segmentation",
-      "Affinity Graph",
-      "Community Detection",
-      "Mask-Free"
-    ],
-    "tldr": "Intrinsic-GS无需训练和掩码，利用高斯原语自身特征构建亲和图并分割，在Neu3D和HyperNeRF上取得有竞争力结果。",
-    "motivation": "现有依赖2D基础模型掩码的方法成本高且质量受外部掩码一致性影响。研究能否从高斯原语自身恢复物体级结构。",
-    "method": "利用外观、朝向、尺度、变形轨迹和渲染边界线索构建高斯原语间的稀疏亲和图，通过Leiden社区检测进行分组，无需训练和掩码。",
-    "result": "在Neu3D上mIoU达0.746，HyperNeRF上0.575；仅几何变体在Neu3D上达0.902，与监督方法相当。运行速度比掩码监督方法快12.5倍。",
-    "conclusion": "表明分割信号已编码在高斯原语中，提供快速无掩码方向，有望在外部掩码不可靠或昂贵时更通用鲁棒。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2606.18588v1",
-    "title": "Splaxel: Efficient Distributed Training of 3D Gaussian Splatting for Large-scale Scene Reconstruction via Pixel-level Communication",
-    "authors": [
-      "Wenqi Jia",
-      "Zhewen Hu",
-      "Ying Huang",
-      "Yu Gong",
-      "Stavros Kalafatis",
-      "Yuke Wang",
-      "Wei Niu",
-      "Chengming Zhang",
-      "Ang Li",
-      "Sheng Di",
-      "Yuede Ji",
-      "Bo Fang",
-      "Miao Yin"
-    ],
-    "abstract": "3D Gaussian Splatting (3DGS) enables high-fidelity and real-time 3D scene reconstruction, but scaling training to large-scale scenes requires optimizing hundreds of millions of Gaussians across multiple GPUs. Existing distributed approaches either partition scenes into isolated regions, causing global inconsistency, or rely on global Gaussian-level exchanges, which lead to substantial growth in inter-GPU communication and quickly dominate iteration time.\n  We propose Splaxel, a communication-efficient distributed 3DGS training framework based on pixel-level local rendering and global composition. Instead of synchronizing Gaussians, each GPU renders its local subset and exchanges only partial pixel values, maintaining mathematical consistency while keeping communication cost stable as the scene size increases. Splaxel further reduces pixel-level redundancy through geometric and transmittance visibility prediction and improves GPU utilization via conflict-free camera-view consolidation. Evaluated on large-scale datasets with up to 120M Gaussians, Splaxel achieves up to 7.6$\\times$ speedup over the state-of-the-art distributed 3DGS framework while preserving high reconstruction quality.",
-    "link": "http://arxiv.org/abs/2606.18588v1",
-    "published": "2026-06-17",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Distributed Training",
-      "Large-scale Scene Reconstruction",
-      "Pixel-level Communication",
-      "Efficient"
-    ],
-    "tldr": "提出基于像素级通信的分布式3DGS框架Splaxel，实现大规模场景高效训练。",
-    "motivation": "现有分布式3DGS方法存在全局不一致性或通信开销巨大问题，Splaxel通过像素级局部渲染与全局组合解决。",
-    "method": "每个GPU渲染局部子集并仅交换部分像素值，利用几何与透射率可见性预测减少冗余，通过无冲突相机视图整合提升GPU利用率。",
-    "result": "在高达1.2亿高斯的大规模数据集上，相比最先进的分布式3DGS框架加速7.6倍，同时保持高重建质量。",
-    "conclusion": "Splaxel实现了通信高效的分布式3DGS训练，具有良好扩展性，适用于大规模场景重建。"
   }
 ]
