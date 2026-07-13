@@ -1,5 +1,201 @@
 [
   {
+    "id": "http://arxiv.org/abs/2607.09650v1",
+    "title": "Revisiting Euler-Angle Regression with Kolmogorov-Arnold Networks",
+    "authors": [
+      "Yangting Sun",
+      "Zijun Cui",
+      "Yufei Zhang"
+    ],
+    "abstract": "In many real-world systems, including articulated robots and biomechanical models, rotations are defined in joint space and naturally parameterized by Euler angles with bounded ranges. Yet regressing Euler angles remains challenging, as their discontinuities and singularities often destabilize training. In this work, we revisit Euler-angle regression and show that its effectiveness depends critically on the interaction between rotation representation, regression architecture, and domain constraints. We introduce a new framework that combines range-aware Euler modeling with Kolmogorov-Arnold Networks (KAN), which replace fixed node-wise activations with learnable univariate functions on edges. We further provide theoretical analysis indicating that bounded Euler ranges motivate a near-additive structure in the regression function, which favors the additive functional form of KAN, and we confirm this trend empirically. Extensive experiments on controlled rotation regression, object pose estimation, and robotic and human inverse kinematics demonstrate consistent improvements in accuracy, convergence, and efficiency. The code will be publicly available.",
+    "link": "http://arxiv.org/abs/2607.09650v1",
+    "published": "2026-07-10",
+    "category": "cs.CV",
+    "tags": [
+      "Euler-angle regression",
+      "Kolmogorov-Arnold Networks",
+      "Rotation regression",
+      "Pose estimation",
+      "Inverse kinematics"
+    ],
+    "tldr": "重新审视欧拉角回归，提出结合范围感知欧拉建模与KAN的新框架，在多个旋转回归任务上取得一致改进。",
+    "motivation": "欧拉角回归因不连续性和奇异性导致训练不稳定，其有效性取决于旋转表示、回归架构和域约束的相互作用。",
+    "method": "提出范围感知欧拉建模与Kolmogorov-Arnold网络（KAN）结合的新框架，KAN用可学习单变量函数替代固定节点激活；理论分析表明有界欧拉域导致近似可加结构，有利于KAN的加法函数形式。",
+    "result": "在控制旋转回归、目标姿态估计、机器人和人体逆运动学实验中，在准确性、收敛性和效率上取得一致改进。",
+    "conclusion": "重新审视欧拉角回归并证明KAN的有效性，代码将公开。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.09507v1",
+    "title": "DGSfM: Depth-Guided Scale-Aware Global Structure-from-Motion",
+    "authors": [
+      "Sithu Aung",
+      "Viktor Kocur",
+      "Yaqing Ding",
+      "Torsten Sattler",
+      "Zuzana Kukelova"
+    ],
+    "abstract": "Global Structure-from-Motion (SfM) is an efficient paradigm for recovering camera poses and sparse 3D structure from unordered images. However, its reliance on scale-ambiguous epipolar geometry makes global positioning sensitive to noisy baseline estimates and weak view-graph constraints, while false edges from visually ambiguous pairs can further degrade reconstruction. We propose DGSfM, a depth-aware global SfM pipeline that uses monocular depth maps as a scalable prior while preserving explicit multi-view optimization. For each image pair, we use a depth-aware relative pose solver to convert scale-ambiguous epipolar constraints into scale-aware relative pose constraints. We further improve robustness through view-graph filtering and depth-consistency-based correspondence pruning, which suppress false edges and matches that remain plausible under epipolar geometry alone. Finally, global scale averaging and depth-guided pose-point initialization align monocular depth maps into a common reconstruction scale and provide stable initialization for global positioning and bundle adjustment. Experiments on ETH3D and IMC2021 show that DGSfM consistently improves over strong global SfM baselines across sparse and dense matching front-ends, achieving substantial gains in pose accuracy. Code is available at https://github.com/sithu31296/DGSfM.",
+    "link": "http://arxiv.org/abs/2607.09507v1",
+    "published": "2026-07-10",
+    "category": "cs.CV",
+    "tags": [
+      "Global SfM",
+      "Monocular Depth",
+      "Scale-Aware",
+      "Pose Estimation",
+      "View-Graph"
+    ],
+    "tldr": "DGSfM通过深度引导解决了全局SfM中尺度模糊和弱视图图约束的问题，显著提升位姿精度。",
+    "motivation": "全局SfM依赖于尺度模糊的对极几何，导致对噪声基线和弱视图图约束敏感，且视觉模糊对产生的虚假边会降低重建质量。",
+    "method": "提出DGSfM深度感知全局SfM流程：使用单目深度图作为先验，通过深度感知相对位姿求解器将尺度模糊约束转为尺度感知约束；通过视图图滤波和深度一致性对应点剔除提高鲁棒性；全局尺度平均和深度引导的位姿-点初始化对齐深度图并稳定初始化。",
+    "result": "在ETH3D和IMC2021数据集上，DGSfM在稀疏和稠密匹配前端都持续优于强全局SfM基线，位姿精度显著提升。",
+    "conclusion": "DGSfM通过深度先验解决了全局SfM的尺度模糊问题，提升了重建的鲁棒性和精度，代码已开源。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.09503v1",
+    "title": "What VGGT Knows About Overlap: Probing Geometric Foundation Models for Co-Visibility",
+    "authors": [
+      "Filippo Ziliotto",
+      "Luciano Serafini",
+      "Lamberto Ballan",
+      "Tommaso Campari"
+    ],
+    "abstract": "A fundamental challenge in 3D reconstruction and robotic localization is co-visibility: determining which image pairs share overlapping visible surfaces, particularly in scenarios with minimal overlap. We demonstrate that VGGT implicitly encodes co-visibility as an emergent behavior: without any supervision for this task, its internal representations exhibit a clear hierarchical structure mirroring that of large language models, i.e. early layers build a 3D-aware scene representation, while late layers act as dedicated co-visibility reasoners. In particular, we identify layer L17 as a negative anchor that consistently routes non-co-visible pairs for this backbone, regardless of the evaluation setting, providing task-grounded evidence of layer specialization in a geometry-grounded foundation model. Building on this, we introduce Co-VGGT, which freezes VGGT and trains only a lightweight layer-wise mixture-of-experts head (less than 7.5M parameters) to classify co-visibility from RGB alone, treating each layer as a specialized expert whose geometric abstraction is adaptively weighted per input pair. On the Co-VisiON benchmark, Co-VGGT surpasses the human annotation baseline and improves over prior work by more than 25% pairwise and 10% multiview. Pairwise predictions are well-calibrated (ECE=0.030), enabling direct use as edge weights in visibility graphs for downstream SfM and SLAM pipelines without post-hoc correction. Code and data are available.",
+    "link": "http://arxiv.org/abs/2607.09503v1",
+    "published": "2026-07-10",
+    "category": "cs.CV",
+    "tags": [
+      "Co-visibility",
+      "VGGT",
+      "Geometric Foundation Model",
+      "Layer Specialization",
+      "Mixture-of-Experts"
+    ],
+    "tldr": "发现VGGT内部表示隐式编码了共可见性，提出Co-VGGT冻结VGGT并训练轻量混合专家头，在基准上超越人类标注。",
+    "motivation": "共可见性是3D重建和机器人定位的基础挑战，特别是在小重叠场景中，需要一种无需显式监督的方法来从RGB图像中判断图像对是否共享可见表面。",
+    "method": "通过探针VGGT的各层表示，发现其早期层构建3D场景而后期层作为共可见性推理器，特别是L17层作为负锚点。基于此，提出Co-VGGT，冻结VGGT，仅训练一个轻量级层-wise混合专家头（<7.5M参数），每个层作为一个专家，自适应加权每对输入的几何抽象。",
+    "result": "在Co-VisiON基准上，Co-VGGT超过人类标注基线，pairwise改进超过25%，multiview改进10%，且预测校准误差ECE=0.030。",
+    "conclusion": "展示了几何基础模型VGGT中层专门化的涌现行为，并提出了一个高效、可泛化的共可见性分类方法，可直接用于下游SfM和SLAM的可见性图，无需后处理。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.09260v1",
+    "title": "AnythingReality: Robust Online Gaussian Splatting SLAM for Open-Vocabulary VR Scene Exploration",
+    "authors": [
+      "Timofei Kozlov",
+      "Dmitrii Maliukov",
+      "Andrey Marchenko",
+      "Miguel Altamirano Cabrera",
+      "Dzmitry Tsetserukou"
+    ],
+    "abstract": "We present a novel integrated architecture for robust online 3D Gaussian splatting, real-time VR exploration, and speech-driven Vision-Language-Model interaction. Unlike methods assuming clean depth or external poses, our system combines ORB-SLAM3-based pose estimation with online Gaussian reconstruction for noisy real-world data. A VR pipeline enables immersive exploration of incremental reconstructions; a semantic module transcribes voice commands, generates scene descriptions, and records points of interest. Against state-of-the-art online Gaussian splatting methods, we improve image quality on our dataset (+14.5% PSNR, +8.6% SSIM, -14.3% LPIPS) and TUM-RGBD (+11.7% PSNR, +7.8% SSIM, -21.6% LPIPS), with comparable or superior frame rates via quality-speed configurations. We achieve an 88% VLM object-recognition rate.",
+    "link": "http://arxiv.org/abs/2607.09260v1",
+    "published": "2026-07-10",
+    "category": "cs.CV",
+    "tags": [
+      "SLAM",
+      "Gaussian Splatting",
+      "VR",
+      "Vision-Language Model",
+      "Open-Vocabulary"
+    ],
+    "tldr": "提出了一种结合SLAM、高斯泼溅与VLM的鲁棒在线重建系统，支持VR探索和语音交互。",
+    "motivation": "现有方法假设干净的深度或外部位姿，无法应对真实世界的噪声数据；需要鲁棒的在线3D重建和沉浸式VR探索，并支持开放词汇的语义交互。",
+    "method": "采用ORB-SLAM3进行位姿估计，结合在线高斯泼溅重建；设计VR流水线实现增量重建的沉浸式探索，语义模块转录语音命令、生成场景描述并记录兴趣点。",
+    "result": "在自有数据集上PSNR提升14.5%、SSIM提升8.6%、LPIPS降低14.3%；在TUM-RGBD上PSNR提升11.7%、SSIM提升7.8%、LPIPS降低21.6%；帧率相当或更优；VLM物体识别率达88%。",
+    "conclusion": "提出了一个鲁棒的集成系统，融合在线高斯泼溅SLAM、VR与VLM交互，在图像质量和识别率上超越现有方法，适用于真实世界场景探索。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.09225v1",
+    "title": "Glob3R: Global Structure-from-Motion with 3D Foundation Models",
+    "authors": [
+      "Junyuan Deng",
+      "Heng Li",
+      "Kejie Qiu",
+      "Lingteng Qiu",
+      "Rui Peng",
+      "Weichao Shen",
+      "Weihao Yuan",
+      "Siyu Zhu",
+      "Zilong Dong",
+      "Ping Tan"
+    ],
+    "abstract": "Recent 3D geometric foundation models, such as VGGT, provide robust feed-forward 3D reconstruction by directly predicting camera poses and 3D scene points from input images. However, their results remain inaccurate, and scaling them to long sequences or large unordered image sets typically requires chunk-wise processing, which can introduce drift and inconsistency. We present Glob3R, a global SfM-style reconstruction built on 3D foundation models. Our key idea is to explicitly optimize feed-forward geometric predictions. To this end, we augment a frozen Pi3X backbone with a lightweight dense matching head that predicts image warps between selected reference frames and neighboring views. These dense warps are converted into sparse but reliable multi-view feature tracks, which provide correspondence constraints for global optimization. We further introduce a keyframe-based sliding-window association strategy that propagates tracks and relative poses across overlapping windows, enabling scalable reconstruction. Finally, we perform global motion averaging and bundle adjustment to refine camera poses, reduce scale inconsistencies, and recover dense scene geometry. Extensive experiments on indoor, outdoor, large-scale driving, and unordered SfM benchmarks demonstrate that Glob3R achieves robust and accurate reconstruction. It consistently improves over feed-forward foundation-model baselines and recent scalable reconstruction methods, while being more robust than classical SfM pipelines. The refined poses also lead to higher-quality neural rendering, validating the benefit of combining foundation-model priors with global geometric optimization. Project page: https://junyuandeng.github.io/Glob3r",
+    "link": "http://arxiv.org/abs/2607.09225v1",
+    "published": "2026-07-10",
+    "category": "cs.CV",
+    "tags": [
+      "3D foundation models",
+      "Structure-from-Motion",
+      "Global optimization",
+      "Dense matching",
+      "Multi-view reconstruction"
+    ],
+    "tldr": "Glob3R通过显式优化前馈几何预测并结合全局运动平均和束调整，实现了鲁棒的全局SfM重建。",
+    "motivation": "现有3D基础模型前馈预测不准确，且扩展至长序列或大型无序图像集时存在漂移和不一致问题。",
+    "method": "使用轻量级密集匹配头增强冻结的Pi3X骨干，预测图像扭曲并转换为多视图特征轨迹；提出基于关键帧的滑动窗口关联策略跨重叠窗口传播轨迹和相对姿态；最后执行全局运动平均和束调整以优化相机姿态和恢复场景几何。",
+    "result": "在室内、室外、大规模驾驶和无序SfM基准上，Glob3R持续改进前馈基础模型基线和近期可扩展重建方法，比经典SfM流水线更鲁棒；精化姿态还提升了神经渲染质量。",
+    "conclusion": "展示了结合3D基础模型先验与全局几何优化的有效性，贡献了一种鲁棒准确的全局SfM重建方法，并验证其对下游任务的提升。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.09169v1",
+    "title": "TSR-Ego: Temporally Guided Stereo Refinement Framework for Egocentric 3D Human Pose Estimation",
+    "authors": [
+      "Md Mushfiqur Azam",
+      "John Quarles",
+      "Kevin Desai"
+    ],
+    "abstract": "Egocentric 3D human pose estimation from head-mounted stereo cameras is challenging due to fisheye distortion, severe self-occlusion, and frequent truncation of body joints outside the camera field of view. Recent stereo egocentric methods have improved performance through heatmap lifting, stereo correspondence, and transformer-based refinement, but they often rely heavily on frame-local evidence or use temporal information only as auxiliary pose-level context. This limits robustness when current-frame stereo cues are weak, occluded, or ambiguous. We propose TSR-Ego, a temporally guided stereo framework that couples short-term motion evidence with projection-guided feature sampling. The model first enriches dense stereo feature maps using a causal depthwise-separable temporal convolution, allowing past visual evidence to influence the feature space before deformable cross-attention. A single-stage causal stereo decoder then refines learned 3D joint queries through temporal self-attention, joint self-attention, and fisheye deformable stereo cross-attention, using the evolving pose estimate to generate 2D sampling references. Unlike methods that apply temporal reasoning mainly after pose prediction, TSR-Ego uses motion context to shape both the sampled stereo features and the joint representations while preserving online inference without future frames. Experiments on UnrealEgo2 and UnrealEgo-RW show state-of-the-art performance, with especially strong gains on real-world sequences.",
+    "link": "http://arxiv.org/abs/2607.09169v1",
+    "published": "2026-07-10",
+    "category": "cs.CV",
+    "tags": [
+      "Egocentric 3D Human Pose Estimation",
+      "Stereo Vision",
+      "Temporal Feature Propagation",
+      "Transformer",
+      "Self-Occlusion Handling"
+    ],
+    "tldr": "提出TSR-Ego，一种时序引导的立体框架，通过因果时序卷积和单阶段立体解码器，在自我中心3D人体姿态估计中实现最先进性能。",
+    "motivation": "现有自我中心立体方法依赖单帧证据或仅将时序作为辅助上下文，在立体线索弱、遮挡严重时鲁棒性不足。",
+    "method": "利用因果深度可分离时序卷积增强密集立体特征图，然后通过单阶段因果立体解码器，结合时序自注意力、关节自注意力和鱼眼可变形立体交叉注意力，利用运动上下文指导特征采样和关节表示。",
+    "result": "在UnrealEgo2和UnrealEgo-RW数据集上达到最先进性能，尤其在真实世界序列上提升显著。",
+    "conclusion": "提出TSR-Ego框架，有效整合短时运动证据和投影引导特征采样，实现在线推理且无需未来帧，对遮挡和截断问题具有鲁棒性。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.09024v1",
+    "title": "Video Generation Models are General-Purpose Vision Learners",
+    "authors": [
+      "Letian Wang",
+      "Chuhan Zhang",
+      "Rishabh Kabra",
+      "Jasper Uijlings",
+      "Steven Waslander",
+      "Andrew Zisserman",
+      "Joao Carreira",
+      "Kaiming He",
+      "Misha Andriluka",
+      "Eduard Gabriel Bazavan",
+      "Andrei Zanfir",
+      "Cristian Sminchisescu"
+    ],
+    "abstract": "Driven by next-token prediction, NLP shifted from task-specific models into powerful generalist foundation models. What, then, is the equivalent catalyst needed to achieve a general-purpose model in computer vision? In this paper, we contend that large-scale text-to-video generation serves as a strong pre-training paradigm for computer vision, providing the necessary spatiotemporal priors, vision-language alignment, and scalability required for general visual intelligence. We introduce GenCeption, which leverages a pre-trained video generative diffusion backbone to define a feed-forward perception model, capable of performing various vision tasks steered by text instructions. Empirical results demonstrate that GenCeption achieves state-of-the-art performance across a diverse suite of tasks, including depth, surface normal, and camera pose estimation, expression-referring segmentation, and 3D keypoint prediction, often matching or surpassing specialized models (e.g. DepthAnything3, SAM3, D4RT, VGGT-Omega, Sapiens, David, Genmo, and Lotus-2). Furthermore, the video generative pretrained backbone outperforms alternative pretraining paradigms (e.g., V-JEPA, and Video MAE) under comparable settings. Importantly, GenCeption exhibits preliminary data and model scaling properties along with exceptional data efficiency, where it achieves comparable performance with leading models like D4RT and VGGT-Omega with 7 to 500 less training data. Finally, GenCeption also exhibits intriguing emergent behaviors: a model trained exclusively on synthetic human videos generalizes to real-world footage and out-of-distribution object categories (e.g., animals and robots). These findings suggest that video generation is not merely a synthesis tool, but a foundational path toward generalist vision intelligence for the physical world. Project page: https://genception.github.io",
+    "link": "http://arxiv.org/abs/2607.09024v1",
+    "published": "2026-07-10",
+    "category": "cs.CV",
+    "tags": [
+      "Video Generation",
+      "Generalist Vision Models",
+      "Pretraining",
+      "GenCeption",
+      "Vision Perception"
+    ],
+    "tldr": "提出GenCeption，利用视频生成扩散模型作为通用视觉骨干，在多项视觉任务上达到SOTA。",
+    "motivation": "探索视频生成作为视觉通用模型预训练范式的潜力，解决计算机视觉中缺乏类似NLP的通用预训练方法的问题。",
+    "method": "利用预训练的视频生成扩散模型（GenCeption）作为前馈感知模型，通过文本指令执行深度、法线、相机姿态估计等多种视觉任务。",
+    "result": "在深度、表面法线、相机姿态估计、表情参照分割和3D关键点预测等任务上达到SOTA，超越专业模型；数据效率卓越，仅用7到500倍较少数据即匹配领先模型性能。",
+    "conclusion": "视频生成不仅是合成工具，更是通往通用视觉智能的基础路径；模型展现数据和模型缩放特性，以及从合成视频到真实场景的泛化能力。"
+  },
+  {
     "id": "http://arxiv.org/abs/2607.08772v1",
     "title": "Wat3R: Underwater 3D Geometry Learning without Annotations",
     "authors": [
@@ -957,60 +1153,5 @@
     "method": "提出MECo-WAM，包含视频专家、动作专家和轻量级4D专家（受VGGT监督），采用非对称专家可见性、衰减4D读掩码注意力和动作感知时间几何蒸馏，训练后移除所有4D组件。",
     "result": "在LIBERO上达98.2%，RoboTwin 2.0上达92.6%，真实世界任务中提升性能。",
     "conclusion": "在不增加推理成本下提升操作性能，证明了方法的有效性和高效性。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.04256v1",
-    "title": "AdaptiveSplat:Texture Aware Controllable 3D Gaussian Allocation for Feed-Forward Reconstruction",
-    "authors": [
-      "Badrinath Singhal",
-      "Srihari K G",
-      "Sreehari Iyer",
-      "Ankit Dhiman",
-      "Venkatesh Babu Radhakrishnan"
-    ],
-    "abstract": "Current feed-forward 3D reconstruction methods predict pixel aligned Gaussian primitives, resulting in highly redundant representations. A natural solution is to prune the redundant Gaussians, but naive pruning introduces severe artifacts and often requires inference time fine-tuning, breaking the feed-forward paradigm. Based on previous works, high frequency regions require more Gaussian primitives, while low frequency regions can be represented with significantly fewer primitives. Motivated by this, we propose a novel approach to explicitly control the number of Gaussians by leveraging local texture information. Our approach achieves this through three key components: (1) texture estimation to capture spatial variation in scene detail, (2) texture-aware pruning that removes redundant Gaussians from low frequency regions, and (3) an adaptive Gaussian head that predicts the modified attributes of the retained primitives without breaking the feed-forward paradigm. Experiments on RE10K, ACID, DL3DV, Tanks and Temples, and DTU demonstrate the effectiveness of our approach, while ablation studies validate the contributions of its key components.",
-    "link": "http://arxiv.org/abs/2607.04256v1",
-    "published": "2026-07-05",
-    "category": "cs.CV",
-    "tags": [
-      "3D Reconstruction",
-      "Feed-Forward",
-      "Gaussian Splatting",
-      "Texture-Aware",
-      "Pruning"
-    ],
-    "tldr": "提出基于纹理感知的自适应高斯分配方法，减少前馈重建中的冗余高斯体而不破坏前馈范式。",
-    "motivation": "当前前馈3D重建方法预测像素对齐的高斯基元，导致高度冗余；简单剪枝会产生严重伪影并需要推理时微调，破坏了前馈范式。因此需要一种能利用局部纹理信息显式控制高斯数量的方法。",
-    "method": "核心方法包括三个关键组件：(1)纹理估计以捕捉场景细节的空间变化；(2)纹理感知剪枝，移除低频区域的冗余高斯；(3)自适应高斯头部，预测保留基元的修改属性，从而在不破坏前馈范式的前提下实现高斯分配。",
-    "result": "在RE10K、ACID、DL3DV、Tanks and Temples和DTU数据集上的实验证明了方法的有效性，消融研究验证了各组件的贡献，但未提供具体量化指标。",
-    "conclusion": "提出了一种新颖的自适应高斯分配方法，通过纹理感知剪枝和自适应头部减少冗余，同时保持前馈重建的快速性；在多个数据集上验证了效果，具有潜在应用价值。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.04127v1",
-    "title": "Real-Time LiDAR Gaussian Splatting SLAM",
-    "authors": [
-      "Seungjun Tak",
-      "Yewon Jeon",
-      "Jaeik Hwang",
-      "SukMin Hwang",
-      "Seongbo Ha",
-      "Hyeonwoo Yu"
-    ],
-    "abstract": "We present a real-time LiDAR-based framework for Gaussian Splatting SLAM that tightly couples fast G-ICP registration with spherical rasterization-based dense mapping for large-scale sequences. Leveraging LiDAR geometry rather than appearance, we reuse tracking-estimated local covariances to initialize Gaussians with range-aware scales and to derive surface normals for geometry-aware map optimization. We further introduce a covariance-derived geometry score that measures local complexity and drives pruning in planar regions and selective densification in structurally rich areas, while optimized Gaussians and LiDAR-specific confidence cues are fed back to improve tracking robustness. On the Newer College dataset, our method achieves an F-score of 86.78\\% using purely online trajectories at real-time speed ($>$20 FPS), and additional experiments on other datasets confirm its stability and scalability.",
-    "link": "http://arxiv.org/abs/2607.04127v1",
-    "published": "2026-07-05",
-    "category": "cs.CV",
-    "tags": [
-      "LiDAR",
-      "SLAM",
-      "Gaussian Splatting",
-      "Real-Time",
-      "Dense Mapping"
-    ],
-    "tldr": "提出实时LiDAR高斯溅射SLAM框架，耦合G-ICP与球面光栅化密集建图，实现86.78% F-score及20+ FPS实时性能。",
-    "motivation": "现有高斯溅射SLAM多依赖视觉外观，难以利用LiDAR几何信息实现实时大规模建图。本文旨在通过紧耦合配准与建图，利用LiDAR几何先验提升跟踪与建图的鲁棒性和效率。",
-    "method": "采用快速G-ICP配准和球面光栅化密集建图，利用跟踪估计的局部协方差初始化高斯并计算表面法线进行几何感知优化；引入协方差几何评分驱动平面区域修剪和结构丰富区域选择性加密，并将优化后的高斯和置信度反馈提升跟踪鲁棒性。",
-    "result": "在Newer College数据集上，仅使用在线轨迹达到86.78%的F-score，运行速度超过20 FPS，其他数据集验证了稳定性和可扩展性。",
-    "conclusion": "本文提出了一种实时LiDAR高斯溅射SLAM框架，在保持实时性的同时达到高建图精度，为大规模LiDAR序列的SLAM提供了新思路。其紧耦合架构和几何感知优化有望推动自主导航和建图领域的发展。"
   }
 ]
