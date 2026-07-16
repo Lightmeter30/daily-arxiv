@@ -1,5 +1,161 @@
 [
   {
+    "id": "http://arxiv.org/abs/2607.13808v1",
+    "title": "Bake It Till You Make It: Ultrafast Spatial Texture-Atlas Splatting",
+    "authors": [
+      "Neel Kelkar",
+      "Simon Niedermayr",
+      "Kaloian Petkov",
+      "Klaus Engel",
+      "Rüdiger Westermann"
+    ],
+    "abstract": "Recent extensions of 3D Gaussian Splatting (3DGS) capture fine color details using hash-grid-based appearance parameterization but incur high computational cost during fragment rendering. We introduce a decoupled radiance representation that models low-frequency geometry and view dependent appearance features with 2D surfels while representing high-frequency textures via a view-independent spatial hash grid that is baked into a compact texture atlas. By including sparsity-enhancing optimizations that penalize semi-transparency and per-primitive falloff, our method aggressively prunes insignificant surfels and achieves significantly faster and sparser reconstructions than prior work. Exploiting geometric sparsity and efficient GPU texture mapping, our approach achieves up to a fivefold speedup over 3DGS while preserving state-of-the-art visual fidelity, enabling real-time 4K rendering at 60 FPS on consumer hardware.",
+    "link": "http://arxiv.org/abs/2607.13808v1",
+    "published": "2026-07-15",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Texture Atlas",
+      "Real-time Rendering",
+      "Spatial Hash Grid"
+    ],
+    "tldr": "提出解耦辐射表示，将高频纹理烘焙到紧凑图集，结合稀疏优化实现比3DGS快五倍的实时4K渲染。",
+    "motivation": "现有3DGS扩展在捕捉精细颜色细节时计算成本高，需要更高效的渲染方法。",
+    "method": "使用2D surfels建模低频几何和视角依赖特征，高频纹理通过视角无关的空间哈希网格烘焙到紧凑纹理图集，并采用稀疏性增强优化修剪半透明和衰减图元。",
+    "result": "在保持视觉保真度的同时，实现比3DGS快五倍的速度，在消费级硬件上达到4K 60FPS实时渲染。",
+    "conclusion": "提出一种更高效、更稀疏的3D场景表示方法，显著提升渲染速度，适用于实时应用。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.13698v1",
+    "title": "Towards a Modular Bin-picking Framework for Handling Object Pose Uncertainties",
+    "authors": [
+      "Frederik Hagelskjær"
+    ],
+    "abstract": "In recent years, there has been growing interest in robust robotic systems for precise bin-picking applications. To achieve reliable performance, such systems must address errors arising from both the object pose estimation and the grasping process. Although various approaches have been proposed, they typically target specific challenges and do not offer general solutions. In this paper, we present a modular framework that jointly handles both error types. The framework incorporates object pose distribution estimation to account for pose uncertainty, which frequently arises in situations with ambiguous observations where a single correct pose cannot be determined. To further reduce uncertainty, we introduce a second-viewpoint module that computes complementary pose distributions, which are subsequently fused. This fusion decreases overall uncertainty and improves system efficiency. Additionally, two independent modules are included to compensate for grasping errors. The modular design allows the components to be combined for optimal performance or used individually, depending on the physical setup.\n  The proposed method is evaluated in a real-world setup with three different objects, with no errors, and all modules are shown to improve efficiency. These results suggest that incorporating pose distributions with grasping pose errors is a promising direction for developing more flexible and reliable robotic production systems.\n  To the best of our knowledge, this is the first framework that jointly addresses both grasping and object pose uncertainties using interchangeable modules. We believe there is ample opportunity to integrate additional modules, resulting in improved performance and flexibility. The current framework is limited to pose uncertainties in SO(2), but it could be extended to SE(3), enabling additional modules to improve the system.",
+    "link": "http://arxiv.org/abs/2607.13698v1",
+    "published": "2026-07-15",
+    "category": "cs.CV",
+    "tags": [
+      "Bin-picking",
+      "Pose Uncertainty",
+      "Modular Framework",
+      "Grasping Error"
+    ],
+    "tldr": "提出模块化框架，通过姿态分布估计和第二视角融合，联合处理物体姿态和抓取不确定性。",
+    "motivation": "机器人抓取系统需处理物体姿态估计和抓取过程中的误差，现有方法缺乏通用性。",
+    "method": "提出模块化框架，包括物体姿态分布估计模块、第二视角互补姿态分布融合模块以及两个独立抓取误差补偿模块。",
+    "result": "在真实环境中对三个不同物体进行测试，所有模块均能提升效率。",
+    "conclusion": "首次联合处理抓取和物体姿态不确定性，采用可互换模块，具有灵活性和可扩展性，未来可扩展至SE(3)。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.13682v1",
+    "title": "Calibrated Closed-Form Uncertainty for Radiative Gaussian Splatting in Sparse-View CT",
+    "authors": [
+      "Chulin Zhao",
+      "Yiran Xu",
+      "Shu Liu"
+    ],
+    "abstract": "Radiative Gaussian splatting has made sparse-view CT reconstruction fast, but existing methods output point estimates with no notion of where the reconstruction can be trusted. We exploit a property of transmissive X-ray imaging that RGB splatting cannot claim -- projection and voxelization are strictly linear in the per-Gaussian densities -- to equip radiative Gaussians with a variational density posterior whose predictive variance propagates in closed form, exactly, in a single forward pass, in both volume space ($σ^2(x)=\\sum_i g_i(x)^2 s_i^2$) and projection space ($\\mathrm{Var}[I_p]=\\sum_i w_{i,p}^2 s_i^2$). We present the first systematic calibration study for Gaussian-splatting CT (Spearman / AUSE / ECE with temperature scaling), showing that the resulting per-voxel uncertainty ranks true reconstruction error on 14 of 15 scenes of the official benchmark across three view budgets -- 9 of 15 additionally meeting our magnitude-calibration target after a single temperature -- while the perturbation-ensemble heuristic of concurrent work, transplanted to voxel space under the same protocol on our development scenes, does not (rank correlation as low as $-0.08$). We then dissect why uncalibrated acquisition scores can nevertheless select acceptable views, identifying three regimes -- flat (isotropic, balanced), pathological (degenerate coverage), and anisotropic -- and showing, in controlled single-scene testbeds, that principled uncertainty earns a measurable premium only in the last, motivating a coverage-gated, maturity-scheduled acquisition policy; the same calibrated posterior further points toward a dose-adaptive stopping rule, whose experimental validation we leave to future work.",
+    "link": "http://arxiv.org/abs/2607.13682v1",
+    "published": "2026-07-15",
+    "category": "cs.CV",
+    "tags": [
+      "CT Reconstruction",
+      "Gaussian Splatting",
+      "Uncertainty Quantification",
+      "Sparse-View CT",
+      "Calibration"
+    ],
+    "tldr": "为辐射高斯泼溅引入闭式变分密度后验，实现精确的不确定性传播与校准，并在稀疏视图CT重建中验证其有效性。",
+    "motivation": "现有辐射高斯泼溅方法仅输出点估计，无法提供重建的可信度信息，需要一种高效且精确的不确定性量化方法。",
+    "method": "利用X射线成像中投影和体素化对高斯密度的严格线性特性，为辐射高斯赋予变分密度后验，其预测方差在单次前向传播中以闭式精确传播，得到体素空间方差σ²(x)=∑g_i(x)²s_i²和投影空间方差Var[I_p]=∑w_{i,p}²s_i²。",
+    "result": "在官方基准的15个场景中，14个场景的每体素不确定性在三个视图预算下正确排序真实重建误差（Spearman/AUSE/ECE经温度缩放），9个场景经单次温度缩放后达到幅度校准目标；而移植的扰动集成启发式在开发场景上表现不佳（秩相关低至-0.08）。",
+    "conclusion": "揭示了未校准采集分数在特定场景下有效的原因，提出了覆盖门控与成熟度调度的采集策略；校准后验还可用于剂量自适应停止规则，实验验证留待未来工作。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.13492v1",
+    "title": "CASA-SDF: Curriculum-Aware Spatial Adaptation with Curvature-Guided Density for Neural Implicit Surface Reconstruction",
+    "authors": [
+      "Lei Yang",
+      "Weiqing Li",
+      "Zhiyong Su",
+      "Liang Xiao"
+    ],
+    "abstract": "Neural implicit representations have emerged as a powerful paradigm for 3D reconstruction. However, high-fidelity indoor surface reconstruction remains a significant challenge, primarily due to the pronounced \\emph{geometric heterogeneity} of indoor scenes. Large texture-less planar regions typically require stronger regularization to suppress high-frequency artifacts, while thin structures demand sharper, more adaptive representations to mitigate the spectral bias of multi-layer perceptrons (MLPs) and prevent over-smoothing. Existing approaches often rely on spatially indiscriminate prior supervision and a scene-global SDF-to-density transformation, which constrains their ability to balance planar smoothness and detail preservation. In this paper, we propose CASA-SDF (Curriculum-Aware Spatial Adaptation for SDF), a unified framework that addresses this challenge via complementary adaptations of supervision and representation capacity. Specifically, Hybrid Spatially-Adaptive Uncertainty Annealing (SAUA) fuses semantic and photometric uncertainties to construct a pixel-wise curriculum for monocular prior supervision. This strategy maintains regularization in reliable regions while attenuating unreliable supervision early in training to enable data-driven photometric refinement. Meanwhile, Curvature-Aware Locally Adaptive Density Transformation (CALADT) progressively modulates the sharpness of the SDF-to-density mapping via a curvature proxy to enhance the representation of thin structures. Extensive experiments on benchmark indoor datasets demonstrate that CASA-SDF improves surface completeness and detail recovery on high-frequency structures, without compromising the stability of planar surfaces.",
+    "link": "http://arxiv.org/abs/2607.13492v1",
+    "published": "2026-07-15",
+    "category": "cs.CV",
+    "tags": [
+      "Neural Implicit Representation",
+      "3D Reconstruction",
+      "Indoor Surface",
+      "SDF",
+      "Curriculum Learning"
+    ],
+    "tldr": "提出CASA-SDF框架，通过自适应监督和密度变换实现室内表面高保真重建。",
+    "motivation": "室内场景几何异质性导致高保真表面重建困难，现有方法使用空间无差别先验监督和全局SDF-密度变换，难以平衡平面平滑与细节保留。",
+    "method": "提出混合空间自适应不确定性退火 (SAUA) 构建逐像素课程学习，以及曲率感知局部自适应密度变换 (CALADT) 通过曲率代理逐步调节SDF-密度映射的锐度。",
+    "result": "在室内基准数据集上，该方法在不影响平面稳定性的前提下，提高了高频结构的表面完整性和细节恢复。",
+    "conclusion": "CASA-SDF通过监督和表示能力的互补适应统一框架，有效平衡了平面正则化与细节保留，对神经隐式表面重建具有重要意义。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.13451v1",
+    "title": "Learning Physics-Guided Residual Dynamics for Deformable Object Simulation",
+    "authors": [
+      "Shivansh Patel",
+      "Kaifeng Zhang",
+      "Sanjay Pokkali",
+      "Svetlana Lazebnik",
+      "Yunzhu Li"
+    ],
+    "abstract": "Simulating deformable objects is essential for a wide range of robotic manipulation applications, yet accurately predicting their dynamics remains challenging. We propose Physics-Guided Residual Dynamics (PGRD), a hybrid simulation framework that combines the advantages of physics-based and learning-based approaches. Specifically, PGRD combines an optimizable spring-mass simulator as a backbone with a learned neural network that predicts residual corrections to the physics-based predictions. We adopt a velocity-based formulation to ensure stable simulation and a sliding-window transformer architecture to capture temporal dependencies. We show that PGRD produces more accurate results than both purely physics-based and learning-based methods on a set of diverse real-world deformable objects. We further demonstrate the utility of PGRD in two applications: manipulation planning via Model Predictive Control, including a language-conditioned setting with a generated goal image; and interactive simulation via action-conditioned video prediction by 3D Gaussian Splatting.",
+    "link": "http://arxiv.org/abs/2607.13451v1",
+    "published": "2026-07-15",
+    "category": "cs.AI",
+    "tags": [
+      "Deformable Object Simulation",
+      "Hybrid Model",
+      "Physics-Guided",
+      "Residual Learning",
+      "Transformer"
+    ],
+    "tldr": "提出物理引导残差动力学（PGRD）混合框架，结合弹簧质量模拟器和神经网络残差修正，实现更准确的可变形物体仿真。",
+    "motivation": "可变形物体的动力学预测对机器人操作至关重要，但现有纯物理或纯学习方法精度不足。",
+    "method": "结合可优化的弹簧质量模拟器作为骨干网络，用神经网络预测物理模拟的残差修正；采用基于速度的公式确保稳定性，并用滑动窗口Transformer捕捉时间依赖。",
+    "result": "在多种真实可变形物体上，PGRD比纯物理和纯学习方法产生更准确的结果。",
+    "conclusion": "PGRD可应用于基于模型预测控制的操纵规划（包括语言条件设定）和基于3D高斯喷溅的动作条件视频预测交互仿真，展示了其实用性。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.13449v1",
+    "title": "DreamSat-Pose: Spacecraft Pose Estimation from Single-View 3D Reconstructions and Learned 2D-3D Feature Matching",
+    "authors": [
+      "Josiane Uwumukiza",
+      "Jocelyn Zhao",
+      "Giovanni Lavezzi",
+      "Giacomo Battaglia",
+      "Paolo Panicucci",
+      "Minduli C. Wijayatunga",
+      "Victor Rodriguez-Fernandez",
+      "Richard Linares"
+    ],
+    "abstract": "6-DoF pose estimation is a critical task in autonomous rendezvous and proximity operations. In the case of an unknown target, this task becomes challenging as it shall be paired with the reconstruction of the target shape model. In this article, we propose a novel framework for single-shot shape and pose estimation of unknown spacecraft objects. Given a single image, we first reconstruct a 3D shape model of the target, then estimate the relative six-degrees-of-freedom pose by learning dense 2D-3D correspondences. The image features are extracted using a frozen DINOv3 vision transformer, while the geometric features are computed from the reconstructed point cloud using a trainable dynamic graph convolutional neural network encoder. A dual-stream transformer matcher refines descriptors through alternating self- and cross-attention, producing soft correspondences that are passed to a Perspective-$n$-Point solver for pose recovery. We evaluate the method on the SPE3R dataset and consider FoundationPose as a representative baseline for current state-of-the-art capabilities. Results show reliable pose estimates achieving 0.157 degrees mean pointing error using only a single image and reconstructed geometry, demonstrating strong generalization to unseen spacecraft.",
+    "link": "http://arxiv.org/abs/2607.13449v1",
+    "published": "2026-07-15",
+    "category": "cs.CV",
+    "tags": [
+      "Spacecraft Pose Estimation",
+      "6-DoF",
+      "3D Reconstruction",
+      "Feature Matching",
+      "Transformer"
+    ],
+    "tldr": "提出一种单张图像估计未知航天器位姿的框架，通过重建3D模型和2D-3D匹配实现高精度位姿估计。",
+    "motivation": "在未知目标航天器的自主交会与接近操作中，6自由度位姿估计与目标形状重建需同时进行，极具挑战性。",
+    "method": "首先使用冻结的DINOv3视觉Transformer提取图像特征，结合动态图卷积神经网络从重建点云提取几何特征；然后通过双流Transformer匹配器进行自注意力和交叉注意力优化，得到软对应关系；最后使用Perspective-n-Point求解器恢复位姿。",
+    "result": "在SPE3R数据集上，仅用单张图像和重建几何，平均指向误差达到0.157度，展现出对未知航天器的强泛化能力。",
+    "conclusion": "该方法实现了可靠的位姿估计，为空间任务中未知目标航天器的单次位姿估计提供了有效方案，优于FoundationPose基线。"
+  },
+  {
     "id": "http://arxiv.org/abs/2607.13010v1",
     "title": "DermDepth: Toward Monocular Metric Scale 3D Reconstruction Models for Dermatology",
     "authors": [
@@ -243,6 +399,117 @@
     "method": "构建时空位置隐式网络SPIN-4DGS，从显式收集的时空位置中预测高斯属性，通过轻量前馈网络避免内存开销，并利用光栅化重建损失训练。",
     "result": "在CMU Panoptic数据集的体育场景中，PSNR和SSIM显著提升，例如在Basketball场景上比最强基线D3DGS高1.83 PSNR。",
     "conclusion": "SPIN-4DGS在挑战性运动下实现稳定高质量溅射，能有效捕获时空一致性，具有高保真度与实用价值。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.13265v1",
+    "title": "Differentiable Polarized Path Tracing",
+    "authors": [
+      "Pramod Rao",
+      "Jérémy Riviere",
+      "Xilong Zhou",
+      "Abhijeet Ghosh",
+      "Abhimitra Meka",
+      "Thabo Beeler",
+      "Marc Habermann",
+      "Christian Theobalt",
+      "Delio Vicini"
+    ],
+    "abstract": "Physically based differentiable rendering has proven to be a powerful tool for inverse rendering problems (e.g., 3D reconstruction, reflectance estimation, lighting estimation). However, most existing methods operate solely on radiometric intensity, discarding valuable polarization cues that constrain scene geometry and material properties. While forward simulation of polarized light is well-defined via Mueller-Stokes calculus, extending reverse-mode differentiation to this domain presents significant challenges. The rank-deficient nature of common polarimetric operators, such as linear polarizers and diffuse reflections, violates the invertibility assumptions of standard gradient estimators like path replay backpropagation and results in numerical instability. We address this by proposing a robust, polarization-aware differentiable path tracing method. Our approach estimates unbiased gradients through a combination of path replay and local caching. This formulation enables efficient and stable optimization of material and lighting parameters in complex scenes, broadening the applicability of physically based inverse rendering. Project page: https://vcai.mpi-inf.mpg.de/projects/DPPT/",
+    "link": "http://arxiv.org/abs/2607.13265v1",
+    "published": "2026-07-14",
+    "category": "cs.CV",
+    "tags": [
+      "Differentiable Rendering",
+      "Polarization",
+      "Path Tracing",
+      "Inverse Rendering"
+    ],
+    "tldr": "提出偏振感知的可微路径追踪方法，结合路径回放与局部缓存实现稳定梯度估计。",
+    "motivation": "现有可微渲染忽略偏振线索，而偏振能提供几何与材质约束；但偏振算子秩亏损导致标准梯度方法数值不稳定。",
+    "method": "提出鲁棒的偏振感知可微路径追踪，通过路径回放和局部缓存组合估计无偏梯度，实现稳定优化。",
+    "result": "摘要未提供具体实验结果与量化指标。",
+    "conclusion": "该方法能高效稳定优化复杂场景中的材质与光照参数，拓宽了物理基础逆渲染的适用性。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.13010v2",
+    "title": "DermDepth: Toward Monocular Metric Scale 3D Reconstruction Models for Dermatology",
+    "authors": [
+      "Héctor Carrión",
+      "Narges Norouzi"
+    ],
+    "abstract": "Dermatological practice routinely involves measuring and tracking lesion size, morphology and texture, as critical components of wound or skin cancer screening, monitoring and diagnosis. To accomplish this task, practitioners often image the skin surface with commonly available off-the-shelf camera sensors. This has led to an overwhelming research focus on 2D methods while these objectives naturally benefit from 3D information. In this paper, we demonstrate that dense monocular 3D reconstructions, metric scale measurements and rich surface normal texture estimates are achievable for both dermoscopic and macroscopic cases without the need for additional hardware or multiple captures. We present DermDepth, the first single-view metric scale 3D model for the dermatological domain and D-Synth, the first synthetic dermoscopic dataset with pixel-perfect 3D information. Our experiments show training DermDepth on D-Synth corrects metric scale error from over 16x to under 1.1x for real dermoscopic data, while preserving geometric quality and increasing texture richness. Fine-tuning on a small amount of real clinical samples generalizes our method across three real-world benchmarks spanning the few mm to hundred cm range, diverse skin-tones, chronic wound cases and produces measurements broadly consistent with disease size reported in medical literature. All code, data and models are available at https://github.com/hectorcarrion/dermdepth.",
+    "link": "http://arxiv.org/abs/2607.13010v2",
+    "published": "2026-07-14",
+    "category": "cs.CV",
+    "tags": [
+      "Dermatology",
+      "Metric Scale",
+      "3D Reconstruction",
+      "Monocular",
+      "Synthetic Dataset"
+    ],
+    "tldr": "提出首个单视角公尺度3D模型DermDepth，结合合成数据集D-Synth实现皮肤病变的精确度量。",
+    "motivation": "皮肤病学常规需要测量和跟踪病变尺寸、形态等，但现有研究多聚焦2D方法，而3D信息能带来益处。本文旨在无需额外硬件或多重拍摄的情况下实现密集单目3D重建和公尺度测量。",
+    "method": "提出DermDepth模型，利用合成数据集D-Synth进行训练，纠正公尺度误差，并在少量真实临床样本上微调以泛化到不同尺度、肤色和慢性伤口等场景。",
+    "result": "训练后公尺度误差从>16倍降至<1.1倍，同时保持几何质量并增加纹理丰富度。在三个真实基准上测量结果与医学文献报道的疾病大小基本一致。",
+    "conclusion": "本文首次提出用于皮肤病学的单视角公尺度3D模型，并开源合成数据集和模型，有助于皮肤癌筛查和伤口监测等临床任务。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.12818v2",
+    "title": "Breaking Déjà Vu: Independent Auditing of Visual Place Recognition through Vision-Language Reasoning",
+    "authors": [
+      "Sania Waheed",
+      "Michael Milford",
+      "Sarvapali D. Ramchurn",
+      "Shoaib Ehsan"
+    ],
+    "abstract": "Visual place recognition (VPR) is a key enabler of accurate localization and long-term autonomous navigation in robotics applications, such as loop closure detection for simultaneous localisation and mapping (SLAM). However, real-world VPR deployment relies on selecting an image matching threshold that balances precision and recall. These thresholds are typically tuned using labeled validation data and fixed during deployment, making them unreliable under environmental changes where ground truth is unavailable. This is particularly problematic in safety-critical robotics, where accepting a false loop closure can corrupt the estimated trajectory and map. In this work, we introduce Visual Place Recognition Auditing, an independent post-retrieval verification framework that leverages Vision-Language Models (VLMs) to assess retrieved matches by reasoning jointly over query and candidate images. Unlike conventional verification methods, our approach performs instance-level verification without requiring architecture-specific confidence measures, dataset-dependent thresholds, or prior knowledge of the deployment environment. We evaluate our method on six benchmark datasets using five state-of-the-art VPR methods and four VLMs. Results show that VLM-based auditing improves recall@1 by 13.6% on average as compared to state-of-the-art methods while reducing false acceptance rates to 12%, maintaining precision above 95% and coverage above 75%.",
+    "link": "http://arxiv.org/abs/2607.12818v2",
+    "published": "2026-07-14",
+    "category": "cs.CV",
+    "tags": [
+      "Visual Place Recognition",
+      "Vision-Language Models",
+      "SLAM",
+      "Loop Closure Detection",
+      "Verification"
+    ],
+    "tldr": "提出基于视觉语言模型的独立后验验证框架，用于审计视觉地点识别中的检索匹配，提升召回率并降低误接受率。",
+    "motivation": "视觉地点识别（VPR）中，图像匹配阈值通常依赖标注数据固定设置，在环境变化时不可靠，尤其在安全关键机器人中，错误闭环会破坏轨迹和地图。",
+    "method": "引入视觉语言模型（VLM）对查询和候选图像进行联合推理，实现实例级验证，无需架构特定置信度、数据集依赖阈值或先验环境知识。",
+    "result": "在六个基准数据集上，使用五种VPR方法和四种VLM，平均召回率@1提升13.6%，误接受率降至12%，精确度保持95%以上，覆盖率超过75%。",
+    "conclusion": "该独立审计框架通过VLM推理提高了VPR的可靠性，为安全关键机器人应用提供了有效的后验验证手段。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.12785v2",
+    "title": "ExtraGS: Enhancing Endoscopic View Extrapolation via Diffusion-Guided 3D Gaussian Splatting",
+    "authors": [
+      "Cheng-Tai Hsieh",
+      "Jiwei Shan",
+      "Han Fang",
+      "Jianshu Hu",
+      "Tao Ni",
+      "Lijun Han",
+      "Yutong Ban",
+      "Shing Shin Cheng",
+      "Hesheng Wang"
+    ],
+    "abstract": "Robot-assisted minimally invasive surgery (MIS) critically depends on reliable endoscopic perception for navigation and safety. However, conventional endoscopes provide only a limited field of view, leaving large portions of the surrounding anatomy unobserved. Recent neural rendering approaches, such as Neural Radiance Fields and 3D Gaussian Splatting, enable novel view synthesis from endoscopic videos, but their reliance on sparse observations often leads to severe artifacts when extrapolating beyond the training trajectory. In this work, we propose ExtraGS, a framework for enhancing endoscopic view extrapolation through diffusion-guided 3D Gaussian Splatting. Starting from an initial reconstruction, we introduce an uncertainty-guided virtual camera sampling strategy to actively explore blind spots and maximize information gain. The rendered views from these sampled locations are refined using a diffusion model to recover plausible anatomical structures, producing pseudo-observations that guide further optimization. To prevent the generated content from degrading reliable regions, we adopt a confidence-weighted fine-tuning strategy when incorporating these pseudo-observations. Extensive experiments on multiple public endoscopic datasets demonstrate that ExtraGS significantly reduces extrapolation artifacts and achieves state-of-the-art performance in endoscopic novel view synthesis.",
+    "link": "http://arxiv.org/abs/2607.12785v2",
+    "published": "2026-07-14",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Endoscopic View Extrapolation",
+      "Diffusion Model",
+      "Neural Rendering",
+      "Surgical Robotics"
+    ],
+    "tldr": "ExtraGS通过扩散模型引导的3D高斯泼溅，显著提升了内窥镜视图外推的质量，减少了伪影。",
+    "motivation": "机器人辅助微创手术中内窥镜视野有限，现有神经渲染方法在训练轨迹外推时产生严重伪影。",
+    "method": "采用不确定度引导的虚拟相机采样策略探索盲区，利用扩散模型细化渲染视图生成伪观测，并通过置信度加权微调策略防止退化。",
+    "result": "在多个公共内窥镜数据集上，ExtraGS显著减少了外推伪影，达到了最先进的性能。",
+    "conclusion": "提出了一种有效增强内窥镜视图外推的框架，具有潜在临床意义。"
   },
   {
     "id": "http://arxiv.org/abs/2607.11673v1",
@@ -517,6 +784,32 @@
     "method": "核心是统一空间生成基元（SGP），将多模态输入提升为SGP；通过3D一致的全景视频生成器沿规划轨迹探索；最后用全景视频重建引擎转换为3D高斯泼溅（3DGS）世界。管道支持丰富输入的几何恢复和单输入的条件生成。",
     "result": "实验表明，ABot-3DWorld 0在开放源码方法中达到最优，且在丰富多模态输入下场景保真度优于Marble方法。",
     "conclusion": "提供了一个低门槛的通用3D内容创建引擎，可锚定生成世界到地理兴趣点，实现消费级地图原生空间探索，具有广泛的应用潜力。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.11285v2",
+    "title": "SalientGS: Unified SfM-to-3DGS with Importance-Guided MCMC Gaussian Allocation",
+    "authors": [
+      "Tianyu Xiong",
+      "Rui Li",
+      "Suning Ge",
+      "Jiaqi Yang"
+    ],
+    "abstract": "Reconstructing 3D scenes from unordered images remains bottlenecked by expensive Structure-from-Motion (SfM) preprocessing and frozen pose interfaces. We present SalientGS, a unified SfM-to-3D Gaussian Splatting (3DGS) pipeline. Its central contribution is importance-guided Markov Chain Monte Carlo (MCMC) Gaussian allocation, which aggregates multi-view residuals into per-Gaussian underfit and redundancy signals. These signals define a smooth importance-weighted sampling distribution that biases both birth and relocation toward underfit regions. This reallocates capacity from well-fit areas without altering the underlying stochastic gradient Langevin dynamics (SGLD). SalientGS achieves end-to-end reconstruction in 15 minutes with state-of-the-art perceptual quality. The supplementary material provides dedicated sections for Per-Scene Qualitative Comparisons and Per-Image Learned Perceptual Image Patch Similarity (LPIPS) Analysis, including failure cases. Code and evaluation scripts are available at https://github.com/Six-Bit-TX/SalientGS.",
+    "link": "http://arxiv.org/abs/2607.11285v2",
+    "published": "2026-07-13",
+    "category": "cs.CV",
+    "tags": [
+      "3DGS",
+      "MCMC",
+      "Importance Sampling",
+      "SfM",
+      "3D Reconstruction"
+    ],
+    "tldr": "提出SalientGS，通过重要性引导的MCMC高斯分配统一SfM与3DGS，实现快速高质量重建。",
+    "motivation": "解决传统SfM预处理昂贵和姿态接口冻结的问题，实现端到端3D场景重建。",
+    "method": "提出重要性引导的MCMC高斯分配，聚合多视图残差生成欠拟合和冗余信号，定义平滑采样分布，引导高斯出生和重定位至欠拟合区域，同时保持SGLD不变。",
+    "result": "在15分钟内完成端到端重建，取得最先进的感知质量；补充材料提供了每场景定性比较和每图像LPIPS分析。",
+    "conclusion": "统一了SfM到3DGS的流水线，提出重要性分配机制，显著提升重建效率和质量；代码已公开，可促进相关研究。"
   },
   {
     "id": "http://arxiv.org/abs/2607.10912v1",
@@ -1126,85 +1419,5 @@
     "method": "提出了两种方法：MoDE（将多个变形专家直接集成到可变形高斯泼溅管线中，共享规范高斯表示进行联合优化）和MoE-GS（变形专家独立优化后通过单独路由阶段组合）。",
     "result": "摘要未提供相关信息",
     "conclusion": "两种方法为多变形建模提供了不同策略，阐明了集成约束如何影响动态3D高斯表示中变形专家的设计与行为。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.07168v1",
-    "title": "NoDrift3R: Raymap-Guided Coupling for Drift-Robust Unposed Feed-Forward 3D Reconstruction",
-    "authors": [
-      "Xiangyu Sun",
-      "Liu Liu",
-      "Seungkwon Yang",
-      "Jingbing Han",
-      "Seungtae Nam",
-      "Zhizhong Su",
-      "Eunbyung Park"
-    ],
-    "abstract": "Pose-Free Feed-forward 3D Gaussian Splatting (3DGS) has recently emerged as a powerful paradigm for fast scene reconstruction. However, its performance degrades significantly in long image sequences due to cumulative camera pose estimation drift, which propagates errors into geometric modeling and severely limits rendering fidelity. In this work, we revisit the long-sequence bottleneck and identify pose drift as the primary factor restricting reconstruction quality. Furthermore, while SfM-based pseudo ground-truth poses introduce sensor noise, purely rendering-based supervision often leads to optimization instability and local minima due to the entangled optimization of geometry and pose. To address the challenges, we propose a synergistic pose-free framework that explicitly couples geometry and appearance via a Raymap-Guided Coupling Module (RGC). Concretely, we anchor Gaussian centers to raymap-induced geometry and jointly optimize RGB reconstruction, raymap consistency, and camera regularization under a unified objective, yielding a bidirectional feedback loop: stronger geometry improves rendering, and appearance supervision in turn refines geometry and pose. To further stabilize learning across wide temporal ranges, we introduce a Dual-Frequency Viewpoint Scheduling strategy that combines easy-to-hard interval expansion with replay of short-interval pairs. Extensive experiments across in-domain and cross-domain datasets show consistent gains in both rendering and pose estimation, with notably improved robustness on long sequences. Ablation studies validate our central insight: explicitly designed geometry-appearance synergy is the key to scalable and drift-robust pose-free feed-forward 3D reconstruction.",
-    "link": "http://arxiv.org/abs/2607.07168v1",
-    "published": "2026-07-08",
-    "category": "cs.CV",
-    "tags": [
-      "3D Reconstruction",
-      "Gaussian Splatting",
-      "Pose-Free",
-      "Drift-Robust",
-      "Feed-Forward"
-    ],
-    "tldr": "提出基于Raymap引导耦合的NoDrift3R框架，解决长序列无姿态前馈3D重建中的位姿漂移问题。",
-    "motivation": "无姿态前馈3D高斯泼溅在长序列中因累积位姿漂移导致性能下降，且现有监督方法存在噪声或优化不稳定问题。",
-    "method": "设计Raymap引导耦合模块(RGC)，将高斯中心锚定到raymap几何，联合优化RGB重建、raymap一致性和相机正则化；并采用双频视点调度策略稳定跨时间学习。",
-    "result": "在域内和跨域数据集上，渲染和位姿估计均取得一致提升，尤其在长序列中鲁棒性显著增强。",
-    "conclusion": "显式设计的几何-外观协同是无姿态前馈3D重建实现可扩展和抗漂移的关键。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.06896v1",
-    "title": "Dynamic Object Detection and Tracking in Construction: A Fisheye Camera and LiDAR Sensor Fusion Model",
-    "authors": [
-      "Yilong Chen",
-      "Huili Huang",
-      "Yong K. Cho"
-    ],
-    "abstract": "Robust dynamic object detection and tracking are essential for enabling robots to operate safely and effectively alongside humans in complex environments such as construction sites. While LiDAR-based SLAM and occupancy grid methods offer viable solutions for detecting and tracking motion, many state-of-the-art 3D vision approaches rely heavily on pre-trained neural networks and require additional post-processing to identify moving objects. Sensor fusion techniques, combining the precision of LiDAR with the semantic richness of RGB imagery, offer a promising alternative. In this work, we present a novel framework that enhances a quadruped robot equipped with a LiDAR sensor and an upward-facing fisheye camera for real-time dynamic object detection and tracking. After identifying moving objects within a registered point cloud, our method assigns semantic labels by projecting 3D coordinates onto a 2D cylindrical panorama, aligning with real-time image-based detections for observation update of the Kalman filter. The proposed system demonstrates high precision, simplicity, and robustness, particularly in handling objects transitioning between dynamic and static states, thus it is well-suited for deployment in real-world construction environments.",
-    "link": "http://arxiv.org/abs/2607.06896v1",
-    "published": "2026-07-08",
-    "category": "cs.CV",
-    "tags": [
-      "sensor fusion",
-      "object detection",
-      "tracking",
-      "LiDAR",
-      "fisheye camera"
-    ],
-    "tldr": "提出了一种结合鱼眼相机和LiDAR的传感器融合框架，用于施工现场的实时动态物体检测与跟踪。",
-    "motivation": "在复杂施工环境中，机器人需要鲁棒的动态物体检测与跟踪以确保安全操作，现有方法依赖预训练神经网络和额外后处理。",
-    "method": "使用LiDAR和向上鱼眼相机，通过将LiDAR点云中的移动物体投影到2D柱面全景图上，与实时图像检测对齐，并利用卡尔曼滤波器进行状态更新。",
-    "result": "系统在物体动态与静态状态转换的处理上表现出高精度、高简洁性和鲁棒性。",
-    "conclusion": "提出的框架适用于真实施工环境中的机器人部署，具有实用性和有效性。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.07905v1",
-    "title": "3D Reconstruction of deciduous Trees using low-cost UAV- and Crane-based Photogrammetry for Monitoring Shoot Elongation across entire Canopies",
-    "authors": [
-      "Stephan Nebiker",
-      "Micha Tschanz",
-      "Nando Amport",
-      "Frederik Baumgarten"
-    ],
-    "abstract": "Tree growth determines how much CO2 is sequestered from the atmosphere and temporarily stored in woody biomass. At the same time tree growth is affected by increasing temperatures, more frequent drought periods, late frosts and other extreme events associated with climate change. While continuous measurements of radial (secondary) tree growth using dendrometers are well established, monitoring of shoot elongation (primary growth) has largely been neglected because suitable measurement techniques are lacking. As a result, the effects of climate change on primary tree growth remain insufficiently understood. This work aims at reconstructing native deciduous trees in 3D as a basis for measuring and monitoring shoot elongation over entire tree canopies. Here we explored the use of low-cost UAV photogrammetry and of a multi-camera CraneCam system under real-world conditions. Data were collected in two study areas over an entire growing season. We present sensor evaluations, photogrammetric data acquisition and processing strategies. A special focus is placed on the analysis of the resulting photogrammetric 3D point clouds in terms of accuracy, resolution and completeness. Results demonstrate 3D point accuracies of 5-6 mm for entire trees using consumer-grade UAVs weighing less than 250 g and a 3D reconstruction completeness between 92% and 98% depending on the UAV type. The paper introduces a novel 3Dprinted ground-truth branch to evaluate the capability to reconstructing fine-detail structures such as thin tree shoots. Finally, we discuss operational challenges and initial experiments towards a skeletonization of entire trees based on photogrammetric point clouds.",
-    "link": "http://arxiv.org/abs/2607.07905v1",
-    "published": "2026-07-08",
-    "category": "cs.CV",
-    "tags": [
-      "Photogrammetry",
-      "3D Reconstruction",
-      "Tree Monitoring",
-      "UAV",
-      "Shoot Elongation"
-    ],
-    "tldr": "利用低成本无人机和吊车摄影测量实现落叶树三维重建，以监测整个树冠的枝条伸长。",
-    "motivation": "由于缺乏合适的测量技术，树木初级生长（枝条伸长）的监测被忽视，导致气候变化对初级生长的影响理解不足。",
-    "method": "采用低成本无人机摄影测量和多相机CraneCam系统，在真实条件下采集整个生长季的数据，并进行摄影测量数据采集与处理策略研究。",
-    "result": "消费级无人机（<250g）实现整树三维点云精度5-6mm，重建完整度92%-98%（取决于无人机类型）。",
-    "conclusion": "提出了一种新型3D打印地面真值枝条来评估细部结构重建能力，并讨论了操作挑战及基于摄影测量点云的整树骨架化初步实验。"
   }
 ]
