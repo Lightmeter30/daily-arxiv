@@ -1,5 +1,59 @@
 [
   {
+    "id": "http://arxiv.org/abs/2607.22534v1",
+    "title": "SM4RT: Learning Structured Motion Geometry for 4D Reconstruction",
+    "authors": [
+      "Shing Ho J. Lin",
+      "Wenzhao Zheng",
+      "Dong Zhuo",
+      "Yuqi Wu",
+      "Jie Zhou",
+      "Jiwen Lu"
+    ],
+    "abstract": "Geometry Foundation Models (GFMs) have substantially advanced monocular 3D reconstruction, yet extending this capability to 4D dynamic understanding remains a fundamental challenge. Most existing motion perception methods (e.g., sparse tracking, dense point-wise flow) treat motion as independent point-wise displacements, ignoring the structured nature of physical motion. However, real-world objects usually obey rigid-body kinematics, and points thus usually move collectively, not in isolation. Motion itself possesses geometric structure: physical objects undergo a set of rigid-body transformations governed by SE(3), rather than unstructured point-wise displacements. Building on this insight, we propose SM4RT, a Structured Motion 4D Reconstruction Transformer for end-to-end 3D reconstruction and structured motion perception. SM4RT introduces Structure-of-Motion to represent scene dynamics, where scene motion is decomposed into a compact set of motion bases, each represented as a temporal sequence of 6D twists in SE(3). Dense scene motion is then recovered by sparse, time-shared per-pixel assignment weights over these bases, ensuring points on the same object share a common rigid-body motion trajectory. SM4RT introduces a parallel motion geometry encoder and decoder that jointly infer 3D geometry, world-coordinate motion, and scene kinematic structure in a single forward pass from monocular RGB video. SM4RT achieves strong motion reconstruction performance while preserving the geometric structure of scene motion.",
+    "link": "http://arxiv.org/abs/2607.22534v1",
+    "published": "2026-07-24",
+    "category": "cs.CV",
+    "tags": [
+      "4D Reconstruction",
+      "Motion Perception",
+      "Geometry Foundation Model",
+      "SE(3)",
+      "Transformer"
+    ],
+    "tldr": "SM4RT通过将场景运动分解为紧凑的SE(3)运动基元，实现端到端的单目视频4D重建与结构化运动感知。",
+    "motivation": "现有运动感知方法将运动视为独立点位移，忽略真实物体遵循刚体运动学的结构化特性，导致4D动态理解困难。",
+    "method": "提出SM4RT，引入Structure-of-Motion表示，将场景运动分解为多个6D twists (SE(3))运动基元，并通过稀疏的每像素分配权重恢复密集运动；采用并行运动几何编码器-解码器，联合推断3D几何、世界坐标运动和运动学结构。",
+    "result": "摘要未提供具体量化指标，但表明SM4RT在运动重建性能上表现强劲，同时保持了场景运动的几何结构。",
+    "conclusion": "SM4RT贡献了一种结构化运动表示和端到端4D重建方法，推动了单目视频动态理解的发展，具有潜在应用价值。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.22147v1",
+    "title": "Visual Relocalization from Sparse Views in Aliased and Low-Texture Environments via Novel View Synthesis",
+    "authors": [
+      "Maria Peribañez",
+      "Javier Civera",
+      "Rudolph Triebel",
+      "Riccardo Giubilato"
+    ],
+    "abstract": "Visual localization becomes extremely challenging in planetary-like terrains characterized by low texture, perceptual aliasing, harsh illumination, and sparse, weakly overlapping viewpoints induced by forward rover motion and unconstrained driving directions. Under these conditions, state-of-the-art image-to-image and image-to-map matching pipelines suffer significant performance degradation. In this work, we propose a visual relocalization method that departs from classical correspondence-based pipelines by directly estimating camera poses against a differentiable map representation built with 3D Gaussian Splatting (3DGS). Our key contribution is a geometry-aware training strategy that combines photometric and geometric losses, where the geometric supervision is provided for the first time by combining multi-view stereo (MVS) and LiDAR depths. We show that this joint optimization produces a 3DGS model that better fits the underlying scene geometry, leading to improved photometric and geometric consistency and more robust, accurate single-image 6-DoF pose estimation. Extensive experiments on data acquired in planetary-analog environments validate the effectiveness of our approach, showing substantial gains in relocalization accuracy under challenging conditions. Code is available at https://github.com/DLR-RM/multimodal-gsplat-relocalization.",
+    "link": "http://arxiv.org/abs/2607.22147v1",
+    "published": "2026-07-24",
+    "category": "cs.CV",
+    "tags": [
+      "Visual Relocalization",
+      "3D Gaussian Splatting",
+      "Multi-View Stereo",
+      "Planetary Exploration",
+      "6-DoF Pose Estimation"
+    ],
+    "tldr": "提出一种基于3D高斯泼溅的视觉重定位方法，通过几何感知训练实现稀疏视图下的鲁棒位姿估计。",
+    "motivation": "在低纹理、视觉模糊和光照恶劣的类行星环境中，传统视觉定位方法因稀疏重叠视图而性能严重下降，需要一种不依赖点对应的直接位姿估计方法。",
+    "method": "核心方法是构建可微分的3D高斯泼溅地图，并首次采用结合光度损失和几何损失的几何感知训练策略，其中几何监督由多视立体和LiDAR深度联合提供。",
+    "result": "在类行星模拟数据上的实验验证了该方法在重定位精度上显著优于现有方法，但摘要未提供具体量化指标。",
+    "conclusion": "贡献在于提出联合优化光度和几何一致性的3DGS训练策略，提升了单图像6自由度位姿估计的鲁棒性和准确性，且代码已开源，对行星探测等场景有重要应用潜力。"
+  },
+  {
     "id": "http://arxiv.org/abs/2607.21576v1",
     "title": "Self-Supervised Learning of Structured Dynamics from Videos",
     "authors": [
@@ -976,29 +1030,5 @@
     "method": "使用轻量神经网络动态预测隐式可编辑高斯泼溅，联合学习聚类几何相似场景并共享参数，神经熵模型压缩锚点属性，以及针对体可视化优化的高斯初始化策略。",
     "result": "相比iVR-GS，PSNR提升2.2 dB，模型大小减小6.1倍，训练时间减少5.9倍。",
     "conclusion": "ECoNGS在训练时间、重建质量和模型大小上优于先前方法，为高端科学可视化任务提供了高效解决方案。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.17058v1",
-    "title": "DROID-ANCHOR: Odometry-Anchored Recurrent Metric Depth Estimation",
-    "authors": [
-      "Yuxuan Chen",
-      "Brook Du"
-    ],
-    "abstract": "Precise metric depth estimation is fundamental for autonomous robot navigation, yet monocular systems inherently suffer from scale ambiguity and scale drift. While recent recurrent flow-based SLAM systems have demonstrated state-of-the-art robustness, they remain scale-ambiguous. In this paper, we propose Metric-DROID, an end-to-end recurrent architecture that anchors visual SLAM to physical reality by integrating proprioceptive odometry. Our framework introduces the following innovations: (1) A LSTM Update Operator that encodes high-frequency odometry sequences into spatial feature maps, providing a persistent metric bias for iterative refinement. (2) An Uncertainty-Aware Metric Backend ($BA_{odom}$) that treats odometry as a geometric anchor with learned heteroscedastic covariance. By regressing a time-varying metric uncertainty $Σ_{o}$, our system intelligently balances visual re-projection and metric translation residuals, effectively mitigating the impact of wheel-slip and sensor noise. (3) We further propose a selective residual fine-tuning strategy to preserve pre-trained geometric priors while enabling zero-shot metric alignment.",
-    "link": "http://arxiv.org/abs/2607.17058v1",
-    "published": "2026-07-19",
-    "category": "cs.CV",
-    "tags": [
-      "SLAM",
-      "Metric Depth",
-      "Odometry",
-      "Recurrent Network",
-      "Depth Estimation"
-    ],
-    "tldr": "提出Metric-DROID，一种端到端循环架构，通过集成本体感测里程计实现精确度量深度估计。",
-    "motivation": "单目系统存在尺度模糊和尺度漂移，现有循环光流SLAM仍尺度模糊，需要精确度量深度用于机器人导航。",
-    "method": "提出Metric-DROID，包含LSTM更新算子编码高频里程计序列，不确定性感知度量后端（BA_odom）将里程计作为几何锚点并学习时变不确定协方差，以及选择性残差微调策略保持预训练几何先验。",
-    "result": "摘要未提供具体量化指标。",
-    "conclusion": "实现了零样本度量对齐，通过智能平衡视觉重投影与度量平移残差，有效减轻轮滑和传感器噪声影响。"
   }
 ]
