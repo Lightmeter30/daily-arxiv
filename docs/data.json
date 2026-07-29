@@ -1,5 +1,144 @@
 [
   {
+    "id": "http://arxiv.org/abs/2607.25895v1",
+    "title": "HiFi-UMI: Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone",
+    "authors": [
+      "Simple AI",
+      " :",
+      "Yuteng Wei",
+      "Jinming Ma",
+      "Jiawei Wang",
+      "Weitao Zhou",
+      "Yushen Zuo",
+      "Ke Rui",
+      "Minglei Li",
+      "Jinhao Zhang",
+      "Zhikang Pan",
+      "Xiang Wang",
+      "Haoran Jia",
+      "Huan Du",
+      "Zicheng Zeng",
+      "Jun Ma",
+      "Guiyu Qin",
+      "Di Zhang",
+      "Xiaofei Li"
+    ],
+    "abstract": "Learning deployable manipulation policies is bottlenecked by the scarcity of data that is both high-fidelity and scalable. Real-robot teleoperation is accurate but costly to scale; robot-free UMI capture scales readily, and current practice uses the resulting data mainly for pre-training, adding a small real-robot \"anchor\" at post-training. We ask whether raising the fidelity of robot-free UMI data, rather than shrinking the real-robot fraction, can remove that anchor. We present HiFi-UMI, a portable UMI data-production system co-designed for trajectory accuracy, inter-gripper relative pose, synchronization, and field of view: head-mounted offline stereo-inertial SLAM, native rather than reconstructed relative pose, a shared microsecond GPIO trigger, and two wide-angle cameras per hand covering ~200 degrees. It reaches 3 mm workspace-local end-effector accuracy without external tracking infrastructure. Using this corpus, we demonstrate zero-robot post-training: a policy post-trained solely on HiFi-UMI demonstrations deploys directly on a real robot and matches in-domain teleoperation across three backbones spanning the vision-language-action and world-action-model families, with success-rate differences of -2.5, +3.1, and -0.6 percentage points on StarVLA-QwenPI, OpenPI-pi_0.5, and LingBot-VA; the strongest policy reaches 85% on a precision insertion task, even though the teleoperation baseline is collected in the evaluation scene and no HiFi-UMI trajectory is. Pre-training on 4,000 hours from the same corpus lowers action error on ten unseen tasks by 41% and, on StarVLA-QwenPI, raises real-robot success by a further 18.1 percentage points. We open-source HiFi-UMI-2K, 2,000 hours of microsecond-synchronized, ultra-wide-FoV demonstrations, each automatically reconstructed and validated through simulation replay, as a large-scale, high-fidelity resource for the robot-learning community.",
+    "link": "http://arxiv.org/abs/2607.25895v1",
+    "published": "2026-07-28",
+    "category": "cs.CV",
+    "tags": [
+      "Manipulation Policies",
+      "Data Collection",
+      "UMI",
+      "SLAM",
+      "Imitation Learning"
+    ],
+    "tldr": "HiFi-UMI通过提升无机器人数据保真度，完全取代了真实机器人数据在策略后训练中的作用，实现了可部署的操纵策略。",
+    "motivation": "学习可部署的操纵策略受限于既高保真又可扩展的数据；远程操作准确但成本高，无机器人UMI捕获可扩展但通常需要少量真实机器人数据微调。本文旨在通过提高无机器人数据的保真度来消除对真实机器人数据的依赖。",
+    "method": "提出HiFi-UMI系统，包括头戴式离线立体惯导SLAM、原生相对位姿、微秒级GPIO触发、每手两个广角摄像头（覆盖~200度），达到3mm末端精度，无需外部追踪。",
+    "result": "零机器人后训练：仅用HiFi-UMI数据后训练的策略在真实机器人上直接部署，与域内遥操作基线相比，成功率差异在三个骨干网络上分别为-2.5、+3.1、-0.6个百分点；最强策略在精密插入任务上达到85%；在10个未见任务上预训练后动作误差降低41%，在StarVLA-QwenPI上真实机器人成功率提升18.1个百分点。",
+    "conclusion": "开源了2000小时微秒同步、超广角演示数据集HiFi-UMI-2K，为机器人学习社区提供大规模高保真资源；核心贡献是证明了高保真无机器人数据可以完全替代真实机器人数据，实现可部署策略。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.25569v1",
+    "title": "CORF-GS: Real-Time Wireless Radiance Field Reconstruction via Coupled Optical-RF Gaussian Splatting",
+    "authors": [
+      "Jinya Zhang",
+      "Jiajia Guo",
+      "Chao-Kai Wen",
+      "Shi Jin"
+    ],
+    "abstract": "Recent advances in 3D Gaussian Splatting (3DGS)-based wireless radiance field (WRF) reconstruction provide an efficient solution for wireless channel modeling. However, existing WRF reconstruction methods rely on pre-collected observations and offline optimization, and thus struggle to provide real-time channel knowledge. To bridge this gap, we propose CORF-GS, a real-time WRF reconstruction framework that processes sequential optical and radio frequency (RF) keyframes. Specifically, CORF-GS constructs a unified Gaussian representation for optical and RF with shared geometry and modality-specific appearance, allowing high-resolution optical images to provide structural priors for WRF reconstruction. When a new keyframe arrives, CORF-GS first employs optical-guided Gaussian sampling to densify the WRF in under-represented regions. Since light and radio waves may respond differently to the same object surfaces due to wavelength mismatch, relying solely on optical guidance may neglect RF-informative areas. Therefore, CORF-GS performs coupled optical-RF optimization to jointly refine the shared Gaussians. Compared with the existing two-stage training pipelines, this prevents WRF from passively adapting to a frozen optical geometry and encourages the shared Gaussians to adapt to both optical structures and RF power distributions. Simulations show that CORF-GS achieves state-of-the-art RF spectrum synthesis quality and reduces the reconstruction time by $6.4\\times$ compared with existing WRF methods.",
+    "link": "http://arxiv.org/abs/2607.25569v1",
+    "published": "2026-07-28",
+    "category": "cs.AI",
+    "tags": [
+      "3DGS",
+      "WRF",
+      "Real-Time",
+      "Optical-RF Fusion"
+    ],
+    "tldr": "CORF-GS通过耦合光学-RF高斯溅射实现实时无线辐射场重建。",
+    "motivation": "现有无线辐射场重建依赖预收集数据和离线优化，无法提供实时信道知识。",
+    "method": "构建统一的高斯表示，共享几何而分离外观；光学引导高斯采样在欠表示区域稠密化；耦合光学-RF优化联合精化共享高斯，避免被动适应冻结光学几何。",
+    "result": "在RF频谱合成质量上达到最优，重建时间相比现有方法降低6.4倍。",
+    "conclusion": "实现了实时无线辐射场重建，具有高质量和高效性。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.25389v1",
+    "title": "HOME: Robust Hough-space Matching Method for Structured and Textureless Videos",
+    "authors": [
+      "Masaki Satoh"
+    ],
+    "abstract": "Visual front-ends for robotic localization typically rely on point-based features such as Oriented FAST and Rotated BRIEF (ORB), which frequently fail in structured environments dominated by strong linear structures or textureless surfaces. While line-based Simultaneous Localization and Mapping (SLAM) systems mitigate this by utilizing line segments, conventional line extraction and description algorithms are computationally prohibitive for real-time edge robotics. To address this fundamental bottleneck, we propose HOME (Hough-space One-dimensional Matching of Extrema), an ultra-lightweight, training-free feature matching framework. HOME transforms images into Hough space, mapping global linear structures to stable local extrema, which serve as keypoints, thereby reformulating complex line matching into highly efficient one-dimensional point matching. The proposed 1D radial descriptor mathematically guarantees rotational and translational invariance without the overhead of explicit orientation estimation. As a proof of concept to validate the matching accuracy and efficiency of HOME, this paper focuses on homography estimation. Extensive evaluations demonstrate that HOME achieves robust registration in challenging scenarios where point-based methods fail, operating at a much faster speed than existing line-based methods. Extending this robust matching engine to full 3D pose estimation remains a highly promising future direction.",
+    "link": "http://arxiv.org/abs/2607.25389v1",
+    "published": "2026-07-28",
+    "category": "cs.CV",
+    "tags": [
+      "Feature Matching",
+      "Hough Space",
+      "SLAM",
+      "Homography Estimation"
+    ],
+    "tldr": "提出HOME方法，通过Hough空间一维匹配实现结构化和无纹理场景的鲁棒、快速特征配准。",
+    "motivation": "点特征在结构化环境易失败，线特征计算昂贵，需轻量级匹配方法。",
+    "method": "将图像变换到Hough空间，将全局线性结构映射为稳定局部极值作为关键点，进行一维点匹配；设计1D径向描述子保证旋转和平移不变性。",
+    "result": "在点方法失败场景中实现鲁棒配准，速度显著快于现有线方法。",
+    "conclusion": "提出超轻量、免训练的特征匹配框架HOME，验证了其在单应估计中的有效性，未来可扩展至3D位姿估计。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.25362v1",
+    "title": "PanoLess: Environment Reconstruction from Partial Reflective Views",
+    "authors": [
+      "Ahitagni Das",
+      "Ashok Veeraraghavan",
+      "Vivek Boominathan"
+    ],
+    "abstract": "Reflections from shiny objects and glass facades naturally extend the field of view of a camera, capturing the surrounding environment without the need to pan the camera or acquire a full panorama. We propose PanoLess, a Gaussian-splat-based framework that reconstructs the surrounding environment as a distant illumination map from images captured on only one side of a reflective surface. PanoLess leverages surface-aligned 2D Gaussian splats with deferred shading to recover accurate per-pixel normals and reflection cues, which are fused into a neural cubemap representation of the environment. In addition, PanoLess produces a visibility map that explicitly denotes which regions of the environment are supported by the partial reflective observations. Unlike existing inverse-rendering and reflection-aware Gaussian-splatting approaches, which typically require full 360-degree coverage and struggle under incomplete views, PanoLess enables consistent, physically grounded illumination estimation from partial-view input. We show that PanoLess achieves high-fidelity and geometrically consistent environment reconstruction, outperforming reflection-aware baselines on a new custom synthetic benchmark and publicly available datasets, and demonstrating generalization to real-world reflective captures.",
+    "link": "http://arxiv.org/abs/2607.25362v1",
+    "published": "2026-07-28",
+    "category": "cs.CV",
+    "tags": [
+      "Gaussian Splatting",
+      "Environment Reconstruction",
+      "Reflection",
+      "Neural Cubemap",
+      "Inverse Rendering"
+    ],
+    "tldr": "PanoLess利用表面对齐2D高斯泼溅和延迟着色，从单侧反射图像重建环境光照图及可见性图。",
+    "motivation": "现有反射感知方法通常需要360度全覆盖，无法处理部分反射视图，PanoLess旨在从有限视角的反射图像中实现一致的环境重建。",
+    "method": "采用表面对齐的2D高斯泼溅和延迟着色恢复逐像素法线和反射线索，融合为神经立方体贴图表示，并生成显式可见性图。",
+    "result": "在自定义合成基准和公开数据集上优于反射感知基线，实现了高保真度和几何一致的环境重建，并泛化到真实反射场景。",
+    "conclusion": "PanoLess实现了从部分视图的物理合理环境重建，无需全向覆盖，对反射场景的逆渲染和3D重建具有重要价值。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.25215v1",
+    "title": "Leveraging Semantic Maps for City-Scale Cross-View Localization",
+    "authors": [
+      "Ethan Fahnestock",
+      "Erick Fuentes",
+      "Philip R Osteen",
+      "Nicholas Roy"
+    ],
+    "abstract": "We want robots to localize in previously untraversed environments against commonly available prior data. Rich semantic data available from OpenStreetMap can be useful in this task. However, existing methods either ignore this semantic information, directly matching panoramas and overhead imagery, or dramatically compress the semantic information, working with a small set of fixed classes. To leverage this rich semantic information, two challenges need to be overcome. First, useful semantic information needs to be extracted from the robot's egocentric observations. Second, the observed information must be quickly associated with the large prior semantic map (e.g., up to 628 km^2). We show that VLMs are effective at both extracting relevant landmarks from panoramas, and identifying feasible correspondences between these landmarks and prior overhead landmarks. However, using VLMs to propose all correspondences scales poorly as the number of mapped landmarks increases. Instead, we propose distilling a lightweight matcher from a VLM which computes correspondences for all entities in a map. We use this output to form an observation likelihood which is fused over time with a Bayes filter to create a time series of pose estimates. To support further investigation into generalizable cross-view methods that leverage semantic information, we release a dataset of extracted semantics and evaluation trajectories spanning eleven environments, including panoramas we collected in a snowstorm and at night in Boston. We demonstrate our method, trained on a single city's fair-weather data, generalizes across location, lighting, weather, and other challenges. Code and datasets are available at https://efahnestock.github.io/loci/.",
+    "link": "http://arxiv.org/abs/2607.25215v1",
+    "published": "2026-07-28",
+    "category": "cs.CV",
+    "tags": [
+      "Cross-View Localization",
+      "Semantic Maps",
+      "VLM",
+      "Bayes Filter",
+      "OpenStreetMap"
+    ],
+    "tldr": "利用VLM从全景图提取语义地标并与OpenStreetMap匹配，通过贝叶斯滤波实现城市场景跨视角定位。",
+    "motivation": "现有方法忽略丰富语义信息或压缩成固定类别，需解决从机器人观测中提取有用语义并与大规模先验语义地图快速关联的挑战。",
+    "method": "使用VLM从全景图中提取相关地标并识别与先验地标的对应关系；蒸馏出一个轻量级匹配器用于计算所有地图实体的对应关系；通过贝叶斯滤波融合观测似然得到时间序列位姿估计。",
+    "result": "在11个环境（包括暴风雪和夜间）的数据集上验证，方法仅用单个城市晴好天气数据训练即能泛化到不同位置、光照、天气等挑战。",
+    "conclusion": "提出一种利用丰富语义信息进行跨视角定位的方法，具有强泛化能力，并开源了数据集。潜在影响为推动语义地图在机器人定位中的广泛应用。"
+  },
+  {
     "id": "http://arxiv.org/abs/2607.24730v1",
     "title": "KANEx: Translating Kolmogorov-Arnold Networks' Interpretability to Medical Explainability",
     "authors": [
@@ -889,246 +1028,5 @@
     "method": "构建基于3D高斯泼溅（3DGS）和高帧率视频的物理模糊合成管线；利用视频扩散先验，禁用VAE时间压缩并采用逐帧编码；通过知识蒸馏将多步扩散采样压缩为一步生成器，并使用时序窗口掩码确保长视频推理的时域一致性。",
     "result": "在多种真实世界基准上展示了优异的感知质量、语义保真度和时域一致性，并在严重运动模糊下提升了下游3D重建的鲁棒性。",
     "conclusion": "该工作提出了高效的生成式框架，通过物理数据合成和一步扩散蒸馏，显著提升了真实世界视频去模糊的泛化能力和实用性，对移动成像和3D重建等下游任务具有潜在影响。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.19228v1",
-    "title": "IGGT4D: Streaming 4D Instance-Grounded Geometry Transformer",
-    "authors": [
-      "Zhengyu Zou",
-      "Hao Li",
-      "Kuixuan Jiao",
-      "Liu Liu",
-      "Tingyang Xiao",
-      "Xiaolin Zhou",
-      "Fangzhou Hong",
-      "Zhizhong Su",
-      "Dingwen Zhang",
-      "Ziwei Liu"
-    ],
-    "abstract": "Real-world spatial intelligence requires agents to understand scenes from continuous video streams, where objects move, persist, disappear, and reappear over time. While recent spatial foundation models have enabled generalizable feed-forward 3D reconstruction, most streaming methods remain geometry-centric and lack temporally consistent object-level understanding. Meanwhile, existing semantic reconstruction and 3D-aware vision-language methods largely rely on externally extracted 2D semantic cues or loosely coupled geometry inputs, limiting unified geometry-instance learning in long dynamic scenes. In this paper, we propose IGGT4D, a streaming instance-grounded geometry Transformer for online 4D scene understanding. IGGT4D processes video frames sequentially, reuses historical context through causal spatial-temporal modeling, and incrementally updates a unified representation of camera motion, geometry, and object identity. This enables long-sequence feed-forward reconstruction with geometry-instance consistency in dynamic environments. To address the lack of high-quality 4D supervision, we further construct InsScene4D-147K, a large-scale dataset spanning real/synthetic and static/dynamic scenes, with RGB images, depth, poses, and temporally consistent instance masks generated by an automated geometry-guided annotation pipeline. Experiments on 3D reconstruction, pose estimation, instance spatial tracking, and open-vocabulary segmentation demonstrate that IGGT4D outperforms existing streaming baselines while maintaining scalable online inference for long dynamic sequences.",
-    "link": "http://arxiv.org/abs/2607.19228v1",
-    "published": "2026-07-21",
-    "category": "cs.CV",
-    "tags": [
-      "4D Reconstruction",
-      "Instance Segmentation",
-      "Streaming",
-      "Transformer",
-      "Scene Understanding"
-    ],
-    "tldr": "IGGT4D是一种用于在线4D场景理解的流式实例几何Transformer，通过因果时空建模实现长序列几何-实例一致性重建。",
-    "motivation": "现实世界空间智能需要代理从连续视频流中理解场景，现有方法缺乏时间一致的对象级理解和统一的几何-实例学习。",
-    "method": "提出IGGT4D，逐帧处理视频，通过因果时空建模重用历史上下文，增量更新相机运动、几何和物体标识的统一表示。同时构建大规模数据集InsScene4D-147K，包含真实/合成、静态/动态场景，使用自动几何引导标注生成时间一致的实例掩码。",
-    "result": "在3D重建、位姿估计、实例空间跟踪和开放词汇分割等任务上，IGGT4D优于现有流式基线方法，并保持长动态序列的可扩展在线推理。",
-    "conclusion": "IGGT4D实现了动态环境中长序列的前馈重建和几何-实例一致性，为流式4D场景理解提供了新的基准和数据集。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.19120v1",
-    "title": "Latent Riemannian Flow Matching for Geometry-Grounded 3D Foundation Models",
-    "authors": [
-      "Lisa Weijler",
-      "Irene Ballester",
-      "Guofeng Mei",
-      "Tolga Birdal",
-      "Pedro Hermosilla"
-    ],
-    "abstract": "Geometric foundation models, such as the Visual Geometry Grounded Transformer (VGGT), provide strong 3D priors from unposed images. However, such models operate purely in a feed-forward, deterministic regime, \\ie~they cannot generate plausible geometry beyond what the input views directly support. Generative models for 3D scenes, on the other hand, must rely on strong geometric priors to produce coherent outputs from sparse inputs. We bridge these two paradigms by performing flow matching directly in VGGT's latent space, leveraging its learned 3D priors without committing to any explicit downstream representation such as Gaussians, meshes, or video-VAE latents. This requires respecting the latent geometry: VGGT tokens occupy a product of high-dimensional hyperspheres on which standard Euclidean flow matching fails. We address this with a Riemannian Flow Matching framework defined on a product manifold of four hyperspheres, aligned with VGGT's multi-scale encoder, which keeps generated tokens on the valid data manifold required by the frozen decoding heads. On RealEstate10K, ScanNet++ and ETH3D, our method achieves strong performance against recent scene generation baselines in both per-view appearance and aggregated 3D geometry, establishing latent-space flow matching on geometric foundation models as a viable paradigm for 3D generation. The project page can be found $\\href{https://lisaweijler.github.io/geometry-grounded-rfm/}{\\text{here}}$.",
-    "link": "http://arxiv.org/abs/2607.19120v1",
-    "published": "2026-07-21",
-    "category": "cs.CV",
-    "tags": [
-      "3D Generation",
-      "Flow Matching",
-      "Riemannian Geometry",
-      "Geometric Foundation Models",
-      "Latent Space"
-    ],
-    "tldr": "在几何基础模型VGGT的潜空间上提出黎曼流匹配，实现可生成泊松3D场景。",
-    "motivation": "几何基础模型（如VGGT）提供强3D先验但无法生成输入视图未直接支持的几何，而生成模型依赖几何先验从稀疏输入产生连贯输出。桥接这两种范式需要一种在潜空间中利用几何先验的可生成方法。",
-    "method": "在VGGT的潜空间中进行流匹配，该空间由四个超球面的乘积流形构成。提出黎曼流匹配框架，与VGGT的多尺度编码器对齐，保持生成token在有效数据流形上，避免标准欧氏流匹配的失败。",
-    "result": "在RealEstate10K、ScanNet++和ETH3D数据集上，方法在每视图外观和聚合3D几何方面均优于最近场景生成基线。",
-    "conclusion": "建立了在几何基础模型上的潜空间流匹配作为3D生成的可行范式，提供了强健的生成能力。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.19100v1",
-    "title": "FlexiAvatar: Unified 3D Gaussian Human Avatars Under Arbitrary Body Visibility",
-    "authors": [
-      "Yihalem Yimolal Tiruneh",
-      "Muhammad Salman Ali",
-      "Uyoung Jeong",
-      "Muneeb A. Khan",
-      "MD Khalequzzaman Chowdhury Sayem",
-      "Allanur Bayramgeldiyev",
-      "Binod Bhattarai",
-      "Seungryul Baek"
-    ],
-    "abstract": "Reconstructing animatable 3D human avatars from monocular video is a fundamental problem in computer vision with broad applications in AR/VR and digital content creation. Existing approaches typically couple parametric body models with neural rendering or 3D Gaussian splatting and optimize all body regions jointly from short videos, which often degrades fidelity in the visible areas. To overcome this limitation, we introduce FlexiAvatar, a unified framework that explicitly optimizes only the visible body regions, effectively eliminating artifacts arising from unobserved limbs. Our method integrates occlusion-robust SMPL-X tracking with part-specific residual refinement to capture high-frequency geometric and appearance details. To complete entirely unseen regions (e.g., back views), we leverage a diffusion-based approach to generate texture consistent with the observed appearance. Experiments on full-body (NeuMan, ZJU-MoCap, WildAvatar), upper/half-body (talk-show clips), and head-only (INSTA) inputs show that FlexiAvatar delivers consistently higher reconstruction quality, outperforming state-of-the-art methods by an average PSNR improvement of approximately 3% across datasets. Finally, by restricting optimization to observed regions, our method reduces the effective number of Gaussians that must be optimized and rendered, leading to reduced runtime and memory overhead in partial-visibility scenarios.",
-    "link": "http://arxiv.org/abs/2607.19100v1",
-    "published": "2026-07-21",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian",
-      "Human Avatar",
-      "Monocular Video",
-      "Occlusion-Robust",
-      "Diffusion"
-    ],
-    "tldr": "FlexiAvatar通过仅优化可见身体区域，结合扩散补全不可见部位，实现了任意身体可见性下的高质量三维人体数字人重建。",
-    "motivation": "现有方法在短视频中联合优化所有身体区域，导致可见区域保真度下降，尤其当存在未观察肢体时产生伪影。",
-    "method": "结合遮挡鲁棒的SMPL-X跟踪和部分特定残差细化，仅显式优化可见身体区域；利用扩散模型补全完全不可见区域（如背面）的纹理。",
-    "result": "在NeuMan、ZJU-MoCap、WildAvatar等数据集上，平均PSNR提升约3%，并在部分可见场景下减少运行时和内存开销。",
-    "conclusion": "提出了统一框架FlexiAvatar，通过约束优化至可见区域，有效消除伪影并提升重建质量，具有广泛适用性。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.18936v1",
-    "title": "NGPS: GPS-Denied Aerial Geo-Localization and 2.5D Reconstruction via Deep Satellite Image Matching and Multi-Rate Sensor Fusion",
-    "authors": [
-      "Sanket Sharma"
-    ],
-    "abstract": "We present NGPS (Next-Generation Positioning System), a visual geo-localization framework for high-altitude UAVs that provides GPS-free absolute positioning by matching down-facing images to georeferenced satellite imagery with deep features. The system combines (1) adaptive confidence-weighted UKF fusion, where NGPS covariance is modulated by RANSAC inlier ratio, reprojection error, and match confidence; (2) velocity-predictive kernel extraction, using VIO velocity to predict the satellite search region; and (3) an asynchronous multi-rate temporal priority queue that interleaves absolute position (1-2 Hz), VIO (10-20 Hz), and IMU (100-200 Hz) updates in chronological order. Globally optimized poses from VINS pose-graph optimization, anchored by NGPS corrections, further enable real-time 2.5D georeferenced orthomosaic reconstruction. On five flight sequences (60-150 m AGL), NGPS achieves 2.94 m position RMSE, with worst-case ATE 6.04 m at 150 m AGL and 2 m/s, yielding a 3.5x improvement over standalone monocular VIO. The system runs in real time on an NVIDIA Jetson Orin NX. Part of the implementation is open-sourced at https://github.com/snktshrma/ngps_flight.",
-    "link": "http://arxiv.org/abs/2607.18936v1",
-    "published": "2026-07-21",
-    "category": "cs.CV",
-    "tags": [
-      "Visual Geo-Localization",
-      "GPS-Denied",
-      "UAV",
-      "Sensor Fusion",
-      "Deep Learning"
-    ],
-    "tldr": "提出NGPS框架，通过深度卫星图像匹配和多速率传感器融合，实现无GPS高精度绝对定位与2.5D重建。",
-    "motivation": "解决高空无人机在GPS缺失环境下的绝对定位问题，提高定位精度和鲁棒性。",
-    "method": "采用自适应置信加权UKF融合（根据RANSAC内点比、重投影误差和匹配置信度调节协方差）、速度预测核提取（利用VIO速度缩小卫星搜索区域）以及异步多速率时间优先级队列（交错绝对位置、VIO和IMU更新），并结合VINS位姿图优化与NGPS修正实现实时2.5D地理参考正射影像重建。",
-    "result": "在5个飞行序列（60-150米AGL）上，位置RMSE为2.94米，最差ATE在150米AGL和2m/s时为6.04米，比单目VIO提升3.5倍，并在Jetson Orin NX上实时运行。",
-    "conclusion": "NGPS实现了高精度、鲁棒的GPS缺失定位与地图重建，部分代码已开源，对无人机自主导航有重要贡献。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.18917v1",
-    "title": "TAP-RAG: Task-Aware Policy Control for Long-Document Multimodal Question Answering",
-    "authors": [
-      "Zhong Ji",
-      "Keqi Jin",
-      "Yan Zhang",
-      "Jiasheng Li"
-    ],
-    "abstract": "Long-document multimodal question answering requires more than retrieving relevant chunks from a large document. Different queries require different evidence behavior. Existing multimodal RAG systems improve evidence access through text chunks, page images, graph links, or heterogeneous document elements, but they often apply a largely query-agnostic evidence-use strategy. We present TAP-RAG, a task-aware policy-controlled RAG framework for long-document multimodal QA. TAP-RAG contains a main controller, the Task-Aware Policy Controller (TAPC), and two policy-guided evidence executors: Task-Aware Query-Guided Flow Diffusion (TA-QFD) and Task-Aware Visual Enhancement (TAVE). For each query, TAPC predicts the task prior, estimates visual/local/global evidence signals, and produces an executable policy. TA-QFD then expands textual and structural evidence over the multimodal document graph, while TAVE selectively inspects page images when visual or layout evidence is needed. A guarded synthesis stage fuses text, visual, and structural evidence and abstains when support is insufficient. On DocBench and MMLongBench-Doc, TAP-RAG achieves the best overall accuracy among the compared systems, improving over a matched multimodal-RAG baseline by +9.1 points (61.1 to 70.2) and +4.5 points (42.2 to 46.7), respectively.",
-    "link": "http://arxiv.org/abs/2607.18917v1",
-    "published": "2026-07-21",
-    "category": "cs.CV",
-    "tags": [
-      "RAG",
-      "Multimodal QA",
-      "Task-Aware",
-      "Long-Document",
-      "Policy Control"
-    ],
-    "tldr": "提出任务感知策略控制框架TAP-RAG，通过预测任务先验和选择证据类型提升长文档多模态问答准确性。",
-    "motivation": "现有多模态RAG系统对长文档问答采用查询无关的证据使用策略，忽视了不同查询需要不同证据行为（如文本、视觉、结构）的需求。",
-    "method": "TAP-RAG包含任务感知策略控制器（TAPC）和两个策略引导执行器：TA-QFD扩展多模态文档图上的文本和结构证据，TAVE选择性检查页面图像；最后通过守卫合成阶段融合证据并在支持不足时弃权。",
-    "result": "在DocBench上准确率从61.1提升至70.2（+9.1），在MMLongBench-Doc上从42.2提升至46.7（+4.5），超越对比系统。",
-    "conclusion": "引入任务感知策略控制实现了动态证据选择与融合，显著提升长文档多模态问答性能，并为未来复杂文档理解提供新思路。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.18875v1",
-    "title": "Wave2Body: Rethinking mmWave Human Pose Estimation as Radar-to-Body Token Translation",
-    "authors": [
-      "Bo Liang",
-      "Chen Gong",
-      "Wei Gao",
-      "Chenren Xu"
-    ],
-    "abstract": "Millimeter-wave (mmWave) radar enables privacy-friendly human sensing, but its sparse point clouds are physical measurements of view-dependent electromagnetic reflections and only indirectly characterize body articulation. Recovering a complete 3D pose from such partial, geometry-dependent observations is therefore under-constrained. Existing methods directly regress joint coordinates from paired radar-pose data, relying on the same limited paired supervision to learn radar perception, human-body structure, and their alignment. This coupling can encourage dataset-specific shortcuts under ambiguous radar observations. We propose Wave2Body, a radar-to-body token translation framework that decouples these learning targets using a self-supervised mmWave tokenizer, a pretrained compositional body tokenizer that defines the output space, and a lightweight translator between them. Experiments on M4Human and mmBody show that Wave2Body achieves stronger cross-domain generalization than previous methods while incurring much lower computational costs for training and inference. All the code and experiment results are publicly available at https://github.com/Galaxywalk/Wave2Body.",
-    "link": "http://arxiv.org/abs/2607.18875v1",
-    "published": "2026-07-21",
-    "category": "cs.CV",
-    "tags": [
-      "mmWave Radar",
-      "Human Pose Estimation",
-      "Token Translation",
-      "Self-Supervised Learning"
-    ],
-    "tldr": "Wave2Body通过解耦雷达感知与人体结构的令牌翻译框架，实现毫米波雷达人体姿态估计的更强跨域泛化。",
-    "motivation": "毫米波雷达点云稀疏且依赖视角，现有直接回归方法依赖成对数据，易学习数据集特定捷径，导致跨域泛化差。",
-    "method": "提出Wave2Body框架，包括自监督毫米波分词器、预训练组合身体分词器和轻量翻译器，解耦雷达感知、人体结构和对齐学习。",
-    "result": "在M4Human和mmBody数据集上，Wave2Body跨域泛化优于现有方法，且训练和推理计算成本更低。",
-    "conclusion": "公开代码和实验结果，贡献在于通过令牌翻译解耦学习目标，提升泛化性与效率。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.18801v1",
-    "title": "ZeroSplat: Generalized Referring Segmentation in 3D Gaussian Splatting",
-    "authors": [
-      "Jiayu Ding",
-      "Meilu Song",
-      "Xiaoyi Zhang",
-      "Hongbo Jin",
-      "Yichen Jin",
-      "Xiangtian Si"
-    ],
-    "abstract": "Recent advancements in 3D Gaussian Splatting (3DGS) have enabled language-guided scene understanding. However, existing Referring 3D Gaussian Splatting (R3DGS) methods are fundamentally restricted to single-target queries. To reflect the ambiguity of real-world instructions, we introduce the Generalized Referring 3D Gaussian Splatting Segmentation (GR3DGS) task, which requires dynamically segmenting an arbitrary number of targets (0, 1, or $N$). To facilitate comprehensive evaluation of this new task, we construct two new benchmarks: GR-LERF and GR-ScanNet. Crucially, existing R3DGS paradigms exhibit fundamental technical bottlenecks that severely limit their performance on the GR3DGS task: they lack intrinsic 3D point-level understanding by operating merely on 2D rendered pixels, and they incur prohibitive computational overhead by requiring per-scene optimization to embed heavy semantic features. To dismantle these bottlenecks, we propose ZeroSplat, a novel training-free and zero-feature framework. ZeroSplat lifts 2D Vision-Language Model (VLM) priors into 3D space through robust multi-view geometric constraints. This strategy enables intrinsic point-level understanding without incurring any additional feature storage. Extensive experiments demonstrate that ZeroSplat significantly outperforms state-of-the-art methods across generalized and single-target scenarios while maintaining exceptional efficiency. Project Page: https://inkmind-ai.github.io/ZeroSplat",
-    "link": "http://arxiv.org/abs/2607.18801v1",
-    "published": "2026-07-21",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Referring Segmentation",
-      "Zero-shot",
-      "Training-free",
-      "Scene Understanding"
-    ],
-    "tldr": "ZeroSplat是一种无需训练和额外特征的零样本框架，通过多视图几何约束将2D视觉语言模型先验提升到3D空间，实现泛化指代分割。",
-    "motivation": "现有指代3DGS方法仅限于单目标查询，且缺乏内在3D点级理解、计算开销大。",
-    "method": "提出ZeroSplat框架，利用多视图几何约束将2D VLM先验提升到3D空间，实现点级理解，无需特征存储和每场景优化。",
-    "result": "在GR-LERF和GR-ScanNet基准上，泛化场景和单目标场景均显著优于现有方法，且保持高效率。",
-    "conclusion": "引入GR3DGS任务和两个基准，ZeroSplat以零特征、无需训练的方式实现泛化指代分割，具有高效率和可扩展性。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.18798v1",
-    "title": "UVFaceFusion: Fast Multi-view Topologically Consistent Face Reconstruction in the Wild via UV-space Neural Fusion",
-    "authors": [
-      "Xin Ming",
-      "Yuxuan Han",
-      "Junhai Yong",
-      "Feng Xu"
-    ],
-    "abstract": "Reconstructing high-fidelity facial geometry with an assigned topology is essential for digital avatar creation and animation, yet existing automated methods often trade off geometric fidelity and in-the-wild generalization. We present UVFaceFusion, a feed-forward framework for multi-view, fixed-topology face reconstruction from daily images. Our key idea is to replace heuristic topological optimization with learnable neural fusion in a canonical UV space. Given multi-view images, we first obtain dense point maps and facial UV correspondences of each view using VGGT and Pixel3DMM, respectively. Then, the view-specific point maps are lifted into the canonical UV domain and fused with a novel mask-aware neural fusion network. The network predicts a complete UV-space point map, from which a fixed-topology mesh is directly sampled. Although trained only on Ava-256, UVFaceFusion generalizes well to multiple public benchmarks and in-the-wild captures, benefiting from its canonical UV-space geometry-to-geometry fusion that reduces dependence on dataset-specific appearance and capture conditions. Experiments on various benchmarks show that UVFaceFusion achieves state-of-the-art reconstruction accuracy while reconstructing a mesh from 16 input views in less than 3 seconds on a single RTX 4090. Code is available at https://github.com/grignarder/UVFaceFusion.",
-    "link": "http://arxiv.org/abs/2607.18798v1",
-    "published": "2026-07-21",
-    "category": "cs.CV",
-    "tags": [
-      "Face Reconstruction",
-      "Multi-view",
-      "Neural Fusion",
-      "UV Space",
-      "Topologically Consistent"
-    ],
-    "tldr": "UVFaceFusion通过UV空间的可学习神经融合实现多视图固定拓扑人脸重建，速度快且精度高。",
-    "motivation": "现有自动化方法在几何保真度和野外泛化之间难以兼顾，需要一种无需拓扑优化的固定拓扑人脸重建方法。",
-    "method": "使用VGGT和Pixel3DMM获取多视图密集点图和UV对应，在规范UV空间通过掩码感知神经融合网络融合点图，直接采样固定拓扑网格。",
-    "result": "在多个公开基准上达到最先进的重建精度，从16个输入视图重建网格时间小于3秒（RTX 4090）。",
-    "conclusion": "提出UV空间几何到几何融合范式，减少对数据外观和采集条件的依赖，仅用Ava-256训练即可良好泛化，代码已开源。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.18630v1",
-    "title": "Seeing Before Generating: Object Perception Enhances Single-View 3D Reconstruction",
-    "authors": [
-      "Y Huynh",
-      "Duc Thanh Nguyen",
-      "Mohamed Abdelrazek"
-    ],
-    "abstract": "The relationship between object perception and reconstruction is well established in human vision, yet remains underexplored in computer vision. In this paper, we demonstrate that learnt object perception can significantly enhance 3D reconstruction. Focusing on the challenging task of single-view 3D object reconstruction, we propose a method that leverages perceptual signals extracted from pretrained perception models capturing semantic and geometric information to drive the reconstruction of an object from its single image. Our approach is model-agnostic and can be integrated into various reconstruction methods in a plug-and-play manner. Experiments with two state-of-the-art single-view 3D reconstruction pipelines in a benchmark dataset show consistent and substantial improvements achieved by our method, validating the effectiveness of incorporating perception into generation. We provide in-depth analysis of various aspects of our method and its application. Our project page is at https://ynhuhuynh.github.io/perception-3d/.",
-    "link": "http://arxiv.org/abs/2607.18630v1",
-    "published": "2026-07-21",
-    "category": "cs.CV",
-    "tags": [
-      "3D Reconstruction",
-      "Single-View",
-      "Object Perception",
-      "Plug-and-Play"
-    ],
-    "tldr": "提出利用预训练感知模型提取的语义与几何信号增强单视图3D物体重建的即插即用方法。",
-    "motivation": "人类视觉中物体感知与重建的关系已确立，但计算机视觉中尚未充分探索，旨在利用学习到的物体感知提升3D重建性能。",
-    "method": "从预训练感知模型中提取语义和几何信息的感知信号，以驱动单视图3D物体重建，该方法模型无关且可即插即用地集成到现有重建管道中。",
-    "result": "在两个SOTA单视图3D重建管道上的基准数据集实验中，方法持续且显著地提升了重建质量。",
-    "conclusion": "验证了将感知融入生成的有效性，为单视图3D重建提供了新思路，具有实际应用潜力。"
   }
 ]
