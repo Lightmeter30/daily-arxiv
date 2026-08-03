@@ -1,5 +1,141 @@
 [
   {
+    "id": "http://arxiv.org/abs/2607.29633v1",
+    "title": "OASIS: Occlusion-aware Single-image Hand Avatar Reconstruction via 3D Gaussian Splatting",
+    "authors": [
+      "Zhisheng Han",
+      "Shiyao Wu",
+      "Jiayan Qiu",
+      "Yakun Ju",
+      "Lu Liu",
+      "Le Zhang",
+      "Pengfei Feng",
+      "Huiyu Zhou",
+      "Zheheng Jiang"
+    ],
+    "abstract": "Single-image 3D hand avatar reconstruction is fundamentally ill-posed and particularly challenging due to limited visual evidence under severe self-occlusion and the complex pose-dependent deformation of highly articulated hands. Existing methods predominantly rely on implicit NeRF-style representations, whose volumetric fitting is computationally expensive and often struggles to preserve fine-grained hand details. In this work, we present OASIS, a tailored 3D Gaussian Splatting framework for single-image hand avatar reconstruction. To faithfully encode sparse image-specific appearance cues in single-view reconstruction, we construct geometry-aligned visual evidence tokens by explicitly aligning input image observations with 3D hand geometry and context-adaptively tokenizing the resulting visual evidence. Since severe self-occlusion makes the reliability of image evidence inherently visibility-dependent, we introduce a visibility-conditioned point-image attention to reliably transfer visual evidence to geometric tokens, yielding occlusion-aware Gaussian features for faithful and robust reconstruction. To further capture non-rigid deformation of articulated hands, we introduce a Feature-on-Mesh representation to enable Gaussian deformation to be guided by local surface stretching. Under this framework, we adopt a one-shot adaptation scheme that learns a shared hand prior from multi-identity training data and then fits it to a target image for target-specific reconstruction. Extensive experiments show that OASIS outperforms existing baselines in both visual fidelity and efficiency across challenging poses and in-the-wild scenarios, and further demonstrates strong versatility in downstream applications such as text-to-avatar generation and texture editing.",
+    "link": "http://arxiv.org/abs/2607.29633v1",
+    "published": "2026-07-31",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Hand Avatar Reconstruction",
+      "Single-Image 3D Reconstruction",
+      "Occlusion-aware",
+      "Feature-on-Mesh"
+    ],
+    "tldr": "提出OASIS，基于3D高斯泼溅的单图手部化身重建方法，利用可见性条件注意力和Feature-on-Mesh表征实现高效高保真重建，并在多个任务上表现优异。",
+    "motivation": "单图手部化身重建因严重自遮挡和复杂姿态变形而极具挑战，现有隐式NeRF方法体积拟合计算昂贵且难以保留细节。",
+    "method": "构建几何对齐的视觉证据token，通过可见性条件点-图像注意力传递到几何token生成遮挡感知高斯特征；引入Feature-on-Mesh表征用局部表面拉伸引导高斯变形，并采用单次适应方案从多身份数据学习共享先验再拟合目标图像。",
+    "result": "在挑战性姿态和真实场景下，OASIS在视觉保真度和效率上均优于现有基线，并在文本到化身生成和纹理编辑等下游任务中表现出强适用性（摘要未提供量化指标）。",
+    "conclusion": "首次将3D高斯泼溅引入单图手部化身重建，有效解决自遮挡与复杂变形问题，为手部数字化及下游应用提供高效高保真的新方案。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.29627v1",
+    "title": "FlexComposer: Unified Video Compositing from Images to Dynamic Footage with Flexible Trajectory Control",
+    "authors": [
+      "Songchun Zhang",
+      "Sitong Guo",
+      "Xianghao Kong",
+      "Pengwei Liu",
+      "Yuwei Guo",
+      "Lvmin Zhang",
+      "Anyi Rao"
+    ],
+    "abstract": "Generative video compositing, which involves inserting external assets seamlessly into existing video sequences, is essential for content creation and visual effects. However, existing approaches suffer from a control-fidelity trade-off: they either hallucinate motion from static images, failing to preserve the dynamics of pre-animated assets, or lack fine-grained spatial control for precise asset placement along user-defined trajectories. We propose FlexComposer, a unified framework that standardizes video compositing as a trajectory-guided conditional generation task, enabling the seamless integration of both static images and dynamic footage. Our approach introduces three key designs: (1) a Unified Canonical Foreground Representation that decouples an object's intrinsic motion from its global displacement, standardizing heterogeneous inputs into a stabilized, centered latent space; (2) a Spatial-Aware Latent Injection strategy that exploits the translation equivariance of VAE latent spaces to transport canonical features onto target trajectories via a parameter-free mechanism; and (3) a Hybrid Dataset and Synthetic-to-Real Curriculum that synergizes procedural simulation, real-world cinematic footage, and generative data to implicitly learn physically plausible illumination and shadow harmonization. This unified design handles diverse inputs from product photos to dynamic subjects achieving high-fidelity motion control and environmental integration without the need for explicit 3D reconstruction or auxiliary learnable adapters. Extensive experiments demonstrate that FlexComposer outperforms state-of-the-art methods in visual quality, temporal consistency, and trajectory adherence.",
+    "link": "http://arxiv.org/abs/2607.29627v1",
+    "published": "2026-07-31",
+    "category": "cs.CV",
+    "tags": [
+      "Video Compositing",
+      "Trajectory Control",
+      "Generative Model",
+      "Latent Injection",
+      "Video Generation"
+    ],
+    "tldr": "FlexComposer提出统一轨迹引导的视频合成框架，通过标准前景表示与空间感知注入，实现静态图像和动态素材的高保真合成。",
+    "motivation": "现有视频合成方法面临控制与保真度的权衡：从静态图像生成时会丢失预动画资产的动态，或缺乏沿用户自定义轨迹精确放置的细粒度空间控制。",
+    "method": "提出三种关键设计：统一规范前景表示将物体内在运动与全局位移解耦；空间感知潜在注入利用VAE潜在空间的平移等变性参数化地将特征输送到目标轨迹；混合数据集与合成到真实的课程学习隐式学习物理合理的光照和阴影协调。",
+    "result": "大量实验表明，FlexComposer在视觉质量、时间一致性和轨迹遵循方面均优于现有最先进方法。",
+    "conclusion": "该统一框架适用于从产品照片到动态主体的多种输入，实现高保真运动控制和环境融合，无需显式3D重建或额外可学习适配器，对内容创作和视觉特效具有重要价值。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.29284v1",
+    "title": "FillGS: Filling Observation Gaps in 4D Gaussian Splatting via Viewpoint-Time Selection and Generative Refinement",
+    "authors": [
+      "Takashi Otonari",
+      "Toshihiko Yamasaki"
+    ],
+    "abstract": "4D Gaussian Splatting (4DGS) can render dynamic scenes photorealistically. However, with limited viewpoint coverage, some spatiotemporal regions remain sparsely observed, leading to artifacts, particularly in scenes with large motion. Existing approaches leveraging generative models rely on heuristic virtual-viewpoint selection before refining rendered views. As a result, they cannot actively explore such sparsely observed regions. To address this issue, we propose a pipeline that actively selects spatiotemporal virtual viewpoints to improve 4DGS reconstruction. Our method selects virtual viewpoints for generative enhancement based on the rendering sensitivity and motion-aware observation density of 4D Gaussians, prioritizing views that alleviate observation sparsity. In the refined images, we filter out regions that conflict with captured observations or are likely to contain generative artifacts and then fine-tune 4DGS using only the reliable regions. We evaluate our method on multi-view video benchmarks using new train/test splits designed to induce observation gaps. Results show consistent improvements over prior viewpoint selection strategies and fine-tuning methods in both qualitative and quantitative evaluations, while reducing artifacts.",
+    "link": "http://arxiv.org/abs/2607.29284v1",
+    "published": "2026-07-31",
+    "category": "cs.CV",
+    "tags": [
+      "4D Gaussian Splatting",
+      "Viewpoint Selection",
+      "Generative Refinement",
+      "Dynamic Scenes",
+      "Observation Gaps"
+    ],
+    "tldr": "提出主动选择时空虚拟视角并生成细化以填补4DGS观测间隙的方法。",
+    "motivation": "4DGS在视角覆盖有限时，时空区域稀疏观测导致伪影，尤其在大运动场景中；现有方法依赖启发式虚拟视角选择，无法主动探索稀疏观测区域。",
+    "method": "基于渲染敏感性和运动感知观测密度选择虚拟视角，优先缓解观测稀疏性；在细化图像中过滤与真实观测冲突或可能包含生成伪影的区域，仅使用可靠区域微调4DGS。",
+    "result": "在模拟观测间隙的多视角视频基准上，采用新训练/测试划分进行评测，在定性和定量评估中均优于先前的视角选择策略和微调方法，并减少伪影。",
+    "conclusion": "提出了一种主动选择时空虚拟视角并进行生成增强的管线，有效填补4DGS的观测间隙，提升动态场景重建质量和可靠性。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.29037v1",
+    "title": "GO-PRE: Goal-Oriented Next-Best-View Selection via Predictive Rendering Entropy for Active 3D Reconstruction",
+    "authors": [
+      "Yan Song",
+      "Zhihao Li",
+      "Chenglong Li",
+      "Li He",
+      "Yan Wang",
+      "Wenqiang Zhang"
+    ],
+    "abstract": "Active 3D reconstruction relies on active view selection to maximize reconstruction fidelity under limited capture budgets. However, most existing methods rely on surrogate signals such as parameter uncertainty or geometric heuristics, but these signals are often misaligned with the ultimate goal: the fidelity of rendered predictions. We propose GO-PRE, a goal-oriented next-best-view selection framework that explicitly targets information gain in the prediction space. Specifically, we formulate the objective as maximizing the reduction of the average marginal predictive entropy over a user-specified target view manifold. GO-PRE supports interactive goal specification and yields an efficient acquisition rule that enables real-time computation of information gain. Extensive experiments across benchmarks demonstrate that GO-PRE consistently improves active reconstruction performance and provides more reliable uncertainty quantification compared to state-of-the-art methods.",
+    "link": "http://arxiv.org/abs/2607.29037v1",
+    "published": "2026-07-31",
+    "category": "cs.CV",
+    "tags": [
+      "Active 3D Reconstruction",
+      "Next-Best-View",
+      "Predictive Entropy",
+      "View Selection",
+      "Information Gain"
+    ],
+    "tldr": "提出GO-PRE，一种面向目标的下一最佳视角选择框架，通过最大化预测空间信息增益来提升主动三维重建性能。",
+    "motivation": "现有主动三维重建的视角选择方法多依赖参数不确定性或几何启发式等代理信号，这些信号与最终目标（渲染预测的保真度）不一致，导致重建效果受限。",
+    "method": "提出GO-PRE框架，明确以用户指定目标视角流形上的平均边际预测熵的减少为目标，支持交互式目标指定，并推导出高效采集规则，实现信息增益的实时计算。",
+    "result": "在多个基准数据集上，GO-PRE一致地提升了主动重建性能，相比最先进方法提供更可靠的量化不确定性。",
+    "conclusion": "贡献在于将视角选择直接与预测空间的信息增益对齐，支持交互式目标指定，且计算高效，具有实用价值。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.28967v1",
+    "title": "Visual Distribution Anchoring for Efficient Prompt Tuning",
+    "authors": [
+      "Pouya Parsa",
+      "Raoof Zare Moayedi",
+      "Seongjin Choi"
+    ],
+    "abstract": "Prompt tuning adapts vision--language models with few trainable parameters, but existing approaches trade off efficiency and adaptation: static textual prompts can overfit source classes, image-conditioned prompts add per-instance computation, and multimodal tuning modifies the visual branch. We propose VDA (Visual Distribution Anchoring), a training-free target adaptation framework that augments a frozen semantic classifier with class-level visual prototypes estimated offline from an unlabeled target pool. We first ask whether prototypes can be synthesized from class names. A text-to-centroid mapper reconstructs held-out source prototypes but fails under dataset shift because class names specify semantic identity, not target-domain appearance. An oracle analysis confirms that true target prototypes are highly discriminative. VDA therefore uses frozen semantic and domain-template classifiers to partition unlabeled target images into class-correlated groups. Confidence-ranked image features form normalized prototypes, fused with the semantic classifier using one global weight. Adaptation requires no target labels, target-side optimization, uniform class-prior assumption, iterative refinement, or test-query access, and yields a fixed, cacheable classifier. Controlled experiments show that class-specific partitioning drives gains and that visually local pseudo-label errors can remain useful despite being class-incorrect. Across ten ImageNet-to-target transfers, the same frozen design improves zero-shot CLIP, TCP, and MaPLe by 3.22, 3.39, and 3.35 points, respectively, improving nine of ten targets in every setting. Its visual correction further improves leakage-free PromptKD by 2.79 points, complementing zero-shot, source-prompted, multimodal-prompted, and target-distilled classifiers.",
+    "link": "http://arxiv.org/abs/2607.28967v1",
+    "published": "2026-07-31",
+    "category": "cs.CV",
+    "tags": [
+      "Prompt Tuning",
+      "Vision-Language Models",
+      "Test-Time Adaptation",
+      "Visual Prototypes"
+    ],
+    "tldr": "提出视觉分布锚定（VDA），无需训练即可利用未标注目标域图像增强冻结语义分类器，提升多种提示调优方法的迁移性能。",
+    "motivation": "现有提示调优方法在效率与适应性之间存在权衡：静态文本提示易过拟合源类，图像条件提示增加每实例计算，多模态调优需修改视觉分支。目标是在不增加训练和推理开销的前提下，实现有效的目标域自适应。",
+    "method": "VDA使用冻结的语义分类器和域模板分类器将未标注目标图像划分为类相关组，基于置信度排序的图像特征构建归一化原型，并以单一全局权重与语义分类器融合。整个过程无需目标标签、目标端优化、迭代细化或测试查询，生成固定的可缓存分类器。",
+    "result": "在十个ImageNet到目标域的迁移中，VDA使零样本CLIP、TCP和MaPLe分别提升3.22、3.39和3.35个百分点，且在每种设置下改善十个目标中的九个；还使无泄漏PromptKD提升2.79个百分点。受控实验表明类特定划分是增益关键，局部伪标签错误仍可有用。",
+    "conclusion": "VDA是一种即插即用的训练免费自适应框架，可补充零样本、源提示、多模态提示和目标蒸馏分类器，为高效提示调优提供新方向。"
+  },
+  {
     "id": "http://arxiv.org/abs/2607.28442v1",
     "title": "ViewMind3D: Modular View-Aware Inference for Training-Free 3D-QA",
     "authors": [
@@ -745,91 +881,5 @@
     "method": "构建含15个复杂场景、多达50个相机视角和30人的合成基准；提出MVMP-HMR模型，先融合多视图特征为3D特征体，利用3D姿态网络预测的骨盆关节提取人物查询，再与特征体交叉注意力解码每个人的3D网格；引入朝向损失和3D关节密度损失缓解遮挡下的歧义。",
     "result": "现有先进方法在MVMP-HMR基准上表现困难，所提方法在严重遮挡的大规模场景中持续优于先前最先进技术。",
     "conclusion": "提出新基准和模型，推动了多视图多人人体网格恢复在复杂场景下的研究，具有实际应用潜力。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.23861v1",
-    "title": "Head Avatars with Dynamic Explicit Hair",
-    "authors": [
-      "Vanessa Sklyarova",
-      "Haonan Chen",
-      "Berna Kabadayi",
-      "Tobias Kirschstein",
-      "Zicong Fan",
-      "Xi Wang",
-      "Gerard Pons-Moll",
-      "Matthias Nießner",
-      "Marc Pollefeys",
-      "Michael J. Black",
-      "Justus Thies"
-    ],
-    "abstract": "We present DynHair, a novel method for tracking and modeling dynamic hair for human head avatars. From video input, we reconstruct a dynamic head avatar with an explicit strand-based hair representation using structured 3D Gaussian Splatting. In contrast to the face region of human head avatars, which can be modeled with 3D Gaussians that are attached or generated with respect to some expressive 3D head model, hair is particularly challenging as it exhibits dynamic motion effects. Therefore, we present a novel method that models the dynamic deformations of the hair strands using a temporal network that is conditioned on angular velocity and acceleration of the head, as well as relative gravity. Specifically, an LSTM encodes the motion history and modulates per-point strand features via FiLM conditioning which further used by MLP to produce physically plausible displacements to canonical hairstyle. We jointly optimize this motion and appearance representation of the hair, with a 3DGS-based representation of the face-region, via differentiable Gaussian splatting with photometric, geometric, and physics-based supervision. As a result of our method, we retrieve hair tracking of the training video data and an animatable head avatar with controllable hair dynamics. In our experiments, we demonstrate state-of-the-art performance in terms of hair dynamics, temporal consistency, and generalization across subjects.",
-    "link": "http://arxiv.org/abs/2607.23861v1",
-    "published": "2026-07-26",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Head Avatars",
-      "Hair Dynamics",
-      "Explicit Hair Modeling",
-      "LSTM"
-    ],
-    "tldr": "提出DynHair方法，利用结构化3D高斯溅射和LSTM网络建模动态头发，实现可控头发动态的头像。",
-    "motivation": "头发动态运动建模困难，现有方法难以处理头发的动态效果。",
-    "method": "使用结构化3D高斯溅射表示头发，通过LSTM编码运动历史并用FiLM条件化调制发丝特征，经MLP预测物理合理的位移；联合优化头发和面部区域的外观与运动。",
-    "result": "在头发动态、时间一致性和跨主体泛化方面达到最先进性能。",
-    "conclusion": "提供了可动画的头像和头发跟踪，可用于视频数据的头发追踪和可控头像生成。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.23755v1",
-    "title": "DAP-Pose: Deep Temporal Alignment and Physics-aware Cross-modal Sensor Fusion for Robust Pose Estimation",
-    "authors": [
-      "Jianhan Lin",
-      "Yuchu Qin",
-      "Jiateng Yuan",
-      "Wenbo Zhang",
-      "Shuai Gao"
-    ],
-    "abstract": "Robust and accurate pose estimation with multi-modal sensors is fundamental for autonomous vehicles and mobile robotic systems in complex environments. In this paper, we propose DAP-Pose, a unified end-to-end model for robust multi-modal pose estimation. DAP-Pose introduces a Bi-level Cross-modal Fusion (BCF) module that captures complementary semantic and geometric motion cues from visual, inertial, and GNSS measurements. To handle temporal offsets, we designed a Deep Temporal Alignment (DTA) module that explicitly aligns asynchronous streams in latent space, enabling coherent motion modeling without strict hardware synchronization. Furthermore, we incorporate physics-aware constraints via manifold geometry and GNSS-guided absolute metric scale, enforcing motion consistency and mitigating drift. Experiments upon the public KITTI benchmark dataset were conducted to evaluate the performance of DAP-Pose against existing methods. DAP-Pose achieved the state-of-the-art performance, with the lowest average translation error ($t_{rel}$) of 1.31% and rotation error ($r_{rel}$) of 0.46$^{\\circ}$. Furthermore, it accurately estimates poses and maintains robust performance under severe artificially injected temporal misalignment.",
-    "link": "http://arxiv.org/abs/2607.23755v1",
-    "published": "2026-07-26",
-    "category": "cs.CV",
-    "tags": [
-      "pose estimation",
-      "multi-modal fusion",
-      "temporal alignment",
-      "physics-aware",
-      "sensor fusion"
-    ],
-    "tldr": "提出 DAP-Pose 统一端到端模型，通过双层级跨模态融合、深度时间对齐和物理感知约束实现鲁棒多模态位姿估计。",
-    "motivation": "复杂环境下多模态传感器位姿估计的鲁棒性和精度需求，以及异步流时间对齐和漂移问题。",
-    "method": "设计双层级跨模态融合 (BCF) 模块提取视觉、惯性和GNSS的互补特征；深度时间对齐 (DTA) 模块在隐空间对齐异步流；引入流形几何和GNSS绝对尺度物理约束。",
-    "result": "在KITTI数据集上，平移误差1.31%，旋转误差0.46°，达到最先进性能，且在人为时间错位下保持鲁棒。",
-    "conclusion": "DAP-Pose通过显式时间对齐和物理约束显著提升多模态位姿估计的鲁棒性和精度，具有实际应用潜力。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.23468v1",
-    "title": "Robust 6-DoF Object Pose Tracking with Built-In Recovery under Occlusions and Rapid Object Motions",
-    "authors": [
-      "Balázs Opra",
-      "Léo Ghafari",
-      "Thomas Stewart",
-      "Cyrill Stachniss"
-    ],
-    "abstract": "Real-time 6-DoF object pose tracking is essential for many robotics applications, and several approaches exist. Yet even today's approaches remain unreliable under temporary full occlusions and rapid object motions. Once tracking is lost, most methods struggle to detect the failure and recover automatically, often requiring manual re-initialization. In this paper, we address the problem of robust model-based 6-DoF tracking of unseen objects from RGB-D data, especially in scenarios with occlusion and fast motion. We propose a novel method that combines efficient learning-based keypoint matching with optimization-based alignment and introduces a novel failure detection and recovery module. Our system monitors pose reliability, detects tracking divergence or occlusions, and performs a global re-detection and pose estimation step that robustly verifies recovery candidates before resuming tracking. Our evaluation on standard tracking benchmarks and on a new dataset of occluded and fast-moving scenes shows that our method matches state-of-the-art accuracy on easy tracking sequences, maintains high tracking speed at 57.6 frames per second, and provides the most robust tracking performance under challenging conditions. Thus, we believe that our approach is a relevant step forward in robust 6-DoF object tracking from RGB-D data.",
-    "link": "http://arxiv.org/abs/2607.23468v1",
-    "published": "2026-07-26",
-    "category": "cs.CV",
-    "tags": [
-      "6-DoF Pose Tracking",
-      "RGB-D",
-      "Occlusion",
-      "Recovery",
-      "Keypoint Matching"
-    ],
-    "tldr": "提出一种结合学习型关键点匹配与优化对齐的鲁棒6-DoF物体姿态跟踪方法，内置故障检测与恢复模块，在遮挡和快速运动下表现稳健。",
-    "motivation": "现有6-DoF跟踪方法在临时完全遮挡和快速物体运动下不可靠，且跟踪丢失后难以自动恢复，通常需要手动重新初始化。因此需要一种能自动检测故障并恢复的鲁棒跟踪方法。",
-    "method": "提出结合高效学习型关键点匹配与优化对齐的方法，并引入故障检测与恢复模块。该模块监测姿态可靠性，检测跟踪发散或遮挡，执行全局重新检测和姿态估计，验证恢复候选后再继续跟踪。",
-    "result": "在标准跟踪基准和新遮挡/快速运动数据集上，本方法匹配最先进精度，保持57.6 FPS的高跟踪速度，并在挑战条件下提供最鲁棒的跟踪性能。",
-    "conclusion": "该方法在鲁棒6-DoF物体跟踪（基于RGB-D数据）上迈出了重要一步，尤其适用于遮挡和快速运动场景，具有实际应用潜力。"
   }
 ]
