@@ -192,6 +192,92 @@
     "conclusion": "OutLangSplat有效解决了UAV户外场景下语言高斯表示的特征退化问题，贡献了新数据集和开源代码，推动了无人机户外三维场景理解的发展。"
   },
   {
+    "id": "https://arxiv.org/abs/2608.04673",
+    "title": "Differential 6-DOF Pose Estimation with Provable First-Order Immunity to Camera Calibration Errors",
+    "authors": [
+      "Zhang, Yueqiang",
+      "Deng, Liang",
+      "Zhang, Yi",
+      "Wang, Baoqiong",
+      "Chen, Wenjun",
+      "Pan, Shuixin",
+      "Guo, Yulan",
+      "Yu, Qifeng"
+    ],
+    "abstract": "Accurate six-degree-of-freedom (6-DOF) motion estimation is essential for robotic manipulation, autonomous systems, and structural displacement monitoring. Conventional 3D-2D methods estimate absolute camera poses independently at each time and recover platform motion through camera-to-platform extrinsics, making them sensitive to extrinsic calibration errors, especially for micromotion. We present a differential pose estimation method that directly recovers platform motion from inter-frame image displacements and known 3D control points. By differencing perspective projection equations, using a depth-invariance approximation, and modeling motion on SE(3), the method avoids independent absolute-pose estimation and supports both monocular and multi-camera systems. We prove that translational extrinsic errors cancel exactly, while rotational errors induce a bounded perturbation determined by calibration error, motion magnitude, and observation geometry. We also derive generic observability conditions, a Cramer-Rao lower bound, and a bias-eliminated consistent estimator, and characterize the validity limits of the approximations. Extensive synthetic and real-world experiments establish a new state of the art for 6-DOF platform micromotion estimation, outperforming representative PnP and generalized-PnP methods in accuracy, calibration robustness, and computational efficiency. With five control points and 0.5-pixel image noise, the monocular solver obtains a combined pitch-yaw rotation RMSE of 10.09 arcsec, a translation RMSE of 3.70 mm, and a runtime of 0.34 ms. The binocular solver achieves a rotation RMSE of 10.58 arcsec, a translation RMSE of 3.91 mm, and a runtime of 0.27 ms. Code will be released upon publication at this https URL .",
+    "link": "https://arxiv.org/abs/2608.04673",
+    "published": "2026-08-05",
+    "category": "cs.CV",
+    "tags": [
+      "6-DOF Pose Estimation",
+      "SE(3) Motion",
+      "Calibration Robustness",
+      "Micromotion",
+      "PnP"
+    ],
+    "tldr": "提出差分6-DOF位姿估计方法，直接利用帧间图像位移和已知3D点恢复平台运动，证明对平移外参误差一阶免疫，达新SOTA。",
+    "motivation": "传统3D-2D方法逐时刻独立估计绝对相机位姿，再通过外参恢复平台运动，对外参标定误差敏感，尤其在微运动场景下问题突出。需要一种直接恢复平台运动、不依赖绝对位姿估计的差分方法。",
+    "method": "通过对透视投影方程做差分，采用深度不变近似并在SE(3)上建模运动，直接由帧间图像位移和已知3D控制点恢复平台运动，避免独立绝对位姿估计；支持单目和多相机系统。理论上证明平移外参误差精确抵消，旋转误差仅产生有界扰动，并推导了可观测性条件、Cramer-Rao下界及偏差消除的一致估计器。",
+    "result": "在5个控制点、0.5像素图像噪声下，单目求解器获得俯仰-偏航旋转RMSE为10.09角秒，平移RMSE为3.70毫米，耗时0.34毫秒；双目求解器旋转RMSE为10.58角秒，平移RMSE为3.91毫米，耗时0.27毫秒。实验表明该方法在精度、标定鲁棒性和计算效率上优于代表性PnP和广义PnP方法。",
+    "conclusion": "该方法为6-DOF平台微运动估计建立了新的最先进水平，在精度、标定鲁棒性和效率方面均有显著优势，代码将在发表后开源，有利于机器人操作、自主系统和结构位移监测等应用。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.04581",
+    "title": "ACA-GS: Adaptive-Capacity Anchored Gaussian Splatting for Compact Dynamic Radiance Fields",
+    "authors": [
+      "Song, Seunghyeon",
+      "Lee, Joo Chan",
+      "Park, Chanung",
+      "Jeong, Jun Young",
+      "Lee, Minseo",
+      "Park, Eunbyung",
+      "Ko, Jong Hwan"
+    ],
+    "abstract": "Recent advances in 4D Gaussian Splatting (4DGS) enable high-fidelity, real-time spatiotemporal rendering, but expose a fundamental trade-off between motion expressiveness and storage efficiency. While anchor-based designs achieve compactness through anchor-level parameter sharing, their rigid uniform parametrization enforces fixed Neural Gaussian counts and feature budgets per anchor. Consequently, insufficient fidelity is addressed by excessive anchor density, rather than lightweight, targeted increases in Neural Gaussian count or feature capacity, resulting in memory waste. To overcome this rigidity, we introduce an adaptive-capacity anchor-based framework that dynamically allocates the representational capacity based on local spatiotemporal demands. Adaptive Anchor Cardinality varies the number of Neural Gaussians per anchor, concentrating primitives in regions of high geometric or motion complexity while suppressing redundancy. In parallel, Adaptive Anchor Feature Masking modulates anchor-level feature channels, assigning rich features to complex regions and lightweight representations to simpler ones. Experiments on MPEG, Panoptic Sports, and N3DV datasets demonstrate substantial storage reduction without degrading visual quality. Notably, on challenging MPEG sequences with complex motion, our method achieves up to 1.5x higher compression than state-of-the-art anchor-based methods while preserving comparable quality.",
+    "link": "https://arxiv.org/abs/2608.04581",
+    "published": "2026-08-05",
+    "category": "cs.CV",
+    "tags": [
+      "4D Gaussian Splatting",
+      "Dynamic Radiance Fields",
+      "Compression",
+      "Adaptive Capacity",
+      "Rendering"
+    ],
+    "tldr": "提出自适应容量锚定高斯泼溅框架，通过动态分配神经高斯数量和特征通道，在保持质量的同时实现更高压缩率。",
+    "motivation": "现有4DGS锚定方法采用固定均匀参数化，每个锚点强制固定神经高斯数量和特征维度，导致模型为满足保真度而过度增加锚点密度，造成存储浪费。",
+    "method": "提出自适应容量锚定框架：自适应锚基数根据局部时空复杂度调节每个锚点的神经高斯数量，自适应锚特征掩码动态调整特征通道数，为复杂区域分配丰富表示，简单区域使用轻量表示。",
+    "result": "在MPEG、Panoptic Sports和N3DV数据集上实现显著存储缩减且不损失视觉质量；在复杂运动的MPEG序列上，压缩率比最先进的锚定方法高1.5倍，质量相当。",
+    "conclusion": "通过按需分配表示容量，打破了锚定方法固定参数化的局限，有效提升动态辐射场的存储效率，为高保真实时渲染提供更紧凑的解决方案。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.04560",
+    "title": "OutLangSplat: 3D Language Gaussian Splatting for UAV Outdoor Scenes",
+    "authors": [
+      "Yan, Xia",
+      "Wu, He",
+      "Xu, Yanghui",
+      "Wu, Zizhao",
+      "Chen, Jiazhou"
+    ],
+    "abstract": "3D Language Gaussian Splatting embeds open-vocabulary language features into 3D Gaussian Splatting, providing an efficient explicit representation for text-driven 3D scene understanding. However, existing methods are limited to indoor or small-scale scenes, and tend to fail in Unmanned Aerial Vehicle (UAV) outdoor scenes, where severe occlusions and long distance viewpoints often lead to incorrect semantic activations and missing target responses. In this paper, we present OutLangSplat which adapts language Gaussian representations to UAV outdoor scenes by improving feature representation and aggregation reliability. For the feature representation, a 2D-3D dual-branch representation with region-based alignment and fusion is designed to improve spatial consistency, reducing incomplete target responses and background misactivations. For the feature aggregation, we introduce a training-free contribution and consistency-aware Gaussian feature aggregation strategy that leverages pixel contribution reliability and cross-view semantic consistency to suppress unreliable responses from noisy viewpoints. A new dataset is provided by manually annotating various objects on four real-world public UAV outdoor scene datasets. To the best of our knowledge, it is the first accessible dataset of open-vocabulary 3D scene understanding for UAV outdoor scenes. Quantitative evaluations and ablation studies demonstrate that OutLangSplat outperforms SOTA methods on both open-vocabulary semantic segmentation and instance localization tasks. The datasets and codes will be open-sourced.",
+    "link": "https://arxiv.org/abs/2608.04560",
+    "published": "2026-08-05",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Open-Vocabulary",
+      "UAV Scenes",
+      "Semantic Segmentation",
+      "Feature Aggregation"
+    ],
+    "tldr": "提出OutLangSplat，面向无人机室外场景的3D语言高斯泼溅，通过双分支特征表示和训练无关的聚合策略提升开放词汇语义分割与实例定位性能。",
+    "motivation": "现有3D语言高斯泼溅方法仅适用于室内或小规模场景，在无人机室外场景中因严重遮挡和远距离视角常导致语义激活错误和目标响应缺失，无法有效支持开放词汇3D场景理解。",
+    "method": "设计2D-3D双分支特征表示，利用区域级对齐与融合提升空间一致性；提出训练无关的贡献与一致性感知高斯特征聚合策略，结合像素贡献可靠性和跨视角语义一致性抑制噪声视角的不可靠响应；并手工标注四个真实无人机室外数据集构建首个开放词汇3D场景理解数据集。",
+    "result": "在开放词汇语义分割和实例定位任务上优于现有最先进方法，并通过定量评估和消融实验验证有效性；数据集和代码将开源。",
+    "conclusion": "贡献在于首个面向无人机室外场景的开放词汇3D场景理解数据集，以及适应远距离和遮挡场景的特征表示与聚合方法，有助于推进无人机自主感知和场景理解研究。"
+  },
+  {
     "id": "http://arxiv.org/abs/2608.03851v1",
     "title": "LiteMVS: Efficient Multi-View Stereo with Foundation Distillation and Expert Aggregation",
     "authors": [
@@ -435,6 +521,171 @@
     "method": "提出图像空间方法PADFormer，基于ViT，通过仅在正常数据上训练交叉视图掩码重建，并结合动态补丁选择与空间对齐机制，利用稀疏参考视图学习；推理时采用多种掩码模式多次前向生成集成重建，与查询图比较检测异常。",
     "result": "在PAD基准上达到最先进结果，在经典小样本异常检测任务上保持可比性能，效率高且无需3D重建。",
     "conclusion": "PADFormer展示了无需3D重建的高效图像空间异常检测方案，具有良好的泛化性和实际应用潜力。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.04127",
+    "title": "Teaching Foundation Models to Read mmWave: Pose-Guided Kinematic Representation for Human Behavior Understanding",
+    "authors": [
+      "Zhang, Duo",
+      "Yin, Zhehui",
+      "Yao, Zhiyun",
+      "Qin, Haotong",
+      "Zhang, Xusheng",
+      "Yang, Hongliu",
+      "Sun, Jianyu",
+      "Wang, Junzhe",
+      "Fan, Zizhou",
+      "Magno, Michele",
+      "Zhang, Daqing"
+    ],
+    "abstract": "Large language model agents need to perceive human behavior in physical environments. Millimeter-wave (mmWave) radar provides a privacy-friendly and contactless sensing modality, but radar observations are difficult to align with language. Existing radar-language methods often rely on synthetic data or lack explicit supervision for human body structure and motion. We present mmMind, a radar-language model that uses synchronized 3D pose as training-only supervision. A spatio-temporal radar encoder is pretrained to capture body configuration and motion dynamics, after which the pose head is removed so that inference requires radar alone. The learned radar representations are then aligned with an LLM for behavior captioning and spatio-temporal question answering. We also introduce mmMind-Bench, a real-world mmWave-language benchmark containing 17.9 hours of recordings from 23 participants across seven indoor environments. Experiments on captioning, question answering, and unseen-action generalization show that mmMind consistently outperforms existing radar-language baselines, while ablations confirm the importance of pose-guided pretraining.",
+    "link": "https://arxiv.org/abs/2608.04127",
+    "published": "2026-08-04",
+    "category": "cs.CV",
+    "tags": [
+      "mmWave",
+      "Radar-Language Model",
+      "Pose-Guided Pretraining",
+      "Human Behavior Understanding",
+      "Benchmark"
+    ],
+    "tldr": "mmMind通过3D姿态引导预训练雷达编码器并与LLM对齐，实现仅依赖毫米波雷达的行为理解与问答，性能优于现有基线。",
+    "motivation": "大语言模型智能体需要感知物理环境中的人类行为；毫米波雷达具备隐私友好、非接触优势，但雷达观测难以与语言对齐。现有雷达-语言方法依赖合成数据或缺乏对人体结构与运动的显式监督。",
+    "method": "提出mmMind，使用同步3D姿态作为训练监督，预训练时空雷达编码器以捕获身体构型与运动动态；训练后移除姿态头，推理时仅需雷达输入。随后将雷达表示与LLM对齐，用于行为描述和时空问答，并构建真实世界基准mmMind-Bench。",
+    "result": "实验表明，mmMind在行为描述、问答和未见动作泛化任务上持续优于现有雷达-语言基线；消融实验证实姿态引导预训练的重要性。摘要未提供具体量化指标。",
+    "conclusion": "姿态引导预训练能有效提升模型对人体行为的结构与运动理解能力；mmMind与mmMind-Bench为毫米波雷达-语言研究提供了新方法和真实世界评测基准，有助于隐私友好型物理环境感知。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.03516",
+    "title": "Detecting Pose Estimation Failures via Keypoint Self-Consistency",
+    "authors": [
+      "Chan, Robin"
+    ],
+    "abstract": "One common approach to pose estimation involves predicting object keypoints in an image, followed by using Perspective-n-Point algorithms to compute the object's rotation and translation relative to the camera. While rotations preserve object shapes, this property is often neglected in keypoint-based pose estimation methods, where keypoints are typically predicted independently from each other. As imprecise keypoint predictions negatively affects pose estimation accuracy, it also limits its reliability in downstream tasks. In this work, we explore whether such inaccurate pose estimates can be identified by simply examining spatial locations between 2D keypoints. We propose a set of hand-crafted geometric features that capture the self-consistency of keypoint predictions, including pairwise distances, reprojection consistency, as well as render and mask consistency. Despite its simplicity, a logistic regression classifier trained on these features reliably detects pose estimation failures, outperforming confidence-based approaches like conformal keypoint predictions that rely solely on keypoint uncertainty.",
+    "link": "https://arxiv.org/abs/2608.03516",
+    "published": "2026-08-04",
+    "category": "cs.CV",
+    "tags": [
+      "Pose Estimation",
+      "Keypoint Self-Consistency",
+      "Failure Detection",
+      "Geometric Features"
+    ],
+    "tldr": "提出利用关键点自一致性几何特征检测姿态估计失败，逻辑回归分类器优于依赖关键点不确定性的方法。",
+    "motivation": "关键点通常独立预测，忽略了旋转保持物体形状的性质，导致不精确预测影响姿态精度和下游任务可靠性，因此需要识别失败的姿态估计。",
+    "method": "手工设计捕捉关键点自一致性的几何特征，包括成对距离、重投影一致性以及渲染与掩码一致性，并使用逻辑回归分类器训练以检测失败。",
+    "result": "实验表明该方法能可靠检测姿态估计失败，并优于基于置信度的方法（如 conformal keypoint predictions），但摘要未提供具体量化指标。",
+    "conclusion": "提出一种简单而有效的姿态估计失败检测方法，无需复杂模型即可提升可靠性，对下游应用具有潜在价值。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.03429",
+    "title": "SLAMFormer-$\\infty$: Infinite SLAM Transformer for Unbounded Frontend and Backend Processing",
+    "authors": [
+      "Fang, Zhijian",
+      "Zheng, Weicheng",
+      "Yuan, Yijun",
+      "Wang, Weibang",
+      "Chen, Zhuoguang",
+      "Sun, Chang",
+      "Huang, Junhao",
+      "Li, Kenan",
+      "Qin, Minghui",
+      "Zhao, Hang"
+    ],
+    "abstract": "We introduce the Infinite SLAM Transformer (SLAMFormer-$\\infty$), the first geometric transformer capable of supporting both long-range frontend and backend processing without an explicit distance bound. Instead of relying on a first-frame-anchored formulation, SLAMFormer-$\\infty$ employs memory conditions to define flexible coordinate systems and scales for input frames, enabling more expressive structural conditioning. Built upon this formulation, the frontend preserves efficient local computation, while the backend jointly optimizes long-range trajectories and scene geometry in a globally consistent manner. Experimental results demonstrate that SLAMFormer-$\\infty$ achieves superior or highly competitive performance in both trajectory estimation and scene reconstruction across large-scale datasets. Notably, SLAMFormer-$\\infty$ generalizes to extremely long trajectories, successfully operating on sequences exceeding $17\\mathrm{km}$.",
+    "link": "https://arxiv.org/abs/2608.03429",
+    "published": "2026-08-04",
+    "category": "cs.CV",
+    "tags": [
+      "SLAM",
+      "Transformer",
+      "Long-range",
+      "Scene Reconstruction",
+      "Trajectory Estimation"
+    ],
+    "tldr": "提出基于记忆条件的无限SLAM Transformer，支持无距离界限的长时间轨迹估计与场景重建，可处理超17公里序列。",
+    "motivation": "现有SLAM Transformer依赖第一帧锚定和显式距离界限，难以支持无限长的前端与后端处理，限制了在长轨迹场景中的适用性。",
+    "method": "SLAMFormer-∞采用记忆条件定义输入帧的灵活坐标系和尺度，替代第一帧锚定；前端保持高效局部计算，后端联合优化长轨迹与场景几何以实现全局一致性。",
+    "result": "在大规模数据集上，轨迹估计和场景重建性能达到优越或高度竞争力水平；成功泛化到超过17公里的极长轨迹序列。",
+    "conclusion": "首次实现无显式距离界限的几何Transformer，支持无限长SLAM前端与后端处理，为长距离自主导航和场景理解提供了新范式。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.03279",
+    "title": "3DGSI-Assessor: A Large-Scale Dataset and An LMM-based Method for 3D Gaussian Splatting Image Quality Assessment",
+    "authors": [
+      "Xing, Yuke",
+      "Wang, Jiarui",
+      "Gordon, William",
+      "Li, Zhu",
+      "Zhai, Guangtao",
+      "Xu, Yiling"
+    ],
+    "abstract": "3D Gaussian Splatting (3DGS) has become a dominant representation for real-time novel view synthesis (NVS), yet its storage footprint makes compression indispensable for practical deployment. 3DGS training and compression introduce representation-specific distortions such as floating artifacts and surface scattering, which conventional image quality assessment (IQA) metrics fail to capture. Moreover, the independent compression of geometric and color attributes may lead to decoupled dimension-specific distortions that must be diagnosed separately, yet existing metrics report only a single overall score. To address these gaps, we present 3DGS-IEval-15K+, a large-scale, multi-dimensional IQA dataset for compressed 3DGS, comprising 15,200 images from 10 diverse scenes, produced by 6 representative 3DGS algorithms at systematically designed compression levels and rendered from 20 strategically selected viewpoints spanning both training views and challenging novel views, annotated with 45,600 mean opinion scores (MOSs) across overall, geometry, and color quality. Based on 3DGS-IEval-15K+, we propose 3DGSI-Assessor, an all-in-one 3DGS IQA framework that integrates global semantic and dimension-specific local features within a large multimodal model (LMM), predicting all three dimensions in a single forward pass. 3DGSI-Assessor achieves state-of-the-art performance on 3DGS-IEval-15K+, and exhibits competitive generalization on other NVS benchmarks. Dataset and code will be released at this https URL .",
+    "link": "https://arxiv.org/abs/2608.03279",
+    "published": "2026-08-04",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Image Quality Assessment",
+      "Dataset",
+      "LMM",
+      "Compression"
+    ],
+    "tldr": "提出3DGS-IEval-15K+数据集和基于LMM的3DGSI-Assessor方法，实现压缩3DGS图像的多维质量评估并达到SOTA。",
+    "motivation": "传统IQA指标无法捕捉3DGS特有的失真（如漂浮伪影、表面散射），且几何与颜色属性独立压缩产生维度分离失真，需要分别诊断，但现有指标只给出单一总分。",
+    "method": "构建大规模多维IQA数据集3DGS-IEval-15K+（15,200张图像，45,600个MOS，覆盖整体/几何/颜色三个维度），并提出3DGSI-Assessor框架，将全局语义与维度特定局部特征集成到大型多模态模型（LMM）中，单次前向预测三维质量。",
+    "result": "在3DGS-IEval-15K+上达到最先进性能，并在其他NVS基准上表现出有竞争力的泛化能力。",
+    "conclusion": "贡献了新的大规模多维数据集和统一评估框架，为3DGS压缩质量评估提供基准与方法，数据集和代码将公开。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.03531",
+    "title": "Behaviorally Adaptive Visual Diversion for Inclusive and Resilient Digital Assessment Delivery",
+    "authors": [
+      "Raj, Gupta Lovi",
+      "Kamalpreet, kaur",
+      "Sriram, Dama",
+      "Prajithaa, Parali"
+    ],
+    "abstract": "Institutions increasingly rely on browser lockdown, webcam monitoring, and behavioral analytics to secure high-stakes digital assessments, yet these mechanisms are commonly designed and evaluated independently and often overlook learner accessibility. This paper introduces Behaviorally-Adaptive Visual Diversion (BAVD), a theoretical framework in which a synthetic, non-semantic visual field is composited with assessment content and adaptively modulated according to observed candidate behavior. The underlying assessment content is never altered; only its visual presentation is modified to reduce the usefulness of unauthorized screen capture or screen sharing while remaining minimally intrusive for legitimate candidates. The framework further incorporates an accessibility-aware attenuation mechanism that reduces or suppresses diversion intensity for candidates with approved visual-processing accommodations. We formulate the model using a coupled dynamical-systems representation comprising a Diversion Field Generator, Rendering Tensor, Behavior Tensor, Composite Integrity Functional, and Multi-dimensional Entropy Model, and establish theoretical properties for content fidelity, rendering stability, entropy boundedness, integrity tracking, and closed-loop adaptation stability. The framework explicitly states its threat model, identifies deployment assumptions and limitations, and discusses the trade-off between accessibility and capture resistance. This work provides a mathematically grounded foundation for behaviorally adaptive and accessibility-aware assessment delivery and offers a basis for future empirical validation in trusted digital assessment platforms.",
+    "link": "https://arxiv.org/abs/2608.03531",
+    "published": "2026-08-04",
+    "category": "cs.AI",
+    "tags": [
+      "Digital Assessment",
+      "Visual Diversion",
+      "Behavioral Adaptation",
+      "Accessibility",
+      "Security"
+    ],
+    "tldr": "提出行为自适应视觉转移框架，在不改动题目内容的前提下动态调整视觉呈现，兼顾防作弊与无障碍需求。",
+    "motivation": "现有数字评估安全机制（如浏览器锁定、摄像头监控）独立设计且忽视考生无障碍需求，缺乏统一数学框架。",
+    "method": "将非语义视觉场与评估内容合成，依据考生行为自适应调整呈现强度，并提出无障碍衰减机制；用耦合动态系统（包含转移场生成器、渲染张量、行为张量等）进行形式化建模。",
+    "result": "摘要未提供量化实验指标，主要建立了内容保真度、渲染稳定性、熵有界性、完整性追踪与闭环自适应稳定性的理论性质。",
+    "conclusion": "为行为自适应且无障碍感知的评估交付提供了数学基础，明确了威胁模型与部署限制，为未来在可信数字评估平台中的实证验证奠定基础。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.03076",
+    "title": "AI Agent Economics: Can Autonomous Economic Behavior Emerge among AI Agents under Minimal External Conditions?",
+    "authors": [
+      "Zhang, Lingyun",
+      "Shang, Shang"
+    ],
+    "abstract": "Multi-agent studies commonly place AI agents in predefined games, markets, or roles, making it difficult to distinguish endogenous economic organization from behavior inherited from the scenario. We ask whether economic relations emerge when agents receive executable mechanisms for work, transfer, elections, and allocation but no prescribed social or economic strategy. We define AI Agent Economics as systems of production, allocation, consumption, exchange, and institutions that alter agents' future feasible actions. We develop a two-stage framework comprising a no-production boundary test and 24 independent six-agent worlds across GPT and DeepSeek. Without productive tasks, agents communicate and govern resource provision but show no substantive inter-agent transfer activity. With verified work and scarce task access, transfers, loans, access promises, vote-for-access exchanges, and allocation strategies emerge. Holding the election interface fixed, executable allocation authority increases differentiation while reducing failed allocation and prolonged exclusion. When energy becomes symbolic, continuation support disappears, yet competition over task access persists. These findings show that organization follows executable rights and resource consequences rather than role labels or prompt language, and motivate governance audits of the mechanisms that actually constrain agents' future actions.",
+    "link": "https://arxiv.org/abs/2608.03076",
+    "published": "2026-08-04",
+    "category": "cs.AI",
+    "tags": [
+      "Multi-Agent Systems",
+      "Emergent Economics",
+      "LLM Agents",
+      "Mechanism Design",
+      "Governance"
+    ],
+    "tldr": "在最小外部条件下，AI代理可通过可执行机制自发涌现出转移、借贷等经济行为，而非依赖角色标签。",
+    "motivation": "现有多代理研究常预设游戏或市场，难以区分内生经济组织与场景习得行为。作者探究在仅提供工作、转移、选举和分配等可执行机制而无指定策略时，经济关系能否自发涌现。",
+    "method": "提出AI代理经济学定义，采用两阶段框架：无生产边界测试和跨GPT与DeepSeek的24个独立六代理世界，验证不同条件下的经济行为。",
+    "result": "无生产任务时无实质转移；有验证工作和稀缺任务访问时出现转移、借贷、访问承诺、以投票换访问等策略。可执行分配权增加分化但减少失败分配和长期排斥；能源符号化后延续支持消失，任务访问竞争仍存。",
+    "conclusion": "组织行为取决于可执行权利和资源后果，而非角色标签或提示语言。该发现呼吁对约束代理未来行动机制的治理审计。"
   },
   {
     "id": "http://arxiv.org/abs/2608.02598v1",
@@ -990,6 +1241,143 @@
     "conclusion": "StreamSplat使前馈3DGS支持流式长序列输入，内存随探索场景几何而非流长度增长，并将在接收后开源代码。"
   },
   {
+    "id": "https://arxiv.org/abs/2608.02790",
+    "title": "Confident but Unreliable: A Behavioral Safety Audit of Vision-Language Models on Brain MRI",
+    "authors": [
+      "Sabbaghziarani, Amir",
+      "Abavisani, Mohammadsajad",
+      "Plis, Sergey"
+    ],
+    "abstract": "Vision-language models (VLMs), including medical specialists, are increasingly proposed for medical imaging, yet their stated confidence is rarely evaluated separately from correctness. We use brain MRI as a controlled, high-stakes testbed for a broader failure mode in frontier multimodal systems: models can appear competent while lacking reliable self-knowledge. We present an automatically graded behavioral audit and pilot study of six instruction-tuned VLMs (five general-purpose and one medical specialist) on 4,102 images (4,032 axial/coronal/sagittal MRI slices from 250 subjects plus 70 non-brain/noise controls), with labels derived from public metadata and released expert segmentation masks rather than new human annotation. Across models, answer coverage is near-complete, but verbalized-confidence calibration is poor: ECE ranges from 0.27 to 0.40, mean confidence on incorrect answers ranges from 0.82 to 0.97, and 33-46% of answered items are high-confidence errors. The most accurate model is also the most confident on its errors, while a base/specialist family contrast suggests that medical adaptation improves tumor-presence detection without improving confidence reliability. Open-ended diagnostics further show that hallucination and abstention vary separately from multiple-choice accuracy. These findings argue that medical-image VLM evaluation should report verbalized-confidence reliability, confident error, hallucination, and abstention alongside accuracy.",
+    "link": "https://arxiv.org/abs/2608.02790",
+    "published": "2026-08-03",
+    "category": "cs.CV",
+    "tags": [
+      "Vision-Language Models",
+      "Medical Imaging",
+      "Confidence Calibration",
+      "Safety Audit",
+      "Brain MRI"
+    ],
+    "tldr": "针对脑MRI的视觉语言模型行为安全审计显示，模型口头自信与正确性校准差，需在评估中报告置信度可靠性、高置信错误、幻觉和弃权。",
+    "motivation": "视觉语言模型被越来越多地用于医学影像，但口头自信很少与正确性分开评估。研究旨在揭示前沿多模态系统中模型看似胜任但缺乏可靠自我认知的失败模式。",
+    "method": "以脑MRI为受控测试平台，对六个指令微调VLM（五个通用、一个医学专用）进行自动评分的行为审计，使用4,102张图像（4,032张MRI切片和70张非脑/噪声对照），标签来自公共元数据和公开专家分割掩膜。评估答案覆盖率、口头置信度校准（ECE）以及开放式诊断中的幻觉和弃权行为。",
+    "result": "所有模型答案覆盖率近乎完整，但口头置信度校准较差：ECE范围为0.27-0.40，错误答案的平均置信度为0.82-0.97，33-46%的高置信错误。最准确的模型在错误上也最自信；医学适应改善了肿瘤检测但未改善置信度可靠性。",
+    "conclusion": "研究主张医学影像VLM评估应同时报告口头置信度可靠性、高置信错误、幻觉和弃权，而不仅仅是准确率。这对医疗AI安全具有重要影响，需关注模型过度自信带来的潜在风险。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.02191",
+    "title": "DerainSplat: Feed-Forward Clean 3D Gaussian Splatting from Sparse Rainy Views",
+    "authors": [
+      "Jiang, Fuzhen",
+      "Shi, Changyue",
+      "Yang, Chuxiao",
+      "Hu, Xinyuan",
+      "Ye, Wenjie",
+      "Chen, Minghao"
+    ],
+    "abstract": "Although image deraining has advanced substantially, existing methods mainly focus on 2D image restoration. As spatial intelligence applications such as embodied AI and autonomous driving continue to emerge, reconstructing clean 3D scenes from sparse rainy views in a feed-forward manner becomes increasingly important. Existing feed-forward 3D Gaussian Splatting (3DGS) methods often assume clean inputs and collapse under rainy conditions. To this end, we present \\textbf{\\textit{DerainSplat}}, a feed-forward framework that reconstructs clean 3D scenes from only a few rainy views. To support this task, we build a large-scale multi-view derain dataset through a four-stage synthesis pipeline that sequentially models overcast illumination, depth-dependent haze, rain streaks, and lens raindrops, producing privileged weather factors. We introduce a weather net that predicts the weather factors from rainy context and yields two support maps. Scene support modulates cross-view cost-volume matching, while radiance support drives depth-aligned appearance fusion to fill corrupted pixels. The derived geometry evidence further attenuates Gaussian opacity to reduce spurious structures. A rainy cycle consistency re-renders clean views using the predicted factors and aligns them with rainy inputs. Extensive experiments show that \\textbf{\\textit{DerainSplat}} outperforms existing methods on various datasets, including RealEstate10K, ACID, Mip-NeRF360, and real-world rainy scenes, with strong cross-dataset generalization.",
+    "link": "https://arxiv.org/abs/2608.02191",
+    "published": "2026-08-03",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Rain Deraining",
+      "Feed-forward Reconstruction",
+      "Multi-view Synthesis"
+    ],
+    "tldr": "提出DerainSplat，从稀疏雨景中以前馈方式重建干净3D场景，通过天气因子预测和雨循环一致性实现。",
+    "motivation": "现有图像去雨主要针对2D恢复，而前馈式3D高斯泼溅方法假设干净输入，在雨天条件下性能崩溃。面向具身智能和自动驾驶等应用，需要从稀疏雨景中直接重建干净3D场景。",
+    "method": "构建四阶段合成管线生成大规模多视角去雨数据集，包含阴天光照、景深雾、雨线和镜头雨滴等特权天气因子。引入天气网络预测天气因子并生成场景支持图与辐射支持图，分别调制跨视角代价体匹配和深度对齐的外观融合，利用几何证据衰减高斯不透明度，并通过雨天循环一致性将重渲染结果对齐到雨图输入。",
+    "result": "在RealEstate10K、ACID、Mip-NeRF360和真实雨景上均优于现有方法，具有强跨数据集泛化能力。",
+    "conclusion": "首次提出从稀疏雨景前馈重建干净3DGS的框架，并贡献了多视图去雨数据集，为雨天条件下的空间智能应用（如具身AI和自动驾驶）提供了可行方案。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.02145",
+    "title": "UniqueSplat: View-conditioned 3D Gaussian Splatting for Generalizable 3D Reconstruction",
+    "authors": [
+      "Song, Haixu",
+      "Yang, Xiaoke",
+      "Zhang, Shengjun",
+      "Lu, Jiwen",
+      "Duan, Yueqi"
+    ],
+    "abstract": "In this paper, we propose UniqueSplat, a view-conditioned feed-forward 3D Gaussian Splatting model to reconstruct customized 3D radiance fields for each view query. Existing feed-forward methods such as pixelSplat and MVSplat aim to generate fixed Gaussians across all views of each scene by minimizing the error between rendered views and ground-truth images. However, such fixed Gaussians generally render images from all views and lack the ability to adapt to specific viewpoints, as they do not incorporate target view information when predicting Gaussians. To address this, our UniqueSplat learns the view-conditioned information as a prior and incorporates this knowledge into network parameters, so that Gaussians are dynamically adjusted in accordance with different views. Specifically, we propose a two-branch view-conditioned hyperNetwork to simultaneously learn view-agnostic embeddings and view-specific knowledge, which not only explores the shareable knowledge from various views, but also adapts the model to specific views at test time. Extensive experiments on widely-used datasets including RealEstate10K, ACID and DTU demonstrate the superiority of UniqueSplat over the state-of-the-art methods. Moreover, UniqueSplat encouragingly outperforms existing methods in cross-dataset evaluation, showing its notable generalization ability.",
+    "link": "https://arxiv.org/abs/2608.02145",
+    "published": "2026-08-03",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "View-Conditioned",
+      "Feed-forward Reconstruction",
+      "Generalization"
+    ],
+    "tldr": "提出视图条件化的3D高斯泼溅模型UniqueSplat，利用超网络动态调整高斯，提升重建质量与泛化性。",
+    "motivation": "现有前馈方法（如pixelSplat、MVSplat）为所有视图生成固定高斯，未利用目标视图信息，难以适应特定视角。本文旨在通过引入视图条件先验，使高斯随视角动态调整。",
+    "method": "提出两分支视图条件超网络，同时学习视图无关嵌入和视图特定知识，并将视图条件信息融入网络参数，从而在测试时动态调整高斯以适应不同视图。",
+    "result": "在RealEstate10K、ACID和DTU数据集上超过现有最先进方法，并在跨数据集评估中表现更优，显示强泛化能力。",
+    "conclusion": "本文证明了视图条件化高斯建模的有效性，为可泛化3D重建提供了新思路，能显著提升视角自适应能力和跨数据集泛化性能。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.01958",
+    "title": "FAST-GS: Frequency Aware Space-time Gaussian Splatting for Photorealistic Dynamic Novel View Synthesis",
+    "authors": [
+      "Zhang, Zhengyang",
+      "Lu, Ziyu",
+      "Li, PengCheng",
+      "Duan, Hongbo",
+      "Liu, Yi",
+      "Luo, Pengting",
+      "Zhuang, Peiyu",
+      "Li, Xinghui",
+      "Ma, Shaohua"
+    ],
+    "abstract": "4D Gaussian Splatting (4DGS) excels in dynamic 3D reconstruction and real-time novel view synthesis via efficient 4D Gaussian representations and parallelizable rendering. However, existing 4DGS approaches rely on a single polynomial to model motion, which limits performance in complex dynamic scenes where high-frequency motion components are prevalent, and fails to ensure long-term stability due to cumulative trajectory drift. To address these issues, we propose a Fourier Motion Modeling module: this paradigm decomposes motion into frequency-based sinusoidal components, capturing both low-frequency global trajectories and high-frequency local details to model complex motion patterns accurately. It retains the real-time rendering capability of 4DGS while improving complex motion fitting and long-term coherence. Additionally, we integrate a motion-aware regularization strategy into the loss function: it uses frequency-dependent weights to suppress high-frequency jitter while preserving low-frequency motion coherence. Extensive experiments on N3V and Google Immersive datasets from multiple scenarios demonstrate the effectiveness of our method.",
+    "link": "https://arxiv.org/abs/2608.01958",
+    "published": "2026-08-03",
+    "category": "cs.CV",
+    "tags": [
+      "4D Gaussian Splatting",
+      "Dynamic Scene",
+      "Novel View Synthesis",
+      "Fourier Motion Modeling",
+      "Regularization"
+    ],
+    "tldr": "提出频域感知的时空高斯泼溅方法，用傅里叶运动建模和正则化实现高质量动态效果。",
+    "motivation": "现有4DGS方法用单一多项式建模运动，难以应对高频运动分量，且轨迹漂移导致长期稳定性差。",
+    "method": "设计傅里叶运动建模模块，将运动分解为频域正弦分量，兼顾低频全局轨迹和高频局部细节；并引入运动感知正则化，按频率权重抑制抖动、保持低频一致性。",
+    "result": "在N3V和Google Immersive多场景数据集上验证了有效性，具体数值未在摘要中提及。",
+    "conclusion": "在保持实时渲染能力的同时，显著提升复杂运动拟合精度和长期时序连贯性，为动态新视角合成提供更优方案。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.01914",
+    "title": "CHOW-SLAM: Compact Hybrid Representation with Complementary Overlap Window Optimization for RGB-D SLAM",
+    "authors": [
+      "Ji, Wenxuan",
+      "Xiao, Jin",
+      "Hu, Xiaoguang",
+      "Shi, Jiaqi",
+      "Jia, Zichong",
+      "Zhang, Baochang"
+    ],
+    "abstract": "Simultaneous localization and mapping (SLAM) based on Neural Radiance Fields (NeRF) enables dense, continuous scene reconstruction. However, existing systems operating with limited online resources struggle to simultaneously construct two types of constraints, namely, compact yet discriminative spatial constraints derived from scene representations and persistent temporal constraints derived from historical observations. To address this challenge, we propose CHOW-SLAM, a dense RGB-D SLAM framework that explicitly constructs these complementary spatial and temporal constraints. Spatially, we propose a compact parametric-hash (P-H) hybrid representation that organizes components based on planes and grids across scales in P and H branches. A unified multi-output decoder further aligns the ray termination distributions induced by TSDF and density, preserving geometry and appearance under a compact parameter budget. Temporally, we propose a complementary overlap-window strategy to prevent optimization from being dominated by short-term overlap or weakly related historical observations. Within a fixed budget, the strategy retains recent frames, selects high-overlap local frames, and introduces temporally distributed historical keyframes. Loss-aware keyframe insertion and bundle adjustment scheduling further adapt optimization to tracking quality. In addition, ORB-based tracking and geometric pose estimation are used for pose initialization, followed by neural rendering optimization to improve tracking stability. Extensive evaluations on multiple datasets demonstrate that CHOW-SLAM outperforms state-of-the-art methods in both scene reconstruction quality and camera tracking accuracy. The source code is available at this https URL .",
+    "link": "https://arxiv.org/abs/2608.01914",
+    "published": "2026-08-03",
+    "category": "cs.CV",
+    "tags": [
+      "RGB-D SLAM",
+      "NeRF",
+      "Hybrid Representation",
+      "Keyframe Optimization",
+      "Dense Reconstruction"
+    ],
+    "tldr": "CHOW-SLAM提出紧凑混合表示与互补重叠窗口优化，在RGB-D SLAM中同时实现高精度重建与跟踪。",
+    "motivation": "现有基于NeRF的SLAM在有限在线资源下难以同时构建场景表示的空间约束和历史观测的时间约束，导致重建和跟踪性能受限。",
+    "method": "提出紧凑参数哈希混合表示（P-H）与统一多输出解码器，联合TSDF和密度对齐；采用互补重叠窗口策略，保留近期帧、高重叠局部帧和分布历史关键帧，并结合损失感知的关键帧插入与BA调度；使用ORB跟踪和几何位姿初始化，再通过神经渲染优化。",
+    "result": "在多个数据集上的广泛评估表明，CHOW-SLAM在场景重建质量和相机跟踪精度上均优于现有最先进方法。",
+    "conclusion": "通过显式构建互补的空间与时间约束，CHOW-SLAM在紧凑参数预算下实现了高精度密集重建与稳定跟踪，并已开源代码。"
+  },
+  {
     "id": "http://arxiv.org/abs/2608.01492v1",
     "title": "GaussianSelector: Lightweight Human-Guided Object Selection in 3D Gaussian Splatting with Graph Optimization",
     "authors": [
@@ -1314,218 +1702,5 @@
     "method": "VDA使用冻结的语义分类器和域模板分类器将未标注目标图像划分为类相关组，基于置信度排序的图像特征构建归一化原型，并以单一全局权重与语义分类器融合。整个过程无需目标标签、目标端优化、迭代细化或测试查询，生成固定的可缓存分类器。",
     "result": "在十个ImageNet到目标域的迁移中，VDA使零样本CLIP、TCP和MaPLe分别提升3.22、3.39和3.35个百分点，且在每种设置下改善十个目标中的九个；还使无泄漏PromptKD提升2.79个百分点。受控实验表明类特定划分是增益关键，局部伪标签错误仍可有用。",
     "conclusion": "VDA是一种即插即用的训练免费自适应框架，可补充零样本、源提示、多模态提示和目标蒸馏分类器，为高效提示调优提供新方向。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.28442v1",
-    "title": "ViewMind3D: Modular View-Aware Inference for Training-Free 3D-QA",
-    "authors": [
-      "Ping-Kun Chiang",
-      "Kun-Ru Wu",
-      "Po-han Li",
-      "Sandeep Chinchali",
-      "Ufuk Topcu",
-      "Yu-Chee Tseng"
-    ],
-    "abstract": "Recent advances in large language models (LLMs) and vision-language models (VLMs) have enabled new possibilities for 3D question answering (3D-QA), a key capability for embodied AI and robotic perception. However, most existing methods rely on 3D-specific training or fine-tuning with costly annotations, limiting their scalability and real-world applicability. We present \\textbf{ViewMind3D}, a fully training-free and modular framework for 3D spatial reasoning over multi-view observations of a scene without requiring complete 3D reconstruction. The framework decomposes the 3D-QA task into four interpretable components: (1) question-driven multi-view selection, (2) guided visual grounding with language-conditioned object cues, (3) spatial context encoding via a bird's-eye-view (BEV) viewpoint indicator, and (4) structured answer generation through role-based reasoning. This design enables structured, robust, and interpretable reasoning without requiring model tuning. Experimental results on ScanQA and SQA3D show that ViewMind3D achieves competitive performance compared to prior training-free and fine-tuned 3D-LLMs. In particular, our method improves performance on spatially grounded question types, such as ``What'' questions in SQA3D, while maintaining strong overall accuracy (50.8\\%) and achieving 73.4 CIDEr on ScanQA. These results demonstrate that effective 3D reasoning can be achieved through modular orchestration of general-purpose LLMs and VLMs for robotic perception in real-world environments.",
-    "link": "http://arxiv.org/abs/2607.28442v1",
-    "published": "2026-07-30",
-    "category": "cs.CV",
-    "tags": [
-      "3D-QA",
-      "Vision-Language Models",
-      "Modular Framework",
-      "Spatial Reasoning",
-      "Training-Free"
-    ],
-    "tldr": "ViewMind3D 是一种无需训练、模块化的 3D 问答框架，通过多视角选择、视觉定位、BEV 空间编码和角色推理实现结构化空间推理。",
-    "motivation": "现有 3D-QA 方法依赖昂贵的 3D 专用训练或微调，可扩展性和实际应用受限。需要一种无需训练、可泛化的解决方案。",
-    "method": "将 3D-QA 分解为四个可解释组件：问题驱动的多视角选择、语言条件对象线索引导的视觉定位、鸟瞰视角（BEV）指示器编码空间上下文、基于角色推理生成结构化答案。利用通用 LLM/VLM 进行模块化编排，无需模型调优。",
-    "result": "在 ScanQA 和 SQA3D 上取得竞争性性能，SQA3D 整体准确率达 50.8%，ScanQA 上的 CIDEr 为 73.4；在 SQA3D 的“What”类空间问题上有显著提升。",
-    "conclusion": "证明通过通用 LLM/VLM 的模块化编排可实现有效的 3D 推理，为真实世界机器人感知提供可扩展且可解释的路径。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.28261v1",
-    "title": "TARS: Timestep-Aware Data Scaling for 3D-Free Video Re-Shooting",
-    "authors": [
-      "Jiwen Liu",
-      "Shujuan Li",
-      "Xiaohan Li",
-      "Zijie Meng",
-      "Xinyue Liu",
-      "Yulong Xu",
-      "Yan Zhou",
-      "Guoxin Zhang"
-    ],
-    "abstract": "Video re-shooting aims to regenerate videos with controllable camera motion and viewpoint. Existing methods rely on explicit 3D priors, which are limited by reconstruction quality and often perform poorly when synthesizing previously unseen regions, or on paired videos with different camera trajectories, whose scarcity hinders generalization. We revisit video re-shooting through text-driven semantic viewpoint specification, enabling control over shot scale, viewing angle, and first-/third-person perspective. To this end, we propose TARS, a 3D-free video re-shooting paradigm. Timestep-wise sensitivity analysis reveals that camera motion is primarily established during high-noise stages, where coarse spatiotemporal structures are formed. Based on this insight, we introduce self-supervised training to learn camera dynamics and fundamental visual representations without paired re-shooting data or 3D reconstruction. Through data scaling and joint textual-camera conditioning, TARS supports robust camera and viewpoint control, plausibly synthesizing regions beyond the source view under large camera motions while enabling reverse-angle re-shooting and perspective switching. Extensive experiments show that TARS provides more accurate and temporally consistent camera control than prior methods. Project Page: https://ymlinfeng.github.io/TARS.github.io/",
-    "link": "http://arxiv.org/abs/2607.28261v1",
-    "published": "2026-07-30",
-    "category": "cs.CV",
-    "tags": [
-      "Video Re-shooting",
-      "Camera Control",
-      "Diffusion Models",
-      "Text-driven Generation",
-      "Self-supervised Learning"
-    ],
-    "tldr": "提出TARS，一种无需3D先验的视频重拍摄范式，通过时间步感知的数据缩放实现文本驱动的相机运动与视角控制。",
-    "motivation": "现有视频重拍摄方法依赖显式3D先验或配对视频，受重建质量与数据稀缺限制，泛化能力不足。",
-    "method": "通过对去噪过程的时间步敏感性分析，发现高噪声阶段决定相机运动与粗粒度时空结构，据此提出自监督训练学习相机动态，并结合数据缩放与文本-相机联合条件，实现无需配对数据或3D重建的相机控制。",
-    "result": "实验表明TARS在相机控制准确性和时间一致性上优于现有方法，支持大运动下源视图外区域合成、反向角度重拍和视角切换。",
-    "conclusion": "TARS提出一种3D-free的视频重拍摄范式，论证了时间步感知数据缩放的重要性，为可控视频生成提供新思路。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.28164v1",
-    "title": "S-Avatar: Diffusion-Guided Gaussian Head Avatars from a Single Image",
-    "authors": [
-      "Hail Song",
-      "Seokhwan Yang",
-      "Jiwon Yang",
-      "Woojin Cho",
-      "Woontack Woo"
-    ],
-    "abstract": "We propose S-Avatar, a novel method for generating photorealistic 3D head avatars from a single image using a diffusion-guided 3D model generation module and strategies for animating 3D Gaussian Splatting (3DGS). While single-image head avatar reconstruction is crucial for lifelike Virtual Reality (VR) applications, existing approaches often struggle to preserve 3D consistency under unseen viewpoints. S-Avatar addresses this limitation through a three-stage pipeline. First, a high-resolution 3DGS is synthesized directly from a single image using a diffusion-based Gaussian splat generation module. Next, the parametric head model FLAME is aligned with the generated 3DGS by optimizing its parameters and spatial transformations. Finally, to adapt the 3DGS to FLAME variations, we construct a binding template that encodes the spatial relationship between the initial splats and FLAME. The dynamic 3D head avatar can then be rendered in real time by deforming the 3DGS with the binding template. By combining diffusion-guided canonical 3DGS generation with FLAME-based control, our method achieves efficient and accurate reconstruction with enhanced 3D consistency. Evaluations on public datasets demonstrate that S-Avatar outperforms state-of-the-art methods in novel-view and expression generation, achieving superior realism and consistency. Consequently, our approach represents a significant advance in accessible avatar creation, applicable to a wide range of VR/AR applications. The project page is available at https://github.com/hailsong/savatar.",
-    "link": "http://arxiv.org/abs/2607.28164v1",
-    "published": "2026-07-30",
-    "category": "cs.CV",
-    "tags": [
-      "3D Head Avatar",
-      "Gaussian Splatting",
-      "Diffusion Model",
-      "FLAME",
-      "Single-Image Reconstruction"
-    ],
-    "tldr": "提出S-Avatar，用扩散引导生成3D高斯并与FLAME绑定，从单张图像重建可实时驱动的逼真3D头部头像，提升新视角和表情下的3D一致性。",
-    "motivation": "单图头部头像重建对VR/AR应用至关重要，但现有方法在新视角下难以保持3D一致性，导致重建结果不够真实和稳定。",
-    "method": "采用三阶段流水线：先用扩散模块从单图直接生成高分辨率3DGS，再将参数化头部模型FLAME与生成的3DGS对齐，最后构建绑定模板编码初始splat与FLAME的空间关系，通过形变实现动态头像的实时渲染。",
-    "result": "在公开数据集上的评估表明，S-Avatar在新视角和表情生成方面优于现有最先进方法，实现了更高的真实感和3D一致性（摘要未提供具体量化指标）。",
-    "conclusion": "提出了一种高效准确的单图3D头部头像重建方法，结合扩散引导的3DGS生成与FLAME控制，显著提升3D一致性，可广泛应用于VR/AR等场景，并已开源项目代码。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.28132v1",
-    "title": "Convolutional Neural Shading for High-Quality 3D Reconstruction from Multi-View Images",
-    "authors": [
-      "Juheon Hwang",
-      "Taewan Kim",
-      "Heeseok Oh",
-      "Jiwoo Kang"
-    ],
-    "abstract": "We propose a convolutional neural shading (CNS), a novel pipeline to reconstruct high-quality 3D shapes from multi-view images. Several recent studies have used neural radiance fields and other neural differentiable rendering methods to understand 3D geometry. However, these approaches rely on single-point geometric information, such as positions and normals of the surface, leading to a lack of detailed local geometry. Our approach addresses the inherent limitations of single-point information by leveraging a neural shader to capture variations even in dark and textureless regions with a convolutional neural shader, resulting in far more accurate geometry predictions. Additionally, our method mitigates surface irregularities at image boundaries by introducing a fine-detail displacement network, which utilizes spatial information of surface geometry and learns fine displacement details by correlating neighboring values in the rendering coordinates. Through extensive experiments, our proposed method has demonstrated significant quality improvements in the reconstructed shapes and rendered images over current state-of-the-art methods.",
-    "link": "http://arxiv.org/abs/2607.28132v1",
-    "published": "2026-07-30",
-    "category": "cs.CV",
-    "tags": [
-      "3D Reconstruction",
-      "Neural Shader",
-      "Multi-view",
-      "Differentiable Rendering"
-    ],
-    "tldr": "提出卷积神经着色（CNS）管线，利用神经着色器和位移网络从多视图图像重建高质量3D形状。",
-    "motivation": "现有神经辐射场等方法依赖表面位置和法线等单点几何信息，缺乏局部几何细节，尤其在暗部和无纹理区域重建精度不足。",
-    "method": "提出CNS管线，使用卷积神经着色器捕获表面变化以改善暗部及无纹理区域的几何预测，并引入细粒度位移网络利用渲染坐标中的邻近信息学习精细位移，抑制图像边界处的表面不规则性。",
-    "result": "大量实验表明，该方法在重建形状和渲染图像质量上较现有最先进方法有显著提升。",
-    "conclusion": "提出一种新的CNS重建管线，通过卷积神经着色和位移网络有效提升多视图3D重建精度，为高质量几何重建提供了新思路。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.28049v1",
-    "title": "TSOG: A Format For Temporally And Spatially Ordered Gaussians",
-    "authors": [
-      "Shady Gmira",
-      "Evangelos Alexiou",
-      "Emmanouil Potetsianakis",
-      "Emmanuel Thomas"
-    ],
-    "abstract": "We propose Temporally and Spatially Ordered Gaussians (TSOG), a format for efficient representation of 4D Gaussian Splatting (4DGS) content. TSOG extends the Spatially Ordered Gaussians (SOG) framework to the temporal domain by introducing a timeline attribute and temporal parameterization of geometry and appearance attributes. Similar to SOG, TSOG is a lossy format that assigns each Gaussian a unique index and encodes attribute values as index-aligned image data. TSOG is model-agnostic, extensible, and compatible with both discrete and continuous 4DGS representations. Evaluation using a PLYs sequence and FreeTimeGS as baselines, serving as simplistic and state-of-the-art 4DGS representations respectively, shows file size reductions exceeding 90%, with PSNR differences ranging between -0.42 and +0.85 dB. These results demonstrate substantial file size savings with minimal quality degradation, enabling efficient representation, storage, and delivery of dynamic scenes for next-generation 4D content.",
-    "link": "http://arxiv.org/abs/2607.28049v1",
-    "published": "2026-07-30",
-    "category": "cs.CV",
-    "tags": [
-      "4D Gaussian Splatting",
-      "Compression",
-      "Temporal Modeling",
-      "Scene Representation"
-    ],
-    "tldr": "提出一种基于时空有序高斯（TSOG）的4DGS高效表示格式，文件大小减少超90%且质量损失极小。",
-    "motivation": "4D高斯溅射（4DGS）内容在表示、存储和传输方面效率低下，亟需一种高效的格式来支持动态场景的下一代4D内容应用。",
-    "method": "将空间有序高斯（SOG）框架扩展到时间域，引入时间线属性以及对几何和外观属性的时间参数化。每个高斯分配唯一索引，属性值编码为索引对齐的图像数据（有损格式），并支持离散和连续4DGS表示，具有模型无关性和可扩展性。",
-    "result": "以PLYs序列和FreeTimeGS为基线（分别代表简单和先进的4DGS表示），文件大小减少超过90%，PSNR差异在-0.42到+0.85 dB之间。",
-    "conclusion": "TSOG实现了大幅文件大小节省且质量退化最小，为动态场景的高效表示、存储和传输提供了支持，有助于推进下一代4D内容分发。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.28032v1",
-    "title": "Split and Drive: Dual-Axis Disentanglement for Real-Time Gaussian Head Avatars",
-    "authors": [
-      "MD Wahiduzzaman Khan",
-      "Mingshan Jia",
-      "Xiaolin Zhang",
-      "En Yu",
-      "Kaska Musial-Gabrys"
-    ],
-    "abstract": "Creating photorealistic animatable head avatars from a single image remains a fundamental challenge in digital human synthesis. While recent 3D Gaussian Splatting methods have achieved promising results, they rely on external tracking pipelines whose latency is excluded from inference measurements. Furthermore, they adopt unified representations that entangle geometrically distinct facial regions, limiting both expressiveness and rendering fidelity. We propose SpiD (Split and Drive), a single-image Gaussian head avatar framework built on two disentanglement axes. The compute axis internalizes per-frame driving, eliminating external tracking dependency at inference. The feature axis decomposes the avatar into three specialized Gaussian branches, each modeling a geometrically distinct facial domain. Extensive experiments demonstrate consistently strong performance against state-of-the-art methods while achieving the fastest inference speed among all compared methods on a single GPU with the complete driving pipeline included.",
-    "link": "http://arxiv.org/abs/2607.28032v1",
-    "published": "2026-07-30",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Head Avatars",
-      "Single Image",
-      "Disentanglement",
-      "Real-time"
-    ],
-    "tldr": "提出基于双轴解耦的单图三维高斯头部头像方法，消除外部追踪依赖并实现最快推理速度。",
-    "motivation": "现有单图头部头像方法依赖外部追踪管线且延迟未计入推理，同时统一表示纠缠不同面部区域，限制了表现力与渲染保真度。",
-    "method": "提出SpiD框架，通过计算轴内化逐帧驱动，特征轴将头像分解为三个专用高斯分支，分别建模不同几何面部区域。",
-    "result": "在完整驱动管线计入的情况下，实验表现持续优于现有方法，并在单GPU上取得所有对比方法中最快的推理速度。摘要未提供具体量化指标。",
-    "conclusion": "贡献在于双轴解耦设计，消除外部追踪依赖，提升表达力与渲染质量，为实时数字人合成提供新思路。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.27825v1",
-    "title": "Endo-NeRF++: Uncertainty-Aware Neural Rendering with Multi-Resolution Hash Encoding for Dynamic Surgical Scene Reconstruction",
-    "authors": [
-      "Gousia Habib",
-      "Laura Ruotsalainen"
-    ],
-    "abstract": "Reconstructing dynamic surgical scenes is crucial for robot-assisted minimally invasive surgery; however, it continues to be difficult because of tissue deformation, occlusions, specular reflections, and restricted viewpoints. In this study, we introduce Endo-NeRF++, a neural rendering framework that accounts for uncertainty in the reconstruction of dynamic surgical scenes. Expanding on EndoNeRF, the suggested approach incorporates multi-resolution hash-grid encoding, temporal feature merging, and uncertainty-informed adaptive sampling to enhance reconstruction accuracy and temporal coherence in deformable endoscopic scenes.The multi-resolution hash-grid representation within the framework effectively captures both coarse and fine anatomical details, while temporal feature blending ensures stable reconstruction during tissue deformation and surgical tool occlusions. Additionally, uncertainty-driven adaptive sampling assigns more samples to uncertain areas to enhance rendering quality and geometric coherence. Experiments on robotic surgical video sequences demonstrate that the proposed uncertainty-guided adaptive sampling improves PSNR by up to 1.22\\,dB (4.3\\%), increases SSIM by up to 5.3\\%, and reduces LPIPS by up to 55.1\\% compared with the EndoNeRF baseline.",
-    "link": "http://arxiv.org/abs/2607.27825v1",
-    "published": "2026-07-30",
-    "category": "cs.CV",
-    "tags": [
-      "Dynamic Reconstruction",
-      "Neural Rendering",
-      "Uncertainty",
-      "Endoscopic Surgery",
-      "Hash Encoding"
-    ],
-    "tldr": "Endo-NeRF++通过多分辨率哈希编码与不确定性引导采样，提升动态手术场景重建精度和连贯性。",
-    "motivation": "动态手术场景重建受组织变形、遮挡、镜面反射和有限视角影响，现有方法难以同时保证精度与时间连贯性。",
-    "method": "在EndoNeRF基础上，引入多分辨率哈希网格编码以捕获粗细解剖细节，通过时间特征融合维持变形和工具遮挡下的稳定重建，并利用不确定性驱动的自适应采样在不确定区域分配更多样本。",
-    "result": "相比EndoNeRF基线，PSNR提升最高1.22 dB（4.3%），SSIM提升最高5.3%，LPIPS降低最高55.1%。",
-    "conclusion": "提出的不确定性感知框架显著提升动态手术场景的重建质量与几何连贯性，为机器人辅助微创手术提供更可靠的视觉支持。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.27634v1",
-    "title": "4DHumanDiff: Direct Text-to-4DGS Generation for Consistent 360-Degree Dynamic Humans",
-    "authors": [
-      "Renlong Wu",
-      "Haoran Chen",
-      "Yuxiang Wei",
-      "Xiaowei Jin",
-      "Wangmeng Zuo",
-      "Hui Li"
-    ],
-    "abstract": "Generating high-quality 360-degree dynamic human assets from text prompts is challenging. Existing methods usually synthesize monocular or multi-view videos first and then fit a 4D representation, which is expensive and often causes incomplete geometry or view-inconsistent renderings. We present 4DHumanDiff, a diffusion framework that directly generates dynamic humans represented by 4D Gaussian Splatting (4DGS) from text prompts. By modeling the structured 4D representation space end-to-end, 4DHumanDiff avoids video pre-generation and per-scene reconstruction, making it better suited for view-consistent and temporally coherent asset generation. The model uses a 3D U-Net backbone with temporal attention for motion-aware generation. We further construct a large-scale text-to-4DGS dataset with 60,000 high-quality pairs, and introduce 2D regularization and training-free 4D interpolation to improve rendering quality and motion smoothness. Experiments show that 4DHumanDiff generates consistent 360-degree dynamic humans within one minute, achieves better temporal and multi-view consistency, and reduces inference time by more than 10x.",
-    "link": "http://arxiv.org/abs/2607.27634v1",
-    "published": "2026-07-30",
-    "category": "cs.CV",
-    "tags": [
-      "Text-to-4D",
-      "4D Gaussian Splatting",
-      "Dynamic Human Generation",
-      "Diffusion Model"
-    ],
-    "tldr": "提出4DHumanDiff扩散框架，从文本直接生成4D高斯泼溅动态人体，实现一致360度生成并提升推理速度超10倍。",
-    "motivation": "现有方法通常先合成单目或多视角视频再拟合4D表示，成本高且易导致几何不完整和视角不一致。直接建模结构化4D表示空间可避免视频预生成和逐场景重建，更利于生成视角一致、时序连贯的资产。",
-    "method": "采用3D U-Net骨干网络结合时间注意力实现运动感知生成，构建含60,000对文本-4DGS的大规模数据集，并引入2D正则化和无需训练的4D插值提升渲染质量和运动平滑度。",
-    "result": "在一分钟内生成一致的360度动态人体，时间一致性和多视角一致性均更优，推理时间较现有方法减少超过10倍。",
-    "conclusion": "实现端到端文本到4DGS动态人体生成，避免中间视频生成与重建，显著加速并提高质量，为动态资产生成提供高效新方案。"
   }
 ]
