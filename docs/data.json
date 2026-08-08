@@ -1,5 +1,210 @@
 [
   {
+    "id": "http://arxiv.org/abs/2608.06117v1",
+    "title": "Confidence matters: Leveraging Multi-view Geometric Priors for GS-based Reconstruction",
+    "authors": [
+      "Hongyu Zhou",
+      "Zorah Lähner"
+    ],
+    "abstract": "3D Gaussian splatting (3DGS) has emerged as a widely-used tool for novel view synthesis, offering real-time rendering in a sparse representation. However, the method's reliance on structure-from-motion initialization and photometric optimization can lead to suboptimal geometric reconstruction, particularly for objects with high specularity. In this work, we investigate the integration of geometric priors, in the form of predicted normal and depth maps, into the 3DGS framework to improve the reconstruction quality. We analyze the effect of incorporating these priors into GS-based methods and our evaluation reveals that multi-view predictions, as they are done by the recent visual geometry grounded transformer (VGGT), outperform single-view alternatives. A major factor is the existence of a confidence map for the estimations, which comes as a by-product of multi-view models and which can significantly improve the effectiveness of priors by weighting each prediction appropriately. Extensive experiments on standard benchmarks show consistent improvement in reconstruction quality and significant gains in complex scenes including specular objects.",
+    "link": "http://arxiv.org/abs/2608.06117v1",
+    "published": "2026-08-06",
+    "category": "cs.CV",
+    "tags": [
+      "3DGS",
+      "Geometric Priors",
+      "Multi-view",
+      "Confidence Map",
+      "Reconstruction"
+    ],
+    "tldr": "利用多视图几何先验及其置信图提升3DGS重建质量，尤其对高反射物体效果显著。",
+    "motivation": "3DGS依赖SfM初始化和光度优化，对高反射物体的几何重建效果不佳。因此，作者研究将预测的法线和深度图作为几何先验纳入3DGS框架。",
+    "method": "采用多视图几何模型VGGT预测每个视图的法线和深度图，并利用其产生的置信图对各预测加权融合，从而引导3DGS优化几何。",
+    "result": "在标准基准上，该方法持续提升重建质量，在包含高反射物体的复杂场景中增益明显。",
+    "conclusion": "研究表明多视图预测和置信图是有效利用几何先验的关键，为3DGS的几何优化提供了新思路。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.05896v1",
+    "title": "GSBF: Gaussian Splatting for Environment-Aware Beamforming",
+    "authors": [
+      "Yijie Bian",
+      "Wei Guo",
+      "Zixin Wang",
+      "Shenghui Song",
+      "Jun Zhang",
+      "Khaled B. Letaief"
+    ],
+    "abstract": "Beamforming plays a key role in multiple-input-multiple-output (MIMO) communication systems. However, conventional beamforming design normally requires accurate instantaneous channel state information (CSI) and iterative optimization, which incur substantial pilot overhead and computational complexity. Recognizing that radio propagation is intrinsically governed by the physical geometry, we develop a 3D Gaussian splatting for environment-aware beamforming (GSBF) pipeline based on multi-modal data, which characterizes the environment through a persistent 3D Gaussian representation. Specifically, GSBF models the environmental scattering response with reciprocity-preserving bidirectional spherical Gaussian (Bi-SG) kernels and performs two-sided electromagnetic rasterization to render an angular propagator map. The rendered map is then aggregated through an over-complete array-manifold dictionary and projected to the constant-modulus beamformers, thereby synthesizing beams directly from the access point (AP) pose and user position without online instantaneous CSI. Simulations demonstrate that GSBF consistently outperforms baselines such as exhaustive beam alignment (EBA) with lower latency.",
+    "link": "http://arxiv.org/abs/2608.05896v1",
+    "published": "2026-08-06",
+    "category": "cs.AI",
+    "tags": [
+      "Gaussian Splatting",
+      "Beamforming",
+      "MIMO",
+      "Environment-Aware",
+      "Electromagnetic Rasterization"
+    ],
+    "tldr": "提出基于3D高斯泼溅的环境感知波束成形方法GSBF，无需在线CSI直接从AP位姿与用户位置合成波束。",
+    "motivation": "传统波束成形依赖精确瞬时CSI和迭代优化，导频开销与计算复杂度高。利用无线传播由物理几何决定的特性，希望用环境感知直接合成波束。",
+    "method": "基于多模态数据构建持久3D高斯场景表示，采用互易保持双向球形高斯核建模环境散射，通过两侧电磁光栅化渲染角度传播图，经超完备阵列流形字典聚合并投影为恒模波束成形器，直接从AP位姿和用户位置合成波束。",
+    "result": "仿真表明GSBF一致优于穷举波束对齐（EBA）等基线，且延迟更低。",
+    "conclusion": "提出GSBF，实现环境感知的实时波束成形，降低导频开销与复杂度，为MIMO通信提供新思路，具有潜在应用价值。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.05782v1",
+    "title": "VSMP-IMU: Video-Grounded Semantic Motion Programs for Sensor-Aware Synthetic IMU Generation",
+    "authors": [
+      "Lala Shakti Swarup Ray",
+      "Vitor Fortes Rey",
+      "Mengxi Liu",
+      "Paul Lukowicz",
+      "Bo Zhou"
+    ],
+    "abstract": "Wearable human activity recognition (HAR) is often limited by the scarcity of labeled sensor data, especially in low-resource, class-imbalanced, and subject-generalization settings. Synthetic IMU generation can reduce this dependency and enhance HAR machine learning model's performance, but existing approaches face a trade-off without addressing all factors: video-driven methods are visually grounded but sensitive to pose-estimation errors, while text-driven methods are controllable but often weakly grounded in how activities are actually performed. We present VSMP-IMU, a video-grounded framework for controllable synthetic IMU generation based on a structured Semantic Motion Program (SMP), which separates activity-defining semantics from label-preserving variation. Given an input video, VSMP-IMU extracts and augments an SMP, uses it to synthesize motion, converts the motion into virtual IMU signals, and grounds the resulting signals to the target wearable domain. We evaluate VSMP-IMU against state-of-the-art synthetic data generation methods on five public IMU-HAR datasets under leave-one-person-out evaluation. VSMP-IMU achieves an average Macro-F1 of 78.33%, improving over real-only training by 9.77% and over the strongest prior synthetic baseline by 4.04%. In low-resource settings with reduced training data-samples, it improves over real-only training by 18.54% and over the strongest prior synthetic baselines by more than 6% on average. Under long-tail evaluation in imbalanced datasets, it improves tail-class Macro-F1 by 19.86% over Real-only training and by 4.76% over SOTA. These results show that structured video-grounded semantics provide a practical foundation for controllable, wearable-relevant synthetic sensor data generation.",
+    "link": "http://arxiv.org/abs/2608.05782v1",
+    "published": "2026-08-06",
+    "category": "cs.CV",
+    "tags": [
+      "Synthetic IMU",
+      "Human Activity Recognition",
+      "Semantic Motion Program",
+      "Video-Grounded",
+      "Sensor-Aware"
+    ],
+    "tldr": "提出VSMP-IMU，用视频语义运动程序生成可控且传感器感知的合成IMU数据，显著提升HAR性能。",
+    "motivation": "可穿戴活动识别受限于标记传感器数据稀缺，尤其在低资源、类别不平衡和跨受试场景下。现有合成方法存在权衡：视频驱动的方法视觉可解释但对姿态误差敏感，文本驱动的方法可控但缺乏活动执行的具体性。",
+    "method": "VSMP-IMU从输入视频提取并增强语义运动程序（SMP），分离活动定义语义与标签保持变异，生成运动并转换为虚拟IMU信号，最后将信号对齐到目标可穿戴领域。",
+    "result": "在5个公开IMU-HAR数据集上，平均Macro-F1达78.33%，比仅用真实数据高9.77%，比最强先验合成基线高4.04%；低资源下比真实训练高18.54%，比基线高6%以上；长尾评估下尾部类Macro-F1比真实训练高19.86%，比SOTA高4.76%。",
+    "conclusion": "结构化视频语义为可控、可穿戴相关的合成传感器数据生成提供了实用基础，能够有效提升模型在多个挑战性设置下的泛化能力。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.05745v1",
+    "title": "UniVVT: A Unified End-to-End Framework for High-Fidelity Video Virtual Try-on",
+    "authors": [
+      "Yushe Cao",
+      "Shikun Feng",
+      "Fei Shen",
+      "Haikuo Peng",
+      "Jianqiang Xia",
+      "Yiheng Zhu",
+      "Dianxi Shi",
+      "Chun Yu"
+    ],
+    "abstract": "Video Virtual Try-On (VVT) synthesizes a video of a person wearing a target garment while preserving identity, motion, and scene dynamics. Dominant approaches cast VVT as mask-conditioned video inpainting and rely on separate modules for human parsing, pose estimation, and garment warping. This multi-stage design complicates deployment and, more critically, allows errors in explicit geometric priors to propagate irreversibly into the generated video. We present UniVVT, a unified end-to-end framework that reframes VVT as semantically conditioned video generation, eliminating mask, pose, and warping modules at inference. At its core, a scene-task perceiver built on a Multimodal Large Language Model jointly encodes the source video, target garment, and task instruction into compact, task-aware latent tokens, implicitly capturing what to transfer and where and how to transfer it. A lightweight semantic bridge then aligns these tokens with the conditioning space of a diffusion-based video generator, enabling coherent garment transfer. To robustly couple the heterogeneous components, we devise a three-stage progressive training strategy comprising semantic alignment, joint task adaptation, and flexible-resolution refinement. Extensive experiments demonstrate that UniVVT achieves state-of-the-art performance across multiple benchmarks, validating implicit semantic guidance as a simple and effective alternative to fragile geometric preprocessing for end-to-end virtual try-on.",
+    "link": "http://arxiv.org/abs/2608.05745v1",
+    "published": "2026-08-06",
+    "category": "cs.CV",
+    "tags": [
+      "Virtual Try-on",
+      "Video Generation",
+      "Multimodal LLM",
+      "Diffusion",
+      "End-to-End"
+    ],
+    "tldr": "UniVVT提出统一端到端框架，用MLLM感知器将视频虚拟试穿转化为语义条件生成，消除几何预处理，实现SOTA性能。",
+    "motivation": "现有视频虚拟试穿方法依赖多阶段流程，包括人像解析、姿态估计和服装变形，部署复杂且显式几何先验的错误会不可逆地传播到生成视频中。",
+    "method": "UniVVT将VVT重构为语义条件视频生成，推理时无需掩码、姿态和变形模块。核心是构建在多模态大语言模型上的场景任务感知器，联合编码源视频、目标服装和任务指令为任务感知潜在标记，再通过轻量语义桥与扩散视频生成器条件空间对齐，并采用三阶段渐进训练策略。",
+    "result": "在多个基准上取得最先进性能。摘要未提供具体的量化指标。",
+    "conclusion": "验证了隐式语义引导作为脆弱几何预处理的简单有效替代方案，可用于端到端虚拟试穿，具有部署简便和性能优越的潜力。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.05704v1",
+    "title": "G$^2$ARD-GS: Geometry-Guided Anchor-Regularized Gaussian Splatting Distillation",
+    "authors": [
+      "Puyuan Zhang",
+      "Jianming Huang",
+      "Wenkai Ye",
+      "Wei Dong"
+    ],
+    "abstract": "Dense colored LiDAR maps provide accurate city-scale geometry, but lifting them into 3D Gaussian Splatting (3DGS) retains millions of primitives, making the resulting models costly to store, transmit, render, and adapt. Aggressive primitive reduction alleviates this burden, but can remove the local surface support needed for stable novel-view synthesis and downstream geometric use. We introduce G$^2$ARD-GS, a geometry-guided distillation method that converts a dense Gaussian prior instantiated either as a training-free point-cloud lift or a trained GS model into a compact, reusable representation. G$^2$ARD-GS progressively consolidates the prior into surface-aware representatives, then recovers appearance on the resulting fixed topology under construction-time anchor constraints, with no primitives added or removed during recovery. Under limited supervision, geometry-aware view selection allocates the available view budget. On MatrixCity, G$^2$ARD-GS achieves the best PSNR, SSIM, and LPIPS across matched $5\\times$--$30\\times$ compression budgets, outperforming PUP by $3.2$--$6.8$,dB in PSNR. When reused as frozen geometry, the compact model improves off-trajectory appearance adaptation by $3.7$--$4.9$,dB over PUP 3D-GS and preserves image-to-model registration accuracy on Cambridge KingsCollege at $30\\times$ compression. Project page: https://patrick1159.github.io/gardGS-page/.",
+    "link": "http://arxiv.org/abs/2608.05704v1",
+    "published": "2026-08-06",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "LiDAR",
+      "Scene Compression",
+      "Distillation",
+      "Novel View Synthesis"
+    ],
+    "tldr": "提出G²ARD-GS，通过几何引导锚定正则化蒸馏，将稠密LiDAR点云压缩为紧凑3DGS表示，在保持渲染质量的同时实现高效存储与复用。",
+    "motivation": "稠密彩色LiDAR地图转换为3DGS后图元数量巨大，导致存储、传输、渲染和适配成本高昂；而激进压缩会丢失局部表面支撑，影响新视角合成及下游几何应用的稳定性。",
+    "method": "采用几何引导蒸馏方法，将稠密高斯先验（来自无训练点云提升或已训练GS模型）渐进整合为表面感知的紧凑代表元；在构造时施加锚点约束，固定拓扑下恢复外观且不增删图元；通过几何感知视角选择在有限监督下分配视角预算。",
+    "result": "在MatrixCity数据集上，5×–30×压缩范围内PSNR、SSIM、LPIPS均为最优，PSNR比PUP方法高3.2–6.8 dB；作为冻结几何复用时，离轨迹外观适配比PUP 3D-GS提升3.7–4.9 dB，且在30×压缩下仍保持Cambridge KingsCollege图像到模型配准精度。",
+    "conclusion": "G²ARD-GS将稠密LiDAR先验转化为紧凑可复用的3DGS表示，在大幅降低存储和计算成本的同时保持渲染质量与几何可用性，为城市级场景的高效渲染和下游几何应用提供了可行方案。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.05539v1",
+    "title": "OmniMech: All-in-one Multimodal Mechanical Benchmark for 3D Reconstruction",
+    "authors": [
+      "Taiting Lu",
+      "Runze Liu",
+      "Ziwei Dong",
+      "Sisong Bei",
+      "Jingying Zeng",
+      "Mingjia Wang",
+      "Zhenghao Li",
+      "Kaiyuan Lin",
+      "Yi-Shan Wu",
+      "Yangshoudu Zheng",
+      "Hongxing Pan",
+      "Kai Zhang",
+      "Guoliang Shi",
+      "Ling Ma",
+      "Yifan Yang",
+      "Jiaying Lu",
+      "Qi He",
+      "Sung-Liang Chen",
+      "Yi-Chao Chen",
+      "Yincheng Jin",
+      "Mahanth Gowda"
+    ],
+    "abstract": "Recent vision-language models (VLMs) can generate executable CAD programs from images, but existing methods mainly target coarse, general-purpose 3D objects and rarely address the fine-grained geometry and millimeter-level tolerances required in industrial mechanical design. We introduce OmniMech, the first million-scale benchmark for evaluating VLMs on executable CAD generation from industrial manufacturing data. OmniMech contains more than 251,000 fully dimensioned and toleranced 2D orthographic drawings, paired with native CAD models, multi-view renderings, mesh, STEP and B-rep representations, and rich semantic annotations. The benchmark includes four tasks: (1) parametric CAD program synthesis from engineering drawings; (2) diagram-to-3D reasoning for geometrically and structurally consistent reconstruction; (3) annotation-grounded reasoning over dimensions, symbols, feature callouts, and manufacturing constraints; and (4) tool-augmented agentic reasoning using visualization, measurement, CAD execution, and verification tools. Experiments show that current VLMs and CAD-specialized models still struggle with executable program synthesis, fine-grained 3D reconstruction, and reliable enforcement of dimensions and tolerances. We will release the benchmark data, evaluation code, and tool interfaces to support future research.",
+    "link": "http://arxiv.org/abs/2608.05539v1",
+    "published": "2026-08-06",
+    "category": "cs.CV",
+    "tags": [
+      "VLM",
+      "CAD",
+      "3D Reconstruction",
+      "Benchmark",
+      "Mechanical Design"
+    ],
+    "tldr": "OmniMech是首个面向工业机械设计的百万级多模态基准，用于评估VLM从工程图纸生成可执行CAD程序的能力。",
+    "motivation": "现有方法主要针对粗粒度通用3D物体，难以处理工业机械设计所需的精细几何和毫米级公差，缺乏专门评估VLM在此类任务上能力的基准。",
+    "method": "构建包含251,000多张带完整尺寸和公差的2D正交图纸，并配对原生CAD模型、多视角渲染、网格、STEP和B-rep表示及语义注释的OmniMech基准。设计四个任务：参数化CAD程序合成、图纸到3D推理、基于注释的推理和工具增强的智能体推理。",
+    "result": "实验表明，当前VLM和CAD专用模型在可执行程序合成、精细3D重建以及尺寸和公差可靠执行方面仍表现困难，但摘要未给出具体量化指标。",
+    "conclusion": "OmniMech作为首个百万级工业机械设计基准，填补了该领域评估空白；将公开基准数据、评估代码和工具接口，为未来研究提供支持。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.05482v1",
+    "title": "CDSeg: A Renderable Gaussian Carrier for Image-to-3D Label Transfer",
+    "authors": [
+      "Wentao Sun",
+      "Yiping Chen",
+      "Zhengsen Xu",
+      "Jonathan Li",
+      "John S. Zelek"
+    ],
+    "abstract": "Modern image models provide strong cues about \\emph{what} should be segmented in each view, but their masks do not by themselves determine \\emph{where} those labels should persist in 3D. We present Cross-Domain Segmentation via Gaussian Splatting (CDSeg), a label-transfer interface that requires no task-specific 3D segmentation training and uses Gaussian primitives as a renderable label carrier. An external mask source supplies the labels, while renderer-derived visibility determines which 3D primitives receive them. The carrier is instantiated either by completing each input point into one Gaussian, preserving its index, or by reusing the native primitives of an optimized Gaussian scene. CDSeg records pixel--primitive associations during rendering and fuses multi-view masks through voting and a local filter. The resulting labels can be returned to the original points, retained on the native Gaussian scene, or rendered into other views. CDSeg covers promptable, automatic instance, semantic, and LiDAR settings and processes scenes with millions of primitives in seconds. It obtains 92.35\\% mIoU on DesktopObjects-360, 95.89\\% on NeRDS-360, and 65.77\\% on the full ScanNet-v2 validation split using the provided 2D semantic annotations. CDSeg thereby provides one interface for reusing 2D masks across point clouds, Gaussian scenes, and image views without a task-specific 3D segmentation network.",
+    "link": "http://arxiv.org/abs/2608.05482v1",
+    "published": "2026-08-06",
+    "category": "cs.CV",
+    "tags": [
+      "Gaussian Splatting",
+      "Label Transfer",
+      "2D-to-3D Segmentation",
+      "Mask Fusion",
+      "Cross-Domain"
+    ],
+    "tldr": "CDSeg利用可渲染高斯载体，无需3D分割训练即可将2D掩码迁移到点云、高斯场景和新视角。",
+    "motivation": "现代图像模型提供每视图分割线索，但掩码本身不确定标签在3D中的位置，需要一种无需任务特定3D分割训练的标签转移接口。",
+    "method": "使用高斯原语作为可渲染标签载体，通过渲染器派生的可见性决定哪些3D原语接收标签，记录像素-原语关联，并通过投票和局部滤波器融合多视角掩码。",
+    "result": "在DesktopObjects-360上mIoU 92.35%，NeRDS-360上95.89%，ScanNet-v2完整验证集上65.77%，可处理数百万原语场景，用时数秒。",
+    "conclusion": "提供统一接口复用2D掩码至点云、高斯场景和图像视角，无需任务特定3D分割网络，支持可提示、自动实例、语义和LiDAR设置。"
+  },
+  {
     "id": "http://arxiv.org/abs/2608.05145v1",
     "title": "Objects as Audio-Visual Modal Sound Fields",
     "authors": [
@@ -276,6 +481,81 @@
     "method": "设计2D-3D双分支特征表示，利用区域级对齐与融合提升空间一致性；提出训练无关的贡献与一致性感知高斯特征聚合策略，结合像素贡献可靠性和跨视角语义一致性抑制噪声视角的不可靠响应；并手工标注四个真实无人机室外数据集构建首个开放词汇3D场景理解数据集。",
     "result": "在开放词汇语义分割和实例定位任务上优于现有最先进方法，并通过定量评估和消融实验验证有效性；数据集和代码将开源。",
     "conclusion": "贡献在于首个面向无人机室外场景的开放词汇3D场景理解数据集，以及适应远距离和遮挡场景的特征表示与聚合方法，有助于推进无人机自主感知和场景理解研究。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.05145v2",
+    "title": "Objects as Audio-Visual Modal Sound Fields",
+    "authors": [
+      "Zisen Shao",
+      "Zihao Wei",
+      "Derong Jin",
+      "Ruohan Gao"
+    ],
+    "abstract": "While modern 3D reconstruction excels at modeling object geometry and appearance, it largely ignores the rich acoustic cues revealed through physical interaction. Object impact sounds convey material, stiffness, and structural properties that complement vision, yet existing impact sound modeling approaches either rely on expensive physics-based simulation or require large datasets to generalize in a purely data-driven manner. We introduce Audio-Visual Modal Sound Field (AV-MSF), a novel object-level acoustic representation reconstructed from multi-view images and only a few impact sound recordings. AV-MSF builds on 3D Gaussian Splatting integrated with dense 3D visual feature to provide a strong geometry-aware prior, and represents the impact sound field using compact, physically meaningful modal parameters, enabling robust few-shot reconstruction. Experiments on two real-world datasets show that AV-MSF achieves state-of-the-art impact sound rendering, outperforming both physics-based and data-driven baselines. Furthermore, we demonstrate downstream applications enabled by our representation, including contact localization and object sound editing.",
+    "link": "http://arxiv.org/abs/2608.05145v2",
+    "published": "2026-08-05",
+    "category": "cs.CV",
+    "tags": [
+      "3D reconstruction",
+      "Audio-Visual",
+      "Sound Fields",
+      "3D Gaussian Splatting",
+      "Modal Analysis"
+    ],
+    "tldr": "提出音频-视觉模态声场AV-MSF，用少量冲击声和多视角图像重建物体级冲击声场，实现SOTA渲染。",
+    "motivation": "现代3D重建擅长几何外观，但忽略声音线索；现有冲击声建模要么依赖昂贵物理仿真，要么数据驱动需大数据集。",
+    "method": "AV-MSF基于3D高斯泼溅集成密集3D视觉特征，用紧凑的模态参数表示冲击声场，实现少样本重建。",
+    "result": "在两个真实世界数据集上，AV-MSF达到最先进的冲击声渲染效果，优于基于物理和纯数据驱动的基线。",
+    "conclusion": "该表示支持接触定位和声音编辑等下游应用，为物体级声学建模提供鲁棒且可推广的新方案。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.05218v1",
+    "title": "PD-GS: Phoneme-Driven 3DGS for Audio-Driven Talking Heads",
+    "authors": [
+      "Ao Fu",
+      "Yi Zhou"
+    ],
+    "abstract": "3D Gaussian Splatting (3DGS) enables fast, photorealistic talking-head rendering, yet accurate lip articulation remains elusive: mouth motion is often over-smoothed and may violate hard articulatory constraints such as bilabial closures, producing the notorious ``leaky mouth'' artifact. A key difficulty is that brief, discrete articulatory events are inferred from a continuous acoustic embedding under a regression objective, which biases predictions toward averaged mouth configurations. While modern self-supervised speech encoders provide rich prosodic and phonetic cues, they do not provide an explicit, frame-aligned linguistic target that reliably disambiguates closure-level events. We propose \\textbf{Phoneme-Driven Gaussian Splatting (PD-GS)}, which augments a 3DGS talker with time-aligned phoneme tokens obtained from an automatic ASR and forced-alignment pipeline. Our core component, the \\textbf{Linguistic Fusion Module (LFM)}, adaptively fuses continuous audio context with discrete phoneme embeddings through a learned gate, allowing the model to preserve smooth audio-driven dynamics while strengthening phoneme guidance on articulation-critical segments. PD-GS is trained purely from monocular video using image reconstruction and lip landmark supervision. On HDTF, PD-GS achieves the best lip geometry among the compared baselines (LMD 2.66) and qualitatively reduces closure violations in challenging phoneme sequences, yielding more linguistically faithful neural avatars.",
+    "link": "http://arxiv.org/abs/2608.05218v1",
+    "published": "2026-08-05",
+    "category": "cs.AI",
+    "tags": [
+      "3DGS",
+      "Talking Head",
+      "Audio-Driven",
+      "Phoneme",
+      "Facial Animation"
+    ],
+    "tldr": "提出PD-GS，融合音素令牌与音频上下文，提升3DGS说话头唇形精度，减少漏嘴伪影。",
+    "motivation": "3DGS渲染的说话头唇部动作过度平滑，违反双唇闭合等硬性发音约束，产生“漏嘴”伪影。连续音频嵌入在回归目标下难以准确推断离散的发音事件，导致平均化嘴型。",
+    "method": "PD-GS利用ASR和强制对齐获取时间对齐的音素令牌，通过Linguistic Fusion Module (LFM) 以门控机制自适应融合连续音频上下文与离散音素嵌入，在关键发音段强化音素指导，同时保持音频驱动的平滑动态。训练仅需单目视频，使用图像重建和唇部地标监督。",
+    "result": "在HDTF数据集上，PD-GS的唇形几何指标LMD达到2.66，优于所有对比基线，并在挑战性音素序列中定性减少了闭合违规。",
+    "conclusion": "PD-GS通过音素级引导显著提升3DGS说话头的语言保真度，有效缓解“漏嘴”伪影，为高真实感神经数字人提供了新方案。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.05215v1",
+    "title": "VLAff: Vision-Language-Affordance Model for Unified Actionable Affordances",
+    "authors": [
+      "Jihoon Oh",
+      "Kento Kawaharazuka",
+      "Kei Okada"
+    ],
+    "abstract": "Learning manipulation skills from human videos is promising for scalable robot learning. However, the embodiment mismatch between humans and robots makes this challenging. One promising solution is to learn object-centric actionable affordances that are embodiment-agnostic. In this work, we propose a framework that leverages egocentric human videos with state-of-the-art 3D Structure-from-Motion and hand mesh reconstruction to extract actionable affordances such as visual, grasp, and trajectory affordances that explicitly encode where to interact, how to grasp, and how to move. We construct EgoAffordance, a large-scale dataset comprising 204K episodes with 5.6M visual affordances and 11.6M grasp and trajectory affordances. Building on this, we introduce VLAff, a large vision-language model-based unified foundation model that learns cross-modal correlations across all actionable affordances. Given a visual observation and instruction, VLAff generates visual affordance heatmaps, grasp poses, and trajectories, which are then converted into directly executable actions by utilizing 3D scene information. Through extensive experiments, we demonstrate that VLAff not only achieves state-of-the-art performance on visual affordance prediction, but can also be effectively applied to real robot applications such as zero-shot manipulation and affordance-guided robot learning.",
+    "link": "http://arxiv.org/abs/2608.05215v1",
+    "published": "2026-08-05",
+    "category": "cs.CV",
+    "tags": [
+      "Affordance",
+      "Vision-Language Model",
+      "Robot Manipulation",
+      "Egocentric Video",
+      "Foundation Model"
+    ],
+    "tldr": "提出VLAff统一动作可供性模型，从人类视频提取视觉、抓取和轨迹可供性，并用于机器人操作。",
+    "motivation": "人类视频学习操作技能受制于人体与机器人体型差异，需要与具体体型无关的物体中心动作可供性来解决这一不匹配问题。",
+    "method": "利用第一视角人类视频，结合3D运动恢复结构和手部网格重建提取视觉、抓取和轨迹可供性，构建EgoAffordance数据集，并训练基于大视觉语言模型的VLAff统一基础模型，输入图像和指令直接生成可供性热图、抓取姿态和轨迹，再结合3D场景信息转化为可执行动作。",
+    "result": "在视觉可供性预测上达到最先进水平，并可有效应用于真实机器人零样本操作和可供性引导的机器人学习。",
+    "conclusion": "VLAff通过跨模态学习统一了多类动作可供性，为解决人体-机器人形态差异提供了有效方案，并展示了在真实机器人应用中的潜力。"
   },
   {
     "id": "http://arxiv.org/abs/2608.03851v1",
@@ -1566,141 +1846,5 @@
     "method": "提出训练无关的 Scene2Sound 框架，先选择联合覆盖场景的视角，用视觉语言模型识别发声物体，通过高斯集匹配将多视角检测关联为 3D 实例，再为每个声源生成音频，并由标准对象音频引擎实时空间化。",
     "result": "在生成的 3DGS 世界和真实 360 度采集场景上，Scene2Sound 保持与强单视角基线相当的音频质量，同时在空间一致性上显著优于单视角和单全景图方法；用户研究也确认了感知益处。",
     "conclusion": "定义了基于听觉接地的 3D 音景生成任务，并提出 Scene2Sound 框架，实现了可移动听者的空间一致音景，为沉浸式虚拟世界带来听觉体验。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.29633v1",
-    "title": "OASIS: Occlusion-aware Single-image Hand Avatar Reconstruction via 3D Gaussian Splatting",
-    "authors": [
-      "Zhisheng Han",
-      "Shiyao Wu",
-      "Jiayan Qiu",
-      "Yakun Ju",
-      "Lu Liu",
-      "Le Zhang",
-      "Pengfei Feng",
-      "Huiyu Zhou",
-      "Zheheng Jiang"
-    ],
-    "abstract": "Single-image 3D hand avatar reconstruction is fundamentally ill-posed and particularly challenging due to limited visual evidence under severe self-occlusion and the complex pose-dependent deformation of highly articulated hands. Existing methods predominantly rely on implicit NeRF-style representations, whose volumetric fitting is computationally expensive and often struggles to preserve fine-grained hand details. In this work, we present OASIS, a tailored 3D Gaussian Splatting framework for single-image hand avatar reconstruction. To faithfully encode sparse image-specific appearance cues in single-view reconstruction, we construct geometry-aligned visual evidence tokens by explicitly aligning input image observations with 3D hand geometry and context-adaptively tokenizing the resulting visual evidence. Since severe self-occlusion makes the reliability of image evidence inherently visibility-dependent, we introduce a visibility-conditioned point-image attention to reliably transfer visual evidence to geometric tokens, yielding occlusion-aware Gaussian features for faithful and robust reconstruction. To further capture non-rigid deformation of articulated hands, we introduce a Feature-on-Mesh representation to enable Gaussian deformation to be guided by local surface stretching. Under this framework, we adopt a one-shot adaptation scheme that learns a shared hand prior from multi-identity training data and then fits it to a target image for target-specific reconstruction. Extensive experiments show that OASIS outperforms existing baselines in both visual fidelity and efficiency across challenging poses and in-the-wild scenarios, and further demonstrates strong versatility in downstream applications such as text-to-avatar generation and texture editing.",
-    "link": "http://arxiv.org/abs/2607.29633v1",
-    "published": "2026-07-31",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Hand Avatar Reconstruction",
-      "Single-Image 3D Reconstruction",
-      "Occlusion-aware",
-      "Feature-on-Mesh"
-    ],
-    "tldr": "提出OASIS，基于3D高斯泼溅的单图手部化身重建方法，利用可见性条件注意力和Feature-on-Mesh表征实现高效高保真重建，并在多个任务上表现优异。",
-    "motivation": "单图手部化身重建因严重自遮挡和复杂姿态变形而极具挑战，现有隐式NeRF方法体积拟合计算昂贵且难以保留细节。",
-    "method": "构建几何对齐的视觉证据token，通过可见性条件点-图像注意力传递到几何token生成遮挡感知高斯特征；引入Feature-on-Mesh表征用局部表面拉伸引导高斯变形，并采用单次适应方案从多身份数据学习共享先验再拟合目标图像。",
-    "result": "在挑战性姿态和真实场景下，OASIS在视觉保真度和效率上均优于现有基线，并在文本到化身生成和纹理编辑等下游任务中表现出强适用性（摘要未提供量化指标）。",
-    "conclusion": "首次将3D高斯泼溅引入单图手部化身重建，有效解决自遮挡与复杂变形问题，为手部数字化及下游应用提供高效高保真的新方案。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.29627v1",
-    "title": "FlexComposer: Unified Video Compositing from Images to Dynamic Footage with Flexible Trajectory Control",
-    "authors": [
-      "Songchun Zhang",
-      "Sitong Guo",
-      "Xianghao Kong",
-      "Pengwei Liu",
-      "Yuwei Guo",
-      "Lvmin Zhang",
-      "Anyi Rao"
-    ],
-    "abstract": "Generative video compositing, which involves inserting external assets seamlessly into existing video sequences, is essential for content creation and visual effects. However, existing approaches suffer from a control-fidelity trade-off: they either hallucinate motion from static images, failing to preserve the dynamics of pre-animated assets, or lack fine-grained spatial control for precise asset placement along user-defined trajectories. We propose FlexComposer, a unified framework that standardizes video compositing as a trajectory-guided conditional generation task, enabling the seamless integration of both static images and dynamic footage. Our approach introduces three key designs: (1) a Unified Canonical Foreground Representation that decouples an object's intrinsic motion from its global displacement, standardizing heterogeneous inputs into a stabilized, centered latent space; (2) a Spatial-Aware Latent Injection strategy that exploits the translation equivariance of VAE latent spaces to transport canonical features onto target trajectories via a parameter-free mechanism; and (3) a Hybrid Dataset and Synthetic-to-Real Curriculum that synergizes procedural simulation, real-world cinematic footage, and generative data to implicitly learn physically plausible illumination and shadow harmonization. This unified design handles diverse inputs from product photos to dynamic subjects achieving high-fidelity motion control and environmental integration without the need for explicit 3D reconstruction or auxiliary learnable adapters. Extensive experiments demonstrate that FlexComposer outperforms state-of-the-art methods in visual quality, temporal consistency, and trajectory adherence.",
-    "link": "http://arxiv.org/abs/2607.29627v1",
-    "published": "2026-07-31",
-    "category": "cs.CV",
-    "tags": [
-      "Video Compositing",
-      "Trajectory Control",
-      "Generative Model",
-      "Latent Injection",
-      "Video Generation"
-    ],
-    "tldr": "FlexComposer提出统一轨迹引导的视频合成框架，通过标准前景表示与空间感知注入，实现静态图像和动态素材的高保真合成。",
-    "motivation": "现有视频合成方法面临控制与保真度的权衡：从静态图像生成时会丢失预动画资产的动态，或缺乏沿用户自定义轨迹精确放置的细粒度空间控制。",
-    "method": "提出三种关键设计：统一规范前景表示将物体内在运动与全局位移解耦；空间感知潜在注入利用VAE潜在空间的平移等变性参数化地将特征输送到目标轨迹；混合数据集与合成到真实的课程学习隐式学习物理合理的光照和阴影协调。",
-    "result": "大量实验表明，FlexComposer在视觉质量、时间一致性和轨迹遵循方面均优于现有最先进方法。",
-    "conclusion": "该统一框架适用于从产品照片到动态主体的多种输入，实现高保真运动控制和环境融合，无需显式3D重建或额外可学习适配器，对内容创作和视觉特效具有重要价值。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.29284v1",
-    "title": "FillGS: Filling Observation Gaps in 4D Gaussian Splatting via Viewpoint-Time Selection and Generative Refinement",
-    "authors": [
-      "Takashi Otonari",
-      "Toshihiko Yamasaki"
-    ],
-    "abstract": "4D Gaussian Splatting (4DGS) can render dynamic scenes photorealistically. However, with limited viewpoint coverage, some spatiotemporal regions remain sparsely observed, leading to artifacts, particularly in scenes with large motion. Existing approaches leveraging generative models rely on heuristic virtual-viewpoint selection before refining rendered views. As a result, they cannot actively explore such sparsely observed regions. To address this issue, we propose a pipeline that actively selects spatiotemporal virtual viewpoints to improve 4DGS reconstruction. Our method selects virtual viewpoints for generative enhancement based on the rendering sensitivity and motion-aware observation density of 4D Gaussians, prioritizing views that alleviate observation sparsity. In the refined images, we filter out regions that conflict with captured observations or are likely to contain generative artifacts and then fine-tune 4DGS using only the reliable regions. We evaluate our method on multi-view video benchmarks using new train/test splits designed to induce observation gaps. Results show consistent improvements over prior viewpoint selection strategies and fine-tuning methods in both qualitative and quantitative evaluations, while reducing artifacts.",
-    "link": "http://arxiv.org/abs/2607.29284v1",
-    "published": "2026-07-31",
-    "category": "cs.CV",
-    "tags": [
-      "4D Gaussian Splatting",
-      "Viewpoint Selection",
-      "Generative Refinement",
-      "Dynamic Scenes",
-      "Observation Gaps"
-    ],
-    "tldr": "提出主动选择时空虚拟视角并生成细化以填补4DGS观测间隙的方法。",
-    "motivation": "4DGS在视角覆盖有限时，时空区域稀疏观测导致伪影，尤其在大运动场景中；现有方法依赖启发式虚拟视角选择，无法主动探索稀疏观测区域。",
-    "method": "基于渲染敏感性和运动感知观测密度选择虚拟视角，优先缓解观测稀疏性；在细化图像中过滤与真实观测冲突或可能包含生成伪影的区域，仅使用可靠区域微调4DGS。",
-    "result": "在模拟观测间隙的多视角视频基准上，采用新训练/测试划分进行评测，在定性和定量评估中均优于先前的视角选择策略和微调方法，并减少伪影。",
-    "conclusion": "提出了一种主动选择时空虚拟视角并进行生成增强的管线，有效填补4DGS的观测间隙，提升动态场景重建质量和可靠性。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.29037v1",
-    "title": "GO-PRE: Goal-Oriented Next-Best-View Selection via Predictive Rendering Entropy for Active 3D Reconstruction",
-    "authors": [
-      "Yan Song",
-      "Zhihao Li",
-      "Chenglong Li",
-      "Li He",
-      "Yan Wang",
-      "Wenqiang Zhang"
-    ],
-    "abstract": "Active 3D reconstruction relies on active view selection to maximize reconstruction fidelity under limited capture budgets. However, most existing methods rely on surrogate signals such as parameter uncertainty or geometric heuristics, but these signals are often misaligned with the ultimate goal: the fidelity of rendered predictions. We propose GO-PRE, a goal-oriented next-best-view selection framework that explicitly targets information gain in the prediction space. Specifically, we formulate the objective as maximizing the reduction of the average marginal predictive entropy over a user-specified target view manifold. GO-PRE supports interactive goal specification and yields an efficient acquisition rule that enables real-time computation of information gain. Extensive experiments across benchmarks demonstrate that GO-PRE consistently improves active reconstruction performance and provides more reliable uncertainty quantification compared to state-of-the-art methods.",
-    "link": "http://arxiv.org/abs/2607.29037v1",
-    "published": "2026-07-31",
-    "category": "cs.CV",
-    "tags": [
-      "Active 3D Reconstruction",
-      "Next-Best-View",
-      "Predictive Entropy",
-      "View Selection",
-      "Information Gain"
-    ],
-    "tldr": "提出GO-PRE，一种面向目标的下一最佳视角选择框架，通过最大化预测空间信息增益来提升主动三维重建性能。",
-    "motivation": "现有主动三维重建的视角选择方法多依赖参数不确定性或几何启发式等代理信号，这些信号与最终目标（渲染预测的保真度）不一致，导致重建效果受限。",
-    "method": "提出GO-PRE框架，明确以用户指定目标视角流形上的平均边际预测熵的减少为目标，支持交互式目标指定，并推导出高效采集规则，实现信息增益的实时计算。",
-    "result": "在多个基准数据集上，GO-PRE一致地提升了主动重建性能，相比最先进方法提供更可靠的量化不确定性。",
-    "conclusion": "贡献在于将视角选择直接与预测空间的信息增益对齐，支持交互式目标指定，且计算高效，具有实用价值。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2607.28967v1",
-    "title": "Visual Distribution Anchoring for Efficient Prompt Tuning",
-    "authors": [
-      "Pouya Parsa",
-      "Raoof Zare Moayedi",
-      "Seongjin Choi"
-    ],
-    "abstract": "Prompt tuning adapts vision--language models with few trainable parameters, but existing approaches trade off efficiency and adaptation: static textual prompts can overfit source classes, image-conditioned prompts add per-instance computation, and multimodal tuning modifies the visual branch. We propose VDA (Visual Distribution Anchoring), a training-free target adaptation framework that augments a frozen semantic classifier with class-level visual prototypes estimated offline from an unlabeled target pool. We first ask whether prototypes can be synthesized from class names. A text-to-centroid mapper reconstructs held-out source prototypes but fails under dataset shift because class names specify semantic identity, not target-domain appearance. An oracle analysis confirms that true target prototypes are highly discriminative. VDA therefore uses frozen semantic and domain-template classifiers to partition unlabeled target images into class-correlated groups. Confidence-ranked image features form normalized prototypes, fused with the semantic classifier using one global weight. Adaptation requires no target labels, target-side optimization, uniform class-prior assumption, iterative refinement, or test-query access, and yields a fixed, cacheable classifier. Controlled experiments show that class-specific partitioning drives gains and that visually local pseudo-label errors can remain useful despite being class-incorrect. Across ten ImageNet-to-target transfers, the same frozen design improves zero-shot CLIP, TCP, and MaPLe by 3.22, 3.39, and 3.35 points, respectively, improving nine of ten targets in every setting. Its visual correction further improves leakage-free PromptKD by 2.79 points, complementing zero-shot, source-prompted, multimodal-prompted, and target-distilled classifiers.",
-    "link": "http://arxiv.org/abs/2607.28967v1",
-    "published": "2026-07-31",
-    "category": "cs.CV",
-    "tags": [
-      "Prompt Tuning",
-      "Vision-Language Models",
-      "Test-Time Adaptation",
-      "Visual Prototypes"
-    ],
-    "tldr": "提出视觉分布锚定（VDA），无需训练即可利用未标注目标域图像增强冻结语义分类器，提升多种提示调优方法的迁移性能。",
-    "motivation": "现有提示调优方法在效率与适应性之间存在权衡：静态文本提示易过拟合源类，图像条件提示增加每实例计算，多模态调优需修改视觉分支。目标是在不增加训练和推理开销的前提下，实现有效的目标域自适应。",
-    "method": "VDA使用冻结的语义分类器和域模板分类器将未标注目标图像划分为类相关组，基于置信度排序的图像特征构建归一化原型，并以单一全局权重与语义分类器融合。整个过程无需目标标签、目标端优化、迭代细化或测试查询，生成固定的可缓存分类器。",
-    "result": "在十个ImageNet到目标域的迁移中，VDA使零样本CLIP、TCP和MaPLe分别提升3.22、3.39和3.35个百分点，且在每种设置下改善十个目标中的九个；还使无泄漏PromptKD提升2.79个百分点。受控实验表明类特定划分是增益关键，局部伪标签错误仍可有用。",
-    "conclusion": "VDA是一种即插即用的训练免费自适应框架，可补充零样本、源提示、多模态提示和目标蒸馏分类器，为高效提示调优提供新方向。"
   }
 ]
