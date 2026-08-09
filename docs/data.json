@@ -1820,31 +1820,5 @@
     "method": "HALO-SLAM读取冻结模型的中间token预测重力方向，实现无IMU的球面直立规范化；回环检测采用三级级联：DBoW2事件检索、注意力兼容性过滤、稠密几何验证（对称子图增强），生成像素对齐的3D-3D对应，估计Sim(3)约束并与序贯约束联合优化。",
     "result": "在5个真实世界全景基准共125个序列上，方法达到100%序列成功率（125/125），所有基准上平均轨迹误差（ATE）最低，相对各基准最佳ERP基线降低30-88%。",
     "conclusion": "首次利用冻结基础模型的隐式注意力与潜在方向线索改进全景SLAM，无需额外传感器即可提升抗倾斜、抗漂移和回环检测能力，为SLAM系统利用基础模型内部表征提供了新路径。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.00463v1",
-    "title": "Scene2Sound: Auditory-Grounded Soundscape Generation for 3D Gaussian Worlds",
-    "authors": [
-      "Masaki Yoshida",
-      "Ren Togo",
-      "Takahiro Ogawa",
-      "Miki Haseyama"
-    ],
-    "abstract": "3D Gaussian Splatting (3DGS) turns captured or generated imagery into photorealistic 3D world simulations that users can freely explore, yet these worlds remain silent. Because existing audio generation methods condition on a single image or viewpoint, their sound is tied to that observation and cannot stay consistent while a listener moves. We introduce the task of generating a spatially consistent soundscape for a given 3DGS world through auditory grounding, identifying which objects in the world should emit sound and anchoring each to a persistent 3D position, and present Scene2Sound, a training-free framework built on this grounding. From the input world alone, our pipeline selects viewpoints that jointly cover the scene, identifies sound-emitting objects with a vision-language model, and associates the multi-view detections into 3D instances through Gaussian set matching, which measures the overlap between the Gaussian sets that render each detection. Each source then receives generated audio that a standard object-based audio engine spatializes in real time at arbitrary listener poses. We further propose two spatial-consistency metrics, one testing whether rendered audio responds consistently to listener motion and one testing whether the claimed sources are supported by views held out from their placement. On a curated set of generated 3DGS worlds and on 3DGS scenes generated from real-world 360-degree captures, Scene2Sound preserves the audio quality of strong per-viewpoint baselines while remaining spatially consistent where per-viewpoint and single-panorama pipelines do not, and a user study confirms the perceptual benefit. Project page: https://masaki-lmd.github.io/scene2sound/.",
-    "link": "http://arxiv.org/abs/2608.00463v1",
-    "published": "2026-08-01",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Soundscape Generation",
-      "Spatial Audio",
-      "Vision-Language Model",
-      "Audio-Visual"
-    ],
-    "tldr": "Scene2Sound 为 3DGS 世界生成空间一致的音景，无需训练，支持任意听者位置实时空间化。",
-    "motivation": "3DGS 世界虽具备照片级真实感，但缺乏声音；现有音频生成方法依赖单视角，听者移动时声音不一致。",
-    "method": "提出训练无关的 Scene2Sound 框架，先选择联合覆盖场景的视角，用视觉语言模型识别发声物体，通过高斯集匹配将多视角检测关联为 3D 实例，再为每个声源生成音频，并由标准对象音频引擎实时空间化。",
-    "result": "在生成的 3DGS 世界和真实 360 度采集场景上，Scene2Sound 保持与强单视角基线相当的音频质量，同时在空间一致性上显著优于单视角和单全景图方法；用户研究也确认了感知益处。",
-    "conclusion": "定义了基于听觉接地的 3D 音景生成任务，并提出 Scene2Sound 框架，实现了可移动听者的空间一致音景，为沉浸式虚拟世界带来听觉体验。"
   }
 ]
