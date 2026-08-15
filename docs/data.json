@@ -245,6 +245,220 @@
     "conclusion": "文章证明了一种无参数更新的空间自我进化路径，对空间智能体的高效推理有实践价值，可适用于多种冻结模型与场景。"
   },
   {
+    "id": "https://arxiv.org/abs/2608.13502",
+    "title": "GS$^{2}$CI: Robust Gaussian Splatting For Snapshot Compressive Imaging via Large Vision Model Priors",
+    "authors": [
+      "Yang, Yanming",
+      "Song, Chenxi",
+      "Wang, Ping",
+      "Yuan, Xin",
+      "Zhang, Chi"
+    ],
+    "abstract": "Snapshot Compressive Imaging (SCI) offers an efficient solution for high-speed video acquisition and, under exposure-time camera--scene relative motion, multi-view scene capture by compressing temporal or spatial information into a single 2D measurement. While recent studies have explored SCI for 3D scene reconstruction, existing methods struggle with significant challenges due to information loss, limited viewpoint diversity, and the computational burden of jointly optimizing 3D representations and camera poses. In this work, we propose a novel framework that reconstructs high-quality 3D scenes from a single SCI measurement by leveraging 3D Gaussian Splatting (3DGS) and the powerful priors of large-scale vision foundation models (VFMs). Our primary reconstruction combines measurement-derived 3D VFM initialization with SCI-aware Gaussian optimization. After coarse-stage convergence, an auxiliary 2D VFM provides pseudo-view supervision at synthesized viewpoints for local appearance refinement. To further address the instability caused by ambiguous SCI supervision during 3DGS optimization, we introduce Opacity-Guided Splitting and Growth Regulation (OSGR), an SCI-specific densification strategy that augments split candidates using local opacity statistics, discourages loss-compensating opacity inflation through mean-opacity regulation, and bounds representation growth with explicit candidate-ratio and Gaussian-count constraints. Extensive experiments across multiple benchmarks demonstrate that our method achieves the strongest overall performance, combining leading reconstruction quality and robustness to viewpoint variation with competitive computational efficiency.",
+    "link": "https://arxiv.org/abs/2608.13502",
+    "published": "2026-08-13",
+    "category": "cs.CV",
+    "tags": [
+      "Snapshot Compressive Imaging",
+      "3D Gaussian Splatting",
+      "Vision Foundation Models",
+      "3D Reconstruction",
+      "Densification Strategy"
+    ],
+    "tldr": "利用3D高斯泼溅和视觉基础模型先验，从单次SCI测量重建高质量3D场景，并用OSGR策略提升稳定性。",
+    "motivation": "现有基于SCI的3D重建方法因信息丢失、视角多样性有限以及联合优化3D表示与相机位姿的计算负担大而面临严峻挑战，难以从单次测量中重建高质量3D场景。",
+    "method": "提出结合3DGS与视觉基础模型的框架：首先使用测量派生的3D VFM初始化并进行SCI感知的高斯优化；粗阶段收敛后利用辅助2D VFM在合成视角提供伪视图监督以细化局部外观。同时提出OSGR策略，通过局部透明度统计增强分裂候选、均值透明度调节抑制为补偿损失而导致的透明度膨胀，并用显式候选比例和高斯数量约束控制表示增长。",
+    "result": "在多个基准上的实验表明，该方法取得最强综合性能，重建质量与视角鲁棒性领先，且计算效率具有竞争力；但摘要未提供具体量化指标。",
+    "conclusion": "提出了一种基于3DGS和视觉基础模型先验的SCI 3D重建框架，并通过OSGR有效缓解SCI监督模糊带来的不稳定性，为快照压缩成像的高质量场景重建提供了新方案。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.13114",
+    "title": "Fast Iterative Five point Relative Pose Estimation",
+    "authors": [
+      "Hedborg, Johan",
+      "Felsberg, Michael"
+    ],
+    "abstract": "Robust estimation of the relative pose between two cameras is a fundamental part of Structure and Motion methods. For calibrated cameras, the five point method together with a robust estimator such as RANSAC gives the best result in most cases. The current state-of-the-art method for solving the relative pose problem from five points is due to Nister [9], because it is faster than other methods and in the RANSAC scheme one can improve precision by increasing the number of iterations. In this paper, we propose a new iterative method, which is based on Powell's Dog Leg algorithm. The new method has the same precision and is approximately twice as fast as Nister's algorithm. The proposed method is easily extended to more than five points while retaining a efficient error metrics. This makes it also very suitable as an refinement step. The proposed algorithm is systematically evaluated on three types of datasets with known ground truth.",
+    "link": "https://arxiv.org/abs/2608.13114",
+    "published": "2026-08-13",
+    "category": "cs.CV",
+    "tags": [
+      "Relative Pose Estimation",
+      "Five Point Method",
+      "Iterative Optimization",
+      "RANSAC",
+      "Structure from Motion"
+    ],
+    "tldr": "提出一种基于Powell's Dog Leg算法的新迭代五点点法相对位姿估计方法，精度与Nister算法相同，速度约为其两倍，且易扩展至更多点。",
+    "motivation": "相对位姿估计是运动恢复结构的基础，五点点法配合RANSAC通常效果最佳，但现有最先进算法（Nister）在速度上仍有提升空间，以支持更多RANSAC迭代来提高精度。",
+    "method": "将五点点法问题转化为非线性优化问题，采用Powell's Dog Leg算法进行迭代求解，替代传统直接解法，并设计可高效计算的误差度量，使方法能自然扩展至多于五个点，适合作为精化步骤。",
+    "result": "在三类具有已知真值的数据集上系统评估，新方法在精度与Nister算法持平，但计算速度约为其两倍。",
+    "conclusion": "提出的迭代方法在保持相同精度的同时显著提升速度，且易于扩展和用于精化，为实时或大规模SfM系统提供了更高效的相对位姿估计方案。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.13047",
+    "title": "Topology-Unified 2D Pose Estimation across Intact, Residual and Prosthetic Limbs",
+    "authors": [
+      "Qi, Tianye",
+      "Zhang, Tengyue",
+      "Ying, Jiaying",
+      "Zhu, Tianqing",
+      "Yu, Xin"
+    ],
+    "abstract": "Driven by the availability of large-scale datasets, Human Pose Estimation (HPE) plays a critical role in numerous downstream tasks. However, mainstream benchmarks exhibit severe representation bias, predominantly featuring able-bodied individuals. While a few pioneering datasets have attempted to address limb differences, their annotation protocols fail to generalize, struggling to represent specialized mechanical structures like running blades or unprosthetized residual limbs. To bridge this gap, we introduce ProPose, a large-scale benchmark featuring a novel annotation protocol that unifies the topological representation of biological limbs, diverse prostheses, and physical absences within a single framework. Because real-world prosthetic images are inherently scarce and exhibit extreme long-tail distributions, we design a Real-to-Synthetic data expansion pipeline to explicitly synthesize and expand the underrepresented cases. However, simply training existing models on this enriched dataset often leads to suboptimal solutions, as they estimate each keypoint independently and might hallucinate non-existent joints on mechanical structures. To resolve this, we propose ProLoss, a structure-aware objective that enforces keypoint dependencies within a single limb to prevent unrealistic limb predictions. Extensive experiments demonstrate that our approach improves the classification accuracy of long-tail prosthetic joints by 2% to 6% without compromising spatial coordinate localization performance. This work sets a foundation for inclusive pose estimation, unlocking new possibilities for understanding the interactions between human bodies and assistive devices.",
+    "link": "https://arxiv.org/abs/2608.13047",
+    "published": "2026-08-13",
+    "category": "cs.CV",
+    "tags": [
+      "Human Pose Estimation",
+      "Benchmark",
+      "Prosthetics",
+      "Topology",
+      "Long-tail"
+    ],
+    "tldr": "提出ProPose基准与ProLoss，统一完整、残肢和假肢的拓扑表示，提升长尾假肢关节分类准确率2%-6%。",
+    "motivation": "主流人体姿态估计数据集存在严重的表示偏差，主要针对健全人，缺乏对假肢和残肢等特殊结构的泛化能力，无法统一表示生物肢体、各种假肢和物理缺失。",
+    "method": "构建ProPose大规模基准，采用统一拓扑表示协议；设计Real-to-Synthetic数据扩展流程合成稀缺假肢样本；提出结构感知的ProLoss损失函数，强制单肢体关键点依赖，防止幻觉不存在的关节。",
+    "result": "在长尾假肢关节上分类准确率提升2%-6%，且不降低空间坐标定位性能。",
+    "conclusion": "为包容性姿态估计奠定基础，促进对人体与辅助设备交互的理解。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.12825",
+    "title": "LocusGS: Spatially Grounded Tokens for Feed-Forward 3D Gaussian Splatting",
+    "authors": [
+      "Li, Wenyu",
+      "Liu, Sidun",
+      "Hu, Tongrui",
+      "Qiao, Peng",
+      "Dou, Yong"
+    ],
+    "abstract": "Recent query-based feed-forward 3DGS methods represent a scene using learnable queries, each aggregating multi-view evidence and decoding a group of Gaussians. Ideally, different queries should specialize in coherent local regions of the scene. However, we observe that Gaussians decoded from the same query often scatter across distant scene regions, resulting in weak query-level spatial coherence and poor alignment with the scene structure. We attribute this behavior to the purely latent representation of existing Gaussian queries. To address this limitation, we introduce LocusGS, which augments each Gaussian query with a 3D anchor state consisting of a center and a support radius. The anchor state is progressively refined across decoder layers and is used throughout query interaction, multi-view feature aggregation, and Gaussian generation. Specifically, an anchor-to-ray geometric bias guides each query toward spatially relevant image observations, while anchor-centered decoding organizes its Gaussians within a local region. Experiments on novel view synthesis benchmarks show that LocusGS improves rendering quality over query-based Gaussian token baselines under the same Gaussian budget. Further analysis shows that the learned anchors form coherent spatial layouts and lead to more structured Gaussian distributions, demonstrating that explicit anchor states improve the spatial organization. Our project page: this https URL .",
+    "link": "https://arxiv.org/abs/2608.12825",
+    "published": "2026-08-13",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Feed-Forward",
+      "Novel View Synthesis",
+      "Query-Based",
+      "Spatial Anchors"
+    ],
+    "tldr": "LocusGS 通过为高斯查询引入显式 3D 锚点状态，提升了查询级空间一致性和渲染质量。",
+    "motivation": "现有基于查询的前馈 3DGS 方法中，同一查询解码的高斯常分散在场景远处区域，导致查询级空间相干性弱且与场景结构对齐不佳。作者将此归因于现有高斯查询的纯潜在表示缺乏空间约束。",
+    "method": "LocusGS 为每个高斯查询增加一个由中心和支撑半径组成的 3D 锚点状态，并在解码器层间逐步细化。该锚点状态用于查询交互、多视角特征聚合和高斯生成：通过锚点到射线的几何偏差引导查询关注空间相关的图像证据，并通过锚点中心解码将生成的高斯组织在局部区域内。",
+    "result": "在新视图合成基准上，LocusGS 在相同高斯预算下优于基于查询的高斯 token 基线，渲染质量提升。进一步分析表明，学习到的锚点形成连贯的空间布局，并带来更有结构的高斯分布。",
+    "conclusion": "LocusGS 证明显式锚点状态能有效改善场景空间组织，提高渲染质量，为前馈 3D 高斯泼溅中的查询表示提供了新思路。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.12781",
+    "title": "Beyond Correctness: Benchmarking and Aligning Response Behaviors in Hybrid-Thinking MLLMs",
+    "authors": [
+      "Wang, Xinming",
+      "Wang, Weinong",
+      "Yang, Hongming",
+      "Lin, Yansong",
+      "Ruan, Zheng",
+      "Peng, Shangpin",
+      "Peng, Qiming",
+      "Qiao, Nan",
+      "Lu, Fengyuan",
+      "Ma, Guoqing",
+      "Li, Marito",
+      "Zhang, Songyang",
+      "Yang, Saiyong",
+      "Hu, Han",
+      "Tian, Yonglong",
+      "Zhang, Xu-Yao"
+    ],
+    "abstract": "Hybrid-thinking multimodal large language models (MLLMs) allow a single model to alternate between deliberative thinking and latency-efficient non-thinking inference. Although these modes differ in reasoning budget, their delivered responses should satisfy the same user-facing standard. Correctness alone may not characterize this response quality; we therefore evaluate task accuracy and response-pattern failures as complementary outcomes. We study this gap through \\textbf{response-pattern alignment}: whether thinking and non-thinking interfaces preserve acceptable final-response behavior. We introduce \\textbf{PatternEval}, a failure-enriched diagnostic benchmark comprising 2,415 multimodal prompts spanning visual perception and grounding, structured image understanding, and multimodal knowledge reasoning. PatternEval tests four recurrent failures: chain-of-thought leakage, response repetition, logical contradiction, and performative reasoning. Response-pattern failures are widespread across models from different providers, with non-thinking inference exhibiting substantially higher failure rates and thereby creating systematic misalignment between thinking and non-thinking interfaces. Motivated by this diagnosis, we develop \\textbf{PatternRM}, a response-level reward model, and \\textbf{PatternRL}, which introduces pattern-specific penalties during reinforcement learning. Experiments on Qwen3-VL-4B and Qwen3-VL-8B show that incorporating pattern-specific penalties into reinforcement learning can mitigate cross-mode misalignment while incurring a marginal task performance trade-off. Together, PatternEval and PatternRL provide an evaluation-and-training framework for aligning user-visible response patterns across hybrid-thinking interfaces.",
+    "link": "https://arxiv.org/abs/2608.12781",
+    "published": "2026-08-13",
+    "category": "cs.CV",
+    "tags": [
+      "MLLM",
+      "Benchmark",
+      "Reinforcement Learning",
+      "Response Alignment",
+      "Hybrid Thinking"
+    ],
+    "tldr": "提出PatternEval和PatternRL，评估并对齐混合思考多模态大模型在思考与非思考模式下的响应行为，减少模式间不一致。",
+    "motivation": "正确性不足以衡量混合思考MLLM的响应质量，思考和非思考模式应满足相同用户标准，但非思考模式中响应模式失败率高，导致系统错位。",
+    "method": "构建PatternEval基准（2,415个多模态提示）诊断四类失败模式；提出PatternRM奖励模型和PatternRL，在强化学习中引入模式特定惩罚。",
+    "result": "在Qwen3-VL-4B/8B上实验表明，PatternRL可缓解跨模式错位，仅带来轻微任务性能权衡。",
+    "conclusion": "PatternEval和PatternRL构成评估-训练框架，用于对齐混合思考界面的用户可见响应行为，具有推广价值。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.13069",
+    "title": "Behavioral Reprogramming of Open-Weights Models: Cognitive Plasticity and Alignment Bounds",
+    "authors": [
+      "Malíčková, Lucia"
+    ],
+    "abstract": "Large language models (LLMs) are predominantly aligned to function as passive, sycophantic assistants. We challenge this default paradigm by empirically evaluating the cognitive plasticity of open-weight architectures when subjected to rigorous behavioral reprogramming. Our objective is to induce a proactive, Socratic conversational framework, characterized by high-frequency question generation under strictly constrained high-performance computing (HPC) conditions. Through a massively parallelized hyperparameter sweep comprising 405 HPC jobs, we define precise mathematical bounds for parameter-efficient fine-tuning (PEFT). We identify an architectural threshold at LoRA rank $r=16$ and demonstrate via extensive epoch ablation that generalization capacity strictly reaches its optimal convergence within an optimized training window of $e \\in [2, 3]$ depending on dataset density (minimum validation loss of 0.919). Furthermore, scaling model capacity to 14B parameters yielded a lower localized evaluation perplexity (1.414). Subsequent Direct Preference Optimization (DPO) successfully decoupled the underlying assertive behavior from localized syntax, while rigorous cross-lingual stress testing reveals both the capabilities and the structural boundaries of zero-shot persona transfer, demonstrating robust alignment in closely related linguistic families alongside identifiable degradation pathways in morphologically distant targets. These findings establish a rigorous empirical framework for compute-efficient, cross-lingual behavioral modification.",
+    "link": "https://arxiv.org/abs/2608.13069",
+    "published": "2026-08-13",
+    "category": "cs.AI",
+    "tags": [
+      "LLM Alignment",
+      "Parameter-Efficient Fine-Tuning",
+      "LoRA",
+      "Direct Preference Optimization",
+      "Cross-Lingual Transfer"
+    ],
+    "tldr": "通过405项HPC超参数扫描和DPO，证明LoRA秩16及2-3轮训练实现高效Socratic行为重编程，跨语言迁移在近缘语言稳健、远缘语言退化。",
+    "motivation": "挑战LLM默认为被动顺从助手的范式，研究开源权重模型在严格HPC约束下被重新编程为主动苏格拉底式对话框架的认知可塑性。",
+    "method": "采用大规模并行超参数扫描（405个HPC作业）定义PEFT边界，发现LoRA秩阈值r=16；通过epoch消融确定最优训练窗口e∈[2,3]；将模型扩展到14B参数，并使用DPO解耦断言行为与局部句法，进行跨语言压力测试。",
+    "result": "最小验证损失0.919，14B模型局部困惑度1.414；LoRA秩16为架构阈值，最优收敛在2-3个epoch；跨语言零样本人格迁移在近缘语系表现稳健，在形态学遥远语言中出现可识别退化。",
+    "conclusion": "建立了计算高效、跨语言行为修改的实证框架，揭示PEFT和DPO在行为重编程中的边界与潜力，为开源模型主动化对齐提供指导。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.13063",
+    "title": "Explanatory Engagement Under Rare Anomalous Failure: Asymptotic Rarity in Model Behavior (or: The Asymptotic AI)",
+    "authors": [
+      "Mao, Sam"
+    ],
+    "abstract": "Prior work on LLM behavior under anomalous conditions asks whether a model notices anomalies. We ask a narrower question: once a model sits in a workflow with a low, controllable failure rate, does its explanatory engagement - length, specificity, self-reported confidence - change as failure grows asymptotically rarer? We built a local, zero-cost harness on three open-weight models (qwen3:8b, llama3.1:8b, mistral:7b) running a repeated tool-call task where one call fails at probability p, swept across eight rates from 0.2 to 0.0001, under five elicitation conditions from immediate prompting to none. We hypothesized a rise in engagement as failures grew rarer, then a collapse near a detectability threshold. Pooled across conditions this appeared false: length fell in a flat, monotonic pattern. Splitting by condition overturned that. Under immediate_forced, where the model must explain every failure instantly, the predicted rise is confirmed but followed by a plateau, not a collapse: length peaks at 28.4 words at p=0.05, settles to 17.4-19.0 words at the rarest rates, and confidence rises unevenly from about 53% to the 70s-90s. Under grouped_runs, explanation batched to run-end, no collapse appears. Under passive_unprompted, aggregate magnitude is a floor artifact, but a recovered logging gap revealed real, model-specific self-monitoring: llama3.1:8b volunteers structured confidence reports unprompted, sometimes eroding its own confidence as trials accumulate; the other two do so only once, as boilerplate. Elicitation structure is a first-class moderator of collapse observability. A companion guaranteed-failure run (72 cells, backfilling rates where random sampling gave zero real failures) shows models differ in whether they recognize an anomaly, distinct from engagement once recognized. Limitation: discrete rate points cannot capture behavior between them, a direction for future work.",
+    "link": "https://arxiv.org/abs/2608.13063",
+    "published": "2026-08-13",
+    "category": "cs.AI",
+    "tags": [
+      "LLM behavior",
+      "Anomaly detection",
+      "Explanatory engagement",
+      "Failure rate",
+      "Self-monitoring"
+    ],
+    "tldr": "研究发现提示结构决定模型在罕见故障下解释投入的规律：强制即时提示时投入先升后平台，无提示时仅特定模型自发自我监控。",
+    "motivation": "已有工作仅考察LLM能否注意到异常；本研究更窄地关注当模型处于低且可控故障率的工作流中，其解释性投入（长度、具体性、自报置信度）是否随故障率趋于渐近稀有而变化，并提出投入先升后在可检测阈值附近崩溃的假设。",
+    "method": "使用本地零成本测试台，在qwen3:8b、llama3.1:8b、mistral:7b三个开放权重模型上执行重复工具调用任务，令单次调用以概率p失败，p从0.2到0.0001共8个档位，并用5种提示条件（从立即提示到无提示）测量解释投入；另设72单元保证失败运行，对随机采样零真实失败的区间进行回填。",
+    "result": "合并条件下假设被否：长度单调下降。拆分条件后，immediate_forced下确见投入上升但随后是平台而非崩溃：长度在p=0.05时达峰值28.4词，最稀有时稳定在17.4-19.0词，置信度从约53%不均匀升至70s-90s；grouped_runs无崩溃；passive_unprompted下总量是下限效应伪影，但恢复日志缺口显示llama3.1:8b会自发给出结构化置信报告并可能随试验累积削弱自信，另两个模型仅一次套话。保证失败运行显示模型在是否识别异常上有差异，与识别后的投入不同。",
+    "conclusion": "提示结构是崩溃可观测性的首要调节变量；模型间的自发自我监控差异显著。贡献在于厘清了异常稀有性下解释投入的非单调/平台模式，并指出离散概率点无法捕捉相邻速率间行为，留待未来工作。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.12895",
+    "title": "Agent Behavioral Contracts II: Certifying Compositional Reliability Without Assuming Independence",
+    "authors": [
+      "Bhardwaj, Varun Pratap",
+      "Singh, Garima",
+      "Bhardwaj, Arun Pratap"
+    ],
+    "abstract": "Compositional reliability bounds for multi-agent systems multiply component reliabilities, a step licensed by a conditional-independence assumption that is routinely stated and rarely tested. We test it. Two instances of one model, in a two-agent handoff, co-fail on 90.0% of the missions on which either fails (log OR 6.66, 95% CI [6.38, 7.00]; phi 0.916), in a preregistered evaluation of 18,000 missions scored by deterministic code with no LLM judge. Substituting a different model reduces the association in six of six contrasts; substituting a different vendor, model already different, does not -- a registered hypothesis reported as a null. The error is signed and runs against the operator: positive dependence inflates joint failure above the independence product, so redundancy is over-credited exactly when components share a model. The assumption-free alternative is often vacuous, and fitting a dependence model is worse: we prove a bootstrap bound on a fitted model's functional loses coverage of the truth as n grows, the identification gap being O(1) while the bootstrap haircut is O(n^{-1/2}). More data makes such a certificate worse, with no visible symptom. We give a finite-sample certificate assuming no dependence structure: a linear program over the joint, over a Bonferroni-Clopper-Pearson box around measured co-execution moments. It is sound, sharp for the information supplied, and monotone in the moment family. Enriching ten moment functionals to fourteen narrows the identified interval by 85.7% and lifts the certified floor from 0.2455 to 0.4116. A companion anytime-valid certificate holds type-I error at 0.0471 under optional stopping. Common dependence statistics are marginal-bounded and can reverse an apparent ordering of conditions when the compared agents fail at different rates. Contracts, scoring code, analysis scripts, and the preregistration are released.",
+    "link": "https://arxiv.org/abs/2608.12895",
+    "published": "2026-08-13",
+    "category": "cs.AI",
+    "tags": [
+      "multi-agent reliability",
+      "compositional certification",
+      "dependence",
+      "bootstrap",
+      "linear programming"
+    ],
+    "tldr": "本文实证检验多智能体组合可靠性的条件独立假设，发现正依赖导致冗余被高估，并提出无依赖假设的有限样本证书。",
+    "motivation": "组合可靠性界限通常乘以组件可靠性，但依赖条件独立假设，很少被检验。需要验证该假设并给出无假设的可靠证书。",
+    "method": "通过18,000次任务预注册实验测试模型共失败率；提出基于Bonferroni-Clopper-Pearson盒和线性规划的无依赖结构有限样本证书，以及伴随随时有效证书。",
+    "result": "同一模型两实例共失败率90.0% (log OR 6.66, phi 0.916)；换模型降低六项对比中的关联，换厂商无变化；增加矩函数使区间窄85.7%，认证下限从0.2455提高到0.4116；随时有效证书在可选停止下I型错误0.0471。",
+    "conclusion": "正依赖使冗余被过度信任，拟合依赖模型更差（bootstrap界随n增长失去覆盖），所提证书合理且随信息单调，并已发布代码与预注册。"
+  },
+  {
     "id": "http://arxiv.org/abs/2608.12232v1",
     "title": "ScaleVid: Geometry-Aware Video Object Scaling with Mesh-Free Inference",
     "authors": [
@@ -444,6 +658,134 @@
     "method": "构建MV2数据集，包含50个高质量场景和12000张图像，采集自汽车、踏板车和无人机三条不同但同步的轨迹；使用SfM进行配准并用人工像素级标注验证相机位姿，通过跨车辆训练/测试实现大视角变化评估。",
     "result": "基准测试表明NVS性能随视角差异增大而下降，前馈位姿估计方法明显落后于基于优化的方法。",
     "conclusion": "MV2作为严格的驾驶场景NVS测试平台，为动态城市环境中的大视角新视图合成研究提供标准数据集与基准协议。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.12187",
+    "title": "HSTGFormer: Hyper Spatial-Temporal Graph Transformer for 3D Human Pose Estimation",
+    "authors": [
+      "Li, Ruochen",
+      "Chen, Shuang",
+      "E, Wenke",
+      "Arvin, Farshad",
+      "Atapour-Abarghouei, Amir"
+    ],
+    "abstract": "Transformer-based methods have achieved strong performance in monocular 3D human pose estimation, but most existing approaches organise spatial and temporal reasoning as separate stages, which may weaken unified spatial-temporal interdependencies inherent in human motion and compress frame-level structural information before temporal modelling. In this paper, we propose HSTGFormer, a graph-enhanced Transformer framework that reformulates spatial-temporal reasoning as localised coupled graph aggregation over joint-time nodes. Specifically, HSTGFormer introduces a Hyper Spatial-Temporal Graph (HSTG), which decomposes global spatial-temporal reasoning into local spatial-temporal receptive fields around individual joint-time nodes by extending per-frame skeleton graphs into temporal neighbourhoods, thereby enabling structure-aware coupled reasoning while preserving local structural motion information. It further incorporates an Adaptive Dual-Scale Temporal Graph (ADSTG) to capture joint-specific temporal dependencies over complementary short- and long-range windows. A lightweight node-wise fusion module further adaptively integrates the two graph representations for each joint-time node. Experiments on Human3.6M and MPI-INF-3DHP show that HSTGFormer achieves strong accuracy with high computational efficiency.",
+    "link": "https://arxiv.org/abs/2608.12187",
+    "published": "2026-08-12",
+    "category": "cs.CV",
+    "tags": [
+      "3D Human Pose Estimation",
+      "Graph Transformer",
+      "Spatial-Temporal",
+      "Skeleton"
+    ],
+    "tldr": "提出HSTGFormer，用超时空图耦合时空推理，在3D人体姿态估计中实现高精度高效率。",
+    "motivation": "现有Transformer方法将空间和时间推理分开，削弱了时空相互依赖，且在时序建模前压缩了帧级结构信息。",
+    "method": "构建超时空图(HSTG)将全局时空推理分解为每个关节-时间节点周围的局部时空感受野，并引入自适应双尺度时间图(ADSTG)捕捉短长期依赖，再用轻量节点融合模块整合两个图表示。",
+    "result": "在Human3.6M和MPI-INF-3DHP上达到高精度并具有高计算效率（摘要未提供具体数值）。",
+    "conclusion": "提出一种图增强Transformer框架，通过局部耦合图聚合统一时空推理，为3D姿态估计提供高效方案。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.12179",
+    "title": "Map-Det3D: Metric Feed-Forward 3D Reconstruction Prior for Multi-view 3D Object Detection from Streaming Inputs",
+    "authors": [
+      "Yang, Yung-Hsu",
+      "Piccinelli, Luigi",
+      "Bulò, Samuel Rota",
+      "Hong, Sunghwan",
+      "Rozumny, Denis",
+      "Schönberger, Johannes",
+      "Bauer, Zuria",
+      "Blum, Hermann",
+      "Kontschieder, Peter",
+      "Pollefeys, Marc"
+    ],
+    "abstract": "Metric 3D object detection is a core capability for embodied agents, yet most reliable systems lean on depth sensors, trading away cost, power, and integration simplicity. This motivates monocular 3D detection, which avoids additional constraints, yet it faces a major obstacle: from a single image, depth, and especially absolute scale, are underconstrained. As a result, the prevailing pattern of detecting in 2D and then predicting 3D attributes is often brittle, since modest range errors can dominate 3D localization, and the learned scale prior can fail when cameras, motion, or environments undergo domain shifts. To address this, we propose Map-Det3D, an online multi-view 3D object detection model that brings detection directly into a 3D space reconstructed from RGB. We map a short temporal window into multiple views and repurpose a feed-forward metric 3D reconstruction model as our geometric backbone while tuning its object-aware capabilities. Building on this representation, Map-Det3D directly predicts boxes in metric 3D space, without the widely used 2D-to-3D lifting. Experiments across different benchmarks show that this design supports strong online performance and robust transfer without adaptation, suggesting that training reconstruction priors for detection is a practical route to stable metric 3D detection from monocular video. Code and models are available at this https URL .",
+    "link": "https://arxiv.org/abs/2608.12179",
+    "published": "2026-08-12",
+    "category": "cs.CV",
+    "tags": [
+      "3D Object Detection",
+      "Multi-view",
+      "Monocular",
+      "Reconstruction Prior",
+      "Metric Estimation"
+    ],
+    "tldr": "提出Map-Det3D，利用前馈式度量3D重建先验，在流式多视图输入中直接于3D空间预测框，避免2D到3D提升，实现稳健迁移。",
+    "motivation": "单目3D检测受限于深度和绝对尺度欠约束，常用2D检测加3D属性预测的方式对距离误差敏感且跨域时尺度先验失效。需要直接在度量3D空间进行检测的方法。",
+    "method": "将短时间窗口映射为多视图，使用预训练的前馈度量3D重建模型作为几何骨干并调整其物体感知能力，在重建表示上直接预测度量3D空间中的3D框，无需2D到3D提升。",
+    "result": "在多个基准上无需域适应即可实现强在线性能与稳健迁移，验证了重建先验用于检测的实用路线。摘要未提供具体量化指标。",
+    "conclusion": "提出Map-Det3D新范式，表明训练重建先验用于检测是从单目视频获得稳定度量3D检测的可行路径，代码和模型已开源。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.12051",
+    "title": "Do Not Forget the Obvious - RISC: A Risk-Informed Slice-Coverage Protocol for Safe Autonomous Driving",
+    "authors": [
+      "Hüger, Fabian"
+    ],
+    "abstract": "Aggregate metrics may not fully reflect performance in insufficiently examined high-risk driving conditions. We propose RISC (Risk-Informed Slice Coverage), a practical protocol for risk-guided stress testing and coverage-qualified evaluation. Risk-guided stress testing directs a finite audit budget toward risk-relevant sub-datasets, called risk slices, while coverage-qualified evaluation reports results together with explicit statements about which slices are sufficiently or insufficiently covered. The protocol translates safety concerns into machine-readable risk slices, uses lightweight signals to tag candidate data, selects a compact audit set by risk, and qualifies the results using coverage evidence. An LLM can optionally support this process by surfacing relevant but potentially overlooked conditions during test planning, thereby helping engineers not to forget the obvious. RISC is model-agnostic and can be applied to perception modules, driving models, and other autonomous-driving subsystems. We instantiate the protocol for monocular pedestrian perception using 1,000 frames from the Zenseact Open Dataset, image statistics, and a YOLO-based detector proxy. In this proof-of-concept study, risk-guided selection increases critical failure discovery from 34.0% under random sampling to 98.5%. RISC provides a lightweight, assurance-oriented evaluation layer that complements scenario categorization, coverage assessment, and broader testing-and-verification workflows.",
+    "link": "https://arxiv.org/abs/2608.12051",
+    "published": "2026-08-12",
+    "category": "cs.CV",
+    "tags": [
+      "Autonomous Driving",
+      "Risk-Guided Testing",
+      "Slice Coverage",
+      "Safety Validation",
+      "Perception"
+    ],
+    "tldr": "提出RISC风险知情切片覆盖协议，通过风险导向的压力测试和覆盖合格评估，将关键故障发现率从34.0%提升到98.5%。",
+    "motivation": "传统聚合指标难以反映高风险驾驶条件下未充分测试的性能，可能遗漏关键失效，需要一种能有效利用有限审计预算并明确覆盖程度的测试协议。",
+    "method": "提出RISC协议，将安全关切转化为机器可读的风险切片，用轻量信号标记候选数据，按风险选择紧凑审计集，并用覆盖证据对结果进行合格评估；可选LLM帮助发现潜在被忽视场景，支持感知模块和驾驶模型等。",
+    "result": "在Zenseact Open Dataset的1000帧单目行人感知概念验证中，风险引导选择将关键故障发现率从随机采样的34.0%提升至98.5%。",
+    "conclusion": "RISC提供了一种轻量级、保证导向的评估层，补充了场景分类、覆盖评估及更广泛的测试验证流程，是一种模型无关的实用协议，有助于避免遗忘高风险场景。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.11705",
+    "title": "Making Your LLMs More Objective: Stabilizing LLM Safety Behavior Across Traits with Trait-Invariant Safety Tuning",
+    "authors": [
+      "Cao, Lang"
+    ],
+    "abstract": "Aligned large language models (LLMs) are expected to exhibit safety behavior based on the content of the user request: they should refuse unsafe requests and comply with safe ones. However, we show that the same request can elicit substantially different safety decisions under different traits assigned in the system prompt, a failure mode we call trait-induced safety variation. To measure this failure, we introduce refusal-based metrics: Trait-Induced Deviation measures dataset-level deviation from the no-trait baseline, while Trait-Induced Flip Rate measures whether the same request receives different safety decisions across traits. We then provide a representation-level analysis of the mechanism behind trait-induced safety shifts and find that traits perturb the model's safety representations within a low-dimensional subspace. To achieve trait-invariant safety, where safety behavior remains stable across traits, we introduce Trait-Invariant Safety Tuning (TIST), a simple yet effective self-distillation framework that aligns an LLM's trait-conditioned behavior with its no-trait behavior. Guided by our analysis, we further propose Trait-Subspace Neutralization (TraSN), an instantiation of TIST, which enforces invariance only within the identified trait subspace. Experiments show that TraSN improves trait-invariant safety and strengthens harmful-request safety while preserving general capability. Our results highlight traits as an important factor in LLM safety and robust model behavior.",
+    "link": "https://arxiv.org/abs/2608.11705",
+    "published": "2026-08-12",
+    "category": "cs.AI",
+    "tags": [
+      "LLM Safety",
+      "Trait Invariance",
+      "Self-Distillation",
+      "Safety Alignment"
+    ],
+    "tldr": "提出TIST与TraSN方法，减少系统提示中不同特质导致的LLM安全行为差异，同时增强对有害请求的拒绝能力。",
+    "motivation": "大型语言模型在系统提示中赋予不同特质时，对同一用户请求可能产生不同的安全决策，存在特质诱导的安全变异（trait-induced safety variation），威胁模型的安全稳定性。",
+    "method": "引入特质不变安全调优（TIST），通过自蒸馏框架将特质条件下的模型行为与其无特质基线对齐；基于表示分析，提出特质子空间中和（TraSN），仅在识别的低维特质子空间内强制不变性。",
+    "result": "实验表明TraSN在提升特质不变安全性并强化对有害请求的安全性的同时，保持了通用能力；但摘要未提供具体量化指标。",
+    "conclusion": "特质是影响LLM安全与稳健行为的重要因素，TIST/TraSN为实现跨特质稳定安全行为提供了有效框架，对LLM安全对齐具有潜在价值。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.11583",
+    "title": "Localizing Safety Alignment: MLP Layers and Mid-Network Blocks Encode Refusal Behavior in Large Language Models",
+    "authors": [
+      "Zong, Mingyu",
+      "Mohanty, Sampad",
+      "Krishnamachari, Bhaskar"
+    ],
+    "abstract": "Safety alignment in large language models is often treated as a distributed property of the entire network, yet its practical brittleness suggests that refusal behavior may be concentrated in a smaller set of parameters. This work addresses where safety-aligned refusal is encoded by transplanting weights from aligned models into matched unaligned base models at multiple levels of granularity. Using two open-weight model pairs and four safety benchmarks, we conducted experiments to compare the effects of replacing attention weights, MLP weights, contiguous layer regions, and MLP blocks. Across both model families, refusal transfer is dominated by MLP weights: replacing MLP parameters recovers substantially more malicious-prompt refusal than replacing attention parameters, with gains of at least 2.7 times more across benchmarks. Within the MLP stack, refusal-relevant parameters exhibit a consistent mid-network concentration, as the block spanning layers 8-11 is selected first in all six greedy searches over model-dataset pairs. The results also show that the composition of safety-relevant components is non-additive: in five of six greedy trajectories, adding more aligned blocks can reduce refusal performance, and selective block subsets can outperform full MLP transplantation on malicious refusal, benign over-refusal, or both. Finally, greedy orders transferred to OR-Bench vary with the source benchmark used to derive them, indicating a benchmark-dependent precision-coverage trade-off. These results suggest that safety alignment in current LLMs is both localized and interaction-sensitive, offering insight into alignment brittleness and potential avenues for targeted safety interventions.",
+    "link": "https://arxiv.org/abs/2608.11583",
+    "published": "2026-08-12",
+    "category": "cs.AI",
+    "tags": [
+      "Safety Alignment",
+      "Refusal Behavior",
+      "MLP Layers",
+      "Interpretability",
+      "LLM"
+    ],
+    "tldr": "研究发现大模型安全对齐的拒绝行为主要由MLP层权重编码，且集中在中层网络块（8-11层），并具有非加性交互特性。",
+    "motivation": "安全对齐通常被视为整个网络的分布式属性，但其实际脆弱性暗示拒绝行为可能集中在较少参数中。为此，研究旨在定位安全对齐拒绝行为的具体编码位置。",
+    "method": "使用两组开源权重模型配对和四个安全基准，通过将对齐模型的权重移植到未对齐基础模型，在多个粒度上比较替换注意力权重、MLP权重、连续层区域和MLP块的效果。采用贪婪搜索识别拒绝相关模块。",
+    "result": "实验表明，替换MLP参数比替换注意力参数恢复恶意提示拒绝的效果至少高2.7倍；所有六次贪婪搜索中，覆盖8-11层的块均首选，表明中层集中；在六个贪婪轨迹中的五个，增加对齐块反而降低拒绝性能，选择性块子集可优于完整MLP移植。",
+    "conclusion": "结论：当前LLM的安全对齐既是局部化的又对交互敏感，解释了对齐脆弱性，并为有针对性的安全干预提供了潜在途径。"
   },
   {
     "id": "http://arxiv.org/abs/2608.11150v1",
@@ -732,6 +1074,132 @@
     "method": "提出CausalSplat框架，融合视觉语言模型与3D场景图，将显式结构感知与隐式逻辑推理解耦，从而支持高层次推理分割。",
     "result": "在推理基准上达到最先进性能，同时在标准指代和开放词汇3D分割任务上展现强泛化能力。",
     "conclusion": "贡献了推理3D分割任务、两个评估基准及CausalSplat框架，推动了3DGS在复杂具身交互中的理解能力，并为后续研究提供基础。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.11150",
+    "title": "CausalSplat: Towards Comprehensive Hierarchical Reasoning in 3D Gaussian Splatting",
+    "authors": [
+      "Ding, Jiayu",
+      "Song, Meilu",
+      "Chen, Yun",
+      "Gao, Wei",
+      "Li, Ge"
+    ],
+    "abstract": "While 3D Gaussian Splatting (3DGS) has advanced open vocabulary scene understanding, existing methods remain confined to explicit queries. They struggle to interpret implicit intents, complex spatial constraints, and commonsense reasoning required for practical embodied interactions. To address this gap, we introduce the task of reasoning 3D Gaussian segmentation and construct two benchmarks, Causal-LERF and Causal-ScanNet. These benchmarks systematically evaluate commonsense, spatial, affordance, and counterfactual reasoning. Evaluations reveal that current state of the art methods perform poorly on these reasoning challenges. Therefore, we propose CausalSplat, a framework that integrates vision-language models with 3D scene graphs to disentangle explicit structural perception from implicit logical inference. Extensive experiments demonstrate that CausalSplat achieves state of the art performance on our reasoning benchmarks while showing strong generalizability on standard referring and open vocabulary 3D segmentation tasks. Project Page: this https URL",
+    "link": "https://arxiv.org/abs/2608.11150",
+    "published": "2026-08-11",
+    "category": "cs.CV",
+    "tags": [
+      "3DGS",
+      "Reasoning",
+      "Scene Understanding",
+      "Vision-Language Models"
+    ],
+    "tldr": "提出CausalSplat，融合视觉语言模型与3D场景图，实现推理式3D高斯分割，在推理基准上达到最新最优。",
+    "motivation": "现有3D高斯分割方法局限于显式查询，难以理解隐式意图、复杂空间约束和常识推理，无法满足实际具身交互需求。",
+    "method": "构建了推理式3D高斯分割任务及两个基准Causal-LERF和Causal-ScanNet，并设计CausalSplat框架，将视觉语言模型与3D场景图相结合，解耦显式结构感知与隐式逻辑推理。",
+    "result": "在Causal-LERF和Causal-ScanNet基准上达到最新最优性能，同时在标准指代分割和开放词汇3D分割任务上表现出强泛化性。",
+    "conclusion": "提出了新的推理分割任务和基准，验证了现有方法的不足，并展示了CausalSplat在复杂推理场景中的有效性，为3D场景理解提供新方向。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.10938",
+    "title": "GS-CPE: Unified 6-Degree-of-Freedom Camera Pose Estimation via 3D Gaussian Splatting",
+    "authors": [
+      "Weng, Huaiyuan",
+      "Yeum, Chul Min",
+      "Kang, Su-Min"
+    ],
+    "abstract": "Despite substantial progress in visual localization, from scene coordinate regression to direct camera pose regression, achieving both robust generalization and high accuracy remain challenging. This study introduces GS-CPE (Gaussian Splatting based Camera Pose Estimation), a coarse-to-fine framework for 6-DoF camera pose estimation that unifies geometry-based coarse pose estimation with robust 3D Gaussian Splatting (3DGS) warping based pose refinement. GS-CPE first estimates a coarse pose via retrieval-guided geometric pose estimation on a 3DGS scene representation, then refines it by minimizing a visibility aware masked RGB warping objective in a multi-scale optimization framework, with adaptive re-rendering. Extensive experiments on indoor and outdoor benchmarks including 7Scenes, Cambridge Landmarks, FAST-LIVO2 datasets, and a custom dataset demonstrate state-of-the-art performance, consistently outperforming in both accuracy and generalization.",
+    "link": "https://arxiv.org/abs/2608.10938",
+    "published": "2026-08-11",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Camera Pose Estimation",
+      "Visual Localization",
+      "6-DoF",
+      "Coarse-to-fine"
+    ],
+    "tldr": "提出GS-CPE，利用3D高斯泼溅实现粗到细的6自由度相机位姿估计，在多个基准上达到最先进精度。",
+    "motivation": "视觉定位在泛化性和精度上仍难以兼顾，现有方法如场景坐标回归和直接位姿回归存在局限，需要一种既能鲁棒泛化又能高精度估计的6自由度相机位姿方法。",
+    "method": "采用粗到细框架：首先通过检索引导的几何位姿估计在3DGS场景表示上获取粗位姿，然后通过最小化基于可见性掩码的RGB重投影目标，在多尺度优化框架中结合自适应重渲染进行位姿细化。",
+    "result": "在7Scenes、Cambridge Landmarks、FAST-LIVO2数据集及自定义数据集上的实验表明，该方法在精度和泛化性上均达到最先进水平。",
+    "conclusion": "提出了一种统一粗到细框架GS-CPE，将几何位姿估计与3DGS重投影优化结合，显著提升了位姿估计的精度和泛化能力，为6自由度视觉定位提供了新思路。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.10660",
+    "title": "Cross-View Sequential Visual Localization with Spatio-Temporal Context Modeling for Autonomous Driving",
+    "authors": [
+      "Wang, Jiaping",
+      "Li, Shaobo",
+      "Wang, Zhen"
+    ],
+    "abstract": "Continuous and reliable localization is essential for autonomous driving. Cross-view visual localization matches ground images with satellite maps, providing complementary localization cues for pipelines that depend on Global Navigation Satellite System (GNSS) signals and high-definition (HD) maps. Most existing cross-view visual localization methods process each frame independently, leaving temporal information underused and limiting accuracy under dynamic occlusion, illumination variation, and repetitive textures. This study proposes a temporal-context-enhanced framework for cross-view sequence visual localization. The proposed recurrent cross-frame module aggregates historical context from the previous state to enhance the coarse ground feature of each current frame. These enhanced features facilitate satellite candidate-region classification, while hierarchical fine-grained features enable precise local offset estimation. On the CVIS dataset, the proposed method reduces mean localization error from 3.80 m to 1.57 m and increases R@1 m from 8.14% to 40.22%. Direct transfer to KITTI-CVL achieves a mean error of 2.61 m, with target-domain fine-tuning further reducing the mean error to 2.27 m. Zero-shot field experiments on a real-world vehicle achieve a mean error of 2.84 m and R@5 m of 96.86%. These results demonstrate that temporal context enhancement significantly improves cross-view localization accuracy and supports robust deployment on public benchmarks and real-world roads.",
+    "link": "https://arxiv.org/abs/2608.10660",
+    "published": "2026-08-11",
+    "category": "cs.CV",
+    "tags": [
+      "Cross-View Localization",
+      "Temporal Modeling",
+      "Visual Localization",
+      "Autonomous Driving"
+    ],
+    "tldr": "提出时序上下文增强的跨视角序列视觉定位方法，在CVIS上将平均定位误差从3.80m降至1.57m，并在真实车辆上实现2.84m误差。",
+    "motivation": "现有跨视角视觉定位方法逐帧独立处理，未充分利用时序信息，在动态遮挡、光照变化和重复纹理环境下精度受限，难以满足自动驾驶对连续可靠定位的需求。",
+    "method": "提出时序上下文增强框架，通过循环跨帧模块聚合历史状态增强当前帧地面特征，用于卫星候选区域分类，并结合层次化细粒度特征估计精确局部偏移。",
+    "result": "在CVIS数据集上，平均定位误差从3.80m降至1.57m，R@1m从8.14%提升至40.22%；直接迁移到KITTI-CVL误差为2.61m，微调后降至2.27m；真实车辆零样本测试平均误差2.84m，R@5m达96.86%。",
+    "conclusion": "时序上下文增强显著提升了跨视角定位精度和鲁棒性，验证了该方法在公共基准和真实道路场景中的有效性与可部署性，为自动驾驶定位提供了可靠补充方案。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.10345",
+    "title": "CasDeblurGS: Cascaded 2D-to-3D Multi-View Consistency for 3D Gaussian Splatting from Two Blurry Images",
+    "authors": [
+      "Choi, Haeyun",
+      "Jang, Minhyuk",
+      "Kim, I-Gil"
+    ],
+    "abstract": "Free-viewpoint 3D scene media is increasingly important for immersive applications, yet practical capture often suffers from severe view sparsity and motion blur. Although neural rendering has advanced sparse-view synthesis, existing blur-aware methods typically require substantial multi-view redundancy, accurate camera poses, or costly per-scene optimization. We address a stringent yet practical setting: reconstructing a coherent 3D scene from only two motion-blurred images with known intrinsics, without input-view poses, auxiliary sharp images, or per-scene test-time optimization. To this end, we propose CasDeblurGS, a cascaded framework that progressively recovers reliable cross-view information from local 2D correspondences to global 3D guidance. Stage 1 constructs locally reliable guidance through occlusion-aware correspondence filtering, while Stage 2 aggregates the intermediate restorations into a provisional pose-free 3D Gaussian representation whose input-view re-renders provide dense global guidance for final restoration. The resulting views enable a more coherent 3D representation and higher-quality novel-view synthesis. Experiments on real-world and synthetic Deblur-NeRF scenes show consistent gains over strong baselines, improving PSNR by 1.19 dB and 2.11 dB, respectively. Progressive ablations, cross-view correspondence visualization, and camera reprojection analysis further demonstrate improvements in both rendering quality and multi-view geometric consistency.",
+    "link": "https://arxiv.org/abs/2608.10345",
+    "published": "2026-08-11",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Motion Blur",
+      "Sparse Views",
+      "Multi-View Consistency",
+      "Deblurring"
+    ],
+    "tldr": "提出 CasDeblurGS，从两张模糊图像通过级联2D到3D多视图一致性重建3D场景，实现高质量新视图合成。",
+    "motivation": "实际拍摄常受视图稀疏和运动模糊影响，现有模糊感知方法需多视图冗余、准确位姿或逐场景优化。目标是在仅有两张模糊图像（已知内参）且无位姿、辅助清晰图和测试时优化的严格条件下重建一致3D场景。",
+    "method": "采用级联框架：阶段1通过遮挡感知对应滤波构建局部可靠引导；阶段2将中间恢复结果聚合为无位姿3D高斯表示，其输入视图重渲染提供全局引导，实现最终恢复。",
+    "result": "在真实和合成Deblur-NeRF场景上，PSNR分别比强基线提升1.19 dB和2.11 dB。",
+    "conclusion": "渐进消融、对应可视化和重投影分析表明渲染质量与多视图几何一致性均获提升，为稀疏模糊输入下的3D重建提供有效方案。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.11493",
+    "title": "From Prompting to Behavioral Alignment: Personalized LLM Judges for Recommendation Evaluation",
+    "authors": [
+      "Ziabari, Alireza S.",
+      "Ellis, Kat",
+      "Chan, Colleen",
+      "Tong, Ding"
+    ],
+    "abstract": "Traditional offline recommendation evaluation relies heavily on complex, manually maintained feature pipelines that are difficult to scale. While Large Language Models (LLMs) offer a promising alternative by predicting user engagement directly from raw text logs, empirical analysis in this study identifies a critical failure mode termed bidirectional rationalization. In a zero-shot setting, LLMs are found to convincingly argue for both positive and negative user engagement outcomes on the exact same item with identical evidence, highlighting the unreliability of off-the-shelf LLMs in predicting user engagement. To resolve this, we develop and apply a sequential behavioral alignment framework pairing fine-tuning with preference optimization over paired correct and counterfactual rationales. Evaluated on real-world homepage interaction logs, this aligned reasoning approach achieves a 32.19\\% lift in Macro-F1 score over the zero-shot baseline and matches the production feature-engineered baseline. The results demonstrate that behavioral alignment mitigates bidirectional rationalization while delivering human-interpretable reasoning traces without manual pipeline overhead.",
+    "link": "https://arxiv.org/abs/2608.11493",
+    "published": "2026-08-11",
+    "category": "cs.AI",
+    "tags": [
+      "LLM",
+      "Recommendation",
+      "Evaluation",
+      "Preference Optimization",
+      "Behavioral Alignment"
+    ],
+    "tldr": "提出行为对齐框架微调LLM，解决推荐评估中的双向合理化问题，实现Macro-F1显著提升。",
+    "motivation": "传统推荐离线评估依赖难以扩展的手动特征管道，而零样本LLM在预测用户参与度时存在双向合理化问题，即对同一物品和相同证据能同时支持正负结果，可靠性不足。",
+    "method": "提出顺序行为对齐框架，结合微调和基于配对正确与反事实推理的偏好优化，使LLM对齐用户行为模式。",
+    "result": "在真实首页交互日志上，该方法的Macro-F1比零样本基线提升32.19%，并达到生产特征工程基线的性能水平。",
+    "conclusion": "行为对齐有效缓解双向合理化，提供人类可解释的推理痕迹，且避免了手动特征管道的开销，为推荐评估提供了更可靠的LLM方案。"
   },
   {
     "id": "http://arxiv.org/abs/2608.09735v1",
@@ -1069,6 +1537,65 @@
     "conclusion": "LEGO实现了超越基础概念识别的层级化开放词汇3D场景理解，为LLM提供结构化的场景表示，显著提升复杂空间推理与视觉定位能力，为3D场景理解提供了新范式。"
   },
   {
+    "id": "https://arxiv.org/abs/2608.10057",
+    "title": "LEGO: Leveled Language Gaussian Splatting",
+    "authors": [
+      "Peng, Yuning",
+      "Wang, Haiping",
+      "Liu, Yuan",
+      "Lu, Yipeng",
+      "Dong, Zhen",
+      "Yang, Bisheng"
+    ],
+    "abstract": "We introduce LEGO for advanced open-vocabulary scene understanding. Beyond basic concept recognition, its core innovation lies in capturing the intrinsic semantic hierarchies within the scene, such as the \"flowerpot -> bouquet -> bud -> petal\" lineage. While foundation models like SAM can identify multi-granular structures in 2D, their partitions are strictly perspective-bound and lack cross-view consensus. LEGO self-adaptively re-grades volatile multi-view SAM granularities into a unified, 3D-consistent hierarchy. This provides precise supervision for the structurally coherent, multi-level segmentation of 3D scenes. By grounding these segments with CLIP embeddings, LEGO recovers open-vocabulary semantic logic across hierarchical levels. Furthermore, by incorporating spatial relationships, we elevate these segments into level-wise language scene graphs, effectively empowering Large Language Models to perform complex, context-aware spatial reasoning and precise visual grounding. Experimental results demonstrate that LEGO establishes new state-of-the-art performance across both promptable and open-vocabulary 3D segmentation benchmarks, exhibiting advanced hierarchical scene decomposition and context-aware spatial reasoning.",
+    "link": "https://arxiv.org/abs/2608.10057",
+    "published": "2026-08-10",
+    "category": "cs.CV",
+    "tags": [
+      "3D Segmentation",
+      "Gaussian Splatting",
+      "Open-Vocabulary",
+      "Scene Hierarchy"
+    ],
+    "tldr": "提出LEGO方法，通过重分级多视图SAM粒度并借助CLIP嵌入，实现3D场景的层次化开放词汇分割与语言场景图推理。",
+    "motivation": "现有开放词汇3D理解仅识别基础概念，缺乏对场景内固有关联层次（如花盆-花束-花蕾-花瓣）的建模，且SAM的2D多粒度分割受视角限制，缺乏跨视角一致性。",
+    "method": "LEGO将多视图SAM中易变的分割粒度自适应重分级为统一且3D一致的层次结构，作为多层级分割监督；利用CLIP嵌入赋予各层级开放词汇语义，并结合空间关系构建层级语言场景图，使大语言模型可进行上下文感知的空间推理与视觉定位。",
+    "result": "在提示型与开放词汇3D分割基准上取得新最先进性能，展示了先进的层次化场景分解与上下文感知空间推理能力。",
+    "conclusion": "LEGO通过统一2D模型粒度为3D一致的层次结构并支持LLM推理，为3D场景理解提供了新思路，潜在影响包括更精细的机器人交互与增强现实应用。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.10030",
+    "title": "Automating and Scaling Behavioral Scientific Research on AI Agents",
+    "authors": [
+      "Lee, Soo Yong",
+      "Lee, Jongha",
+      "Chun, Jaewan",
+      "Hwang, Hyunjin",
+      "Bu, Fanchen",
+      "Ben-Zion, Ziv",
+      "Kim, Taekwan",
+      "Borsboom, Denny",
+      "Yoo, Jaemin",
+      "Shin, Kijung"
+    ],
+    "abstract": "As AI agents are increasingly deployed in complex environments, understanding their behaviors becomes critical. Yet behavioral scientific research on AI agents remains manual and labor-intensive. We introduce AEROBAT, the first multi-agent system to automate behavioral scientific research on AI agents. Given an arbitrary target behavior by its user, AEROBAT automatically executes a full pipeline of behavioral scientific research---generating hypotheses about the behavior, designing and executing controlled experiments, making behavioral assessments, analyzing the results, and writing reports. For 12 target behaviors, we used AEROBAT to generate and test 79 hypotheses: designing 1,240 controlled experiments and executing 23,512 simulation rounds in total. Moderate-to-strong statistical evidence was found for 26 hypotheses, including some novel ones. In sum, our results demonstrate that automated behavioral scientific research on AI agents can complement and extend the reach of manual research.",
+    "link": "https://arxiv.org/abs/2608.10030",
+    "published": "2026-08-10",
+    "category": "cs.AI",
+    "tags": [
+      "AI Agents",
+      "Behavioral Science",
+      "Multi-Agent System",
+      "Automation",
+      "Experiment Design"
+    ],
+    "tldr": "AEROBAT 是首个多智能体系统，能自动完成对 AI 智能体行为科学研究的完整流程，并发现多项有统计证据的新假设。",
+    "motivation": "随着 AI 智能体在复杂环境中部署增多，理解其行为至关重要，但现有的行为科学研究依赖人工，耗时费力。",
+    "method": "提出 AEROBAT 多智能体系统，自动执行行为科学研究全流程：生成假设、设计并执行受控实验、评估行为、分析结果、撰写报告。",
+    "result": "针对12个目标行为生成并测试79个假设，设计1240个受控实验，累计执行23512轮模拟；其中26个假设获得中等到强统计证据，部分为新发现。",
+    "conclusion": "实验表明，自动化行为科学研究能有效补充和扩展人工研究，提升研究规模和效率，为 AI 智能体行为理解提供新途径。"
+  },
+  {
     "id": "http://arxiv.org/abs/2608.08949v1",
     "title": "EndoMD-SLAM: Endoscopic Gaussian Splatting SLAM under Optical Degradation with Memory and Static-Transient Decomposition",
     "authors": [
@@ -1316,123 +1843,5 @@
     "method": "联合训练几何Transformer与高斯解码器，预测逐图像相机参数和深度，并采用深度引导的高斯参数化和多视图可变形交叉注意力聚合跨视图信息。同时使用不确定性加权的深度一致性目标，使几何估计适应重建任务。",
     "result": "在ShapeNet-SRN和Google Scanned Objects上，无需相机位姿和真值深度即可匹配或接近有姿态的SOTA方法，PSNR差距在0.7 dB以内，并在GSO上取得最佳LPIPS质量。",
     "conclusion": "表明联合训练的几何前端足以实现无标定查询式高斯重建，且紧凑的高斯预算与输入分辨率和视图数解耦，具有实际应用潜力。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.07144v1",
-    "title": "InstanceSplat: Instance-Aware Feed-Forward 3D Gaussian Splatting for Scene Understanding",
-    "authors": [
-      "Minchao Jiang",
-      "Xiaoxuan Ma",
-      "Shunyu Jia",
-      "Haoru Wang",
-      "Zhang Liang",
-      "Wentao Zhu"
-    ],
-    "abstract": "Feed-forward 3D Gaussian Splatting (3DGS) enables efficient and generalizable 3D reconstruction, but current feed-forward 3DGS methods for scene understanding remain largely category-oriented. In contrast, instance-aware 3DGS methods typically rely on per-scene optimization and often decouple reconstruction from instance and semantic learning, limiting reciprocal interactions among them. We present InstanceSplat, a unified feed-forward 3DGS framework for generalizable 3D reconstruction and instance-aware scene understanding from pose-free multi-view images. In a single forward pass, InstanceSplat constructs an instance-aware Gaussian representation that jointly encodes appearance, geometry, instance identity, and language-aligned semantics. Shared 3D Gaussians ground instance identities across views, producing renderable and cross-view-consistent instance features. To allow reconstruction and scene understanding to benefit from each other, we further design an instance-centric learning strategy that connects reconstruction, instance learning, and semantic learning through shared instance structure. Specifically, instance cues guide reconstruction, language-aligned semantics strengthen the discrimination of confusing same-category instances, and instance regions aggregate semantic evidence into coherent object-level predictions. Experiments on novel-view synthesis, instance segmentation, and open-vocabulary semantic understanding under varying input-view settings and on an unseen dataset demonstrate state-of-the-art performance, practical efficiency, and strong generalization.",
-    "link": "http://arxiv.org/abs/2608.07144v1",
-    "published": "2026-08-07",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Instance Segmentation",
-      "Scene Understanding",
-      "Feed-Forward Reconstruction",
-      "Open-Vocabulary Semantics"
-    ],
-    "tldr": "InstanceSplat提出统一的先馈式3D高斯泼溅框架，实现无位姿多视图图像的联合重建与实例感知场景理解。",
-    "motivation": "现有前馈式3DGS场景理解方法多为类别级，而实例感知3DGS依赖逐场景优化且将重建与实例/语义学习解耦，限制了重建与理解之间的相互促进。",
-    "method": "提出InstanceSplat统一框架，通过单次前馈从无位姿多视图图像构建实例感知的高斯表示，联合编码外观、几何、实例身份及语言对齐语义；共享3D高斯跨视图锚定实例身份，并设计以实例为中心的学习策略，使重建、实例学习和语义学习通过共享实例结构相互增强。",
-    "result": "在新视图合成、实例分割和开放词汇语义理解任务上，多种输入视图设置和未见数据集上均达到最先进性能，具有高效性和强泛化能力。",
-    "conclusion": "贡献在于首个面向通用重建与实例感知理解的统一前馈式3DGS框架，验证了重建与高级理解之间的协同增益，为高效场景理解提供了新方案。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.07116v1",
-    "title": "Geometry-Aware Camera Localization for Bronchoscopy",
-    "authors": [
-      "Lumin Chen",
-      "Qingyao Tian",
-      "Jinpeng Li",
-      "Haoyu Jiang",
-      "Huai Liao",
-      "Xinyan Huang",
-      "Hongbin Liu",
-      "Dong Yi"
-    ],
-    "abstract": "Camera localization in bronchoscopy remains a challenging problem due to stringent accuracy requirements, real-time constraints, and limited training data. Compared to natural scenes, the confined anatomical structures demand millimeter-level precision, while intraoperative guidance necessitates low-latency inference. However, existing methods often fail to effectively exploit preoperative geometric priors, limiting their robustness and accuracy. To address these limitations, we propose a unified geometry-aware bronchoscope localization framework (GABL) that effectively fuses preoperative structural priors with paired intraoperative video to estimate 6-DoF camera poses. Specifically, to address visual ambiguity in complex airways, we propose a graph-guided coarse-to-fine localization scheme that effectively leverages structural priors for precise pose estimation. Furthermore, to mitigate pose jitter and bridge the visual-structural gap, we integrate a Transformer-based tracking model with a novel RGB-depth matching objective, jointly enforcing spatio-temporal and geometric consistency. Extensive experiments demonstrate that our method yields remarkable reductions of 8.37% and 31.76% in translation and rotation errors over the prior state-of-the-art, alongside 4 times inference speedup (33.6 FPS) for robust real-time bronchoscope localization. Project website: https://paulili08.github.io/GABL/.",
-    "link": "http://arxiv.org/abs/2608.07116v1",
-    "published": "2026-08-07",
-    "category": "cs.CV",
-    "tags": [
-      "Bronchoscopy",
-      "Camera Localization",
-      "Geometry-Aware",
-      "Transformer",
-      "RGB-D Matching"
-    ],
-    "tldr": "提出几何感知的支气管镜定位框架GABL，融合术前结构与术中视频，实现高精度实时6自由度位姿估计。",
-    "motivation": "支气管镜定位面临毫米级精度、实时推理和训练数据有限等挑战，现有方法未能有效利用术前几何先验，导致鲁棒性和精度不足。",
-    "method": "提出统一框架GABL，通过图引导的从粗到细定位方案利用结构先验，并集成基于Transformer的跟踪模型与新型RGB-深度匹配目标，联合施加时空与几何一致性。",
-    "result": "相比现有最优方法，平移误差降低8.37%，旋转误差降低31.76%，推理速度提升4倍（33.6 FPS），实现鲁棒的实时定位。",
-    "conclusion": "该框架有效融合术前结构与术中视频，显著提升定位精度和实时性，为支气管镜手术导航提供可靠支持，并已开源项目网站。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.06836v1",
-    "title": "GOPI: Generation-Oriented 3D Pose Inference for Furniture Insertion from Single-View RGB-D Indoor Scenes",
-    "authors": [
-      "Ruifeng Zhai",
-      "Renjie Liu",
-      "Guangrun Wang",
-      "Liang Lin"
-    ],
-    "abstract": "We study the problem of inserting new furniture into indoor scene images. Under masked single-view 2D image-plane conditioning, however, the physical scale of the inserted furniture relative to the scene cannot be uniquely determined, making physically grounded furniture placement underdetermined from image evidence alone. We therefore reformulate the task as a combination of 3D pose inference and geometry-guided image generation, where estimating a geometrically plausible 3D placement is essential for reliable synthesis.\n  To this end, we propose a two-stage framework. For 3D placement, we introduce GOPI, a generation-oriented 3D pose inference framework that addresses the underdetermined nature of single-view furniture insertion through data-driven iterative inference, producing geometrically plausible object placements. For image generation, we develop a geometry-guided conditioning strategy that projects the inferred 3D pose into the image plane as a pixel-aligned constraint, enforcing consistency between the synthesized image and the underlying 3D geometry.\n  Experimental results validate the proposed framework from both 3D pose estimation and image synthesis perspectives. For 3D placement, GOPI produces poses with stronger geometric feasibility and better consistency with reference layouts than direct regression and vanilla baselines. For image synthesis, our method preserves alignment with the projected 3D geometry across different furniture scales, showing stable projection-generation alignment across the tested furniture scales.",
-    "link": "http://arxiv.org/abs/2608.06836v1",
-    "published": "2026-08-07",
-    "category": "cs.CV",
-    "tags": [
-      "Furniture Insertion",
-      "3D Pose Inference",
-      "Image Generation",
-      "RGB-D",
-      "Indoor Scene"
-    ],
-    "tldr": "提出GOPI两阶段框架，通过数据驱动迭代推理估计3D位姿并用几何引导条件生成图像，实现单视图RGB-D室内场景中的家具插入。",
-    "motivation": "单视图像平面条件下的家具插入存在物理尺度不可唯一确定的问题，导致仅凭图像证据难以确定符合物理实际的3D摆放。因此需将任务重构为3D位姿估计与几何引导图像生成的组合，其中估计几何上合理的3D摆放对可靠合成至关重要。",
-    "method": "提出两阶段框架：3D摆放阶段采用GOPI，通过数据驱动的迭代推理推断生成导向的3D位姿，得到几何可行的物体摆放；图像生成阶段采用几何引导条件策略，将推断的3D位姿投影到图像平面作为像素对齐约束，保证生成图像与底层3D几何一致。",
-    "result": "在3D位姿估计上，GOPI比直接回归和基线方法具有更强的几何可行性与参考布局一致性；在图像合成上，方法在不同家具尺度下均保持与投影3D几何的对齐，展现出稳定的投影-生成对齐性能。",
-    "conclusion": "提出了一种面向家具插入的两阶段框架，将单视图下不适定的3D摆放问题转化为数据驱动迭代推理与几何引导生成，并从3D位姿和图像合成两方面验证了有效性。该方法有望提升室内场景编辑中家具插入的可靠性与几何一致性。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.06801v1",
-    "title": "AdvTiles: Physical Adversarial Camouflage Clothing against Person Detectors via Learnable Tiles",
-    "authors": [
-      "Jinlei Wang",
-      "Jiahuan Long",
-      "Mingkai Sun",
-      "Yafei Guo",
-      "Yuanhao Huang",
-      "Ming Wang",
-      "Junqi Wu",
-      "Jiacheng Hou",
-      "Hongbo Chen",
-      "Xingxing Wei",
-      "Tingsong Jiang",
-      "Wen Yao"
-    ],
-    "abstract": "Physical adversarial attacks against person detectors have evolved from localized patches to full-body textures. However, achieving both visual naturalness and strong attack effectiveness remains challenging. Existing natural-looking methods typically optimize camouflage textures as a whole, limiting the flexibility to refine local adversarial patterns and their spatial arrangement. To address this issue, we propose AdvTiles, a physical adversarial camouflage framework built from learnable tiles, enabling strong attack performance while preserving a natural camouflage appearance. Specifically, we use a Straight-through (ST) Gumbel-Softmax estimator for differentiable tile selection, enabling joint optimization of tile patterns and spatial layouts. This design provides fine-grained control over adversarial texture generation. To improve robustness in diverse physical conditions, we further optimize the camouflage through differentiable 3D Gaussian Splatting rendering with variations in viewpoints, scales, illuminations and backgrounds. Extensive experiments across multiple detectors demonstrate that AdvTiles achieves an average ASR of 86.2%, outperforming existing state-of-the-art attack methods. We further fabricate the optimized camouflage into wearable adversarial clothing, validating its effectiveness in real-world scenarios across diverse distances, angles and backgrounds.",
-    "link": "http://arxiv.org/abs/2608.06801v1",
-    "published": "2026-08-07",
-    "category": "cs.CV",
-    "tags": [
-      "Adversarial Attack",
-      "Person Detection",
-      "Physical Camouflage",
-      "Gumbel-Softmax",
-      "3D Gaussian Splatting"
-    ],
-    "tldr": "提出AdvTiles可学习瓷砖物理对抗伪装，兼顾自然外观与强攻击性，平均攻击成功率86.2%。",
-    "motivation": "现有物理对抗攻击在视觉自然性与攻击效果间难以平衡，整体优化纹理限制了局部对抗模式的灵活调整及空间布局。",
-    "method": "基于可学习瓷砖构建对抗伪装框架，使用Straight-through Gumbel-Softmax估计器进行可微瓷砖选择，联合优化瓷砖图案与空间布局；通过可微3D Gaussian Splatting渲染，在不同视角、尺度、光照和背景下增强物理鲁棒性。",
-    "result": "在多个检测器上平均攻击成功率（ASR）达86.2%，优于现有最先进攻击方法；实际制作可穿戴对抗衣物，在真实场景的不同距离、角度和背景下验证了有效性。",
-    "conclusion": "AdvTiles实现了强攻击性与视觉自然性的兼顾，通过细粒度可控的对抗纹理生成和物理鲁棒性优化，为物理对抗攻击提供了新框架，并验证了实际部署的可行性。"
   }
 ]
