@@ -1,5 +1,60 @@
 [
   {
+    "id": "https://arxiv.org/abs/2608.14136",
+    "title": "HiCo-GS: Hierarchical Context Aggregation and Geometric Consistency for Octree Gaussian Splatting",
+    "authors": [
+      "Zhang, Wei",
+      "Yu, Shengkai",
+      "Gong, Shiqiang",
+      "Zhang, Qi",
+      "Li, Qiang",
+      "Wang, Qi"
+    ],
+    "abstract": "Octree-based anchor Gaussian Splatting has emerged as a scalable representation for city-scale novel view synthesis, where multi-level anchors adaptively capture scene content from coarse building structures to fine architectural details. However, we identify a fundamental limitation in existing methods: cross-level feature isolation, where each level's anchor features are optimized independently with no inter-level communication, causing color drift on building facades and over-smoothing in textured regions. We present HiCo-GS, a high-fidelity reconstruction framework with two complementary modules. Cross-Level Context Aggregation (CLCA) enables bidirectional hierarchical prior injection by leveraging the octree's spatial containment structure to aggregate per-level context vectors into parent-self-child triplets, fused via a lightweight MLP with residual connection. Coarse-level structural priors flow down to inform fine-level anchors, while fine-level detail statistics feed back to prevent over-smoothing, at negligible computational overhead. Depth-Normal Geometric Consistency (DNGC) regularization enforces agreement between rendered normals and depth-derived normals through an alpha-weighted consistency loss, complemented by edge-aware smoothness losses with progressive warmup that exploit the strong planar priors ubiquitous in urban geometry to suppress floating artifacts. We further introduce the China-Pagoda dataset comprising 8 ancient Chinese pagodas with over 1,200 images each, featuring dense ornamental carvings, curved multi-layer eaves, and repetitive fine-grained textures. Extensive experiments on Mill19, UrbanScene3D, MatrixCity, and China-Pagoda demonstrate that HiCo-GS achieves state-of-the-art rendering quality and substantially cleaner geometry across real-world and synthetic urban this http URL : this https URL .",
+    "link": "https://arxiv.org/abs/2608.14136",
+    "published": "2026-08-14",
+    "category": "cs.CV",
+    "tags": [
+      "Gaussian Splatting",
+      "Urban Scene Reconstruction",
+      "Novel View Synthesis",
+      "Hierarchical Representation",
+      "Geometric Consistency"
+    ],
+    "tldr": "提出HiCo-GS，通过跨层级上下文聚合和深度-法线几何一致性约束，提升八叉树高斯溅射的城市级重建质量。",
+    "motivation": "现有八叉树锚点高斯溅射方法存在跨层级特征隔离问题，各级锚点独立优化导致建筑立面颜色漂移和纹理区域过度平滑。",
+    "method": "提出两个互补模块：跨层级上下文聚合(CLCA)利用八叉树空间包含结构，将每级上下文向量聚合成父-自-子三元组，经带残差的轻量MLP融合实现双向层级先验注入；深度-法线几何一致性(DNGC)通过alpha加权一致性损失和渐进式边缘感知平滑损失，利用城市几何的平面先验抑制漂浮伪影。",
+    "result": "在Mill19、UrbanScene3D、MatrixCity和新增的中国宝塔数据集上，HiCo-GS达到最先进的渲染质量，并产生更干净的几何结构。摘要未提供具体量化指标。",
+    "conclusion": "提出HiCo-GS框架和包含8座中国古代宝塔的新数据集，验证了层级上下文聚合与几何一致性约束在城市规模重建中的有效性，为高质量实景渲染提供了新思路。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.14161",
+    "title": "BiasTrace: Linking Reasoning Behaviours to Biased Outputs in LLMs",
+    "authors": [
+      "Ramineni, Varsha",
+      "Rahmani, Hossein A.",
+      "Ramos, Jerome",
+      "Sevegnani, Karin",
+      "Yilmaz, Emine"
+    ],
+    "abstract": "LLMs exhibit social biases that can produce inaccurate and discriminatory inferences, posing risks in high-stakes applications. While prior work has made progress in measuring and mitigating bias, it largely focuses on final outputs of models, with limited understanding of the mechanisms that produce biased outcomes. Recent advances in LLM reasoning offers a new lens for investigating bias, yet the link between reasoning and bias remains poorly understood. Existing approaches focus primarily on final answer correctness or explicitly biased language, overlooking different behaviours in reasoning that can drive biased outcomes. We introduce BiasTrace, an annotation scheme for labelling reasoning behaviours in model-generated traces and linking them to biased outcomes. BiasTrace captures bias-specific behaviours (e.g., unsupported demographic assumptions) as well as general reasoning patterns that may implicitly contribute to bias (e.g. overthinking). We apply BiasTrace to reasoning traces in bias-sensitive contexts, scaled using validated LLM-as-a-judge methods, producing a large annotated dataset. Our analysis shows that biased outputs often stem from subtle reasoning behaviours rather than explicitly biased language, and that reasoning-level annotations improve bias detection. We further show that BiasTrace behaviours can be exploited for inference-time mitigation. These findings underscore the importance of examining a broader range of reasoning patterns to better understand bias in LLMs.",
+    "link": "https://arxiv.org/abs/2608.14161",
+    "published": "2026-08-14",
+    "category": "cs.AI",
+    "tags": [
+      "LLM",
+      "Bias",
+      "Reasoning",
+      "Annotation",
+      "Mitigation"
+    ],
+    "tldr": "提出BiasTrace标注方案，将LLM推理行为与偏见输出关联，发现偏见常源于微妙推理模式而非显式偏见语言。",
+    "motivation": "现有偏见研究主要关注模型最终输出，对产生偏见的推理机制理解有限，且忽略了推理中驱动偏见的不同行为。",
+    "method": "设计BiasTrace标注方案，标记推理轨迹中的偏见特定行为（如无依据的人口统计假设）和一般推理模式（如过度思考），并利用LLM-as-a-judge方法扩展标注，构建大型数据集。",
+    "result": "分析显示偏见输出常源于微妙推理行为而非显式偏见语言，推理级标注提升了偏见检测效果，且BiasTrace行为可用于推理时缓解偏见。",
+    "conclusion": "研究强调需检查更广泛的推理模式以理解LLM偏见，为偏见检测和缓解提供了新途径。"
+  },
+  {
     "id": "http://arxiv.org/abs/2608.13502v1",
     "title": "GS$^{2}$CI: Robust Gaussian Splatting For Snapshot Compressive Imaging via Large Vision Model Priors",
     "authors": [
@@ -1200,399 +1255,5 @@
     "method": "提出顺序行为对齐框架，结合微调和基于配对正确与反事实推理的偏好优化，使LLM对齐用户行为模式。",
     "result": "在真实首页交互日志上，该方法的Macro-F1比零样本基线提升32.19%，并达到生产特征工程基线的性能水平。",
     "conclusion": "行为对齐有效缓解双向合理化，提供人类可解释的推理痕迹，且避免了手动特征管道的开销，为推荐评估提供了更可靠的LLM方案。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.09735v1",
-    "title": "HandSplatter: Automated Digital Goniometry from Neural Rendering",
-    "authors": [
-      "Emmett Chen",
-      "Neal Chen",
-      "Xiang Li",
-      "Quanzheng Li",
-      "Siyeop Yoon"
-    ],
-    "abstract": "Hand and finger disorders are leading contributors to musculoskeletal disability, creating a clinical need for precise methods to quantify joint motion. Range of motion (ROM) serves as the metric for diagnosis, rehabilitation monitoring, and evaluating surgical outcomes. Currently, the goniometer is the standard tool for assessing finger flexion and extension. However, manual goniometry is labor-intensive and suffers from inconsistent inter-rater reliability due to variations in examiner technique. While digital alternatives exist, current software-based approaches often lack the necessary accuracy for clinical usage. To address these limitations, we present a novel pipeline for 3-D hand joint location and pose estimation using neural rendering. Unlike previous methods, our approach combines 2-D feature extraction with view synthesis to significantly improve accuracy and clinical viability. Furthermore, we introduce a discrete density hill climbing algorithm that facilitates the meaningful correction of projected landmarks in 3-D space. This system overcomes the inefficiencies of manual measurement and the inaccuracies of existing software, providing a robust tool for objective functional assessment.",
-    "link": "http://arxiv.org/abs/2608.09735v1",
-    "published": "2026-08-10",
-    "category": "cs.CV",
-    "tags": [
-      "Hand Pose Estimation",
-      "Neural Rendering",
-      "Range of Motion",
-      "Digital Goniometry",
-      "3D Landmark Localization"
-    ],
-    "tldr": "提出基于神经渲染的手部关节位置与姿态估计管线，结合2D特征与视图合成，实现自动化数字测角。",
-    "motivation": "手动测角劳动强度大且存在评估者间信度差异，现有软件方法精度不足，难以满足临床需求。",
-    "method": "结合2D特征提取与视图合成（神经渲染）进行3D手部关节定位与姿态估计，并引入离散密度爬山算法在3D空间中修正投影关键点。",
-    "result": "摘要未提供相关信息",
-    "conclusion": "系统克服了手动测量的低效和现有软件的不准确性，为客观功能评估提供了稳健工具，提高临床可用性。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.09658v1",
-    "title": "Removing Infrastructure Barriers in Human-Robot Collaboration Through Wireless Reconfigurable Cells",
-    "authors": [
-      "Emma Takács",
-      "Mátyás Hajós",
-      "Ádám Juniki",
-      "Ádám Fischer",
-      "Zoltán Komáromi",
-      "Kristóf Abai",
-      "Dániel Horváth",
-      "Sándor Máthé",
-      "Konstantinos Kousias",
-      "Bence Tipary"
-    ],
-    "abstract": "Human-Robot Collaboration (HRC) plays a vital role in dynamic, high mix, low volume industrial scenarios such as remanufacturing, which frequently face workcell rearrangements. Traditional setups are constrained by power and data cabling, restricting modularity and reconfigurations, while the selection of commercial wireless devices suitable for real-time perception and safe collaboration are limited in availability. This paper presents a highly flexible, wireless, 5G-based system that serves as a versatile experimental testbed for applications including remanufacturing, operator training, and user studies. To eliminate infrastructure barriers, the workcell integrates a novel battery-powered, multi-sensor platform prototype. Additionally, to support operator safety and system adaptability across environmental shifts, the system integrates a computer vision module for object detection and pose estimation, further augmented for robust hand recognition. Trained on synthetic and real data, the model reliably detects oriented grasping poses and human hands across varying lighting and background conditions (with an mAP@50-95 of 97.74 +- 0.10% and a mean inference time of 12.5 ms). Offloading these computationally intensive tasks to the edge via 5G, the proposed architecture contributes to resolving the bandwidth-latency trade-off. To demonstrate portability, the system was implemented in both Hungary and Norway, and was evaluated across a combination of public and private, Standalone and Non-Standalone 5G infrastructures. The performed network experiments produced results in round-trip response times down to 12 ms in case of compatible network-device pairings, suitable for safe, adaptive HRC. However, these measurements also revealed practical limitations related to interoperability in current 5G deployments that should be addressed in future works.",
-    "link": "http://arxiv.org/abs/2608.09658v1",
-    "published": "2026-08-10",
-    "category": "cs.CV",
-    "tags": [
-      "HRC",
-      "5G",
-      "Wireless Workcell",
-      "Object Detection",
-      "Pose Estimation"
-    ],
-    "tldr": "提出一种基于5G的无线模块化人机协作工作单元，集成电池供电传感器与视觉模块，实现低延迟安全协作。",
-    "motivation": "传统人机协作受电缆布线限制，难以灵活重构；同时缺乏适合实时感知和协作的商用无线设备。",
-    "method": "采用电池供电多传感器平台与计算机视觉模块，进行物体检测、位姿估计和手部识别，并通过5G将计算密集型任务卸载至边缘。",
-    "result": "目标检测和位姿估计的mAP@50-95达97.74±0.10%，平均推理时间12.5 ms；5G网络往返响应时间低至12 ms，但当前5G部署存在互操作性限制。",
-    "conclusion": "提出了高灵活性的无线5G人机协作测试平台，消除了基础设施障碍，并验证其在多场景的适用性；未来需解决5G互操作性问题。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.09579v1",
-    "title": "You Only Flow Once: Calibrated and Real-Time Radar Pose Estimation with Multi-Hypothesis Normalizing Flows",
-    "authors": [
-      "Jonas Leo Mueller",
-      "Sebastian Hoefler",
-      "Dario Zanca",
-      "Naga Venkata Sai Jitin Jami",
-      "Thomas Altstidl",
-      "Bjoern M. Eskofier"
-    ],
-    "abstract": "Sparse and noisy millimeter-wave radar point cloud observations often correspond to multiple plausible human poses, making deterministic pose estimation fundamentally ill-posed. Yet existing radar methods remain deterministic, collapsing this ambiguity into a single estimate. Diffusion-based alternatives can model multi-hypothesis distributions but require costly sequential denoising for each distribution sample and lack calibrated uncertainty. We propose Multi-Hypothesis Normalizing Flow Pose Generator (MH-NFPG), which models pose distributions from radar point clouds using a conditional normalizing flow. Specifically, we combine a spatiotemporal transformer backbone with a normalizing flow that transforms a Laplace base distribution into an expressive posterior, generated in parallel through a single forward pass. Leveraging this efficiency, we outperform diffusion-based alternatives in calibration across three radar benchmarks (MM-Fi, mmRadPose, mRI), improve pose accuracy on two, and match it on the third, while achieving over 20x faster inference for applications and reducing calibration error by up to 85%. We find that calibration degrades substantially for diffusion models, whereas our flow-based approach maintains reliable coverage, also in cross-environment settings. These results demonstrate normalizing flows as a practical alternative to diffusion models for real-time, uncertainty-aware radar pose estimation. Our code will be made publicly available.",
-    "link": "http://arxiv.org/abs/2608.09579v1",
-    "published": "2026-08-10",
-    "category": "cs.CV",
-    "tags": [
-      "Radar Pose Estimation",
-      "Normalizing Flows",
-      "Multi-Hypothesis",
-      "Uncertainty Calibration",
-      "Real-Time Inference"
-    ],
-    "tldr": "提出基于条件归一化流的多假设雷达姿态估计方法MH-NFPG，实现校准的不确定性估计和实时推理，在多个基准上超越扩散模型。",
-    "motivation": "毫米波雷达点云稀疏且含噪，一个观测可能对应多个人体姿态，确定性估计是病态问题。现有方法为确定性，扩散模型虽能建模多假设但需要昂贵的顺序去噪且缺乏校准的不确定性。",
-    "method": "提出MH-NFPG，将时空Transformer主干与条件归一化流结合，把Laplace基分布变换为表达力强的后验分布，单个前向传播即可并行生成多个假设。",
-    "result": "在MM-Fi、mmRadPose、mRI三个基准上，校准性能全面优于扩散模型，姿态精度在两个基准提升、一个持平；推理速度提升超20倍，校准误差最高降低85%。扩散模型的校准显著退化，而本方法保持可靠覆盖，跨环境亦然。",
-    "conclusion": "结果表明归一化流可作为扩散模型的实用替代，用于实时、不确定性感知的雷达姿态估计。代码将开源。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.09520v1",
-    "title": "A Height-Constrained 2-Point Minimal Solver for Pose Estimation from Active LED Markers with Event Cameras",
-    "authors": [
-      "Runze Yuan",
-      "Alexander Kappler",
-      "Jun Zhang",
-      "Kuangyi Chen",
-      "Fabio Morbidi",
-      "Pascal Vasseur",
-      "Cédric Demonceaux",
-      "Friedrich Fraundorfer"
-    ],
-    "abstract": "In many autonomous applications requiring real-time localization, active marker-based systems are preferred due to their low latency and ease of deployment compared to computationally demanding feature-based methods. Event~\\mbox{cameras} offer high temporal resolution and minimal delay and are commonly used with active LED markers for robust real-time localization. Existing methods typically rely on Perspective-n-Point (PnP) solvers for pose estimation. However, structured marker layouts can be challenging to deploy in space-constrained scenarios, while partial self-motion information (e.g., gravity direction and altitude) is readily available from onboard sensors. We derive a robust and accurate minimal solver that estimates camera pose from only two LED markers by incorporating known tilt angle and camera height measured by an onboard sensor, such as an IMU or an altimeter. The proposed formulation uniquely determines the camera pose through both a closed-form and a linear least-squares solution. We further analyze degenerate configurations and characterize the conditions under which height information does not contribute to rotation estimation. For evaluation, we developed an event-based active marker system to collect real-world data with ground truth from a motion capture system. Experiments on both synthetic and real data demonstrate improved accuracy over the state-of-the-art P2P solver and competitive performance relative to P3P.",
-    "link": "http://arxiv.org/abs/2608.09520v1",
-    "published": "2026-08-10",
-    "category": "cs.CV",
-    "tags": [
-      "Event Camera",
-      "Pose Estimation",
-      "Minimal Solver",
-      "Active LED Markers"
-    ],
-    "tldr": "提出一种仅用两个LED标记点并结合传感器高度与倾角信息的高精度最小位姿求解器，适用于事件相机实时定位。",
-    "motivation": "现有基于事件相机和主动标记的定位方法通常依赖PnP求解器，需要较多样本或结构化标记布局，在空间受限场景下部署困难。而已有传感器（IMU、高度计）可提供倾角和高度等自运动信息，因此希望用更少的标记点实现位姿估计。",
-    "method": "推导了结合已知倾角与相机高度的两点最小求解器，通过闭式解和线性最小二乘两种方式唯一确定相机位姿，并分析了退化配置及高度信息对旋转估计无贡献的条件。",
-    "result": "在合成数据和真实数据上均比现有最优P2P求解器精度更高，且与P3P求解器性能相当。",
-    "conclusion": "该方法降低了对标记点数量的要求，同时保持高精度和鲁棒性，为事件相机主动标记定位提供了一种高效替代方案，适用于实时自主系统。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.09519v1",
-    "title": "XFeat Revisited: Reproducibility and Evaluation of a Lightweight Image Matcher",
-    "authors": [
-      "Lazar Đoković",
-      "Aimee Lin"
-    ],
-    "abstract": "We present a reproducibility study of XFeat, a lightweight local feature extractor and matcher designed to identify corresponding points across images efficiently on resource-constrained hardware. We re-implement the architecture based on the paper and supplementary material, re-evaluate the authors' released checkpoint alongside our re-implementation, and conduct additional architectural ablations to examine design choices that were not fully justified in the original work. This distinction between re-evaluation and reproduction is important, as the paper, supplement, and public code differ in several implementation details, including the backbone layout, fusion block, and training losses. Empirically, our reproduced models closely match and, in some cases, outperform the re-evaluated original checkpoint on MegaDepth-1500 and ScanNet-1500, supporting the main claim that XFeat provides a strong accuracy-efficiency trade-off for standard image-matching benchmarks. Our ablations provide a more nuanced view of two architectural arguments from the original paper. In particular, the parallel keypoint branch is important for semi-dense matching, but its benefit is less pronounced than originally claimed, while the evidence for the specific placement of the single skip-connection remains inconclusive. Finally, we reproduce the original downstream evaluations and find close agreement for homography estimation, while Aachen visual localization remains below the reported results, even for the released checkpoint, suggesting sensitivity to underspecified evaluation details. We then extend the analysis to zero-shot out-of-distribution and cross-modal matching across retinal, thermal-visible, and multimodal remote-sensing imagery, where XFeat remains effective in some settings but degrades sharply under severe modality shifts.",
-    "link": "http://arxiv.org/abs/2608.09519v1",
-    "published": "2026-08-10",
-    "category": "cs.CV",
-    "tags": [
-      "Reproducibility",
-      "Image Matching",
-      "Lightweight",
-      "Feature Extraction",
-      "Benchmark"
-    ],
-    "tldr": "对轻量级图像匹配器XFeat进行可复现性研究，发现复现模型性能与原版相当或更优，并对关键设计选择给出更细致的分析。",
-    "motivation": "旨在系统复现XFeat轻量级局部特征提取器，评估原论文发布权重与自行复现实现的差异，并探究原论文中未充分证明的设计选择（如骨干网络、融合块、训练损失、关键点分支和跳跃连接位置）。",
-    "method": "根据论文和补充材料重新实现XFeat架构，重新评估作者发布权重和复现模型，进行多组消融实验，并将分析扩展到零样本跨分布和跨模态匹配（视网膜、热成像、多模态遥感）。",
-    "result": "复现模型在MegaDepth-1500和ScanNet-1500上与原版性能接近甚至超越；单应性估计结果与原文接近，但Aachen视觉定位低于报告值；在严重模态迁移下性能急剧下降。",
-    "conclusion": "支持XFeat在精度与效率间具有良好平衡的核心主张，但关键点分支对半稠密匹配的收益弱于原论文声称，跳跃连接位置的影响不明确；下游评估对细节敏感，需要更规范的评测流程。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.09392v1",
-    "title": "CableDex: Cable Length Estimation on Industrial Reels Using a Handheld Device",
-    "authors": [
-      "Francisco Guillén",
-      "Ricardo Almeida",
-      "Bruno Silva",
-      "João C. Neves"
-    ],
-    "abstract": "CableDex is a computer vision system that addresses the time-consuming and inaccurate manual measurement of cable length on industrial reels from a single photograph captured with a mobile phone. The system combines camera calibration, instance segmentation, pose estimation, and volumetric calculation to estimate the cable length across five different reel types and various cable sizes. This system is based on an instance segmentation model trained on 1,000 manually annotated images, achieving 99.5\\% mAP50 with an inference time of 5.66 ms per image. Evaluated on 75 reels across five reel types, the system achieves a MAPE of 4.90\\%, within the 10\\% error tolerance commonly accepted in industrial cable-reel measurement. The demonstration presents the end-to-end pipeline, from reel label scanning and image capture to segmentation and length estimation, through the mobile application.",
-    "link": "http://arxiv.org/abs/2608.09392v1",
-    "published": "2026-08-10",
-    "category": "cs.CV",
-    "tags": [
-      "Cable Length Estimation",
-      "Instance Segmentation",
-      "Pose Estimation",
-      "Mobile Vision",
-      "Industrial Measurement"
-    ],
-    "tldr": "CableDex通过手机单张照片结合分割与体积计算估算工业卷盘电缆长度，平均误差4.90%。",
-    "motivation": "工业卷盘电缆长度的人工测量耗时且不准确，需要一种仅凭单张照片即可自动估算的解决方案。",
-    "method": "该系统结合相机标定、实例分割、姿态估计和体积计算，使用1000张人工标注图像训练分割模型，推理时间为每张5.66毫秒。",
-    "result": "在五种卷盘类型的75个卷盘上评估，平均绝对百分比误差为4.90%，满足工业测量中10%的误差容限。",
-    "conclusion": "系统展示了从标签扫描到分割和长度估算的完整移动端流程，可提升工业电缆测量的效率和准确性。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.09285v1",
-    "title": "GLocFM: A Geometry-Aware Foundation Model for 3D Indoor Wireless Localization",
-    "authors": [
-      "Chenghong Bian",
-      "Chaozheng Wen",
-      "Hongze Chen",
-      "Jun Zhang"
-    ],
-    "abstract": "Learning-based wireless localizers often fail to utilize geometric information about the propagation environment, limiting their ability to exploit non-line-of-sight (NLoS) propagation and generalize across scenes. To bridge this gap, we propose GLocFM, a Geometry-aware Localization Foundation Model, which jointly exploits WiFi measurements and scene geometry represented as a 3D point cloud. We formulate localization as a maximum-likelihood (ML) estimation problem, where the goal is to find a transmitter position that maximizes the likelihood of the wireless observations conditioned on the scene geometry. The likelihood of a candidate transmitter position is calculated by a learned scoring function that matches the observed delay--angle-of-arrival (AoA) spectrum against the spectrum predicted for that candidate. A hierarchical scene encoder extracts propagation-relevant features to produce geometric priors for LoS and one-bounce reflection paths. For scenarios with imperfect synchronization, we further introduce a time-of-flight (ToF)-robust GLocFM model to handle unknown ToF offsets. GLocFM is trained on a multi-modal synthetic indoor localization dataset comprising 221 diverse scenes whose associated wireless signals are generated using Sionna RT. On both synthetic and the NeRF$^{2}$ dataset based on real measurements, GLocFM reduces mean 3D localization error relative to one of the state-of-the-art localization baselines by 49.5\\% and 48.8\\%, respectively. Ablations across different number of receiver, bandwidths, and array sizes further demonstrate the effectiveness and robustness of the proposed framework.",
-    "link": "http://arxiv.org/abs/2608.09285v1",
-    "published": "2026-08-10",
-    "category": "cs.AI",
-    "tags": [
-      "Wireless Localization",
-      "Foundation Model",
-      "Geometry-Aware",
-      "WiFi",
-      "3D Point Cloud"
-    ],
-    "tldr": "提出一种几何感知的无线定位基础模型GLocFM，融合WiFi信号与3D点云场景几何，在合成和真实数据集上显著降低定位误差。",
-    "motivation": "现有基于学习的无线定位器未能充分利用传播环境的几何信息，限制了对非视距传播的利用和跨场景泛化能力。",
-    "method": "将定位建模为最大似然估计问题，利用学习的评分函数匹配观测延迟-到达角谱与候选位置预测谱；采用分层场景编码器提取几何先验，并针对不同步场景引入ToF鲁棒模型。",
-    "result": "在合成数据集和基于真实测量的NeRF2数据集上，相对最先进基线分别将平均3D定位误差降低49.5%和48.8%；不同接收器数量、带宽和阵列尺寸的消融实验验证了有效性。",
-    "conclusion": "提出了一个几何感知的无线定位基础模型，有效利用场景几何提高定位精度和泛化能力，为几何信息在无线定位中的应用提供了新范式。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.09152v1",
-    "title": "LightAIR: Lightweight Action Inversion and Riemannian Rectification for Text-based Person Anomaly Search",
-    "authors": [
-      "Yulun Zhang",
-      "Zixu Li",
-      "Zhiwei Chen",
-      "Zhiheng Fu",
-      "Wenbo Wang",
-      "Zihang Qiu",
-      "Zhilin Wang",
-      "Ruxin Wang",
-      "Yupeng Hu"
-    ],
-    "abstract": "Traditional Text-based Person Search (TPS) is typically limited to matching static appearance attributes, severely neglecting dynamic action information. The Text-based Person Anomaly Search (TPAS) task bridges this gap, requiring models to locate micro-level specific abnormal behaviors while matching macro-level appearance of pedestrians. However, current TPAS methods face fundamental limitations: external explicit pose estimators are fragile in unconstrained surveillance scenarios, and implicit learning encounters visual decoupling failure under pixel-level entanglement, causing dominant appearance information to easily swallow and contaminate subtle action features. Furthermore, performing contrastive optimization on hard negative samples (``same appearance, different actions'') in conventional Euclidean spaces induces severe shortcut learning. To address these, we propose the Lightweight Action Inversion and Riemannian rectification network (LightAIR). First, it introduces textual semantic priors as anchors via a lightweight action inversion operator to extract pure action features, thereby overcoming visual-inherent coupling. Subsequently, it employs orthogonal null-space projection to constrain appearance features within the orthogonal complement space of action features, guaranteeing strict forward decoupling. Finally, we designed a gradient rectification module that computes the Riemannian gradient to constrain the backpropagation trajectory, forcing the gradient flow to update strictly along the tangent space that preserves decoupling properties, thereby cutting off harmful shortcuts. Extensive experiments on the widely used TPAS and TIPR datasets demonstrate that LightAIR significantly outperforms existing state-of-the-art methods. Codes are available at https://github.com/rainy-london/LightAIR",
-    "link": "http://arxiv.org/abs/2608.09152v1",
-    "published": "2026-08-10",
-    "category": "cs.CV",
-    "tags": [
-      "Text-based Person Search",
-      "Anomaly Detection",
-      "Action Inversion",
-      "Riemannian Geometry",
-      "Decoupling"
-    ],
-    "tldr": "提出LightAIR网络，通过轻量动作反转和黎曼梯度修正实现文本行人异常搜索，显著超越现有方法。",
-    "motivation": "现有文本行人搜索忽略动态动作信息，而TPAS需同时匹配宏观外观和微观异常行为；现有方法因姿态估计器脆弱、视觉解耦失败以及欧氏空间硬负样本导致严重捷径学习。",
-    "method": "提出LightAIR：1) 利用轻量动作反转算子以文本语义先验为锚提取纯动作特征；2) 通过正交零空间投影将外观特征约束在动作特征的正交补空间，实现严格前向解耦；3) 设计梯度修正模块计算黎曼梯度，约束反向传播沿切空间更新，阻断有害捷径。",
-    "result": "在TPAS和TIPR数据集上，LightAIR显著优于现有最先进方法，但摘要未提供具体量化指标。",
-    "conclusion": "提出一种轻量级且有效的TPAS框架，克服视觉耦合与捷径学习问题，并公开代码以促进后续研究。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.09146v1",
-    "title": "Multi-Submap Implicit Neural SLAM with Local-to-Global Loop Closure for Large-Scale Scene Reconstruction",
-    "authors": [
-      "Tianchen Deng",
-      "Chongdi Wang",
-      "Nailin Wang",
-      "Lei Zhao",
-      "Ziqi Ma",
-      "Tianjun Zhang",
-      "Zhe Liu",
-      "Danwei Wang",
-      "Hesheng Wang"
-    ],
-    "abstract": "Neural Radiance Fields (NeRF)-based SLAM has demonstrated impressive results in small-scale scene reconstruction, yet scaling these methods to extensive, complex environments remains challenging due to catastrophic forgetting and accumulated trajectory drift. This paper presents a robust, large-scale neural SLAM system featuring a multi-submap architecture and a dual-tier loop closure mechanism. Specifically, we propose a progressive mapping strategy that dynamically allocates neural submaps to maintain high-fidelity representations without memory explosion. For robust pose estimation, an optical-flow-based tracking module is integrated to handle aggressive motions. To address global consistency, we introduce a local-to-global loop closure framework leveraging the foundation model for high-performance global descriptor extraction, significantly enhancing relocalization accuracy under varying viewpoints. Furthermore, an inter-submap online distillation algorithm is designed during back-end optimization to enforce geometric and appearance consistency across overlapping submap boundaries. To validate the system, we developed a customized handheld mechatronic platform and conducted extensive evaluations on both public benchmarks and our large-scale indoor-outdoor datasets. Experimental results, including direct deployment on an onboard computing unit, demonstrate that our approach outperforms state-of-the-art neural SLAM methods in reconstruction quality and localization robustness, providing a scalable solution for real-world robotic perception and digital twinning. We will release the code publicly on \\href{https://github.com/dtc111111/MSN-SLAM}{https://github.com/dtc111111/MSN-SLAM} .",
-    "link": "http://arxiv.org/abs/2608.09146v1",
-    "published": "2026-08-10",
-    "category": "cs.CV",
-    "tags": [
-      "Neural SLAM",
-      "Multi-Submap",
-      "Loop Closure",
-      "Large-Scale Reconstruction",
-      "NeRF"
-    ],
-    "tldr": "提出多子图神经SLAM系统，结合局部到全局回环检测与在线蒸馏，实现大规模场景高质量重建与鲁棒定位。",
-    "motivation": "现有基于NeRF的SLAM方法在小场景有效，但在大规模复杂环境中存在灾难性遗忘和轨迹漂移累积问题，难以扩展。",
-    "method": "提出多子图渐进映射策略、光流跟踪模块、基于基础模型的局部到全局回环检测框架，以及子图间在线蒸馏算法，用于保证几何与外观一致性。",
-    "result": "在公开基准及自建大规模室内外数据集上，重建质量和定位鲁棒性均优于现有神经SLAM方法，并成功部署于机载计算单元。",
-    "conclusion": "提供了面向真实机器人感知和数字孪生的可扩展神经SLAM解决方案，并将公开代码。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.09110v1",
-    "title": "View-Adaptive Renderer for View-Consistent 2D-to-3D Generation",
-    "authors": [
-      "U-Chae Jun",
-      "Jaeeun Ko",
-      "Jiwoo Kang"
-    ],
-    "abstract": "Reconstructing 3D shapes from a single image remains a fundamental yet challenging problem in computer vision. Traditional monocular 3D generation pipelines typically synthesize multiple views from a single input image before applying Neural Radiance Field (NeRF)-based reconstruction. However, inherent projective ambiguities often produce visual discontinuities across generated viewpoints, leading to inaccuracies in reconstructed 3D models. Current solutions either incur significant additional computational burdens or fail to adequately resolve practical inconsistencies between synthesized views. To address these limitations, we propose a novel viewpoint-adaptive neural rendering framework that enables robust 3D reconstruction even when given partially inconsistent multi-view inputs. Our approach introduces view-adaptive neural renderers that independently correct viewpoint-dependent errors while simultaneously sharing a global feature backbone to preserve structural coherence. Furthermore, we propose a self-attention fusion module that adaptively integrates multi-view information, ensuring geometric consistency without relying heavily on indirect regularizations or computationally intensive methods. Through extensive experiments, we demonstrate that our method consistently improves 3D reconstruction fidelity. Importantly, our approach achieves near state-of-the-art performance without diffusion-based SDS supervision, relying primarily on photometric rendering loss with lightweight attention regularizers. This balance between accuracy and efficiency makes the proposed framework highly practical for real-world applications.",
-    "link": "http://arxiv.org/abs/2608.09110v1",
-    "published": "2026-08-10",
-    "category": "cs.CV",
-    "tags": [
-      "3D Reconstruction",
-      "View Synthesis",
-      "Neural Radiance Field",
-      "Attention Fusion",
-      "Single Image"
-    ],
-    "tldr": "提出一种视图自适应渲染框架，通过自注意力融合模块从单图生成多视图，实现鲁棒的2D到3D重建。",
-    "motivation": "传统单目3D生成先合成多视图再重建NeRF，但投影歧义导致视图间不连续，重建不准确。现有解决方案要么计算负担大，要么不能有效解决视图间实际不一致。",
-    "method": "提出视图自适应神经渲染器，独立校正视图相关误差，同时共享全局特征主干保持结构一致。设计自注意力融合模块以自适应整合多视图信息，保证几何一致性，主要依赖光度渲染损失和轻量注意力正则化，不使用扩散SDS监督。",
-    "result": "实验表明该方法持续提升3D重建保真度，在没有SDS监督的情况下达到接近最优性能，在准确性和效率之间取得良好平衡。",
-    "conclusion": "该框架对部分不一致的多视图输入具有鲁棒性，计算高效，适合实际应用，为单图3D生成提供了实用且高效的解决方案。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.10286v1",
-    "title": "TRACE-GS: On-Policy Trajectory Distillation with Privileged Geometric Conditioning for Sparse-View 3DGS Restoration",
-    "authors": [
-      "Linlian Jiang",
-      "Yuchen Xi",
-      "Sadman Rakib Pinon",
-      "Ruigang Yang",
-      "Yang Wang",
-      "Xinxin Zuo"
-    ],
-    "abstract": "We present TRACE-GS, an on-policy trajectory distillation framework that leverages privileged geometric conditioning at training time, thereby adapting a diffusion prior to sparse-view 3D Gaussian Splatting (3DGS) restoration. Rather than pursuing increasingly sophisticated restoration architectures, we identify a more fundamental limitation shared by existing diffusion-based approaches: supervision at independently noised states does not cover those reached during inference. In sparse-view 3DGS, under-constrained geometry biases denoising from the outset, and the resulting deviations compound along the rollout. TRACE-GS instead performs on-policy trajectory distillation: a teacher conditioned on richer geometry from additional training views supplies targets along the sparse-view student's own rollout, aligning denoising directions and cross-view responses at each visited state. This training-only geometry places TRACE-GS in the learning using privileged information (LUPI) setting. At deployment, only the sparse-view student is retained, and its restored renderings serve as pseudo-observations for 3DGS refinement. To the best of our knowledge, TRACE-GS is the first to derive on-policy supervision from privileged geometry for sparse-view 3DGS restoration, achieving consistent gains and strong generalization across datasets and sparse-view settings.",
-    "link": "http://arxiv.org/abs/2608.10286v1",
-    "published": "2026-08-10",
-    "category": "cs.CV",
-    "tags": [
-      "3DGS",
-      "Sparse-View",
-      "Diffusion Distillation",
-      "Privileged Learning",
-      "Neural Rendering"
-    ],
-    "tldr": "提出TRACE-GS，通过特权几何条件的在轨轨迹蒸馏，实现稀疏视图3DGS恢复。",
-    "motivation": "现有扩散方法在独立噪声状态下监督，未覆盖推理状态；稀疏视图3DGS的欠约束几何导致去噪偏差沿轨迹累积。",
-    "method": "采用在轨轨迹蒸馏：教师模型利用额外训练视图的丰富几何，在稀疏视图学生模型自身轨迹上提供监督，对齐去噪方向和跨视图响应；训练后仅保留学生模型。",
-    "result": "实验显示在多数据集和稀疏视图设置下取得一致增益和强泛化（摘要未提供量化指标）。",
-    "conclusion": "首次将特权几何用于稀疏视图3DGS恢复的在轨监督，属于利用特权信息（LUPI）范式，推理时仅需学生模型，具有实际部署潜力。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.10057v1",
-    "title": "LEGO: Leveled Language Gaussian Splatting",
-    "authors": [
-      "Yuning Peng",
-      "Haiping Wang",
-      "Yuan Liu",
-      "Yipeng Lu",
-      "Zhen Dong",
-      "Bisheng Yang"
-    ],
-    "abstract": "We introduce LEGO for advanced open-vocabulary scene understanding. Beyond basic concept recognition, its core innovation lies in capturing the intrinsic semantic hierarchies within the scene, such as the \"flowerpot -> bouquet -> bud -> petal\" lineage. While foundation models like SAM can identify multi-granular structures in 2D, their partitions are strictly perspective-bound and lack cross-view consensus. LEGO self-adaptively re-grades volatile multi-view SAM granularities into a unified, 3D-consistent hierarchy. This provides precise supervision for the structurally coherent, multi-level segmentation of 3D scenes. By grounding these segments with CLIP embeddings, LEGO recovers open-vocabulary semantic logic across hierarchical levels. Furthermore, by incorporating spatial relationships, we elevate these segments into level-wise language scene graphs, effectively empowering Large Language Models to perform complex, context-aware spatial reasoning and precise visual grounding. Experimental results demonstrate that LEGO establishes new state-of-the-art performance across both promptable and open-vocabulary 3D segmentation benchmarks, exhibiting advanced hierarchical scene decomposition and context-aware spatial reasoning.",
-    "link": "http://arxiv.org/abs/2608.10057v1",
-    "published": "2026-08-10",
-    "category": "cs.CV",
-    "tags": [
-      "3D Segmentation",
-      "Gaussian Splatting",
-      "Open-Vocabulary",
-      "Semantic Hierarchy",
-      "Language Scene Graphs"
-    ],
-    "tldr": "LEGO将多视图SAM分割统一为3D一致语义层级，结合CLIP实现开放词汇层级分割与空间推理。",
-    "motivation": "现有方法仅能做基础概念识别，难以捕获场景中如“花盆→花束→花蕾→花瓣”的内在语义层级。SAM虽能识别2D多粒度结构，但其分割受视角限制且缺乏跨视图一致性，无法直接用于3D场景。",
-    "method": "LEGO自适应地将多视图SAM产生的易变粒度重分级为统一的3D一致层级，为多层级3D分割提供精准监督；再利用CLIP嵌入对各层级语义进行开放词汇对齐，并引入空间关系构建层级语言场景图，以支持大语言模型的复杂空间推理。",
-    "result": "在可提示和开放词汇3D分割基准上均达到新SOTA，展现出先进的层级场景分解和上下文感知空间推理能力。",
-    "conclusion": "LEGO实现了超越基础概念识别的层级化开放词汇3D场景理解，为LLM提供结构化的场景表示，显著提升复杂空间推理与视觉定位能力，为3D场景理解提供了新范式。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2608.10057",
-    "title": "LEGO: Leveled Language Gaussian Splatting",
-    "authors": [
-      "Peng, Yuning",
-      "Wang, Haiping",
-      "Liu, Yuan",
-      "Lu, Yipeng",
-      "Dong, Zhen",
-      "Yang, Bisheng"
-    ],
-    "abstract": "We introduce LEGO for advanced open-vocabulary scene understanding. Beyond basic concept recognition, its core innovation lies in capturing the intrinsic semantic hierarchies within the scene, such as the \"flowerpot -> bouquet -> bud -> petal\" lineage. While foundation models like SAM can identify multi-granular structures in 2D, their partitions are strictly perspective-bound and lack cross-view consensus. LEGO self-adaptively re-grades volatile multi-view SAM granularities into a unified, 3D-consistent hierarchy. This provides precise supervision for the structurally coherent, multi-level segmentation of 3D scenes. By grounding these segments with CLIP embeddings, LEGO recovers open-vocabulary semantic logic across hierarchical levels. Furthermore, by incorporating spatial relationships, we elevate these segments into level-wise language scene graphs, effectively empowering Large Language Models to perform complex, context-aware spatial reasoning and precise visual grounding. Experimental results demonstrate that LEGO establishes new state-of-the-art performance across both promptable and open-vocabulary 3D segmentation benchmarks, exhibiting advanced hierarchical scene decomposition and context-aware spatial reasoning.",
-    "link": "https://arxiv.org/abs/2608.10057",
-    "published": "2026-08-10",
-    "category": "cs.CV",
-    "tags": [
-      "3D Segmentation",
-      "Gaussian Splatting",
-      "Open-Vocabulary",
-      "Scene Hierarchy"
-    ],
-    "tldr": "提出LEGO方法，通过重分级多视图SAM粒度并借助CLIP嵌入，实现3D场景的层次化开放词汇分割与语言场景图推理。",
-    "motivation": "现有开放词汇3D理解仅识别基础概念，缺乏对场景内固有关联层次（如花盆-花束-花蕾-花瓣）的建模，且SAM的2D多粒度分割受视角限制，缺乏跨视角一致性。",
-    "method": "LEGO将多视图SAM中易变的分割粒度自适应重分级为统一且3D一致的层次结构，作为多层级分割监督；利用CLIP嵌入赋予各层级开放词汇语义，并结合空间关系构建层级语言场景图，使大语言模型可进行上下文感知的空间推理与视觉定位。",
-    "result": "在提示型与开放词汇3D分割基准上取得新最先进性能，展示了先进的层次化场景分解与上下文感知空间推理能力。",
-    "conclusion": "LEGO通过统一2D模型粒度为3D一致的层次结构并支持LLM推理，为3D场景理解提供了新思路，潜在影响包括更精细的机器人交互与增强现实应用。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2608.10030",
-    "title": "Automating and Scaling Behavioral Scientific Research on AI Agents",
-    "authors": [
-      "Lee, Soo Yong",
-      "Lee, Jongha",
-      "Chun, Jaewan",
-      "Hwang, Hyunjin",
-      "Bu, Fanchen",
-      "Ben-Zion, Ziv",
-      "Kim, Taekwan",
-      "Borsboom, Denny",
-      "Yoo, Jaemin",
-      "Shin, Kijung"
-    ],
-    "abstract": "As AI agents are increasingly deployed in complex environments, understanding their behaviors becomes critical. Yet behavioral scientific research on AI agents remains manual and labor-intensive. We introduce AEROBAT, the first multi-agent system to automate behavioral scientific research on AI agents. Given an arbitrary target behavior by its user, AEROBAT automatically executes a full pipeline of behavioral scientific research---generating hypotheses about the behavior, designing and executing controlled experiments, making behavioral assessments, analyzing the results, and writing reports. For 12 target behaviors, we used AEROBAT to generate and test 79 hypotheses: designing 1,240 controlled experiments and executing 23,512 simulation rounds in total. Moderate-to-strong statistical evidence was found for 26 hypotheses, including some novel ones. In sum, our results demonstrate that automated behavioral scientific research on AI agents can complement and extend the reach of manual research.",
-    "link": "https://arxiv.org/abs/2608.10030",
-    "published": "2026-08-10",
-    "category": "cs.AI",
-    "tags": [
-      "AI Agents",
-      "Behavioral Science",
-      "Multi-Agent System",
-      "Automation",
-      "Experiment Design"
-    ],
-    "tldr": "AEROBAT 是首个多智能体系统，能自动完成对 AI 智能体行为科学研究的完整流程，并发现多项有统计证据的新假设。",
-    "motivation": "随着 AI 智能体在复杂环境中部署增多，理解其行为至关重要，但现有的行为科学研究依赖人工，耗时费力。",
-    "method": "提出 AEROBAT 多智能体系统，自动执行行为科学研究全流程：生成假设、设计并执行受控实验、评估行为、分析结果、撰写报告。",
-    "result": "针对12个目标行为生成并测试79个假设，设计1240个受控实验，累计执行23512轮模拟；其中26个假设获得中等到强统计证据，部分为新发现。",
-    "conclusion": "实验表明，自动化行为科学研究能有效补充和扩展人工研究，提升研究规模和效率，为 AI 智能体行为理解提供新途径。"
   }
 ]
