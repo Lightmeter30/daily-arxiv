@@ -1,5 +1,110 @@
 [
   {
+    "id": "https://arxiv.org/abs/2608.20093",
+    "title": "HandMvNet: Real-Time 3D Hand Pose Estimation Using Multi-View Cross-Attention Fusion",
+    "authors": [
+      "Ali, Muhammad Asad",
+      "Robertini, Nadia",
+      "Stricker, Didier"
+    ],
+    "abstract": "In this work, we present HandMvNet, one of the first real-time method designed to estimate 3D hand motion and shape from multi-view camera images. Unlike previous monocular approaches, which suffer from scale-depth ambiguities, our method ensures consistent and accurate absolute hand poses and shapes. This is achieved through a multi-view attention-fusion mechanism that effectively integrates features from multiple viewpoints. In contrast to previous multi-view methods, our approach eliminates the need for camera parameters as input to learn 3D geometry. HandMvNet also achieves a substantial reduction in inference time while delivering competitive results compared to the state-of-the-art methods, making it suitable for real-time applications. Evaluated on publicly available datasets, HandMvNet qualitatively and quantitatively outperforms previous methods under identical settings. Code is available at this http URL .",
+    "link": "https://arxiv.org/abs/2608.20093",
+    "published": "2026-08-20",
+    "category": "cs.CV",
+    "tags": [
+      "3D Hand Pose Estimation",
+      "Multi-View",
+      "Attention Fusion",
+      "Real-Time",
+      "Deep Learning"
+    ],
+    "tldr": "HandMvNet提出多视图交叉注意力融合机制，无需相机参数即可实时估计手部姿态与形状，性能优于现有方法。",
+    "motivation": "单目方法存在尺度-深度歧义，现有多视图方法依赖相机参数输入且难以实时应用。HandMvNet旨在解决这些问题，实现无需相机参数的实时高精度手部姿态与形状估计。",
+    "method": "采用多视图注意力融合机制，有效集成多个视角的特征，并直接学习3D几何，无需相机参数输入。该方法通过交叉注意力融合多视角信息，实现了端到端的实时估计。",
+    "result": "在公开数据集上与最先进方法对比，HandMvNet在同等设置下定量和定性均优于现有方法，并大幅减少推理时间，适合实时应用。",
+    "conclusion": "贡献在于提出首个实时多视图手部姿态估计方法之一，消除对相机参数的依赖，平衡精度与速度，并开源代码，对AR/VR等人机交互领域具有潜在影响。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.20056",
+    "title": "Gravity-aware partially calibrated absolute pose estimation from affine- or rotation-covariant features",
+    "authors": [
+      "Örnhag, Marcus Valtonen",
+      "Jaenal, Alberto",
+      "Adalbjörnsson, Stefan"
+    ],
+    "abstract": "Inertial measurement units (IMUs) are now standard in most consumer devices, such as smartphones, drones, and extended reality (XR) headsets. By fusing visual and inertial data, localization systems gain significantly in speed and robustness compared to vision-only or IMU-only approaches. However, traditional pose estimation methods fail to utilize the local geometric information embedded in feature descriptors like SIFT. Recent work has proved the advantages of leveraging this information for relative and absolute pose estimation, but its application to partially calibrated absolute pose estimation remains unexplored. In this paper, we derive novel constraints for joint estimation of absolute pose and focal length, making use of a gravity vector obtained from IMU data and the feature-induced local geometry, which we use to construct two efficient solvers: UP1PfAC, that operates given a single affine correspondence and UP2PfORI, which requires two orientation-covariant features. Unlike traditional, semi-calibrated absolute pose methods requiring four point correspondences, our solvers benefit from fewer samples and lower computational cost, simplifying robust estimation in modern RANSAC-like frameworks. We evaluate the proposed solvers against the state-of-the-art on large-scale public datasets and demonstrate that our method achieves fast and accurate localization and focal length estimation.",
+    "link": "https://arxiv.org/abs/2608.20056",
+    "published": "2026-08-20",
+    "category": "cs.CV",
+    "tags": [
+      "Absolute Pose Estimation",
+      "Gravity-aware",
+      "Partially Calibrated",
+      "Affine Correspondence",
+      "Focal Length Estimation"
+    ],
+    "tldr": "利用IMU重力向量与特征局部几何，提出两种部分标定绝对位姿估计求解器，实现快速准确的定位与焦距估计。",
+    "motivation": "传统位姿估计方法未能利用SIFT等特征描述子中的局部几何信息，且现有利用该信息的方法未涉及部分标定绝对位姿估计。旨在结合IMU重力与特征几何，解决联合估计位姿与焦距的问题。",
+    "method": "推导了利用IMU重力向量和特征诱导局部几何的绝对位姿与焦距联合估计新约束，构建两个高效求解器：UP1PfAC（基于单个仿射对应）和UP2PfORI（基于两个方向协变特征）。",
+    "result": "在大规模公开数据集上评估，相比需要四个点对应的传统半标定方法，所需样本更少、计算成本更低，实现了快速准确的定位和焦距估计。",
+    "conclusion": "提出的约束与求解器简化了现代RANSAC框架中的鲁棒估计，优于现有技术，为视觉惯性定位提供了高效方案。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.20000",
+    "title": "Point-Based 3D Reconstruction from Sparse Views under Known Illumination",
+    "authors": [
+      "Gjerde, Magnus Kaufmann",
+      "Haurum, Joakim Bruslund",
+      "Frisvad, Jeppe Revall",
+      "Worchel, Markus",
+      "Bærentzen, J. Andreas",
+      "Moeslund, Thomas B."
+    ],
+    "abstract": "Sparse view 3D reconstruction is commonly addressed with neural implicit surfaces or dense point-based representations such as Gaussian splatting. Surface-aware splatting methods improve extracted geometry through oriented primitives and regularization, while RadiosityGS incorporates differentiable light transport through a radiosity inspired finite-element surfel formulation. We propose a differentiable point rendering method based on opacity-bearing beta surfels. An opacity explicit adjoint light transport formulation provides gradients for surfel geometry and appearance parameters, allowing physically based light transport to constrain reconstruction. Across five synthetic objects reconstructed from ten posed views, our method achieves the lowest mean symmetric Chamfer distance among the evaluated baselines and reduces mean Chamfer distance by 28.5% relative to the strongest point-based baseline while using only 267 surfels on average, approximately ~161 fewer primitives. Directional Chamfer results further show improved accuracy and competitive completion relative to related point-based methods. These results show that, in the controlled direct illumination setting, compact beta surfels combined with transport-based optimization can recover surfaces without relying on the tens to hundreds of thousands of primitives used by the evaluated baselines.",
+    "link": "https://arxiv.org/abs/2608.20000",
+    "published": "2026-08-20",
+    "category": "cs.CV",
+    "tags": [
+      "3D Reconstruction",
+      "Sparse Views",
+      "Point-Based Rendering",
+      "Beta Surfel",
+      "Light Transport"
+    ],
+    "tldr": "提出基于不透明度beta surfel的可微点渲染方法，结合伴随光传输优化，以极少量图元实现稀疏视图三维重建，降低Chamfer距离28.5%.",
+    "motivation": "稀疏视图三维重建常依赖神经隐式表面或密集点基表示（如高斯泼溅），需要大量图元；希望用紧凑的beta surfel和物理光传输约束实现精确重建。",
+    "method": "提出基于不透明度beta surfel的可微点渲染，通过显式伴随光传输公式提供几何与外观参数的梯度，以物理光传输约束重建，实现紧凑表示。",
+    "result": "在五个合成物体的十视角重建中，平均对称Chamfer距离最低，比最强点基线降低28.5%，平均仅用267个surfel（约少161个）；方向Chamfer显示精度提升且完整性具竞争力。",
+    "conclusion": "在受控直接光照下，紧凑beta surfel结合基于传输的优化仅需极少量图元即可恢复表面，避免了对大量基元的依赖，为稀疏视图重建提供了高效方案。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2608.20320",
+    "title": "An Agentic Approach for Active Data Collection, Travel Behavior Modeling, and Weather-Sensitive Demand Prediction",
+    "authors": [
+      "Ahmadi, Narges",
+      "Jiao, Yubo",
+      "Manzolli, Jônatas Augusto",
+      "Yu, Jiangbo",
+      "Miranda-Moreno, Luis"
+    ],
+    "abstract": "Travel behavior research increasingly combines digital data collection with predictive modeling, yet these stages are often developed and evaluated separately. This study proposes a three-agent workflow integrating conversational data collection, structured data processing, and behavioral prediction. A chatbot-administered, image-augmented stated-preference survey collected mode choices from student commuters across five predefined weather scenarios, yielding 454 respondent-scenario observations. Weather-related associations were analyzed using a multinomial logit model, while logistic regression and random forest provided machine-learning benchmarks. Nine locally deployed large language models (LLMs), ranging from 2 to 35 billion parameters, were evaluated across four zero-shot prompt-and-context conditions and extended through persona, few-shot, and vision-based configurations. Random forest achieved 69.6% five-class accuracy, while the best text-only zero-shot LLM reached 69.9% without task-specific fitting. Habitual travel information produced the most consistent gains, Expert framing generally outperformed Role-Play, and persona information was most useful when habitual travel information was unavailable. Few-shot prompting improved prediction for several models, with gains stabilizing after a small number of examples. Using the same weather images shown to respondents, the best vision-based configuration reached 71.5% five-class accuracy, indicating that visual context may provide additional predictive information for selected models. Overall, the study shows how conversational surveys, structured data processing, conventional behavioral modeling, machine learning, and multimodal LLM prediction can be coordinated within an auditable multi-agent workflow.",
+    "link": "https://arxiv.org/abs/2608.20320",
+    "published": "2026-08-20",
+    "category": "cs.AI",
+    "tags": [
+      "Agentic Workflow",
+      "Travel Behavior",
+      "LLM",
+      "Data Collection",
+      "Demand Prediction"
+    ],
+    "tldr": "提出一个三智能体工作流，集成聊天调查、数据处理与多模态LLM预测，实现天气敏感出行需求预测，最佳视觉配置准确率达71.5%。",
+    "motivation": "出行行为研究虽结合数据采集与预测建模，但各阶段常被独立开发与评估，缺乏统一可审计的集成框架。",
+    "method": "构建三智能体工作流：聊天机器人管理图像增强的陈述偏好调查，结构化处理数据，并用多项逻辑回归、机器学习（逻辑回归、随机森林）及九个本地部署的LLM（2B-35B参数）进行行为预测。LLM评估涵盖四种零样本提示条件，并扩展了角色、少样本和视觉配置。",
+    "result": "随机森林达到69.6%五分类准确率，最优文本零样本LLM达69.9%，而使用相同天气图像的最佳视觉配置达到71.5%。少样本提示在少量示例后收益稳定，专家框架总体优于角色扮演，且习惯性出行信息带来最一致的提升。",
+    "conclusion": "研究表明会话式调查、结构化处理、传统行为模型、机器学习与多模态LLM可在可审计的多智能体工作流中协调，视觉上下文能为部分模型提供额外预测信息，为主动数据收集与预测集成提供新范式。"
+  },
+  {
     "id": "https://arxiv.org/abs/2608.19066",
     "title": "GS-VLA: Plug-and-Play Viewpoint Canonicalization for Frozen VLA Policies via Gaussian Splatting",
     "authors": [
@@ -502,60 +607,5 @@
     "method": "SkillCommit为每个新经验保留实例级补丁，通过嵌入检索找出候选相关技能，再用跨实例回放和LLM机制检查判断是否共享共同机制，只有保持所有组成技能行为一致时才抽象并提交为更高级技能。",
     "result": "在RuleArena、OpenExempt和KOR-Bench上一致提升代理性能，且技能可跨模型规模和家族迁移。",
     "conclusion": "SkillCommit通过行为验证的范围扩展实现了安全的技能抽象，提升了泛化能力，并支持跨模型经验迁移，具有广泛适用性。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2608.14136",
-    "title": "HiCo-GS: Hierarchical Context Aggregation and Geometric Consistency for Octree Gaussian Splatting",
-    "authors": [
-      "Zhang, Wei",
-      "Yu, Shengkai",
-      "Gong, Shiqiang",
-      "Zhang, Qi",
-      "Li, Qiang",
-      "Wang, Qi"
-    ],
-    "abstract": "Octree-based anchor Gaussian Splatting has emerged as a scalable representation for city-scale novel view synthesis, where multi-level anchors adaptively capture scene content from coarse building structures to fine architectural details. However, we identify a fundamental limitation in existing methods: cross-level feature isolation, where each level's anchor features are optimized independently with no inter-level communication, causing color drift on building facades and over-smoothing in textured regions. We present HiCo-GS, a high-fidelity reconstruction framework with two complementary modules. Cross-Level Context Aggregation (CLCA) enables bidirectional hierarchical prior injection by leveraging the octree's spatial containment structure to aggregate per-level context vectors into parent-self-child triplets, fused via a lightweight MLP with residual connection. Coarse-level structural priors flow down to inform fine-level anchors, while fine-level detail statistics feed back to prevent over-smoothing, at negligible computational overhead. Depth-Normal Geometric Consistency (DNGC) regularization enforces agreement between rendered normals and depth-derived normals through an alpha-weighted consistency loss, complemented by edge-aware smoothness losses with progressive warmup that exploit the strong planar priors ubiquitous in urban geometry to suppress floating artifacts. We further introduce the China-Pagoda dataset comprising 8 ancient Chinese pagodas with over 1,200 images each, featuring dense ornamental carvings, curved multi-layer eaves, and repetitive fine-grained textures. Extensive experiments on Mill19, UrbanScene3D, MatrixCity, and China-Pagoda demonstrate that HiCo-GS achieves state-of-the-art rendering quality and substantially cleaner geometry across real-world and synthetic urban this http URL : this https URL .",
-    "link": "https://arxiv.org/abs/2608.14136",
-    "published": "2026-08-14",
-    "category": "cs.CV",
-    "tags": [
-      "Gaussian Splatting",
-      "Urban Scene Reconstruction",
-      "Novel View Synthesis",
-      "Hierarchical Representation",
-      "Geometric Consistency"
-    ],
-    "tldr": "提出HiCo-GS，通过跨层级上下文聚合和深度-法线几何一致性约束，提升八叉树高斯溅射的城市级重建质量。",
-    "motivation": "现有八叉树锚点高斯溅射方法存在跨层级特征隔离问题，各级锚点独立优化导致建筑立面颜色漂移和纹理区域过度平滑。",
-    "method": "提出两个互补模块：跨层级上下文聚合(CLCA)利用八叉树空间包含结构，将每级上下文向量聚合成父-自-子三元组，经带残差的轻量MLP融合实现双向层级先验注入；深度-法线几何一致性(DNGC)通过alpha加权一致性损失和渐进式边缘感知平滑损失，利用城市几何的平面先验抑制漂浮伪影。",
-    "result": "在Mill19、UrbanScene3D、MatrixCity和新增的中国宝塔数据集上，HiCo-GS达到最先进的渲染质量，并产生更干净的几何结构。摘要未提供具体量化指标。",
-    "conclusion": "提出HiCo-GS框架和包含8座中国古代宝塔的新数据集，验证了层级上下文聚合与几何一致性约束在城市规模重建中的有效性，为高质量实景渲染提供了新思路。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2608.14161",
-    "title": "BiasTrace: Linking Reasoning Behaviours to Biased Outputs in LLMs",
-    "authors": [
-      "Ramineni, Varsha",
-      "Rahmani, Hossein A.",
-      "Ramos, Jerome",
-      "Sevegnani, Karin",
-      "Yilmaz, Emine"
-    ],
-    "abstract": "LLMs exhibit social biases that can produce inaccurate and discriminatory inferences, posing risks in high-stakes applications. While prior work has made progress in measuring and mitigating bias, it largely focuses on final outputs of models, with limited understanding of the mechanisms that produce biased outcomes. Recent advances in LLM reasoning offers a new lens for investigating bias, yet the link between reasoning and bias remains poorly understood. Existing approaches focus primarily on final answer correctness or explicitly biased language, overlooking different behaviours in reasoning that can drive biased outcomes. We introduce BiasTrace, an annotation scheme for labelling reasoning behaviours in model-generated traces and linking them to biased outcomes. BiasTrace captures bias-specific behaviours (e.g., unsupported demographic assumptions) as well as general reasoning patterns that may implicitly contribute to bias (e.g. overthinking). We apply BiasTrace to reasoning traces in bias-sensitive contexts, scaled using validated LLM-as-a-judge methods, producing a large annotated dataset. Our analysis shows that biased outputs often stem from subtle reasoning behaviours rather than explicitly biased language, and that reasoning-level annotations improve bias detection. We further show that BiasTrace behaviours can be exploited for inference-time mitigation. These findings underscore the importance of examining a broader range of reasoning patterns to better understand bias in LLMs.",
-    "link": "https://arxiv.org/abs/2608.14161",
-    "published": "2026-08-14",
-    "category": "cs.AI",
-    "tags": [
-      "LLM",
-      "Bias",
-      "Reasoning",
-      "Annotation",
-      "Mitigation"
-    ],
-    "tldr": "提出BiasTrace标注方案，将LLM推理行为与偏见输出关联，发现偏见常源于微妙推理模式而非显式偏见语言。",
-    "motivation": "现有偏见研究主要关注模型最终输出，对产生偏见的推理机制理解有限，且忽略了推理中驱动偏见的不同行为。",
-    "method": "设计BiasTrace标注方案，标记推理轨迹中的偏见特定行为（如无依据的人口统计假设）和一般推理模式（如过度思考），并利用LLM-as-a-judge方法扩展标注，构建大型数据集。",
-    "result": "分析显示偏见输出常源于微妙推理行为而非显式偏见语言，推理级标注提升了偏见检测效果，且BiasTrace行为可用于推理时缓解偏见。",
-    "conclusion": "研究强调需检查更广泛的推理模式以理解LLM偏见，为偏见检测和缓解提供了新途径。"
   }
 ]
