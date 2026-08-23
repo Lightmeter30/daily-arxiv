@@ -105,6 +105,248 @@
     "conclusion": "研究表明会话式调查、结构化处理、传统行为模型、机器学习与多模态LLM可在可审计的多智能体工作流中协调，视觉上下文能为部分模型提供额外预测信息，为主动数据收集与预测集成提供新范式。"
   },
   {
+    "id": "http://arxiv.org/abs/2608.20335v1",
+    "title": "4DAnyone: Create Anyone in 4D from a Casual Monocular Video",
+    "authors": [
+      "Yudong Jin",
+      "Tao Xie",
+      "Qihang Zhang",
+      "Zehong Shen",
+      "Zhen Xu",
+      "Yujun Shen",
+      "Hujun Bao",
+      "Xiaowei Zhou",
+      "Yinghao Xu"
+    ],
+    "abstract": "We present 4DAnyone, a framework for reconstructing 4D humans from an uncalibrated monocular video by generating reconstruction-grade multiview-consistent videos and lifting them into 4D Gaussian Splatting (4DGS). Existing camera-controlled video diffusion models synthesize plausible novel-view videos but fail to maintain consistency when scaled to the tens of target views required for 4DGS reconstruction. We identify this failure as a bounded-attention-context problem: when target views exceed the capacity of a single DiT forward pass, they must be split into groups, exposing two coupled bottlenecks. On the reference-context side, conditioning on all previously generated views grows as $O(N)$, weakening cross-view appearance guidance. On the target-context side, disjoint groups cannot directly exchange information, causing global structural drift. 4DAnyone addresses both bottlenecks with two complementary designs: Reference Context Packing (RCP) compresses growing reference views into a fixed-length mixed-resolution context with $O(1)$ reference-context complexity, while Target Context Routing (TCR) rotates target-view groupings during denoising to share context across groups at high-noise steps and stabilize details at low-noise steps. We further build the MVGameHuman dataset using our in-house game engine and combine it with light-stage and in-the-wild video datasets for training. Experiments on DNA-Rendering and DyMVHumans show that 4DAnyone outperforms prior methods in both novel-view video quality and downstream 4DGS reconstruction, with robust in-the-wild generalization. See our project page for video results and source code: https://4danyone.github.io.",
+    "link": "http://arxiv.org/abs/2608.20335v1",
+    "published": "2026-08-20",
+    "category": "cs.CV",
+    "tags": [
+      "4D Reconstruction",
+      "Video Diffusion",
+      "Gaussian Splatting",
+      "Monocular Video",
+      "Human Modeling"
+    ],
+    "tldr": "4DAnyone从单目视频重建4D人体，通过解决视频扩散的多视角一致性问题并提升至4DGS。",
+    "motivation": "现有相机控制的视频扩散模型在生成数十个目标视角时无法保持一致性，难以用于4DGS重建。作者识别出这是一个有界注意力上下文问题：目标视角分组导致参考上下文呈O(N)增长削弱外观引导，且不相连的组间缺乏信息交换造成全局结构漂移。",
+    "method": "提出两个互补设计：Reference Context Packing (RCP) 将增长的参考视角压缩为固定长度混合分辨率上下文，实现O(1)复杂度；Target Context Routing (TCR) 在去噪过程中轮换目标视角分组，高噪声步共享上下文，低噪声步稳定细节。并利用自研游戏引擎构建MVGameHuman数据集，结合光stage和野外视频训练。",
+    "result": "在DNA-Rendering和DyMVHumans数据集上，4DAnyone在新视图视频质量和下游4DGS重建方面均优于先前方法，并展现出鲁棒的野外泛化能力。",
+    "conclusion": "4DAnyone有效解决了视频扩散模型在多视角生成中的一致性问题，为从单目视频重建高质量4D人体提供了可行框架，并开源数据和代码，具有应用潜力。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.20093v1",
+    "title": "HandMvNet: Real-Time 3D Hand Pose Estimation Using Multi-View Cross-Attention Fusion",
+    "authors": [
+      "Muhammad Asad Ali",
+      "Nadia Robertini",
+      "Didier Stricker"
+    ],
+    "abstract": "In this work, we present HandMvNet, one of the first real-time method designed to estimate 3D hand motion and shape from multi-view camera images. Unlike previous monocular approaches, which suffer from scale-depth ambiguities, our method ensures consistent and accurate absolute hand poses and shapes. This is achieved through a multi-view attention-fusion mechanism that effectively integrates features from multiple viewpoints. In contrast to previous multi-view methods, our approach eliminates the need for camera parameters as input to learn 3D geometry. HandMvNet also achieves a substantial reduction in inference time while delivering competitive results compared to the state-of-the-art methods, making it suitable for real-time applications. Evaluated on publicly available datasets, HandMvNet qualitatively and quantitatively outperforms previous methods under identical settings. Code is available at github.com/pyxploiter/handmvnet.",
+    "link": "http://arxiv.org/abs/2608.20093v1",
+    "published": "2026-08-20",
+    "category": "cs.CV",
+    "tags": [
+      "3D Hand Pose Estimation",
+      "Multi-View",
+      "Attention Fusion",
+      "Real-Time",
+      "Cross-Attention"
+    ],
+    "tldr": "HandMvNet利用多视角交叉注意力融合，无需相机参数即可实时估计3D手部姿态和形状，在公共数据集上超越现有方法。",
+    "motivation": "单目方法存在尺度-深度歧义，难以获得准确的绝对手部姿态和形状；现有跨视角方法需要相机参数输入且推理速度慢，难以用于实时应用。",
+    "method": "提出多视角注意力融合机制，有效整合多个视角的特征，无需相机参数即可学习3D几何信息，从而输出一致且准确的绝对手部姿态和形状。",
+    "result": "在公共数据集上与现有最优方法进行相同设置比较，HandMvNet在定性和定量上均优于先前方法，同时大幅减少推理时间，适用于实时应用。摘要未提供具体量化数值。",
+    "conclusion": "HandMvNet是首个无需相机参数即可实时估计3D手部运动和形状的多视角方法，兼顾精度与效率，为实时手部交互应用提供了可行方案，并公开代码以促进后续研究。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.20056v1",
+    "title": "Gravity-aware partially calibrated absolute pose estimation from affine- or rotation-covariant features",
+    "authors": [
+      "Marcus Valtonen Örnhag",
+      "Alberto Jaenal",
+      "Stefan Adalbjörnsson"
+    ],
+    "abstract": "Inertial measurement units (IMUs) are now standard in most consumer devices, such as smartphones, drones, and extended reality (XR) headsets. By fusing visual and inertial data, localization systems gain significantly in speed and robustness compared to vision-only or IMU-only approaches. However, traditional pose estimation methods fail to utilize the local geometric information embedded in feature descriptors like SIFT. Recent work has proved the advantages of leveraging this information for relative and absolute pose estimation, but its application to partially calibrated absolute pose estimation remains unexplored. In this paper, we derive novel constraints for joint estimation of absolute pose and focal length, making use of a gravity vector obtained from IMU data and the feature-induced local geometry, which we use to construct two efficient solvers: UP1PfAC, that operates given a single affine correspondence and UP2PfORI, which requires two orientation-covariant features. Unlike traditional, semi-calibrated absolute pose methods requiring four point correspondences, our solvers benefit from fewer samples and lower computational cost, simplifying robust estimation in modern RANSAC-like frameworks. We evaluate the proposed solvers against the state-of-the-art on large-scale public datasets and demonstrate that our method achieves fast and accurate localization and focal length estimation.",
+    "link": "http://arxiv.org/abs/2608.20056v1",
+    "published": "2026-08-20",
+    "category": "cs.CV",
+    "tags": [
+      "Absolute Pose Estimation",
+      "Affine Correspondence",
+      "Focal Length Estimation",
+      "Gravity-aware",
+      "RANSAC"
+    ],
+    "tldr": "提出利用IMU重力向量和特征局部几何的位姿与焦距联合估计求解器，基于仿射或旋转协变特征，减少所需点对应数量并提高效率。",
+    "motivation": "传统位姿估计方法未能利用特征描述子中嵌入的局部几何信息，且该信息在部分标定绝对位姿问题中的应用未被探索。融合IMU重力向量可提升估计鲁棒性，但现有方法需要多个点对应，效率较低。",
+    "method": "从IMU获取的重力向量和特征诱导的局部几何推导新约束，构造两个求解器：UP1PfAC使用单个仿射对应，UP2PfORI使用两个旋转协变特征，联合估计绝对位姿和焦距。相比传统需四个点对应的半标定方法，减少了样本数并降低计算成本。",
+    "result": "在大规模公开数据集上的评估表明，所提方法相比最先进技术实现了快速准确的位置和焦距估计，同时简化了RANSAC类框架中的鲁棒估计，具体量化指标摘要未提供。",
+    "conclusion": "贡献在于首次将特征局部几何应用于部分标定的绝对位姿估计，提出高效求解器，显著减少所需对应数量并提升计算效率，对现代鲁棒定位系统具有实际应用价值。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.20000v1",
+    "title": "Point-Based 3D Reconstruction from Sparse Views under Known Illumination",
+    "authors": [
+      "Magnus Kaufmann Gjerde",
+      "Joakim Bruslund Haurum",
+      "Jeppe Revall Frisvad",
+      "Markus Worchel",
+      "J. Andreas Bærentzen",
+      "Thomas B. Moeslund"
+    ],
+    "abstract": "Sparse view 3D reconstruction is commonly addressed with neural implicit surfaces or dense point-based representations such as Gaussian splatting. Surface-aware splatting methods improve extracted geometry through oriented primitives and regularization, while RadiosityGS incorporates differentiable light transport through a radiosity inspired finite-element surfel formulation. We propose a differentiable point rendering method based on opacity-bearing beta surfels. An opacity explicit adjoint light transport formulation provides gradients for surfel geometry and appearance parameters, allowing physically based light transport to constrain reconstruction.\n  Across five synthetic objects reconstructed from ten posed views, our method achieves the lowest mean symmetric Chamfer distance among the evaluated baselines and reduces mean Chamfer distance by 28.5% relative to the strongest point-based baseline while using only 267 surfels on average, approximately ~161 fewer primitives. Directional Chamfer results further show improved accuracy and competitive completion relative to related point-based methods. These results show that, in the controlled direct illumination setting, compact beta surfels combined with transport-based optimization can recover surfaces without relying on the tens to hundreds of thousands of primitives used by the evaluated baselines.",
+    "link": "http://arxiv.org/abs/2608.20000v1",
+    "published": "2026-08-20",
+    "category": "cs.CV",
+    "tags": [
+      "3D Reconstruction",
+      "Sparse Views",
+      "Beta Surfel",
+      "Differentiable Rendering",
+      "Light Transport"
+    ],
+    "tldr": "提出基于不透明β-surfel的可微点渲染方法，利用伴随光传输约束稀疏视角重建，仅需约267个surfel即可获得高精度表面。",
+    "motivation": "稀疏视角3D重建常依赖隐式神经表面或高斯泼溅等密集点表示，现有方法需要大量基元且几何精度有限。本文旨在利用紧凑的β-surfel和基于光传输的优化，在已知光照下以极少基元恢复高质量表面。",
+    "method": "提出一种基于不透明β-surfel的可微点渲染方法。通过显式伴随光传输公式为surfel几何与外观参数提供梯度，使基于物理的光传输约束参与重建优化，从而在不依赖大规模基元的情况下恢复表面。",
+    "result": "在五个合成物体、十视角重建实验中，平均对称Chamfer距离在所有基线中最低，比最强点基线降低28.5%，平均仅用约267个surfel（比该基线少约161个）。方向Chamfer结果显示精度提升且完整性具有竞争力。",
+    "conclusion": "在受控直接光照设置下，紧凑β-surfel结合光传输优化能以极少数量的基元有效恢复表面，无需使用数万至数十万基元，为稀疏视图重建提供了一种高效且紧凑的新方案。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.19987v1",
+    "title": "STEP: Score-Based Temporal Energy for Human Pose Video Anomaly Detection",
+    "authors": [
+      "Jakub Micorek",
+      "Mateusz Koziński",
+      "Horst Possegger"
+    ],
+    "abstract": "Skeleton-based Video Anomaly Detection (VAD) offers a robust, privacy-preserving solution for identifying abnormal behaviors. To model the distribution of normal static and moving poses, recent methods train Energy-Based Models (EBMs) via Denoising Score Matching (DSM). However, directly injecting noise, required for training, into raw joint coordinates creates physically impossible poses, and this structural collapse severely worsens as the temporal window expands. To address this, we introduce STEP, a simple framework that utilizes Principal Component Analysis (PCA) to project pose sequences into a compact, whitened PC-space. Learning the data density within this well-behaved PC-space ensures that the injected noise translates into physically plausible variations, which allows the model to process longer video sequences without the performance collapse of raw coordinate baselines. Additionally, to mitigate inherent pose estimation inaccuracies arising from occlusions or motion blur, we integrate a sequence-level weighting mechanism based on the estimator's confidence scores. Operating at real-time computational efficiency, our simple and lightweight framework outperforms the previous skeleton-based state-of-the-art by 12.2% (90.1% AUROC) on the challenging UBnormal dataset and achieves highly competitive results by improving on the ShanghaiTech benchmark.",
+    "link": "http://arxiv.org/abs/2608.19987v1",
+    "published": "2026-08-20",
+    "category": "cs.CV",
+    "tags": [
+      "Skeleton-based VAD",
+      "Energy-Based Models",
+      "PCA",
+      "Anomaly Detection",
+      "Pose Estimation"
+    ],
+    "tldr": "STEP提出基于PCA白化空间和置信度加权的骨架视频异常检测框架，在UBnormal上达到90.1% AUROC，超越此前最优12.2%。",
+    "motivation": "现有方法在原始关节坐标上训练能量模型时，注入噪声会产生物理上不可能的姿态，且随着时间窗口扩大性能急剧下降；同时姿态估计受遮挡和运动模糊影响存在不准确性。",
+    "method": "利用主成分分析（PCA）将姿态序列投影到紧凑的白化主成分空间，在该空间中学习数据密度，使噪声变为物理可行的变化；并结合估计器置信度进行序列级加权，以缓解姿态估计误差。",
+    "result": "在UBnormal数据集上以90.1% AUROC超越此前骨架方法12.2%，并在ShanghaiTech基准上取得具有竞争力的提升，同时保持实时计算效率。",
+    "conclusion": "STEP框架简单轻量，有效解决噪声注入导致的结构崩溃问题，能处理更长序列，且对姿态噪声鲁棒，为骨架视频异常检测提供了新的SOTA方案。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.19968v1",
+    "title": "PVRA: A Pointwise Key-point Voting Framework for Robotic Assembly",
+    "authors": [
+      "Kulunu Samarawickrama",
+      "Roel Pieters"
+    ],
+    "abstract": "Modern computer vision has enabled partial autonomy in robotic assembly manipulation. However, performing autonomous manipulation of a progressive assembly demands a more specific set of skills, in addition to perceiving the objects. Through a comparative analysis of research in the associated domains, we deduce that object-centric perception must advance towards learning assembly dependencies to predict meaningful actionable outputs for autonomous assembly manipulation. Subsequently, we present a 3D keypoint-based modular learning framework to learn assembly dependencies to infer actionable outputs given a RGB-D input of an assembly scene. We train and evaluate our trained network on an assembly pose estimation dataset and compare it against object-centric baselines with an augmented set of metrics for progressive assemblies.",
+    "link": "http://arxiv.org/abs/2608.19968v1",
+    "published": "2026-08-20",
+    "category": "cs.CV",
+    "tags": [
+      "Robotic Assembly",
+      "Keypoint Voting",
+      "3D Vision",
+      "RGB-D Perception",
+      "Assembly Dependencies"
+    ],
+    "tldr": "提出基于3D关键点投票的模块化框架PVRA，学习装配依赖关系，从RGB-D输入预测可执行输出以实现自主装配。",
+    "motivation": "现代视觉技术仅实现部分自主装配，而渐进式装配的自主操作需要更具体的技能，不仅是物体感知。因此需从物体中心感知转向学习装配依赖关系，以预测有意义的可执行输出。",
+    "method": "提出一个基于3D关键点的模块化学习框架，通过点级关键点投票学习装配依赖，从装配场景的RGB-D输入推断可执行输出。在装配位姿估计数据集上训练，并与物体中心基线方法对比，采用针对渐进式装配的增强指标。",
+    "result": "摘要未提供具体量化指标，但报告了在装配位姿估计数据集上的训练与评估结果，以及与物体中心基线的对比。",
+    "conclusion": "该框架通过学习装配依赖关系，为自主装配操作提供了新途径，超越了纯物体感知。其模块化设计可能促进可迁移的装配技能学习，对复杂装配任务具有潜在应用价值。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.19894v1",
+    "title": "Unified and Efficient Point-Line Local Features",
+    "authors": [
+      "François Costa",
+      "Raphael Kreft",
+      "Eckhard Goedeke",
+      "Felix Möller",
+      "Hardik Shah",
+      "Ramanathan Rajaraman",
+      "Shaohui Liu",
+      "Rémi Pautrat",
+      "Marc Pollefeys"
+    ],
+    "abstract": "Multi-view computer vision pipelines typically rely on accurate sparse keypoints and robust descriptors. While incorporating line features has shown clear benefits for matching and pose estimation, existing point-line approaches remain inefficient: they detect points and lines separately, use increasingly heavy networks, and depend on CPU-bound heuristics that hinder real-time performance. We introduce a Unified Efficient Points and Lines (UPAL) feature extractor that jointly extracts keypoints, line segments, and feature descriptors within a single lightweight architecture. A shared backbone provides common representations that feed different branches for point and line features. Line segments are recovered through an accelerated post-processing stage, an enhanced and highly efficient variant of the LSD algorithm. UPAL matches or exceeds state-ofthe-art performance in both point and line applications while significantly reducing computational cost, achieving, for instance, a 4x speedup and 10x smaller memory footprint over the ALIKED + DeepLSD pipeline. Code is publicly available at https://github.com/francois141/upal.",
+    "link": "http://arxiv.org/abs/2608.19894v1",
+    "published": "2026-08-20",
+    "category": "cs.CV",
+    "tags": [
+      "Local Features",
+      "Point-Line",
+      "Efficiency",
+      "Deep Learning",
+      "Pose Estimation"
+    ],
+    "tldr": "提出UPAL，一个轻量级联合提取点、线和描述子的统一特征提取器，实现4倍加速和10倍内存缩减。",
+    "motivation": "现有点线特征方法效率低下：点和线分别检测，网络日益沉重，并依赖CPU端启发式算法，阻碍实时性能。",
+    "method": "UPAL采用共享骨干网络提供公共表示，分支出点和线特征；线段通过增强的高效LSD变体后处理获得。",
+    "result": "在点和线应用中匹配或超越现有最先进性能，同时显著降低计算成本，例如相比ALIKED+DeepLSD达到4倍加速和10倍内存缩减。",
+    "conclusion": "贡献了统一高效的点和线特征提取器，并公开代码，有潜力提升多视图视觉管线的实时性能。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.19693v1",
+    "title": "RIPE++: Reinforced Keypoint Learning from Positive Pairs Only",
+    "authors": [
+      "Johannes Künzel",
+      "Peter Eisert",
+      "Anna Hilsmann"
+    ],
+    "abstract": "Sparse keypoint extraction and matching underpin core tasks in geometric computer vision, including structure-from-motion, visual SLAM, augmented reality, and medical image registration. Learning robust local feature representations, however, typically requires accurate camera poses or depth supervision, which are often unavailable in real-world settings. Reinforcement learning (RL) has recently emerged as a promising alternative, requiring only the information if two images show the same scene or not. However, existing RL formulations such as RIPE rely on coarse binary rewards and carefully constructed negative training pairs, limiting training stability and descriptor discriminability. In this paper, we revisit RL-based keypoint learning and propose a reward that fully exploits the geometric consistency signal, deriving both reward and penalty from a single positive pair without contrasting against negatives. This richer signal provides sufficient supervisory contrast to learn discriminative detectors and descriptors from positive image pairs alone, enabling representation learning under extremely limited supervision. Furthermore, we show that the same RL objective can be extended to the matching stage by adapting LightGlue, raising AUC@5 on MegaDepth1500 from 56.58 to 59.65 and enabling weakly-supervised training of the full sparse matching pipeline from image pairs with partial visual overlap. We validate our approach on established benchmarks, demonstrating competitive results compared to fully-supervised methods. We further show that the method can be even trained on low texture medical video sequences, where camera poses are usually unavailable and standard SfM pipelines often fail. Code and data are available at https://github.com/fraunhoferhhi/RIPEpp .",
+    "link": "http://arxiv.org/abs/2608.19693v1",
+    "published": "2026-08-20",
+    "category": "cs.CV",
+    "tags": [
+      "Keypoint Learning",
+      "Reinforcement Learning",
+      "Positive Pairs",
+      "Local Features",
+      "Sparse Matching"
+    ],
+    "tldr": "仅用正图像对的强化学习即可训练关键点检测与描述子，并通过LightGlue扩展至匹配阶段，实现无需位姿的弱监督匹配。",
+    "motivation": "现有基于强化学习的特征学习方法依赖粗粒度二元奖励和精心构造的负样本对，导致训练不稳定、描述子判别力不足；且传统方法通常需要相机位姿或深度监督，在真实场景中难以获得。",
+    "method": "提出从单个正样本对中同时导出奖励和惩罚的几何一致性奖励，完全避免负样本对比；并将该强化学习目标扩展至匹配阶段，通过改编LightGlue实现整个稀疏匹配管道的弱监督训练，支持部分重叠的图像对。",
+    "result": "在MegaDepth1500上，将AUC@5从56.58提升至59.65；与全监督方法相比取得有竞争力的结果；还能在低纹理医学视频序列上训练，而标准SfM流程往往在此类数据上失败。",
+    "conclusion": "RIPE++证明仅依赖正图像对即可学习判别性关键点检测器与描述子，极大降低监督需求，可推广到医学视频等相机位姿缺失的场景，并提供了开源代码与数据。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.19556v1",
+    "title": "Stream4D: 4D-Consistency for Streaming Autoregressive Diffusion Video Models",
+    "authors": [
+      "Yuanhao Ban",
+      "Jiaqi Feng",
+      "Hengguang Zhou",
+      "Xiaohuan Pei",
+      "Justin Cui",
+      "Cho-Jui Hsieh"
+    ],
+    "abstract": "Streaming autoregressive diffusion models enable real-time, long-horizon video generation, but their training objectives optimize local frame prediction rather than the geometry and dynamics of a coherent world: long rollouts accumulate geometric drift and degrade into static or unnatural motion. Recent bidirectional approaches address this problem using rewards signals built upon 3D Gaussian-Splatting reconstruction. However, a single rigid 3d reconstruction cannot model a dynamic scene, so this critic penalizes genuine object motion as reconstruction error and is maximized by freezing the video. This shortcut is especially detrimental in the AR setting, where each chunk can propagate an already-static configuration. In this work, we propose Stream4D, which replaces the static critic with a feed-forward 4D reconstruction reward that explicitly models scene dynamics, allowing coherent motion to receive high consistency rewards. To further guide motion magnitude and quality, we add a motion prior that rewards natural scene-flow magnitude while penalizing jitter and non-rigid artifacts. Our final recipe combines these two terms with a lightweight perceptual anchor. Across various autoregressive video backbones and various generation horizons, Stream4D improves 4D reconstruction quality, preserves motion more effectively, and achieves higher human-aligned preference. Project page: https://banyuanhao.github.io/Stream4D/",
+    "link": "http://arxiv.org/abs/2608.19556v1",
+    "published": "2026-08-20",
+    "category": "cs.CV",
+    "tags": [
+      "Video Generation",
+      "Autoregressive Diffusion",
+      "4D Reconstruction",
+      "Motion Prior",
+      "Reward Modeling"
+    ],
+    "tldr": "Stream4D 提出以 4D 重建奖励与运动先验取代静态 3D 评论家，提升自回归扩散视频模型的长期一致性与运动质量。",
+    "motivation": "流式自回归扩散视频模型在长程生成中因局部帧预测导致几何漂移和运动退化；现有基于静态 3D 重建的奖励会惩罚真实运动，并诱发冻结视频的捷径。",
+    "method": "Stream4D 使用前馈 4D 重建奖励显式建模场景动态，并加入基于场景流幅度与抖动抑制的运动先验，再结合轻量感知锚点组成最终训练目标。",
+    "result": "在多种自回归视频骨干和不同生成时长下，Stream4D 提升了 4D 重建质量，更有效地保持运动，并取得更高的人类对齐偏好。",
+    "conclusion": "贡献在于提出动态一致的奖励配方，抑制静态捷径，提升长视频生成的真实感；潜在影响是可应用于实时长时程视频生成的训练与微调。"
+  },
+  {
     "id": "https://arxiv.org/abs/2608.19066",
     "title": "GS-VLA: Plug-and-Play Viewpoint Canonicalization for Frozen VLA Policies via Gaussian Splatting",
     "authors": [
@@ -477,135 +719,5 @@
     "method": "针对内存受限前端设计分辨率自适应量化深度排序键压缩至32位；针对计算受限光栅化利用不透明度剔除后指数范围有界，提出范围感知的位级快速指数近似并给出逐像素误差界；辅以内核融合、紧凑属性存储、剔除、双像素评估等优化。",
     "result": "在RTX 4090上4K分辨率相比3DGS获得10.1倍端到端加速，吞吐从61 FPS提升到616 FPS，PSNR仅损失0.028 dB。",
     "conclusion": "RoofGS展示了基于Roofline瓶颈制导的定制优化可显著加速3DGS，为高分辨率实时渲染提供高效方案；方法具有通用性，可启发其他GPU渲染管线的瓶颈感知优化。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2608.15420",
-    "title": "HistReNeRF: Historic Image Relocalisation within Contemporary Neural Radiance Field Reconstructions",
-    "authors": [
-      "Hughes, Benjamin T.",
-      "James, Stuart"
-    ],
-    "abstract": "Relocalising archival photographs within a contemporary scene model is challenging because historic and modern views can differ in photographic appearance, visible objects, and spatial layout. Therefore, we present HistReNeRF, a framework that estimates the 6-DoF pose of a historic photograph by matching adapted DINOv2 patch features to candidate rays sampled from a contemporary Neural Radiance Field (NeRF) reconstruction. The continuous representation of a NeRF provides a queryable scene interface from which candidate rays can be sampled and matched, enabling domain adaptation between historic photography and contemporary images directly in the feature representation used for localisation. We evaluate embedding-space-based domain adaptation against pixel-space methods on a new cross-temporal dataset comprising 10,545 contemporary street-level images and 230 archival photographs from three European landmarks. Embedding-space adaptation reduces translation and rotation errors by an average of 11% and 16%, respectively, across the three scenes. These results show that neural scene relocalisation provides a natural interface for feature-space adaptation, reducing cross-temporal appearance shift without modifying the query image. Code and dataset at this https URL .",
-    "link": "https://arxiv.org/abs/2608.15420",
-    "published": "2026-08-15",
-    "category": "cs.CV",
-    "tags": [
-      "NeRF",
-      "Visual Localization",
-      "DINOv2",
-      "Domain Adaptation",
-      "Historic Images"
-    ],
-    "tldr": "HistReNeRF利用NeRF与DINOv2特征将历史照片重定位到当代三维场景中，嵌入空间适应显著降低位姿误差。",
-    "motivation": "历史照片与当代场景在视觉外观、可见物体和空间布局上差异显著，导致传统重定位方法难以适用，需要跨时间域适应的解决方案。",
-    "method": "提出了HistReNeRF框架，通过将自适应DINOv2补丁特征与从当代NeRF重建中采样的候选射线进行匹配来估计历史照片的6自由度位姿。NeRF作为可查询的场景接口，直接在特征表示中进行域适应，避免修改查询图像。",
-    "result": "在包含10,545张当代街景图像和230张历史照片的跨时间数据集上，嵌入空间域适应使平移和旋转误差分别平均降低11%和16%。",
-    "conclusion": "神经场景重定位为特征空间适应提供了自然接口，能有效减少跨时间外观偏移，且无需改动查询图像本身，代码与数据集已公开。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2608.15297",
-    "title": "TinyDETR-Pose: Towards End-to-End Real-Time Single-Stage 6DoF Object Pose Estimation with Lightweight Transformers",
-    "authors": [
-      "Kühn, Paul Julius",
-      "Nguyen, Duc Anh",
-      "Sinha, Saptarshi Neil",
-      "Weinmann, Michael",
-      "Kuijper, Arjan"
-    ],
-    "abstract": "Real-time 6DoF object pose estimation on resource-constrained hardware remains challenging, as accurate correspondence-based and refinement pipelines typically rely on non-differentiable PnP/RANSAC stages or costly iterative refinement, while recent foundation-model-based approaches incur inference costs that are prohibitive for edge deployment. We present TinyDETR-Pose, a lightweight, end-to-end, single-stage framework that jointly detects objects and regresses their full 6D pose in a single forward pass. Built on the efficient LW-DETR architecture, TinyDETR-Pose formulates detection and pose estimation as a set-prediction problem and attaches dedicated MLP heads for rotation, monocular depth, and projected object center regression to each decoder query, eliminating the need for PnP, NMS (non-maximum suppression), or iterative pose refinement. Object symmetries are handled through a ADD-S loss applied uniformly to all objects, without the need for object-specific loss schedules or separate geodesic/ADD supervision. In addition, predictions are assigned to ground truth using a symmetry-safe Hungarian matcher based on class and 2D spatial cues, yielding stable assignment under symmetry and depth ambiguity. On YCB-V, TinyDETR-Pose achieves a comparable ADD-S AUC of 85.9, while requiring up to 72.7% fewer parameters than other DETR-based single-stage pose-estimation approaches. Due to its compact design, TinyDETR-Pose runs in real time and achieves an inference latency of only ~4.5 ms per frame on an NVIDIA Jetson Nano using TensorRT, demonstrating that accurate end-to-end transformer-based 6D pose estimation can be made practical for edge deployment.",
-    "link": "https://arxiv.org/abs/2608.15297",
-    "published": "2026-08-15",
-    "category": "cs.CV",
-    "tags": [
-      "6DoF Pose Estimation",
-      "Transformer",
-      "Real-time",
-      "Edge Deployment"
-    ],
-    "tldr": "提出TinyDETR-Pose，一种基于轻量Transformer的端到端单阶段6D姿态估计方法，可在边缘设备上实时运行。",
-    "motivation": "现有基于对应关系的姿态估计方法依赖非可微的PnP/RANSAC或昂贵的迭代优化，而基于基础模型的方法推理成本过高，难以在资源受限的硬件上实现实时6DoF姿态估计。",
-    "method": "基于LW-DETR架构，将检测与姿态估计建模为集合预测问题，通过解码器查询附加MLP头直接回归旋转、单目深度和物体中心投影，无需PnP、NMS及迭代优化；使用均匀应用的ADD-S损失处理对称性，并采用基于类别与2D空间线索的对称安全Hungarian匹配器进行预测分配。",
-    "result": "在YCB-V数据集上达到85.9的ADD-S AUC，相比其他基于DETR的单阶段方法参数减少最多72.7%，在NVIDIA Jetson Nano上通过TensorRT推理延迟仅约4.5毫秒/帧。",
-    "conclusion": "TinyDETR-Pose证明了端到端基于Transformer的6D姿态估计可以在边缘设备上实现高精度与实时性能，为资源受限场景提供了实用解决方案。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2608.15260",
-    "title": "VGGT-Align: Bridging Local Reconstruction and Global Consistency for Long-Sequence 3D Reconstruction",
-    "authors": [
-      "Zhang, Wei",
-      "Wu, Yihang",
-      "Li, Songhua",
-      "Wang, Qi"
-    ],
-    "abstract": "Maintaining global geometric consistency is a central challenge in long-sequence 3D reconstruction, with scale drift being the most critical failure mode. In chunk-based inference pipelines, the scale degree of freedom in sequential Sim(3) alignment is left unconstrained, causing estimation errors to compound multiplicatively and distort global trajectories and point cloud geometry. We present a scale-consistency enhancement framework built on a key insight: in structured environments such as driving scenes, geometric quantities arising from environmental regularity remain inherently invariant across temporal segments, and discrepancies in their per-chunk measurements directly expose inter-chunk scale drift. We propose Scene Geometric Invariant Anchoring (SGIA), which extracts dominant geometric invariants from each chunk's predicted point cloud via coarse-to-fine robust estimation and exploits their cross-chunk consistency to establish scale constraints independent of point cloud registration, explicitly degenerating 7-DoF Sim(3) alignment into 6-DoF rigid-body transformation and severing chain-wise scale error propagation at its source. We further introduce a lightweight test-time adaptation strategy that fine-tunes only normalization-layer parameters via multi-objective self-supervision, progressively improving intra-chunk predictions along the sequence. Both modules are plug-and-play and require no offline retraining. Experiments on multiple long-sequence benchmarks demonstrate state-of-the-art performance, reducing absolute trajectory error by up to 32% with significant gains in trajectory stability and reconstruction quality. Code: this https URL",
-    "link": "https://arxiv.org/abs/2608.15260",
-    "published": "2026-08-15",
-    "category": "cs.CV",
-    "tags": [
-      "3D Reconstruction",
-      "Scale Consistency",
-      "Sim(3) Alignment",
-      "Test-Time Adaptation",
-      "Geometric Invariants"
-    ],
-    "tldr": "提出VGGT-Align框架，利用场景几何不变性锚定和测试时自适应，将Sim(3)对齐退化为刚体变换，显著降低长序列三维重建的尺度漂移与轨迹误差。",
-    "motivation": "长序列三维重建中尺度漂移是核心问题，分块推理的Sim(3)对齐未约束尺度自由度，导致误差乘性累积，破坏全局轨迹和点云几何一致性。",
-    "method": "提出场景几何不变性锚定方法，通过粗到细鲁棒估计各块点云的几何不变量，利用跨块一致性建立尺度约束，将7自由度Sim(3)对齐退化为6自由度刚体变换；并引入轻量级测试时自适应，仅微调归一化层参数，逐步改善块内预测。",
-    "result": "在多个长序列基准上取得最先进性能，绝对轨迹误差最高降低32%，轨迹稳定性和重建质量均有显著提升。",
-    "conclusion": "VGGT-Align为即插即用的框架，无需离线重训即可切断链式尺度误差传播，为长序列三维重建提供了有效的全局一致性增强方案。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2608.15251",
-    "title": "Robust structure from motion for aerial-ground images via detector-free feature matching and multi-view track refinement",
-    "authors": [
-      "Jiang, San",
-      "Wang, Hui",
-      "Zhang, Xing",
-      "Hu, Zhongwen",
-      "Wang, Zhijun",
-      "Wang, Ruisheng",
-      "Jiang, Wanshou",
-      "Li, Qingquan"
-    ],
-    "abstract": "Integrated 3D reconstruction from aerial-ground images is essential for generating high-precision urban 3D models, yet severe variations in viewpoint, scale, and rotation make robust feature matching highly challenging. To address these limitations, this study introduces a rotation-robust detector-free matching network coupled with multi-view track refinement for incremental Structure from Motion (ISfM). The proposed workflow features four key modules. First, rotation-aware feature extraction replaces traditional convolutions with an Omnidirectional State Space Block (OSS Block) that selectively scans across eight symmetrical directions to model long-range spatial dependencies and synthesize rotation-invariant feature maps. Second, multi-scale attention transformation utilizes quadtree attention to build a hierarchical token pyramid that isolates high-association token regions and discards irrelevant areas, capturing long-range context with linear computational complexity. Third, bi-directional feature matching executes a symmetric coarse-to-fine matching scheme where coarse alignment computes dual-direction Softmax confidence matrices under mutual nearest neighbor constraints, and fine alignment uses a multi-layer perceptron to regress sub-pixel coordinate offsets. Finally, multi-view track refinement employs an integrated indexing structure to evaluate localized spatial proximity and link disjoint sub-tracks to the highest-confidence anchor point, ensuring stable feature repeatability across the ISfM pipeline. By using real aerial-ground datasets, experimental results demonstrate that the proposed method improves AUC at 5° pose error by 93.9% compared with LoFTR and achieves the highest precision in ISfM reconstruction, with the improved accuracy ranging from 27.6% to 32.7%. The proposed method provides a reliable solution for integrated 3D reconstruction of aerial-ground images.",
-    "link": "https://arxiv.org/abs/2608.15251",
-    "published": "2026-08-15",
-    "category": "cs.CV",
-    "tags": [
-      "Structure from Motion",
-      "Feature Matching",
-      "Aerial-Ground Images",
-      "Detector-free",
-      "Track Refinement"
-    ],
-    "tldr": "提出旋转鲁棒的免检测器匹配网络与多视图轨迹优化，显著提升航地图像三维重建精度。",
-    "motivation": "航地图像集成三维重建中视点、尺度和旋转差异大，导致特征匹配鲁棒性差，难以实现高精度重建。",
-    "method": "提出旋转鲁棒免检测器匹配网络结合多视图轨迹优化用于增量SfM。包含旋转感知特征提取（OSS Block八方向扫描）、多尺度注意力变换（四叉树注意力）、双向特征匹配（对称粗细匹配）和多视图轨迹优化（集成索引结构）。",
-    "result": "在真实航地数据集上，5°姿态误差AUC较LoFTR提升93.9%，ISfM重建精度提升27.6%至32.7%，达到最高精度。",
-    "conclusion": "为航地图像集成三维重建提供了可靠方案，核心贡献在于旋转鲁棒特征匹配和轨迹优化，显著提升重建精度，具有实际应用价值。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2608.15165",
-    "title": "SkillCommit: Evolving Agent Skills through Behaviorally Validated Scope Expansion",
-    "authors": [
-      "He, Yu",
-      "Yang, Weikai"
-    ],
-    "abstract": "Large language model (LLM) agents can continually improve without parameter updates by converting historical experience into reusable procedural knowledge. However, existing methods often consolidate experience based on semantic similarity or LLM judgments, which may merge superficially related but behaviorally incompatible strategies and thereby degrade performance. To address the issue, we propose SkillCommit, an online skill evolution framework that continuously transforms experience into a hierarchical library of reusable skills. Each new experience is initially preserved as an instance-specific patch, retaining the behavior validated in its local context. As related skills accumulate, SkillCommit abstracts those sharing a common behavioral mechanism into higher-level skills. Specifically, for each incoming skill, embedding-based retrieval first identifies candidate related skills. Cross-instance replay and an LLM-based mechanism check determine whether these skills transfer across cases and share a common underlying mechanism. Candidates that pass both checks are abstracted into a higher-level skill and committed only if it preserves the validated behavior of all constituent skills. Experiments on RuleArena, OpenExempt and KOR-Bench demonstrate that SkillCommit consistently improves agent performance across diverse domains. Moreover, the learned skills transfer across model scales and families, enabling cross-model experience transfer.",
-    "link": "https://arxiv.org/abs/2608.15165",
-    "published": "2026-08-15",
-    "category": "cs.AI",
-    "tags": [
-      "Skill Evolution",
-      "LLM Agents",
-      "Hierarchical Skills",
-      "Behavior Validation",
-      "Procedural Knowledge"
-    ],
-    "tldr": "SkillCommit通过行为验证的范围扩展，将经验分层抽象为可复用技能，持续提升LLM代理性能。",
-    "motivation": "现有方法常基于语义相似性合并经验，可能合并表面相关但行为不兼容的策略，导致性能下降。",
-    "method": "SkillCommit为每个新经验保留实例级补丁，通过嵌入检索找出候选相关技能，再用跨实例回放和LLM机制检查判断是否共享共同机制，只有保持所有组成技能行为一致时才抽象并提交为更高级技能。",
-    "result": "在RuleArena、OpenExempt和KOR-Bench上一致提升代理性能，且技能可跨模型规模和家族迁移。",
-    "conclusion": "SkillCommit通过行为验证的范围扩展实现了安全的技能抽象，提升了泛化能力，并支持跨模型经验迁移，具有广泛适用性。"
   }
 ]
