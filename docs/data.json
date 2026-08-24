@@ -1,5 +1,144 @@
 [
   {
+    "id": "http://arxiv.org/abs/2608.21066v1",
+    "title": "Robust Validation to Geometric Perturbations for Autonomous Pose Estimation",
+    "authors": [
+      "Gregoire Theau",
+      "Melanie Ducoffe"
+    ],
+    "abstract": "Deploying autonomous systems in safety-critical domains demands guaranteed robustness against physically plausible geometric perturbations rather than abstract pixel-wise noise. In vision-based navigation and autonomous landing, machine learning components require rigorous validation under dynamic operational conditions such as camera rotations and lighting shifts. Extending findings on the failure of first-order spatial attacks in classification, we show that standard gradient-based heuristics (e.g. APGD) similarly fail on for pose estimation, often performing worse than a simple random sampling baseline.\n  To overcome these optimization bottlenecks, we reformulate pose estimation robustness within the framework of Global Lipschitzian Optimization (GLO). We argue that GLO offers a principled approach to robust validation, effectively localizing global optima with strong theoretical convergence guarantees. We evaluate this framework on a YOLOv8-Pose keypoint detector with a Perspective-n-Point (PnP) solver against rotation and contrast. In our evaluations, GLO successfully isolates critical failure modes where position deviations exceed safe operational limits, while rapidly pruning the search space by over 80%. To the best of our knowledge, this is the first study to extend geometric robustness validation to continuous keypoint regression and deep object detection, establishing a practical step toward certifying robust autonomous perception.",
+    "link": "http://arxiv.org/abs/2608.21066v1",
+    "published": "2026-08-21",
+    "category": "cs.CV",
+    "tags": [
+      "Pose Estimation",
+      "Robustness",
+      "Lipschitzian Optimization",
+      "Geometric Perturbations",
+      "Autonomous Systems"
+    ],
+    "tldr": "提出用全局Lipschitz优化验证位姿估计对几何扰动的鲁棒性，优于梯度攻击并剪枝80%搜索空间。",
+    "motivation": "自主系统在安全关键领域部署时，需要保证对物理几何扰动的鲁棒性，但标准梯度攻击（如APGD）在姿态估计任务中表现不佳，甚至不如随机采样基线。",
+    "method": "将姿态估计鲁棒性验证重新表述为全局Lipschitz优化（GLO）问题，利用理论收敛保证定位全局最优点，并在YOLOv8-Pose关键点检测器配合PnP求解器上针对旋转和对比度扰动进行评估。",
+    "result": "GLO能够快速剪枝超过80%的搜索空间，并成功隔离位置偏差超出安全操作极限的关键失败模式。",
+    "conclusion": "首次将几何鲁棒性验证扩展到连续关键点回归和深度目标检测，为认证自主感知的鲁棒性迈出实际一步。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.20759v1",
+    "title": "DiGS-Avatar: Single-Image Animatable 3D Human Reconstruction via UV-Space Diffusion",
+    "authors": [
+      "Jiakun Li",
+      "Li Fang",
+      "Hao Zhu",
+      "Fei Hu",
+      "Long Ye",
+      "Yuan Zhang",
+      "Jinyao Yan"
+    ],
+    "abstract": "Single-image 3D human reconstruction often suffers from over-smoothed textures and geometric inconsistencies. While diffusion models improve generative quality, their reliance on multi-view synthesis prior to 3D reconstruction is computationally expensive and prone to view inconsistency. We propose DiGS-Avatar, which reformulates this task as an efficient, diffusion-based UV-latent completion task, ensuring 3D consistency by design. To capture accurate spatial structure, we introduce a teacher-student framework where a multi-view teacher provides geometrically aligned pseudo-ground-truth latents to supervise a single-view diffusion student. Treating this inferred latent as a robust structural skeleton, our method injects high-level semantic features to accurately recover fine textural details without disrupting spatial integrity. The refined representation is then decoded into 3D Gaussian primitives. Extensive experiments demonstrate that DiGS-Avatar achieves state-of-the-art or highly competitive visual fidelity and zero-shot generalization, while reconstructing a fully animatable 3D avatar in just 0.71 seconds. Code is available at https://github.com/KLMAV-CUC/DiGS-Avatar.",
+    "link": "http://arxiv.org/abs/2608.20759v1",
+    "published": "2026-08-21",
+    "category": "cs.CV",
+    "tags": [
+      "3D Human Reconstruction",
+      "Diffusion Models",
+      "UV-Space",
+      "Gaussian Splatting",
+      "Single-Image"
+    ],
+    "tldr": "提出DiGS-Avatar，将单图3D人体重建视为UV潜在补全任务，用教师-学生框架生成3D一致的高斯体，0.71秒完成。",
+    "motivation": "单图3D人体重建常存在纹理过平滑和几何不一致问题；扩散模型虽提升生成质量，但依赖多视图合成，计算昂贵且易产生视图不一致。",
+    "method": "将任务重构为高效的基于扩散的UV潜在补全，通过教师-学生框架，多视图教师提供几何对齐的伪真值潜在变量监督单视图学生；将推断潜在变量作为结构骨架，注入高层语义特征恢复精细纹理，最后解码为3D高斯原语。",
+    "result": "在视觉保真度和零样本泛化上达到最先进或极具竞争力的性能，重建一个完全可动画的3D替身仅需0.71秒。",
+    "conclusion": "提出了一种高效且保证3D一致性的单图可动画人体重建方法，代码已开源，潜在影响是为实时虚拟化身创建提供新范式。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.20748v1",
+    "title": "Generating Multi-view Adversarial Examples for Visual Geometry Grounded Transformer",
+    "authors": [
+      "Qi Song",
+      "Ziyuan Luo",
+      "Haoliang Han",
+      "Renjie Wan"
+    ],
+    "abstract": "The Visual Geometry Grounded Transformer (VGGT) enables unified feed-forward 3D reconstruction from multi-view images. However, deploying such a high-performance model may expose critical security vulnerabilities. Traditional adversarial perturbations require costly per-scene optimization, while Universal Adversarial Perturbations (UAPs) rely on a single static pattern and fail to effectively attack VGGT. To address these limitations, we propose \\textbf{MVAP-G}, a multi-view adversarial perturbation generator that produces imperceptible consistent perturbations across multiple views in a single feed-forward pass. To ensure perturbation consistency across diverse scenes, we design a cross-view adversarial alignment mechanism to process multi-view images. Experiments demonstrate that MVAP-G significantly degrades VGGT performance without iterative optimization during inference. This work pioneers multi-view adversarial attacks on 3D foundation models, uncovering severe vulnerabilities and underscoring the urgent need for robust 3D vision systems. The code is available at https://github.com/qsong2001/mvap-g.",
+    "link": "http://arxiv.org/abs/2608.20748v1",
+    "published": "2026-08-21",
+    "category": "cs.CV",
+    "tags": [
+      "Adversarial Attack",
+      "3D Reconstruction",
+      "Multi-view",
+      "VGGT",
+      "Foundation Model"
+    ],
+    "tldr": "提出MVAP-G，一种单次前向生成多视角一致对抗扰动的方法，可有效攻击VGGT三维重建模型。",
+    "motivation": "VGGT等三维重建模型存在安全隐患，传统逐场景优化攻击成本高，而通用对抗扰动(UAPs)单一静态模式难以有效攻击VGGT。",
+    "method": "设计多视角对抗扰动生成器MVAP-G，通过跨视角对抗对齐机制处理多视角图像，在单次前向传播中生成不可察觉且一致的扰动。",
+    "result": "实验表明MVAP-G无需迭代优化即可显著降低VGGT的重建性能。",
+    "conclusion": "该工作首次对三维基础模型发起多视角对抗攻击，揭示其严重安全漏洞，强调发展鲁棒三维视觉系统的紧迫性，并开源代码。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.20740v1",
+    "title": "VisTa3D: A Dataset and Benchmark for Thin Object Reconstruction from Vision, Tactile, and 3D Point Clouds",
+    "authors": [
+      "Shania Guo",
+      "Yeongsik Seo",
+      "Andrew Fu",
+      "Mei Hao",
+      "Iris Xia",
+      "Jiwon Jenny Lee",
+      "Xinyi Mary Xie",
+      "Hyoungseob Park",
+      "Aaron Dollar",
+      "Alex Wong"
+    ],
+    "abstract": "State-of-the-art 3D reconstruction models, whether from visual, range, or both, tend to underperform on thin objects. This is partially due to the small amount of space such objects occupy in RGB images and in 3D point clouds. To test the extent of their errors, we collected the first thin object dataset comprising of synchronized RGB images, depth maps, and tactile response maps, where each frame is associated with inertial measurements, camera pose and calibration, and groundtruth depth and segmentation maps obtained from laser scanning of thin objects. We hypothesize that tactile data can aid in the reconstruction of thin objects as their response maps provide local shape and deformation information. Our dataset, termed VisTa3D, comprises of 387 scenes covering 70 thin objects over 17 environments. We benchmarked current 3D reconstruction models on VisTa3D and found that, indeed, they exhibit low fidelity on thin objects. To test if tactile data can help, we introduce the first visual-range-tactile 3D reconstruction model as a baseline. Code and data: https://huggingface.co/datasets/shaniaguo/VisTa3D.",
+    "link": "http://arxiv.org/abs/2608.20740v1",
+    "published": "2026-08-21",
+    "category": "cs.CV",
+    "tags": [
+      "3D Reconstruction",
+      "Thin Objects",
+      "Tactile Sensing",
+      "Dataset",
+      "Benchmark"
+    ],
+    "tldr": "VisTa3D是首个面向薄物体的视觉-深度-触觉3D重建数据集与基准，验证了触觉数据对薄物体重建的辅助作用。",
+    "motivation": "现有3D重建模型在薄物体上表现不佳，因为薄物体在RGB图像和点云中占空间小。需要专门数据集和基准来量化误差，并探索触觉数据能否帮助改善重建。",
+    "method": "构建了包含同步RGB、深度、触觉响应图以及IMU、相机位姿等标注的VisTa3D数据集，覆盖70个薄物体、17个环境共387个场景。提出首个视觉-深度-触觉融合的3D重建基线模型。",
+    "result": "基准测试显示现有3D重建模型在薄物体上保真度低；所提触觉融合基线作为初步验证，具体量化指标摘要未给出。",
+    "conclusion": "VisTa3D作为首个薄物体重建数据集与基准，为研究触觉辅助重建提供了平台，证实触觉数据有潜力提升薄物体重建质量。代码和数据已公开。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.20687v1",
+    "title": "TopoSurfel: Closing the Loop between Gaussian Surfels and Meshes for Surface Reconstruction",
+    "authors": [
+      "Chuanjin Fan",
+      "Wenjie Chang",
+      "Bohao Liao",
+      "Yujia Chen",
+      "Wenfei Yang",
+      "Tianzhu Zhang"
+    ],
+    "abstract": "3D Gaussian Splatting has achieved remarkable success in novel view synthesis. However, extracting high-fidelity surfaces directly from 3DGS remains challenging due to its discrete and unstructured nature. Existing 3DGS-based reconstruction methods typically rely on multi-view geometric consistency or local constraints. Without an explicit structured geometric prior during optimization, these methods often struggle to resolve structural ambiguities, leading to artifacts and floaters, particularly in textureless or occluded regions. To address this limitation, we propose TopoSurfel, a novel framework that closes the loop between Gaussian surfels and continuous meshes. Unlike recent methods that incorporate mesh extraction into the differentiable pipeline by introducing auxiliary neural networks or extra per-Gaussian parameters, we dynamically extract a continuous proxy mesh via a non-trainable differentiable iso-surfacing process. Leveraging this differentiable connection, we introduce a mesh-guided surfel evolution strategy, including normal alignment and geometry-aware density control, to effectively suppress floaters and fill surface holes. Furthermore, to address the initialization challenges in large-scale environments, we propose a spatially aware hybrid re-initialization strategy that ensures robust reconstruction across complex scenes. Extensive experiments demonstrate that TopoSurfel achieves competitive geometric reconstruction accuracy while maintaining high-quality mesh-based novel view synthesis. The code for our method is available at https://github.com/Fan-Treasure/TopoSurfel.",
+    "link": "http://arxiv.org/abs/2608.20687v1",
+    "published": "2026-08-21",
+    "category": "cs.CV",
+    "tags": [
+      "3DGS",
+      "Surface Reconstruction",
+      "Mesh",
+      "Gaussian Surfels",
+      "Iso-surfacing"
+    ],
+    "tldr": "提出TopoSurfel框架，通过可微等值面提取将高斯面片与网格闭环，实现高精度表面重建与网格新视角合成。",
+    "motivation": "现有3DGS表面重建方法因缺乏显式结构化几何先验，在无纹理或遮挡区域常产生伪影和漂浮物。",
+    "method": "提出TopoSurfel，采用非可训练的可微等值面提取动态获取连续代理网格，并引入网格引导的面片演化策略（法向对齐、几何感知密度控制）及空间感知混合重初始化策略。",
+    "result": "实验表明TopoSurfel在几何重建精度上具有竞争力，同时保持高质量的基于网格的新视角合成。",
+    "conclusion": "TopoSurfel通过闭环高斯面片与网格，有效抑制漂浮物、填补表面空洞，在复杂场景下实现稳健重建，代码已开源。"
+  },
+  {
     "id": "https://arxiv.org/abs/2608.20093",
     "title": "HandMvNet: Real-Time 3D Hand Pose Estimation Using Multi-View Cross-Attention Fusion",
     "authors": [
@@ -693,31 +832,5 @@
     "method": "构建合成玩家群体，将每个特质设为显式bot参数，通过受控操作验证其行为影响，建立策略无关的行为转录推断基准；引入机会感知的决策时刻表示，将偏好与表达机会分离；采用少样本LLM推断，并与嵌入、规则和特征回归基线对比。",
     "result": "少样本LLM推断在大多数特质上优于嵌入和规则基线，但基于特征的监督回归整体更强；消融实验显示机会感知表示去除后机会依赖特质推断显著下降；推断画像可驱动难度自适应，且优于错配画像对照。",
     "conclusion": "贡献在于提出了可验证的玩家特质推断基准、机会感知表示方法及LLM驱动的个性化游戏生成流程，并通过人类研究初步验证了对真实玩家的可迁移性。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2608.15785",
-    "title": "RoofGS: Roofline-Guided End-to-End Acceleration of 3D Gaussian Splatting",
-    "authors": [
-      "Luo, Yang",
-      "Gong, Yan",
-      "Gao, Yongsheng",
-      "Zhao, Jie"
-    ],
-    "abstract": "3D Gaussian Splatting (3DGS) enables real-time novel-view synthesis but remains limited on GPUs at high resolutions. Through a stage-wise Roofline characterization, we identify two distinct hardware bottlenecks: global memory traffic dominates the front end, whereas instruction throughput limits rasterization. Guided by this analysis, we develop RoofGS, a rendering framework that applies bottleneck-specific optimizations rather than generic kernel acceleration. For the memory-bound front end, we design a resolution-adaptive quantized depth sorting key that compresses each key to 32 bits. For the compute-bound rasterizer, we introduce a range-aware bit-level fast exponential approximation tailored to the bounded exponent range after opacity culling, with a derived per-pixel error bound. These two core techniques are complemented by additional optimizations (kernel fusion, compact attribute storage, culling, dual-pixel evaluation) that additionally reduce memory traffic and improve instruction-level parallelism. Experiments show that RoofGS achieves a 10.1$\\times$ end-to-end speedup over 3DGS at 4K on an RTX 4090, increasing throughput from 61 to 616 FPS, with only a 0.028 dB PSNR loss.",
-    "link": "https://arxiv.org/abs/2608.15785",
-    "published": "2026-08-16",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Roofline",
-      "GPU Acceleration",
-      "Rendering",
-      "Optimization"
-    ],
-    "tldr": "RoofGS基于Roofline分析对3DGS分别优化前端与光栅化，实现4K下616 FPS、10.1倍加速。",
-    "motivation": "3DGS虽能实时新视角合成，但在高分辨率GPU上受限；阶段式Roofline分析发现前端受全局内存带宽限制，光栅化受指令吞吐限制，需针对性优化而非通用加速。",
-    "method": "针对内存受限前端设计分辨率自适应量化深度排序键压缩至32位；针对计算受限光栅化利用不透明度剔除后指数范围有界，提出范围感知的位级快速指数近似并给出逐像素误差界；辅以内核融合、紧凑属性存储、剔除、双像素评估等优化。",
-    "result": "在RTX 4090上4K分辨率相比3DGS获得10.1倍端到端加速，吞吐从61 FPS提升到616 FPS，PSNR仅损失0.028 dB。",
-    "conclusion": "RoofGS展示了基于Roofline瓶颈制导的定制优化可显著加速3DGS，为高分辨率实时渲染提供高效方案；方法具有通用性，可启发其他GPU渲染管线的瓶颈感知优化。"
   }
 ]
