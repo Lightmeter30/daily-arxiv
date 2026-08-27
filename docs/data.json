@@ -1,5 +1,154 @@
 [
   {
+    "id": "http://arxiv.org/abs/2608.25956v1",
+    "title": "4DGS-WAM: Bridging Past and Future with an Object-Centric World Action Model based on 4D Gaussian Splatting",
+    "authors": [
+      "Yueen Ma",
+      "Zenglin Xu",
+      "Irwin King"
+    ],
+    "abstract": "Current world action models (WAMs) typically operate on 2D visual data. These models can achieve exceptional visual quality, but they lack explicit spatial structure for individual objects and repeatedly process redundant background content. Although point clouds can represent the world in 3D space, they can be difficult to align and accumulate across viewpoints. In this paper, we leverage an explicit 4D Gaussian Splatting (4DGS) representation that separately models dynamic objects and the static background of a scene. For dynamic objects, we use a policy model to predict future actor actions and a world model to predict transformations of their observed Gaussian splats. The static background need not be regenerated for future states, as much of it has already been observed in past frames. This forms an object-centric world action model, which we name 4DGS-WAM. It lifts 2D observations into a persistent 4D representation so that previously observed static content can be reused during future prediction. Future-state extrapolation can then focus on modeling the evolution of dynamic objects. Experiments on KITTI-MOT evaluate short-horizon prediction and past reconstruction.",
+    "link": "http://arxiv.org/abs/2608.25956v1",
+    "published": "2026-08-26",
+    "category": "cs.CV",
+    "tags": [
+      "4D Gaussian Splatting",
+      "World Action Model",
+      "Object-Centric",
+      "Future Prediction",
+      "Autonomous Driving"
+    ],
+    "tldr": "提出4DGS-WAM，一种基于4D高斯溅射的对象中心世界动作模型，将2D观测提升为持久4D表示，通过复用静态背景聚焦动态物体预测。",
+    "motivation": "现有世界动作模型基于2D视觉，缺乏显式空间结构且反复处理冗余背景；点云虽能表示3D世界但跨视角对齐和累积困难。",
+    "method": "利用显式4D高斯溅射分别建模动态物体和静态背景；用策略模型预测未来行为，用世界模型预测动态物体高斯溅射的变换；静态背景从过去帧直接复用，无需重新生成。",
+    "result": "在KITTI-MOT上评估了短时预测和过去重建，摘要未提供具体数值。",
+    "conclusion": "提出对象中心的4D世界动作模型，能复用历史静态内容以提升未来预测效率，将预测集中于动态物体演化，为自动驾驶等场景提供新思路。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.25483v1",
+    "title": "Gaussian Splatting Underwater: A Controlled Cross-Regime Study",
+    "authors": [
+      "Olaya Álvarez-Tuñón",
+      "Stella Graßhof"
+    ],
+    "abstract": "The underwater environment is challenging for 3D reconstruction, because particles suspended in the water scatter and diffuse light, turbidity varies, absorption depends on wavelength, and illumination is rarely uniform. Methods based on Gaussian splatting have generally been developed for conditions that allow good image quality, and have primarily been tested on relatively shallow water. This paper examines how well Gaussian splatting performs across publicly available underwater datasets representing different degrees of turbidity, loss of illumination, and colour attenuation, together with an industrial survey. Five systems with public code are run under one protocol, with shared poses, initialisation, budget, and evaluator, to establish their relative advantages, disadvantages, and limitations. What these methods can do turns out to depend more on the setup than on the architecture. Water clarity binds upstream of rendering, since structure-from-motion registers 99.5 \\% of frames in clear water and 0.0 \\% at 12 NTU. Illumination geometry decides whether a medium model helps at all: under an artificial light that moves with the camera, medium-blind splatting beats both medium-aware systems. On the survey the benchmark's photometric leader comes last, beaten on geometry by a restoration pre-pass in front of vanilla 3DGS---and none of it is visible in the scores the field reports. Scene builds, per-run configurations, and evaluation code are released at https://github.com/olayasturias/uw3dgs",
+    "link": "http://arxiv.org/abs/2608.25483v1",
+    "published": "2026-08-26",
+    "category": "cs.CV",
+    "tags": [
+      "3D Reconstruction",
+      "Gaussian Splatting",
+      "Underwater Imaging",
+      "Evaluation Protocol"
+    ],
+    "tldr": "本文系统评估了五种Gaussian Splatting方法在不同水下浑浊度与光照条件下的重建性能，发现设置比架构更重要。",
+    "motivation": "水下环境因散射、浑浊度、波长依赖吸收和非均匀光照对3D重建构成挑战，而现有Gaussian Splatting方法多在浅水等良好条件下开发与测试，缺乏跨工况的系统性比较。",
+    "method": "在公开水下数据集和工业勘测数据上，采用统一协议（共享位姿、初始化、预算和评估器）运行五个公开代码系统，分析水清澈度、光照几何和介质模型对重建性能的影响。",
+    "result": "水清澈度决定重建上限：SfM在清澈水中成功注册99.5%帧，而在12 NTU浑浊度下为0.0%；在随相机移动的人工光照下，不依赖介质模型的splatting优于两种介质感知系统；在工业勘测中，光度学领先的基准方法在几何上被“恢复预处理+vanilla 3DGS”击败，且这些差异在现有报告指标中不可见。",
+    "conclusion": "系统设置（如光照几何与清澈度）比网络架构更关键，现有指标难以反映真实几何性能；研究发布场景构建、配置和评估代码，以促进标准化评测。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.25472v1",
+    "title": "PAGS: Autofocusing Photoacoustic Tomography via Speed-of-Sound-Adaptive Gaussian Splatting",
+    "authors": [
+      "Jiarui Ge",
+      "Jintao Ma",
+      "Bangxu Fan",
+      "Jinyan Zhang",
+      "Xiaokang Yang",
+      "Shuai Na",
+      "Xiaoyun Yuan"
+    ],
+    "abstract": "Photoacoustic computed tomography (PACT) combines optical absorption contrast with acoustic detection for high-resolution deep-tissue imaging. A persistent challenge is that unknown speed-of-sound (SoS) heterogeneity changes acoustic time-of-flight, causing defocusing artifacts when reconstruction assumes a uniform SoS. Existing SoS-adaptive methods either rely on calibrated acoustic priors or optimize dense physical medium models, which becomes expensive and difficult to scale in 3D. We propose PAGS, a differentiable framework for blind autofocusing PACT via speed-of-sound-adaptive Gaussian splatting. PAGS represents the initial pressure field with sparse Gaussian photoacoustic (PA) sources and replaces explicit medium recovery with a compact anisotropic path-averaged SoS (ASoS) field parameterized by spherical harmonic probes. This latent propagation field directly controls source-to-transducer arrival-time alignment, while an analytic Gaussian acoustic projection maps the source representation to transducer signals efficiently. The resulting closed-loop signal-domain optimization jointly updates the Gaussian PA source parameters and the ASoS field from measured data, without calibrated SoS priors. Experiments on simulated and physical phantom data demonstrate improved reconstruction sharpness under heterogeneous acoustic media, robustness to sparse-view sampling, and computational benefits from the analytic Gaussian projection.",
+    "link": "http://arxiv.org/abs/2608.25472v1",
+    "published": "2026-08-26",
+    "category": "cs.CV",
+    "tags": [
+      "Photoacoustic Tomography",
+      "Gaussian Splatting",
+      "Autofocusing",
+      "Speed-of-Sound"
+    ],
+    "tldr": "提出PAGS，用稀疏高斯声源和路径平均声速场实现光声断层成像的盲自动聚焦。",
+    "motivation": "光声断层成像中未知声速异质性导致重建散焦，现有声速自适应方法依赖校准先验或稠密物理介质模型，在三维中成本高且难扩展。",
+    "method": "用稀疏高斯光声源表示初始压力场，用球谐探针参数化各向异性路径平均声速场，通过解析高斯声学投影将源映射到换能器信号，构建闭环信号域优化，联合更新源参数和声速场，无需校准先验。",
+    "result": "在模拟和物理体模实验中，该方法在异质声学介质中提升重建清晰度，对稀疏视角采样具有鲁棒性，并因解析高斯投影获得计算优势。",
+    "conclusion": "提出了一种无需校准声速先验的盲自动聚焦框架，联合优化源和声速场，改善重建质量，兼具计算效率，为三维光声断层成像提供了可扩展的解决方案。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.25401v1",
+    "title": "PIVOT: A Multi-Trajectory Dataset and Testbed for Pose, Intrinsics, and Novel Viewpoint Evaluation in Real-World 3D Reconstruction",
+    "authors": [
+      "Mary Raymond"
+    ],
+    "abstract": "Neural radiance fields (NeRFs), 3D Gaussian Splatting (3DGS), and related novel-view synthesis methods are commonly evaluated under capture and reconstruction conditions cleaner than those encountered by robots, drones, and autonomous systems. Benchmarks often rely on reconstruction-friendly trajectories, optimized camera poses and intrinsics, and held-out views sampled from trajectories represented during training. These assumptions can obscure performance with measured poses, reusable camera calibration, and structurally different camera paths.\n  We introduce PIVOT (Pose, Intrinsics and Viewpoint Oriented Testbed), a multi-trajectory dataset, processing pipeline, and evaluation framework for independently studying these factors. PIVOT captures each scene using diverse camera trajectories and retains, where available, both sensor-derived measured poses and COLMAP-optimized poses, together with calibrated and optimized camera intrinsics. It defines three benchmark families: (1) seen versus unseen trajectory novel-view generalization, (2) measured versus optimized pose sensitivity, and (3) calibrated versus optimized intrinsics sensitivity. We also introduce a directed pose-space Chamfer distance to quantify how well training poses cover an evaluation trajectory.\n  PIVOT v1 contains five real-world scenes captured with a DJI Mini 4 Pro and provides an open processing and Nerfstudio-based evaluation toolchain. Benchmark results show a consistent quality gap between held-out views on represented trajectories and unseen trajectories, as well as substantial sensitivity to pose source and camera intrinsics.",
+    "link": "http://arxiv.org/abs/2608.25401v1",
+    "published": "2026-08-26",
+    "category": "cs.CV",
+    "tags": [
+      "3D Reconstruction",
+      "Novel View Synthesis",
+      "Benchmark",
+      "NeRF",
+      "Gaussian Splatting"
+    ],
+    "tldr": "PIVOT是一个多轨迹基准数据集与测试平台，用于独立评估真实世界3D重建中的位姿、内参和新视角合成性能。",
+    "motivation": "现有NeRF与3DGS评估常使用比实际机器人/无人机更干净的采集条件：轨迹有利于重建、位姿与内参已优化、测试视角来自训练轨迹。这掩盖了使用实测位姿、可复用标定和不同相机路径时的性能问题。",
+    "method": "PIVOT采集多轨迹数据，同时提供传感器实测与COLMAP优化的位姿及标定/优化内参；定义三类基准：已知轨迹与未知轨迹的新视角泛化、实测与优化位姿敏感性、标定与优化内参敏感性，并引入有向位姿空间Chamfer距离来衡量训练位姿对评估轨迹的覆盖度。",
+    "result": "在五个真实场景上的基准实验显示：已表示轨迹上的留出视角与未见轨迹之间存在一致的质量差距，且对位姿来源和相机内参的选择表现出显著敏感性。",
+    "conclusion": "PIVOT v1包含五个真实场景（DJI Mini 4 Pro采集），提供开放的处理与Nerfstudio评测工具链；其贡献在于系统化独立评估位姿、内参和轨迹对新视角合成的影响，有助于推动面向真实部署的鲁棒重建研究。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.24544v1",
+    "title": "KLTNet: Learning Sparse Feature Tracking for Robust and Accurate Monocular Visual-Inertial Odometry",
+    "authors": [
+      "Renbiao Jin",
+      "Danping Zou",
+      "Wenxian Yu"
+    ],
+    "abstract": "Many feature-based visual-inertial odometry (VIO) systems rely on sparse feature tracking, whose accuracy and robustness directly affect state estimation. Classical KLT trackers rely primarily on local image patches and can become unreliable under rapid motion or in low-texture environments. We propose KLTNet, a lightweight learning-based, plug-and-play sparse feature tracker designed to replace classical KLT trackers in KLT-based VIO front ends. KLTNet follows a coarse-to-fine, dense-to-sparse architecture that combines low-resolution dense optical flow for robust global motion initialization with triplet-patch refinement for accurate and temporally consistent tracking. A fixed reference patch provides a stable anchor throughout each feature track and helps reduce accumulated tracking drift. In addition, KLTNet predicts anisotropic confidence weights supervised through differentiable multi-view triangulation, which can be used as observation weights in compatible VIO estimators. Experiments with VINS-Mono and OpenVINS on public benchmarks and a self-collected low-texture dataset demonstrate improved tracking and odometry accuracy over classical KLT, while maintaining real-time performance on an embedded platform.",
+    "link": "http://arxiv.org/abs/2608.24544v1",
+    "published": "2026-08-25",
+    "category": "cs.CV",
+    "tags": [
+      "Visual-Inertial Odometry",
+      "Feature Tracking",
+      "Deep Learning",
+      "KLT",
+      "VIO"
+    ],
+    "tldr": "提出KLTNet轻量学习型稀疏特征跟踪器，替代经典KLT提升VIO精度与鲁棒性，支持实时运行。",
+    "motivation": "经典KLT跟踪器仅依赖局部图像块，在快速运动或低纹理环境下易失效，直接影响基于特征的VIO系统的状态估计精度与鲁棒性。",
+    "method": "KLTNet采用粗到细、密到稀的架构：先通过低分辨率稠密光流获得全局运动初始化，再用三元组块精化实现精准且时间一致的跟踪；利用固定参考块减少漂移；预测各向异性置信权重，并通过可微多视角三角化监督，可与兼容VIO估计器集成。",
+    "result": "在公开基准和自采低纹理数据集上，将KLTNet集成到VINS-Mono和OpenVINS中，相比经典KLT提升了跟踪精度和里程计精度，并在嵌入式平台上保持实时性能。",
+    "conclusion": "KLTNet作为即插即用的稀疏特征跟踪器，能够显著提升VIO在挑战性场景下的鲁棒性与准确性，且计算开销低，适合资源受限平台。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.24384v1",
+    "title": "Markerless Pose Estimation for Resistance Training Technique Assessment",
+    "authors": [
+      "Joseph Turner",
+      "Jeff Clark",
+      "Nawid Keshtmand"
+    ],
+    "abstract": "Resistance training can be a high risk activity, and safe form is essential to avoiding injury. Laboratory-based movement analysis provides quantitive technique assessment, yet is not easily accessible. Markerless pose estimation infers body landmarks from images or video without physical markers and could offer a feasible alternative for technique assessment. We present a pose estimation framework to evaluate resistance-training technique from ordinary video footage. Using BlazePose, anatomical landmarks were extracted from squat, bench press, and deadlift videos and converted into joint-angle trajectories, with the squat serving as the primary case study. Trajectories were assessed against a defined reference repetition using root mean square error (RMSE). Results show that the framework recovers meaningful kinematic patterns for the squat and deadlift, enabling quantitative comparison between repetitions and identification of technique variability within a set. Performance depended strongly on camera orientation and visual occlusion, with non-sagittal views distorting 2D joint-angle estimates. The findings demonstrate that markerless pose estimation can support accessible biomechanical assessment outside laboratory environments.",
+    "link": "http://arxiv.org/abs/2608.24384v1",
+    "published": "2026-08-25",
+    "category": "cs.CV",
+    "tags": [
+      "Pose Estimation",
+      "Resistance Training",
+      "Biomechanics",
+      "BlazePose",
+      "Technique Assessment"
+    ],
+    "tldr": "提出基于BlazePose的无标记姿态估计框架，从普通视频评估抗阻训练技术，通过关节角轨迹比较识别动作变异性。",
+    "motivation": "抗阻训练风险高，正确姿势对避免受伤至关重要。实验室运动分析虽能提供量化评估，但不易普及，需要可行的替代方案。",
+    "method": "使用BlazePose从深蹲、卧推和硬拉视频中提取解剖学关键点，并转换为关节角轨迹，以深蹲为主要案例。轨迹通过均方根误差（RMSE）与参考重复动作进行比较评估。",
+    "result": "框架能恢复深蹲和硬拉的有效运动学模式，支持重复间定量比较和组内技术变异性识别。性能强烈依赖相机方向和视觉遮挡，非矢状面视角会扭曲2D关节角估计。",
+    "conclusion": "研究表明无标记姿态估计可以在实验室外支持可获取的生物力学评估，但需注意视角和遮挡对准确性的影响。"
+  },
+  {
     "id": "http://arxiv.org/abs/2608.23549v1",
     "title": "FixAnything: 3D-Consistent Rendering Refinement via Video Generative Priors",
     "authors": [
@@ -437,6 +586,57 @@
     "method": "本文基于Ekman的言语-非言语关系框架，提出不匹配行为发生的分类法。利用大语言模型从对话和社会交互语境中选择情境合适的言行不一致行为，并比较了多种实现方法。",
     "result": "通过人类受试者研究，评估了由情境驱动的非言语行为在虚拟人上是否产生预期的观察者效果。摘要未提供具体量化指标。",
     "conclusion": "本文提出了一种新的分类法来描述言语和非言语行为的不匹配，证明了LLM可以用于选择情境合适的不一致行为，为虚拟人实现更真实、细腻的非言语表达提供了新途径。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.23206v2",
+    "title": "Learning Spherical Occupancy Profiles for Multi-View 3D Reconstruction and Generation",
+    "authors": [
+      "YiHsuan Tsai"
+    ],
+    "abstract": "We study spherical occupancy profiles-the ray-wise occupancy probability profiles P(r) = T(r) o(r) distilled from multi-view 3D Gaussian reconstructions-as a unified intermediate representation for both discriminative and generative 3D reconstruction from images. On a 999-object subset of Google Scanned Objects with 48 turntable views each, we train (i) a discriminative per-ray decoder that injects global view-averaged and ray-specific image evidence into a FiLM-conditioned profile head, reaching median soft depth error 0.035 (normalized) on an independent 90-object test split, and (ii) a generative pipeline built on a profile VAE and a latent diffusion model, which supports unconditional sampling that matches the reconstruction manifold and image-conditioned multi-solution reconstruction whose per-object solution spread is quantifiable and tunable via classifier-free guidance. We further analyze the morphology of predicted profiles: post-hoc power sharpening and a learned sharpening target both recover ground-truth profile width without degrading depth, exposing a monotonic width-peak frontier in the L1-per-ray loss family and motivating a principled redefinition of morphology gates. Real-photo validation on two DTU scenes confirms the pipeline transfers to non-synthetic input. Our results suggest that ray-wise occupancy profiles offer a compact, learned, and uncertainty-aware interface between multi-view reconstruction and generative priors.",
+    "link": "http://arxiv.org/abs/2608.23206v2",
+    "published": "2026-08-24",
+    "category": "cs.CV",
+    "tags": [
+      "3D Reconstruction",
+      "Generative Model",
+      "Occupancy Profiles",
+      "Diffusion",
+      "Multi-View"
+    ],
+    "tldr": "提出以球面占用率轮廓作为多视图重建与生成的统一中间表示，并验证其判别与生成能力。",
+    "motivation": "现有方法中判别式与生成式3D重建缺乏统一的中间表示，难以共享信息。作者提出从多视图3D高斯重建中提取射线级占用率轮廓，作为两种任务的通用接口。",
+    "method": "从多视图3D高斯重建中蒸馏射线占用率轮廓P(r)=T(r)o(r)，训练一个FiLM条件化的逐射线判别解码器（注入全局与射线特定图像证据），并构建基于轮廓VAE和潜在扩散模型的生成管线，支持无条件和图像条件生成。还分析了轮廓形态学，提出功率锐化与学习锐化目标。",
+    "result": "在Google Scanned Objects的999子集上训练，独立90对象测试集的中位软深度误差为0.035（归一化）；在DTU真实照片上验证了跨域迁移性。形态学分析揭示了L1逐射线损失族中的单调宽度-峰值前沿。",
+    "conclusion": "射线级占用率轮廓为多视图重建与生成先验之间提供了紧凑、可学习且具有不确定性感知的接口，具有统一判别与生成任务的潜力。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.22888v2",
+    "title": "NemoSplat: Feed-Forward 4D Gaussian Splatting for Media-Aware Underwater Reconstruction",
+    "authors": [
+      "Xiaopeng Guo",
+      "Wai Chung Tse",
+      "Yipeng Zhu",
+      "Hanwen Zhang",
+      "Huajian Huang",
+      "Sai-Kit Yeung"
+    ],
+    "abstract": "Reconstructing photorealistic scenes in unconstrained underwater environments remains challenging due to severe media-induced light scattering and unpredictable dynamic objects. Recent feed-forward visual foundation models have demonstrated remarkable capabilities in generalized novel view synthesis and tracking. However, when directly applied to aquatic videos, optical attenuation and motion interference fatally corrupt their feature aggregation, leading to severe tracking and reconstruction failures. To overcome these limitations, we present NemoSplat, the first feed-forward 4D Gaussian Splatting framework tailored for media-aware dynamic reconstruction directly from uncalibrated marine videos. Beyond providing robust estimations of camera poses and dense scene depth, we devise a Promptable Dynamic Disentangler that utilizes a confidence-aware fusion strategy of learned dynamic probabilities and optional semantic text priors, effectively isolating massive transient entities. Furthermore, to counteract visual degradation, a Media-Aware Gaussian Predictor is formulated to jointly estimate intrinsic 3D Gaussian attributes alongside physical media parameters, rendering pristine scene appearance in a single forward pass. Additionally, we introduce a large-scale underwater dataset with massive dynamic elements to facilitate training and evaluation. Extensive experiments on our dataset demonstrate that NemoSplat achieves state-of-the-art tracking accuracy and high-fidelity rendering. Homepage: https://nemosplat.hkustvgd.com",
+    "link": "http://arxiv.org/abs/2608.22888v2",
+    "published": "2026-08-24",
+    "category": "cs.CV",
+    "tags": [
+      "4D Gaussian Splatting",
+      "Underwater Reconstruction",
+      "Feed-Forward",
+      "Dynamic Scene",
+      "Media-Aware"
+    ],
+    "tldr": "提出NemoSplat，首个前馈4D高斯泼溅水下动态重建框架，实现高保真渲染与跟踪。",
+    "motivation": "水下环境存在介质光散射和动态物体干扰，现有前馈视觉模型直接用于水下视频时，因光学衰减和运动干扰导致跟踪与重建失败。",
+    "method": "NemoSplat框架包含鲁棒的相机位姿与深度估计，以及Promptable Dynamic Disentangler（利用置信度感知的融合策略分离瞬态物体）和Media-Aware Gaussian Predictor（联合估计3D高斯属性与介质参数），支持单次前向传播；同时引入大规模水下数据集。",
+    "result": "实验表明，NemoSplat在跟踪精度和渲染保真度上均达到最先进水平。",
+    "conclusion": "首个面向水下动态场景的媒体感知前馈4D重建框架，并贡献了大规模动态水下数据集，为水下高保真重建提供了新方案。"
   },
   {
     "id": "http://arxiv.org/abs/2608.22465v1",
@@ -1493,82 +1693,5 @@
     "method": "Stream4D 使用前馈 4D 重建奖励显式建模场景动态，并加入基于场景流幅度与抖动抑制的运动先验，再结合轻量感知锚点组成最终训练目标。",
     "result": "在多种自回归视频骨干和不同生成时长下，Stream4D 提升了 4D 重建质量，更有效地保持运动，并取得更高的人类对齐偏好。",
     "conclusion": "贡献在于提出动态一致的奖励配方，抑制静态捷径，提升长视频生成的真实感；潜在影响是可应用于实时长时程视频生成的训练与微调。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2608.19066",
-    "title": "GS-VLA: Plug-and-Play Viewpoint Canonicalization for Frozen VLA Policies via Gaussian Splatting",
-    "authors": [
-      "Park, Yechan",
-      "Kim, HyunJin"
-    ],
-    "abstract": "This paper proposes a lightweight, plug-and-play framework that improves robustness to viewpoint shifts in Vision-Language-Action (VLA) policies without policy retraining. To our knowledge, this is the first approach to directly leverage 3D Gaussian-based novel-view synthesis for observation-space adaptation in VLA policies. Current VLA performance relies on the implicit assumption that training and deployment camera configurations are identical. Our experiments show that even a small displacement of the camera mount can reduce the success rate on the LIBERO benchmark from about 90% to about 10% in the worst case. Prior approaches, such as large-scale fine-tuning or generative data augmentation, are computationally expensive and risk catastrophic forgetting. To address this, viewpoint shifts are reformulated as a localized novel-view synthesis problem. Under a Locality assumption, that camera perturbations remain within a small bounded region relative to the workspace, viewpoint normalization reduces to a scene- and policy-independent disocclusion task. Our work implements this idea with a 4M-parameter 3D-Gaussian canonicalizer prepended to a frozen VLA policy. Without modifying policy weights, GS-VLA improves performance across three orthogonal axes: (1) Policy architectures, (2) Unseen task suites, and (3) Perturbation scales. These results show that a lightweight visual module can recover a large fraction of the performance lost under viewpoint shift, without policy retraining.",
-    "link": "https://arxiv.org/abs/2608.19066",
-    "published": "2026-08-19",
-    "category": "cs.CV",
-    "tags": [
-      "VLA",
-      "3D Gaussian Splatting",
-      "Viewpoint Robustness",
-      "Novel View Synthesis",
-      "Robotics"
-    ],
-    "tldr": "GS-VLA通过3D高斯泼溅实现视角归一化，无需重训练即可提升VLA策略对视角变化的鲁棒性。",
-    "motivation": "VLA策略隐式假设训练和部署相机配置一致，微小视角偏移导致性能大幅下降（成功率从约90%降至10%），现有方法如大规模微调和生成式数据增强计算昂贵且有灾难性遗忘风险。",
-    "method": "将视角偏移视为局部化新视角合成问题，基于Locality假设，使用4M参数的3D高斯规范化器前置到冻结的VLA策略，实现场景与策略无关的去遮挡任务，不修改策略权重。",
-    "result": "在LIBERO基准上，未处理时最坏情况成功率从约90%降至约10%；GS-VLA在策略架构、未见任务套件和扰动幅度三个维度上均提升性能。",
-    "conclusion": "轻量级视觉模块无需策略重训练即可恢复大部分因视角偏移损失的性能，是首个直接利用3D高斯新视角合成进行VLA观测空间适配的工作。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2608.18624",
-    "title": "Evaluation of Image Matching Methods for Visual Odometry on UAVs",
-    "authors": [
-      "Spagnolo, Gašper",
-      "Zajc, Luka Čehovin",
-      "Dobrevski, Matej"
-    ],
-    "abstract": "Unmanned aerial vehicles (UAVs) are becoming a powerful tool for many environmental monitoring and transport applications. Yet, their reliance on Global Navigation Satellite System (GNSS) technology for navigation makes them susceptible to catastrophic failures in scenarios where the positioning signal is unavailable or disrupted. This work explores Visual Odometry (VO) as a crucial navigation component. Recently, numerous deep-learning-based methods for image matching have been proposed that are yet to be implemented in a fully-fledged VO system. In this paper, we evaluate recent state-of-the-art image matching methods for the task of VO for UAV position tracking, with a downwards-facing camera, on our synthetic dataset, and find that while the best results are generated by the recent RoMa matcher, SIFT features can outperform some recent state-of-the-art.",
-    "link": "https://arxiv.org/abs/2608.18624",
-    "published": "2026-08-19",
-    "category": "cs.CV",
-    "tags": [
-      "Visual Odometry",
-      "UAV",
-      "Image Matching",
-      "Deep Learning",
-      "SIFT"
-    ],
-    "tldr": "评估多种图像匹配方法用于无人机视觉里程计，发现RoMa匹配器最佳，SIFT仍优于部分最新方法。",
-    "motivation": "无人机依赖GNSS导航易受信号中断影响，需探索视觉里程计作为替代；现有深度学习方法尚未在完整VO系统中评估。",
-    "method": "在合成数据集上，针对向下相机无人机位置跟踪任务，评估多种最新图像匹配方法（含RoMa、SIFT等）在VO中的表现。",
-    "result": "最新RoMa匹配器产生最佳结果，但传统SIFT特征可胜过部分最新深度学习方法。",
-    "conclusion": "为VO选择图像匹配方法提供参考，表明深度方法虽优但经典方法仍具竞争力。"
-  },
-  {
-    "id": "https://arxiv.org/abs/2608.18413",
-    "title": "CoMVS-GS: Collaborative Multi-View Stereo and 3D Gaussian Splatting for Surface Reconstruction",
-    "authors": [
-      "Chen, Shihan",
-      "Zhang, Junjing",
-      "Yan, Qingsong",
-      "Liu, Haibing",
-      "Ren, Haofan",
-      "Deng, Fei"
-    ],
-    "abstract": "3D Gaussian Splatting enables efficient novel view synthesis, but accurate mesh reconstruction remains difficult in weakly observed and occluded regions, where Gaussian primitives may grow into unstable or geometrically inconsistent structures. We propose CoMVS-GS, a general surface reconstruction framework that combines Multi-View Stereo with Gaussian splatting. CoMVS-GS initializes Gaussian primitives from dense multi-view stereo points with pre-flattened scales and normal-aligned orientations, providing stronger geometric priors than sparse structure-from-motion initialization and reducing ambiguity during early optimization. It further introduces PatchMatch-3DGS Mutual Supervision, where Gaussian-rendered depths and normals initialize PatchMatch refinement, and refined PatchMatch depths supervise Gaussian optimization to improve weakly constrained geometry. For surface extraction, CoMVS-GS replaces truncated signed distance field voxel fusion with a Delaunay graph-cut meshing pipeline, reducing sensitivity to voxel resolution while preserving visibility-consistent surface evidence. Experiments on DTU, GauU-Scene V2, and MatrixCity show that CoMVS-GS remains competitive on object-level reconstruction and improves geometric accuracy and mesh compactness in outdoor scenes while maintaining high rendering quality.",
-    "link": "https://arxiv.org/abs/2608.18413",
-    "published": "2026-08-19",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Multi-View Stereo",
-      "Surface Reconstruction",
-      "PatchMatch",
-      "Delaunay Meshing"
-    ],
-    "tldr": "CoMVS-GS将多视图立体与高斯泼溅结合，通过点云初始化、互补监督和Delaunay图割实现高质量表面重建。",
-    "motivation": "3D高斯泼溅在新视角合成上高效，但在弱观测和遮挡区域难以重建准确网格，高斯原语可能产生不稳定或几何不一致的结构。",
-    "method": "从密集多视图立体点初始化具有预展平尺度和法向对齐方向的高斯原语；提出PatchMatch-3DGS互监督，用高斯渲染深度和法线初始化PatchMatch细化，并用细化深度监督高斯优化；表面提取用Delaunay图割网格化替代TSDF体素融合。",
-    "result": "在DTU、GauU-Scene V2和MatrixCity数据集上，物体级重建保持竞争力，室外场景的几何精度和网格紧凑性提升，同时保持高渲染质量。",
-    "conclusion": "提出通用表面重建框架，增强弱约束区域的几何重建，降低对体素分辨率的敏感性，为后续结合MVS与高斯泼溅的重建方法提供了新思路。"
   }
 ]
