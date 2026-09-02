@@ -1,5 +1,251 @@
 [
   {
+    "id": "http://arxiv.org/abs/2609.01530v1",
+    "title": "Revisiting Cross-View Completion: Self-Supervised Pre-Training via Reconstruction Error Comparison",
+    "authors": [
+      "Thibaut Loiseau",
+      "Guillaume Bourmaud",
+      "Vincent Lepetit"
+    ],
+    "abstract": "Self-supervised pre-training via cross-view completion learns strong features for 3D vision from co-visible regions of image pairs. However, the reference view provides little information for reconstructing non-co-visible patches, implicitly yielding a monocular training signal in these regions. We introduce Gekko, which turns this limitation into a useful signal. The relative improvement of the cross-view reconstruction error over a masked-autoencoder error is a self-supervised proxy for co-visibility: large improvements indicate co-visible regions, negligible ones non-co-visible areas. Gekko is a network, trained from scratch, that jointly performs cross-view completion, masked autoencoding, and per-pixel prediction of this relative improvement, providing an additional binocular signal for all masked regions without any ground-truth 3D annotation. Under identical architectures and training data, Gekko consistently outperforms CroCo on zero-shot correspondence estimation, relative pose estimation, and pointmap regression, with up to 6 times higher accuracy at the strictest relative-pose threshold and a 22% drop in end-point error on ETH3D. The extra channel it learns is itself a strong co-visibility detector on unseen scenes, and Gekko's frozen features outperform released cross-view backbones of comparable or larger size. It can also be trained directly from raw videos with a simple stride-based curriculum, removing the cumbersome 3D preprocessing prior methods require while matching models trained on curated data. Code and pre-trained models are publicly available.",
+    "link": "http://arxiv.org/abs/2609.01530v1",
+    "published": "2026-09-01",
+    "category": "cs.CV",
+    "tags": [
+      "Self-Supervised Learning",
+      "Cross-View Completion",
+      "3D Vision",
+      "Co-Visibility Estimation",
+      "Pre-training"
+    ],
+    "tldr": "提出Gekko：以重构误差比较作为共视性代理，在无3D标注下增强跨视图补全预训练，显著优于CroCo。",
+    "motivation": "跨视图补全自监督预训练在非共视区域仅能提供单目信号，参考视图信息有限。作者希望将这一局限转化为可用信号，实现更有效的双目训练。",
+    "method": "提出Gekko网络，从零联合训练跨视图补全、掩码自编码与逐像素相对改进预测，以跨视图重构误差相对MAE误差的提升作为共视性代理，无需真值3D标注。还可通过简单步长课程直接基于原始视频训练。",
+    "result": "在相同架构与数据下，Gekko在零样本对应估计、相对位姿估计和点图回归上均优于CroCo，在最严格相对位姿阈值下精度提升最高6倍，ETH3D端点误差下降22%；额外通道具备强共视性检测能力，冻结特征优于已发布的同类骨干。",
+    "conclusion": "Gekko将跨视图补全的局限转化为有效共视性信号，简化了预训练数据要求（无需3D预处理），并公开代码与模型，具有实用价值。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2609.01516v1",
+    "title": "DualDiff3D: Dual Structure-Appearance Diffusion Priors for Reliability-Enhanced 3D Gaussian Splatting",
+    "authors": [
+      "Qian Wang",
+      "Yu Wang",
+      "Weiqi Li",
+      "Xinhua Cheng",
+      "Xiandong Meng",
+      "Ronggang Wang",
+      "Jian Zhang"
+    ],
+    "abstract": "While 3D Gaussian Splatting (3DGS) has revolutionized 3D reconstruction and novel-view synthesis, scenarios with limited input views often lead to poor reconstruction quality and artifacts in rendered novel views. Recent efforts attempt to utilize powerful diffusion priors, yet they typically process rendered and reference views concatenated along an additional dimension in a single network. These methods overlook an inherent nature that different views should maintain appearance similarity but differ in structure due to view shifts, leading to blur caused by conflicts between the two properties. In this paper, we propose DualDiff, a novel pipeline that leverages dual diffusion priors with a Structure-Appearance Attention (SAA) module to introduce reference guidance for refining low-quality novel views rendered from flawed 3D representations. Specifically, we retain one diffusion branch to focus on extracting structural information from the low-quality novel views, while introducing another branch to ensure appearance consistency with reference views. Furthermore, we present a 3D reconstruction framework named DualDiff3D, which integrates a reliability-enhanced Render-Refine-Optimize (RRO) loop to progressively and robustly incorporate the refined novel views, yielding more accurate 3DGS. Extensive experiments demonstrate that our approach outperforms state-of-the-art methods even in the inference-only setting, with further performance gains achievable through training. Our code and pre-trained weights are available at https://github.com/Akaneqwq/DualDiff3D.",
+    "link": "http://arxiv.org/abs/2609.01516v1",
+    "published": "2026-09-01",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Diffusion Priors",
+      "Novel View Synthesis",
+      "3D Reconstruction"
+    ],
+    "tldr": "提出 DualDiff3D，利用结构-外观双扩散先验与 RRO 循环，优化有限视角下的 3D 高斯泼溅重建和新视角渲染质量。",
+    "motivation": "3DGS 在输入视角有限时重建质量差、渲染伪影多。已有扩散先验方法将渲染视图与参考视图沿额外维拼接，忽略不同视图应外观相似但结构不同的特性，导致属性冲突和模糊。",
+    "method": "提出 DualDiff 管线，采用双扩散先验：一个分支提取低质量新视图的结构信息，另一个分支确保与参考视图的外观一致性，并通过结构-外观注意力（SAA）模块引入参考引导。进一步构建 DualDiff3D 重构框架，集成增强可靠性的 Render-Refine-Optimize（RRO）循环，逐步鲁棒地融合细化后的新视图进行 3DGS 优化。",
+    "result": "大量实验表明，即使在仅推理设置下该方法也优于最先进的现有方法；经过训练后可获得进一步性能提升。摘要未提供具体量化指标。",
+    "conclusion": "提出了 DualDiff3D 这一利用双扩散先验与 RRO 循环的可靠增强 3DGS 重建框架，有效解决有限视角下的重建与渲染问题，并公开了代码与预训练权重以促进后续研究。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2609.01172v1",
+    "title": "Monocular Depth Estimation from a Single Image: Progress and Opportunities",
+    "authors": [
+      "Muxin Liu",
+      "Xiaoyang Lyu",
+      "Yang-Tian Sun",
+      "Yi-Hua Huang",
+      "Ziyi Yang",
+      "Peng Dai",
+      "Xiaojuan Qi"
+    ],
+    "abstract": "Monocular depth estimation has long stood as a fundamental challenge in computer vision, enabling a wide range of applications including 3D reconstruction, robotics, autonomous driving, and augmented reality. This survey traces the field's evolution from early learning-based methods to the emergence of transformative foundation models. We begin by framing the problem, distinguishing between relative and metric depth estimation, and highlighting the key challenges that have shaped a decade of research. We then present common problem formulations and introduce the most widely used datasets, covering indoor, outdoor, and synthetic data. Following this, we review major advances prior to the foundation model era, distilling core insights from influential methods that contributed to improvements in accuracy, efficiency, and robustness. The survey then turns to the recent surge of foundation-model-based approaches, categorizing them into discriminative and generative paradigms and emphasizing the critical roles of large-scale pretraining (e.g., DINOv3) and synthetic data. We compare representative models using both quantitative benchmarks and qualitative examples, and discuss natural extensions to video-based depth estimation. Further, to illustrate real-world impact, we highlight the integration of depth estimation into applications such as visual SLAM, content generation, and robot perception. Finally, we outline open challenges and promising research directions as the field advances further into the era of foundation models.",
+    "link": "http://arxiv.org/abs/2609.01172v1",
+    "published": "2026-09-01",
+    "category": "cs.CV",
+    "tags": [
+      "Monocular Depth Estimation",
+      "Survey",
+      "Foundation Models",
+      "Computer Vision"
+    ],
+    "tldr": "全面综述单目深度估计从早期方法到基础模型时代的演进、技术分类、数据集及未来方向。",
+    "motivation": "单目深度估计是计算机视觉的基础难题，支撑三维重建、自动驾驶等应用；该领域发展迅速，涌现出基础模型方法，亟需系统性梳理其进展、关键挑战与开放问题。",
+    "method": "采用综述式研究，先界定相对/度量深度估计问题，归纳常用数据集与问题形式；再按基础模型前与基础模型时代划分，分别回顾早期代表性方法，并将近期工作分为判别式和生成式两类，突出大规模预训练（如DINOv3）和合成数据的作用。",
+    "result": "摘要未提供具体量化指标；通过定量基准与定性示例对比了代表性模型，并讨论视频深度估计扩展及SLAM、内容生成等应用集成。",
+    "conclusion": "总结单目深度估计的关键进展与基础模型带来的范式转变，指出开放挑战（如度量精度、泛化等）和未来研究方向，为该领域提供系统参考。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2609.00995v1",
+    "title": "CQF-HMR: Continuous Quaternion Flows for Probabilistic 3D Human Mesh Recovery from a Single Image",
+    "authors": [
+      "Cuong Le",
+      "Bao-Long Tran",
+      "Pavlo Melnyk",
+      "Tahereh Dehdarirad",
+      "Bastian Wandt",
+      "Mårten Wadenbäck"
+    ],
+    "abstract": "Recovering 3D digital humans from a single 2D image is an ill-posed computer vision problem due to the loss of depth information. Probabilistic 3D human pose estimation compensates for this by estimating a set of 3D hypotheses from a prior distribution via generative models. However, most prior work focuses only on 3D keypoints, which often leads to implausible poses that are difficult to apply to downstream tasks, e.g. animation or digital humans. SMPL-based methods are more scalable thanks to the explicit body priors, but it requires more complex modeling of the generation process due to the non-additive nature of the joint rotations. In this work, we propose a novel approach for probabilistic 3D humans using quaternion-constrained continuous normalizing flows conditioned on 2D pose estimations. Our proposed quaternion flows show significant advantages over approaches using other rotation representations. Experiments demonstrate state-of-the-art results of our method on Human3.6M, particularly in ambiguous settings, and comparable pose estimation accuracy on challenging 3DPW and EMDB benchmarks.",
+    "link": "http://arxiv.org/abs/2609.00995v1",
+    "published": "2026-09-01",
+    "category": "cs.CV",
+    "tags": [
+      "3D Human Mesh Recovery",
+      "Probabilistic Modeling",
+      "Continuous Normalizing Flows",
+      "Quaternion",
+      "SMPL"
+    ],
+    "tldr": "提出基于四元数约束连续归一化流的概率3D人体网格恢复方法，在Human3.6M上达到最优。",
+    "motivation": "从单张2D图像恢复3D人体是病态问题，深度信息缺失；现有概率方法多关注3D关键点，生成姿态不逼真，SMPL方法因关节旋转的非加性而建模复杂。",
+    "method": "利用四元数约束的连续归一化流，以2D姿态估计为条件，生成概率化3D人体网格（SMPL参数）；采用四元数表示关节旋转，替代其他旋转表示。",
+    "result": "在Human3.6M上特别是在模糊/多义场景下达到最先进结果，在3DPW和EMDB基准上获得相当的姿态估计精度。",
+    "conclusion": "证明了四元数流在概率3D人体生成中的优势，为从单图恢复逼真3D人体提供新方法，并拓展了归一化流在非加性旋转建模中的应用。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2609.00994v1",
+    "title": "EvoGS: Modeling Deformation Evolution for Dynamic Gaussian Splatting",
+    "authors": [
+      "Wei Dong",
+      "Shahram Shirani",
+      "Jun Chen",
+      "Han Zhou"
+    ],
+    "abstract": "Recent extensions of 3D Gaussian Splatting (3DGS) enable real-time novel view synthesis in dynamic scenes by learning time-conditioned Gaussian deformations. However, existing MLP-based methods typically estimate deformations independently at each timestamp, making them less robust to large or abrupt motions. To address this issue, we propose \\textbf{EvoGS}, a 3DGS-based dynamic reconstruction framework that models Gaussian deformation as a temporal evolution process. EvoGS maintains persistent deformation states for each Gaussian, extrapolates future states from historical deformation states, and corrects the predictions with MLP-derived observations. The correction is adaptively weighted using a temporal residual memory and evolution statistics such as deformation velocity and trajectory deviation. To further improve reconstruction quality, EvoGS introduces deformation-aware densification. Clone and split operations are performed along corrected deformation directions, while an uncertainty-aware strategy suppresses densification for Gaussians with unstable deformation histories. Experiments show that EvoGS improves dynamic novel view synthesis quality and achieves competitive performance across benchmarks.",
+    "link": "http://arxiv.org/abs/2609.00994v1",
+    "published": "2026-09-01",
+    "category": "cs.CV",
+    "tags": [
+      "Dynamic Scene Reconstruction",
+      "3D Gaussian Splatting",
+      "Deformation Modeling",
+      "Novel View Synthesis"
+    ],
+    "tldr": "EvoGS将高斯形变建模为时间演化过程，通过历史状态外推与自适应校正提升动态场景重建质量。",
+    "motivation": "现有MLP-based动态场景方法在每个时间戳独立估计高斯形变，对大或突然的运动鲁棒性不足。",
+    "method": "为每个高斯维护持久形变状态，从历史状态外推未来状态，并用MLP观测结果进行自适应校正；校正权重由时间残差记忆以及形变速度、轨迹偏差等演化统计量决定。同时提出形变感知的致密化策略，沿校正形变方向执行克隆/分裂，并用不确定性感知策略抑制历史形变不稳定高斯的致密化。",
+    "result": "实验表明EvoGS提升了动态新视图合成质量，在多个基准上达到竞争性表现；摘要未提供具体量化指标。",
+    "conclusion": "提出一种新型动态高斯重建框架，将形变视为时间演化过程，有效增强对大运动的鲁棒性和重建质量，展示了在实时动态渲染领域的潜力。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2609.00923v1",
+    "title": "On-the-Fly3R: Towards Robust Online 3D Reconstruction with Feed-Forward 3R Models for Large-Scale UAV Scenarios",
+    "authors": [
+      "Zhe Shen",
+      "Liyuan Lou",
+      "Yifei Yu",
+      "Guanbo Wang",
+      "Quanjian Ji",
+      "Xin Wang",
+      "Zongqian Zhan"
+    ],
+    "abstract": "While feed-forward 3D reconstruction (3R) offers efficient end-to-end modeling, its application in large-scale UAV mapping is hindered by the prohibitive memory cost of Transformer attention. Current scalable streaming 3R methods assume temporally and spatially continuous inputs, rendering them ineffective for the weakly ordered or unordered image streams common in cross-strip UAV operations. To address this, we propose On-the-Fly3R, a training-free, progressive online 3D reconstruction framework for large-scale UAV images that upgrades various 3R backbones for large-scale UAV scenarios. Our method enables reconstruction from unordered inputs via retrieval-guided dynamic subset construction, which adaptively selects spatially relevant images. To further improve the robustness, a validation-rejection-retry mechanism is designed to guarantee global consistency, performing a pre-integration consistency check and automatically rejecting misaligned images and retrying with alternative subset. Finally, inspired by VSLAM, pose graph optimization based on the retrieval loop closure is employed to mitigate camera drift. Evaluations on several UAV benchmarks show that our On-the-Fly3R successfully scales various 3R models to over 5,000 images across square-kilometer UAV scenes, delivering substantially superior accuracy compared to several SOTA streaming 3R methods. Code is available at https://github.com/Sh1nZzz/On_the_Fly3R",
+    "link": "http://arxiv.org/abs/2609.00923v1",
+    "published": "2026-09-01",
+    "category": "cs.CV",
+    "tags": [
+      "3D Reconstruction",
+      "UAV Mapping",
+      "Online Reconstruction",
+      "Pose Graph Optimization",
+      "Retrieval"
+    ],
+    "tldr": "提出On-the-Fly3R，一种无需训练的渐进式在线三维重建框架，通过检索引导子集构建和验证-拒绝-重试机制，将前馈3R模型扩展到大规模无人机图像重建。",
+    "motivation": "前馈3D重建模型虽高效，但Transformer注意力内存开销巨大，难以用于大规模无人机测绘；现有流式方法假设输入时空连续，无法处理跨航带的无序或弱有序图像流。",
+    "method": "提出On-the-Fly3R框架，采用检索引导的动态子集构建来自适应选取空间相关图像，以支持无序输入；设计验证-拒绝-重试机制，通过预集成一致性检查保证全局一致性；并借鉴VSLAM，利用检索闭环进行位姿图优化以缓解相机漂移。",
+    "result": "在多个UAV基准上，将多种3R模型扩展到超过5000张图像，覆盖平方千米级无人机场景，精度显著优于现有SOTA流式3R方法。",
+    "conclusion": "该框架无需训练即可升级多种3R骨干，可稳健处理大规模无序无人机影像，为实际无人机测绘任务提供高精度在线重建方案，并已开源代码。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2609.00775v1",
+    "title": "VOIM: Training-Free Open-Vocabulary 3D Instance Mapping for RGB-D and Monocular SLAM",
+    "authors": [
+      "Sangmin Song",
+      "Sarath Kodagoda",
+      "Marc G. Carmichael",
+      "Karthick Thiyagarajan",
+      "Amal Gunatilake",
+      "Kelly Prentice",
+      "Jodi Martin"
+    ],
+    "abstract": "We present Voxel-Grounded Online Instance Manager (VOIM), a training-free voxel-grounded instance manager that builds open-vocabulary 3D instance maps from RGB-D or from monocular RGB alone, a regime no prior training-free system addresses. Online systems typically segment object instances and label them at first detection, committing when evidence is weakest. VOIM instead defers label and instance decisions until soft evidence from unmodified, off-the-shelf perception has accumulated per voxel across views. We show that the mapping stage, rather than the particular perception models, carries the result: across four perception configurations on ScanNet++, varying the region descriptor, the detector label prior and the mask source, the map exceeds the strongest online RGB-D system, OVO-SLAM, by between 4.8 and 11.7 mIoU. Perception is not neutral, and substituting that baseline's own descriptor family costs 4.1 of the margin, yet the baseline carries the marginally better 2D descriptor (33.7 vs. 31.5 mIoU over three scenes) and still realizes the weaker map. Under a like-for-like protocol VOIM reaches 44.07 mIoU on ScanNet++ against 32.37, winning all ten scenes and both aggregations (pooled 33.31 vs. 25.97), and the same system runs unchanged to fully monocular RGB, matching that baseline pooled on Replica (27.80 vs. 27.50). The advantage is regime-specific: under Replica's all-classes scoring, matched inputs give a split result, 28.60 vs. 27.50 pooled against 24.59 vs. 30.11 on the per-scene mean. Room scale is label-limited and building scale drift-limited. Labeling does not run in real time, dominated by per-class detection over the full vocabulary. The maps export occupancy grids and resolve free-form queries to object instances.",
+    "link": "http://arxiv.org/abs/2609.00775v1",
+    "published": "2026-09-01",
+    "category": "cs.CV",
+    "tags": [
+      "Open-Vocabulary",
+      "3D Instance Mapping",
+      "SLAM",
+      "Training-Free",
+      "Monocular"
+    ],
+    "tldr": "提出VOIM，免训练地融合逐体素跨视角证据，实现RGB-D与单目开词汇3D实例建图，延迟决策从而显著优于现有在线方法。",
+    "motivation": "在线系统通常在首次检测时即定下实例与标签，证据最弱时易出错；且此前没有免训练方法支持单目RGB开词汇实例建图。因此需要延迟标签与实例决策，直至跨视图证据充分累积。",
+    "method": "提出体素接地在线实例管理器(VOIM)，不训练也不修改现成感知模型，在逐体素上跨视图累积软证据，再统一进行标签与实例划分；可处理RGB-D或仅单目RGB输入。",
+    "result": "在ScanNet++上，四种感知配置下地图均超过最强在线RGB-D系统OVO-SLAM，提升4.8~11.7 mIoU；同协议下VOIM达44.07 mIoU(基线32.37)，10场景全胜，聚合33.31对25.97。单目Replica上池化27.80对27.50，与基线持平。",
+    "conclusion": "结果表明建图阶段而非具体感知模型决定结果；即使换用基线更好的2D描述子，基线仍得到较差地图。系统导出占用栅格并支持开放查询；但室内尺度受标签限制，建筑尺度受漂移限制，标签处理未达实时。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2609.00713v1",
+    "title": "Efficient and Robust Absolute Pose Estimation via Gravity-Prior-Driven Transformation Decoupling and Pose Refinement",
+    "authors": [
+      "Hu Cao",
+      "Qianyi Yang",
+      "Xinyi Li",
+      "Jiong Liu",
+      "Yinlong Liu",
+      "Alois Knoll"
+    ],
+    "abstract": "Estimation of the absolute pose of an object is an essential task for various robotic applications. Recently, incorporating gravity direction as prior information has emerged as a popular approach to simplify absolute pose estimation. However, developing a robust and efficient algorithm to solve this challenging problem remains a difficult question due to large amounts of mismatches. In addition, obtaining an accurate pose solution from selected inlier correspondences with gravity prior is still a research gap. In this paper, we propose a novel transformation strategy that exploits geometric relations derived from the gravity prior. Through transformation decoupling, the original 6 degrees of freedom (DoF) absolute pose estimation problem is simplified into a 4-DoFs problem: 1-DoF for the rotation angle and 3-DoFs for translation, significantly improving the efficiency. For the 1-DoF rotation angle, we apply a one-dimensional global voting algorithm for optimal estimation. Once the optimal rotation is obtained, the mismatched correspondences are preliminarily filtered, and translation estimation, a linear problem, can be easily solved. Furthermore, to obtain accurate pose results, we introduce a novel pose refinement algorithm to enhance the accuracy of both rotation and translation. Extensive experiments on synthetic data and three publicly available real-world datasets (TUM RGB-D, ETH3D, and RobotCar) demonstrate that the proposed method achieves stronger performance compared to existing state-of-the-art (SOTA) approaches. To further validate our method, we integrated it into ORB-SLAM2. The results on the KITTI dataset show it effectively reduces drift and improves trajectory alignment during relocalization. The source code will be released upon acceptance.",
+    "link": "http://arxiv.org/abs/2609.00713v1",
+    "published": "2026-09-01",
+    "category": "cs.CV",
+    "tags": [
+      "Absolute Pose Estimation",
+      "Gravity Prior",
+      "Transformation Decoupling",
+      "Pose Refinement",
+      "Visual SLAM"
+    ],
+    "tldr": "提出一种基于重力先验的解耦与精化方法，将6自由度绝对位姿估计简化为4自由度，实现高效且鲁棒的位姿估计。",
+    "motivation": "现有基于重力先验的绝对位姿估计在大量误匹配下鲁棒性和效率不足，且从内点求解精确位姿仍存在空白。",
+    "method": "利用重力先验推导几何关系，将6DoF问题解耦为1DoF旋转角加3DoF平移；采用一维全局投票估计最优旋转并滤除误匹配，再线性求解平移，最后用新颖的位姿精化算法提高旋转和平移精度。",
+    "result": "在合成数据和TUM RGB-D、ETH3D、RobotCar三个公开数据集上优于现有SOTA方法；集成到ORB-SLAM2后，在KITTI数据集上有效减小漂移并改善重定位轨迹对齐。",
+    "conclusion": "提出高效鲁棒的绝对位姿估计方法，通过解耦和精化兼顾效率与精度，并验证了在SLAM重定位中的实用价值，源代码将公开。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2609.00610v1",
+    "title": "Streaming4D: Accelerate 4D World Models via Block-wise Video Generation and Incremental Reconstruction",
+    "authors": [
+      "Xiaoyan Liu",
+      "Jiaxin Liu",
+      "Kangrui Li",
+      "Sifan Zhou"
+    ],
+    "abstract": "Current 4D generation paradigms are often bottlenecked by a sequential decoupling design: video is generated first, followed by 3D reconstruction, leading to high interaction latency. This limits applications in interactive real-time scenarios. To this end, we propose \\textbf{Streaming4D}, a tightly coupled synchronous pipeline that integrates block-wise autoregressive video generation with incremental 3D reconstruction. Unlike traditional frame-by-frame emission and delayed geometry recovery, Streaming4D generates temporal video blocks and immediately triggers reconstruction for each completed block, enabling parallel execution between synthesis and geometric updates. This approach allows the world representation to evolve online with the video stream, reducing feedback latency while preserving geometric fidelity. We instantiate \\textbf{Streaming4D} using a Self-Forcing-style autoregressive generator and an incremental reconstruction backend. Experiments show consistent runtime improvements across resolutions on a single RTX 4090 (1.24$\\times$ speedup), while maintaining high-quality 4D geometry and multi-view consistency.",
+    "link": "http://arxiv.org/abs/2609.00610v1",
+    "published": "2026-09-01",
+    "category": "cs.CV",
+    "tags": [
+      "4D Generation",
+      "Video Generation",
+      "3D Reconstruction",
+      "Streaming",
+      "Real-time"
+    ],
+    "tldr": "Streaming4D通过块式视频生成与增量重建同步流水线，实现低延迟的4D世界模型在线构建。",
+    "motivation": "现有4D生成范式采用先视频后重建的串行解耦设计，导致交互延迟高，难以应用于实时交互场景。",
+    "method": "提出Streaming4D，紧密耦合视频生成与3D重建：使用Self-Forcing式自回归生成器逐块生成视频，每个时间块完成后立即触发增量三维重建，使视频合成与几何更新并行执行，世界表示随视频流在线演化。",
+    "result": "在单块RTX 4090上，不同分辨率下均获得一致的运行时间提升，加速比达1.24倍，同时保持高质量的4D几何和多视角一致性。",
+    "conclusion": "Streaming4D通过同步流水线显著降低反馈延迟并保持几何保真度，为交互式实时4D生成提供可行方案。"
+  },
+  {
     "id": "http://arxiv.org/abs/2608.31159v1",
     "title": "BRF-GS: Hyperspectral Bidirectional Reflectance Factor Modeling and Image Generation Based on 3D Gaussian Splatting",
     "authors": [
@@ -1108,55 +1354,5 @@
     "method": "PIVOT采集多轨迹数据，同时提供传感器实测与COLMAP优化的位姿及标定/优化内参；定义三类基准：已知轨迹与未知轨迹的新视角泛化、实测与优化位姿敏感性、标定与优化内参敏感性，并引入有向位姿空间Chamfer距离来衡量训练位姿对评估轨迹的覆盖度。",
     "result": "在五个真实场景上的基准实验显示：已表示轨迹上的留出视角与未见轨迹之间存在一致的质量差距，且对位姿来源和相机内参的选择表现出显著敏感性。",
     "conclusion": "PIVOT v1包含五个真实场景（DJI Mini 4 Pro采集），提供开放的处理与Nerfstudio评测工具链；其贡献在于系统化独立评估位姿、内参和轨迹对新视角合成的影响，有助于推动面向真实部署的鲁棒重建研究。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.24544v1",
-    "title": "KLTNet: Learning Sparse Feature Tracking for Robust and Accurate Monocular Visual-Inertial Odometry",
-    "authors": [
-      "Renbiao Jin",
-      "Danping Zou",
-      "Wenxian Yu"
-    ],
-    "abstract": "Many feature-based visual-inertial odometry (VIO) systems rely on sparse feature tracking, whose accuracy and robustness directly affect state estimation. Classical KLT trackers rely primarily on local image patches and can become unreliable under rapid motion or in low-texture environments. We propose KLTNet, a lightweight learning-based, plug-and-play sparse feature tracker designed to replace classical KLT trackers in KLT-based VIO front ends. KLTNet follows a coarse-to-fine, dense-to-sparse architecture that combines low-resolution dense optical flow for robust global motion initialization with triplet-patch refinement for accurate and temporally consistent tracking. A fixed reference patch provides a stable anchor throughout each feature track and helps reduce accumulated tracking drift. In addition, KLTNet predicts anisotropic confidence weights supervised through differentiable multi-view triangulation, which can be used as observation weights in compatible VIO estimators. Experiments with VINS-Mono and OpenVINS on public benchmarks and a self-collected low-texture dataset demonstrate improved tracking and odometry accuracy over classical KLT, while maintaining real-time performance on an embedded platform.",
-    "link": "http://arxiv.org/abs/2608.24544v1",
-    "published": "2026-08-25",
-    "category": "cs.CV",
-    "tags": [
-      "Visual-Inertial Odometry",
-      "Feature Tracking",
-      "Deep Learning",
-      "KLT",
-      "VIO"
-    ],
-    "tldr": "提出KLTNet轻量学习型稀疏特征跟踪器，替代经典KLT提升VIO精度与鲁棒性，支持实时运行。",
-    "motivation": "经典KLT跟踪器仅依赖局部图像块，在快速运动或低纹理环境下易失效，直接影响基于特征的VIO系统的状态估计精度与鲁棒性。",
-    "method": "KLTNet采用粗到细、密到稀的架构：先通过低分辨率稠密光流获得全局运动初始化，再用三元组块精化实现精准且时间一致的跟踪；利用固定参考块减少漂移；预测各向异性置信权重，并通过可微多视角三角化监督，可与兼容VIO估计器集成。",
-    "result": "在公开基准和自采低纹理数据集上，将KLTNet集成到VINS-Mono和OpenVINS中，相比经典KLT提升了跟踪精度和里程计精度，并在嵌入式平台上保持实时性能。",
-    "conclusion": "KLTNet作为即插即用的稀疏特征跟踪器，能够显著提升VIO在挑战性场景下的鲁棒性与准确性，且计算开销低，适合资源受限平台。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.24384v1",
-    "title": "Markerless Pose Estimation for Resistance Training Technique Assessment",
-    "authors": [
-      "Joseph Turner",
-      "Jeff Clark",
-      "Nawid Keshtmand"
-    ],
-    "abstract": "Resistance training can be a high risk activity, and safe form is essential to avoiding injury. Laboratory-based movement analysis provides quantitive technique assessment, yet is not easily accessible. Markerless pose estimation infers body landmarks from images or video without physical markers and could offer a feasible alternative for technique assessment. We present a pose estimation framework to evaluate resistance-training technique from ordinary video footage. Using BlazePose, anatomical landmarks were extracted from squat, bench press, and deadlift videos and converted into joint-angle trajectories, with the squat serving as the primary case study. Trajectories were assessed against a defined reference repetition using root mean square error (RMSE). Results show that the framework recovers meaningful kinematic patterns for the squat and deadlift, enabling quantitative comparison between repetitions and identification of technique variability within a set. Performance depended strongly on camera orientation and visual occlusion, with non-sagittal views distorting 2D joint-angle estimates. The findings demonstrate that markerless pose estimation can support accessible biomechanical assessment outside laboratory environments.",
-    "link": "http://arxiv.org/abs/2608.24384v1",
-    "published": "2026-08-25",
-    "category": "cs.CV",
-    "tags": [
-      "Pose Estimation",
-      "Resistance Training",
-      "Biomechanics",
-      "BlazePose",
-      "Technique Assessment"
-    ],
-    "tldr": "提出基于BlazePose的无标记姿态估计框架，从普通视频评估抗阻训练技术，通过关节角轨迹比较识别动作变异性。",
-    "motivation": "抗阻训练风险高，正确姿势对避免受伤至关重要。实验室运动分析虽能提供量化评估，但不易普及，需要可行的替代方案。",
-    "method": "使用BlazePose从深蹲、卧推和硬拉视频中提取解剖学关键点，并转换为关节角轨迹，以深蹲为主要案例。轨迹通过均方根误差（RMSE）与参考重复动作进行比较评估。",
-    "result": "框架能恢复深蹲和硬拉的有效运动学模式，支持重复间定量比较和组内技术变异性识别。性能强烈依赖相机方向和视觉遮挡，非矢状面视角会扭曲2D关节角估计。",
-    "conclusion": "研究表明无标记姿态估计可以在实验室外支持可获取的生物力学评估，但需注意视角和遮挡对准确性的影响。"
   }
 ]
