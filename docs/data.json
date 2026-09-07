@@ -1,5 +1,198 @@
 [
   {
+    "id": "http://arxiv.org/abs/2609.05255v1",
+    "title": "Compact Neural Appearance Models for Efficient Gaussian Splatting",
+    "authors": [
+      "Florian Hahlbohm",
+      "Jorge Condor",
+      "Linus Franke",
+      "Martin Eisemann",
+      "Marcus Magnor"
+    ],
+    "abstract": "Explicit primitive-based radiance fields such as 3D Gaussian Splatting typically model view-dependent appearance using low-order spherical harmonics (SH). Although efficient to evaluate, SH coefficients dominate per-primitive storage and memory traffic, while their band-limited basis restricts angular detail. We present a thorough, end-to-end comparison of SH and recent spherical appearance models and introduce an implicit alternative that decodes compact per-primitive latent codes using a tiny shared MLP. We integrate all models into the same optimized pipeline, fusing their forward and backward passes into a differentiable CUDA rasterizer and provide a portable WebGL viewer for laptop and mobile GPUs. Our evaluation across reconstruction quality, memory use, and optimization and rendering performance shows that recent spherical models offer the strongest overall quality-efficiency trade-off. Our neural representation is the most compact model evaluated and, compared to third-degree SH, reduces the per-primitive appearance footprint from 192 to 28 bytes, accelerates optimization by 1.3$\\times$, while improving reconstruction quality. We further analyze how appearance parametrization shapes optimization, identifying differences in recovered geometry and the tendency of expressive models to absorb non-static scene content. Together, our framework and analysis provide practical guidance for replacing SH beyond what image metrics alone can capture.",
+    "link": "http://arxiv.org/abs/2609.05255v1",
+    "published": "2026-09-04",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Appearance Modeling",
+      "Neural Rendering",
+      "Spherical Harmonics",
+      "Compact Representation"
+    ],
+    "tldr": "提出紧凑神经外观模型，用共享MLP解码逐基元隐码替代球谐，减少存储加速优化并提升重建质量。",
+    "motivation": "以3D高斯溅射为代表的显式基元辐射场常用低阶球谐（SH）建模视相关外观，但SH系数占据大量逐基元存储与内存带宽，且频带限制制约角度细节。需要更紧凑且表达能力更强的外观模型以提升效率与质量。",
+    "method": "系统比较SH与多种新式球面外观模型，并引入隐式替代方案：通过一个极小的共享MLP解码每基元的紧凑潜码。所有模型被集成进统一的可微CUDA光栅化器中，前后向传播融合，并提供跨平台WebGL查看器。",
+    "result": "相比三阶SH，所提神经表示将逐基元外观占用从192字节降至28字节，优化提速1.3倍，同时改善重建质量。新式球面模型在重建质量与效率间取得最佳整体权衡，而神经表示是评估中最紧凑的模型。",
+    "conclusion": "所提紧凑神经外观模型在维持高效的同时大幅压缩外观存储并加速优化，优于SH；进一步分析表明外观参数化会影响优化中恢复的几何和动态场景内容吸收问题，为超越图像指标选择外观表示提供实践指导。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2609.05210v1",
+    "title": "BLASt3R: Bundle Adjustment of Any Image Set with Multi-View Matching and Monocular Priors",
+    "authors": [
+      "Vincent Leroy",
+      "Philippe Weinzaepfel",
+      "Lojze Zust",
+      "Yohann Cabon",
+      "Jérome Revaud"
+    ],
+    "abstract": "Recent hybrid Structure-from-Motion (SfM) systems combine the robustness of feed-forward 3D reconstruction with the accuracy of traditional bundle adjustment (BA) with pixel matching. They are usually the best performing methods however their scalability and usability remains limited since estimating dense correspondences between views is prohibitively costly, especially considering time constraints inherent to online applications like Visual SLAM (VSLAM). In this paper, we introduce a regularized BA framework that leverages a fast multi-view matcher and monocular priors for initialization and regularization. In contrast to existing systems, our unified approach seamlessly supports both online VSLAM and offline reconstruction from unordered image collections within the same optimization framework and sharing common hyperparameters for all tasks. Extensive experiments across both domains demonstrate improved performance and speed tradeoffs over traditional, feed-forward, and hybrid baselines. Notably for VSLAM, our uncalibrated method outperforms all previous calibrated approaches.",
+    "link": "http://arxiv.org/abs/2609.05210v1",
+    "published": "2026-09-04",
+    "category": "cs.CV",
+    "tags": [
+      "SfM",
+      "Bundle Adjustment",
+      "Visual SLAM",
+      "Multi-View Matching",
+      "Monocular Priors"
+    ],
+    "tldr": "提出BLASt3R，统一框架同时支持在线VSLAM和离线重建，用快速多视图匹配和单目先验进行BA，性能超传统与混合方法。",
+    "motivation": "现有混合SfM系统在鲁棒性和精度上表现好，但稠密匹配代价高，难以用于时序敏感的在线VSLAM场景。需要一种可扩展、低成本且统一支持VSLAM和离线重建的BA框架。",
+    "method": "提出正则化BA框架，结合快速多视图匹配器（用于对应关系）和单目先验（用于初始化和正则化）。同一优化框架共享超参数，无缝支持无序图像集的离线重建与在线VSLAM，且无需相机标定。",
+    "result": "实验显示在速度和精度权衡上优于传统、前馈和混合基线。在VSLAM中，其未标定方法超越了所有先前已标定的方法。",
+    "conclusion": "展示了该框架的统一性和有效性，可同时兼顾在线与离线任务，为VSLAM和SfM提供更高效、更灵活的方案，潜在推动实时三维重建应用。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2609.04984v1",
+    "title": "Temporal Residual Neural Radiance Fields for Monocular Video Dynamic Human Body Reconstruction",
+    "authors": [
+      "Tianle Du",
+      "Jie Wang",
+      "Xiaolong Xie",
+      "Wei Li",
+      "Pengxiang Su",
+      "Jie Liu"
+    ],
+    "abstract": "In the field of computer vision and graphics, high-quality reconstruction of the human body in static scenes has been achieved in recent years by a single multilayer perceptron (MLP) in a number of approaches. However, MLPs have capacity limitations, requiring substantial training time and computational resources for dynamic scene reconstruction. And the quality of reconstruction is significantly constrained. This paper proposes a method for effectively processing complex spatiotemporal signals in dynamic scene human 3D modeling. The proposed method uses Temporal Residual Neural Radiance Fields to achieve novel view rendering and new pose synthesis of human bodies.To address the problem of representing temporal signals in video sequences, we construct a temporal residual field which is not related to the MLP architecture. Secondly, to improve reconstruction efficiency, we propose an integrated approach that reduces trainable parameters and accelerates rendering, thereby enhancing the network's feature representation capability. Finally, we design a multi-dimensional loss function to accurately measure the loss between predicted and actual spatial pixel values. The experimental results show that our proposed approach improves the peak signal-to-noise ratio (PSNR) and structural similarity index (SSIM) accuracy metrics compared to the latest representative methods. It maintains similar accuracy to Anim-NeRF and Neural Body while achieving a nearly 780-fold increase in time efficiency.",
+    "link": "http://arxiv.org/abs/2609.04984v1",
+    "published": "2026-09-04",
+    "category": "cs.CV",
+    "tags": [
+      "NeRF",
+      "Dynamic Human Body Reconstruction",
+      "Temporal Residual",
+      "Monocular Video",
+      "Rendering Efficiency"
+    ],
+    "tldr": "提出结合时间残差场的神经辐射场重建方法，实现单目视频动态人体高效高精度重建，时间效率较现有方法提升约780倍。",
+    "motivation": "静态场景下基于单个MLP的方法已经能够实现高质量的人体重建，但动态场景重建受限于MLP的容量，需要大量训练时间和计算资源，且重建质量明显受限。本文旨在解决动态人体建模中复杂时空信号的表征与重建效率问题。",
+    "method": "构建与MLP架构无关的时间残差场，用于表征视频序列中的时间信号，进而支持新视图渲染与新姿态合成；提出集成方法以减少可训练参数并加速渲染，从而增强网络特征表示能力；设计多维损失函数精确衡量预测与真实空间像素值之间的差异。",
+    "result": "实验结果表明，该方法在PSNR和SSIM指标上优于最新代表性方法，并能在保持与Anim-NeRF和Neural Body相近精度的同时，时间效率提升近780倍。",
+    "conclusion": "本文提出的时间残差神经辐射场方法通过时间残差场和集成策略，在保证重建精度的同时大幅提升时间效率，可支持新视图渲染和新姿态合成，为单目视频动态人体三维建模提供了高效可行的方案。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2609.04902v1",
+    "title": "Sound-based Multi-Person 3D Pose Estimation",
+    "authors": [
+      "Yusuke Oumi",
+      "Yuto Shibata",
+      "Go Irie",
+      "Akisato Kimura",
+      "Yoshimitsu Aoki",
+      "Mariko Isogawa"
+    ],
+    "abstract": "Can we recover the 3D poses of multiple people using only sound? This paper presents the first attempt to estimate multi-person 3D poses solely from acoustic signals. Estimating the poses of multiple individuals using acoustic signals is inherently challenging due to the superposition of motion-dependent signal variations. Unlike single-person scenarios, the presence of multiple subjects leads to overlapping acoustic signatures, making it difficult to attribute specific signal changes to an individual's pose. Furthermore, the complexity is compounded by inter-person reflections, which introduce intricate propagation delays that obscure the temporal motion-acoustic relationship. To address these issues, we propose SoundMHPE (Sound-based Multi-person Human Pose Estimator), a novel encoder-decoder framework consisting of two key components. First, the Acoustic Multi-scale Encoder captures diverse temporal and fine-grained frequency features to isolate subtle acoustic signatures from complex, overlapping signals. Second, the Temporal Pose Decoder employs an attention mechanism to disentangle multi-person information across successive frames. By jointly accounting for temporal dynamics and inter-person dependencies, this component precisely reconstructs frame-wise individual poses. To validate our approach, we constructed the 6-hour Acoustic Multi-person Pose (AMP) dataset consisting of 432K synchronized frames of multi-person pose and acoustic data, and demonstrated that our SoundMHPE outperforms baseline models. Project page: https://oumi03.github.io/sound-mhpe/",
+    "link": "http://arxiv.org/abs/2609.04902v1",
+    "published": "2026-09-04",
+    "category": "cs.CV",
+    "tags": [
+      "Sound-based Sensing",
+      "3D Pose Estimation",
+      "Multi-person",
+      "Encoder-Decoder",
+      "Attention Mechanism"
+    ],
+    "tldr": "首个仅凭声音估计多人三维姿态的SoundMHPE框架，采用多尺度声学编码与注意力时序解码，在432K帧自制数据集上超越基线。",
+    "motivation": "多人场景中声学信号叠加、个体声学特征重叠以及人与人之间反射导致的传播延迟，使仅凭声音恢复多人3D姿态极具挑战；现有方法缺乏针对声学多人姿态估计的研究，需解决信号归属与时序关系模糊问题。",
+    "method": "提出SoundMHPE编码器-解码器框架。声学多尺度编码器提取跨时间与细粒度频率特征，隔离重叠信号中的细微声学签名；时间姿态解码器采用注意力机制跨连续帧解耦多人信息，联合建模时序动态与人际依赖以逐帧重建个体姿态。",
+    "result": "构建6小时的Acoustic Multi-person Pose (AMP)数据集，包含432K同步的多人姿态与声学数据帧；实验显示SoundMHPE优于基线模型，但摘要未提供具体量化指标。",
+    "conclusion": "首次证明仅利用声学信号估计多人3D姿态的可行性，为无视觉传感器条件下的多人人体感知提供新思路；SoundMHPE有望应用于隐私保护或遮挡场景。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2609.04802v1",
+    "title": "Linguistic Trajectory Encoding for Efficient Long-Horizon Spatial Memory in Embodied Agents",
+    "authors": [
+      "Tianyidan Xie",
+      "Shenyi Wang",
+      "Qiang Tang",
+      "Mingjie Wang",
+      "Zhicheng Qiu",
+      "Xuanfu Li",
+      "Zhan Xu",
+      "Jian Yang",
+      "Lanjun Wang",
+      "Zili Yi"
+    ],
+    "abstract": "Embodied agents performing long-horizon tasks require a memory representation in which the state transitions of dynamic objects remain queryable in natural language across hours-to-days observation horizons. Existing systems either drop fine-grained motion (clip-level video-language embeddings), keep it only as raw coordinates (geometric SLAM), or organise it around immediate task context (agent working memories). None of them gives the agent a per-object timeline whose state transitions are themselves queryable in language. Our key contribution is \\textbf{Linguistic Trajectory Encoding} (LTE), which compresses dynamic object motion histories via a hybrid representation combining natural language descriptions, sparse spatial anchors, and visual anchors. LTE adapts compression to motion complexity by anchoring periods without reliable observations to the last seen location, while representing motion with geometric waypoints and linguistic descriptions to preserve accuracy. To evaluate these capabilities across extended time horizons, we construct the \\textbf{Spatial Memory Benchmark} (SMB) from EgoLife multi-day recordings, targeting capabilities absent in existing benchmarks: semantic trajectory retrieval and long-horizon object retrieval. On SMB, the LTE-based system achieves $45.3\\%$ success in semantic trajectory retrieval and $48.7\\%$ in long-horizon object retrieval, outperforming structured-memory and VLM baselines (best prior: $31.9\\%$ and $34.4\\%$). LTE achieves trajectory compression by factors of $8.7\\times$ to $26.1\\times$ with sub-second query latency on $24$\\,h video. On Ego4D natural-language queries, the system reaches $28.75\\%$ / $55.10\\%$ R@1/R@5, $+15.80$ / $+31.30$ pts over EgoVLPv2.",
+    "link": "http://arxiv.org/abs/2609.04802v1",
+    "published": "2026-09-04",
+    "category": "cs.CV",
+    "tags": [
+      "Embodied AI",
+      "Spatial Memory",
+      "Language Grounding",
+      "Video Understanding",
+      "Compression"
+    ],
+    "tldr": "提出语言轨迹编码，用混合表示压缩动态物体运动历史，实现长时间跨度下可语言查询的空间记忆。",
+    "motivation": "具身智能体在长时程任务中需要以可语言查询的方式记录动态物体的状态转移，但现有方法要么丢失细粒度运动信息，要么仅存原始坐标，要么围绕当前任务组织，无法提供逐物体可语言查询的时间线。",
+    "method": "提出Linguistic Trajectory Encoding (LTE)，结合自然语言描述、稀疏空间锚点和视觉锚点，根据运动复杂度自适应压缩：无可靠观测时段锚定到最后位置，运动用几何路径点和语言描述表示。构造Spatial Memory Benchmark (SMB)评估语义轨迹检索和长时程物体检索。",
+    "result": "在SMB上，LTE语义轨迹检索成功率45.3%，长时程物体检索48.7%，优于最好基线31.9%和34.4%；轨迹压缩比8.7倍至26.1倍，24小时视频查询延迟亚秒级；在Ego4D自然语言查询上R@1/R@5达28.75%/55.10%，较EgoVLPv2提升+15.80/+31.30个百分点。",
+    "conclusion": "LTE为长时间跨度的动态物体空间记忆提供了高效、可查询的表示，显著超越现有基线，为提升具身智能体长期记忆能力提供了新方向。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2609.04784v1",
+    "title": "CLON: Cue-Calibrated Linguistic Object Onboarding for Zero-Shot 6D Pose Front-Ends",
+    "authors": [
+      "Seojin Ji",
+      "Yoojin Kwon",
+      "Hyung-Sin Kim"
+    ],
+    "abstract": "Zero-shot 6D pose estimation pipelines increasingly rely on strong downstream pose solvers, but their performance is often limited by the front-end: object proposals must preserve partially visible true positives while rejecting semantically plausible distractors. We introduce Cue-Calibrated Linguistic Object Onboarding (CLON), a front-end requiring no task-specific training for new objects. Given rendered templates of the onboarded object set, CLON constructs a linguistic semantic memory for top-down proposal generation and object-set cue weights for calibrated proposal scoring. The linguistic memory guides SAM 3 toward high-recall proposals for onboarded objects, while cue weights are computed once from the onboarded object set before scene inference and kept fixed during online scoring. On seven BOP-Classic-Core datasets, CLON improves detection AP by 8.1 percentage points (pp), segmentation AP by 6.2 pp, and downstream 6D pose AR by up to 4.1 pp over CNOS and SAM-6D front-ends.",
+    "link": "http://arxiv.org/abs/2609.04784v1",
+    "published": "2026-09-04",
+    "category": "cs.CV",
+    "tags": [
+      "6D Pose Estimation",
+      "Zero-Shot",
+      "Object Detection",
+      "Segmentation",
+      "Foundation Models"
+    ],
+    "tldr": "CLON 是一种零样本、免训练的前端方法，通过语言记忆与校准评分显著提升 6D 姿态估计的检测与分割性能。",
+    "motivation": "零样本 6D 姿态估计的性能受限于前端：目标提议需保留部分可见的真阳性，同时剔除语义上相似的干扰项，而现有方法难以兼顾召回率与精度。",
+    "method": "CLON 利用给定对象的渲染模板构建语言语义记忆以引导 SAM 3 生成高召回率提议，并计算对象集提示权重用于校准的提议评分；权重在场景推理前离线计算一次，在线评分时保持固定，无需针对新对象进行训练。",
+    "result": "在七个 BOP-Classic-Core 数据集上，相比 CNOS 和 SAM-6D 前端，CLON 将检测 AP 提高 8.1 个百分点，分割 AP 提高 6.2 个百分点，下游 6D 姿态 AR 最高提升 4.1 个百分点。",
+    "conclusion": "CLON 通过语言语义记忆与即插即用的提示权重校准，显著改进了零样本 6D 姿态估计前端，为无需训练即可适应新对象提供了有效方案。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2609.04718v1",
+    "title": "HiSfM: Disambiguating Structure-from-Motion via Scaffold-Anchored Hierarchical Reconstruction",
+    "authors": [
+      "Ziding Zhao",
+      "Hainan Cui",
+      "Peilin Tao",
+      "Shuhan Shen"
+    ],
+    "abstract": "Structure-from-Motion (SfM) is a fundamental tool for sparse 3D reconstruction with broad impact in robotics and vision, supporting mapping, localization, and large-scale scene modeling. However, conventional pipelines often fail under hard visual ambiguity caused by repeated or symmetric structures, and incur heavy computational cost due to redundant cameras and constraints. We present HiSfM, a hierarchical coarse-to-fine SfM framework that improves robustness and efficiency through scaffold construction. HiSfM first forms strong local communities using geometrical induced heuristics, then connects communities with a compact yet strong skeleton by packing edge-disjoint spanning trees (EDST) while verifying skeletal edges with a two-view disambiguator. We reconstruct a stable scaffold on this verified skeleton, serving as an anchor to capture the essence of the scene, and subsequently absorb remaining images via efficient registration and triangulation for further refinements. Experiments on ambiguity-focused benchmarks and general datasets show that HiSfM prevents ambiguity-induced failures while substantially reducing runtime compared to previous methods, and improves completeness over aggressive sparsification methods. Code is available at https://github.com/3dv-casia/HiSfM.",
+    "link": "http://arxiv.org/abs/2609.04718v1",
+    "published": "2026-09-04",
+    "category": "cs.CV",
+    "tags": [
+      "SfM",
+      "3D Reconstruction",
+      "Ambiguity",
+      "Hierarchical",
+      "Scaffold"
+    ],
+    "tldr": "HiSfM通过构建脚手架锚定场景的层次化SfM框架，解决视觉歧义并大幅降低计算成本。",
+    "motivation": "传统SfM流水线在重复或对称结构导致的硬视觉歧义下容易失败，且冗余相机和约束导致高昂的计算成本。",
+    "method": "HiSfM采用层次化从粗到细的框架，先利用几何启发式形成强局部社区，再通过打包边不相交生成树（EDST）连接社区，并用双视图歧义验证器验证骨架边，构建稳定的脚手架作为锚点，最后通过高效配准和三角化吸收剩余图像进行精化。",
+    "result": "在歧义聚焦基准和通用数据集上，HiSfM避免了歧义引起的失败，与先前方法相比大幅减少了运行时间，并在激进稀疏化方法中提高了完整性。",
+    "conclusion": "HiSfM通过脚手架锚定的层次化重建，同时提升了SfM的鲁棒性和效率，对机器人、视觉定位和大规模场景建模有潜在影响，代码已开源。"
+  },
+  {
     "id": "http://arxiv.org/abs/2609.04201v1",
     "title": "Scal3R: Learning Efficient Multi-Relative Pose Query for Scalable Online 3D Reconstruction",
     "authors": [
@@ -1105,145 +1298,5 @@
     "method": "使用消费级单反相机在电动转台上拍摄20秒视频，通过多种子COLMAP初始化相机位姿，训练NeRF重建水密3D网格；利用每帧可见的已知直径圆柱支架提供自动度量缩放并进行质量控制。",
     "result": "对300个果穗，250个（83.3%）通过自动处理；骨架长度与卡尺测量高度一致（R²=0.964，RMSE=4.68 mm），凸包体积与排水法体积在15个果穗子集上R²=0.982，RMSE=5.26 mL；硬件成本约607美元，人工时间从每穗5分钟降至1分钟。",
     "conclusion": "该平台为育种规模的3D果穗表型提供了基础，验证了低成本、自动化方案的可行性；长度测量偏差源于卡尺测弦长而骨架测弧长的定义差异。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.30054v1",
-    "title": "When 3D Gaussian Splatting Recovers Real Surfaces",
-    "authors": [
-      "Songhe Wang",
-      "David Johnathan Miller"
-    ],
-    "abstract": "When does 3D Gaussian Splatting (3DGS) recover the true scene surface rather than just overfitting view-dependent appearance? We answer this by developing a mathematical framework based on a first-hit rendering abstraction that cleanly isolates geometry from appearance. We prove that geometric misalignment forcefully converts spatial textures into high-frequency angular signals via parallax. This establishes a strict identifiability window: if angular capacity is bounded, surface-consistent solutions are mathematically preferred; if unrestricted, the same images can be perfectly explained by an incorrect, opaque billboard geometry. Experiments on synthetic stress tests confirm this prediction, showing billboard failures emerge precisely at high angular capacities. Conversely, in the real-world datasets we evaluate under standard capture protocols, reconstructions remain surface-consistent even at high SH degrees, which is consistent with the prediction that rich spatial texture can push billboard solutions outside the tested angular-capacity range.",
-    "link": "http://arxiv.org/abs/2608.30054v1",
-    "published": "2026-08-30",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Surface Reconstruction",
-      "Identifiability",
-      "View-Dependent Appearance",
-      "Parallax"
-    ],
-    "tldr": "本文提出数学框架分析3DGS何时恢复真实几何表面，证明有界角容量下表面一致解更优。",
-    "motivation": "探究3DGS在何种条件下能恢复真实场景表面，而非仅过拟合视角相关外观，以区分几何与外观的作用。",
-    "method": "基于first-hit渲染抽象建立数学框架，分离几何与外观；严格定义可辨识窗口，并证明几何错位通过视差将空间纹理转为高频角信号；结合合成压力测试与真实数据评估验证理论。",
-    "result": "合成测试显示广告牌失效恰好出现在高角容量时；真实数据标准采集协议下即使高球谐阶数重建仍保持表面一致，支持富空间纹理扩展可辨识范围的预测。",
-    "conclusion": "确立角容量有界时表面一致解被数学偏好的严格条件，并指出无限制时错误billboard几何可完美解释同一图像；实验验证理论，为3DGS几何重建可靠性提供重要边界条件。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.29927v1",
-    "title": "Everybody Tracking Every Body",
-    "authors": [
-      "Daeyun Shin",
-      "Yunhan Zhao",
-      "Shu Kong",
-      "Alexander C. Berg",
-      "Charless Fowlkes"
-    ],
-    "abstract": "We address the problem of 3D body pose estimation of multiple interacting people from their egocentric views with centralized coordination. Each individual wears a camera recording egocentric video and IMU data. Processing this video with VIO SLAM provides high-quality tracking of each egocentric camera through space. The first-person view from one individual provides third-person observations of other people, although these exocentric observations are sparse, intermittent, and of highly variable reliability as both cameras and subjects move. To integrate these synchronized data streams, we propose a diffusion-based approach that fuses estimates of pose based on head motion derived from egocentric camera motion with exocentric pose observations, conditioning on both observation content and reliability. Our model is trained on a mixture of single-person motion-capture data and multi-person video in order to learn rich priors for body motion trajectories and video observation reliability. Evaluation on challenging multi-person datasets suggests our fusion approach improves over motion-only and vision-only baselines in terms of both absolute and relative pose accuracy.",
-    "link": "http://arxiv.org/abs/2608.29927v1",
-    "published": "2026-08-30",
-    "category": "cs.CV",
-    "tags": [
-      "3D pose estimation",
-      "egocentric vision",
-      "multi-person",
-      "diffusion",
-      "sensor fusion"
-    ],
-    "tldr": "提出基于扩散模型的多视角融合方法，结合自我中心视频与IMU实现多人3D姿态估计。",
-    "motivation": "解决多人交互场景下，从各自第一视角视频进行集中式协调的3D身体姿态估计问题。自我中心视角对外部人物的观察稀疏、不连续且可靠性变化大，需要有效融合多源数据。",
-    "method": "利用VIO SLAM获取每台自我中心相机的高质量运动轨迹，提出扩散模型融合基于头部运动的姿态估计与外心观测，同时考虑观测内容与可靠性。模型在单人动捕和多人视频混合数据上训练，学习身体运动轨迹和视频可靠性的先验。",
-    "result": "在多人生成数据集上，该方法在绝对和相对姿态精度上均优于仅运动学和仅视觉的基线方法。",
-    "conclusion": "所提出的融合方法有效整合自我中心运动与外心视觉信息，提升了多人姿态估计的准确性，为复杂交互场景下的可穿戴感知提供了新思路。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.29733v1",
-    "title": "XDG: Accelerated Visual Disambiguation",
-    "authors": [
-      "Gonglin Chen",
-      "Ben Southall",
-      "Hanyuan Xiao",
-      "Wenbin Teng",
-      "Haolin Xiong",
-      "Tianwen Fu",
-      "Junyi Ouyang",
-      "Kshitij Singh Minhas",
-      "Supun Samarasekera",
-      "Rakesh Kumar",
-      "Yajie Zhao"
-    ],
-    "abstract": "Visual aliasing, also known as the doppelganger problem, remains a key challenge for structure-from-motion (SfM): visually similar but physically distinct surfaces can produce incorrect image matches and degrade reconstruction quality. Previous work mitigates this issue with geometry-aware foundation-model features, but places a heavy transformer classifier on top of the backbone, making large-scale disambiguation expensive. We introduce XDG, an efficient visual disambiguation model designed for scalable SfM. Our key observation is that a 3D foundation model already performs the cross-view geometric reasoning necessary for visual disambiguation, so doppelganger classification should adapt the backbone representation directly rather than relearn pair reasoning in a separate heavy decoder. XDG fine-tunes Depth Anything 3 with lightweight LoRA adapters and repurposes its camera tokens as compact pair-level classification tokens. A compact MLP head predicts whether a candidate image pair observes the same 3D surface. Extensive experiments show that XDG provides a favorable accuracy-efficiency tradeoff: it remains competitive with the state-of-the-art disambiguation method across pairwise and reconstruction benchmarks and delivers more than a 3x inference speedup. On individual LaMAR scenes containing thousands of images, XDG saves more than 10 hours of visual disambiguation processing. Code is available at https://github.com/xtcpete/xdg.",
-    "link": "http://arxiv.org/abs/2608.29733v1",
-    "published": "2026-08-30",
-    "category": "cs.CV",
-    "tags": [
-      "SfM",
-      "Visual Disambiguation",
-      "LoRA",
-      "Depth Anything",
-      "Efficient Inference"
-    ],
-    "tldr": "提出XDG，用轻量LoRA适配3D基础模型实现高效视觉去重，速度提升3倍以上。",
-    "motivation": "视觉别名问题（doppelganger问题）导致SfM产生错误图像匹配，现有方法在骨干网络上叠加重型Transformer分类器，计算成本高，难以大规模应用。",
-    "method": "观察到3D基础模型已具备跨视角几何推理能力，直接微调Depth Anything 3并引入轻量LoRA适配器，复用其相机token作为成对分类token，仅用紧凑的MLP头预测图像对是否观测同一3D表面。",
-    "result": "与最先进去重方法在成对和重建基准上精度相当，推理速度提升3倍以上；在包含数千张图像的LaMAR场景中，节省超过10小时处理时间。",
-    "conclusion": "XDG实现了精度与效率的有利权衡，大幅降低大规模SfM视觉去重成本，代码已开源，便于实际应用。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.29705v1",
-    "title": "A Calibration Audit of Confidence in Feed-Forward 3D Reconstruction",
-    "authors": [
-      "Nanxing Nick Deng",
-      "Qing Cheng",
-      "Niclas Zeller",
-      "Daniel Cremers"
-    ],
-    "abstract": "Feed-forward 3D reconstruction models emit a per-pixel confidence that downstream systems read as a reliability signal. It is trained as a loss weight, not as an uncertainty magnitude, and whether it can be used as an error prediction has not been measured. We audit seven released backbones on thirteen datasets and score the confidence on four properties, how well it ranks error, whether its level is right on average, whether it holds across the confidence range, and whether its intervals cover the truth. The confidence ranks error well, but the predicted uncertainty is too low when it is read under conditions that are not exactly those of training. The median case is off by 2.4x across all seven models, and the error prediction is further off the more confident the model is. We show that this phenomenon can appear even though the loss's optimum is reached. A released model resumed under its own loss reaches that optimum on its training data within a few hundred updates and stays overconfident on unseen frames. A power law with two constants per backbone and dataset corrects the overall magnitude of the predicted uncertainty and leaves the ranking untouched. What no rescaling reaches is the scene, which we attribute to the model's missing knowledge of scale across predictions. Every correction we tried is close to right on average and still leaves two thirds of held-out scenes outside a five-point band, because what a scene is missing is a shape rather than a shift. We release the audit protocol, its results, and the fitted constants per model and dataset. Fitted with the target dataset held out, the constants bring the median case from 2.4x off to 1.35x, and a refit on a few labelled scenes of that dataset reaches 1.12x.",
-    "link": "http://arxiv.org/abs/2608.29705v1",
-    "published": "2026-08-30",
-    "category": "cs.CV",
-    "tags": [
-      "Calibration",
-      "3D Reconstruction",
-      "Confidence",
-      "Uncertainty",
-      "Audit"
-    ],
-    "tldr": "审计前馈3D重建模型的置信度校准，发现其过于自信，用幂律校正可将中位误差从2.4倍降至1.35倍。",
-    "motivation": "前馈3D重建模型输出的逐像素置信度被下游系统用作可靠性信号，但它是作为损失权重而非不确定性幅度训练的，其能否用于误差预测尚未被系统测量。",
-    "method": "对七个已发布骨干网络在十三个数据集上进行审计，从误差排序、平均水平、置信度区间和覆盖概率四个属性评分；提出每个骨干网络和数据集两个常数的幂律校正，并发布审计协议和拟合常数。",
-    "result": "置信度对误差排序表现良好，但在非训练条件下预测不确定性过低，七个模型的中位误差偏差达2.4倍，且越自信偏差越大；幂律校正将留出数据集中位偏差降至1.35倍，在少量标注场景重拟合后达1.12倍，但仍有三分之二的留出场景超出五点区间。",
-    "conclusion": "前馈重建模型的置信度存在系统性过度自信，尤其在分布偏移下；幂律标度可修正整体幅度但无法修正场景级形状缺失。发布审计协议与拟合常数，为下游可靠性使用提供校准参考。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.29680v1",
-    "title": "GeoRay: Gauge-Aware Feed-Forward Satellite 3D Reconstruction in the Geodetic Frame",
-    "authors": [
-      "Zhe Dong",
-      "Wanqing Wu",
-      "Yuzhe Sun",
-      "Haochen Jiang",
-      "Yuchen Ma",
-      "Lecheng Ren",
-      "Tianzhu Liu",
-      "Yanfeng Gu"
-    ],
-    "abstract": "Feed-forward 3D foundation models reconstruct perspective scenes in one pass. Satellite photogrammetry needs a different product, one that domain adaptation alone does not deliver: dense surface height in an absolute geodetic frame under non-central rational polynomial cameras (RPCs). Perspective-pretrained features are not reliably observable along RPC height rays, absolute elevation carries a low-order height--datum gauge exchangeable with sensor bias to first order, and monocular and multi-view cues fail in different regions. \\method{} treats all three. Lightweight ray-consistent adapters make a frozen backbone matchable along native RPC rays. An explicit datum mechanism separates relief from absolute level and is equivariant to the vertical origin by construction, so one trained model serves zero-, one-, and sparse-control inference. Calibrated inverse-variance fusion combines the two relief streams. \\bench{}, our absolute-frame benchmark of eighteen systems across in-domain, cross-dataset, and cross-city tiers, scores absolute placement without registration or test-reference leakage. On 26 held-out US3D tiles, \\method{} attains $2.99$\\,m absolute MAE at $91.9\\%$ coverage, improves completeness-aware accuracy by $46.4$ points over the strongest compliant feed-forward baseline, remains the most accurate such system under both transfer shifts, and runs in $24$\\,s model-forward time per tile. Code and models will be released at https://github.com/HIT-SIRS/GeoRay",
-    "link": "http://arxiv.org/abs/2608.29680v1",
-    "published": "2026-08-30",
-    "category": "cs.CV",
-    "tags": [
-      "Satellite 3D Reconstruction",
-      "RPC",
-      "Feed-forward Model",
-      "Geodetic Frame",
-      "Datum Estimation"
-    ],
-    "tldr": "GeoRay 提出面向卫星 RPC 影像的馈通式 3D 重建方法，在绝对地心坐标系下实现稠密高程估计并支持零/单/稀疏控制点推断。",
-    "motivation": "卫星摄影测量需要在绝对地心坐标系下、面向非中心 RPC 相机恢复稠密地表高度，而现有透视预训练前馈模型无法直接沿 RPC 高度射线观测特征；且绝对高程存在与传感器偏差一阶交换的低阶基准规范自由度，单目与多视角线索在不同区域失效。",
-    "method": "GeoRay 采用轻量级射线一致适配器使冻结骨干网络沿原生 RPC 射线可匹配；设计显式基准机制分离地形起伏与绝对水平，对垂直原点具有等变性；最后用标定的逆方差融合结合单目与多视角两个高程流，并构建覆盖域内/跨数据集/跨城市三档的绝对坐标系基准 GeoBench。",
-    "result": "在 26 个保留 US3D 瓦片上，GeoRay 达到绝对 MAE 2.99 m、覆盖率 91.9%，完整性感知精度比最强的合规前馈基线提升 46.4 个百分点，在两种迁移偏移下仍保持最高精度，每瓦片模型前向时间 24 秒。",
-    "conclusion": "GeoRay 首次在绝对地心坐标系下以馈通方式完成卫星 RPC 影像的稠密高程重建，其显式基准机制与融合策略在跨数据集和跨城市迁移中均取得最优结果；代码与模型将开源，为卫星摄影测量提供了实用的前馈重建基线。"
   }
 ]
