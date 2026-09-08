@@ -193,6 +193,164 @@
     "conclusion": "HiSfM通过脚手架锚定的层次化重建，同时提升了SfM的鲁棒性和效率，对机器人、视觉定位和大规模场景建模有潜在影响，代码已开源。"
   },
   {
+    "id": "https://arxiv.org/abs/2609.05255",
+    "title": "Compact Neural Appearance Models for Efficient Gaussian Splatting",
+    "authors": [
+      "Hahlbohm, Florian",
+      "Condor, Jorge",
+      "Franke, Linus",
+      "Eisemann, Martin",
+      "Magnor, Marcus"
+    ],
+    "abstract": "Explicit primitive-based radiance fields such as 3D Gaussian Splatting typically model view-dependent appearance using low-order spherical harmonics (SH). Although efficient to evaluate, SH coefficients dominate per-primitive storage and memory traffic, while their band-limited basis restricts angular detail. We present a thorough, end-to-end comparison of SH and recent spherical appearance models and introduce an implicit alternative that decodes compact per-primitive latent codes using a tiny shared MLP. We integrate all models into the same optimized pipeline, fusing their forward and backward passes into a differentiable CUDA rasterizer and provide a portable WebGL viewer for laptop and mobile GPUs. Our evaluation across reconstruction quality, memory use, and optimization and rendering performance shows that recent spherical models offer the strongest overall quality-efficiency trade-off. Our neural representation is the most compact model evaluated and, compared to third-degree SH, reduces the per-primitive appearance footprint from 192 to 28 bytes, accelerates optimization by 1.3$\\times$, while improving reconstruction quality. We further analyze how appearance parametrization shapes optimization, identifying differences in recovered geometry and the tendency of expressive models to absorb non-static scene content. Together, our framework and analysis provide practical guidance for replacing SH beyond what image metrics alone can capture.",
+    "link": "https://arxiv.org/abs/2609.05255",
+    "published": "2026-09-04",
+    "category": "cs.CV",
+    "tags": [
+      "Gaussian Splatting",
+      "Appearance Models",
+      "Neural Rendering",
+      "Radiance Fields"
+    ],
+    "tldr": "本文比较多种球面外观模型，提出基于共享MLP解码潜码的紧凑神经外观表示，将每基元外观存储从192字节降至28字节，优化加速1.3倍，并提升质量。",
+    "motivation": "3D高斯溅射中球谐(SH)系数占主导存储和内存流量，且带限基函数限制角度细节，需要更高效的紧凑外观表示。",
+    "method": "提出隐式替代方案，使用微型共享MLP从紧凑的每基元潜码中解码外观，并将所有模型集成到统一优化的CUDA光栅化器中，融合前向和后向传播，同时提供可移植的WebGL查看器。",
+    "result": "在重建质量、内存使用和优化/渲染性能上评估，神经表示最紧凑：相比三阶SH，每基元外观占用从192字节降至28字节，优化加速1.3倍，且重建质量更高；近期球面模型整体质量-效率权衡最佳。",
+    "conclusion": "框架和分析为在超出图像指标的情况下替代SH提供了实用指导，揭示了外观参数化对优化过程中几何恢复和模型吸收非静态内容倾向的影响。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2609.04902",
+    "title": "Sound-based Multi-Person 3D Pose Estimation",
+    "authors": [
+      "Oumi, Yusuke",
+      "Shibata, Yuto",
+      "Irie, Go",
+      "Kimura, Akisato",
+      "Aoki, Yoshimitsu",
+      "Isogawa, Mariko"
+    ],
+    "abstract": "Can we recover the 3D poses of multiple people using only sound? This paper presents the first attempt to estimate multi-person 3D poses solely from acoustic signals. Estimating the poses of multiple individuals using acoustic signals is inherently challenging due to the superposition of motion-dependent signal variations. Unlike single-person scenarios, the presence of multiple subjects leads to overlapping acoustic signatures, making it difficult to attribute specific signal changes to an individual's pose. Furthermore, the complexity is compounded by inter-person reflections, which introduce intricate propagation delays that obscure the temporal motion-acoustic relationship. To address these issues, we propose SoundMHPE (Sound-based Multi-person Human Pose Estimator), a novel encoder-decoder framework consisting of two key components. First, the Acoustic Multi-scale Encoder captures diverse temporal and fine-grained frequency features to isolate subtle acoustic signatures from complex, overlapping signals. Second, the Temporal Pose Decoder employs an attention mechanism to disentangle multi-person information across successive frames. By jointly accounting for temporal dynamics and inter-person dependencies, this component precisely reconstructs frame-wise individual poses. To validate our approach, we constructed the 6-hour Acoustic Multi-person Pose (AMP) dataset consisting of 432K synchronized frames of multi-person pose and acoustic data, and demonstrated that our SoundMHPE outperforms baseline models. Project page: this https URL",
+    "link": "https://arxiv.org/abs/2609.04902",
+    "published": "2026-09-04",
+    "category": "cs.CV",
+    "tags": [
+      "Acoustic Sensing",
+      "3D Pose Estimation",
+      "Multi-person",
+      "Deep Learning",
+      "Encoder-Decoder"
+    ],
+    "tldr": "首次用纯声音估计多人3D姿态，提出SoundMHPE框架并验证其优于基线。",
+    "motivation": "多人场景下声学信号叠加且存在人际反射，难以将特定信号变化归因于个体姿态，比单人场景更具挑战性。",
+    "method": "提出SoundMHPE编码器-解码器框架：声学多尺度编码器提取时序与细粒度频率特征，时间姿态解码器通过注意力机制分离多帧间多人信息，联合建模时间动态与人际依赖以重建逐帧个体姿态。",
+    "result": "构建了6小时AMP数据集（含43.2万帧同步多人姿态与声学数据），SoundMHPE在该数据集上优于基线模型，但摘要未提具体量化指标。",
+    "conclusion": "首次实现仅凭声音进行多人3D姿态估计，验证了可行性；贡献在于新框架、数据集及基准，为非视觉感知提供新思路。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2609.05385",
+    "title": "Necessary or Sufficient? Evaluating LLM Explanations With Behavioural Evidence",
+    "authors": [
+      "Pawar, Urja",
+      "Ramanayake, Rajitha",
+      "Kemal, Nabeel",
+      "Kandath, Ashwin",
+      "O'Neill, Owen",
+      "Bourgeon, Guillaume",
+      "Chatbri, Houssem"
+    ],
+    "abstract": "LLM decision components that can operate within agent workflows often produce action-relevant recommendations or judgements together with explanations. Operators may use the named factors to monitor a system, diagnose errors, or decide when to escalate an output. Such use assumes that the explanations agree with the component's observable decision behaviour. We test two interpretations of the named factors: necessity, meaning that changing a factor would change the output, and sufficiency, meaning that retaining it while removing other changeable information would preserve the output. We evaluate these interpretations in two synthetic use cases: recommending advisors to clients and judging prompts for harmfulness or risk. Models return an output and the top three factors that most influenced it. Controlled black-box interventions estimate a necessity score for each factor by measuring how often changing it changes the output, and a sufficiency score by measuring how often retaining it preserves the output. Across eight models from the Claude, GPT, and Gemini families, the mean Spearman correlations between the cited ranking and the necessity and sufficiency scores are 0.349 and 0.354 for advisor recommendation, and 0.431 and 0.580 for prompt monitoring. Furthermore, an uncited factor scores above the lowest-scoring cited factor in 57.6% of advisor responses under necessity and 58.1% under sufficiency; the corresponding prompt-monitoring rates are 25.8% and 8.9%. The cited top three contain useful information but do not reliably identify the three factors with the strongest measured influence under necessity or sufficiency. The framework provides a black-box reliability check for explanations used in agent oversight while remaining scoped to individual LLM decisions.",
+    "link": "https://arxiv.org/abs/2609.05385",
+    "published": "2026-09-04",
+    "category": "cs.AI",
+    "tags": [
+      "LLM Explanations",
+      "Behavioural Evaluation",
+      "Black-box Interventions",
+      "Agent Oversight"
+    ],
+    "tldr": "通过黑盒干预实验发现，LLM解释引用的前三个因素与真实必要性/充分性得分相关性中等，无法可靠识别最强影响因素。",
+    "motivation": "运营者依赖LLM解释中的具名因素进行监控、诊断和升级决策，但这种依赖假设了解释与模型可观察行为一致，而这一假设缺乏验证。",
+    "method": "提出解释因素的必要性（改变因素会改变输出）和充分性（保留该因素并移除其他可变信息可保持输出）两种行为学解读，在客户顾问推荐和提示危害性审查两个合成用例中，对Claude、GPT、Gemini家族的8个模型进行受控黑盒干预，计算每个因素的必要性和充分性得分，并与模型引用的因素排序进行关联分析。",
+    "result": "平均Spearman相关系数：顾问推荐中，必要性为0.349、充分性为0.354；提示监控中，必要性为0.431、充分性为0.580。未引用因素的得分在57.6%（顾问必要性）和58.1%（顾问充分性）的响应中高于最低引用因素，提示监控中对应比例为25.8%和8.9%。",
+    "conclusion": "摘要未提供相关信息"
+  },
+  {
+    "id": "https://arxiv.org/abs/2609.05289",
+    "title": "Beyond Aggregate Scores: Behavioral Correctness Assumptions for Assessing Reference-Based Automatic Evaluation Methods",
+    "authors": [
+      "Mahbub, Maria",
+      "Rice, Ashley",
+      "Munroe, Michael R.",
+      "Kamara, Amidu",
+      "Sadovnik, Amir"
+    ],
+    "abstract": "Automated reference-based evaluation methods play a critical role in assessing natural language generation systems. Existing meta-evaluation primarily measures agreement with human judgments or benchmark labels, providing limited insight into evaluator behavior under controlled conditions. We introduce behavioral correctness assumptions, a complementary framework for evaluating reference-based automatic evaluation methods. We define a taxonomy of correctness-preserving and correctness-altering assumptions and operationalize them through controlled response transformations that specify expected scoring behaviors. We evaluate diverse lexical, character-level, semantic, LLM-based, and hybrid evaluators and analyze their assumption-level behavior, stability, sensitivity, repeat-run variability, configuration sensitivity, and reproducibility. Our experiments reveal distinct behavioral trade-offs across evaluation paradigms: no evaluator satisfies all proposed correctness assumptions, and evaluators with similar aggregate performance can exhibit substantially different behavioral profiles. These findings demonstrate that behavioral correctness assumptions provide diagnostic information obscured by conventional aggregate meta-evaluation.",
+    "link": "https://arxiv.org/abs/2609.05289",
+    "published": "2026-09-04",
+    "category": "cs.AI",
+    "tags": [
+      "Meta-Evaluation",
+      "Automatic Evaluation",
+      "Natural Language Generation",
+      "Behavioral Assumptions",
+      "LLM Evaluation"
+    ],
+    "tldr": "提出行为正确性假设框架，用于在受控条件下诊断参考式自动评估方法的隐藏行为特征。",
+    "motivation": "现有元评估主要衡量与人类判断或基准标签的一致性，无法深入理解评估器在受控条件下的行为。",
+    "method": "定义正确性保持与改变假设的分类法，并通过受控响应变换来操作化这些假设，进而评估多种词法、字符级、语义、基于LLM及混合评估器。",
+    "result": "无评估器满足所有行为正确性假设，且表现相似的评估器可能具有截然不同的行为特征，展现出不同评估范式间的行为权衡。",
+    "conclusion": "行为正确性假设能够提供传统聚合元评估所掩盖的诊断信息，是一种补充性评估框架。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2609.05190",
+    "title": "The Mirror Agent Model: a Bayesian Architecture for Interpretable Agent Behavior",
+    "authors": [
+      "Persiani, Michele",
+      "Hellström, Thomas"
+    ],
+    "abstract": "In this paper we illustrate a novel architecture generating interpretable behavior and explanations. We refer to this architecture as the Mirror Agent Model because it defines the observer model, that is the target of explicit and implicit communications, as a mirror of the agent's. With the goal of providing a general understanding of this work, we firstly show prior relevant results addressing the informative communication of agents intentions and the production of legible behavior. In the second part of the paper we furnish the architecture with novel capabilities for explanations through off-the-shelf saliency methods, followed by preliminary qualitative results.",
+    "link": "https://arxiv.org/abs/2609.05190",
+    "published": "2026-09-04",
+    "category": "cs.AI",
+    "tags": [
+      "Bayesian Models",
+      "Interpretability",
+      "Explainable AI",
+      "Agent Behavior"
+    ],
+    "tldr": "提出镜像代理模型，通过贝叶斯架构生成可解释行为与解释，并集成显著性方法增强说明能力。",
+    "motivation": "旨在生成可解释的代理行为与解释，将观察者模型设定为代理的镜像，以支持显式与隐式沟通，缺乏对可解释架构的通用理解。",
+    "method": "基于贝叶斯架构定义观察者模型为代理的镜像，并利用现成的显著性方法（saliency methods）为代理提供新颖的解释生成能力。",
+    "result": "摘要仅提供初步定性结果，表明显著性方法可辅助解释生成，未报告量化指标。",
+    "conclusion": "提出镜像代理模型，贡献在于结合贝叶斯推理与显著性方法实现可解释行为与解释，潜在影响是提升人机交互中的透明度和信任。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2609.04866",
+    "title": "LLM-Assisted Behavioural and Scenario Augmentation for Agent-Based Energy Adoption Models",
+    "authors": [
+      "Faiud, Iias",
+      "Khaleghy, Hossein",
+      "Schukat, Michael",
+      "Mason, Karl"
+    ],
+    "abstract": "Recent advances in large language models (LLMs) create opportunities to enrich simulation-based energy policy analysis, particularly by supporting structured behavioural assumptions and exploratory techno-economic scenarios. However, directly replacing adoption models with LLM reasoning raises concerns regarding interpretability, reproducibility, and behavioural validity. This paper proposes a hybrid framework for LLM-assisted specification design, integrating bounded behavioural rubrics and structured scenario specifications into a calibrated agent-based model (ABM) of solar photovoltaic (PV) adoption by Irish dairy farms. The proposed approach preserves the original techno-economic adoption mechanism while augmenting it with bounded behavioural modulation and scenario-driven uncertainty analysis. Behavioural effects are represented through interpretable conservative, balanced, and optimistic rubrics, while future policy and market conditions are explored through fixed, rule-validated scenario specifications. Experimental results across multiple policy settings, Monte Carlo worlds, and random seeds demonstrate stable and economically plausible behaviour, with adoption outcomes remaining bounded and monotonic across behavioural regimes. The framework achieves up to approximately 13% behavioural adoption increase relative to the corresponding logistic case without producing unstable or unrealistic saturation dynamics. The results demonstrate that LLM-assisted specifications can be integrated into calibrated energy ABMs in a controlled, reproducible, and policy-relevant manner.",
+    "link": "https://arxiv.org/abs/2609.04866",
+    "published": "2026-09-04",
+    "category": "cs.AI",
+    "tags": [
+      "Agent-Based Modeling",
+      "LLM",
+      "Energy Adoption",
+      "Scenario Augmentation",
+      "Behavioural Rubrics"
+    ],
+    "tldr": "提出混合框架，将LLM生成的受限行为规则与情景规范集成到爱尔兰农场光伏采纳ABM，实现可控可复现的模拟。",
+    "motivation": "LLM为模拟能源政策分析提供新机会，但直接替换采纳模型会引发可解释性、可复现性和行为有效性问题。",
+    "method": "基于校准的光伏采纳ABM，采用LLM辅助的规范设计，整合有界行为准则（保守/平衡/乐观）和经规则验证的结构化情景规范，保留原技术经济采纳机制并扩充行为调节与情景驱动的的不确定性分析。",
+    "result": "在多种政策设置、蒙特卡洛世界和随机种子下，行为变化保持有界且单调，行为导致的采纳率相比逻辑斯蒂基准最多增加约13%，且无失稳或不现实饱和动态。",
+    "conclusion": "证明LLM辅助规范能受控、可复现且与政策相关地整合进校准的能源ABM，并支持解释性行为假设与探索性技术经济情景分析。"
+  },
+  {
     "id": "http://arxiv.org/abs/2609.04201v1",
     "title": "Scal3R: Learning Efficient Multi-Relative Pose Query for Scalable Online 3D Reconstruction",
     "authors": [
@@ -1022,281 +1180,5 @@
     "method": "Cue2Narrate采用两阶段流水线：先用双头音视频定位器为每个AD语句预测视觉线索窗口和语音讲述窗口；再用LoRA适配的VLM基于预测的视觉证据生成简洁AD，并通过Description Ranking Loss将同一帧的负样本描述排序在GT描述之后。",
     "result": "在LongLSMDC基准（平均约6.5分钟、最长8分钟的电影片段）上，Cue2Narrate在平均mAP上超过仅视频和仅音频定位基线5-12分；在预测窗口和GT窗口两种评估下，其AD生成质量均优于对应微调的基础VLM。",
     "conclusion": "首次建立了长视频多段音频描述生成基准，证明联合“什么”与“何时”的预测框架及视觉证据选择能有效提升AD生成，数据集与代码已公开。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.31159v1",
-    "title": "BRF-GS: Hyperspectral Bidirectional Reflectance Factor Modeling and Image Generation Based on 3D Gaussian Splatting",
-    "authors": [
-      "Yiling Yao",
-      "Wenjuan Zhang",
-      "Bowen Wang",
-      "Bocheng Li",
-      "Wentao Song",
-      "Bing Zhang"
-    ],
-    "abstract": "The bidirectional reflectance factor (BRF) characterizes the directional radiative properties of terrestrial surfaces. However, existing three-dimensional (3D) radiative transfer models require complex scene construction and computationally intensive radiative transfer solvers, limiting efficient generation of multi-angle hyperspectral reflectance imagery. 3D Gaussian Splatting (3DGS) offers an efficient framework for neural scene representation and novel view synthesis, but its low-order spherical harmonics representation is insufficient for complex directional reflectance, while the high dimensionality and inter-band quality differences of hyperspectral data introduce additional challenges. To address these challenges, we propose BRF-GS, a 3DGS-based framework for BRF modeling and hyperspectral reflectance image generation. BRF-GS introduces a hybrid BRDF-driven kernel to represent complex directional reflectance, selects geometry-reliable spectral bands for robust 3D scene initialization, and adopts a two-stage training strategy that decouples geometry optimization from spectral modeling. We further construct the AIR-BRF dataset, a multi-angle hyperspectral directional reflectance dataset comprising three scenes with diverse natural and artificial targets. Experiments demonstrate that BRF-GS achieves superior spatial and spectral fidelity and accurately reproduces characteristic view-dependent BRF responses. The proposed framework provides an efficient data-driven approach for BRF modeling and multi-angle hyperspectral reflectance image generation in remote sensing scenes.",
-    "link": "http://arxiv.org/abs/2608.31159v1",
-    "published": "2026-08-31",
-    "category": "cs.CV",
-    "tags": [
-      "BRF",
-      "Hyperspectral",
-      "3D Gaussian Splatting",
-      "Remote Sensing",
-      "BRDF"
-    ],
-    "tldr": "提出BRF-GS框架，基于3D高斯泼溅实现多角度高光谱反射率图像的高效生成与BRF建模。",
-    "motivation": "现有三维辐射传输模型场景构建复杂且求解耗时，而3DGS低阶球谐函数难以表达复杂方向反射，且高光谱数据维度高、波段间质量差异大，带来额外挑战。",
-    "method": "提出BRF-GS框架，引入混合BRDF驱动核表达复杂方向反射，选取几何可靠的谱段进行稳健场景初始化，并采用两阶段训练策略将几何优化与光谱建模解耦；同时构建多角度高光谱方向反射数据集AIR-BRF。",
-    "result": "实验表明BRF-GS在空间和光谱保真度上表现优越，并能准确再现特征性的视角相关BRF响应。",
-    "conclusion": "该框架为遥感场景中BRF建模和多角度高光谱反射率图像生成提供了一种高效的数据驱动方法。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.31074v1",
-    "title": "Real-Time Video Anomaly Detection Using YOLO Pose Estimation and CLIP-Based Semantic Scoring",
-    "authors": [
-      "Vanodhya G. Warnasooriya",
-      "Amir Hajian",
-      "Watchara Ruangsang",
-      "Supavadee Aramvith"
-    ],
-    "abstract": "We propose a lightweight two-stage framework for real-time video anomaly detection. The first stage employs YOLO v11n-pose to detect persons and extract seventeen skeletal keypoints in a single forward pass. The second stage encodes each cropped person region through CLIP ViT-B/32 and computes cosine similarity against predefined textual descriptions of anomalous behaviors. This architecture eliminates the need for optical flow, standalone pose estimators, and density-based scoring modules. Experiments on CUHK Avenue, ShanghaiTech Campus, and a custom indoor dataset collected at Chulalongkorn University demonstrate an end-to-end throughput of approximately 51 FPS on an NVIDIA Titan XP GPU, a 3.36x speedup over the multi-feature baseline, while maintaining frame-level AUROC values of 89.26%, 70.26%, and 84.13%, respectively.",
-    "link": "http://arxiv.org/abs/2608.31074v1",
-    "published": "2026-08-31",
-    "category": "cs.CV",
-    "tags": [
-      "Video Anomaly Detection",
-      "YOLO",
-      "CLIP",
-      "Pose Estimation",
-      "Real-time"
-    ],
-    "tldr": "提出基于YOLO姿态估计和CLIP语义评分的两阶段实时视频异常检测框架，速度快且精度高。",
-    "motivation": "现有视频异常检测方法依赖光流、独立姿态估计器或密度评分模块，导致计算开销大、速度慢，难以满足实时需求。",
-    "method": "采用两阶段框架：第一阶段使用YOLO v11n-pose在单次前向传播中检测人员并提取17个骨骼关键点；第二阶段用CLIP ViT-B/32编码每个裁剪人员区域，与预定义异常行为文本描述计算余弦相似度进行异常评分，无需光流、独立姿态估计器和密度评分模块。",
-    "result": "在CUHK Avenue、ShanghaiTech Campus和自定义室内数据集上，帧级AUROC分别达89.26%、70.26%和84.13%；在NVIDIA Titan XP GPU上端到端吞吐约51 FPS，比多特征基线快3.36倍。",
-    "conclusion": "该框架通过精简流程显著提升推理速度并保持较高准确性，为实时视频异常检测提供了轻量级高效方案，并验证了CLIP语义评分与姿态特征结合的有效性。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.31023v1",
-    "title": "SMG: Semantic Motion Graph for Monocular Dynamic Gaussian Splatting",
-    "authors": [
-      "Haozheng Yu",
-      "Xinyu Yang",
-      "Rundong Luo",
-      "Jennifer J. Sun",
-      "Bharath Hariharan"
-    ],
-    "abstract": "We study dynamic Gaussian Splatting from monocular videos. While recent advancements in dynamic Gaussian splatting offer a promising foundation for modeling dynamic scenes, they often overfit to the training views and fail under occlusion or complex scene motion due to the lack of reliable regularization signals in under-constrained regions. We propose Semantic Motion Graph (SMG), a novel approach models the Gaussian motion as the low-rank semantic motion. Our key insight is that the real-world scene motion is often structured by semantic coherence: regions that are spatially close and semantically related tend to exhibit consistent dynamics. To leverage this prior, we construct SMG to model structured motion of the scene. The Gaussian motion is driven by the motion of SMG nodes. We further observe that the uncertainty of Gaussian motion arises from both unreliable off-the-shelf priors and weakly constrained regions during optimization. SMG addresses this by using reliable graph nodes to guide the motion of nearby unreliable nodes. To evaluate dynamic Gaussian splatting under challenging real-world scenarios, we introduce a new multiview dataset collected under an ego-exo setup. Extensive experiments demonstrate that SMG achieves state-of-the-art performance on monocular dynamic Gaussian splatting across challenging real-world benchmarks. Project page: https://smg-gaussian.github.io/.",
-    "link": "http://arxiv.org/abs/2608.31023v1",
-    "published": "2026-08-31",
-    "category": "cs.CV",
-    "tags": [
-      "Dynamic Gaussian Splatting",
-      "Semantic Motion Graph",
-      "Monocular Video",
-      "Scene Motion",
-      "3D Reconstruction"
-    ],
-    "tldr": "提出语义运动图SMG，通过低秩语义运动建模单目动态高斯泼溅，提升遮挡和复杂运动下的鲁棒性。",
-    "motivation": "动态高斯泼溅在单目视频中常过拟合训练视图，在遮挡或复杂场景运动下因缺乏可靠正则化信号而失败。作者观察到真实场景运动往往具有语义一致性，即空间接近且语义相关的区域动态表现一致，由此引入结构化先验。",
-    "method": "构建语义运动图（SMG）来建模场景的结构化运动，将高斯运动表示为低秩语义运动，由SMG节点驱动。针对高斯运动的不确定性（源于不可靠的先验和弱约束区域），利用可靠图节点引导附近不可靠节点的运动。",
-    "result": "在多个挑战性真实世界基准上取得了最先进的性能，并引入了一个新的多视图数据集（基于ego-exo设置）用于评估。摘要未提供具体量化指标。",
-    "conclusion": "提出SMG方法，利用语义一致性先验有效改进单目动态高斯泼溅，解决遮挡和复杂运动下的过拟合问题；同时贡献了新数据集，为动态场景建模提供了新思路。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.30870v1",
-    "title": "VCAR: Training-Free 3DGS Segmentation via View Completeness and Axis-Aware Boundary Refinement",
-    "authors": [
-      "Kun Cao",
-      "Di Wang",
-      "Haibin Zhu",
-      "Haozhi Huang",
-      "Xu Wang",
-      "Zheng Shi",
-      "Guanghua Yang"
-    ],
-    "abstract": "Semantic segmentation in 3D Gaussian Splatting (3DGS) is crucial for advancing 3D scene understanding. Existing methods predominantly rely on feature distillation, which incurs substantial per-scene training overhead and often yields blurred segmentation boundaries. We identify that these boundary artifacts are driven in part by insufficient viewpoint coverage and boundary overflow of anisotropic Gaussian primitives. To address these challenges, we propose VCAR, a training-free coarse-to-fine segmentation strategy based on View Completeness and Axis-aware Boundary Refinement. In the coarse stage, a visibility-based weighted multi-view voting scheme rapidly localizes the target. In the fine stage, an object-centric sphere derived from the coarse result generates supplementary viewpoints via Spherical Spiral Sampling (SSS), allowing multi-view voting on the augmented views to precisely refine object boundaries and suppress irrelevant 3D Gaussians. Moreover, we introduce Axis-aware Boundary Refinement (ABR) to mitigate artifacts from anisotropic primitives. By decomposing the projected 2D covariance into per-axis contributions, ABR identifies the dominant axis responsible for boundary leakage and applies targeted anisotropic compression exclusively along that axis. Extensive experiments on NVOS and LERF demonstrate that VCAR achieves state-of-the-art segmentation accuracy and efficiency without training. Our code is available at https://github.com/DDKK0526/VCAR.",
-    "link": "http://arxiv.org/abs/2608.30870v1",
-    "published": "2026-08-31",
-    "category": "cs.CV",
-    "tags": [
-      "3DGS",
-      "Segmentation",
-      "Training-Free",
-      "Boundary Refinement",
-      "Multi-View Voting"
-    ],
-    "tldr": "VCAR提出一种无需训练的三维高斯分割方法，通过视点完整性与轴感知边界细化实现高精度分割。",
-    "motivation": "现有3DGS分割方法依赖特征蒸馏，训练开销大且分割边界模糊。边界伪影部分源于视点覆盖不足和各向异性高斯原语的边界溢出。",
-    "method": "采用粗到细的训练无关分割策略。粗阶段通过基于可见性的加权多视图投票快速定位目标；细阶段由目标中心球经球面螺旋采样生成补充视点，增强多视图投票以细化边界，并引入轴感知边界细化（ABR），将投影2D协方差分解到各轴，识别导致边界泄漏的主轴并仅沿该轴进行各向异性压缩。",
-    "result": "在NVOS和LERF数据集上达到最先进的分割精度与效率，且无需训练。",
-    "conclusion": "VCAR无需训练即可实现高效精确的3DGS分割，缓解了边界伪影问题，代码已开源，对3D场景理解具有实用价值。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.30821v1",
-    "title": "Lucida: Parse, Generate, and Place for Composable Real-to-Sim Scene Modeling",
-    "authors": [
-      "Minghan Qin",
-      "Yuang Wang",
-      "Xiuyu Yang",
-      "Yushi Long",
-      "Yujian Zhang",
-      "Ruihuan Wang",
-      "Kai Ye",
-      "Yangang Zhang",
-      "Hang Li"
-    ],
-    "abstract": "Composable scene modeling aims to recover a real indoor scene as complete, editable object assets arranged as observed, giving robot simulation and embodied AI a simulation-ready replica of the real environment whose objects can be manipulated individually. Existing pipelines decompose the task into three steps---parse the observations into instances, generate an asset for each, and place each asset back---but every step presumes an input that a cluttered capture rarely provides: accurate instance geometry, unoccluded views, and assets that accurately match the observations. We propose Lucida, which keeps this order but redistributes the requirements, so each step consumes only what a real capture reliably provides and precision is reached at the end of the pipeline rather than demanded at its start. Lucida parses the video into a scene graph whose nodes carry per-instance multi-view evidence, generates a complete asset for each instance from its evidence, and places assets with GizmoAct, a VLM policy that casts placement as multi-turn GUI interaction, manipulating the object's gizmo in a closed loop and deciding itself when alignment is reached. Across scene-level 3D object detection, object pose estimation, and scene reconstruction, Lucida improves mAP over Boxer by 69% on R2S-Scene, raises ADD-SB@0.05 from 57.8% to 83.4% on CA-1M, and increases scene F-Score from 0.794 for SAM3D to 0.924.",
-    "link": "http://arxiv.org/abs/2608.30821v1",
-    "published": "2026-08-31",
-    "category": "cs.CV",
-    "tags": [
-      "Scene Modeling",
-      "Real-to-Sim",
-      "Scene Graph",
-      "VLM",
-      "Robot Simulation"
-    ],
-    "tldr": "Lucida通过重新分配解析、生成、放置三步的需求，实现可组合的真实到仿真室内场景建模，显著提升检测、姿态估计与重建精度。",
-    "motivation": "现有组合场景建模将任务分解为解析、生成、放置三步，但每一步都假设输入具有准确的实例几何、无遮挡视图和精确匹配的资产，而真实杂乱捕获很难提供这些条件。",
-    "method": "Lucida保持三步顺序但重新分配需求：解析视频为携带多视图证据的场景图，从证据生成完整资产，并用GizmoAct（一种将放置视为多轮GUI交互的VLM策略）通过闭路操纵对象的gizmo并自主判断对齐来完成放置。",
-    "result": "在场景级3D检测、物体姿态估计和场景重建上，Lucida在R2S-Scene上比Boxer的mAP提升69%，在CA-1M上将ADD-SB@0.05从57.8%提升到83.4%，场景F-Score从SAM3D的0.794提升到0.924。",
-    "conclusion": "Lucida证明了通过重新分配各步骤的需求，可以让管线仅依赖真实捕获可靠提供的信息，并在末端达到高精度，为机器人仿真提供可编辑、可操作的场景副本，具有重要应用价值。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.30690v1",
-    "title": "Failure or Drift? Evaluating Monocular SLAM under Synthetic and Real-World Corruptions",
-    "authors": [
-      "Abhay Skaria Thomas",
-      "Shashank Agnihotri",
-      "Margret Keuper"
-    ],
-    "abstract": "Visual SLAM is commonly evaluated on clean trajectories, although deployment failures are often caused by adverse weather, illumination, blur, and sensor artifacts. Controlled corruptions are attractive because they isolate such factors, but a synthetic stress test is useful only when it leads to the same engineering conclusion as the condition it is intended to approximate. This work examines that question for monocular SLAM. We evaluate a classical feature-based system and two learned trackers under image-space, geometry-aware, and compound corruptions, and compare their behavior with adverse conditions from 4Seasons. Rather than reducing robustness to a single trajectory error, the evaluation separates explicit tracking failure from drift accumulated by methods that remain active. The results show that learned trackers largely replace catastrophic loss with sustained, and sometimes severe, drift. More importantly, the apparent ordering of the learned systems changes with the physical fidelity of the corruption: structured rain and fog proxies preserve the real-world ordering, whereas a simple illumination proxy does not. Code is available at: https://github.com/abhaythomas/master_thesis_vslamlab_robustness.",
-    "link": "http://arxiv.org/abs/2608.30690v1",
-    "published": "2026-08-31",
-    "category": "cs.CV",
-    "tags": [
-      "Visual SLAM",
-      "Synthetic Corruptions",
-      "Failure vs Drift",
-      "Learned Trackers",
-      "Robustness Evaluation"
-    ],
-    "tldr": "评估单目SLAM在合成与真实损坏下的表现，发现学习型追踪器将故障转为漂移，且系统排序依赖损坏物理保真度。",
-    "motivation": "视觉SLAM通常在干净轨迹上评估，但实际部署失败多源于恶劣天气、光照、模糊和传感器伪影。合成损坏虽能隔离因素，但仅在重现真实条件相同工程结论时才有用。",
-    "method": "评估一个经典特征系统与两个学习追踪器，在图像空间、几何感知和复合损坏下测试，并与4Seasons真实恶劣条件对比。将显式跟踪失败与持续漂移分开，而非仅看轨迹误差。",
-    "result": "学习追踪器大多将灾难性跟踪丢失转为持续漂移，且有时漂移严重。系统排序随损坏物理保真度变化：结构化雨/雾代理保持真实排序，简单光照代理则不成立。",
-    "conclusion": "强调合成损坏需物理保真才可预测真实表现，提出区分失败与漂移的评估方法，并开源代码以支持后续研究。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.30521v1",
-    "title": "MEOM: Multi-View Expected-OKS Maximization for Human Pose Triangulation",
-    "authors": [
-      "Ziliang Xiong",
-      "Henglin Shi",
-      "Per-Erik Forssen"
-    ],
-    "abstract": "Conventional algebraic triangulation solves 3D human pose estimation (HPE) from multi-view 2D keypoints. The typical approach, decoding 2D keypoints from predicted heatmaps, is unreliable as heatmaps can be multimodal under occlusion, and collapsing them into single peaks discards their spatial distribution. We seek to use the entire heatmap to estimate 3D poses more accurately, which requires solving two problems: how to robustly fuse heatmaps across views, and how to assess the reliability of heatmaps. For the former, we introduce a novel objective, Multi-viewExpected-OKS Maximization (MEOM), that locates a 3D joint where the views agree in probability mass. For the latter, we adopt highest-density-region (HDR) calibration as a diagnostic of that mass, independently of distance-based metrics. The proposed framework covers two settings, with and without 3D supervision. Without 3D supervision, we optimize 3D poses from pretrained heatmap predictors by maximizing MEOM, achieving comparable performance with state-of-the-art methods that rely on larger backbones, temporal fusion, and simulated 3D data. On ambiguous Human3.6M (H36MA) and occluded CMU Panoptic frames, the advantage is substantial. When 3D labels are available, we train the model end-to-end with a combined MEOM and MSE loss, achieving 19.11 mm absolute MPJPE on Human3.6M outperforming the state-of-the-art volumetric approach on absolute MPJPE at half the inference cost.",
-    "link": "http://arxiv.org/abs/2608.30521v1",
-    "published": "2026-08-31",
-    "category": "cs.CV",
-    "tags": [
-      "3D Human Pose Estimation",
-      "Multi-view Triangulation",
-      "Heatmap Fusion",
-      "Expected-OKS Maximization",
-      "HDR Calibration"
-    ],
-    "tldr": "提出MEOM，利用整张热力图和多视角期望OKS最大化进行三维人体姿态三角化，在模糊/遮挡场景下鲁棒且高效。",
-    "motivation": "传统代数三角化依赖从热图解码单个峰值，在遮挡导致多峰/歧义时不可靠且丢弃空间分布；因此需要利用整张热图来更准确地估计3D姿态，并解决跨视角热图鲁棒融合和热图可靠性评估两个关键问题。",
-    "method": "核心是引入多视角期望-OKS最大化目标（MEOM），在三维空间中定位使多视角概率质量最一致的关节点；采用最高密度区域（HDR）校准评估热图可靠性，并覆盖无3D监督（直接最大化MEOM）和有3D监督（MEOM+MSE联合损失端到端训练）两种设置。",
-    "result": "在无3D监督下，仅用预训练热图预测器即可与依赖更大骨干、时间融合和模拟3D数据的SOTA方法性能相当，在Human3.6M模糊帧（H36MA）和CMU Panoptic遮挡帧上优势明显；有3D监督时，在Human3.6M上达到19.11 mm绝对MPJPE，超越体积法SOTA，且推理成本减半。",
-    "conclusion": "提出一种利用完整热图分布而非单点峰值进行多视角三角化的新框架，通过MEOM目标与HDR可靠性诊断共同提升遮挡/歧义场景下的3D姿态精度；同时支持无监督与端到端有监督训练，并以更低推理成本达到SOTA精度。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.30342v1",
-    "title": "CapFrame: Text-Instructed Viewpoint Grounding in 3D Gaussian Scenes via Geometric Pseudo Labels",
-    "authors": [
-      "Jirong Li",
-      "Satoshi Ikehata",
-      "Shuhei Kurita",
-      "Ikuro Sato"
-    ],
-    "abstract": "3D Gaussian Splatting (3DGS) enables photorealistic real-time novel view synthesis, yet placing a virtual camera to capture a desired frame remains largely manual. Existing language-guided approaches in 3D scenes mainly focus on object-centric grounding, determining what to observe but rarely controlling how it should appear in a single frame, such as subject orientation or frame layout. To address this limitation, we introduce a new task, Text-Instructed Viewpoint Grounding (TIVG), which aims to identify a 6-DoF camera pose in a 3D Gaussian scene whose rendered frame aligns with a text instruction. To solve this task, we propose CapFrame, a partially differentiable framework that converts language into geometric pseudo labels for camera pose optimization. CapFrame follows a Retrieve-Translate-Refine pipeline: it retrieves relevant views and ranks them through a Question-Evaluation process with MLLMs, translates the instruction into orientation and layout pseudo labels, and refines the camera pose via differentiable optimization with layout and orientation losses in 3DGS. Experiments on 38 real-world scenes with 135 instructions indicate that CapFrame produces viewpoints better aligned with texts than heuristic viewpoint search and adapted trajectory generation baselines, validated by VLM metrics, MLLM judges, and user studies. Code is available at: https://github.com/jirongli/CapFrame",
-    "link": "http://arxiv.org/abs/2608.30342v1",
-    "published": "2026-08-31",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Viewpoint Grounding",
-      "Language-guided",
-      "Camera Pose Optimization",
-      "MLLM"
-    ],
-    "tldr": "提出CapFrame框架，通过几何伪标签将文本指令转化为6-DoF相机位姿优化，实现文本指定的视角定位。",
-    "motivation": "现有语言引导方法在3D场景中主要聚焦于物体中心定位，决定观察什么但很少控制单帧的呈现方式（如主体方向或布局）。为解决这一局限，引入了新任务TIVG。",
-    "method": "提出CapFrame，采用Retrieve-Translate-Refine流程：先检索相关视图并通过MLLM的问答评估排序，再将指令转化为方向和布局伪标签，最后在3DGS中通过可微优化和布局/方向损失来细化相机位姿。",
-    "result": "在38个真实场景和135条指令上的实验显示，CapFrame生成的视角比启发式视角搜索和改编轨迹生成的基线更贴合文本，并通过VLM指标、MLLM评判和用户研究得到验证。",
-    "conclusion": "引入TIVG新任务并提出了CapFrame解决方案，代码已开源，为语言引导的视角控制提供了新方法。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.30184v1",
-    "title": "ATGS: Anchored Temporal Gaussian Splatting for Long Volumetric Video Representation",
-    "authors": [
-      "Jiahao Wu",
-      "Jie Liang",
-      "Die Hu",
-      "Jiayu Yang",
-      "Kaiqiang Xiong",
-      "Xiang Li",
-      "Xiaoyun Zheng",
-      "Chao Wang",
-      "Ronggang Wang"
-    ],
-    "abstract": "Volumetric video enables immersive free viewpoint rendering of dynamic real world scenes, yet existing methods struggle with long sequences and complex motions, often leading to temporal instability and visual artifacts. To address these challenges, we propose \\ourname, a Gaussian splatting based framework for volumetric video reconstruction. Our key insight is that explicitly tracking long term complex motion with individual Gaussian primitives is inherently unstable. Instead, we organize Gaussians around time conditioned anchors that localize their spatial and temporal support, thereby reducing long range motion complexity. We further introduce a temporal windowing strategy to activate only anchors relevant to the queried time, which improves scalability and temporal coherence. In addition, to ensure spatial and temporal stability, we design a compact set of multi level anchor features that encode global features, local spatial features, and local temporal features, jointly constraining Gaussian generation. Extensive experiments demonstrate that \\ourname \\ consistently outperforms prior methods on long sequence volumetric videos with complex motions. Project page: https://github.com/WuJH2001/ATGS.",
-    "link": "http://arxiv.org/abs/2608.30184v1",
-    "published": "2026-08-31",
-    "category": "cs.CV",
-    "tags": [
-      "Gaussian Splatting",
-      "Volumetric Video",
-      "Temporal Stability",
-      "4D Reconstruction"
-    ],
-    "tldr": "提出基于锚定时间高斯泼溅的框架，用于长序列体积视频重建，提升时间稳定性与渲染质量。",
-    "motivation": "现有方法在处理长序列和复杂运动的体积视频时，常出现时间不稳定和视觉伪影。核心问题在于使用单个高斯原语显式跟踪长期复杂运动本身是不稳定的。",
-    "method": "将高斯围绕时间条件锚点组织，以局部化其空间和时间支持，降低长距离运动复杂度。引入时间窗口策略，仅激活查询时间相关的锚点，提升可扩展性和时间一致性。设计紧凑的多级锚点特征（全局、局部空间、局部时间）联合约束高斯生成。",
-    "result": "在长序列复杂运动体积视频上一致优于先前方法。摘要未提供具体量化指标。",
-    "conclusion": "提出了ATGS框架，有效解决体积视频中长序列和复杂运动带来的时间不稳定问题，同时提升可扩展性和时间连贯性，为动态场景自由视角渲染提供了新思路。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2608.30161v1",
-    "title": "AI-enabled Low-Cost 3D Maize Ear Morphometry Platform at Breeding Scale",
-    "authors": [
-      "Therin Young",
-      "Elijah Rodriguez",
-      "Lisa Coffey",
-      "Talukder Zaki Jubery",
-      "Adarsh Krishnamurthy",
-      "Patrick Schnable",
-      "Baskar Ganapathysubramanian"
-    ],
-    "abstract": "Maize ear geometry (length, width, curvature, and volume) is closely tied to yield and grain-filling outcomes, but existing high-throughput phenotyping pipelines remain constrained by the cost, labor, and specialized hardware they require. We developed and validated a low-cost pipeline that reconstructs a watertight 3-D mesh of a maize ear from a single 20-second video captured with a consumer-grade DSLR on a motorized turntable under uniform LED illumination. Camera poses from a multi-seed COLMAP procedure initialize a Neural Radiance Field (NeRF), and a cylindrical holder of known diameter, visible in every frame, provides automatic metric scaling with downstream geometric quality control. Applied to 300 ears spanning a diverse maize inbred panel, 250 (83.3%) passed automated processing and quality control. Skeleton length agreed with manual caliper measurements across all 250 ears (R^2 = 0.964, RMSE = 4.68 mm), and convex-hull volume agreed with water-displacement volume on a 15-ear subset spanning the full size range (R^2 = 0.982, RMSE = 5.26 mL). Residual length error grew with ear curvature, whereas bounding-box height, which records the same straight-line chord as calipers, showed no such trend; the discrepancy therefore originates in the measurement definition, since calipers record the chord while skeleton length traces the geodesic arc. The capture hardware costs approximately 607 USD, and operator involvement fell from roughly five minutes to one minute per ear, with all downstream processing running unattended. The platform provides a foundation for breeding-scale 3-D ear phenotyping.",
-    "link": "http://arxiv.org/abs/2608.30161v1",
-    "published": "2026-08-31",
-    "category": "cs.CV",
-    "tags": [
-      "Maize Ear Phenotyping",
-      "NeRF",
-      "3D Reconstruction",
-      "Breeding",
-      "Low-cost"
-    ],
-    "tldr": "提出一种基于NeRF和消费级相机的低成本玉米果穗3D表型平台，实现育种规模的高通量测量。",
-    "motivation": "玉米果穗几何形状与产量密切相关，但现有高通量表型平台受限于成本、劳动力和专用硬件，难以在育种规模应用。",
-    "method": "使用消费级单反相机在电动转台上拍摄20秒视频，通过多种子COLMAP初始化相机位姿，训练NeRF重建水密3D网格；利用每帧可见的已知直径圆柱支架提供自动度量缩放并进行质量控制。",
-    "result": "对300个果穗，250个（83.3%）通过自动处理；骨架长度与卡尺测量高度一致（R²=0.964，RMSE=4.68 mm），凸包体积与排水法体积在15个果穗子集上R²=0.982，RMSE=5.26 mL；硬件成本约607美元，人工时间从每穗5分钟降至1分钟。",
-    "conclusion": "该平台为育种规模的3D果穗表型提供了基础，验证了低成本、自动化方案的可行性；长度测量偏差源于卡尺测弦长而骨架测弧长的定义差异。"
   }
 ]
