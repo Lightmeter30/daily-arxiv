@@ -134,6 +134,33 @@
     "conclusion": "该工作表明雾霾下干净重建需同时实现场景-介质解耦与透射率感知优化重平衡，为散射感知3DGS提供了新框架，代码已开源。"
   },
   {
+    "id": "https://arxiv.org/abs/2609.11223",
+    "title": "Tri-DehazeGS: Scene--Medium Decoupled Gaussian Splatting with Transmittance-Aware Optimization",
+    "authors": [
+      "Jiang, Kui",
+      "Gu, Yang",
+      "Liu, Jiacheng",
+      "Liu, Shiyu",
+      "Chen, Youyu",
+      "Liu, Hui"
+    ],
+    "abstract": "Recovering clean 3D scenes from hazy multi-view images is challenging because haze attenuates scene radiance and introduces atmospheric scattering. Recent scattering-aware Gaussian Splatting methods introduce physical haze models into reconstruction, but they often apply degradation in image space or bind medium-related variables to Gaussian primitives, which can entangle clean scene radiance with atmospheric effects. Moreover, low-transmittance regions provide weakened supervision for Gaussian optimization, causing distant or dense-haze areas to be under-reconstructed. We argue that clean reconstruction under haze requires both scene--medium disentanglement and transmittance-aware optimization rebalancing. To this end, we propose Tri-DehazeGS, a scene--medium decoupled Gaussian Splatting framework. It represents the clean scene with Gaussian primitives, models the participating medium using an independent view-shared tri-plane field, and composes hazy observations through a physical scattering model. We further introduce Medium-Decoupled Transmittance Gradient Compensation (MD-TGC), which compensates haze-suppressed gradients after medium freezing without altering forward rendering. Experiments on real and synthetic haze benchmarks show that Tri-DehazeGS improves clean novel-view reconstruction. Code is available at this https URL .",
+    "link": "https://arxiv.org/abs/2609.11223",
+    "published": "2026-09-10",
+    "category": "cs.CV",
+    "tags": [
+      "Gaussian Splatting",
+      "Dehazing",
+      "Novel View Synthesis",
+      "3D Reconstruction"
+    ],
+    "tldr": "Tri-DehazeGS通过场景-介质解耦高斯泼溅与透射率感知优化，提升雾天多视角图像的三维重建质量。",
+    "motivation": "雾天多视角图像中，雾会衰减场景辐射并引入大气散射，导致干净三维场景重建困难。现有散射感知高斯泼溅方法常在图像空间施加退化或将介质变量绑定到高斯基元，造成干净场景辐射与大气效应耦合，且低透射率区域监督弱、远处或浓雾区域重建不足。",
+    "method": "提出Tri-DehazeGS，使用高斯基元表示干净场景，用独立视角共享的tri-plane场建模参与介质，并通过物理散射模型合成雾天观测。进一步引入MD-TGC，在介质冻结后补偿雾抑制的梯度，且不改变前向渲染。",
+    "result": "在真实和合成雾天基准上，Tri-DehazeGS提升了干净新视角重建效果；摘要未提供具体量化指标。",
+    "conclusion": "该工作表明雾下干净重建需同时实现场景-介质解耦与透射率感知优化再平衡，为雾天三维重建提供了有效框架，代码已开源。"
+  },
+  {
     "id": "http://arxiv.org/abs/2609.10498v1",
     "title": "Field Converter: Geometry-Initialized Temporal Residual Refinement for World-Grounded Player Pose Estimation from Soccer Broadcasts",
     "authors": [
@@ -331,6 +358,131 @@
     "method": "提出RouteBridge，使用逐射线可靠性估计器结合光度残差与表示特定的几何证据，决定NeRF→3DGS、3DGS→NeRF或弃权。设计渲染器无关接口，在无共享特征与点对应情况下迁移颜色、不透明度和归一化深度。",
     "result": "在mip-NeRF 360上，NeRF与3DGS导出分别达到28.56 dB和28.77 dB；3DGS导出较3DGS提升1.56 dB，较NeRF-GS提升0.45 dB，并将LPIPS降至0.207。静态三视图DTU上达到21.12 dB，消融显示自适应路由与几何射线目标均有贡献。",
     "conclusion": "RouteBridge通过可靠性路由实现NeRF与3DGS双向蒸馏，减轻固定教师误差传播并提升新视角合成质量。其渲染器无关接口具备跨表示迁移潜力，消融实验验证了关键组件有效性。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2609.10498",
+    "title": "Field Converter: Geometry-Initialized Temporal Residual Refinement for World-Grounded Player Pose Estimation from Soccer Broadcasts",
+    "authors": [
+      "Khan, Simon",
+      "Gajny, Laurent",
+      "Lecompte, Jennyfer",
+      "Laporte, Sébastien"
+    ],
+    "abstract": "Recovering 3D human pose from monocular sports broadcasts remains challenging when players must be localized in a shared metric world coordinate system rather than only reconstructed relative to their own body. We introduce Field Converter, a geometry-initialized temporal residual framework for world-grounded 3D player pose estimation from calibrated soccer broadcasts. Our method first uses camera and pitch geometry to initialize the player root through ray-ground intersection, then predicts a temporal residual correction from pose, image, camera, and geometric cues. On match-disjoint evaluation sequences, residual refinement reduces root error from 49cm with geometry alone to 14cm with a frame-wise MLP and 10cm with a TCN, while a Transformer achieves a comparable 11cm. The resulting world-space MPJPE reaches 13.2cm, and ablations show that residual prediction clearly outperforms direct global-root regression while temporal context matters more than the specific temporal backbone. Failure analysis further identifies airborne motion as the main limitation of the ground-based geometric initialization.",
+    "link": "https://arxiv.org/abs/2609.10498",
+    "published": "2026-09-09",
+    "category": "cs.CV",
+    "tags": [
+      "Soccer Broadcast",
+      "3D Human Pose",
+      "World-Grounded",
+      "Temporal Refinement",
+      "Pose Estimation"
+    ],
+    "tldr": "提出Field Converter，用球场几何初始化与时序残差修正，实现足球转播中世界坐标3D球员姿态估计。",
+    "motivation": "单目体育转播中的3D人体姿态恢复通常只重建球员相对自身坐标的姿态，难以在共享度量世界坐标系中定位球员；本文面向校准足球转播，解决将球员根节点锚定到真实球场世界坐标的问题。",
+    "method": "方法先利用相机与球场几何，通过射线-地面交点初始化球员根节点，再基于姿态、图像、相机和几何线索预测时序残差修正，并比较逐帧MLP、TCN与Transformer等时序骨干。",
+    "result": "在比赛不相交评估序列上，残差细化将根节点误差从仅几何的49cm降至逐帧MLP的14cm、TCN的10cm，Transformer达到约11cm；世界坐标MPJPE达到13.2cm。消融显示残差预测明显优于直接全局根节点回归，且时序上下文比具体时序骨干更重要，失败分析指出空中动作是基于地面几何初始化的主要限制。",
+    "conclusion": "Field Converter通过几何初始化与时序残差细化显著降低世界坐标根节点误差和MPJPE，为体育转播中的世界坐标球员姿态估计提供了有效方案；其地面几何初始化对空中动作仍受限，是后续改进方向。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2609.10376",
+    "title": "Shape-guided Gaussian Splatting for Sparse-View X-ray 3D Reconstruction",
+    "authors": [
+      "Poudel, Pranav",
+      "Picard, Florence Dell'Aniello",
+      "Shehata, Nairouz",
+      "Lavoie, Frédéric",
+      "Lombaert, Herve"
+    ],
+    "abstract": "Sparse-view X-ray 3D reconstruction is essential for reducing radiation exposure, but recovering a density field from a handful of X-ray projections is severely ill-posed. Recently, 3D Gaussian Splatting has achieved state-of-the-art performance in sparse-view reconstruction by representing the volume using explicit, optimized primitives, but it requires dozens of projected views. With fewer views, reconstruction quality degrades severely since the explicit primitives are optimized freely without any anatomical information. Anatomical structures, in contrast, share similar geometry and density across a population. Their variations are bounded within a limited range that statistical shape models can capture. This paper proposes a shape-guided Gaussian splatting framework for sparse-view X-ray 3D reconstructions. Our contribution lies in driving Gaussian positions toward anatomically valid configurations, alongside atlas-based density regularization. Our method ensures anatomically consistent reconstruction and improves PSNR by 2.83 dB over a state-of-the-art Gaussian splatting baseline with as few as 5 views. Code Available: this https URL",
+    "link": "https://arxiv.org/abs/2609.10376",
+    "published": "2026-09-09",
+    "category": "cs.CV",
+    "tags": [
+      "X-ray 3D Reconstruction",
+      "Gaussian Splatting",
+      "Sparse-View",
+      "Shape Prior",
+      "Medical Imaging"
+    ],
+    "tldr": "提出形状引导高斯泼溅框架，利用解剖形状先验与图谱密度正则改进稀疏视角X射线3D重建。",
+    "motivation": "稀疏视角X射线3D重建能降低辐射暴露，但从少量投影恢复密度场严重病态；现有3D Gaussian Splatting虽表现优异，却需数十视角，少视角下因自由优化显式基元且缺乏解剖信息而质量骤降。解剖结构跨人群具有相似几何与密度，其变化可由统计形状模型约束。",
+    "method": "提出形状引导的高斯泼溅框架，将高斯位置驱动至解剖有效构型，并引入基于图谱的密度正则化，以统计形状先验约束显式基元的优化。",
+    "result": "在少至5个视角下，方法相比最先进的高斯泼溅基线将PSNR提升2.83 dB，并实现解剖一致的稀疏视角X射线3D重建。",
+    "conclusion": "该工作将解剖形状先验融入3D Gaussian Splatting，提升了稀疏视角X射线重建的精度与解剖一致性，有望进一步降低辐射暴露；代码已开源。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2609.10095",
+    "title": "LinearMask-GS: Stable-Mask Importance Pruning for Compact 3D Gaussian Splatting",
+    "authors": [
+      "Ryu, Donghun",
+      "Lee, Minhyeok"
+    ],
+    "abstract": "3D Gaussian Splatting (3DGS) enables real-time novel view synthesis but produces millions of primitives through adaptive densification, leading to significant storage overhead. Learned-mask pruning methods such as LP-3DGS address this by assigning each Gaussian a learnable mask to identify and prune redundant primitives. However, we identify a limitation of this paradigm: the steep slope of the Gumbel-Sigmoid activation drives mask values to the extremes within the short mask-training window, before the importance ranking has stabilized, producing a sharply bimodal distribution from which that ranking can no longer be reliably recovered. We propose LinearMask-GS, which replaces Gumbel-Sigmoid with a linear increment activation that keeps mask values in a mid-confidence regime throughout mask training, producing a stable, unimodal mask distribution whose ranking tracks importance. On Mip-NeRF 360, our method achieves 3.6x and 1.6x Gaussian reductions over 3DGS and LP-3DGS, respectively, while maintaining or improving rendering quality. For outdoor scenes, it yields a 1.6x reduction (from 2.18M to 1.36M) with notable gains in PSNR (+0.38 dB), SSIM (+0.025), and LPIPS (-0.029).",
+    "link": "https://arxiv.org/abs/2609.10095",
+    "published": "2026-09-09",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Pruning",
+      "Novel View Synthesis",
+      "Importance Ranking"
+    ],
+    "tldr": "提出LinearMask-GS，用线性递增激活替代Gumbel-Sigmoid，实现稳定掩码重要性剪枝，压缩3DGS且保持渲染质量。",
+    "motivation": "3DGS虽支持实时新视角合成，但自适应致密化产生数百万高斯原语，导致显著存储开销；LP-3DGS等可学习掩码剪枝因Gumbel-Sigmoid激活过陡，在重要性排序稳定前将掩码推向极端，形成双峰分布并导致排序不可靠。",
+    "method": "提出LinearMask-GS，将LP-3DGS中的Gumbel-Sigmoid替换为线性递增激活，使掩码训练全程处于中等置信区间，形成稳定单峰分布，并让掩码值可靠反映高斯重要性，从而剪除冗余原语。",
+    "result": "在Mip-NeRF 360上，相较3DGS和LP-3DGS分别实现3.6倍和1.6倍高斯数量压缩，同时保持或提升渲染质量；户外场景将高斯从2.18M降至1.36M，PSNR提升0.38 dB、SSIM提升0.025、LPIPS降低0.029。",
+    "conclusion": "表明掩码激活设计对剪枝重要性排序至关重要，LinearMask-GS能以稳定掩码分布实现更紧凑的3DGS表示，并保持或提升渲染质量，对实时新视角合成的存储优化具有实用价值。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2609.09606",
+    "title": "RouteBridge: Reliability-Routed Bidirectional Distillation Between Neural Radiance Fields and 3D Gaussian Splatting",
+    "authors": [
+      "Wang, YuanHang",
+      "Cao, Xin"
+    ],
+    "abstract": "Neural radiance fields (NeRFs) and 3D Gaussian Splatting (3DGS) encode a scene with complementary inductive biases, but existing cross-representation distillation typically fixes one representation as teacher for the entire scene. A globally fixed teacher can propagate local reconstruction errors. We present RouteBridge, a bidirectional framework that selects the teaching direction for each ray. Its reliability estimator combines photometric residuals with representation-specific geometric evidence and routes supervision from NeRF to 3DGS, from 3DGS to NeRF, or abstains. A renderer-independent interface transfers color, opacity, and normalized depth without shared features or point correspondence. On mip-NeRF 360, the NeRF and 3DGS exports reach 28.56 and 28.77 dB, respectively. The 3DGS export improves over 3DGS by 1.56 dB and over NeRF-GS by 0.45 dB while reducing LPIPS to 0.207. On static three-view DTU, RouteBridge obtains 21.12 dB. Ablations show that both adaptive routing and geometric ray targets contribute to the improvement.",
+    "link": "https://arxiv.org/abs/2609.09606",
+    "published": "2026-09-09",
+    "category": "cs.CV",
+    "tags": [
+      "NeRF",
+      "3D Gaussian Splatting",
+      "Cross-Representation Distillation",
+      "Novel View Synthesis",
+      "Adaptive Routing"
+    ],
+    "tldr": "提出RouteBridge，按射线可靠性自适应选择NeRF与3DGS间双向蒸馏方向，提升新视角合成质量。",
+    "motivation": "NeRF与3DGS具有互补归纳偏置，但现有跨表示蒸馏在全场景固定单一教师，会将局部重建误差传播到学生表示，限制融合收益。RouteBridge旨在按射线自适应决定蒸馏方向以缓解该问题。",
+    "method": "提出RouteBridge双向蒸馏框架：逐射线可靠性估计器融合光度残差与表示特有的几何证据，决定监督方向为NeRF→3DGS、3DGS→NeRF或弃权。方法通过渲染器无关接口传递颜色、不透明度和归一化深度，无需共享特征或点对应。",
+    "result": "在mip-NeRF 360上，NeRF与3DGS导出分别达到28.56 dB和28.77 dB；3DGS导出较3DGS提升1.56 dB，较NeRF-GS提升0.45 dB，LPIPS降至0.207。静态三视图DTU上取得21.12 dB，消融表明自适应路由与几何射线目标均有贡献。",
+    "conclusion": "RouteBridge通过可靠性路由的双向蒸馏，在不依赖共享特征或点对应的情况下缓解固定教师误差传播，提升NeRF与3DGS导出质量。其贡献在于按射线自适应选择监督方向及渲染器无关的跨表示接口，为互补表示融合提供了新思路。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2609.09882",
+    "title": "Scored vs. Generated Readouts in Behavioral Language Models: An Empirical Study of Elicitation Format",
+    "authors": [
+      "Kraisingkorn, Touchapon",
+      "Pachtrachai, Krittin",
+      "Modecrua, Wachiravit"
+    ],
+    "abstract": "Language models fine-tuned on customer behavior can predict outcomes and generate explanations, but these readouts are often treated as interchangeable. Holding model checkpoint and prompt content fixed, we compare probabilities obtained by scoring answer tokens with predictions generated after a written rationale. Across 13 model-domain cells covering four retail tasks in three markets, including two using fully public data and checkpoints, the scored readout ranks outcomes more accurately in 12 of 13 cells (two-sided sign test, p approximately 0.003), by 1.5 to 14.5 points in area under the receiver operating characteristic curve (AUC). Paired bootstrap confidence intervals exclude zero in every newly measured cell. The gap varies with task-specific supervision and mismatch between training and serving formats, ranging from -2.2 points for an untuned base model to +13.7 for rationale-format supervision. Analysis of approximately 9,000 rationales identifies two correlates: reduced reliance on the dominant predictive feature and convergence on stock formulations. Probability saturation does not track the gap. A third readout, eliciting a probability before any verdict, improves calibration (Brier score from 0.47 to 0.15) while ranking within noise of scoring, but only for outcome rates represented in training; it is worse than scoring when the scored head is already calibrated. We interpret these differences through the objectives matched by each readout, identify training choices that narrow the gap, and propose retaining generated rationales while sourcing ranking from the scored head.",
+    "link": "https://arxiv.org/abs/2609.09882",
+    "published": "2026-09-09",
+    "category": "cs.AI",
+    "tags": [
+      "Language Models",
+      "Elicitation Format",
+      "AUC",
+      "Calibration",
+      "Rationales"
+    ],
+    "tldr": "在行为语言模型中，评分式读出通常比生成理由后的预测排序更准，而生成理由更利于概率校准。",
+    "motivation": "微调于客户行为的语言模型既能预测结果又能生成解释，但不同读出格式常被视为可互换；本文要回答评分式读出与先生成理由再预测的生成式读出在排序和校准上应如何选择。",
+    "method": "在固定模型检查点和提示内容的条件下，比较直接对答案 token 评分所得概率与先写理由后生成预测的结果，覆盖三个市场、四个零售任务共 13 个模型-领域单元，其中两个使用完全公开数据与检查点，并辅以配对自助法置信区间和约 9,000 条理由分析。还评估第三种读出：在任何结论前先引出概率，并从每种读出所匹配的目标函数解释差异。",
+    "result": "评分式读出在 12/13 个单元中排序更准（双侧符号检验 p≈0.003），AUC 高出 1.5 至 14.5 个百分点，且所有新测单元的配对自助法置信区间均不含零；差距随任务特定监督和训练-服务格式不匹配，从无调优基座的 -2.2 分到理由格式监督的 +13.7 分。第三种先验概率读出将校准提升（Brier 从 0.47 降至 0.15），排序与评分无显著差异，但仅对训练中出现过的结果率有效；当评分头已校准时反而不如评分。",
+    "conclusion": "差异可由每种读出所匹配的训练目标解释，某些训练选择能缩小生成式与评分式读出的排序差距。实际建议是保留生成式理由用于解释，同时用评分头提供排序。"
   },
   {
     "id": "http://arxiv.org/abs/2609.09069v1",
@@ -645,6 +797,31 @@
     "method": "OmniPoint 放弃传统平面深度回归，采用解耦的射线-距离表示与解耦训练目标，显式分离相机投影模型和场景结构。为缓解替代相机数据稀缺，它引入双向增强策略，在3D空间桥接有标签透视数据与无标签全向域；并通过可学习输入状态嵌入和向量化高斯平滑实现鲁棒信息注入，以支持相机内参或稀疏深度等可选输入而不引起特征分布偏移。",
     "result": "摘要未提供具体量化指标；仅报告大量实验表明 OmniPoint 在多个基准上取得最先进的零样本性能，为统一单目3D重建建立新的稳健标准。",
     "conclusion": "该工作提出通用单目度量点云框架，统一支持多种相机投影并灵活融合几何先验，显著提升跨相机零样本重建泛化能力，有望推动统一单目3D重建标准的发展。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2609.09491",
+    "title": "Learning Global Camera Poses from Noisy View-Graphs for Structure from Motion",
+    "authors": [
+      "Khatib, Fadi",
+      "Galun, Meirav",
+      "Basri, Ronen"
+    ],
+    "abstract": "Camera pose estimation is a key step in 3D reconstruction and view-synthesis pipelines. We present a deep, global Structure-from-Motion framework based on learned view-graph aggregation. Our method employs a permutation-equivariant, edge-conditioned graph neural network that takes noisy pairwise relative poses as input and outputs globally consistent camera extrinsics. The network is trained without ground-truth supervision, relying solely on a relative-pose consistency objective. This is followed by 3D point triangulation and robust bundle adjustment. Our approach is efficient, scalable to more than a thousand images, and robust to graph density. We evaluate our method on MegaDepth, 1DSfM, Strecha, and BlendedMVS. These experiments demonstrate that our method achieves superior rotation and translation accuracy compared to deep track-centric methods while registering more images across many scenes, and competitive results compared to state-of-the-art classical pipelines, while being much faster.",
+    "link": "https://arxiv.org/abs/2609.09491",
+    "published": "2026-09-08",
+    "category": "cs.CV",
+    "tags": [
+      "Structure-from-Motion",
+      "Graph Neural Networks",
+      "Camera Pose Estimation",
+      "View-Graph",
+      "3D Reconstruction"
+    ],
+    "tldr": "提出基于边条件置换等变图神经网络的全局SfM框架，从噪声视图图学习相机位姿。",
+    "motivation": "相机位姿估计是三维重建与视图合成流程的关键步骤；需要从含噪的两两相对位姿中恢复全局一致的相机外参，并兼顾大规模可扩展性与对视图图密度的鲁棒性。",
+    "method": "采用置换等变、边条件的图神经网络聚合视图图，输入噪声相对位姿并输出全局一致的相机外参；训练无需真值监督，仅依赖相对位姿一致性目标，随后进行三维点三角化和鲁棒光束法平差。",
+    "result": "在MegaDepth、1DSfM、Strecha和BlendedMVS上评估，旋转与平移精度优于深度track-centric方法，并在多场景中配准更多图像；与最先进经典pipeline结果相当，但速度快很多，且可扩展至超过一千张图像并对图密度鲁棒。",
+    "conclusion": "表明学习式视图图聚合可用于无真值监督的全局SfM，在精度、配准数量与效率间取得良好平衡，对大规模三维重建具有潜在影响。"
   },
   {
     "id": "http://arxiv.org/abs/2609.08013v1",
