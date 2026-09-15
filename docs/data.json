@@ -1,5 +1,111 @@
 [
   {
+    "id": "https://arxiv.org/abs/2609.12682",
+    "title": "NOVA-GS: Noise-Aware View-Consistent Gaussian Splatting for Low-Light Novel View Synthesis",
+    "authors": [
+      "A, Shaurya Pavan",
+      "Madhuri, Vemunuri Divya",
+      "Gawande, Yash Pradeep",
+      "Mitra, Kaushik"
+    ],
+    "abstract": "Reconstructing 3D scenes under real-world low-light conditions remains challenging due to severe sensor noise, low signal-to-noise ratios, and degraded photometric consistency, which destabilize geometry estimation and novel view synthesis. Existing approaches often rely on well-lit reference data for reliable Structure-from-Motion (SfM) initialization under degraded inputs or apply per-view enhancement methods that introduce cross-view inconsistencies. To address these limitations, we propose \\textbf{NOVA-GS}, a unified noise-aware framework for low-light 3D Gaussian Splatting that subsumes enhancement, denoising, and geometry optimization within a single process. Our method leverages VGGT-based feed-forward estimation to obtain robust camera poses and geometry directly from degraded inputs, eliminating the need for SfM. Building on this initialization, NOVA-GS integrates three coupled components: a structure-aware enhancement module for exposure correction, a self-supervised denoising module with blind-spot masking for pseudo-supervision, and a consistency-driven Gaussian Splatting optimization enforcing cross-view geometric coherence. We further introduce a noise-guided spherical harmonic regularization to suppress view-dependent artifacts in noisy regions. Extensive experiments on diverse real-world low-light datasets demonstrate improved geometric fidelity, color consistency, and robustness without requiring paired supervision or well-lit references. this https URL",
+    "link": "https://arxiv.org/abs/2609.12682",
+    "published": "2026-09-11",
+    "category": "cs.CV",
+    "tags": [
+      "Gaussian Splatting",
+      "Low-Light NVS",
+      "Denoising",
+      "3D Reconstruction",
+      "VGGT"
+    ],
+    "tldr": "提出噪声感知且跨视角一致的3DGS框架NOVA-GS，在低光噪声输入下统一增强、去噪与几何优化。",
+    "motivation": "真实低光场景存在严重传感器噪声、低信噪比和光度一致性退化，导致几何估计与新视角合成不稳定。现有方法依赖良好光照参考进行SfM初始化，或采用逐视角增强而引入跨视角不一致。",
+    "method": "NOVA-GS利用VGGT前馈估计从退化输入直接获得鲁棒相机位姿与几何，无需SfM。它将结构感知曝光校正、基于盲点掩码的自监督去噪伪监督、以及一致性驱动的3DGS优化耦合起来，并引入噪声引导球谐正则抑制噪声区域的视角相关伪影。",
+    "result": "在多种真实低光数据集上，方法提升了几何保真度、颜色一致性与鲁棒性，且无需配对监督或良好光照参考；摘要未提供具体量化指标。",
+    "conclusion": "NOVA-GS将增强、去噪与几何优化统一到单个低光3DGS流程，降低对SfM、配对监督和良好光照参考的依赖，为真实低光新视角合成提供更稳健的方案。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2609.12559",
+    "title": "KAD-Net: Kinematics-Aware Decoupled Learning for Robust 3D Hand Pose Estimation from a Single Depth Image",
+    "authors": [
+      "Lu, Jun",
+      "Chen, Zhenming",
+      "Chen, Lin",
+      "Tan, Kanlun",
+      "Li, Xiaoling",
+      "Liu, Qiao"
+    ],
+    "abstract": "Due to the complexity of hand kinematics and self-occlusion, existing 3D hand pose estimation methods based on single depth images struggle to comprehensively model the topological dependencies among hand joints. Furthermore, traditional hierarchical multitask architectures enforce a shared feature space for both 2D joint localization and depth estimation, which can induce mutual interference. To address these challenges, we propose a Kinematics-Aware Decoupled Learning Network (KAD-Net) for robust 3D hand pose estimation. Specifically, we first design a Finger Topology Constraint (FTC) module to enhance the representation of distal joints. This module utilizes three consecutive finger joints to construct a local kinematic representation to impose topological constraints, which supplements the kinematic features of the distal joints. The FTC module leverages the structural context from visible joints to assist in locating occluded distal joints, thereby improving robustness to occlusion. Additionally, we propose a task-decoupled hierarchical multitask framework. This framework separates 2D joint localization from depth estimation and incorporates a dedicated multitask learning strategy for depth regression, effectively isolating the UV and depth features to mitigate mutual interference and negative transfer. Extensive experiments demonstrate that KAD-Net outperforms existing methods on several benchmark datasets (ICVL, NYU, and MSRA), achieving state-of-the-art accuracy in 3D hand pose estimation. Potential applications of KAD-Net include human-computer interaction, virtual reality and gesture-based control systems.",
+    "link": "https://arxiv.org/abs/2609.12559",
+    "published": "2026-09-11",
+    "category": "cs.CV",
+    "tags": [
+      "3D Hand Pose Estimation",
+      "Depth Image",
+      "Multitask Learning",
+      "Occlusion",
+      "Kinematics"
+    ],
+    "tldr": "提出KAD-Net，通过手指拓扑约束与任务解耦多任务学习，提升单深度图3D手部姿态估计的精度与遮挡鲁棒性。",
+    "motivation": "现有单深度图3D手部姿态估计方法因手部运动学复杂和自遮挡，难以全面建模手部关节间的拓扑依赖；传统分层多任务架构还让2D关节定位与深度估计共享特征空间，易产生相互干扰。",
+    "method": "KAD-Net首先设计Finger Topology Constraint (FTC)模块，利用三个连续手指关节构建局部运动学表示并施加拓扑约束，以补充远端关节的运动学特征，并借助可见关节的结构上下文定位被遮挡的远端关节。同时提出任务解耦的分层多任务框架，将2D关节定位与深度估计分离，并采用专用的深度回归多任务学习策略，隔离UV与深度特征，从而减轻相互干扰和负迁移。",
+    "result": "在ICVL、NYU和MSRA等基准数据集上的大量实验表明，KAD-Net优于现有方法，取得了3D手部姿态估计的最先进精度；摘要未提供具体量化指标。",
+    "conclusion": "KAD-Net为单深度图3D手部姿态估计提供了一种运动学感知与任务解耦的鲁棒方案，可应用于人机交互、虚拟现实和基于手势的控制系统。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2609.12343",
+    "title": "VS-Splat: Voxel-Selective feed-forward Gaussian Splatting for end-to-end 3D object reconstruction from sparse-views",
+    "authors": [
+      "Jeong, Yunsu",
+      "Heo, Hyuk",
+      "Kwak, Youngsang",
+      "Kwak, Jaehwa",
+      "Chun, Il Yong"
+    ],
+    "abstract": "Feed-forward Gaussian splatting models have demonstrated remarkable effectiveness in reconstructing three-dimensional (3D) objects from a few two-dimensional (2D) images, even if they are unseen. As existing methods typically predict Gaussian primitives uniformly across the 3D space, most primitives are placed in non-object regions. This may hinder the representation of fine object details. This paper proposes a Voxel-Selective Gaussian Splatting model (VS-Splat), a new end-to-endfeed-forward Gaussian splatting framework that predicts many primitives only within selected voxels that are likely to belong to an object, without 3D structural supervision. To achieve this, we propose a new learnable voxel selection approach that identifies object-centric voxels only with 2D rendering supervision. Our sparse-view rendering experiments with three benchmark datasets show that proposed VS-Splat outperforms several state-of-the-art methods. We further demonstrate its effectiveness as a backbone for an existing densification method and show that anoptional extension improves its robustness to inaccurate camera pose estimates.",
+    "link": "https://arxiv.org/abs/2609.12343",
+    "published": "2026-09-11",
+    "category": "cs.CV",
+    "tags": [
+      "Gaussian Splatting",
+      "3D Reconstruction",
+      "Sparse Views",
+      "Feed-forward",
+      "Voxel Selection"
+    ],
+    "tldr": "VS-Splat通过可学习体素选择，仅在物体相关体素内预测高斯图元，提升稀疏视图三维重建。",
+    "motivation": "现有前馈高斯泼溅方法通常在整个三维空间均匀预测高斯图元，导致大量图元落在非物体区域，从而限制物体细节表示。该工作旨在稀疏视图下实现端到端物体中心的三维重建，且不依赖三维结构监督。",
+    "method": "提出VS-Splat前馈高斯泼溅框架，引入可学习体素选择策略，仅利用二维渲染监督识别可能属于物体的体素，并在这些选定体素内预测大量高斯图元。该方法支持端到端训练，并可作为现有致密化方法的骨干。",
+    "result": "在三个基准数据集上的稀疏视图渲染实验表明，VS-Splat优于多种当前最优方法，并验证其作为现有致密化方法骨干的有效性；可选扩展还提升了对不准确相机位姿估计的鲁棒性。",
+    "conclusion": "该工作证明仅凭二维渲染监督即可学习物体中心体素选择，将高斯图元集中到物体区域，从而改善稀疏视图三维物体重建。其为前馈高斯泼溅提供了新框架，并可与致密化方法及位姿鲁棒性扩展结合，具有潜在应用价值。"
+  },
+  {
+    "id": "https://arxiv.org/abs/2609.12395",
+    "title": "Is Gaussian Splatting Becoming Neural Again? A Taxonomy and Controlled Study of Learned Parameterization",
+    "authors": [
+      "Wang, YuanHang",
+      "Cao, Xin",
+      "Zhang, Yi"
+    ],
+    "abstract": "Three-dimensional Gaussian Splatting (3DGS) combines explicit primitives with efficient rasterization, yet recent systems increasingly use neural networks to generate or share Gaussian parameters. We characterize this trend along five axes: attribute decoding, spatial sharing, view-conditioned decoding, topology generation, and amortized inference. An analysis of 19 representative methods shows that these choices address different limitations and cannot be reduced to a binary neural label. We also isolate three forms of neural parameterization in a controlled mip-NeRF 360 study. Sharing appearance and opacity improves reconstruction quality, while decoding geometric structure offers no further gain. The evidence favors selective neuralization: shared functions help when they capture reusable correlations without sacrificing the local geometric freedom of explicit splats.",
+    "link": "https://arxiv.org/abs/2609.12395",
+    "published": "2026-09-11",
+    "category": "cs.AI",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Neural Parameterization",
+      "Taxonomy",
+      "Novel View Synthesis",
+      "Controlled Study"
+    ],
+    "tldr": "本文对3DGS的神经参数化趋势进行五轴分类，并通过受控实验表明选择性神经化优于全面神经化。",
+    "motivation": "3DGS结合显式图元与高效光栅化，但近期系统日益使用神经网络生成或共享高斯参数；本文旨在厘清该趋势，并说明不同神经化选择针对的局限不能简化为二元的神经/非神经标签。",
+    "method": "本文沿五个轴（属性解码、空间共享、视角条件解码、拓扑生成与摊销推理）对19种代表性方法进行归纳分析，并在mip-NeRF 360上开展受控实验，分离三种神经参数化形式。",
+    "result": "在mip-NeRF 360受控实验中，共享外观与不透明度可提升重建质量，而解码几何结构没有进一步增益；19种方法分析表明各神经化选择应对不同局限。摘要未提供具体量化指标。",
+    "conclusion": "证据支持选择性神经化：当共享函数能捕获可复用相关性且不牺牲显式splat的局部几何自由度时，神经化才有益；该分类与受控结论可为后续3DGS系统设计提供指导。"
+  },
+  {
     "id": "http://arxiv.org/abs/2609.11894v1",
     "title": "3D Point Splatting for mmWave Radar Novel View Synthesis",
     "authors": [
@@ -822,232 +928,5 @@
     "method": "采用置换等变、边条件的图神经网络聚合视图图，输入噪声相对位姿并输出全局一致的相机外参；训练无需真值监督，仅依赖相对位姿一致性目标，随后进行三维点三角化和鲁棒光束法平差。",
     "result": "在MegaDepth、1DSfM、Strecha和BlendedMVS上评估，旋转与平移精度优于深度track-centric方法，并在多场景中配准更多图像；与最先进经典pipeline结果相当，但速度快很多，且可扩展至超过一千张图像并对图密度鲁棒。",
     "conclusion": "表明学习式视图图聚合可用于无真值监督的全局SfM，在精度、配准数量与效率间取得良好平衡，对大规模三维重建具有潜在影响。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2609.08013v1",
-    "title": "A Black-Box Adversarial Attack on Human Pose Estimation and Keypoint-Based Action Recognition Models",
-    "authors": [
-      "Kacper Mroczek",
-      "Michal Kepski"
-    ],
-    "abstract": "Human pose estimation and keypoint-based action recognition models are increasingly deployed as components of video understanding pipelines, yet their vulnerability to adversarial attacks remains insufficiently studied. Temporally coherent black-box attacks have been previously studied in visual object tracking, where the attack feedback can be defined using bounding-box overlap measures such as Intersection over Union (IoU). However, human pose estimation produces keypoint configurations rather than enclosing boxes, making box-level similarity poorly suited for measuring pose degradation. We propose OKS Attack, a decision-based black-box attack that uses Object Keypoint Similarity (OKS) as the attack feedback signal, directly targeting the spatial structure of human poses rather than their enclosing boxes. Experiments on the Penn Action dataset show that OKS Attack consistently reduces pose quality across evaluated pose estimators, with mean OKS decreases ranging from 0.0802 to 0.1494. In a downstream cross-dataset action-recognition evaluation, the attack reduces accuracy by 6.18 to 13.86 percentage points and outperforms query-matched random-noise perturbations. The attack is effective across both top-down and single-stage pose estimation models. The source code will be made publicly available at https://github.com/KacperM33/OKS_attack",
-    "link": "http://arxiv.org/abs/2609.08013v1",
-    "published": "2026-09-07",
-    "category": "cs.CV",
-    "tags": [
-      "Adversarial Attack",
-      "Human Pose Estimation",
-      "Action Recognition",
-      "Black-box Attack",
-      "OKS"
-    ],
-    "tldr": "提出基于OKS的决策级黑盒攻击OKS Attack，可有效降低姿态估计与下游动作识别性能。",
-    "motivation": "姿态估计和基于关键点的动作识别模型易受对抗攻击，但现有黑盒攻击（如基于IoU）不适用于输出关键点而非包围框的姿态估计任务，需要能直接针对姿态空间结构的攻击方法。",
-    "method": "提出OKS Attack，一种决策级黑盒攻击方法，使用目标关键点相似度（OKS）作为攻击反馈信号，直接优化姿态关键点的空间结构退化，而不依赖包围框重叠度量。",
-    "result": "在Penn Action数据集上，OKS Attack使多种姿态估计器的平均OKS下降0.0802至0.1494；在下游跨数据集动作识别评估中，准确率下降6.18至13.86个百分点，且优于查询匹配的随机噪声扰动。",
-    "conclusion": "OKS Attack在top-down和单阶段姿态估计模型上均有有效性，揭示姿态估计管道在决策级黑盒场景下的脆弱性，并公开源码以促进后续研究。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2609.07734v1",
-    "title": "TV-SGS: Gaussian Splatting with Geometric Information Propagation via Tensor Voting under sparse views",
-    "authors": [
-      "Harish N Sathishchandra",
-      "Philippos Mordohai"
-    ],
-    "abstract": "Gaussian Splatting has been effective in inferring scene representations that excel in novel view synthesis. Multiple splats cooperate seamlessly to synthesize the pixels of novel views and are jointly optimized even though they only affect each other indirectly, via pixels they project to in common. We present an approach that enables direct communication among splats to enhance the geometric structures they form in 3D. This is accomplished by Tensor Voting, which was originally designed to infer structures from noisy inputs and has been adapted here to provide supervision during test-time optimization, leading to more accurate scene geometry. We introduce a new class of 3D losses that do not rely on rendering and can be combined with essentially all losses previously reported in the literature. Our 3D losses are especially effective when the input views are sparse and geometric regularization is essential due to limited supervision from the images. Our method is easy to integrate with a diverse set of backbones, and our experiments on the DTU and Tanks-and-Temples datasets demonstrate that TV-SGS improves the geometry of the outputs compared to the backbone, while maintaining or improving rendering quality.",
-    "link": "http://arxiv.org/abs/2609.07734v1",
-    "published": "2026-09-07",
-    "category": "cs.CV",
-    "tags": [
-      "Gaussian Splatting",
-      "Tensor Voting",
-      "Sparse Views",
-      "3D Geometry",
-      "Novel View Synthesis"
-    ],
-    "tldr": "通过张量投票实现高斯溅射点间直接通信，提出3D损失以改善稀疏视图下的场景几何。",
-    "motivation": "现有高斯溅射优化中，各溅射点仅通过共同投影的像素间接影响，缺乏直接通信，导致稀疏视图下几何结构不准确。",
-    "method": "将张量投票（Tensor Voting）引入测试时优化，为溅射点提供几何结构监督；设计一类不依赖渲染的3D损失，与现有渲染损失结合，增强三维几何一致性。",
-    "result": "在DTU和Tanks-and-Temples数据集上，相比骨干方法，TV-SGS提升了输出几何质量，同时保持或改善了渲染质量。",
-    "conclusion": "提出一种易于集成到多种骨干网络的3D几何正则化方法，有效缓解稀疏视图下的几何退化，具有广泛适用性。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2609.07724v1",
-    "title": "Zero-Shot 3D Plant Organ Segmentation with SAM3 and Semantic NeRFs",
-    "authors": [
-      "Andreas Gilson",
-      "Laura Hennig",
-      "Peter Pietrzyk"
-    ],
-    "abstract": "Accurate 3D plant organ segmentation is fundamental to automated phenotyping. Existing approaches rely on annotated training data or species-specific model configurations. We present an annotation-free pipeline for 3D plant organ segmentation, combining text-prompted SAM3 segmentation with semantic neural radiance fields (NeRFs). Given only multi-view RGB images and a list of class names, our zero-shot pipeline produces semantically labeled 3D point clouds without manual annotation, per-species fine-tuning, or domain-specific preprocessing. Multi-view NeRF fusion acts as effective implicit consensus mechanism that lifts imperfect per-frame masks into accurate 3D labels. On a controlled Begonia maculata testbed the SAM3 pipeline achieves 92.6% mIoU, reaching 95.9% of the oracle upper bound established with perfect ground-truth masks. The pipeline was further evaluated on a new dataset spanning ten diverse plant point clouds reaching an average 0.856 mIoU, with leaf and pot IoU above 0.91 and 0.90 for every species, respectively. These results demonstrate that annotation-free 3D plant organ segmentation is now feasible and approaching the range of supervised methods.",
-    "link": "http://arxiv.org/abs/2609.07724v1",
-    "published": "2026-09-07",
-    "category": "cs.CV",
-    "tags": [
-      "Zero-Shot",
-      "Plant Organ Segmentation",
-      "Semantic NeRF",
-      "SAM3",
-      "Point Cloud"
-    ],
-    "tldr": "提出一种无标注3D植物器官分割流程，结合SAM3与语义NeRF，在多种植物上接近监督方法性能。",
-    "motivation": "现有3D植物器官分割依赖标注训练数据或特定物种配置，缺乏通用零样本方案；目标实现无需标注即可从多视角图像产生语义3D点云。",
-    "method": "仅输入多视角RGB图像和类别名，用文本提示SAM3生成逐帧2D掩码，再通过语义NeRF进行多视角融合，将不完美掩码转换为精确3D语义标签，无需人工标注、物种微调或预处理。",
-    "result": "在Begonia maculata测试集上达到92.6% mIoU，为使用真实掩码的oracle上界的95.9%；在含十个植物点云的新数据集上平均mIoU 0.856，所有物种的叶片IoU>0.91、花盆IoU>0.90。",
-    "conclusion": "证明无标注的3D植物器官分割可行且逼近监督方法；该零样本pipeline可减少表型分析对标注数据的依赖，支持跨物种应用。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2609.07557v1",
-    "title": "Heat Kernel Textures: the Geodesic Gaussians That Do Not Splat",
-    "authors": [
-      "Simone Foti",
-      "Caner Korkmaz",
-      "Stefanos Zafeiriou",
-      "Tolga Birdal"
-    ],
-    "abstract": "3D Gaussian Splatting has recently revolutionised novel view synthesis as well as many other 3D vision methods and applications. Drawing inspiration from this representation, we now rethink textures to overcome the main issues of UV mapping while considerably lowering their memory footprint. Heat Kernel Textures (HKTex) eliminate UV unwrapping as well as their persistent issues of wasted UV space, seams, distortions, vertex-duplication, and varying resolution. Grounded in discrete Riemannian geometry and intrinsically defined on any manifold surface discretised as a triangular mesh, HKTex uses anisotropic heat kernels as geodesic equivalents to Gaussians. Like our kernels, also the optimisation of their position and the adaptive densification strategies were redefined to operate on the surface of the object to be textureised. Our novel representation is also fully integrated with a physically based renderer and can be optimised either from existing textures or multi-view images. Our project page and code are available at circle-group.github.io/research/HeatKernelTextures.",
-    "link": "http://arxiv.org/abs/2609.07557v1",
-    "published": "2026-09-07",
-    "category": "cs.CV",
-    "tags": [
-      "Texture Mapping",
-      "Heat Kernels",
-      "Gaussian Splatting",
-      "Geometry Processing"
-    ],
-    "tldr": "提出热核纹理(HKTex)，在三角网格上用各向异性热核作为测地高斯，消除UV映射问题并降低内存占用。",
-    "motivation": "受3D高斯泼溅启发，旨在解决UV映射的主要问题，包括浪费UV空间、接缝、变形、顶点重复和分辨率变化，同时显著降低纹理表示的内存占用。",
-    "method": "基于离散黎曼几何，在三角网格表面内在定义各向异性热核作为测地高斯的等价物；重新设计了核位置优化和自适应加密策略，使其直接在物体表面操作，并与基于物理的渲染器集成，可从现有纹理或多视图图像优化。",
-    "result": "摘要未提供量化指标，但声称能消除UV展开及其持久性问题，并显著降低内存占用。",
-    "conclusion": "HKTex提供了一种免UV的纹理表示，降低内存开销，支持物理基础渲染，并能从现有纹理或多视图图像优化，为纹理化及相关3D视觉应用提供了新的方向，附带公开的项目页面和代码。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2609.07346v1",
-    "title": "From Explicit References to Scene Manifolds: Distributional Fidelity and Realism for Radiance Field Quality Assessment",
-    "authors": [
-      "Saeed Mahmoudpour",
-      "Gi-Mun Um",
-      "Hyon-Gon Choo",
-      "Peter Schelkens"
-    ],
-    "abstract": "Radiance field representations such as 3D Gaussian Splatting (3DGS) enable high-quality novel view synthesis but can introduce complex, view-dependent artifacts from reconstruction, rendering, and compression. Reliable perceptual quality assessment (QA) is thus essential for evaluating rendered views and guiding the design of perceptually faithful scene representations. Existing full-reference QA metrics require an aligned reference image, while recent cross-reference metrics relax this requirement by comparing a test view with non-aligned references. However, under wide-baseline radiance field settings, selecting a reliable nearby reference can be difficult, particularly when evaluating views along arbitrary trajectories and poses. We propose SCODA, a lightweight scene-conditioned objective QA method that shifts QA from explicit image-to-image comparison to scene-manifold modeling. High-quality observations of each scene are represented as a multivariate Gaussian distribution in deep feature space, producing a semantic fidelity score that measures deviation from the scene distribution. A weakly-supervised distortion-aware patch discriminator provides a complementary realism signal, and both cues are combined through an unsupervised bounded fusion strategy. Experiments on multiple benchmarks show strong agreement with human judgments and robust generalization across GS- and NeRF-generated views and trajectories. Code is publicly available at https://gitlab.com/saeedmp/scoda.",
-    "link": "http://arxiv.org/abs/2609.07346v1",
-    "published": "2026-09-07",
-    "category": "cs.CV",
-    "tags": [
-      "Radiance Fields",
-      "Image Quality Assessment",
-      "3D Gaussian Splatting",
-      "Scene Manifold",
-      "No-Reference QA"
-    ],
-    "tldr": "提出SCODA，通过场景流形分布与失真感知判别器实现无参考的辐射场视图质量评估，与人类判断高度一致。",
-    "motivation": "现有全参考QA指标需要对齐参考图，而跨参考方法在宽基线辐射场和任意轨迹下难以选择可靠近邻参考。因此需要不依赖显式参考图像、能适应任意视角与轨迹的客观QA方法。",
-    "method": "SCODA将每个场景的高质量观测在深度特征空间建模为多元高斯分布，用测试视图偏离该场景分布的程度作为语义保真度分数；同时采用弱监督的失真感知patch判别器提供真实感信号，并通过无监督有界融合策略结合这两种线索。",
-    "result": "在多个基准上，SCODA与人类判断一致性很强，并在3DGS与NeRF生成的视图和轨迹上展现稳健的泛化能力。摘要未提供具体量化指标。",
-    "conclusion": "主要贡献是将QA从显式图像间比较转向场景流形建模，提出轻量的场景条件质量评估方法，兼顾分布保真度与真实感；代码已开源，可辅助感知真实的辐射场表示设计与渲染质量监控。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2609.07298v1",
-    "title": "KODAMA: Multimodal Digital Twin Reconstruction for Urban RF Propagation Modelling",
-    "authors": [
-      "Maximiliano Wardle",
-      "A. Ryo Koblitz"
-    ],
-    "abstract": "3D reconstruction typically strives for geometric fidelity or visual plausibility. Radio frequency digital twins (RFDT) are instead judged by whether communication channels behave in them as they do in the real world. RFDTs promise site-specific channel prediction but current practice forces a choice between coarse automated scenes and hand-built, measurement-calibrated models that take weeks to construct per-site. We present KODAMA, an automated pipeline that reconstructs ray tracing-ready RFDTs at city scale from off-the-shelf geospatial data alone: aerial imagery, LiDAR, and photogrammetry yield terrain and watertight building meshes, while exposure-weighted multi-view fusion of street-level imagery recovers façade relief, electromagnetic materials, and clutter---all without site visits or calibration. Across three sites spanning 3.6 to 28 GHz, KODAMA's uncalibrated predictions achieve single-digit RMSE, reducing point-to-point error by up to 5.35 dB over automated baselines and coming within 0.22 dB of a measurement-calibrated, hand-built RFDT.",
-    "link": "http://arxiv.org/abs/2609.07298v1",
-    "published": "2026-09-07",
-    "category": "cs.CV",
-    "tags": [
-      "Digital Twin",
-      "RF Propagation",
-      "Ray Tracing",
-      "Multimodal Fusion",
-      "3D Reconstruction"
-    ],
-    "tldr": "KODAMA自动从地理空间数据重建城市级射频数字孪生，无需勘测或校准，预测精度接近手工模型。",
-    "motivation": "射频数字孪生要求信道行为与真实世界一致，但现有方案要么使用粗略自动场景，要么依赖耗时数周的手工测量校准模型。",
-    "method": "融合航空影像、LiDAR和摄影测量生成地形与建筑网格，利用街景多视角曝光加权融合重建立面、电磁材料与杂波，无需现场勘测或校准。",
-    "result": "在三个场地（3.6–28 GHz）上，未校准预测的RMSE为个位数dB，点对点误差相比自动基线最大降低5.35 dB，与测量校准的手工RFDT仅差0.22 dB。",
-    "conclusion": "KODAMA实现全自动、城市尺度、可直接用于射线追踪的RFDT重建，大幅降低建模成本并保持高精度，为站点特定无线信道预测提供实用方案。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2609.07274v1",
-    "title": "LightSplat: Real-Time High-Fidelity 3D Gaussian SLAM with Loop Closure",
-    "authors": [
-      "Junze Bao",
-      "Ye Gao",
-      "Yiming Huang",
-      "Xiaolong Yu",
-      "Chen Dong",
-      "Qing Gao",
-      "Wei Wang",
-      "Jinhu Lü"
-    ],
-    "abstract": "SLAM systems based on 3D Gaussian Splatting (3DGS) have recently demonstrated promising reconstruction accuracy for dense 3D scene representations. However, current 3DGS systems struggle to meet the strict demands of real-world deployments due to severe limitations in operational performance and map adaptability. To this end, we propose LightSplat, a hybrid-representation RGB-D SLAM framework. It synergizes local sparse features for robust and fast tracking with a dual-thread backend that progressively constructs dense Gaussian submaps. Crucially, we enable online loop closure through feature-accelerated 3DGS registration, refining overall map consistency through pose graph optimization. Ultimately, LightSplat achieves the online reconstruction of high-fidelity Gaussian map. Extensive experiments on multiple datasets and real-world robotic platform demonstrate that our method achieves near state-of-the-art reconstruction quality and the capability to accommodate practical camera motions, maintaining an average framerate of 8 FPS. Overall, LightSplat provides an efficient and robust foundation for deploying high-fidelity 3DGS in real-world environments.",
-    "link": "http://arxiv.org/abs/2609.07274v1",
-    "published": "2026-09-07",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "SLAM",
-      "Loop Closure",
-      "Real-Time",
-      "RGB-D"
-    ],
-    "tldr": "LightSplat提出混合表征RGB-D SLAM框架，结合局部稀疏特征与双线程高斯子图，实现实时高质量建图与闭环优化。",
-    "motivation": "现有基于3D高斯泼溅的SLAM系统在操作性能和地图适应性上存在严重限制，难以满足实际部署的严格要求。",
-    "method": "采用混合表征RGB-D SLAM框架：一方面利用局部稀疏特征进行鲁棒快速跟踪，另一方面通过双线程后端逐步构建稠密高斯子图；利用特征加速的3DGS配准实现在线闭环，并通过位姿图优化提升全局一致性。",
-    "result": "在多个数据集和真实机器人平台上，达到接近最先进的重建质量，能适应实际相机运动，平均帧率8 FPS。",
-    "conclusion": "LightSplat为在真实环境中部署高保真3DGS提供了高效且鲁棒的基础，实现了在线高保真高斯地图重建。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2609.07085v1",
-    "title": "Single Image to Textured 3D Object Generation in Frequency Domain: From Theory to Pipeline",
-    "authors": [
-      "Qisen Wang",
-      "Yifan Zhao",
-      "Jia Li"
-    ],
-    "abstract": "Single-view 3D reconstruction, also known as image-to-3D, is a persistently challenging task due to the extreme lack of information. Recently, diffusion models pre-trained on large-scale datasets served as 2D priors are used to solve the ill-posed task but suffer from color deviation and view inconsistency, which can be curbed by using diffusion models fine-tuned with 3D annotated data served as 3D priors. However, 3D priors lack high-frequency details, which cannot be solved by direct complementation with 2D priors in spatial domain for introducing erroneous low-frequency 2D prior guidance. In this paper, we revisit the characteristics of different diffusion priors from the frequency perspective. Based on our observations, we theoretically present a unified framework of hybrid optimization using multiple diffusion priors in frequency domain. Under this framework, we further propose Morpheus3D, a pipeline of 3D object generation from any single unposed image in the wild. Morpheus3D enhances 3D prior with high-pass image-prompt 2D prior guidance to reconstruct high-quality 3D objects while effectively suppressing view inconsistency, low-frequency color deviation, and high-frequency lacking problems. Both quantitative and qualitative experiments on the public and our collected datasets with complex textures show that our method exhibits significant improvements in generation quality.",
-    "link": "http://arxiv.org/abs/2609.07085v1",
-    "published": "2026-09-07",
-    "category": "cs.CV",
-    "tags": [
-      "Image-to-3D",
-      "Diffusion Models",
-      "Frequency Domain",
-      "3D Reconstruction",
-      "Morpheus3D"
-    ],
-    "tldr": "提出Morpheus3D，在频域融合3D与2D扩散先验，实现单图到高质量纹理3D生成，抑制视图不一致和颜色偏差。",
-    "motivation": "单视图重建信息不足，2D扩散先验存在颜色偏差与视图不一致，而3D先验缺乏高频细节。空间域直接结合二者会引入错误的低频2D先验引导，亟需从频域视角重新设计混合优化策略。",
-    "method": "从频域分析不同扩散先验的特性，提出一种统一的多扩散先验混合优化框架。基于该框架设计Morpheus3D管线，使用高通图像提示的2D先验来增强3D先验，在频域内优化生成过程，以保留高频细节并抑制低频颜色偏差和视图不一致。",
-    "result": "在公开数据集及自建复杂纹理数据集上的定量与定性实验均表明，生成质量显著提升。摘要未提供具体量化指标。",
-    "conclusion": "提出了频域混合扩散先验的理论框架及Morpheus3D实现，有效解决了单图3D生成中的视图不一致、低频颜色偏差和高频细节缺失问题，为多扩散先验协同工作提供了新思路。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2609.07298v2",
-    "title": "KODAMA: Multimodal Digital Twin Reconstruction for Urban RF Propagation Modelling",
-    "authors": [
-      "Maximiliano Wardle",
-      "A. Ryo Koblitz"
-    ],
-    "abstract": "3D reconstruction typically strives for geometric fidelity or visual plausibility. Radio frequency digital twins (RFDT) are instead judged by whether communication channels behave in them as they do in the real world. RFDTs promise site-specific channel prediction but current practice forces a choice between coarse automated scenes and hand-built, measurement-calibrated models that take weeks to construct per-site. We present KODAMA, an automated pipeline that reconstructs ray tracing-ready RFDTs at city scale from off-the-shelf geospatial data alone: aerial imagery, LiDAR, and photogrammetry yield terrain and watertight building meshes, while exposure-weighted multi-view fusion of street-level imagery recovers façade relief, electromagnetic materials, and clutter---all without site visits or calibration. Across three sites spanning 3.6 to 28 GHz, KODAMA's uncalibrated predictions achieve single-digit RMSE, reducing point-to-point error by up to 5.35 dB over automated baselines and coming within 0.22 dB of a measurement-calibrated, hand-built RFDT.",
-    "link": "http://arxiv.org/abs/2609.07298v2",
-    "published": "2026-09-07",
-    "category": "cs.CV",
-    "tags": [
-      "RF Digital Twin",
-      "Ray Tracing",
-      "Multimodal Fusion",
-      "Urban Propagation",
-      "3D Reconstruction"
-    ],
-    "tldr": "KODAMA利用多模态地理数据自动重建城市级可射线追踪RF数字孪生，无需校准即可高精度预测信道。",
-    "motivation": "RF数字孪生应以通信信道行为是否与现实一致来评价，但现有方法要么使用粗粒度自动化场景，要么依赖耗时数周的手工测量校准模型，难以实现城市级扩展。",
-    "method": "KODAMA构建自动化流水线，仅用航拍影像、LiDAR和摄影测量生成地形与密闭建筑网格，并对街景影像做曝光加权多视图融合，以恢复立面起伏、电磁材质与杂波，直接输出可射线追踪的RF数字孪生。",
-    "result": "在3.6至28 GHz的三个站点上，KODAMA未校准预测达到个位数RMSE，相比自动化基线点对点误差最多降低5.35 dB，并与测量校准的手工RF数字孪生仅差0.22 dB。",
-    "conclusion": "结果表明可从现成地理空间数据自动构建城市级、射线追踪就绪的RF数字孪生，在无需现场校准下逼近手工标定模型，有望降低站点级建模成本并提升信道预测的可扩展性。"
   }
 ]
