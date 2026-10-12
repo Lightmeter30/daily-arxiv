@@ -1,5 +1,292 @@
 [
   {
+    "id": "http://arxiv.org/abs/2610.13945v1",
+    "title": "Splat2Act: From Captured Scenes to Personalized VLA Manipulation",
+    "authors": [
+      "Xiaomeng Ye",
+      "Krishna Jaganathan",
+      "Gyubeum Lim",
+      "Gunjan Chhablani",
+      "Muhammad Zubair Irshad",
+      "Zsolt Kira"
+    ],
+    "abstract": "A user who brings a generalist manipulation policy into their home or office wants it to pick up their objects from their shelves, counters, and tables. Yet even a strong generalist like $π_{0.5}$ achieves 0% pickup success in our captured deployment scenes without adaptation, and collecting real demonstrations in every user's environment is prohibitively expensive. We present Splat2Act, an automated real-to-sim-to-real pipeline that personalizes a pretrained vision-language-action (VLA) policy to a specific scene and object set using only a handheld phone scan and images of the user's objects. Unlike prior real-to-sim work that reconstructs individual tabletops, Splat2Act operates on building-scale indoor environments: it builds a photorealistic digital twin with 3D Gaussian Splatting and collision geometry, automatically discovers tabletop and non-tabletop receptacles, constructs feasible pickup tasks, and generates successful demonstrations with a privileged simulation oracle, with only scene and object capture required from a human. Applied to 101 scanned campus environments with a median navigable area of 104.87 m$^2$ and 7 receptacles, the pipeline yields 852 receptacles and over 68,000 pickup demonstrations. We fine-tune $π_{0.5}$ in two stages: Stage 1 adapts to hundreds of public object assets, drawn either from the deployment scene alone or from all 101 scenes; Stage 2 personalizes to the user's own objects on the deployment scene's receptacles. Our strongest personalized policy reaches 62.5% aggregate pickup success in the target scene. Deployed on a real Stretch 3, the same policy achieves 63.9% success on a 12-task subset, closely tracking its 66.7% simulated success on those tasks. These results suggest that automated real-to-sim-to-real training can personalize VLA manipulation policies using only simulation-oracle data.",
+    "link": "http://arxiv.org/abs/2610.13945v1",
+    "published": "2026-10-09",
+    "category": "cs.CV",
+    "tags": [
+      "VLA",
+      "3D Gaussian Splatting",
+      "Real-to-Sim-to-Real",
+      "Robot Manipulation",
+      "Policy Personalization"
+    ],
+    "tldr": "Splat2Act用手机扫描构建场景数字孪生，自动生成演示并两阶段微调VLA，实现个性化抓取。",
+    "motivation": "通用操作策略进入家庭或办公室后，希望从货架、柜台和桌面抓取用户物品；但强通用策略π0.5在捕获的部署场景中不做适配时抓取成功率为0%，而在每个用户环境采集真实演示成本过高。因此需要仅凭手机扫描和物品图像，将预训练VLA个性化到特定场景与物体集合。",
+    "method": "提出Splat2Act，一个自动化real-to-sim-to-real流水线：用3D Gaussian Splatting和碰撞几何构建建筑级真实感数字孪生，自动发现桌面与非桌面容器，构造可行抓取任务，并用特权仿真oracle生成成功演示，人类只需采集场景和物体。随后两阶段微调π0.5：阶段1在部署场景或全部101个场景的数百个公共物体资产上适配，阶段2在部署场景容器上针对用户自有物体个性化。",
+    "result": "在101个校园扫描环境（可导航面积中位数104.87 m²、7个容器）上，流水线生成852个容器和超过68,000条抓取演示；最强个性化策略在目标场景达到62.5%总体抓取成功率。部署到真实Stretch 3后，同一策略在12个任务子集上成功率为63.9%，接近其仿真66.7%。",
+    "conclusion": "结果表明，仅使用仿真oracle数据的自动化real-to-sim-to-real训练即可个性化VLA操作策略，无需在用户环境采集真实演示，为家庭和办公场景的机器人部署提供了可扩展路径。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2610.13860v1",
+    "title": "Make It Flow: Animating Water in 3D Gaussian Splatting Scenes",
+    "authors": [
+      "Kjell Keune",
+      "Florian Hahlbohm",
+      "Jannis Möller",
+      "Susana Castillo",
+      "Martin Eisemann",
+      "Marcus Magnor"
+    ],
+    "abstract": "Explicit 3D scene representations such as 3D Gaussian Splatting (3DGS) have recently enabled high-quality, real-time novel view synthesis. However, these methods assume static scenes, limiting realism in the presence of dynamic phenomena ubiquitous in real-world environments. While coherent motion (e.g., humans or vehicles) can be captured and reconstructed, high-frequency effects such as flowing water remain intractable under casual capture conditions, where dense multi-view, high-speed acquisition is not feasible. We present a method to animate water in static 3DGS scenes, enabling visually plausible motion without requiring dynamic capture or physical simulation. Our approach estimates 2D optical flow from reference images or model renderings and lifts it into a consistent 3D Eulerian motion field. We propose a cinemagraph-inspired algorithm that applies this motion field to deform Gaussian primitives, producing temporally seamless looping animations. The resulting representation retains real-time rendering performance, significantly enhances perceptual realism, and preserves free-viewpoint navigation within the scene. We evaluate our method on a newly captured dataset of in-the-wild waterfall scenes and demonstrate clear improvements over prior work in dynamic Gaussian splatting and 3D cinemagraph generation in visual quality and computational efficiency.",
+    "link": "http://arxiv.org/abs/2610.13860v1",
+    "published": "2026-10-09",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Cinemagraph",
+      "Optical Flow",
+      "Novel View Synthesis",
+      "Animation"
+    ],
+    "tldr": "将2D光流提升为一致的3D欧拉运动场来形变高斯基元，在静态3DGS场景中实现循环流动的水动画。",
+    "motivation": "现有3D Gaussian Splatting等显式3D表示假设场景静态，限制了真实感；而流水这类高频动态效果在随意拍摄条件下无法通过稠密多视角高速采集来重建或物理模拟。",
+    "method": "从参考图像或模型渲染结果中估计2D光流，并将其提升为一致的3D欧拉运动场；提出受cinemagraph（动态静图）启发的算法，用该运动场变形高斯基元，生成时间上无缝循环的动画。",
+    "result": "在新采集的野外瀑布场景数据集上评估，在视觉质量和计算效率上均明显优于先前的动态高斯泼溅与3D cinemagraph生成方法，同时保持实时渲染性能。",
+    "conclusion": "该方法无需动态采集或物理仿真即可为静态3DGS场景添加视觉上合理的水流动画，显著提升感知真实感，并保留自由视点导航能力。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2610.13781v1",
+    "title": "SimVTA: Simulation-Grounded Video-Trajectory Alignment for Driving World Action Models",
+    "authors": [
+      "Changhui Jing",
+      "Haochen Tian",
+      "Hongchen Li",
+      "Tianyu Li",
+      "Caojun Wang",
+      "Zihao Zhang",
+      "Yanhao Liu",
+      "Chengen Xie",
+      "Bailin Li",
+      "Hao Zhao",
+      "Zhenjie Yang"
+    ],
+    "abstract": "Driving world action models (WAMs) learn from paired trajectories and future observations. Post-training with reinforcement learning allows the policy to explore alternative trajectories and improve planning using driving rewards. However, driving logs contain future videos only for the recorded trajectories, leaving these alternatives without corresponding visual supervision. Thus, we introduce SimVTA, a simulation-grounded post-training framework that combines trajectory optimization with video supervision. First, we sample candidate trajectories for each observation and use a real-world simulator (e.g., World Engine) to render future videos for high-reward candidates in real-world scenes reconstructed with 3D Gaussian Splatting (3DGS). This provides trajectory-matched supervision independent of the model's own predictions. Under a limited rendering budget, we prioritize video supervision for higher-error futures among these rendered candidates. Finally, we optimize trajectory planning with Group Relative Policy Optimization (GRPO) and use a flow-matching loss on the matched videos to update shared representations. At inference time, the model predicts trajectories directly, without simulator calls. On NAVSIM v1, applying SimVTA to a WAM initialization improves PDMS from 86.2 to 91.3 (+5.1). It achieves 88.2 EPDMS on NAVSIM v2 and an average HD-Score of 38.8 in closed-loop evaluation on HUGSIM. Ablations show that updating shared representations with video supervision improves planning, while prioritizing higher-error futures among high-reward trajectories further improves performance.",
+    "link": "http://arxiv.org/abs/2610.13781v1",
+    "published": "2026-10-09",
+    "category": "cs.CV",
+    "tags": [
+      "Driving World Models",
+      "Reinforcement Learning",
+      "3D Gaussian Splatting",
+      "Trajectory Planning"
+    ],
+    "tldr": "SimVTA利用仿真渲染未来视频为高奖励轨迹提供视觉监督，结合GRPO与流匹配提升驾驶规划性能。",
+    "motivation": "驾驶日志仅记录已记录轨迹的未来视频，强化学习探索的替代轨迹缺乏对应视觉监督，导致世界动作模型后训练中的规划改进受限。",
+    "method": "对每个观测采样候选轨迹，用World Engine等真实感仿真器在3DGS重建场景中为高奖励候选渲染未来视频，并在有限渲染预算下优先监督高误差未来。采用GRPO优化轨迹规划，同时对匹配视频施加流匹配损失以更新共享表征；推理时直接预测轨迹，无需调用仿真器。",
+    "result": "在NAVSIM v1上，将SimVTA应用于WAM初始化使PDMS从86.2提升至91.3（+5.1）；在NAVSIM v2上达到88.2 EPDMS；在HUGSIM闭环评估中平均HD-Score为38.8。消融表明，用视频监督更新共享表征可改善规划，且在高奖励轨迹中优先高误差未来能进一步提升性能。",
+    "conclusion": "SimVTA将仿真渲染的轨迹匹配视频监督与强化学习后训练相结合，为驾驶世界动作模型提供替代轨迹的视觉监督，显著提升规划性能且推理阶段无需仿真器调用。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2610.13757v1",
+    "title": "Gaussian Splatting with Reflections Guided by What is Seen",
+    "authors": [
+      "Yiming Liang",
+      "Tianyu Xiao",
+      "Hiroshi Ishikawa"
+    ],
+    "abstract": "While novel view synthesis methods like Neural Radiance Fields (NeRF) and 3D Gaussian Splatting (3DGS) have shown impressive performance on common scenes, they often struggle with capturing view-dependent specular effects, particularly near-field reflections. Existing methods utilize environment maps, which only represent lights from infinity, or environment Gaussians, which rely solely on indirect supervision from reflections, are insufficient for accurately modeling such effects. Here, we propose a framework based on 2D Gaussian Splatting (2DGS) that leverages directly observable environment information in input images. Our approach also integrates a hybrid reflection appearance representation and view-dependent specular modeling. Experiments on public benchmarks and a newly curated near-field reflection dataset demonstrate that our method achieves superior rendering quality and geometric accuracy.",
+    "link": "http://arxiv.org/abs/2610.13757v1",
+    "published": "2026-10-09",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "2D Gaussian Splatting",
+      "Novel View Synthesis",
+      "Reflections",
+      "Specular Modeling"
+    ],
+    "tldr": "提出基于2DGS的反射建模框架，利用输入图像中直接可见环境信息与混合反射外观，提升近场镜面反射的新视角合成质量。",
+    "motivation": "NeRF与3DGS等新视角合成方法在常见场景表现优异，但难以捕捉视角相关镜面反射，尤其是近场反射；现有环境贴图仅表示无穷远光源，环境高斯仅依赖反射间接监督，均不足以准确建模此类效果。",
+    "method": "提出基于2D Gaussian Splatting（2DGS）的框架，利用输入图像中可直接观测的环境信息，并集成混合反射外观表示与视角相关镜面建模。",
+    "result": "在公开基准和新建近场反射数据集上实验，表明该方法在渲染质量和几何精度上均取得更优表现。",
+    "conclusion": "该工作通过直接可见环境信息与混合反射表示提升了近场反射建模能力，为高保真视角合成提供了新思路。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2610.13681v1",
+    "title": "PhysForge: Material-Controllable 3D Reconstruction with Separable Components",
+    "authors": [
+      "Yuchen Wang",
+      "Yanqi Bao",
+      "Zheng Gu",
+      "Zhengqing Chen",
+      "Jieqi Shi",
+      "Jing Huo"
+    ],
+    "abstract": "Recent advances in physical 3D generation have enabled visually faithful assets with simulatable mechanical behavior. However, existing methods provide limited control over material behavior beyond appearance-based inference and struggle to estimate physical properties from complex interactions between objects and semantic parts. Therefore, we present PhysForge, a Video Diffusion Model (VDM)-based framework for addressing these challenges, comprising two complementary modules for material-controllable physical fitting and componentlevel interaction modeling. The first, PhysFit, leverages material-conditioned VDM dynamics as references for physical-property fitting, introducing windowed fitting to focus on material-revealing interactions and Hallucinated Forcing to disentangle nonphysical motion hallucinated by the VDM from material responses. The second, PhysComp decomposes complex interactions into individual objects and semantic components, enabling their physical parameters to be optimized independently and flexibly composed for joint simulation. Experiments on PhysAssets and Google Scanned Objects demonstrate that, compared with existing methods, PhysForge provides stronger control over material-dependent physical responses while supporting component-level physical modeling for complex interactions. It achieves the best CLIP and physical controllability scores on both common and uncommon materials, with qualitative comparisons, component-level ablations, and a user study further supporting these improvements. Our project page is available at https://masterwanna.github.io/PhysForge.html .",
+    "link": "http://arxiv.org/abs/2610.13681v1",
+    "published": "2026-10-09",
+    "category": "cs.CV",
+    "tags": [
+      "3D Reconstruction",
+      "Video Diffusion Model",
+      "Material Control",
+      "Physical Simulation",
+      "Component Decomposition"
+    ],
+    "tldr": "PhysForge 提出基于视频扩散模型的可控材质物理重建框架，通过 PhysFit 与 PhysComp 实现材质可控拟合和部件级交互建模。",
+    "motivation": "现有物理 3D 生成方法虽能产生视觉逼真且可仿真的资产，但对材质行为的控制有限，往往只能依赖外观推断，并且难以从物体与语义部件间的复杂交互中估计物理属性。本文旨在解决材质可控物理拟合与部件级交互建模问题。",
+    "method": "PhysForge 是基于视频扩散模型（VDM）的框架，包含 PhysFit 与 PhysComp 两个模块。PhysFit 以材质条件 VDM 动力学为参考进行物理属性拟合，引入窗口化拟合聚焦材质显著交互，并用 Hallucinated Forcing 分离 VDM 产生的非物理运动幻觉与真实材质响应；PhysComp 将复杂交互分解为单个物体和语义组件，使物理参数可独立优化并灵活组合以进行联合仿真。",
+    "result": "在 PhysAssets 和 Google Scanned Objects 数据集上，PhysForge 相比现有方法对材质相关物理响应具有更强控制力，并支持复杂交互的部件级物理建模。它在常见与不常见材质上均取得最佳 CLIP 和物理可控性分数，定性比较、部件级消融和用户研究进一步验证了这些改进。",
+    "conclusion": "PhysForge 通过可分离组件实现材质可控的物理 3D 重建，提升了物理属性拟合与部件级交互仿真的可控性。该工作为生成可仿真、材质可调控的 3D 资产提供了新思路，并展示了在复杂材质与交互场景中的潜力。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2610.13541v1",
+    "title": "Efficient Confidence-Aware Densification for 3DGS",
+    "authors": [
+      "Manuel Hofer",
+      "Thomas Köhler",
+      "Felix Windisch",
+      "Bernhard Kerbl",
+      "Markus Steinberger",
+      "Lukas Radl"
+    ],
+    "abstract": "3DGS-MCMC has replaced the gradient-driven density control of 3D Gaussian Splatting with opacity-based sampling and relocation, and is now the de facto standard for prior-free densification under a fixed primitive budget. Because opacity stays high where the scene is already well reconstructed, this sampling sends most new primitives to the foreground and leaves the background under-reconstructed. At low budgets, prior-based methods such as ConeGS and EDGS outperform it, at the cost of a pre-trained radiance field or dense image matches and a separate initialization stage. We argue for a comeback of error-driven densification within the fixed-budget MCMC framework. Our confidence-aware densification keeps the fixed budget and gradual growth of 3DGS-MCMC, but places primitives by the image error instead of the opacity. New primitives are drawn mostly where screen-space gradients are large. We favor primitives with a low learned confidence, which marks regions the reconstruction still explains poorly, and relocate the primitives that contribute least to the rendered images to these places. Averaged over 24 scenes, our method outperforms 3DGS-MCMC in PSNR, SSIM and LPIPS at every budget from 100k to 2M primitives. At 100k, without a prior or an initialization stage, it recovers 0.84dB of the 1.05dB PSNR by which ConeGS leads 3DGS-MCMC, and from 500k on, it has the highest PSNR and SSIM of all fixed-budget methods we compare with, including ConeGS and EDGS. While inherently prior-free, our densification can also exploit priors: from the ConeGS or EDGS initialization, it matches ConeGS in PSNR and SSIM at 100k and is best in all three metrics at 500k.",
+    "link": "http://arxiv.org/abs/2610.13541v1",
+    "published": "2026-10-09",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "MCMC",
+      "Densification",
+      "Confidence-aware",
+      "Novel View Synthesis"
+    ],
+    "tldr": "基于图像误差与学习置信度的置信感知致密化，在固定预算MCMC框架下超越3DGS-MCMC并媲美先验方法。",
+    "motivation": "3DGS-MCMC基于不透明度的采样使新图元集中在前景，导致背景重建不足；低预算下ConeGS、EDGS等基于先验的方法更优，但需预训练辐射场或稠密图像匹配及额外初始化阶段。",
+    "method": "在固定预算MCMC框架中回归误差驱动致密化：保留固定预算与渐进增长，但依据图像误差放置图元，主要在屏幕空间梯度较大处采样新图元；偏好学习置信度低的图元（即重建仍差的区域），并将对渲染贡献最小的图元重定位到这些位置。",
+    "result": "在24个场景上，100k至2M各预算下PSNR、SSIM和LPIPS均优于3DGS-MCMC；100k时无需先验与初始化即恢复ConeGS领先3DGS-MCMC的1.05dB PSNR中的0.84dB；500k起在所有固定预算方法（含ConeGS、EDGS）中PSNR与SSIM最高。以ConeGS或EDGS初始化时，100k匹配ConeGS的PSNR与SSIM，500k三项指标均最优。",
+    "conclusion": "表明误差驱动的置信感知致密化可在免先验条件下显著提升固定预算3DGS的重建质量，同时能兼容并利用先验初始化，为无先验与先验场景提供统一高效方案。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2610.13503v1",
+    "title": "SplatQ: Interaction-Aware Pruning of 3D Gaussian Splatting via Quadratic Selection",
+    "authors": [
+      "Hongbin Ye",
+      "Haixu Liu",
+      "Shenwei Kang",
+      "Wenxiu Wei",
+      "Tinglan Wang",
+      "Hongdong Zhu",
+      "Fan Tang",
+      "Qi Gao",
+      "Yin Ma",
+      "Kai Wen",
+      "Hai Wei",
+      "Nuo Qian",
+      "Wei-Shi Zheng",
+      "Shaobo Chen",
+      "Fa-Ting Hong",
+      "Jingke Meng"
+    ],
+    "abstract": "Existing 3D Gaussian Splatting (3DGS) pruning methods primarily rely on global Top-K selection based on independent importance scores, lacking regional budget control and ignoring joint deletion effects. Consequently, they cannot ensure balanced reconstruction quality across a scene. We propose SplatQ, a combinatorial pruning algorithm that coordinates regional budget allocation and joint Gaussian selection under a fixed budget. SplatQ partitions Gaussians by spatial proximity and appearance similarity into size-limited blocks, decomposing global selection into subproblems of a specific size. It then smooths importance-based block retention quotas to prevent excessive budget concentration. Finally, it constructs a quadratic approximation of joint deletion effects using the responses of representative pixel colors to changes in Gaussian opacity. Individual responses, pairwise interactions, and quota penalties are incorporated into a quadratic unconstrained binary optimization (QUBO) objective, solved using simulated annealing (SA) or a coherent Ising machine (CIM) to jointly select Gaussians. Experiments on 5 benchmarks demonstrate that SplatQ outperforms state-of-the-art pruning methods in aggregate reconstruction quality, spatial quality balance, and rendering speed. Ablations confirm that budget smoothing improves local detail reconstruction, while interaction modeling improves Gaussian selection quality under a fixed budget.",
+    "link": "http://arxiv.org/abs/2610.13503v1",
+    "published": "2026-10-09",
+    "category": "cs.CV",
+    "tags": [
+      "3DGS",
+      "Pruning",
+      "QUBO",
+      "Optimization",
+      "Rendering"
+    ],
+    "tldr": "SplatQ通过区域预算平滑与QUBO联合选择剪枝3DGS，提升重建质量平衡与渲染速度。",
+    "motivation": "现有3DGS剪枝多基于独立重要性分数的全局Top-K选择，缺乏区域预算控制且忽略高斯联合删除效应，导致场景重建质量不平衡。",
+    "method": "SplatQ将高斯按空间邻近性和外观相似性划分为限大小块，将全局选择分解为固定规模子问题；平滑基于重要性的块保留配额，并用代表性像素颜色对不透明度变化的响应构造联合删除的二次近似；将个体响应、成对交互和配额惩罚纳入QUBO目标，用模拟退火或相干伊辛机求解以联合选择高斯。",
+    "result": "在5个基准上，SplatQ在总体重建质量、空间质量平衡和渲染速度上优于最先进剪枝方法；消融表明预算平滑改善局部细节重建，交互建模提升固定预算下高斯选择质量。",
+    "conclusion": "SplatQ通过组合剪枝协调区域预算分配与联合高斯选择，为3DGS压缩提供交互感知的QUBO优化框架，并可利用SA/CIM求解，具有提升渲染效率与场景质量平衡的潜力。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2610.13309v1",
+    "title": "NovaSplat: Model-Free 6D Object Pose Estimation via 3D Gaussian Splatting Onboarding and Refinement",
+    "authors": [
+      "Georgios Floros",
+      "Evangelos Sartinas",
+      "Orestis Vangelis",
+      "Maria Pateraki"
+    ],
+    "abstract": "6D pose estimation of novel objects without CAD models remains an open challenge: model-free methods must build the object representation from scratch during onboarding and have long trailed their model-based counterparts. We present NovaSplat, a model-free pipeline that closes this gap. From a short smartphone video captured at onboarding, we train a 3D Gaussian Splatting (3DGS) model that serves both as a template source for detection and coarse pose estimation and as a differentiable backbone for pose refinement. Our refiner optimizes the object-to-camera pose with combined photometric and geometric losses under a continuous rotation parametrization free of gradient singularities. On a household-object benchmark, NovaSplat surpasses all model-based methods. On a challenging industrial benchmark with textureless and specular surfaces, it outperforms all model-free competitors while substantially narrowing the gap to model-based ones. We further introduce NovaSplat-Lite, an inference variant that is $3.1\\times$ faster at negligible accuracy cost. Code will be made available at \\href{https://github.com/POSE-Lab/novasplat}{https://github.com/POSE-Lab/novasplat}.",
+    "link": "http://arxiv.org/abs/2610.13309v1",
+    "published": "2026-10-09",
+    "category": "cs.CV",
+    "tags": [
+      "6D Object Pose Estimation",
+      "3D Gaussian Splatting",
+      "Model-Free",
+      "Pose Refinement",
+      "Novel Object"
+    ],
+    "tldr": "NovaSplat利用手机视频构建3DGS表示，实现无模型6D物体位姿估计与精化，并推出加速版Lite。",
+    "motivation": "无CAD模型的新物体6D位姿估计仍是开放难题：无模型方法需在onboarding阶段从头构建物体表示，性能长期落后于基于模型的方法。NovaSplat旨在缩小这一差距。",
+    "method": "从onboarding阶段拍摄的短智能手机视频训练3D Gaussian Splatting模型，既作为检测与粗位姿估计的模板来源，又作为可微骨干进行位姿精化。精化器在无梯度奇异点的连续旋转参数化下，结合光度损失与几何损失优化物体到相机位姿。",
+    "result": "在家居物体基准上超越所有基于模型的方法；在包含无纹理和镜面表面的工业基准上优于所有无模型竞争者，并显著缩小与基于模型方法的差距。NovaSplat-Lite推理变体速度提升3.1倍，精度损失可忽略。",
+    "conclusion": "NovaSplat证明基于3DGS的onboarding与可微精化可让无模型6D位姿估计达到甚至超越基于模型方法，并提升工业等挑战场景的实用性；代码将开源。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2610.13177v1",
+    "title": "CompactSplat: Spatially Adaptive Gaussian Distribution for Feedforward Scene Reconstruction",
+    "authors": [
+      "Bing He",
+      "Jingnan Gao",
+      "Yunuo Chen",
+      "Zhengxue Cheng",
+      "Rong Xie",
+      "Li Song",
+      "Wenjun Zhang"
+    ],
+    "abstract": "Reconstructing 3D scenes from sparse views without per-scene optimization remains highly challenging, especially for recovering accurate geometry and fine textures. While recent feedforward approaches leverage generalizable 3D Gaussian Splatting (3DGS) for scene generation, they typically assign one or multiple Gaussians to each pixel. Such uniform allocation not only produces highly redundant representations by wasting primitives in homogeneous areas, but also fails to exploit the inherent geometric priors of planar surfaces, often resulting in sub-optimal structural modeling. To address these limitations, we present CompactSplat, a novel feedforward framework that enables a content-aware allocation of 3D Gaussians. By integrating texture-guided spatial partitioning with hierarchical sampling, CompactSplat adaptively distributes primitives - concentrating dense Gaussians in complex regions while tiling flat areas with expanded, scale-modulated primitives. Moreover, our framework inherently supports dynamic sparsity control at inference time, enabling seamless trade-offs between rendering fidelity and memory footprint without requiring network retraining. Extensive experiments on RealEstate10K, DL3DV, and ScanNet demonstrate that CompactSplat consistently outperforms prior methods on both standard metrics and high-resolution rendering consistency, achieving high-fidelity reconstructions with significantly fewer primitives.",
+    "link": "http://arxiv.org/abs/2610.13177v1",
+    "published": "2026-10-09",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Feedforward Reconstruction",
+      "Sparse Views",
+      "Adaptive Sampling",
+      "Novel View Synthesis"
+    ],
+    "tldr": "CompactSplat通过纹理引导空间划分与分层采样，实现前馈稀疏视角场景的自适应高斯分布重建。",
+    "motivation": "稀疏视角下无需逐场景优化的三维重建仍具挑战，尤其难以恢复准确几何与细节纹理。现有前馈3DGS方法通常为每个像素分配一个或多个高斯，导致均匀分配在平坦区域产生大量冗余，且未利用平面表面的几何先验，造成结构建模次优。",
+    "method": "提出CompactSplat前馈框架，融合纹理引导的空间划分与分层采样，实现内容感知的高斯分配：在复杂区域集中密集高斯，在平坦区域用扩展且尺度调制的基元平铺。该框架还天然支持推理时动态稀疏控制，无需重新训练即可在渲染保真度与内存占用之间灵活权衡。",
+    "result": "在RealEstate10K、DL3DV和ScanNet上，CompactSplat在标准指标和高分辨率渲染一致性上均持续优于先前方法，并以显著更少的高斯基元实现高保真重建；摘要未提供具体量化数值。",
+    "conclusion": "CompactSplat通过内容感知的高斯分配缓解了前馈3DGS的冗余与结构建模不足问题，并支持推理时稀疏控制，为稀疏视角场景重建提供了高保真且资源高效的解决方案，有望推动可泛化3DGS在实际应用中的部署。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2610.13143v1",
+    "title": "Measurable Semantic 3D Gaussian Splatting with Joint Region and Depth Supervision for Interactive Building Inspection",
+    "authors": [
+      "Yi Zhang",
+      "Tian Tan",
+      "Ray Kai Leung Su"
+    ],
+    "abstract": "Image-based 3D reconstruction provides a scalable representation for building inspection and maintenance. However, photorealistic reconstruction alone does not fully provide the geometric measurability, semantic structure, and interactive information access required for engineering applications. This study proposes a measurable semantic 3D Gaussian Splatting (3DGS) framework with region and depth supervision for interactive building inspection from multi-view imagery. Mask-based region supervision suppresses irrelevant backgrounds and focuses optimization on target regions. Point-wise depth supervision guides Gaussian centers toward physical surfaces using reference geometry derived from multi-view stereo (MVS) point clouds, providing geometric anchors for measuring physical dimensions and areas. A semantic Gaussian field associates learnable class features with individual Gaussian primitives, enabling semantic rendering and component-level inspection. These capabilities are operationalized through AEC-SplatTwin, an interactive building inspection platform supporting real-time visualization, semantic analysis, quantitative measurement, and multimodal large language model (MLLM)-assisted interaction. On the synthetic UAV-inspection QuakeCity and smartphone-captured HKUPB datasets, the framework reduces Gaussian-center depth MAE by 58.1% and 86.8%, while its semantic field achieves mIoU values of 0.8529 and 0.8642. On HKUPB, the mean relative errors for height, width, and area measurements are 0.33%, 1.07%, and 0.60%. These results show that the proposed framework extends 3DGS beyond visual reconstruction into a measurable, semantically structured, and interactive engineering representation for building inspection.",
+    "link": "http://arxiv.org/abs/2610.13143v1",
+    "published": "2026-10-09",
+    "category": "cs.CV",
+    "tags": [
+      "3DGS",
+      "Building Inspection",
+      "Semantic Reconstruction",
+      "Depth Supervision",
+      "MLLM"
+    ],
+    "tldr": "提出区域与深度监督的可测量语义3DGS框架及AEC-SplatTwin平台，用于交互式建筑巡检。",
+    "motivation": "仅靠照片级3D重建难以满足建筑巡检所需的几何可测量性、语义结构和交互式信息访问，需将3DGS扩展为面向工程的量测与语义表示。",
+    "method": "提出可测量语义3DGS：用掩码区域监督抑制背景并聚焦目标，用MVS点云生成点级深度监督将高斯中心锚定到物理表面；同时为每个高斯基元关联可学习类别特征形成语义高斯场，并构建AEC-SplatTwin交互平台支持实时可视化、语义分析、定量测量和MLLM辅助交互。",
+    "result": "在合成UAV巡检QuakeCity和智能手机采集HKUPB上，高斯中心深度MAE分别降低58.1%和86.8%，语义场mIoU达0.8529和0.8642；HKUPB的高度、宽度、面积平均相对误差分别为0.33%、1.07%、0.60%。",
+    "conclusion": "结果表明该框架将3DGS从视觉重建拓展为可测量、语义结构化、可交互的工程表示，提升建筑巡检的实用性与可量测性。"
+  },
+  {
     "id": "http://arxiv.org/abs/2610.12461v1",
     "title": "OuroWorld: Bringing Any 3D World Alive as Diverse, Endlessly Looping 3D Cinemagraphs",
     "authors": [
@@ -1329,260 +1616,5 @@
     "method": "MoonGS在单次前向传播中预测像素对齐高斯基元，无需逐场景优化；采用可适配骨干融合视觉基础模型提取鲁棒深度特征，结合语义线索精炼高斯参数并引入语义排序损失正则化背景深度，还通过熵引导重采样选择信息量大的远视角以增强稀疏观测。",
     "result": "在LuSNAR基准和弱纹理MoonBlender数据集上，MoonGS较SOTA前馈NeRF/3DGS基线提升+4.9 dB PSNR、+0.29 SSIM，LPIPS降低40%，并保持亚秒级推理；在嫦娥任务影像上视觉质量最佳，且验证了VGGT等先进骨干的通用增益。",
     "conclusion": "研究表明MoonGS能有效提升稀疏月面图像的三维重建保真度与真实数据鲁棒性，并已开源代码与数据集以促进后续研究。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2610.05576v1",
-    "title": "SteadySplats: Resampling of Low-Variance Gaussians for High-Fidelity Stochastic Rendering",
-    "authors": [
-      "Felix Windisch",
-      "Thomas Köhler",
-      "Lukas Radl",
-      "Chris Wyman",
-      "Georgios Kopanas",
-      "Bernhard Kerb",
-      "Markus Steinberger"
-    ],
-    "abstract": "Stochastic order-independent transparency enables efficient and elegant rendering of primitive-based radiance fields like 3D Gaussian Splatting models, but remains impractical due to the inherent visible noise in the output. We propose a principled approach to minimize high-frequency noise, addressing its sources at the representation and image synthesis level. During stochastic rendering, our history-based spatial resampling scheme drastically accelerates image convergence, while temporal importance resampling ensures coherence under camera movement. During training, a color regularizer implicitly reduces the variance along view rays in the 3DGS models. With these properties, our optimized, Vulkan-based renderer effectively mitigates output noise at low and high sample counts, achieving a substantial 13~dB PSNR increase in quality over previous stochastic methods at 1 sample per pixel and quickly converging to sorted 3DGS with an average L1 error of less than $10^{-4}$.",
-    "link": "http://arxiv.org/abs/2610.05576v1",
-    "published": "2026-10-04",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Stochastic Rendering",
-      "Order-Independent Transparency",
-      "Resampling",
-      "Vulkan"
-    ],
-    "tldr": "通过空间/时间重采样和颜色正则化减少随机3DGS渲染噪声，1spp下PSNR提升13dB。",
-    "motivation": "随机顺序无关透明能高效渲染3D Gaussian Splatting等图元辐射场，但输出中固有的可见噪声使其难以实用。该工作旨在从表示与图像合成层面系统性降低高频噪声。",
-    "method": "提出SteadySplats：随机渲染时使用基于历史的空间重采样加速图像收敛，并用时间重要性重采样保证相机运动下的时间一致性；训练时引入颜色正则化，隐式降低3DGS模型沿视线的方差，并实现基于Vulkan的优化渲染器。",
-    "result": "在每像素1采样下，相较先前随机方法PSNR提升约13 dB；在低采样和高采样数下均能有效抑制噪声，并快速收敛至排序3DGS，平均L1误差小于1e-4。",
-    "conclusion": "该工作表明联合优化表示与图像合成可显著缓解随机顺序无关透明的噪声问题，使随机渲染质量接近排序3DGS，提升3DGS透明渲染的实用性。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2610.05531v1",
-    "title": "Deep Prior Learning for Embodied Perception",
-    "authors": [
-      "Yimou Wu",
-      "Jiaxin Guo",
-      "Yun-hui Liu",
-      "Zheng Li"
-    ],
-    "abstract": "Embodied systems need geometric perception that exploits available observations beyond images alone. Recent feed-forward 3D models incorporate geometric priors, including camera poses, intrinsics, and depth. However, handling noisy poses, preserving accurate priors, and recovering physical scale require more than simply accepting these inputs. We introduce \\emph{Vision-Prior Geometry Grounded Transformer} (VPGGT), a VGGT-based framework that extends OmniVGGT for prior-aware embodied perception. We formulate sensor-motivated pose corruptions from ground-truth trajectories for training and introduce a parameter-free \\emph{prior residual connection} (PRC) to mitigate \\emph{prior dilution}, where predictions are less accurate than their supplied pose priors. Our noise formulation targets camera poses; supplied intrinsics and depth receive no additional corruption. We further introduce \\emph{Metric Global Attention}, which conditions a global scale token on available pose and depth scales and predicts a shared metric scaling factor for the geometric outputs. Experiments across four datasets show that \\emph{PRC} improves translation-direction accuracy and joint pose AUC over a matched training baseline when camera priors are provided for all views, under both exact and corrupted poses. These results support explicit prior access during refinement as a useful addition to feature-level conditioning.",
-    "link": "http://arxiv.org/abs/2610.05531v1",
-    "published": "2026-10-04",
-    "category": "cs.CV",
-    "tags": [
-      "Embodied Perception",
-      "3D Vision",
-      "Camera Pose",
-      "Geometric Priors",
-      "Transformer"
-    ],
-    "tldr": "提出VPGGT，用PRC缓解先验稀释并用Metric Global Attention恢复统一尺度，提升噪声位姿下的具身几何感知。",
-    "motivation": "具身系统需要超越图像本身的几何感知，现有前馈3D模型虽引入相机位姿、内参与深度等先验，但在处理噪声位姿、保持准确先验以及恢复物理尺度方面仍不足。",
-    "method": "基于VGGT并扩展OmniVGGT提出VPGGT；利用真值轨迹生成传感器启发的位姿损坏进行训练，引入无参数先验残差连接PRC以缓解先验稀释，并提出Metric Global Attention，以可用位姿与深度尺度条件化全局尺度token，预测几何输出的共享度量缩放因子。",
-    "result": "在四个数据集上，当所有视角均提供相机先验时，无论位姿精确还是损坏，PRC相比匹配训练基线均提升平移方向精度与联合位姿AUC；摘要未提供具体数值。",
-    "conclusion": "结果表明，在细化阶段显式访问先验可作为特征级条件化的有效补充，凸显显式先验访问在具身几何感知中的价值，并有望增强噪声位姿与尺度恢复场景下的鲁棒性。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2610.05526v1",
-    "title": "Have I Scene This Before? Spatially Grounded Conversational Memory for Complex Queries in Egocentric Assistants",
-    "authors": [
-      "Jiazhou Liang",
-      "Liam Gallagher",
-      "Kiko Chen",
-      "David Guo",
-      "Armin Toroghi",
-      "Yifan Simon Liu",
-      "Scott Sanner"
-    ],
-    "abstract": "Egocentric assistants must connect what users say with what they see across long interaction histories. We formalize this challenge as Spatially grounded Conversational Reasoning (SpaCR): cross-scene, recall-oriented, and counterfactual spatial queries that combine user-stated facts with geometric evidence. Direct vision-language models incur high inference costs and context limits as histories grow, while keyframe selection and retrieval can omit objects or evidence needed for complete recall. We propose Spatially grounded Conversational Memory (SpaC-MEM), an object-centric working memory that uses 3D reconstruction and segmentation to ground conversational information in persistent physical objects. It compresses multimodal histories while preserving spatial evidence and allowing object-specific facts to be updated through dialogue. We also introduce Ego-SpaCR, a benchmark comprising 620 ScanNet video sessions augmented with 95 task-oriented conversations and 3,100 evaluation queries. SpaC-MEM achieves the highest overall answer accuracy among the evaluated methods and improves object recall while requiring substantially fewer reference input tokens than native-video baselines. Removing 3D spatial information substantially degrades performance, highlighting the importance of preserving spatial and conversational evidence together.",
-    "link": "http://arxiv.org/abs/2610.05526v1",
-    "published": "2026-10-04",
-    "category": "cs.AI",
-    "tags": [
-      "Egocentric Assistants",
-      "Conversational Memory",
-      "Spatial Reasoning",
-      "3D Reconstruction",
-      "Benchmark"
-    ],
-    "tldr": "提出以物体为中心的SpaC-MEM，用3D重建与分割将对话记忆锚定到物理对象，在Ego-SpaCR基准上提升复杂空间查询准确率并减少输入token。",
-    "motivation": "第一人称助手需在长交互历史中连接用户言语与所见内容，但直接使用视觉语言模型推理成本高且受上下文长度限制，关键帧选择与检索又可能遗漏完整回忆所需的物体或证据。为此，论文形式化定义跨场景、面向回忆与反事实的空间查询任务SpaCR。",
-    "method": "提出SpaC-MEM，一种以物体为中心的工作记忆，利用3D重建与分割将对话信息锚定到持续存在的物理对象，压缩多模态历史同时保留空间证据，并支持通过对话更新对象级事实。同时构建Ego-SpaCR基准，包含620个ScanNet视频会话、95个任务导向对话和3100条评估查询。",
-    "result": "SpaC-MEM在所有评估方法中取得最高总体答案准确率，提升物体召回率，且所需参考输入token显著少于原生视频基线。消融实验表明，移除3D空间信息会显著降低性能。",
-    "conclusion": "结果表明，联合保留空间与对话证据对第一人称助手的复杂回忆查询至关重要；SpaC-MEM为可扩展的空间锚定对话记忆提供了有效方案，Ego-SpaCR基准可推动后续研究。 "
-  },
-  {
-    "id": "http://arxiv.org/abs/2610.05289v1",
-    "title": "Mobile-4DGS: Unified Static-Dynamic Real-time Mobile Gaussian Splatting",
-    "authors": [
-      "Xiaobiao Du",
-      "Beixi Hao",
-      "Zhen Fang",
-      "Tianqing Zhu",
-      "Richard Hartley",
-      "Xin Yu"
-    ],
-    "abstract": "Recent advances in 3D Gaussian Splatting (3DGS) have achieved remarkable performance in novel view synthesis, yet deploying both static and dynamic Gaussian representations on resource-constrained mobile devices remains challenging due to heavy storage, redundant primitives, and costly per-frame computation. We present Mobile-4DGS, a unified lightweight framework for high-fidelity real-time static and dynamic Gaussian rendering on mobile platforms. For compact appearance modeling, we introduce a Monte Carlo Specular Energy Aggregator that compresses high-order radiance residuals into the first-order Spherical Harmonics (SH), together with an Attribute-Conditioned SH Enhancement module whose predicted offsets are pre-baked before inference. We further propose a Multi-View Alpha-Based Densification and Pruning strategy to suppress redundant primitives while maintaining multi-view consistency. For dynamic scenes, we develop a compact explicit 4D representation by constructing second-order Gaussian motion, learnable temporal support, and a binary static-dynamic partition, enabling continuous-time modeling without runtime deformation networks. Based on this partition, a Depth-Order Certificate selectively reuses previously committed depth orders to reduce re-projection, sorting, merging, and index-buffer updates during playback. Extensive experiments on static and dynamic scenes demonstrate that Mobile-4DGS substantially reduces storage and rendering overhead while maintaining competitive visual quality, enabling real-time 3D and 4D Gaussian Splatting on mobile devices. \\textcolor{magenta}{\\href{https://xiaobiaodu.github.io/mobile-4dgs-project/}{Code has been released: https://xiaobiaodu.github.io/mobile-4dgs-project/}}.",
-    "link": "http://arxiv.org/abs/2610.05289v1",
-    "published": "2026-10-04",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Dynamic Scene Rendering",
-      "Mobile Inference",
-      "Real-Time Rendering",
-      "Novel View Synthesis"
-    ],
-    "tldr": "Mobile-4DGS 通过压缩外观、剪枝冗余基元与显式 4D 建模，实现移动端实时静态与动态高斯渲染。",
-    "motivation": "3DGS 在新视角合成上表现优异，但静态与动态高斯表示存在存储量大、基元冗余、逐帧计算开销高的问题，难以部署到资源受限的移动设备上；现有动态方法还依赖运行时变形网络，进一步加重端侧负担。",
-    "method": "提出统一轻量框架 Mobile-4DGS：用 Monte Carlo Specular Energy Aggregator 将高阶辐射残差压缩进一阶球谐，并用 Attribute-Conditioned SH Enhancement 在推理前预烘焙偏移；通过 Multi-View Alpha-Based Densification and Pruning 抑制冗余基元并保持多视角一致；动态部分构建二阶高斯运动、可学习时间支撑与二值静动态划分的紧凑显式 4D 表示，避免运行时变形网络，并利用 Depth-Order Certificate 复用已提交的深度顺序，减少重投影、排序、合并与索引缓冲更新。",
-    "result": "在静态与动态场景上的大量实验表明，Mobile-4DGS 在保持有竞争力视觉质量的同时显著降低存储与渲染开销，从而在移动设备上实现实时的 3D 与 4D 高斯泼溅渲染；摘要未给出具体量化指标，代码已开源。",
-    "conclusion": "该工作将静态与动态高斯渲染统一到单一轻量框架中，通过外观压缩、基元剪枝、显式 4D 表示与深度顺序复用等设计，为移动端实时 3D/4D 内容消费提供了可行方案，并已开源代码以推动后续研究与落地。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2610.05235v1",
-    "title": "EMG-GPT: Predictive Pretraining on Residual-Quantized EMG Tokens for Hand Pose Estimation",
-    "authors": [
-      "Ettore Magni",
-      "Rolandos Alexandros Potamias",
-      "Stefanos Zafeiriou",
-      "Konstantinos Barmpas"
-    ],
-    "abstract": "Surface electromyography (sEMG) is a low-power, cost-effective biosignal for hand-pose estimation and gesture classification. In this work, we examine whether self-supervised pretraining on sEMG can yield transferable representations for continuous hand-pose estimation. We introduce EMG-GPT, a causal transformer-based model that operates on discrete sEMG representations from a frozen residual vector quantization (RVQ) tokenizer and learns temporal dynamics through depth-autoregressive future-code prediction. The model combines within-frame integration with causal temporal modeling while preserving the geometry of the pretrained codebook. EMG-GPT shows competitive results in both Regression and Tracking tasks, supporting EMG-only pretraining as a viable approach for learning transferable sEMG representations.",
-    "link": "http://arxiv.org/abs/2610.05235v1",
-    "published": "2026-10-04",
-    "category": "cs.AI",
-    "tags": [
-      "sEMG",
-      "Hand Pose Estimation",
-      "Self-Supervised Learning",
-      "Residual Vector Quantization",
-      "Transformer"
-    ],
-    "tldr": "EMG-GPT利用RVQ离散肌电令牌进行因果预测预训练，在回归与追踪任务上取得竞争力结果。",
-    "motivation": "sEMG是一种低功耗、低成本的生物信号，可用于手部姿态估计与手势分类；本文关注其自监督预训练能否产生可迁移的连续手部姿态估计表示。",
-    "method": "提出EMG-GPT，一种基于因果Transformer的模型，在冻结的残差向量量化(RVQ)分词器产生的离散sEMG表示上，通过深度自回归未来码预测学习时间动态。模型结合帧内整合与因果时序建模，并保持预训练码本的几何结构。",
-    "result": "EMG-GPT在Regression和Tracking任务上均取得有竞争力的结果；摘要未提供具体量化指标或对比基线数值。",
-    "conclusion": "结果表明仅用EMG进行预训练可作为学习可迁移sEMG表示的有效途径，为连续手部姿态估计提供了新思路。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2610.05207v1",
-    "title": "F$^2$ SLAM: Turning Feed-Forward Geometry into Persistent Factors for SLAM",
-    "authors": [
-      "Zhisong Xu",
-      "Fan Zhu",
-      "Jiawei Qian",
-      "Ziyu Chen",
-      "Zhenjun Zhao",
-      "Javier Civera"
-    ],
-    "abstract": "Feed-forward 3D models provide strong multi-view geometric priors, while on- line simultaneous localization and mapping (SLAM) relies mainly on local mea- surements and can accumulate drift over long sequences. Existing attempts to combine the two typically treat feed-forward predictions as an external geomet- ric state that is aligned or fused with the online estimate after the fact, which keeps broader multi-view evidence outside the optimizer that refines the SLAM state. We present F2SLAM, which instead converts feed-forward geometry di- rectly into optimization-native target-weight measurements attached to a persis- tent dense factor graph. A high-frequency stream maintains local tracking con- straints and graph connectivity, while a low-frequency stream uses wider multi- view context to selectively refresh existing measurements after a state-consistency check. Both streams constrain the same poses, inverse depths, and optional cam- era intrinsics through a single dense bundle adjustment. Experiments on multiple benchmarks demonstrate consistently strong trajectory estimation and improved dense reconstruction in both calibrated and uncalibrated settings. Notably, the uncalibrated configuration reduces the average ATE RMSE from 0.030 m for the strongest feed-forward baseline to 0.002 m on the Replica dataset.",
-    "link": "http://arxiv.org/abs/2610.05207v1",
-    "published": "2026-10-04",
-    "category": "cs.CV",
-    "tags": [
-      "SLAM",
-      "Feed-Forward 3D",
-      "Factor Graph",
-      "Bundle Adjustment",
-      "Dense Reconstruction"
-    ],
-    "tldr": "F2SLAM将前馈几何直接转为持久密集因子图中的优化原生测量，以低漂移在线SLAM提升轨迹与稠密重建。",
-    "motivation": "前馈三维模型能提供强多视图几何先验，但在线SLAM主要依赖局部测量，长序列中易累积漂移。现有结合方法多将前馈预测视为外部几何状态，事后对齐或融合，使更广的多视图证据游离于优化SLAM状态的优化器之外。",
-    "method": "F2SLAM将前馈几何直接转换为挂在持久密集因子图上的优化原生目标权重测量。高频流维持局部跟踪约束与图连通性，低频流利用更广多视图上下文，在状态一致性检查后选择性刷新已有测量；两路流通过单次稠密光束法平差共同约束位姿、逆深度和可选相机内参。",
-    "result": "在多个基准上，F2SLAM在标定与未标定设置下均取得稳定较强的轨迹估计并改善稠密重建。未标定配置下，Replica数据集上平均ATE RMSE由最强前馈基线的0.030 m降至0.002 m。",
-    "conclusion": "F2SLAM的贡献在于把前馈几何转化为优化器内的持久因子，而非外部对齐状态，从而统一在线SLAM与多视图先验。该方法显著降低漂移并提升稠密重建，尤其利于未标定场景，有望推动学习先验与经典SLAM优化的深度融合。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2610.05011v1",
-    "title": "FreeLoc: Online Floorplan Localization via Diffusion-Aided Pose Refinement",
-    "authors": [
-      "Haocheng Peng",
-      "Boyang Zhou",
-      "Jiarui Hu",
-      "Xiyue Guo",
-      "Ziyang Zhang",
-      "Boming Zhao",
-      "Yifan Gao",
-      "Xiao Li",
-      "Hujun Bao",
-      "Zhaopeng Cui"
-    ],
-    "abstract": "Floorplans provide compact and widely available geometric maps for indoor localization, but existing high-performing floorplan-based methods still convert them into dense scene-specific offline databases, tying accuracy, storage, and runtime to the sampling resolution of the discretized pose space. We present FreeLoc, an online RGB-based floorplan localization framework that treats the floorplan as a directly queryable geometric map. FreeLoc introduces an efficient online geometric querying and diffusion-aided refinement scheme, which retrieves plausible pose anchors through on-the-fly floorplan ray querying and refines them into accurate continuous pose estimates. For sequential localization, FreeLoc develops an online likelihood construction strategy that bridges single-frame localization and probabilistic temporal fusion by constructing likelihoods from coarse-sampled candidates and refined pose hypotheses, enabling histogram-filter-based temporal fusion without offline databases. Experiments demonstrate real-time online inference and state-of-the-art performance in both single-frame and sequential localization, while real-world results validate practical deployability in indoor robotic localization scenarios.",
-    "link": "http://arxiv.org/abs/2610.05011v1",
-    "published": "2026-10-04",
-    "category": "cs.CV",
-    "tags": [
-      "Floorplan Localization",
-      "Diffusion Models",
-      "Pose Refinement",
-      "Indoor Localization",
-      "Temporal Fusion"
-    ],
-    "tldr": "FreeLoc将平面图作为可在线查询地图，用扩散精化位姿，免离线库实现实时室内定位。",
-    "motivation": "现有高性能基于平面图的室内定位方法通常将平面图转换为稠密的场景特定离线数据库，使精度、存储和运行时间受离散位姿空间采样分辨率制约。因此，需要一种无需离线数据库、能在线直接利用平面图进行RGB定位的方法。",
-    "method": "FreeLoc将平面图视为可直接查询的几何地图，通过在线平面图射线查询检索可行位姿锚点，并利用扩散辅助精化获得连续而准确的位姿估计。对于序列定位，它从粗采样候选和精化位姿假设中在线构建似然，无需离线数据库即可实现直方图滤波时序融合。",
-    "result": "摘要未给出具体量化指标；实验表明FreeLoc可实时在线推理，在单帧和序列定位上均达到当前最优性能，并在真实场景中验证了室内机器人定位的可部署性。",
-    "conclusion": "FreeLoc通过将平面图作为直接可查询几何地图并引入扩散辅助在线精化，消除了对离线数据库的依赖。其贡献在于实现无需离线数据库的实时在线平面图定位，并在真实室内机器人场景中展示可部署性，为可扩展的室内定位提供了新方案。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2610.05576v2",
-    "title": "SteadySplats: Resampling of Low-Variance Gaussians for High-Fidelity Stochastic Rendering",
-    "authors": [
-      "Felix Windisch",
-      "Thomas Köhler",
-      "Lukas Radl",
-      "Chris Wyman",
-      "Georgios Kopanas",
-      "Bernhard Kerbl",
-      "Markus Steinberger"
-    ],
-    "abstract": "Stochastic order-independent transparency enables efficient and elegant rendering of primitive-based radiance fields like 3D Gaussian Splatting models, but remains impractical due to the inherent visible noise in the output. We propose a principled approach to minimize high-frequency noise, addressing its sources at the representation and image synthesis level. During stochastic rendering, our history-based spatial resampling scheme drastically accelerates image convergence, while temporal importance resampling ensures coherence under camera movement. During training, a color regularizer implicitly reduces the variance along view rays in the 3DGS models. With these properties, our optimized, Vulkan-based renderer effectively mitigates output noise at low and high sample counts, achieving a substantial 13~dB PSNR increase in quality over previous stochastic methods at 1 sample per pixel and quickly converging to sorted 3DGS with an average L1 error of less than $10^{-4}$.",
-    "link": "http://arxiv.org/abs/2610.05576v2",
-    "published": "2026-10-04",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Stochastic Rendering",
-      "Order-Independent Transparency",
-      "Resampling",
-      "Vulkan"
-    ],
-    "tldr": "提出SteadySplats，通过重采样与颜色正则化降低随机渲染噪声，1spp下PSNR提升13dB。",
-    "motivation": "随机顺序无关透明度能高效渲染3D Gaussian Splatting等基元辐射场，但输出存在明显可见噪声，导致其难以实用。该工作旨在从表示与图像合成层面抑制高频噪声源。",
-    "method": "训练阶段引入颜色正则化，隐式降低3DGS模型沿视射线的方差；随机渲染阶段采用基于历史的空间重采样加速图像收敛，并用时间重要性重采样保证相机运动下的时序一致性，最终实现基于Vulkan的优化渲染器。",
-    "result": "在1 sample per pixel下，该方法相比先前随机方法取得约13 dB的PSNR提升，并在低与高采样数下均有效抑制输出噪声；同时快速收敛到排序3DGS结果，平均L1误差小于1e-4。",
-    "conclusion": "该方法从表示与合成两端降低随机渲染噪声，使随机顺序无关透明度对3DGS高保真渲染更实用。其贡献包括低方差高斯重采样策略、颜色正则化与Vulkan渲染器，有望推动高效透明渲染和实时辐射场应用。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2610.07025v1",
-    "title": "WiSPER: Pose-Supervised Predictive and Residual Flow Refinement For Multi-Person 3D Pose Estimation With WiFi CSI",
-    "authors": [
-      "Gabriel Lee Jun Rong",
-      "Shanhong Liu",
-      "Pai Chet Ng",
-      "Konstantinos N. Plataniotis",
-      "Jamal Seyedmohammadi",
-      "S. Mohammad Sheikholeslami"
-    ],
-    "abstract": "Multi-person 3D pose estimation with WiFi channel state information (CSI) is challenging because reflections from different people overlap without directly identifying individual joints. Existing masked embedding objectives capture wireless relationships without explicit pose supervision, while structured decoders can retain coordinate errors. We propose WiSPER, a two-stage framework combining pose-aware predictive pretraining with conditional residual flow refinement. Pose-Aware Masked Embedding Learning (PAMEL) couples masked latent prediction with auxiliary pose-set supervision on the same CSI context, guiding the encoder toward joint localization from partial observations. Residual Flow refinement with Transformer (ReFT) generates a set of pose candidates to accommodate a variable number of people and refines each candidate through a conditional flow guided by its coarse coordinates and per-joint decoder features. Both stages use paired CSI and pose annotations during training, while inference requires only CSI. Experiments on the PiW3D dataset show that WiSPER achieves an overall mean per-joint position error of 63.72 mm, a 40.0% reduction relative to WiFi-JEPA. For experiments with two and three people, WiSPER reduces MPJPE by 42.1% and 38.1%, respectively. Pose-supervised pretraining configurations obtain lower errors than CSI-only JEPA, and enabling the trained residual refiner reduces overall MPJPE by 13.8-15.6% across the evaluated configurations.",
-    "link": "http://arxiv.org/abs/2610.07025v1",
-    "published": "2026-10-04",
-    "category": "cs.CV",
-    "tags": [
-      "WiFi CSI",
-      "3D Pose Estimation",
-      "Multi-Person",
-      "Masked Pretraining",
-      "Flow Refinement"
-    ],
-    "tldr": "WiSPER 用姿态监督预训练与条件残差流细化，实现仅靠 WiFi CSI 的多人体 3D 姿态估计，MPJPE 降低约 40%。",
-    "motivation": "多人体 WiFi CSI 3D 姿态估计中，不同人的反射信号相互叠加且无法直接识别个体关节；现有掩码嵌入目标缺乏显式姿态监督，结构化解码器仍会保留坐标误差。",
-    "method": "提出两阶段框架 WiSPER：PAMEL 在同一 CSI 上下文上耦合掩码隐变量预测与辅助姿态集监督，引导编码器从部分观测中定位关节；ReFT 生成姿态候选集以适配可变人数，并基于粗坐标与逐关节解码器特征通过条件流细化每个候选。训练使用配对 CSI 与姿态标注，推理仅需 CSI。",
-    "result": "在 PiW3D 数据集上，WiSPER 总体平均每关节位置误差为 63.72 mm，相对 WiFi-JEPA 降低 40.0%；两人和三人实验中 MPJPE 分别降低 42.1% 和 38.1%；姿态监督预训练配置误差低于仅 CSI 的 JEPA；启用训练后的残差细化器使总体 MPJPE 在各配置下降低 13.8–15.6%。",
-    "conclusion": "结果表明，姿态监督预训练与条件残差流细化能显著提升 WiFi CSI 多人体 3D 姿态估计精度，且推理阶段仅依赖 CSI，为无视觉多人姿态感知提供了可行方案。"
   }
 ]
