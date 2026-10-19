@@ -1,5 +1,141 @@
 [
   {
+    "id": "http://arxiv.org/abs/2610.23250v1",
+    "title": "LonGaussian: Tracking Foundation Priors for Long-Context Feedforward Gaussian Reconstruction",
+    "authors": [
+      "Zhoufeng Xie",
+      "Guanjun Wu",
+      "Shuai Zhang",
+      "Xinggang Wang",
+      "Wenyu Liu"
+    ],
+    "abstract": "Reconstructing high-quality, renderable 3D scenes from long videos is essential for robotic perception and embodied intelligence. Many feed-forward Gaussian reconstruction methods rapidly predict 3D scenes from a small set of images, but extending them to longer sequences presents two bottlenecks: jointly processing all views increases GPU memory requirements, while accumulating pixel-aligned predictions redundantly represents the same surfaces and increases storage and rendering costs. We present LonGaussian, a streaming feed-forward framework that reconstructs compact, globally renderable Gaussian scenes from long image sequences with known intrinsics and unknown camera poses. Built on a pretrained streaming 3D reconstruction backbone, LonGaussian decodes long-context geometric features into dense Gaussians. Within each chunk, multi-frame point tracks link repeated observations of the same surface and guide a learned merger to consolidate the corresponding Gaussian predictions. Rendered-depth consistency filtering further suppresses Gaussians from other chunks that incorrectly occlude locally reconstructed surfaces. On DL3DV and RealEstate10K benchmarks, LonGaussian improves novel-view rendering quality while using substantially fewer Gaussians than the evaluated feed-forward baselines.",
+    "link": "http://arxiv.org/abs/2610.23250v1",
+    "published": "2026-10-16",
+    "category": "cs.CV",
+    "tags": [
+      "Gaussian Splatting",
+      "3D Reconstruction",
+      "Streaming",
+      "Long Video",
+      "Novel View Synthesis"
+    ],
+    "tldr": "LonGaussian以流式前馈方式从长视频重建紧凑且可全局渲染的高斯场景。",
+    "motivation": "现有前馈高斯重建方法多针对少量图像，扩展到长序列时面临两大瓶颈：联合处理所有视角导致显存开销激增，而逐像素对齐的预测累积会冗余表示同一表面，增加存储与渲染成本。目标是仅凭已知内参、未知位姿的长图像序列，流式重建紧凑可渲染的全局高斯场景。",
+    "method": "方法基于预训练的流式三维重建主干，将长上下文几何特征解码为稠密高斯；在每个分块内利用多帧点轨迹关联同一表面的重复观测，并引导学习式合并器整合对应高斯预测；再用渲染深度一致性过滤抑制其他分块中错误遮挡本地重建表面的高斯。",
+    "result": "在DL3DV与RealEstate10K基准上，LonGaussian提升了新视角渲染质量，同时所用高斯数量显著少于所对比的前馈基线。",
+    "conclusion": "该工作表明，结合点轨迹关联、学习式高斯合并与深度一致性过滤，可在流式前馈框架下实现长视频的紧凑全局高斯重建，为机器人感知与具身智能中的长时序三维建模提供了高效方案。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2610.23237v1",
+    "title": "X-Splat: Unified Gaussian Splatting for Joint RGB and X-ray 3D Reconstruction",
+    "authors": [
+      "Wangze Xu",
+      "Chu Zhou",
+      "Mae Yamaguchi",
+      "Linrui Dai",
+      "I-Chao Shen",
+      "Takashi Ijiri",
+      "Imari Sato"
+    ],
+    "abstract": "Jointly reconstructing RGB and X-ray provides new insights by connecting external appearance with internal structure, enabling a more complete understanding of real-world objects than single modality. Yet existing methods train separate models per modality and suffer from redundant geometry, alignment artifacts, and loose coupling that limits cross-modal insight discovery. We propose a unified representation in which all Gaussian primitives share a single set of geometric parameters, with only surface-proximal primitives additionally carrying appearance attributes. We perform cross-modal registration through clean multi-view stereo and X-ray geometric proxies instead of aligning two sets of optimized Gaussians, improving alignment stability. We then jointly optimize the unified representation via supervision from both modalities, complemented by a surface-depth consistency loss derived from X-ray geometry to guide RGB reconstruction. Experiments on the InsideOut dataset and our Flower & Insect dataset show that our framework achieves more robust cross-modal alignment, higher RGB rendering quality without compromising X-ray reconstruction, and a more compact representation than maintaining two independent geometries.",
+    "link": "http://arxiv.org/abs/2610.23237v1",
+    "published": "2026-10-16",
+    "category": "cs.CV",
+    "tags": [
+      "Gaussian Splatting",
+      "Cross-Modal Reconstruction",
+      "X-ray Imaging",
+      "3D Reconstruction"
+    ],
+    "tldr": "提出统一高斯表示联合重建RGB与X射线，共享几何并提升跨模态对齐。",
+    "motivation": "现有RGB与X射线联合重建方法通常为每个模态单独训练模型，导致几何冗余、对齐伪影和跨模态耦合松散，限制了对外观与内部结构的整体理解。",
+    "method": "提出统一高斯表示，所有高斯基元共享同一套几何参数，仅靠近表面的基元额外携带外观属性；通过干净的多视图立体与X射线几何代理完成跨模态配准，而非对齐两组已优化高斯，并利用双模态监督联合优化，加入由X射线几何导出的表面深度一致性损失来引导RGB重建。",
+    "result": "在InsideOut数据集和自建Flower & Insect数据集上，该框架实现了更稳健的跨模态对齐和更高的RGB渲染质量，同时不损害X射线重建，并获得比维护两套独立几何更紧凑的表示；摘要未给出具体量化数值。",
+    "conclusion": "该工作通过共享几何的统一高斯表示与代理配准策略，将RGB外观与X射线内部结构紧密耦合，在保持重建质量的同时提升对齐稳定性和表示紧凑性，为跨模态联合三维重建提供了新思路。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2610.23039v1",
+    "title": "Frame-Consistent Feed-Forward 3D Gaussian Splatting from Sparse Unposed Images",
+    "authors": [
+      "Viruthshaan Vinasirajan",
+      "Ranga Rodrigo"
+    ],
+    "abstract": "Feed-forward Gaussian models have made novel view synthesis almost instantaneous. Feed-forward methods predict Gaussians directly, either in two stages or in a single merged pass. Using two separately trained models is attractive because each can specialize in its own objective: one for accurate pose estimation and the other for high-quality reconstruction, rather than forcing a single jointly trained network to compromise between the two. A natural instantiation pairs a frozen pose estimator, VGGT, with a frozen reconstruction backbone, TokenGS. Prior work, such as VGGT-X and 3R-GS, also adopts a two-stage design, but attributes the resulting quality degradation to noisy pose estimates and introduces learned refinement. We show that this is not the primary source of the problem. Through per-camera analysis across 107 scenes from two datasets, DL3DV and MipNeRF360, using COLMAP poses as the reference, we find that the rotation error after alignment is small (median 1.6 degrees), whereas the translation scale is offset by a large, dataset-consistent factor. Controlled ablations over 140 DL3DV scenes show that the primary obstacles are two integration failures rather than pose error: a coordinate-frame inconsistency and a translation-scale mismatch, both of which can be corrected deterministically. With these fixes, a frozen VGGT driving a frozen TokenGS achieves 22.47 PSNR, within 0.51 dB of the COLMAP reference, with no additional training, when poses are estimated from all scene views. In the sparse setting, where reconstruction uses only four context images under the standard pose-free protocol, the same pipeline matches this all-view quality, yielding a fully COLMAP-free pipeline without any refinement step.",
+    "link": "http://arxiv.org/abs/2610.23039v1",
+    "published": "2026-10-16",
+    "category": "cs.CV",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Novel View Synthesis",
+      "Pose Estimation",
+      "Sparse Views",
+      "Feed-Forward"
+    ],
+    "tldr": "冻结VGGT与TokenGS的两阶段前馈高斯泼溅，经确定性坐标系与平移尺度修正后无需COLMAP即可高质量重建。",
+    "motivation": "两阶段前馈高斯方法可让位姿估计与重建模型各自专精，但现有VGGT-X、3R-GS等将质量退化主要归因于位姿噪声并引入学习式细化。本文重新审视该问题，旨在定位冻结位姿估计器与冻结重建骨干集成时的真正瓶颈。",
+    "method": "在DL3DV与MipNeRF360共107个场景上以COLMAP位姿为参考进行逐相机分析，并在140个DL3DV场景做受控消融；发现主要问题是以坐标系不一致和平移尺度失配为代表的集成失败，而非旋转误差，并采用确定性方法修正二者，直接连接冻结VGGT与冻结TokenGS。",
+    "result": "对齐后旋转误差中位数仅1.6度，但平移尺度存在数据集一致的显著偏移；修正后冻结VGGT驱动冻结TokenGS在全体视角位姿下达到22.47 PSNR，距COLMAP参考仅0.51 dB，无需额外训练。稀疏设置仅用4张上下文图像时，同一流程仍匹配全视角质量，且无需细化步骤。",
+    "conclusion": "研究表明两阶段前馈高斯退化的主因是可确定性修正的坐标系与尺度集成问题，而非位姿噪声；该修复实现了完全无需COLMAP、无需学习式细化的稀疏无位姿重建流程，对前馈高斯重建系统有直接价值。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2610.23021v1",
+    "title": "Semantic-Critical Regions for Video-to-Audio Generation",
+    "authors": [
+      "Yun Fang",
+      "Wei Guo",
+      "Zhuonan Liang",
+      "Heng Wang",
+      "Weidong Cai"
+    ],
+    "abstract": "In real-world videos, sound events are often associated with localized and fine-grained visual cues, such as object motion, object-part dynamics, contact events, and interactions between objects. Existing video-to-audio (V2A) methods employ implicit conditioning based on global visual representations or explicit control derived from temporal and spatial cues. However, subtle sound-producing and sound-indicative interactions remain insufficiently captured, leaving room for more precise visual conditioning of sound-event semantics and temporal dynamics. Motivated by this observation, we refer to regions containing such sound-relevant visual evidence as Semantic-Critical Regions (SCRs) and introduce SCR-V2A, a V2A generation framework that explicitly localizes and encodes SCRs as fine-grained visual guidance for audio generation. Specifically, we first identify SCRs through sound-related visual localization. We then transform the localized regions into a control representation through adapter-based dual visual encoding, which jointly captures global visual context and fine-grained sound-relevant evidence. The representation is used to condition a downstream audio generation model. Experiments on both in-domain and out-of-domain benchmarks demonstrate that SCR-V2A achieves strong performance in distribution matching and audio quality while remaining competitive in cross-modal alignment and requiring few trainable parameters. These results highlight the value of prioritizing fine-grained, sound-relevant visual regions for V2A generation.",
+    "link": "http://arxiv.org/abs/2610.23021v1",
+    "published": "2026-10-16",
+    "category": "cs.CV",
+    "tags": [
+      "Video-to-Audio",
+      "Multimodal Generation",
+      "Visual Localization",
+      "Adapter",
+      "Audio Synthesis"
+    ],
+    "tldr": "提出SCR-V2A，通过定位并编码语义关键区域为视频到音频生成提供细粒度视觉引导。",
+    "motivation": "现有视频到音频方法多依赖全局视觉表示或时序与空间显式控制，难以充分捕捉细微的发声与指示声音的局部视觉交互，因此需要更精确地条件化声音事件语义与时序动态。",
+    "method": "SCR-V2A首先通过声音相关视觉定位识别语义关键区域SCR，再利用基于adapter的双路视觉编码将局部区域转化为控制表示，联合捕捉全局视觉上下文与细粒度声音相关证据，并以此条件化下游音频生成模型。",
+    "result": "在域内与域外基准上，SCR-V2A在分布匹配和音频质量方面表现较强，在跨模态对齐上具有竞争力，同时仅需少量可训练参数；摘要未提供具体量化指标。",
+    "conclusion": "结果表明，优先利用细粒度且与声音相关的视觉区域对视频到音频生成具有价值，SCR-V2A的主要贡献在于显式定位并编码语义关键区域，为高精度且参数高效的音频生成提供了新思路。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2610.22778v1",
+    "title": "Direct Conditional Parameterization for N-Dimensional Splatting",
+    "authors": [
+      "Zhongpai Gao",
+      "Benjamin Planche",
+      "Van Nguyen Nguyen",
+      "Meng Zheng",
+      "Anwesa Choudhuri",
+      "Arun Innanje",
+      "Terrence Chen",
+      "Ziyan Wu"
+    ],
+    "abstract": "N-dimensional splatting extends 3D Gaussian Splatting with view direction and time to model view-dependent and dynamic effects. Each primitive is lifted into a joint distribution over position and conditioning variables, then conditionally sliced at each rendering query. N-DGS and UBS share this step across Gaussian and Beta kernels: recovering the conditional mean, opacity, and covariance requires per-primitive matrix inversions and regression products in every forward pass. We introduce direct conditional parameterization, replacing this covariance-derived readout with explicit per-effect parameters: a Cholesky precision factor for opacity and a factorized query-to-position regression operator with learnable per-dimension coupling. Unrestricted conditional coordinates recover a valid joint covariance; our factorization adds spatial-scale and coupling priors. Applied to both kernels, the parameterization yields dGS (Gaussian) and dBS (Beta). Across five static and dynamic benchmarks, they match or exceed their covariance-derived counterparts on quality, with gains up to +1.26 dB in the main MCMC evaluation. Production slicing is 6.9-7.7 times faster than on-the-fly covariance-derived conditioning; complete-render profiling gives 1.25-1.91 times speedups on four trained scenes. Direct conditioning provides a structured, kernel-agnostic alternative for N-dimensional splatting. Project page: https://gaozhongpai.github.io/dgs/.",
+    "link": "http://arxiv.org/abs/2610.22778v1",
+    "published": "2026-10-16",
+    "category": "cs.CV",
+    "tags": [
+      "Gaussian Splatting",
+      "N-Dimensional Splatting",
+      "Conditional Parameterization",
+      "Dynamic Scene Reconstruction",
+      "Novel View Synthesis"
+    ],
+    "tldr": "提出直接条件参数化，加速N维splatting并保持或提升渲染质量。",
+    "motivation": "N维splatting将3D Gaussian Splatting扩展到视角方向与时间，以建模视角相关和动态效果，但每次渲染查询都需对每个primitive做矩阵求逆与回归乘积，计算开销大。",
+    "method": "提出直接条件参数化，用显式逐效果参数替代由协方差导出的条件读取：用Cholesky精度因子表示不透明度，并用带可学习逐维耦合的因子化查询到位置回归算子建模条件坐标；该方法应用于Gaussian和Beta核，分别得到dGS与dBS。",
+    "result": "在五个静态与动态基准上，dGS和dBS的质量匹配或超过协方差导出方法，主MCMC评估最高提升+1.26 dB；生产切片比动态协方差条件化快6.9-7.7倍，四个已训练场景的完整渲染剖析加速1.25-1.91倍。",
+    "conclusion": "该工作为N维splatting提供了一种结构化、与核无关的直接条件建模范式，在保持或提升质量的同时显著提升条件切片与完整渲染效率。"
+  },
+  {
     "id": "http://arxiv.org/abs/2610.22371v1",
     "title": "Gen4P: Video Generators are 4D Perceivers",
     "authors": [
@@ -1792,89 +1928,5 @@
     "method": "利用单视图3D网格重建将源图像提升为带纹理网格并渲染新视角；基于渲染得到的逐像素可见性图，设计CVCF通过可见区域的多视角一致性剔除几何错误网格，并用VAAS在训练中将注意力引导至渲染视图的可靠区域。",
     "result": "在三个SV AG-ReID基准上均取得新的最优性能；摘要未提供具体量化指标。",
     "conclusion": "表明利用3D重建的可见性副产品可有效提升合成训练数据质量与跨视角ReID泛化能力，为单视图航地重识别提供新思路；代码和数据将公开。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2610.15854v1",
-    "title": "Sharper Frames, Worse Rooms: Viewpoint Coverage Dominates Image Quality in Feed-Forward 3D Reconstruction",
-    "authors": [
-      "Alibek Dadajonov",
-      "Hikmatillo Umarhojiyev"
-    ],
-    "abstract": "Grounded spatial reasoning about indoor scenes rests on a geometric reconstruction that the multimodal system does not itself produce. Feed-forward multi-view reconstruction models operate under a fixed view budget, making frame selection a critical upstream decision. We show that under this setting the conventional preference for sharp frames can be actively harmful. Across nine handheld room scans, selecting the sharpest 16 of 200 candidate frames is the worst strategy we test, reaching 48\\% room dimension error where uniform temporal sampling reaches 3\\%. We trace this failure to a coupling between image quality and camera motion: sharp frames tend to occur during slow motion and therefore concentrate the selection in a narrow angular region, leaving $192^\\circ$ of the room unobserved in the case we illustrate and over $300^\\circ$ in the worst cells. A $2\\times2$ factorial experiment that independently manipulates viewpoint spread and per-frame sharpness shows that spread has roughly three times the main effect of quality, and that blurry but well spread selections outperform sharp but clustered selections in 8 of 9 captures. The advantage also diminishes as the frame budget increases and angular coverage saturates, consistent with this mechanism. Finally, we ask whether the failure is detectable at inference: the reconstruction model's multi-view consistency score increases with reconstruction error, while a vision-language model given the same frames reports confidence unrelated to its own spatial estimation error. Under small view budgets, viewpoint coverage is a more important constraint than per-frame image quality, and neither uncertainty signal available at inference reveals this upstream failure.",
-    "link": "http://arxiv.org/abs/2610.15854v1",
-    "published": "2026-10-11",
-    "category": "cs.CV",
-    "tags": [
-      "3D Reconstruction",
-      "View Selection",
-      "Multi-View Geometry",
-      "Uncertainty Estimation",
-      "Spatial Reasoning"
-    ],
-    "tldr": "固定视角预算下，视角覆盖比单帧清晰度更关键，只挑最清晰帧反而使房间重建误差剧增。",
-    "motivation": "前馈多视角重建模型受固定视角预算约束，帧选择成为关键的上游决策，而传统做法偏好清晰帧。作者质疑这一直觉，探究在室内手持扫描场景中图像质量优先的选择策略是否会损害几何重建与下游空间推理。",
-    "method": "在9段手持房间扫描上，从200个候选帧中按不同策略选取16帧，对比“最清晰帧”与均匀时间采样；进一步设计2×2析因实验，独立操纵视角分布广度与单帧清晰度，分离二者的主效应；最后检验推理阶段可得的两种不确定性信号（重建模型的多视角一致性分数与VLM置信度）能否察觉该失效。",
-    "result": "选取最清晰16帧是最差策略，房间尺寸误差达48%，而均匀时间采样仅3%；机制在于清晰帧多出现于慢速运动，选择集中于狭窄角度区间，示例中192°、最差单元格超300°的区域未被观测。析因实验显示视角分布的主效应约为清晰度的3倍，模糊但分布良好的帧在9次采集中的8次优于清晰但聚集的帧，且该优势随帧预算增大、角度覆盖饱和而减弱。此外，重建模型的多视角一致性分数随重建误差升高而升高，VLM置信度与其自身空间估计误差无关，均无法揭示该失效。",
-    "conclusion": "在小的视角预算下，视角覆盖是比单帧图像质量更强的约束，清晰度偏好会因与相机运动的耦合而系统性破坏空间覆盖。推理阶段现有的两类不确定性信号都无法暴露这一上游失败，提示需要面向覆盖度的帧选择策略与更可靠的不确定性度量，对多模态空间推理系统有直接意义。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2610.15734v1",
-    "title": "ScenePlacer: Reformulating Scene-Level Object Pose Estimation as Visibility Field Learning",
-    "authors": [
-      "Ken Deng",
-      "Jiarui Liu",
-      "Guibiao Liao",
-      "Kunming Luo",
-      "Mochu Xiang",
-      "Hongyu Yan",
-      "Yebin Liu",
-      "Shenghua Gao",
-      "Yizhou Yu",
-      "Ping Tan"
-    ],
-    "abstract": "We present ScenePlacer, a framework for scene-level pose estimation of objects generated by state-of-the-art native shape generation models, placing generated 3D objects into scenes given a partial geometric observation without modifying the underlying generative pipeline. Existing scene generation approaches either generate objects directly in scene coordinates, compromising their canonical-space priors, or regress poses from complete generated shapes in the shape generation process - the latter being a poorly conditioned problem that is sensitive to scale ambiguity and partial observations. ScenePlacer decouples object generation from pose estimation by reformulating alignment as conditional visibility-field learning. Given an observed partial point cloud from reconstruction and a generated mesh, it predicts a visibility field defined in object space, then estimates the rigid transformation by aligning the partial observation to visible parts on the mesh. We propose a pretrained 3D shape VAE as our backbone, preserving its mesh prior while conditioning it on a separately encoded observation. We further introduce visibility-aware, radius-constrained supervision and synthesize training pairs using only object-level meshes and rendered views, eliminating the need for scene-level pose annotations. On 3D-FUTURE, ScenePlacer consistently outperforms existing placement and pose-refinement baselines under both ground-truth and monocular depth estimation. With generated objects, it achieves a Chamfer distance of 0.0077 and an F-score of 92.40 under estimated depth and improves to 0.0023 and 98.27, respectively, under ground-truth geometry.",
-    "link": "http://arxiv.org/abs/2610.15734v1",
-    "published": "2026-10-11",
-    "category": "cs.CV",
-    "tags": [
-      "Object Pose Estimation",
-      "Scene Generation",
-      "Visibility Field",
-      "3D Shape VAE",
-      "Point Cloud Alignment"
-    ],
-    "tldr": "ScenePlacer将场景级物体位姿估计重构为条件可见性场学习，无需场景位姿标注即可将生成物体对齐到部分观测。",
-    "motivation": "现有场景生成方法要么直接在场景坐标中生成物体，破坏其规范空间先验，要么从完整生成形状回归位姿，该问题病态且对尺度歧义和部分观测敏感。",
-    "method": "ScenePlacer将物体生成与位姿估计解耦，给定重建的部分点云和生成网格，预测定义在物体空间的可见性场，再通过将部分观测与网格可见部分对齐来估计刚体变换。方法以预训练3D形状VAE为主干，在保留网格先验的同时条件于单独编码的观测，并引入可见性感知、半径约束监督，仅用物体级网格与渲染视图合成训练对，从而无需场景级位姿标注。",
-    "result": "在3D-FUTURE上，ScenePlacer在真值几何和单目深度估计下均持续优于现有摆放与位姿细化基线；对生成物体，在估计深度下达到Chamfer距离0.0077和F-score 92.40，在真值几何下提升至0.0023和98.27。",
-    "conclusion": "ScenePlacer无需场景级位姿标注即可将生成3D物体放入场景，在保持生成模型规范先验的同时显著提升场景级位姿估计精度，为生成式场景构建提供了解耦对齐方案。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2610.15357v1",
-    "title": "UniForge3D: Joint 3D Reconstruction and Generation in a Shared Anchor-Guided Space",
-    "authors": [
-      "Wenjue Chen",
-      "Wenyue Chen",
-      "Heliang Zheng",
-      "Rongfei Jia",
-      "Yuan Liu",
-      "Meng Li"
-    ],
-    "abstract": "Generating complete 3D assets from sparse, unposed images requires preserving observed geometry while completing unseen regions. Joint reconstruction and generation offers a way to address both goals: reconstruction recovers the geometry observed in the input images, while generation contributes learned shape priors. However, combining camera-relative reconstruction with canonical-space generation introduces a coordinate mismatch that makes direct geometric interaction more difficult. Moreover, conditioning each 3D location on all views without accounting for their relevance may mix useful geometric evidence with unrelated image content, hindering local detail recovery. We present UniForge3D, which jointly models reconstruction and generation in a shared anchor-guided space, resolving their coordinate mismatch. This space follows the anchor view's azimuth while keeping the object upright. The two branches exchange features bidirectionally to predict per-view point maps and a complete sparse voxel structure. We further condition point-map prediction on the generated structure to establish pixel-to-voxel correspondences and select the most informative input view for each voxel. Features from the selected views then guide detailed shape generation, helping preserve observed geometric details. Our method achieves state-of-the-art appearance and geometry results on Toys4K and GSO, generating complete 3D assets with improved fidelity. Project webpage: https://xishuxishu.github.io/uniforge3d-project/",
-    "link": "http://arxiv.org/abs/2610.15357v1",
-    "published": "2026-10-11",
-    "category": "cs.CV",
-    "tags": [
-      "3D Reconstruction",
-      "3D Generation",
-      "Sparse-View",
-      "Voxel Representation",
-      "Point Maps"
-    ],
-    "tldr": "UniForge3D在锚点引导的共享空间中联合重建与生成，从稀疏无位姿图像生成完整三维资产。",
-    "motivation": "从稀疏且无相机位姿的图像生成完整3D资产，需在补全未见区域的同时保留输入中已观测的几何；然而相机相关的重建与规范空间的生成之间存在坐标不匹配，且对每个3D位置无差别地融合所有视角会混入无关图像内容，损害局部细节恢复。",
-    "method": "提出UniForge3D，在共享的锚点引导空间中联合建模重建与生成：该空间沿用锚点视角的方位角并保持物体竖直，从而消除坐标不匹配；两个分支双向交换特征，预测逐视角点图与完整稀疏体素结构，并以生成结构为条件预测点图，建立像素到体素的对应关系，为每个体素挑选信息量最大的输入视角，再用所选视角特征引导精细形状生成。",
-    "result": "在Toys4K与GSO数据集上，该方法在外观与几何指标上均取得当前最优（state-of-the-art）结果，生成的完整3D资产保真度更高。",
-    "conclusion": "该工作表明通过共享锚点引导空间与双向特征交互可有效统一3D重建与生成，在保留观测几何的同时借助生成先验补全缺失区域；项目主页为 https://xishuxishu.github.io/uniforge3d-project/。"
   }
 ]
