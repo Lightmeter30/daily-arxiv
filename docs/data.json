@@ -491,6 +491,91 @@
     "conclusion": "该工作指认独立射线渲染损失缺乏跨射线密度一致性约束这一可测缺陷，并提出无需额外输入、可跨场参数化迁移的DriftNeRF正则器。该方法为稀疏视角NeRF提供即插即用改进，并可能推广到其他辐射场表示。"
   },
   {
+    "id": "http://arxiv.org/abs/2610.30468v1",
+    "title": "SplatLab: Autonomous Scientific Discovery for 3DGS Research",
+    "authors": [
+      "Seemandhar Jain",
+      "Manmohan Chandraker"
+    ],
+    "abstract": "Reproducing a published 3DGS paper takes weeks of expert engineering before any extension can be proposed. Prior autonomous-research systems read papers, draft hypotheses, and write code, but are limited by short fixed templates, low executability, and weak traceability, and none has been demonstrated end-to-end in a live computer-vision subfield with intense activity. SplatLab is an autonomous research system for 3D Gaussian Splatting that addresses these limitations. Given a research prompt, a target-paper URL, or no input at all, it reproduces a published baseline, proposes an extension, trains and ablates across Mip-NeRF 360 and LLFF, writes the manuscript, and binds every reported number to a logged training run. Five design choices distinguish it: (i) candidates mutate plugins from a verified-reproduction backbone matched to published baselines; (ii) a cascade-weighted Elo tournament across eight islands scores candidates on measured GPU PSNR with verbal-gradient feedback; (iii) a standing falsifier subtracts Elo on failure, integrating stress-test survival into selection; (iv) every reported number is bound to a logged training run, and the run cannot terminate while any claim is unbacked; (v) a seven-category 3DGS taxonomy wraps EVOLVE-BLOCK markers in domain-aligned scaffolds transferable across 3DGS repositories. On PSNR-targeted runs, SplatLab's manuscripts beat their reproduced targets by +0.18 to +3.78 dB, including +3.78 dB on astrophotographic nebula rendering, for which no prior 3DGS method exists. The research cycle compresses from months of graduate-student time to days of mostly autonomous compute. Code, all manuscripts, experiment ledgers, and the cross-run paper store are available on the project page.",
+    "link": "http://arxiv.org/abs/2610.30468v1",
+    "published": "2026-10-21",
+    "category": "cs.CV",
+    "tags": [
+      "3DGS",
+      "Autonomous Research",
+      "Novel View Synthesis",
+      "Automated Experimentation",
+      "Reproducibility"
+    ],
+    "tldr": "SplatLab实现3DGS研究全流程自主化：复现基线、提出扩展、训练消融、撰写论文并绑定实验记录。",
+    "motivation": "复现一篇3DGS论文通常需要数周专家工程，才能进一步提出扩展；现有自主研究系统受限于固定短模板、低可执行性和弱可追溯性，且尚未在活跃的计算机视觉子领域完成端到端验证。",
+    "method": "SplatLab给定研究提示、目标论文URL或无输入时，可复现已发表基线、提出扩展，并在Mip-NeRF 360和LLFF上训练与消融，撰写手稿且将每个报告数值绑定到日志化训练运行。其五项设计包括：从已验证复现骨干变异插件、八岛级联加权Elo锦标赛基于实测GPU PSNR与语言梯度反馈评分、常驻证伪器在失败时扣减Elo、未支撑声明阻止运行终止，以及七类3DGS分类法将EVOLVE-BLOCK标记封装为可跨仓库迁移的领域脚手架。",
+    "result": "在面向PSNR提升的运行中，SplatLab生成的手稿相对复现目标提升+0.18至+3.78 dB，其中天体摄影星云渲染提升+3.78 dB，而此前尚无对应3DGS方法。研究周期从研究生数月时间压缩为以自主计算为主的数天。",
+    "conclusion": "SplatLab展示了在3DGS领域端到端自主科研的可行性，通过数值-训练运行绑定和领域分类脚手架增强了可追溯性与可迁移性，有望加速3DGS发现并推动可复现的自主研究流程。代码、全部手稿、实验账本和跨运行论文库已在项目页公开。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2610.30326v1",
+    "title": "R4DGS: Referring Segmentation in 4D Gaussian Splatting",
+    "authors": [
+      "Bangpu Chen",
+      "Yaxuan Li",
+      "Shirui Peng",
+      "Xiangtian Si",
+      "Liuxin Chu",
+      "Xitong Cao",
+      "Hongbo Jin",
+      "Jiayu Ding"
+    ],
+    "abstract": "Dynamic representations based on 4D Gaussian Splatting (4DGS) have shown strong capabilities in reconstruction and rendering, yet current methods remain limited in supporting complex natural-language referring in dynamic scenes. Existing 4D Gaussian methods are primarily designed for rendering-oriented dynamic modeling, while current semantic extensions often rely on scene-specific semantic optimization or are evaluated on relatively simple query settings. In this paper, we study Referring 4D Gaussian Splatting (R4DGS), a task for grounding temporally varying, multi-target or reasoning-intensive, and zero-target or distractor expressions in dynamic 4D scenes. To support this task, we introduce R4D-Bench-QA, a benchmark with structured query annotations. We further present ReferGaussian, a unified framework built upon 4DGS that converts low-level dynamic Gaussians into persistent, language-addressable entities for training-free referring inference. ReferGaussian organizes mask-supported Gaussian entities in an EntityBank, uses Multimodal Large Language Models (MLLMs) to decompose complex queries into trackable object phrases and structured referring constraints, and performs constraint-aware grounding without scene-specific semantic optimization. Experiments on R4D-Bench-QA and the 4D LangSplat protocol demonstrate improved temporal target selection and competitive spatiotemporal grounding without scene-specific semantic training. Project resources are available at https://chenbangpu.github.io/R4DGS/.",
+    "link": "http://arxiv.org/abs/2610.30326v1",
+    "published": "2026-10-21",
+    "category": "cs.CV",
+    "tags": [
+      "4D Gaussian Splatting",
+      "Referring Segmentation",
+      "Vision-Language Grounding",
+      "Dynamic Scenes",
+      "MLLM"
+    ],
+    "tldr": "提出R4DGS任务与R4D-Bench-QA基准，并给出免训练框架ReferGaussian实现动态4D场景语言指代分割。",
+    "motivation": "现有4D Gaussian Splatting方法主要面向渲染建模，语义扩展多依赖场景特定的语义优化，且评测查询设定偏简单，难以支持动态场景中复杂自然语言指代。为此作者提出Referring 4D Gaussian Splatting任务，覆盖随时间变化、多目标或需推理的查询，以及零目标或含干扰项的表达式。",
+    "method": "构建带结构化查询标注的基准R4D-Bench-QA；并提出统一框架ReferGaussian，将底层动态高斯组织为EntityBank中由掩码支持、可被语言寻址的持久实体，借助多模态大模型（MLLM）把复杂查询分解为可跟踪的物体短语与结构化指代约束，再执行约束感知的定位，全程无需场景特定的语义优化，实现免训练指代推理。",
+    "result": "在R4D-Bench-QA与4D LangSplat协议上的实验表明，ReferGaussian在无需场景特定语义训练的条件下改善了时序目标选择能力，并取得有竞争力的时空定位表现；摘要未提供具体量化指标。",
+    "conclusion": "该工作将语言指代分割引入4D高斯动态表示，贡献了任务定义、结构化基准与免训练的ReferGaussian框架，为动态4D场景的自然语言理解与可寻址实体建模提供了新范式，有望推动4DGS从渲染走向语义交互应用。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2610.30319v1",
+    "title": "TerraTransfer++: Demonstration-Free End-to-End Planner",
+    "authors": [
+      "Zikang Xiong",
+      "Weixin Li",
+      "Zhouchonghao Wu",
+      "Akshay Rangesh",
+      "Saarth Bonde",
+      "Grantland Hall",
+      "Chen Tang",
+      "Yihan Hu",
+      "Wei Zhan"
+    ],
+    "abstract": "End-to-end autonomous driving has achieved state-of-the-art performance on benchmarks and real-world deployments. Its standard training recipe, however, is expensive across all existing paradigms: imitation learning requires fleet-scale driving logs whose behavior distribution only thinly covers the safety-critical tail; closed-loop reinforcement learning in a photorealistic simulator, while offering diverse behaviors, is bottlenecked by sample-efficiency, per-step cost of rendering, and a forward pass through a large vision backbone. Self-play in vectorized simulators changes the economics: at millions of rollout steps per second, one can obtain a state distribution with natural diversity in collisions, near-misses, and recoveries that no driving log contains, and a highly reactive policy emerges from a basic driving-quality reward. Our approach exploits this asymmetry. We pretrain a single policy by self-play, distill its rollouts into a flow-matching trajectory teacher that also plans, and train lightweight adapters on a frozen pretrained vision backbone to reproduce the latent space of either teacher through the action KL divergence, a batch-relational low-rank structural loss, and, for the planner, a trajectory-matching loss. Every target traces back to the self-play policy, so alignment never supervises against a logged trajectory: a paired dataset of (image, scene-state) frames suffices, with no need for the curated expert demonstrations that imitation pretraining is built on. From this one self-play teacher we obtain two end-to-end students: a closed-loop policy that outperforms every published imitation-based end-to-end method on the photorealistic 3D Gaussian splatting closed-loop benchmark HUGSim, and a planner that reaches 59.4 EPDMS on NAVSIM navhard, above every published method including DriveZero-Scale (57.1), and 95.5 PDMS on navtest, without human demonstrations.",
+    "link": "http://arxiv.org/abs/2610.30319v1",
+    "published": "2026-10-21",
+    "category": "cs.AI",
+    "tags": [
+      "Autonomous Driving",
+      "End-to-End Planning",
+      "Self-Play",
+      "Flow Matching",
+      "Distillation"
+    ],
+    "tldr": "提出TerraTransfer++，用矢量仿真自博弈预训练并蒸馏出无需专家演示的端到端规划器。",
+    "motivation": "现有端到端自动驾驶训练成本高：模仿学习依赖车队规模日志且安全关键长尾覆盖不足；闭环强化学习受样本效率、逐帧渲染开销和大型视觉骨干前向计算限制。论文旨在利用矢量化仿真器自博弈的高吞吐优势，获得无需人类演示、覆盖碰撞/近失/恢复等多样状态的高效训练路线。",
+    "method": "在矢量化仿真器中自博弈预训练单一策略，再将其rollout蒸馏为兼具规划能力的flow-matching轨迹教师；在冻结预训练视觉骨干上训练轻量adapter，通过action KL散度、batch-relational低秩结构损失及规划器轨迹匹配损失对齐教师latent空间。该方法仅需(image, scene-state)配对帧，无需日志轨迹或专家演示。",
+    "result": "从同一自博弈教师得到闭环策略和规划器：闭环策略在3D高斯泼溅闭环基准HUGSim上优于所有已发表基于模仿学习的端到端方法；规划器在NAVSIM navhard达到59.4 EPDMS，超过DriveZero-Scale的57.1及所有已发表方法，在navtest达到95.5 PDMS，且无需人类演示。",
+    "conclusion": "结果表明矢量仿真自博弈可替代昂贵的演示采集与闭环强化学习训练，形成无需人类演示的端到端规划范式。统一自博弈教师可蒸馏出闭环策略和规划器，并在HUGSim与NAVSIM上取得领先性能，具备降低数据成本与扩展训练规模的潜力。"
+  },
+  {
     "id": "http://arxiv.org/abs/2610.28631v1",
     "title": "AEON: Unifying Video and 3D World Models",
     "authors": [
@@ -1524,141 +1609,5 @@
     "method": "HumanSkill-4D无需训练，跨化身共享多模态大语言模型与几何算子。它为每个化身构建语义记忆，将身体部件和服装类别链接到持久高斯区域及外观描述，由MLLM按外观、关系或功能选择类别；同时构建存储驱动关节轨迹的运动记忆，让MLLM将算子组合为程序以检查查询条件，从而使选择可追踪并支持新增运动条件。",
     "result": "作者构建了三个人工标注基准，并显示HumanSkill-4D在部件分割以及3D和4D指代分割任务上均优于基线方法；每个化身仅需数分钟设置，且记忆紧凑（摘要未提供具体量化数值）。",
     "conclusion": "该工作提出化身指代分割新任务，使用户能够语言查询可动高斯化身的空间区域与时间动作区间，服务于局部编辑和动作检查。其免训练、跨化身共享和可追踪选择的设计降低了每化身部署成本，并推动了语言驱动的化身交互研究。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2610.23250v1",
-    "title": "LonGaussian: Tracking Foundation Priors for Long-Context Feedforward Gaussian Reconstruction",
-    "authors": [
-      "Zhoufeng Xie",
-      "Guanjun Wu",
-      "Shuai Zhang",
-      "Xinggang Wang",
-      "Wenyu Liu"
-    ],
-    "abstract": "Reconstructing high-quality, renderable 3D scenes from long videos is essential for robotic perception and embodied intelligence. Many feed-forward Gaussian reconstruction methods rapidly predict 3D scenes from a small set of images, but extending them to longer sequences presents two bottlenecks: jointly processing all views increases GPU memory requirements, while accumulating pixel-aligned predictions redundantly represents the same surfaces and increases storage and rendering costs. We present LonGaussian, a streaming feed-forward framework that reconstructs compact, globally renderable Gaussian scenes from long image sequences with known intrinsics and unknown camera poses. Built on a pretrained streaming 3D reconstruction backbone, LonGaussian decodes long-context geometric features into dense Gaussians. Within each chunk, multi-frame point tracks link repeated observations of the same surface and guide a learned merger to consolidate the corresponding Gaussian predictions. Rendered-depth consistency filtering further suppresses Gaussians from other chunks that incorrectly occlude locally reconstructed surfaces. On DL3DV and RealEstate10K benchmarks, LonGaussian improves novel-view rendering quality while using substantially fewer Gaussians than the evaluated feed-forward baselines.",
-    "link": "http://arxiv.org/abs/2610.23250v1",
-    "published": "2026-10-16",
-    "category": "cs.CV",
-    "tags": [
-      "Gaussian Splatting",
-      "3D Reconstruction",
-      "Streaming",
-      "Long Video",
-      "Novel View Synthesis"
-    ],
-    "tldr": "LonGaussian以流式前馈方式从长视频重建紧凑且可全局渲染的高斯场景。",
-    "motivation": "现有前馈高斯重建方法多针对少量图像，扩展到长序列时面临两大瓶颈：联合处理所有视角导致显存开销激增，而逐像素对齐的预测累积会冗余表示同一表面，增加存储与渲染成本。目标是仅凭已知内参、未知位姿的长图像序列，流式重建紧凑可渲染的全局高斯场景。",
-    "method": "方法基于预训练的流式三维重建主干，将长上下文几何特征解码为稠密高斯；在每个分块内利用多帧点轨迹关联同一表面的重复观测，并引导学习式合并器整合对应高斯预测；再用渲染深度一致性过滤抑制其他分块中错误遮挡本地重建表面的高斯。",
-    "result": "在DL3DV与RealEstate10K基准上，LonGaussian提升了新视角渲染质量，同时所用高斯数量显著少于所对比的前馈基线。",
-    "conclusion": "该工作表明，结合点轨迹关联、学习式高斯合并与深度一致性过滤，可在流式前馈框架下实现长视频的紧凑全局高斯重建，为机器人感知与具身智能中的长时序三维建模提供了高效方案。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2610.23237v1",
-    "title": "X-Splat: Unified Gaussian Splatting for Joint RGB and X-ray 3D Reconstruction",
-    "authors": [
-      "Wangze Xu",
-      "Chu Zhou",
-      "Mae Yamaguchi",
-      "Linrui Dai",
-      "I-Chao Shen",
-      "Takashi Ijiri",
-      "Imari Sato"
-    ],
-    "abstract": "Jointly reconstructing RGB and X-ray provides new insights by connecting external appearance with internal structure, enabling a more complete understanding of real-world objects than single modality. Yet existing methods train separate models per modality and suffer from redundant geometry, alignment artifacts, and loose coupling that limits cross-modal insight discovery. We propose a unified representation in which all Gaussian primitives share a single set of geometric parameters, with only surface-proximal primitives additionally carrying appearance attributes. We perform cross-modal registration through clean multi-view stereo and X-ray geometric proxies instead of aligning two sets of optimized Gaussians, improving alignment stability. We then jointly optimize the unified representation via supervision from both modalities, complemented by a surface-depth consistency loss derived from X-ray geometry to guide RGB reconstruction. Experiments on the InsideOut dataset and our Flower & Insect dataset show that our framework achieves more robust cross-modal alignment, higher RGB rendering quality without compromising X-ray reconstruction, and a more compact representation than maintaining two independent geometries.",
-    "link": "http://arxiv.org/abs/2610.23237v1",
-    "published": "2026-10-16",
-    "category": "cs.CV",
-    "tags": [
-      "Gaussian Splatting",
-      "Cross-Modal Reconstruction",
-      "X-ray Imaging",
-      "3D Reconstruction"
-    ],
-    "tldr": "提出统一高斯表示联合重建RGB与X射线，共享几何并提升跨模态对齐。",
-    "motivation": "现有RGB与X射线联合重建方法通常为每个模态单独训练模型，导致几何冗余、对齐伪影和跨模态耦合松散，限制了对外观与内部结构的整体理解。",
-    "method": "提出统一高斯表示，所有高斯基元共享同一套几何参数，仅靠近表面的基元额外携带外观属性；通过干净的多视图立体与X射线几何代理完成跨模态配准，而非对齐两组已优化高斯，并利用双模态监督联合优化，加入由X射线几何导出的表面深度一致性损失来引导RGB重建。",
-    "result": "在InsideOut数据集和自建Flower & Insect数据集上，该框架实现了更稳健的跨模态对齐和更高的RGB渲染质量，同时不损害X射线重建，并获得比维护两套独立几何更紧凑的表示；摘要未给出具体量化数值。",
-    "conclusion": "该工作通过共享几何的统一高斯表示与代理配准策略，将RGB外观与X射线内部结构紧密耦合，在保持重建质量的同时提升对齐稳定性和表示紧凑性，为跨模态联合三维重建提供了新思路。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2610.23039v1",
-    "title": "Frame-Consistent Feed-Forward 3D Gaussian Splatting from Sparse Unposed Images",
-    "authors": [
-      "Viruthshaan Vinasirajan",
-      "Ranga Rodrigo"
-    ],
-    "abstract": "Feed-forward Gaussian models have made novel view synthesis almost instantaneous. Feed-forward methods predict Gaussians directly, either in two stages or in a single merged pass. Using two separately trained models is attractive because each can specialize in its own objective: one for accurate pose estimation and the other for high-quality reconstruction, rather than forcing a single jointly trained network to compromise between the two. A natural instantiation pairs a frozen pose estimator, VGGT, with a frozen reconstruction backbone, TokenGS. Prior work, such as VGGT-X and 3R-GS, also adopts a two-stage design, but attributes the resulting quality degradation to noisy pose estimates and introduces learned refinement. We show that this is not the primary source of the problem. Through per-camera analysis across 107 scenes from two datasets, DL3DV and MipNeRF360, using COLMAP poses as the reference, we find that the rotation error after alignment is small (median 1.6 degrees), whereas the translation scale is offset by a large, dataset-consistent factor. Controlled ablations over 140 DL3DV scenes show that the primary obstacles are two integration failures rather than pose error: a coordinate-frame inconsistency and a translation-scale mismatch, both of which can be corrected deterministically. With these fixes, a frozen VGGT driving a frozen TokenGS achieves 22.47 PSNR, within 0.51 dB of the COLMAP reference, with no additional training, when poses are estimated from all scene views. In the sparse setting, where reconstruction uses only four context images under the standard pose-free protocol, the same pipeline matches this all-view quality, yielding a fully COLMAP-free pipeline without any refinement step.",
-    "link": "http://arxiv.org/abs/2610.23039v1",
-    "published": "2026-10-16",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Novel View Synthesis",
-      "Pose Estimation",
-      "Sparse Views",
-      "Feed-Forward"
-    ],
-    "tldr": "冻结VGGT与TokenGS的两阶段前馈高斯泼溅，经确定性坐标系与平移尺度修正后无需COLMAP即可高质量重建。",
-    "motivation": "两阶段前馈高斯方法可让位姿估计与重建模型各自专精，但现有VGGT-X、3R-GS等将质量退化主要归因于位姿噪声并引入学习式细化。本文重新审视该问题，旨在定位冻结位姿估计器与冻结重建骨干集成时的真正瓶颈。",
-    "method": "在DL3DV与MipNeRF360共107个场景上以COLMAP位姿为参考进行逐相机分析，并在140个DL3DV场景做受控消融；发现主要问题是以坐标系不一致和平移尺度失配为代表的集成失败，而非旋转误差，并采用确定性方法修正二者，直接连接冻结VGGT与冻结TokenGS。",
-    "result": "对齐后旋转误差中位数仅1.6度，但平移尺度存在数据集一致的显著偏移；修正后冻结VGGT驱动冻结TokenGS在全体视角位姿下达到22.47 PSNR，距COLMAP参考仅0.51 dB，无需额外训练。稀疏设置仅用4张上下文图像时，同一流程仍匹配全视角质量，且无需细化步骤。",
-    "conclusion": "研究表明两阶段前馈高斯退化的主因是可确定性修正的坐标系与尺度集成问题，而非位姿噪声；该修复实现了完全无需COLMAP、无需学习式细化的稀疏无位姿重建流程，对前馈高斯重建系统有直接价值。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2610.23021v1",
-    "title": "Semantic-Critical Regions for Video-to-Audio Generation",
-    "authors": [
-      "Yun Fang",
-      "Wei Guo",
-      "Zhuonan Liang",
-      "Heng Wang",
-      "Weidong Cai"
-    ],
-    "abstract": "In real-world videos, sound events are often associated with localized and fine-grained visual cues, such as object motion, object-part dynamics, contact events, and interactions between objects. Existing video-to-audio (V2A) methods employ implicit conditioning based on global visual representations or explicit control derived from temporal and spatial cues. However, subtle sound-producing and sound-indicative interactions remain insufficiently captured, leaving room for more precise visual conditioning of sound-event semantics and temporal dynamics. Motivated by this observation, we refer to regions containing such sound-relevant visual evidence as Semantic-Critical Regions (SCRs) and introduce SCR-V2A, a V2A generation framework that explicitly localizes and encodes SCRs as fine-grained visual guidance for audio generation. Specifically, we first identify SCRs through sound-related visual localization. We then transform the localized regions into a control representation through adapter-based dual visual encoding, which jointly captures global visual context and fine-grained sound-relevant evidence. The representation is used to condition a downstream audio generation model. Experiments on both in-domain and out-of-domain benchmarks demonstrate that SCR-V2A achieves strong performance in distribution matching and audio quality while remaining competitive in cross-modal alignment and requiring few trainable parameters. These results highlight the value of prioritizing fine-grained, sound-relevant visual regions for V2A generation.",
-    "link": "http://arxiv.org/abs/2610.23021v1",
-    "published": "2026-10-16",
-    "category": "cs.CV",
-    "tags": [
-      "Video-to-Audio",
-      "Multimodal Generation",
-      "Visual Localization",
-      "Adapter",
-      "Audio Synthesis"
-    ],
-    "tldr": "提出SCR-V2A，通过定位并编码语义关键区域为视频到音频生成提供细粒度视觉引导。",
-    "motivation": "现有视频到音频方法多依赖全局视觉表示或时序与空间显式控制，难以充分捕捉细微的发声与指示声音的局部视觉交互，因此需要更精确地条件化声音事件语义与时序动态。",
-    "method": "SCR-V2A首先通过声音相关视觉定位识别语义关键区域SCR，再利用基于adapter的双路视觉编码将局部区域转化为控制表示，联合捕捉全局视觉上下文与细粒度声音相关证据，并以此条件化下游音频生成模型。",
-    "result": "在域内与域外基准上，SCR-V2A在分布匹配和音频质量方面表现较强，在跨模态对齐上具有竞争力，同时仅需少量可训练参数；摘要未提供具体量化指标。",
-    "conclusion": "结果表明，优先利用细粒度且与声音相关的视觉区域对视频到音频生成具有价值，SCR-V2A的主要贡献在于显式定位并编码语义关键区域，为高精度且参数高效的音频生成提供了新思路。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2610.22778v1",
-    "title": "Direct Conditional Parameterization for N-Dimensional Splatting",
-    "authors": [
-      "Zhongpai Gao",
-      "Benjamin Planche",
-      "Van Nguyen Nguyen",
-      "Meng Zheng",
-      "Anwesa Choudhuri",
-      "Arun Innanje",
-      "Terrence Chen",
-      "Ziyan Wu"
-    ],
-    "abstract": "N-dimensional splatting extends 3D Gaussian Splatting with view direction and time to model view-dependent and dynamic effects. Each primitive is lifted into a joint distribution over position and conditioning variables, then conditionally sliced at each rendering query. N-DGS and UBS share this step across Gaussian and Beta kernels: recovering the conditional mean, opacity, and covariance requires per-primitive matrix inversions and regression products in every forward pass. We introduce direct conditional parameterization, replacing this covariance-derived readout with explicit per-effect parameters: a Cholesky precision factor for opacity and a factorized query-to-position regression operator with learnable per-dimension coupling. Unrestricted conditional coordinates recover a valid joint covariance; our factorization adds spatial-scale and coupling priors. Applied to both kernels, the parameterization yields dGS (Gaussian) and dBS (Beta). Across five static and dynamic benchmarks, they match or exceed their covariance-derived counterparts on quality, with gains up to +1.26 dB in the main MCMC evaluation. Production slicing is 6.9-7.7 times faster than on-the-fly covariance-derived conditioning; complete-render profiling gives 1.25-1.91 times speedups on four trained scenes. Direct conditioning provides a structured, kernel-agnostic alternative for N-dimensional splatting. Project page: https://gaozhongpai.github.io/dgs/.",
-    "link": "http://arxiv.org/abs/2610.22778v1",
-    "published": "2026-10-16",
-    "category": "cs.CV",
-    "tags": [
-      "Gaussian Splatting",
-      "N-Dimensional Splatting",
-      "Conditional Parameterization",
-      "Dynamic Scene Reconstruction",
-      "Novel View Synthesis"
-    ],
-    "tldr": "提出直接条件参数化，加速N维splatting并保持或提升渲染质量。",
-    "motivation": "N维splatting将3D Gaussian Splatting扩展到视角方向与时间，以建模视角相关和动态效果，但每次渲染查询都需对每个primitive做矩阵求逆与回归乘积，计算开销大。",
-    "method": "提出直接条件参数化，用显式逐效果参数替代由协方差导出的条件读取：用Cholesky精度因子表示不透明度，并用带可学习逐维耦合的因子化查询到位置回归算子建模条件坐标；该方法应用于Gaussian和Beta核，分别得到dGS与dBS。",
-    "result": "在五个静态与动态基准上，dGS和dBS的质量匹配或超过协方差导出方法，主MCMC评估最高提升+1.26 dB；生产切片比动态协方差条件化快6.9-7.7倍，四个已训练场景的完整渲染剖析加速1.25-1.91倍。",
-    "conclusion": "该工作为N维splatting提供了一种结构化、与核无关的直接条件建模范式，在保持或提升质量的同时显著提升条件切片与完整渲染效率。"
   }
 ]
