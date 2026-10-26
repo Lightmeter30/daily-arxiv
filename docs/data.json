@@ -1,5 +1,118 @@
 [
   {
+    "id": "http://arxiv.org/abs/2610.32976v1",
+    "title": "FlexGlue: Sparse-to-Dense Feature Matching and Visual Disambiguation",
+    "authors": [
+      "Philipp Lindenberger",
+      "Paul-Edouard Sarlin",
+      "Ondrej Miksik",
+      "Marc Pollefeys"
+    ],
+    "abstract": "To estimate correspondences across images, existing approaches match either sparse interest points, which is highly efficient but limited by repeatability, or dense pixel grids, which is robust but expensive. Furthermore, these approaches are trained with only matching pairs and thus often fail to reject unrelated pairs that exhibit visual symmetries, which is equally important in applications like Structure-from-Motion (SfM). We bridge these gaps by introducing FlexGlue, a neural network for asymmetric sparse-to-dense matching and disambiguation. Given two images and coordinates of points in the first image, FlexGlue estimates the coordinates of the corresponding points in the second image while simultaneously rejecting the pair if non-matching. By searching for a limited set of correspondences among dense pixels, our approach is both fast and effective at both matching and disambiguation: it combines the sub-pixel accuracy of dense matching with the speed of sparse matching, while rejecting incorrect pairs with high precision. Experiments on multiple datasets show that FlexGlue pushes the Pareto frontier in relative pose estimation and significantly outperforms existing approaches for SfM and visual localization. FlexGlue is publicly available at https://github.com/cvg/flexglue .",
+    "link": "http://arxiv.org/abs/2610.32976v1",
+    "published": "2026-10-23",
+    "category": "cs.CV",
+    "tags": [
+      "Feature Matching",
+      "Sparse-to-Dense",
+      "Disambiguation",
+      "SfM",
+      "Visual Localization"
+    ],
+    "tldr": "FlexGlue实现非对称稀疏到稠密匹配与视觉消歧，兼顾速度、亚像素精度和错误配对拒绝能力。",
+    "motivation": "现有方法要么匹配稀疏兴趣点，高效但受重复性限制；要么匹配稠密像素网格，鲁棒但昂贵。此外，仅用匹配对训练的方法难以拒绝具有视觉对称性的无关图像对，而这在SfM等应用中同样关键。",
+    "method": "FlexGlue输入两张图像及第一张图中的点坐标，输出第二张图中对应点坐标，并在不匹配时拒绝该点对。它通过在稠密像素中搜索有限数量的对应关系，将稠密匹配的亚像素精度与稀疏匹配的速度结合，并以高精度拒绝错误配对。",
+    "result": "在多个数据集上，FlexGlue在相对位姿估计中推进了Pareto前沿，并在SfM和视觉定位任务上显著优于现有方法；摘要未提供具体量化指标。",
+    "conclusion": "FlexGlue通过非对称稀疏到稠密匹配和视觉消歧，为SfM与视觉定位提供了一种快速、准确且能拒绝错误配对的解决方案，代码已开源，有望推动相关应用。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2610.32800v1",
+    "title": "CompMVR: Compression-Aware Multi-View Restoration Using Diffusion Models for Geometrically Consistent 3D Reconstruction",
+    "authors": [
+      "Dong-hwi Kim",
+      "Chaewon Moon",
+      "Hojun Song",
+      "Dongbeom Kim",
+      "Junyeong Jang",
+      "Aro Kim",
+      "Gahyeon Kim",
+      "Heejung Choi",
+      "Jehee Kim",
+      "Gianella Cravioto",
+      "Sohyun Lee",
+      "Gyeongjin Choi",
+      "EunHye Jeong",
+      "Soo Ye Kim",
+      "Jaehyup Lee",
+      "Sang-hyo Park"
+    ],
+    "abstract": "Real-world 3D reconstruction pipelines often rely on multi-view images degraded by lossy compression. While compression artifacts have been extensively studied in single-image or video restoration, their impact on multi-view geometry remains largely overlooked. In this work, we identify compression-induced cross-view geometric inconsistency as a critical failure mode, where view-dependent artifacts disrupt feature matching, dense correspondence, camera parameter estimation, and downstream 3D reconstruction tasks such as novel view synthesis. To address this problem, we propose CompMVR, a compression-aware multi-view diffusion restoration framework that jointly refines compressed views while preserving cross-view consistency, and construct compressed datasets for systematic evaluation. Unlike conventional restoration methods that optimize each image independently for 2D perceptual quality, CompMVR leverages learned compression priors and cross-view correspondence to recover visual details while improving geometric reliability across views. Experiments across diverse datasets, codecs, and compression levels demonstrate gains in restoration quality and downstream 3D tasks, including novel-view synthesis, camera pose estimation, and view matching. These results establish compressed multi-view restoration as a distinct problem and highlight its importance for 3D reconstruction under lossy compression. Code and data for this paper are available at https://mchaewon.github.io/CompMVR-project-page/.",
+    "link": "http://arxiv.org/abs/2610.32800v1",
+    "published": "2026-10-23",
+    "category": "cs.CV",
+    "tags": [
+      "3D Reconstruction",
+      "Multi-View Restoration",
+      "Diffusion Models",
+      "Compression",
+      "Geometric Consistency"
+    ],
+    "tldr": "提出CompMVR，利用扩散模型联合恢复压缩多视图并保持跨视角几何一致性，提升3D重建下游任务。",
+    "motivation": "真实3D重建流程中的多视图图像常受有损压缩退化，但压缩伪影对多视图几何的影响长期被忽视。作者识别出压缩导致的跨视角几何不一致是关键失效模式，会破坏特征匹配、稠密对应、相机参数估计及新视角合成等下游任务。",
+    "method": "提出CompMVR，一个压缩感知的多视图扩散恢复框架，联合精化压缩视图并保持跨视角一致性。与逐图独立优化2D感知质量的传统方法不同，它利用学习到的压缩先验和跨视角对应恢复视觉细节，同时提升跨视图几何可靠性，并构建压缩数据集进行系统评估。",
+    "result": "摘要未提供具体量化指标；实验在多种数据集、编解码器和压缩级别上显示，恢复质量以及新视角合成、相机位姿估计和视图匹配等下游3D任务均有提升。",
+    "conclusion": "将压缩多视图恢复确立为一个独立问题，强调有损压缩下几何一致性对3D重建的重要性，并提供代码和数据以促进后续研究。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2610.32517v1",
+    "title": "VERA-Hand: A Verified Multidimensional Benchmark for 2D Hand Pose Estimation in Third-Person Dynamic Gesture Videos",
+    "authors": [
+      "Gibran Benitez-Garcia",
+      "Hiroki Takahashi"
+    ],
+    "abstract": "Hand landmarks serve as input for gesture recognition, sign language understanding, and touchless human-computer interaction. Yet hand pose estimators are typically evaluated with frame-wise localization metrics such as PCK or MPJPE, which are computed over matched predictions and overlook missed or spurious hands, handedness errors, and temporal instability. To address these limitations, we present VERA-Hand, a benchmark that evaluates estimators using manually verified, frame-level 2D annotations for 10,690 hands across four complementary dimensions (detection, localization, identification, and temporal stability), as well as a joint Pose-F1 metric that requires both correct detection and accurate localization. Evaluating six estimators spanning hand-specific, whole-body, reconstruction-based, and foundation-model paradigms, we find that no estimator dominates: rankings reorder sharply across dimensions. VERA-Hand also exposes failures that localization-only and downstream evaluations may not reveal, including cross-hand overlap in over 85% of frames for a recent foundation model. A post-hoc cleanup case study demonstrates how the benchmark can validate corrective interventions, while stratified analyses show that robustness varies across motion-blur classes and hand regions. We release the verified annotations, protocol, and code at https://gibranbenitez.github.io/VERA_Hand/",
+    "link": "http://arxiv.org/abs/2610.32517v1",
+    "published": "2026-10-23",
+    "category": "cs.CV",
+    "tags": [
+      "Hand Pose Estimation",
+      "Benchmark",
+      "Gesture Videos",
+      "Temporal Stability",
+      "Pose-F1"
+    ],
+    "tldr": "提出VERA-Hand多维手部姿态估计基准，覆盖检测、定位、识别与时序稳定性并揭示现有方法缺陷。",
+    "motivation": "现有手部姿态估计通常仅用PCK或MPJPE等逐帧匹配定位指标评估，忽略漏检、误检、左右手错误和时序不稳定问题。VERA-Hand旨在通过人工验证的帧级标注和多维评估协议弥补这些局限。",
+    "method": "构建包含10,690只手的人工验证帧级2D标注，从检测、定位、识别和时序稳定性四个互补维度评估估计器，并提出要求检测正确且定位准确的联合Pose-F1指标。评估覆盖手部专用、全身、重建型和基础模型四类共六种估计器。",
+    "result": "六种估计器在各维度上排名显著重排，没有单一方法全面领先；某近期基础模型在超过85%的帧中出现跨手重叠失败。事后清理案例表明该基准可验证纠正干预，分层分析显示鲁棒性随运动模糊类别和手部区域变化。",
+    "conclusion": "VERA-Hand暴露了仅定位评估和下游评估可能无法发现的失败模式，并提供可验证纠正干预的基准工具。作者发布人工验证标注、评估协议和代码，推动更全面的手部姿态估计评估。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2610.32073v1",
+    "title": "Guided Zero-Shot Anomaly Explanation for Anonymized Crowd Video Monitoring: Context, Categorization, and Spatial Localization",
+    "authors": [
+      "Mulugeta Weldezgina Asres",
+      "Lei Jiao",
+      "Christian Walter Omlin"
+    ],
+    "abstract": "Despite the promising development of deep learning for video anomaly detection (VAD), explainability (XAI) of these models remains a challenge. Explainable and privacy-protecting VAD builds transparency and trust that facilitates adoption of computer vision systems, including safety and security monitoring. However, anomaly explainability in privacy-preserving VAD systems is underexplored. In this study, we present the XAVAD approach, a unified descriptive anomaly XAI for an anonymized VAD, that integrates flexible zero-shot anonymization, anomaly type categorization, visual localization, and scene context description. We provide empirical and qualitative assessments of multifaceted explanations integrated with full-body visual anonymization for privacy protection. We adopt a multimodal CLIP embedding for videos, using improved LLM-assisted prompting and pool-scoring mechanisms for anomaly-type identification. We enhance Grad-ECLIP for spatial anomaly heatmap localization, leveraging computation and accuracy through our novel prompt-guided patching autofocus mechanism. We employ VLMs to generate context and reasoning descriptions of detected anomalies through curated prompt engineering. We have evaluated the accuracy and computational cost of XAVAD on several publicly available CCTV and video datasets. Our experiments demonstrate substantial gains of our XAVAD over state-of-the-art benchmark approaches and provide insights into privacy protection trade-offs in XAI for VAD. We further present ablation studies and assessments across diverse configurations and modeling alternatives to demonstrate the efficacy of our proposed methods. Code: https://github.com/muleina/XAVAD}{https://github.com/muleina/XAVAD .",
+    "link": "http://arxiv.org/abs/2610.32073v1",
+    "published": "2026-10-23",
+    "category": "cs.CV",
+    "tags": [
+      "Video Anomaly Detection",
+      "Explainable AI",
+      "Privacy Preservation",
+      "Zero-Shot Learning",
+      "Vision-Language Models"
+    ],
+    "tldr": "提出XAVAD统一零样本异常解释框架，在匿名化人群视频中实现异常分类、空间定位与场景上下文描述。",
+    "motivation": "隐私保护视频异常检测的可解释性仍未被充分探索，现有VAD缺乏透明性与信任，且匿名化条件下难以同时完成异常类型、位置和上下文解释。",
+    "method": "XAVAD集成零样本全身匿名化、基于多模态CLIP嵌入与LLM辅助提示及池化评分的异常类型识别、改进Grad-ECLIP并结合提示引导分块自动聚焦的空间热力图定位，以及利用VLM和精选提示工程生成场景上下文与推理描述。",
+    "result": "在多个公开CCTV和视频数据集上，XAVAD在准确率上显著优于现有基准，并评估了计算成本；消融实验验证了各模块及不同配置的有效性，并揭示了XAI中的隐私保护权衡。",
+    "conclusion": "该工作为匿名化VAD提供统一的可解释框架，兼顾隐私、异常分类、定位与上下文描述，提升系统透明度和可信度，并为隐私保护与解释性权衡提供实证洞察。"
+  },
+  {
     "id": "http://arxiv.org/abs/2610.31645v1",
     "title": "OmniRay: Camera-Agnostic Monocular 3D Reconstruction with Composite Ray Fields",
     "authors": [
@@ -1360,142 +1473,5 @@
     "method": "PnP-Transformer输入半稠密2D-3D对应场及置信度，将几何输入映射到连续隐空间并直接回归6D物体位姿；它被集成到对应模块与位姿求解器分开训练的零样本6D位姿估计流程中。",
     "result": "在七个核心BOP数据集上，PnP-Transformer取得41.2%平均AR与0.46秒/物体低延迟，超过RayPose的39.1%但低于Co-op的58.4%；保持对应模块不变改用EPnP-RANSAC后平均AR达52.2%，在七个数据集中的六个上更优，代价是每物体增加约60毫秒。",
     "conclusion": "结果表明该神经求解器提供了低延迟的可微替代方案，但与RANSAC类求解器存在精度-延迟权衡；其贡献在于可微神经PnP求解器及零样本6D位姿流程集成，并公开代码与预训练模型。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2610.25517v1",
-    "title": "ReDT: Resolution-Decoupled Visual Geometry Transformer",
-    "authors": [
-      "Abteen Arab",
-      "Guile Wu",
-      "Dongfeng Bai"
-    ],
-    "abstract": "We introduce ReDT, a feed-forward visual geometry transformer designed to scale multi-view reconstruction to high-definition (HD) inputs. Existing visual geometry transformers are typically trained at fixed, standard definition (SD) resolutions and exhibit degraded reconstruction quality and poor computational scaling to high input resolutions. While recent efficient architectures reduce the complexity of inter-frame attention, expensive intra-frame and encoder attention remain largely unaddressed, making HD reconstruction impractical with existing architectures. ReDT addresses both limitations with a resolution-aware architecture designed to scale to high-resolution inputs. The key idea of ReDT is to first map each view to a fixed-size set of basis tokens, compute correspondences in this compact constant-size basis space, and then project the outputs back to the original resolution for dense prediction. By decoupling the internal representation from input resolution during attention, ReDT substantially reduces the computational cost of high-resolution 3D reconstruction and improves model performance at all resolutions. Extensive experiments on multiple datasets spanning SD to FHD (2K) show that ReDT outperforms state-of-the-art visual geometry transformers in both reconstruction quality and computational efficiency. For instance, on the ETH3D (2K) dataset, ReDT achieves a $16\\times$ speedup, a $34\\%$ reduction in peak GPU memory usage, and a $33\\%$ reduction in chamfer distance over VGGT-$Ω$. \\href{https://redt.github.io}{Project Website.}",
-    "link": "http://arxiv.org/abs/2610.25517v1",
-    "published": "2026-10-18",
-    "category": "cs.CV",
-    "tags": [
-      "Visual Geometry Transformer",
-      "Multi-view Reconstruction",
-      "High-Resolution",
-      "3D Reconstruction"
-    ],
-    "tldr": "ReDT通过固定大小基元令牌在紧凑空间计算多视图对应关系，实现高效可扩展的高清三维重建。",
-    "motivation": "现有视觉几何Transformer通常在固定标准分辨率下训练，面对高分辨率输入时重建质量下降且计算扩展性差。已有高效架构主要降低帧间注意力复杂度，但代价高昂的帧内注意力和编码器注意力仍未解决，使高清重建难以实用。",
-    "method": "ReDT采用分辨率感知架构，先将每个视图映射为固定大小的基元令牌集合，在该紧凑恒定大小的基元空间中计算对应关系，再将输出投影回原始分辨率进行稠密预测。通过在注意力中解耦内部表示与输入分辨率，ReDT显著降低高分辨率三维重建计算成本，并提升各分辨率下的模型性能。",
-    "result": "在从标准分辨率到全高清（2K）的多个数据集上，ReDT在重建质量和计算效率上均优于最先进视觉几何Transformer。例如在ETH3D（2K）上，相比VGGT-Ω实现16倍加速、峰值GPU内存降低34%、Chamfer距离降低33%。",
-    "conclusion": "ReDT通过分辨率解耦将前馈多视图重建有效扩展到高清输入，在质量与效率上同时取得提升。该设计为实用化高分辨率三维重建提供了可扩展的新路线。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2610.25358v1",
-    "title": "LateMatch: Breaking the Interaction Bottleneck via Cacheable Matching for Efficient Visual Localization",
-    "authors": [
-      "Mohammad Omama",
-      "Aeyan Ashraf",
-      "Sandeep Chinchali"
-    ],
-    "abstract": "Visual localization is critical for embodied agents, but deploying state-of-the-art deep feature matchers on edge devices is fundamentally limited by their massive computational cost. Standard deep matchers tightly interleave intra-image context building and inter-image matching at every layer, creating a severe interaction bottleneck. Localizing a single query against K database images forces the system to execute the full network K independent times with no capacity for caching. To break this bottleneck, we advocate for a paradigm shift toward cacheable image matching. We realize this paradigm with LateMatch, a versatile approach that restructures existing matchers by deferring inter-image interaction to their final layers. By isolating intra-image processing into offline-cacheable Context Blocks, only a small set of Interaction Blocks must be executed online. To further optimize LateMatch, we introduce E-SToRE (Entropy-guided Spatial Token Reduction and Expansion). E-SToRE leverages the decreasing Shannon entropy of the late Interaction Blocks to dynamically reduce token counts just prior to cross-image interaction. Evaluated across HPatches, ScanNet, MegaDepth, ETH-3D, and Aachen, LateMatch reduces effective computational cost by over 2x compared to standard deep matchers, while E-SToRE yields an additional 10% to 14% savings with negligible degradation in accuracy.",
-    "link": "http://arxiv.org/abs/2610.25358v1",
-    "published": "2026-10-18",
-    "category": "cs.CV",
-    "tags": [
-      "Visual Localization",
-      "Feature Matching",
-      "Cacheable Matching",
-      "Token Reduction"
-    ],
-    "tldr": "LateMatch通过将跨图交互后置并缓存单图上下文，实现高效视觉定位，计算开销降低2倍以上。",
-    "motivation": "现有深度特征匹配器在每层交织单图上下文构建与跨图匹配，针对K张数据库图像需重复执行完整网络K次且无法缓存，成为边缘设备视觉定位的严重交互瓶颈。",
-    "method": "LateMatch将跨图交互推迟到网络末端，把单图处理隔离为可离线缓存的Context Blocks，仅在线执行少量Interaction Blocks；并引入E-SToRE，利用后期交互块香农熵下降动态进行空间token缩减与扩展。",
-    "result": "在HPatches、ScanNet、MegaDepth、ETH-3D和Aachen上，LateMatch将有效计算成本较标准深度匹配器降低2倍以上，E-SToRE额外节省10%至14%且精度退化可忽略。",
-    "conclusion": "该工作提出可缓存图像匹配范式，在不显著损失精度的情况下显著提升视觉定位效率，为边缘设备部署深度匹配器提供可行路径。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2610.25345v1",
-    "title": "MCSplat: Multi-View Photometric and Geometric Consistent Feed-Forward Gaussian Splatting for Driving Scenes",
-    "authors": [
-      "Yifei Wang",
-      "Wei Tian",
-      "Wenhua Bao",
-      "Jia Zhou",
-      "Hanshi Wang",
-      "Fudong Ge",
-      "Jianhua Wu",
-      "Shuai Yuan",
-      "Zhipeng Zhang",
-      "Xingliang Liu",
-      "Xianming Zeng",
-      "Jianyun Xu",
-      "Bingzhao Gao"
-    ],
-    "abstract": "Driving-scene reconstruction via feed-forward Gaussian splatting from sparse multi-view images remains challenging due to two factors. First, cross-camera photometric inconsistency, caused by variations in exposure, ISP, and illumination, can be incorrectly absorbed into Gaussian geometry. Second, unreliable local geometric supervision arises from normal-based constraints near depth discontinuities. To address these issues, we present \\textbf{MCSplat}, a multi-view consistent feed-forward Gaussian splatting framework for driving scenes. MCSplat constructs a canonical appearance space from depth-guided multi-camera correspondences to decouple geometry learning from camera-specific appearance. A multi-scale Bilateral Grid Transformer restores raw camera appearance from canonical renderings, enabling photometric supervision without contaminating Gaussian geometry. To improve local geometric reliability, we estimate Fisher-information-based uncertainty from photometric sensitivity and use it to adaptively weight surface-oriented self-supervision. Extensive experiments demonstrate improved reconstruction quality and generalization across driving datasets. Geometry-oriented evaluations further reveal enhanced cross-view depth consistency and local surface-normal agreement, while qualitative results show fewer geometric artifacts and more coherent structures across overlapping views.",
-    "link": "http://arxiv.org/abs/2610.25345v1",
-    "published": "2026-10-18",
-    "category": "cs.CV",
-    "tags": [
-      "Gaussian Splatting",
-      "Driving Scene Reconstruction",
-      "Feed-Forward",
-      "Multi-View Consistency",
-      "Photometric Consistency"
-    ],
-    "tldr": "提出MCSplat，通过规范外观空间与不确定性加权几何自监督，实现驾驶场景多视角光度与几何一致的前馈高斯泼溅重建。",
-    "motivation": "稀疏多视角驾驶场景的前馈高斯泼溅重建面临两个问题：曝光、ISP和光照差异导致跨相机光度不一致，并可能被错误吸收进高斯几何；深度不连续处的法向约束会带来不可靠的局部几何监督。",
-    "method": "MCSplat从深度引导的多相机对应关系构建规范外观空间，将几何学习与相机特定外观解耦；采用多尺度Bilateral Grid Transformer从规范渲染恢复原始相机外观，从而在不污染高斯几何的情况下提供光度监督；并基于光度敏感性估计Fisher信息不确定性，自适应加权表面朝向自监督。",
-    "result": "实验表明该方法在多个驾驶数据集上提升了重建质量和泛化能力；几何评估显示跨视角深度一致性和局部表面法向一致性增强，定性结果呈现更少几何伪影和更连贯的重叠视角结构；摘要未提供具体量化指标。",
-    "conclusion": "MCSplat通过多视角光度一致建模和不确定性加权几何自监督，提高了驾驶场景前馈高斯泼溅重建的几何可靠性与跨视角一致性，有望促进稀疏多相机驾驶场景的鲁棒重建与泛化。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2610.25068v1",
-    "title": "Localization and Neural Splatting on the Edge: An FPGA Scene Memory for Robots",
-    "authors": [
-      "Que Haohua",
-      "Mingkai Liu",
-      "Handong Yao"
-    ],
-    "abstract": "Resource-constrained robots and autonomous vehicles need scene memories that localize a camera and render nearby views without a desktop GPU. Scene-coordinate regression (SCR) and 3D Gaussian splatting (3DGS) fit because they avoid an SfM stage, but ACEsplat-style pipelines are GPU-centered, and moving them to an edge FPGA is hard because SCR is pose-sensitive and 3DGS rendering is irregular and capacity-sensitive. We present LENS, an edge scene-memory acceleration system on the AMD KR260 that brings an ACEsplat-style workload to a low-power FPGA/ARM platform. Rather than proposing a new scene model, LENS co-designs the two dominant kernels with the board data path: an INT16 SCR accelerator that preserves pose accuracy, and a bit-exact fixed-point ordered 3DGS renderer that rewrites alpha transmittance as a log-sum-exp recurrence and removes provably useless streamed Gaussians. All LENS latency, power, and quality results are board-measured. The SCR engine preserves DSAC* localization accuracy at 25.42 ms, the on-board renderer reaches 34.11 dB on Cambridge against ACEsplat's 33.20, novel-view synthesis on RealEstate10K reaches 27.84 dB against 26.11, and all ten Wayspots scenes reach the ACEsplat rendering target. LENS wins performance per watt over a Jetson Orin NX on every deployment task, by 1.9x to 5.7x at about a quarter of the power, and is faster in absolute latency on localization and Wayspots rendering. On-device training reaches ACEsplat-level quality but not the GPU's time or energy, marking the remaining boundary for a future training accelerator.",
-    "link": "http://arxiv.org/abs/2610.25068v1",
-    "published": "2026-10-18",
-    "category": "cs.CV",
-    "tags": [
-      "FPGA",
-      "3D Gaussian Splatting",
-      "Localization",
-      "Edge Computing",
-      "Scene Memory"
-    ],
-    "tldr": "LENS在AMD KR260 FPGA/ARM平台上协同设计SCR定位与定点3DGS渲染，实现低功耗边缘场景记忆。",
-    "motivation": "资源受限机器人与自动驾驶车辆需要无需桌面GPU即可定位相机并渲染邻近视角的场景记忆。ACEsplat式流程以GPU为中心，而SCR对位姿敏感、3DGS渲染不规则且对容量敏感，难以直接迁移到边缘FPGA。",
-    "method": "LENS并非提出新场景模型，而是在AMD KR260上协同设计两个主导内核与板级数据通路：保留位姿精度的INT16 SCR加速器，以及将alpha透射率重写为log-sum-exp递推并剔除可证明无用流式高斯的位级精确定点有序3DGS渲染器。所有延迟、功耗与质量结果均为板端实测。",
-    "result": "SCR引擎在25.42 ms下保持DSAC*定位精度；板端渲染器在Cambridge上达34.11 dB（ACEsplat为33.20），在RealEstate10K新视角合成达27.84 dB（对比26.11），十个Wayspots场景均达到ACEsplat渲染目标。LENS在每项部署任务上的能效均优于Jetson Orin NX，约四分之一功耗下实现1.9x至5.7x提升，并在定位与Wayspots渲染的绝对延迟上更快。",
-    "conclusion": "LENS证明ACEsplat式场景记忆工作负载可在低功耗FPGA/ARM边缘平台高效运行，并在能效与部分绝对延迟上优于Jetson Orin NX。板端训练可达ACEsplat级质量，但时间和能耗仍不及GPU，指出未来训练加速器的边界。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2610.25011v1",
-    "title": "FineSplat: Fine Patches, Local Groups, Detailed Splats",
-    "authors": [
-      "Hyebin Kim",
-      "Hwasik Jeong",
-      "Joonhyuk Park",
-      "Gyeongjin Kang",
-      "Jungwoo Kim",
-      "Younghyun Kim",
-      "Eunbyung Park"
-    ],
-    "abstract": "Feed-forward 3D Gaussian Splatting (3DGS) promises instant scene reconstruction with high-quality novel-view synthesis. Yet, fine-grained geometry and appearance remain difficult to recover, motivating us to revisit how feed-forward models represent, aggregate, and refine detailed visual information. We introduce FineSplat, a feed-forward 3DGS framework built around fine-grained image patches. Since global multi-view attention becomes prohibitively expensive at such high token resolutions, we develop a dual-grouping strategy that combines two complementary forms of locality: view-wise grouping enables efficient interaction among neighboring views, while 3D spatial grouping reconnects geometrically related tokens that may never have interacted under view-wise grouping by lifting them into the 3D scene space. We further leverage reconstruction error as direct feedback, providing an explicit rendering-based signal to recover fine-grained structures and appearance, thereby overcoming the limitations of one-pass feed-forward prediction. Finally, a compact Gaussian generation scheme preserves the benefits of fine-grained features without unnecessarily increasing the number of primitives. Together, these designs enable FineSplat to recover richer geometry and appearance while remaining efficient and compact, achieving state-of-the-art results by a substantial margin, under the same or smaller Gaussian budgets than existing methods.",
-    "link": "http://arxiv.org/abs/2610.25011v1",
-    "published": "2026-10-18",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "Feed-forward Reconstruction",
-      "Novel View Synthesis",
-      "Local Attention",
-      "Fine-grained Geometry"
-    ],
-    "tldr": "FineSplat 通过细粒度图像块与双分组局部交互实现高效前馈 3DGS，显著提升细节重建。",
-    "motivation": "前馈 3D Gaussian Splatting 可实现即时场景重建与新视角合成，但细粒度几何与外观仍难以恢复；高分辨率 token 下全局多视角注意力计算代价过高，需要重新设计细节信息的表示、聚合与精炼方式。",
-    "method": "FineSplat 以细粒度图像块为核心构建前馈 3DGS，并提出双分组策略：视图分组促进邻近视图间高效交互，3D 空间分组将几何相关 token 提升到场景空间重新连接；同时利用重建误差作为基于渲染的显式反馈来恢复细节结构，并通过紧凑高斯生成方案在保留细粒度特征的同时避免基元数量膨胀。",
-    "result": "在相同或更小的高斯基元预算下，FineSplat 显著优于现有方法并取得 state-of-the-art 结果，能够恢复更丰富的几何与外观；摘要未提供具体量化指标。",
-    "conclusion": "FineSplat 通过细粒度图像块、双分组局部交互、渲染误差反馈与紧凑高斯生成，在保持高效与紧凑的同时提升细节重建质量，为前馈 3DGS 的细粒度场景重建提供了有效路线。"
   }
 ]
