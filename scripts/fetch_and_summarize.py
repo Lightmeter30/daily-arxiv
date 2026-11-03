@@ -48,7 +48,8 @@ DATA_FILE = "docs/data.json"
 ARXIV_USER_AGENT = os.getenv("ARXIV_USER_AGENT") or "daily-arxiv/1.0"
 
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
-client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url="https://api.deepseek.com")
+DEEPSEEK_BASE_URL = os.getenv("DEEPSEEK_BASE_URL") or "https://api.deepseek.com"
+client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url=DEEPSEEK_BASE_URL)
 
 def format_arxiv_datetime(dt: datetime.datetime) -> str:
     """Format a UTC datetime for arxiv submittedDate range queries."""

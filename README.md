@@ -20,8 +20,9 @@
 | `ARXIV_MAX_DAYS` | `7` | 保留最近 N 天的论文 |
 | `ARXIV_MAX_PAPERS_PER_RUN` | `40` | 单次最多处理的新论文数 |
 | `ARXIV_BACKFILL_LIMIT` | `20` | 每次补全历史论文扩展字段的上限 |
-| `DEEPSEEK_API_KEY` | — | **必填**，DeepSeek API 密钥（通过 `Secrets` 设置） |
-| `DEEPSEEK_MODEL` | `deepseek-v4-flash` | 使用的 DeepSeek 模型 ID |
+| `DEEPSEEK_API_KEY` | — | **必填**，模型服务商的 API 密钥（通过 `Secrets` 设置） |
+| `DEEPSEEK_BASE_URL` | `https://api.deepseek.com` | 兼容 OpenAI 接口的模型服务地址 |
+| `DEEPSEEK_MODEL` | `deepseek-v4-flash` | 模型服务商提供的模型 ID |
 
 ## 如何部署到自己的仓库
 1.  **新建仓库**: 在 GitHub 上创建一个新的仓库。
@@ -47,11 +48,16 @@ pip install -r scripts/requirements.txt
 
 # 设置环境变量
 export DEEPSEEK_API_KEY="your_api_key"
+export DEEPSEEK_BASE_URL="https://api.deepseek.com"
+export DEEPSEEK_MODEL="deepseek-v4-flash"
 
 # 或者使用 .env 文件（推荐）
-echo "DEEPSEEK_API_KEY=your_api_key" > .env
+cp .env.example .env
+# 编辑 .env，填写密钥、服务地址和模型名
 
 # 运行脚本
 python scripts/fetch_and_summarize.py
 ```
 数据将更新在 `docs/data.json` 中。
+
+切换兼容 OpenAI 接口的模型服务商时，修改 `.env` 中的 `DEEPSEEK_API_KEY`、`DEEPSEEK_BASE_URL` 和 `DEEPSEEK_MODEL` 即可，变量名保持不变。现有进程环境变量优先于 `.env`；`.env` 已被 Git 忽略，请勿提交真实密钥。在 GitHub Actions 中，密钥通过同名 Secret 设置，地址和模型名通过同名仓库 Variable 设置。

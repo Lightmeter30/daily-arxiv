@@ -17,9 +17,10 @@ load_dotenv()
 
 DATA_FILE = "docs/data.json"
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
+DEEPSEEK_BASE_URL = os.getenv("DEEPSEEK_BASE_URL") or "https://api.deepseek.com"
 MODEL_ID = os.getenv("DEEPSEEK_MODEL") or "deepseek-v4-flash"
 
-client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url="https://api.deepseek.com")
+client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url=DEEPSEEK_BASE_URL)
 
 
 def is_summarized(paper: dict) -> bool:
