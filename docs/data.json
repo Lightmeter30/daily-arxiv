@@ -1554,55 +1554,5 @@
     "method": "先用正射参考图建立全局一致的建筑身份并传播至倾斜视图，形成相机-实例对与感兴趣区域；再以语义选择式并行PGSR仅更新目标高斯、固定上下文高斯，并利用渲染深度、不透明度与法线提取建筑平面引导SDF优化，实现自适应多边形分配与清晰结构边界。",
     "result": "在多个大规模无人机数据集上，SemLite-GS相较代表性全场景3DGS方法显著缩短建筑重建时间；在相当多边形预算下，其主导平面结构保持与建筑锐利过渡效果优于密集重建后网格简化流程。",
     "conclusion": "该工作提出面向建筑轻量化重建的语义选择并行高斯泼溅框架，兼顾重建效率与结构保真度，并开源代码，具有城市三维建模应用潜力。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2611.19429v1",
-    "title": "Prepare Lighter and Faster for Open-Vocabulary Queries: A Query-Wise 3D Segmenter for Gaussian Splatting",
-    "authors": [
-      "Nhat-Quynh Le-Pham",
-      "Khoi Nguyen",
-      "Binh-Son Hua"
-    ],
-    "abstract": "Open-vocabulary 3D understanding aims to localize and segment arbitrary objects beyond predefined categories. However, existing approaches based on Gaussian Splatting often rely on expensive preprocessing and lengthy training, limiting their applicability when fast and lightweight solutions are desired. We propose a lightweight, training-free framework for query-driven 3D instance segmentation on Gaussian Splatting. Instead of conventional mask-wise CLIP embeddings, we use dense pixel-level CLIP features to preserve fine-grained semantic information and enable flexible text-driven localization without relying on predefined instance proposals. Given a text query, we identify a high-quality target region in a carefully selected pivot view and propagate it across views using a video segmentor, providing consistent and comprehensive coverage of the target instance. We then lift the resulting 2D tracklets to 3D Gaussians through a novel visibility voting strategy, yielding accurate 3D segmentation masks with clean object boundaries. Extensive experiments demonstrate state-of-the-art performance on LERF-OVS, ScanNet, and ScanNet++, competitive results on 3D-OVS, and significant speedups over existing open-vocabulary 3D segmentation methods. These results highlight the effectiveness of our framework for efficient open-vocabulary 3D understanding without per-scene training.",
-    "link": "http://arxiv.org/abs/2611.19429v1",
-    "published": "2026-11-14",
-    "category": "cs.CV",
-    "tags": [
-      "Open-Vocabulary 3D Segmentation",
-      "Gaussian Splatting",
-      "Training-Free",
-      "CLIP",
-      "Video Segmentation"
-    ],
-    "tldr": "提出免训练查询驱动的Gaussian Splatting三维实例分割框架，实现高效开放词汇分割。",
-    "motivation": "开放词汇3D理解需定位并分割预定义类别之外的任意物体，但现有基于Gaussian Splatting的方法依赖昂贵预处理和冗长训练，难以满足快速、轻量需求。",
-    "method": "提出免训练的查询驱动3D实例分割框架：放弃mask-wise CLIP嵌入，改用稠密像素级CLIP特征保留细粒度语义并支持文本驱动定位；针对文本查询在精选pivot view中定位高质量目标区域，经视频分割器跨视角传播获得2D tracklets，再通过可见性投票策略提升为3D Gaussian掩码。",
-    "result": "在LERF-OVS、ScanNet和ScanNet++上取得SOTA，在3D-OVS上取得有竞争力结果，并较现有开放词汇3D分割方法显著加速；摘要未给出具体量化数值。",
-    "conclusion": "该工作证明无需逐场景训练也能在Gaussian Splatting上实现高效、边界清晰的开放词汇3D实例分割，为轻量快速3D场景理解提供了新路线。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2611.19095v1",
-    "title": "DEFDVO: Deformable Deep Visual Odometry for Equirectangular Images",
-    "authors": [
-      "Burak Sevsay",
-      "Egor Bondarev",
-      "Erkut Akdag"
-    ],
-    "abstract": "Omnidirectional ($360^\\circ$) cameras capture the full surrounding scene in every frame, providing a strong advantage for visual odometry (VO) over pinhole sensors with a limited field of view. However, their equirectangular projection (ERP) introduces latitude-dependent distortion, an artificial seam at the image border, and a sampling bias toward the poles. Existing $360^\\circ$ VO methods address these challenges only partially. DEFDVO closes this gap with a patch-based deep VO method that operates directly on ERP imagery, combining spherically initialized deformable feature extraction, end-to-end seam-aware estimation, and spherical-gradient patch selection. The deformable feature extractor combines spherical geometric priors with learned sampling offsets, while seam-aware processing preserves ERP continuity, and spherical-gradient selection reduces polar sampling bias. Trained exclusively on synthetic TartanAirV2 ERP imagery, DEFDVO improves the best prior average absolute trajectory error (ATE) by $4.8\\times$ (0.201 m to 0.042 m) on the TartanAirV2 evaluation set defined by 360DVO and achieves the lowest average ATE on both splits of the real-world 360DVO benchmark. Code is available at https://github.com/BurakSevsay/DEFDVO",
-    "link": "http://arxiv.org/abs/2611.19095v1",
-    "published": "2026-11-14",
-    "category": "cs.CV",
-    "tags": [
-      "Visual Odometry",
-      "Omnidirectional Vision",
-      "Equirectangular Projection",
-      "Deformable Features",
-      "Deep Learning"
-    ],
-    "tldr": "DEFDVO 提出面向 ERP 全景图像的块级深度视觉里程计，通过可变形特征与接缝感知显著降低轨迹误差。",
-    "motivation": "全景相机视场大，但 ERP 投影带来纬度相关畸变、图像边界接缝和极区采样偏置，现有 360° 视觉里程计方法只能部分解决这些问题。",
-    "method": "DEFDVO 直接在 ERP 图像上执行基于图像块的深度视觉里程计：融合球面几何先验与可学习采样偏移的可变形特征提取，端到端接缝感知处理保持 ERP 连续性，并用球面梯度图像块选择缓解极区采样偏置。",
-    "result": "仅在合成 TartanAirV2 ERP 图像上训练，在 360DVO 定义的 TartanAirV2 评测集上将最佳先前方法的平均绝对轨迹误差（ATE）从 0.201 m 降至 0.042 m，提升 4.8 倍；在真实世界 360DVO 基准的两个划分上均取得最低平均 ATE。",
-    "conclusion": "该方法补齐了 ERP 全景深度 VO 在畸变、接缝和极区偏置处理上的不足，在合成与真实基准上均优于现有方法，为 360° 视觉里程计提供了有效的端到端方案。"
   }
 ]
