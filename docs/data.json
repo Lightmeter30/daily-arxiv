@@ -1,5 +1,182 @@
 [
   {
+    "id": "http://arxiv.org/abs/2611.27719v1",
+    "title": "VeilGS: Solving Darkness as a Veil of 2D Basis Maps over Retinex 3DGS",
+    "authors": [
+      "Mohab Kishawy",
+      "Chengzhou Tang",
+      "Shahram Shirani",
+      "Jun Chen"
+    ],
+    "abstract": "In a dark capture, the darkness is not uniform. How much light reaches a surface depends on where it lies relative to the few light sources, and the camera compresses what remains with a tone curve. Most low-light 3D reconstruction methods either apply one curve to every pixel of a view, so a dark object beside a lamp and a bright one in an unlit corner receive the same correction, or store the darkness in the 3D representation, where it can absorb scene detail. We present VeilGS, a 3D Gaussian Splatting method for low-light novel view synthesis that treats the degradation as a veil drawn over a clear scene. Each Gaussian carries an albedo and a shading latent instead of spherical harmonics, separating surface colour from illumination. Each view is darkened by a spatially varying gain followed by a global tone curve, and rendering without this veil gives the restored scene. A small network predicts a coarse basis for the gain from the observation, and its coefficients are solved for each view rather than learned. Training through this solve discourages the Gaussians from absorbing what the veil can explain. VeilGS needs no paired normal-light supervision and stores no per-view parameters. On Gaussian-DK, its restored renders score best on no-reference NIQE and CLIP-IQA and are rated highest in a blind user study with 55 participants. On LOM, it achieves results competitive with the state of the art.",
+    "link": "http://arxiv.org/abs/2611.27719v1",
+    "published": "2026-11-20",
+    "category": "cs.CV",
+    "tags": [
+      "Low-Light",
+      "3D Gaussian Splatting",
+      "Retinex",
+      "Novel View Synthesis",
+      "Illumination Modeling"
+    ],
+    "tldr": "VeilGS将低光退化建模为覆盖清晰场景的二维基图遮罩，在Retinex框架下实现无需配对监督的低光新视角合成。",
+    "motivation": "低光拍摄中的暗度并不均匀，取决于表面相对少量光源的位置，并受到相机色调曲线压缩。现有低光三维重建方法要么对整幅视图统一施加校正曲线，要么将暗度存入三维表示中，导致场景细节被吸收。",
+    "method": "VeilGS基于3D Gaussian Splatting，为每个高斯携带albedo与shading latent而非球谐函数，以分离表面颜色与光照。每幅视图先经空间变化增益再经全局色调曲线变暗，去除该veil即可渲染恢复场景；小网络从观测预测增益的粗略基，其系数按视图求解而非学习，训练通过该求解过程抑制高斯吸收可由veil解释的成分。",
+    "result": "在Gaussian-DK上，恢复渲染在无参考NIQE与CLIP-IQA指标上最佳，并在55名参与者的盲测用户研究中获得最高评分；在LOM上取得与当前最优方法相当的结果。",
+    "conclusion": "VeilGS通过显式veil分解有效解决低光新视角合成中的非均匀暗度与细节吸收问题，无需配对正常光监督且不存储逐视图参数，具有实际应用潜力。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2611.27407v1",
+    "title": "BladeR: Scalable, Shape-Guided 3D Reconstruction of Wind Turbine Blades from UAV Imagery",
+    "authors": [
+      "Jonathan Sterckx",
+      "Michiel Vlaminck",
+      "Hiep Luong"
+    ],
+    "abstract": "The structural integrity of wind turbine blades is critical for safe, efficient energy production. Accurate 3D reconstruction allows precise localization and quantification of wear and early damage detection. While drone-based inspections are standard, their high-resolution imagery poses challenges such as weak texture, lighting variability, and high computational cost. We present BladeR, a scalable pipeline for high-quality 3D reconstruction from inspection imagery. A hierarchical sparse reconstruction strategy leverages GPS/IMU data and blade shape priors to guide advanced keypoint matchers on full-resolution images. For dense reconstruction, a tiled Gaussian Splatting framework processes 45 MP images at native resolution, isolates the blade from background, and adaptively enhances detail recovery along the leading edge. Validation against commercial and open-source baselines shows significant improvements in model completeness and detail.",
+    "link": "http://arxiv.org/abs/2611.27407v1",
+    "published": "2026-11-20",
+    "category": "cs.CV",
+    "tags": [
+      "3D Reconstruction",
+      "UAV",
+      "Gaussian Splatting",
+      "Wind Turbine Blades",
+      "Shape Prior"
+    ],
+    "tldr": "BladeR 提出一种可扩展的形状引导三维重建流程，利用分层稀疏重建与分块高斯泼溅从无人机图像高质量重建风机叶片。",
+    "motivation": "风机叶片结构完整性对安全高效发电至关重要，精确三维重建可用于磨损定位量化和早期损伤检测。无人机巡检图像分辨率高但存在弱纹理、光照变化和计算成本高等问题，亟需可扩展的高质量重建方法。",
+    "method": "BladeR 采用分层稀疏重建策略，结合 GPS/IMU 与叶片形状先验引导全分辨率图像上的先进关键点匹配器；稠密阶段使用分块 Gaussian Splatting 框架在原生分辨率处理 45 MP 图像，分离叶片与背景并自适应增强前缘细节恢复。",
+    "result": "与商业和开源基线相比，BladeR 在模型完整性和细节恢复方面取得显著提升；摘要未提供具体量化指标。",
+    "conclusion": "该方法为风机叶片提供可扩展的高质量三维重建方案，有助于磨损定位、量化与早期损伤检测，并具备在无人机巡检中实际应用的潜力。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2611.27289v1",
+    "title": "InterBand-EMG: A Cross-Band Foundation Model for Generalizable Hand-Pose Estimation",
+    "authors": [
+      "Zongheng Guo",
+      "Tao Chen",
+      "Dalong Du",
+      "Yijian Yang",
+      "Heng Liu",
+      "Lun Shu",
+      "Chen Luo",
+      "Junhao Tu",
+      "Lei Shu",
+      "Mingzhou Wu",
+      "Yifan Liu",
+      "Yu Zhang",
+      "Zhenqiang Liu",
+      "Shilei Wen",
+      "Jie Zhou",
+      "Manuela Ferrario"
+    ],
+    "abstract": "Surface electromyography (sEMG) enables continuous hand-pose estimation, but learning representations that generalize across users and movements remains challenging. We introduce InterBand-EMG, which combines band-specific quantization with cross-band reconstruction and structured masked code prediction to learn transferable EMG representations for hand-pose tracking. We also introduce SynapMyo, an eight-channel EMG-to-pose dataset comprising 1,227.74 hand-hours from 499 users across 68 movement categories. Experiments on emg2pose and SynapMyo show that InterBand-EMG outperforms state-of-the-art baselines in joint-angle accuracy across all three generalization settings on both datasets. The source code and the SynapMyo dataset will be publicly released upon acceptance of this paper.",
+    "link": "http://arxiv.org/abs/2611.27289v1",
+    "published": "2026-11-20",
+    "category": "cs.CV",
+    "tags": [
+      "sEMG",
+      "Hand-Pose Estimation",
+      "Foundation Model",
+      "Cross-Band Learning",
+      "Representation Learning"
+    ],
+    "tldr": "提出跨频带基础模型InterBand-EMG并发布SynapMyo数据集，实现跨用户与跨动作的手部姿态估计。",
+    "motivation": "表面肌电（sEMG）可用于连续手部姿态估计，但学习能够跨用户、跨动作泛化的表征仍然具有挑战性。",
+    "method": "提出InterBand-EMG，将频带特定量化与跨频带重建、结构化掩码码本预测相结合，学习可迁移的EMG表征以用于手部姿态跟踪；同时构建SynapMyo八通道EMG到姿态数据集，包含499名用户、68类动作、共1227.74手时。",
+    "result": "在emg2pose和SynapMyo上的实验表明，InterBand-EMG在两种数据集的全部三种泛化设置下，关节角度精度均优于当前最优基线。",
+    "conclusion": "该工作提升了sEMG手部姿态估计的跨用户与跨动作泛化能力，并将公开源代码和SynapMyo数据集（论文录用后发布）。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2611.27224v1",
+    "title": "EAST: Event-Anchored Surface Transport for Event-Based Gaussian Reconstruction",
+    "authors": [
+      "Ke Luo",
+      "Wei Zhai",
+      "Yuliang Wu",
+      "Pengfei Yu",
+      "Yang Cao"
+    ],
+    "abstract": "Event-supervised Gaussian reconstruction combines the high temporal resolution and wide dynamic range of event cameras with efficient explicit rendering. However, recovering a continuous surface remains difficult: changes in rendered appearance can compensate for depth errors while preserving the predicted brightness changes. We introduce Event-Anchored Surface Transport (EAST), which couples an event-constrained signed distance field to Gaussian rendering. Triangulation-supported candidates anchor the zero set, while normal flow measured from event timing constrains ray-surface intersection depths. Gaussian centers receive bounded corrections from the descriptor difference between the live field and a frozen initial reference. The correction is zero at initialization, yet transmits image gradients to the live field. Experiments on PAEv3D and NeRF Synthetic show improved surface accuracy and reference-view rendering over Gaussian baselines, together with efficient mesh extraction from the learned field.",
+    "link": "http://arxiv.org/abs/2611.27224v1",
+    "published": "2026-11-20",
+    "category": "cs.CV",
+    "tags": [
+      "Event Camera",
+      "Gaussian Splatting",
+      "SDF",
+      "Surface Reconstruction"
+    ],
+    "tldr": "EAST将事件约束SDF与高斯渲染耦合，提升事件重建的表面精度与参考视图渲染。",
+    "motivation": "事件监督的高斯重建虽兼具高时间分辨率、宽动态范围与高效显式渲染，但仅靠渲染外观变化可补偿深度误差并保持预测亮度变化，导致连续表面难以恢复。",
+    "method": "提出EAST，将事件约束的符号距离场与高斯渲染耦合：用三角化支持的候选锚定零水平集，用事件时序测得的法向流约束射线-表面交点深度；高斯中心根据实时场与冻结初始参考的描述子差异获得有界修正，修正初始为零但可把图像梯度传给实时场。",
+    "result": "在PAEv3D和NeRF Synthetic上，相比高斯基线提升了表面精度与参考视图渲染，并可从学习到的场中高效提取网格；摘要未提供具体量化指标。",
+    "conclusion": "EAST通过事件锚定的表面传输缓解外观补偿深度误差的问题，为事件监督高斯重建提供更准确的连续表面和高效网格提取，具有推动事件相机高质量重建的潜力。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2611.27181v1",
+    "title": "HumanoidPose: Monocular 3D Pose Estimation for Humanoid Robots",
+    "authors": [
+      "Jinlin Gan",
+      "Mingzhe Li",
+      "Junsheng Zhang",
+      "Zhibo Zhou",
+      "Jiahan Geng",
+      "Yuhua Luo",
+      "Changwang Zhang",
+      "Chenglu Wen",
+      "Lan Xu",
+      "Siqi Shen",
+      "Cheng Wang"
+    ],
+    "abstract": "As humanoid robots increasingly enter real-world environments, recovering their 3D whole-body pose from monocular imagery is becoming increasingly important for external state perception, motion analysis, and robot learning. However, Humanoid Robot Pose Estimation (HRPE) lies at the intersection of conventional Robot Pose Estimation (RPE) and Human Pose Estimation (HPE), while not being fully addressed by either paradigm: RPE primarily focuses on non-humanoid robots, particularly fixed-base manipulators, whereas HPE is built upon human-specific skeletal topologies, body models, and motion priors. Despite recent progress in humanoid 2D keypoint detection and HPE adaptation, humanoid-native 3D pose recovery remains insufficiently studied, and a dedicated benchmark with suitable training data and evaluation protocols is still lacking. To address this gap, we introduce Humanoids, a benchmark for monocular 3D humanoid robot pose estimation, and propose HumanoidPose, a framework for this task. Humanoids provides synthetic 3D supervision across diverse humanoid embodiments, manually annotated real-world 2D data, and real-world RGB sequences paired with robot states for 3D evaluation on a physical Roban humanoid. HumanoidPose combines human-inspired visual perception with robot articulation modeling and explicit kinematic grounding. Experiments on Humanoids and the DHRP-H1 benchmark demonstrate strong performance in articulation recovery and 3D pose estimation, including zero-shot transfer to real-world 2D and 3D evaluation. Ablation studies further show the contribution of robot-native articulation modeling and explicit kinematic grounding. The dataset and code will be publicly released to support future research in the community.",
+    "link": "http://arxiv.org/abs/2611.27181v1",
+    "published": "2026-11-20",
+    "category": "cs.CV",
+    "tags": [
+      "Humanoid Robots",
+      "3D Pose Estimation",
+      "Monocular Vision",
+      "Benchmark",
+      "Kinematic Modeling"
+    ],
+    "tldr": "提出Humanoids基准与HumanoidPose框架，实现人形机器人单目3D全身姿态估计。",
+    "motivation": "人形机器人单目3D全身姿态估计处于传统机器人位姿估计与人姿态估计的交汇处，但现有RPE主要面向非人形固定基座机械臂，HPE依赖人类特定骨骼拓扑、人体模型与运动先验，均无法充分覆盖该任务。尽管人形2D关键点检测和HPE适配已有进展，人形原生3D位姿恢复仍研究不足，且缺乏专用训练数据、评测协议与基准。",
+    "method": "构建Humanoids基准，提供跨多种人形本体的合成3D监督、人工标注真实2D数据，以及在实体Roban人形机器人上采集的RGB序列与机器人状态用于3D评测。提出HumanoidPose框架，将类人视觉感知、机器人关节建模与显式运动学 grounding 相结合。",
+    "result": "在Humanoids与DHRP-H1基准上的实验表明，方法在关节恢复和3D位姿估计上表现较强，并支持零样本迁移到真实世界2D与3D评测；消融实验验证了机器人原生关节建模和显式运动学 grounding 的贡献。摘要未提供具体量化指标。",
+    "conclusion": "该工作填补了人形机器人单目3D位姿估计在专用基准与原生方法上的空白，并提供可公开的数据集与代码，有望促进外部状态感知、运动分析和机器人学习等后续研究。"
+  },
+  {
+    "id": "http://arxiv.org/abs/2611.27101v1",
+    "title": "EgoSurgHands: An Egocentric 3D Hand Pose Dataset & Benchmark for Open Surgery Training",
+    "authors": [
+      "Ankit Pal",
+      "Guillaume Kugener",
+      "Sofia Volpi",
+      "Joshua Schwartz",
+      "Alex Idarraga",
+      "Pranav Rajpurkar",
+      "Gabriel A. Brat"
+    ],
+    "abstract": "Surgical skill assessment, AR guidance, and robot learning from demonstration all benefit from 3D tracking of the surgeon's hands, yet no surgical dataset offers real egocentric articulated 3D hand pose. We introduce EgoSurgHands, a benchmark for real-captured egocentric hand pose estimation in open surgery training on synthetic pads. Captured with multi-sensor glasses, it contains 41,909 training hand-instance rows across 55 procedure recordings and 9,476 human-validated evaluation rows across 13 held-out recordings, spanning 13 tasks, 3 glove colors, and 4 trainees from first-year medical student to third-year resident. Each frame carries a multi-sensor stack: intrinsics, hand landmarks with per-hand confidence, timestamps, and eye gaze, plus SLAM extrinsics where SLAM succeeded. Evaluation labels combine sensor-fused pseudo-ground truth, human cross-review of every frame, surgeon adjudication of flagged cases, and an independent multi-view triangulated reference. Alongside the within-corpus, procedure-disjoint split, a leave-one-wearer-out protocol tested unseen trainees. Across eight methods evaluated zero-shot, from MANO-based reconstructors to the two-hand IntagHand and the keypoint-only MediaPipe Hands, egocentric pretraining was associated with stronger transfer on every held-out wearer. WildHands and JointTransformer had 18\\% and 40\\% lower PA-MPJPE, respectively, than the non-egocentric HaMeR. JointTransformer was the best performing model with an error of 14.95 mm. A substantial surgical domain gap remains, and the widely deployed MediaPipe Hands detected a hand in only 24.1\\% of evaluation rows. As a baseline, a 58K-parameter residual corrector (JRN) on frozen backbones reached 10.96-14.85 mm PA-MPJPE on held-out wearers for the two ego-pretrained backbones. We release the dataset and benchmark code at https://egosurghands.github.io",
+    "link": "http://arxiv.org/abs/2611.27101v1",
+    "published": "2026-11-20",
+    "category": "cs.CV",
+    "tags": [
+      "Egocentric Vision",
+      "3D Hand Pose",
+      "Surgical Training",
+      "Benchmark",
+      "Dataset"
+    ],
+    "tldr": "提出EgoSurgHands开放手术训练第一视角3D手部姿态数据集与基准，含多传感器标注和留人评估。",
+    "motivation": "手术技能评估、AR引导和机器人示范学习均需对术者手部进行3D跟踪，但现有手术数据集缺乏真实采集的第一视角关节化3D手部姿态标注。",
+    "method": "用多传感器眼镜采集55段操作、13类任务，提供内参、手部关键点及置信度、时间戳、眼动和SLAM外参；评估标签融合传感器伪真值、逐帧人工复核、外科医生裁定与多视角三角化参考，并设过程不交叉和留一佩戴者协议。",
+    "result": "零样本评测8种方法，JointTransformer最佳PA-MPJPE为14.95 mm；WildHands和JointTransformer较非第一视角HaMeR分别低18%和40%，MediaPipe Hands仅24.1%评估帧检出；冻结骨干加58K参数JRN达10.96–14.85 mm。",
+    "conclusion": "发布数据集与基准代码，揭示第一视角预训练迁移优势及显著手术域差距，为开放手术训练的手部姿态估计提供可复现评测基础。"
+  },
+  {
     "id": "http://arxiv.org/abs/2611.26493v1",
     "title": "SGAR: Feed-Forward 3D Reconstruction via Sparse Geometry-Guided Attention",
     "authors": [
@@ -1391,168 +1568,5 @@
     "method": "提出结构感知多粒度时空Transformer，构建联合、骨骼、肢体三级特征提取器以捕获人体拓扑。GASA将结构约束嵌入空间注意力，MGFE通过分层池化与融合增强局部细节和全局语义，TSF对齐多粒度时序上下文，HCA促进跨粒度时空交互，KFA选择信息量高的运动片段以降低冗余和计算量。",
     "result": "实验表明该方法相较传统Transformer方法在精度和效率上均有提升，但摘要未提供具体量化指标。",
     "conclusion": "结果表明结构感知的多粒度建模能有效提升单目3D人体姿态估计的准确性与效率，为兼顾精度与计算成本提供新思路。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2611.20321v1",
-    "title": "Unreasonable Confidence from Simulator Misspecification: Directional Robustness on the SPEED+ Sim-to-Real Benchmark",
-    "authors": [
-      "Nikolay Dolgov"
-    ],
-    "abstract": "Vision-based navigation systems for orbit must be trained almost entirely on synthetic imagery, because real labelled images of a given spacecraft in flight rarely exist. Benchmarks like SPEED+ are built for that situation: the training set comes from a simulator, and the test sets are real images of a satellite mockup under two kinds of lighting. That simulator approximates how light reflects off mylar and aluminium, and like every scientific simulator it is misspecified. Its error is radiometric, since it misses the specular highlights, hard shadows and sensor saturation common in real images. We probe the resulting synthetic-to-real gap, the central risk for such systems, with a deliberately simple monocular pose estimator. In a 2x2 study of backbone adaptation and photometric augmentation, trained on synthetic images and tested on both real hardware-in-the-loop domains, we find three things. (1) The model does not know it is failing: regions conformally calibrated to 90% on synthetic data cover only 9-15% of rotation errors on sunlamp and 21-38% on lightbox, so a wrong pose carries the confidence of a correct one. (2) Transfer is asymmetric: scaling data and features improved synthetic rotation error from 1.65 to 1.03 rad but moved the harshly lit sunlamp domain by only 0.05 rad, under twice its seed s.d., whereas adapting the backbone's last stage carried 63-83% of its extra synthetic gain to both real domains. (3) Once the backbone adapts, augmentation helps only in the direction it models: our photometric stack improved the diffusely lit lightbox domain from 1.17 to 0.99 rad on every seed but moved sunlamp no more than seed-to-seed variation, while with the backbone frozen it helped sunlamp more. Every post-review experiment was pre-registered, and the code, per-image predictions and pre-registration record are at https://github.com/lokindoo/spacecraft-pose-estimation.",
-    "link": "http://arxiv.org/abs/2611.20321v1",
-    "published": "2026-11-15",
-    "category": "cs.CV",
-    "tags": [
-      "Sim-to-Real",
-      "Spacecraft Pose Estimation",
-      "Uncertainty Calibration",
-      "Domain Adaptation",
-      "Benchmark"
-    ],
-    "tldr": "SPEED+上单目位姿估计的仿真到真实迁移存在过度自信、非对称迁移与光照方向性增益。",
-    "motivation": "轨道视觉导航缺乏真实在轨标注图像，只能主要依赖合成图像训练，而SPEED+等基准所用模拟器在迈拉/铝材反射建模上存在辐射度误差，导致存在镜面高光、硬阴影和传感器饱和等合成到真实差距。该文旨在探测这一差距对单目位姿估计可靠性的风险。",
-    "method": "作者采用刻意简单的单目位姿估计器，在SPEED+上开展2x2研究，联合考察主干网络适配与光度增强，训练用合成图像、测试用sunlamp和lightbox两个真实硬件在环域，并分析共形校准覆盖率；所有评审后实验均预注册。",
-    "result": "合成数据上共形校准到90%的区域仅覆盖真实旋转误差的9–15%（sunlamp）和21–38%（lightbox）；扩大数据与特征使合成旋转误差从1.65降至1.03 rad，但sunlamp仅改善0.05 rad，低于两倍种子标准差；适配主干最后阶段可将63–83%的额外合成增益迁移到两个真实域。光度增强使lightbox从1.17降至0.99 rad且每个种子均有效，但对sunlamp不超过种子间波动，冻结主干时反而对sunlamp更有效。",
-    "conclusion": "模拟器误设定会导致模型对错误位姿给出与正确位姿相似的置信度，且迁移收益具有非对称性和光照方向性。主干适配比单纯扩大数据/特征更具跨域可迁移性，光度增强只在所建模的光照方向上有效；该预注册研究为航天器位姿估计的鲁棒性评估提供了可复现代码、逐图预测和实验记录。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2611.20283v1",
-    "title": "CiGS: Conduction in Gaussian Splats for Interior Temperature Field from Thermal Images",
-    "authors": [
-      "Liu Zhenyuan",
-      "Bharath Seshadri",
-      "Bailey Miller",
-      "George Kopanas",
-      "Ionnais Gkioulekas",
-      "Bernd Bickel"
-    ],
-    "abstract": "We present a method for inferring the interior temperature distribution of a solid object from registered multi-view visible-spectrum and thermal images, even when the thermal views cover only part of its surface. We formulate steady-state heat conduction as a Laplace boundary value problem and solve it with a direct boundary integral equation discretized over a point cloud: a Gaussian reconstruction of the visible-spectrum images supplies the boundary geometry, and the thermal images supply the boundary data. We do not build surface or volume meshes at any stage in our method. Instead, we sample collocation points from rendered depth without the pixels at depth discontinuities, and use a density subtraction that keeps the interior evaluation accurate up to the surface. The whole chain is differentiable, and we use it to recover the pose and depth of heating pipes, insulation defects, and the shape of cracks from thermal images. We validate our method through experiments on boundary value problems with Dirichlet-only and mixed Dirichlet and Robin boundaries, using synthetic and real captured data on scenes with challenging topology. These experiments show that our method matches analytical solutions and has better accuracy than FEM solvers.",
-    "link": "http://arxiv.org/abs/2611.20283v1",
-    "published": "2026-11-15",
-    "category": "cs.CV",
-    "tags": [
-      "Thermal Imaging",
-      "Gaussian Splatting",
-      "Heat Conduction",
-      "Boundary Integral Equation",
-      "Inverse Rendering"
-    ],
-    "tldr": "利用高斯泼溅几何与热像边界数据，直接求解拉普拉斯边界积分方程，无需网格即可推断物体内部温度场。",
-    "motivation": "从配准的多视角可见光与热红外图像推断固体内部温度分布，即使热像仅覆盖部分表面；同时避免构建表面或体网格，以提升复杂拓扑场景下的适用性与精度。",
-    "method": "将稳态热传导建模为拉普拉斯边值问题，并在点云上离散直接边界积分方程；可见光图像的高斯重建提供边界几何，热像提供边界数据。方法从渲染深度采样配点并剔除深度不连续像素，采用密度减除以保持近表面内部评估精度，且全链路可微，可用于反演加热管位姿与深度、保温缺陷及裂纹形状。",
-    "result": "在仅Dirichlet及混合Dirichlet-Robin边界条件的边值问题上，使用合成与真实采集的复杂拓扑场景数据验证；结果与解析解一致，且精度优于FEM求解器。摘要未提供具体量化数值指标。",
-    "conclusion": "提出一种无网格、可微的内部温度场推断框架，将高斯泼溅几何与热像边界数据结合到边界积分方程中；其精度超过FEM并支持从热像反演隐藏结构与缺陷，具有用于无损检测、建筑保温评估等潜力。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2611.20207v1",
-    "title": "AstroPIE-53: Towards Understanding Failure Modes of Human Pose Estimation in Space",
-    "authors": [
-      "Stephanie Käs",
-      "Marten Flaig",
-      "Lukas Woyke",
-      "Osmanalp Ömeroğlu",
-      "Felix Krueckel",
-      "Onur Alp Çulha",
-      "Bastian Leibe"
-    ],
-    "abstract": "Reliable monitoring of astronauts is essential for safety, situational awareness, and autonomous assistance in space missions. While modern computer vision enables accurate human detection and pose estimation on Earth, its robustness in space environments remains largely unquantified due to limited data availability. We present AstroPIE-53, a pilot dataset of 53 annotated astronaut videos collected from publicly available mission footage. To respect copyright restrictions, we release video identifiers, reconstruction scripts, and dense annotations rather than raw videos. The dataset includes bounding boxes, challenge classes, and human-annotated pose failure tags. We benchmark state-of-the-art person detection and pose estimation models under realistic zero-shot deployment conditions and perform the first systematic failure analysis for astronaut monitoring. Our results reveal substantial performance degradation caused by occlusions, unusual body orientations, low contrast, and microgravity motion patterns.",
-    "link": "http://arxiv.org/abs/2611.20207v1",
-    "published": "2026-11-15",
-    "category": "cs.CV",
-    "tags": [
-      "Human Pose Estimation",
-      "Astronaut Monitoring",
-      "Space Environments",
-      "Failure Analysis",
-      "Benchmark Dataset"
-    ],
-    "tldr": "发布53段航天员视频数据集AstroPIE-53，系统评估太空环境下人体姿态估计的零样本失效模式。",
-    "motivation": "太空任务中航天员可靠监测对安全、态势感知和自主辅助至关重要，但现有地球场景视觉模型在太空环境中的鲁棒性因数据稀缺而缺乏量化。",
-    "method": "构建AstroPIE-53飞行员数据集，包含53段公开任务视频的标注；因版权限制仅发布视频标识、重建脚本与密集标注（边界框、挑战类别、人工姿态失败标签）。在真实零样本部署条件下基准测试先进人体检测与姿态估计模型，并开展首个面向航天员监测的系统失效分析。",
-    "result": "摘要未提供具体量化指标，但报告先进模型性能显著下降，主要失效由遮挡、异常身体朝向、低对比度和微重力运动模式引发。",
-    "conclusion": "该工作揭示太空环境下人体姿态估计的关键失效模式，为航天员监测模型的鲁棒性评估与后续改进提供数据和基准。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2611.20089v1",
-    "title": "See the Lives of Stars in a Handful of Light",
-    "authors": [
-      "Shuhong Liu",
-      "Gengjia Chang",
-      "Quanfeng Xu",
-      "Ziteng Cui",
-      "Qianyu Zhou",
-      "Xiaoyu Dong",
-      "Lin Gu",
-      "Tatsuya Harada"
-    ],
-    "abstract": "Galaxies evolve over hundreds of millions of years, and no telescope has ever watched one move. Cosmological simulations make this evolution visible as a sequence of multi-view images, inviting the question of whether a galaxy can be recovered in four dimensions from its images. This setting defeats existing dynamic scene methods, since millions of stars span only a few pixels each, faint populations blend into diffuse light, and free deformations reproduce the images without obeying gravity. We present Cosmos4D, which rests on two components. Gravitational 4D Gaussian Splatting represents each star as a self-luminous Gaussian whose motion is integrated through a gravitational potential and a low-dimensional force field shared by all stars. Luminosity-stratified dynamics give bright stars individual orbits supervised across image scales and carry faint populations with a velocity field estimated from optical flow. We further build a 4D dataset of eight galaxies from four cosmological simulations, on which Cosmos4D outperforms dynamic Gaussian baselines in both photometric quality and physical accuracy. With these advancements, we glimpse eight hundred million years of a galaxy's life in ninety-six frames.",
-    "link": "http://arxiv.org/abs/2611.20089v1",
-    "published": "2026-11-15",
-    "category": "cs.CV",
-    "tags": [
-      "4D Reconstruction",
-      "Gaussian Splatting",
-      "Cosmological Simulation",
-      "Galaxy Dynamics",
-      "Neural Rendering"
-    ],
-    "tldr": "Cosmos4D 用引力约束的4D高斯泼溅从多视角图像重建星系演化。",
-    "motivation": "星系演化跨越数亿年，望远镜无法直接观测其运动；宇宙学模拟以多视角图像序列呈现演化，引出能否从图像四维重建星系的问题。现有动态场景方法难以处理数百万颗仅占少数像素的恒星、弥散暗弱星族，且自由变形虽拟合图像却不遵守引力。",
-    "method": "提出 Cosmos4D：引力4D高斯泼溅将每颗恒星表示为自发光高斯，其运动通过引力势与所有恒星共享的低维力场积分得到。亮度分层动力学让亮星拥有可跨图像尺度监督的个体轨道，并用光流估计的速度场带动暗弱星族；同时构建来自四个宇宙学模拟、包含八个星系的4D数据集。",
-    "result": "在八个星系的数据集上，Cosmos4D 在光度质量与物理精度上均优于动态高斯基线；以96帧呈现星系约8亿年的生命历程。",
-    "conclusion": "表明引力约束与亮度分层动力学可从图像中恢复星系的四维演化，为观测不可及的星系演化提供可视化与物理一致的重建途径。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2611.20025v1",
-    "title": "acuSimNet: Multi-View Self-Occlusion-Awared Visibility Learning for Cranio-Cervical Acupuncture Points",
-    "authors": [
-      "Jiatao Ma",
-      "Qilei Sun"
-    ],
-    "abstract": "The localization of acupuncture points (acupoints) in Traditional Chinese Medicine (TCM) presents unique challenges since they are defined by abstract principles rather than distinct anatomical landmarks. Existing approaches are typically constrained to single view or rely on indirect calculations of relative positions with respect to other landmarks, thereby overlooking human anatomical variations. Furthermore, acupoint visibility assessment, which determins whether points are occluded by human itself, hair, clothing, or other objects, has received limited attention in practical applications. Acupoint localization itself does not require 3D reconstruction, but inferring their occlusion relationships with anatomical surfaces does, which adds computational cost and limits real-time inference. In this work, we introduce acuSimNet, an efficient hierarchical multi-task learning architecture for multi-view, self-occlusion-aware visibility prediction of acupoints, achieving 99.97% accuracy on the validation set. Our approach also addresses the challenges of high-dimensional classification (174 acupoints in cervicocranial region), negative convergence issues for visible acupoints, and inter-task scheduling optimization, resulting in substantially accelerated convergence. We improved the training efficiency from the exisiting methods of 3000 epochs to achieve 99% validation accuracy, to our optimized framework achieving 90% accuracy in 39 epochs and 99% accuracy in 86 epochs. This architecture overcomes the limitations of existing methods, could enable practical applications in acupoints detection and visualization, advancing the automation of TCM.",
-    "link": "http://arxiv.org/abs/2611.20025v1",
-    "published": "2026-11-15",
-    "category": "cs.CV",
-    "tags": [
-      "Acupuncture Point Localization",
-      "Multi-View Learning",
-      "Self-Occlusion",
-      "Multi-Task Learning",
-      "Visibility Prediction"
-    ],
-    "tldr": "提出acuSimNet，多视角自遮挡感知预测颈颅穴位可见性，验证准确率达99.97%并大幅加速收敛。",
-    "motivation": "颈颅部穴位由抽象原则定义而非清晰解剖标志，现有方法多限于单视角或依赖相对位置间接计算，忽略人体解剖差异；同时穴位是否被人体、头发、衣物等遮挡的可见性评估关注不足。穴位定位本身不需三维重建，但推断其与解剖表面的遮挡关系需要三维信息，带来计算开销并限制实时推理。",
-    "method": "提出acuSimNet，一种高效的分层多任务学习架构，用于多视角、自遮挡感知的穴位可见性预测。该方法针对174个颈颅部穴位的高维分类、可见穴位的负收敛问题以及任务间调度优化进行设计，从而加速模型收敛。",
-    "result": "在验证集上达到99.97%的准确率；训练效率显著提升，从现有方法需3000个epoch达到99%验证准确率，优化框架仅需39个epoch达到90%、86个epoch达到99%准确率。",
-    "conclusion": "该架构克服了现有方法在单视角、间接定位和遮挡评估方面的局限，可支持穴位检测与可视化的实际应用，推动中医自动化发展。"
-  },
-  {
-    "id": "http://arxiv.org/abs/2611.19773v1",
-    "title": "SemLite-GS: Semantic-Selective Parallel Gaussian Splatting for Lightweight Building Reconstruction from UAV Oblique Imagery",
-    "authors": [
-      "Tengfei Wang",
-      "Xin Wang",
-      "Zihan Li",
-      "Quanjian Ji",
-      "Yifei Yu",
-      "Dong Lin",
-      "Zongqian Zhan"
-    ],
-    "abstract": "Lightweight 3D building models support urban spatial analysis, but their production often requires dense scene reconstruction, building extraction, and mesh simplification. Although 3D Gaussian Splatting (3DGS) is more efficient than conventional multi-view stereo, existing large-scale methods lack semantic selection and parallel instance-level training. We present SemLite-GS, a building-centric framework that reconstructs lightweight building meshes from large-scale UAV oblique imagery. First, an orthographic reference map establishes globally consistent building identities, which are propagated to oblique views to form camera-instance pairs and regions of interest. Second, semantic-selective parallel PGSR training jointly processes multiple pairs within relevant image regions while updating only target Gaussians; contextual Gaussians remain fixed to preserve visibility. Third, architectural planes extracted from rendered depth, opacity, and normal maps guide signed distance field optimization, producing meshes with adaptive polygon allocation and well-defined structural boundaries. Experiments on multiple large-scale UAV datasets demonstrate that our SemLite-GS substantially reduces building reconstruction time compared with representative full-scene 3DGS methods. With comparable polygon budgets, SemLite-GS achieves superior preservation of dominant planar structures and sharp architectural transitions compared with conventional dense reconstruction followed by mesh decimation. The source code is available at https://github.com/IRIS-LAB-whu/SemLite-GS.",
-    "link": "http://arxiv.org/abs/2611.19773v1",
-    "published": "2026-11-15",
-    "category": "cs.CV",
-    "tags": [
-      "3D Gaussian Splatting",
-      "UAV",
-      "Building Reconstruction",
-      "Parallel Training",
-      "Mesh Reconstruction"
-    ],
-    "tldr": "SemLite-GS通过语义选择与并行PGSR训练，从无人机倾斜影像高效重建轻量建筑网格。",
-    "motivation": "轻量建筑模型支撑城市空间分析，但传统流程需密集重建、建筑提取与网格简化，效率较低；现有大规模3DGS方法缺乏语义选择与实例级并行训练。",
-    "method": "先用正射参考图建立全局一致的建筑身份并传播至倾斜视图，形成相机-实例对与感兴趣区域；再以语义选择式并行PGSR仅更新目标高斯、固定上下文高斯，并利用渲染深度、不透明度与法线提取建筑平面引导SDF优化，实现自适应多边形分配与清晰结构边界。",
-    "result": "在多个大规模无人机数据集上，SemLite-GS相较代表性全场景3DGS方法显著缩短建筑重建时间；在相当多边形预算下，其主导平面结构保持与建筑锐利过渡效果优于密集重建后网格简化流程。",
-    "conclusion": "该工作提出面向建筑轻量化重建的语义选择并行高斯泼溅框架，兼顾重建效率与结构保真度，并开源代码，具有城市三维建模应用潜力。"
   }
 ]
